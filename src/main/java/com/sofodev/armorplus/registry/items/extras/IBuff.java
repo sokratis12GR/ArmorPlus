@@ -1,11 +1,11 @@
 package com.sofodev.armorplus.registry.items.extras;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Effect;
-import net.minecraft.world.World;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 
 /**
  * IBuff is the sharing point for buffs and de-buffs
@@ -20,16 +20,16 @@ public interface IBuff {
     boolean isEffect();
 
     /**
-     * @return {@link Effect} if {{@link #isEffect()}} is true and the value (enum name of the effect) is valid
+     * @return {@link MobEffect} if {{@link #isEffect()}} is true and the value (enum name of the effect) is valid
      */
-    Effect getEffect();
+    MobEffect getEffect();
 
     /**
-     * Copies the method from {@link ArmorItem#onArmorTick(ItemStack, World, PlayerEntity)}
+     * Copies the method from {@link ArmorItem#onArmorTick(ItemStack, Level, Player)}
      * <p>
      * Used to apply buff (effects) or abilities, on armor tick.
      */
-    default void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
+    default void onArmorTick(ItemStack stack, Level world, Player player) {
     }
 
     default void hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {

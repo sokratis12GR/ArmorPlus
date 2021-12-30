@@ -1,11 +1,11 @@
 package com.sofodev.armorplus.registry.items.armors;
 
 import com.sofodev.armorplus.ArmorPlus;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.IItemProvider;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -13,10 +13,10 @@ import java.util.Arrays;
 import java.util.Locale;
 
 import static com.sofodev.armorplus.utils.Utils.getRepairStacks;
-import static net.minecraft.item.Items.*;
-import static net.minecraft.util.SoundEvents.*;
+import static net.minecraft.sounds.SoundEvents.*;
+import static net.minecraft.world.item.Items.*;
 
-public enum APArmorProperties implements IArmorMaterial {
+public enum APArmorProperties implements ArmorMaterial {
     COAL_PROP(2, new int[]{1, 1, 2, 1}, 8, ARMOR_EQUIP_LEATHER, COAL, COAL_BLOCK),
     REDSTONE_PROP(11, new int[]{1, 2, 3, 2}, 8, ARMOR_EQUIP_IRON, REDSTONE, REDSTONE_BLOCK),
     LAPIS_PROP(11, new int[]{1, 2, 3, 2}, 8, ARMOR_EQUIP_IRON, LAPIS_LAZULI, LAPIS_BLOCK),
@@ -55,15 +55,15 @@ public enum APArmorProperties implements IArmorMaterial {
     private final APRepair repair;
     private final boolean special;
 
-    APArmorProperties(int durability, int[] damageReduction, int enchantability, SoundEvent soundEvent, IItemProvider... repair) {
+    APArmorProperties(int durability, int[] damageReduction, int enchantability, SoundEvent soundEvent, ItemLike... repair) {
         this(true, durability, damageReduction, enchantability, soundEvent, 0.0f, repair);
     }
 
-    APArmorProperties(int durability, int[] damageReduction, int enchantability, SoundEvent soundEvent, float toughness, IItemProvider... repair) {
+    APArmorProperties(int durability, int[] damageReduction, int enchantability, SoundEvent soundEvent, float toughness, ItemLike... repair) {
         this(true, durability, damageReduction, enchantability, soundEvent, toughness, repair);
     }
 
-    APArmorProperties(boolean special, int durability, int[] damageReduction, int enchantability, SoundEvent soundEvent, float toughness, IItemProvider... repair) {
+    APArmorProperties(boolean special, int durability, int[] damageReduction, int enchantability, SoundEvent soundEvent, float toughness, ItemLike... repair) {
         this(special, durability, damageReduction, enchantability, soundEvent, toughness, new APRepair(repair));
     }
 
@@ -91,12 +91,12 @@ public enum APArmorProperties implements IArmorMaterial {
     }
 
     @Override
-    public int getDurabilityForSlot(EquipmentSlotType slot) {
+    public int getDurabilityForSlot(EquipmentSlot slot) {
         return MAX_DAMAGE_ARRAY[slot.getIndex()] * this.durability;
     }
 
     @Override
-    public int getDefenseForSlot(EquipmentSlotType slot) {
+    public int getDefenseForSlot(EquipmentSlot slot) {
         return damageReduction[slot.getIndex()];
     }
 

@@ -1,14 +1,20 @@
 package com.sofodev.armorplus.data;
 
-import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.loot.*;
-import net.minecraft.loot.functions.CopyName;
-import net.minecraft.loot.functions.CopyNbt;
-import net.minecraft.loot.functions.SetContents;
-import net.minecraft.util.IItemProvider;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.DynamicLoot;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.CopyNameFunction;
+import net.minecraft.world.level.storage.loot.functions.CopyNbtFunction;
+import net.minecraft.world.level.storage.loot.functions.SetContainerContents;
+import net.minecraft.world.level.storage.loot.providers.nbt.ContextNbtProvider;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,6 +30,30 @@ public class LootTables extends BaseLootTableProvider {
         super(dataGeneratorIn);
     }
 
+    protected static LootTable.Builder dropping(ItemLike block) {
+        return LootTable.lootTable().withPool(LootPool.lootPool()
+                .setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(block))
+        );
+    }
+
+    protected static LootTable.Builder droppingWithContents(Block block, ResourceLocation key) {
+        return LootTable.lootTable().withPool(LootPool.lootPool()
+                .setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(block)
+                        .apply(CopyNameFunction.copyName(CopyNameFunction.NameSource.BLOCK_ENTITY))
+                        .apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY)
+                                .copy("Lock", "BlockEntityTag.Lock")
+                                .copy("LootTable", "BlockEntityTag.LootTable")
+                                .copy("LootTableSeed", "BlockEntityTag.LootTableSeed"))
+                        .apply(SetContainerContents.setContents(TROPHY_TYPE.get()).withEntry(DynamicLoot.dynamicEntry(key)))
+                ));
+    }
+
+    //////////////////////////
+    // From BlockLootTables //
+    //////////////////////////
+
     @Override
     protected void addTables() {
         blockList.addAll(blocks);
@@ -38,22 +68,11 @@ public class LootTables extends BaseLootTableProvider {
         Arrays.stream(specialBlocks).forEach(block -> blockList.remove(block));
     }
 
-    //////////////////////////
-    // From BlockLootTables //
-    //////////////////////////
-
     protected void registerLootTable(Block block, LootTable.Builder table) {
         this.lootTables.put(block, table);
     }
 
-    protected static LootTable.Builder dropping(IItemProvider block) {
-        return LootTable.lootTable().withPool(LootPool.lootPool()
-                .setRolls(ConstantRange.exactly(1))
-                .add(ItemLootEntry.lootTableItem(block))
-        );
-    }
-
-    public void registerDropping(Block block, IItemProvider drop) {
+    public void registerDropping(Block block, ItemLike drop) {
         this.registerLootTable(block, dropping(drop));
     }
 
@@ -61,21 +80,8 @@ public class LootTables extends BaseLootTableProvider {
         this.registerDropping(block, block);
     }
 
-    public void registerStandardTable(String name, Block block) {
-        this.registerLootTable(block, createStandardTable(name, block));
-    }
-
-    protected static LootTable.Builder droppingWithContents(Block block, ResourceLocation key) {
-        return LootTable.lootTable().withPool(LootPool.lootPool()
-                .setRolls(ConstantRange.exactly(1))
-                .add(ItemLootEntry.lootTableItem(block)
-                        .apply(CopyName.copyName(CopyName.Source.BLOCK_ENTITY))
-                        .apply(CopyNbt.copyData(CopyNbt.Source.BLOCK_ENTITY)
-                                .copy("Lock", "BlockEntityTag.Lock")
-                                .copy("LootTable", "BlockEntityTag.LootTable")
-                                .copy("LootTableSeed", "BlockEntityTag.LootTableSeed"))
-                        .apply(SetContents.setContents().withEntry(DynamicLootEntry.dynamicEntry(key)))
-                ));
+    public void registerStandardTable(String name, Block block, BlockEntityType<?> type) {
+        this.registerLootTable(block, createStandardTable(name, block, type));
     }
 
 }

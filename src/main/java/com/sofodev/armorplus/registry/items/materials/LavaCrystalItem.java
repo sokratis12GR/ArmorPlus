@@ -1,23 +1,24 @@
 package com.sofodev.armorplus.registry.items.materials;
 
 import com.sofodev.armorplus.registry.items.APItem;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Rarity;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.TextColor;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.text.Color;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.Style;
-import net.minecraft.world.World;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
-import static net.minecraft.util.text.TextFormatting.GOLD;
+import static net.minecraft.ChatFormatting.GOLD;
 
 /**
  * @author Sokratis Fotkatzikis
@@ -34,11 +35,11 @@ public class LavaCrystalItem extends APItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
         if (!isInfused) {
-            tooltip.add(translate("tooltip.armorplus.lava_crystal.how_to_infuse").setStyle(Style.EMPTY.withItalic(true).withColor(Color.parseColor("#670067"))));
+            tooltip.add(translate("tooltip.armorplus.lava_crystal.how_to_infuse").setStyle(Style.EMPTY.withItalic(true).withColor(TextColor.parseColor("#670067"))));
         } else
-            tooltip.add(translate("tooltip.armorplus.lava_crystal.lore").setStyle(Style.EMPTY.withItalic(true).withColor(Color.parseColor("#670067"))));
+            tooltip.add(translate("tooltip.armorplus.lava_crystal.lore").setStyle(Style.EMPTY.withItalic(true).withColor(TextColor.parseColor("#670067"))));
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
 
@@ -51,7 +52,7 @@ public class LavaCrystalItem extends APItem {
      */
     @Override
     public boolean onEntityItemUpdate(ItemStack stack, ItemEntity entity) {
-        boolean isInLava = entity.getCommandSenderWorld().getFluidState(entity.blockPosition()).getFluidState().is(FluidTags.LAVA);
+        boolean isInLava = entity.getCommandSenderWorld().getFluidState(entity.blockPosition()).is(FluidTags.LAVA);
         if (!isInfused && isInLava) {
             entity.spawnAtLocation(new ItemStack(getAPItem("infused_lava_crystal"), entity.getItem().getCount()));
             entity.getItem().setCount(0);
@@ -71,7 +72,7 @@ public class LavaCrystalItem extends APItem {
     }
 
     @Override
-    public int getBurnTime(ItemStack itemStack) {
+    public int getBurnTime(ItemStack itemStack, RecipeType<?> recipeType) {
         return isInfused ? burnTime[1] : burnTime[0];
     }
 

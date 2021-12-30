@@ -5,12 +5,12 @@ import com.sofodev.armorplus.data.recipe.Result;
 import com.sofodev.armorplus.registry.ModBlocks;
 import com.sofodev.armorplus.registry.ModItems;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.IDataProvider;
-import net.minecraft.data.IFinishedRecipe;
-import net.minecraft.data.RecipeProvider;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.util.IItemProvider;
+import net.minecraft.data.DataProvider;
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.Tags.IOptionalNamedTag;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 
@@ -29,27 +29,27 @@ import static com.sofodev.armorplus.registry.ModItems.INFUSED_LAVA_CRYSTAL;
 import static com.sofodev.armorplus.registry.ModItems.*;
 import static com.sofodev.armorplus.utils.DataUtils.getPath;
 import static java.util.Arrays.asList;
-import static net.minecraft.item.Items.*;
+import static net.minecraft.world.item.Items.*;
 import static net.minecraftforge.common.Tags.Items.*;
 
-public class Recipes extends RecipeProvider implements IDataProvider, IConditionBuilder {
+public class Recipes extends RecipeProvider implements DataProvider, IConditionBuilder {
 
     public static final List<IOptionalNamedTag<Item>> BRICK_COLORS = Stream.of(DYES_BLACK, DYES_BLUE, DYES_GREEN, DYES_PURPLE, DYES_RED, DYES_WHITE, DYES_YELLOW, DYES_ORANGE).collect(Collectors.toList());
-    public static final List<IItemProvider> MATERIALS_ORDERED = Stream.of(COAL, REDSTONE, LAPIS_LAZULI, EMERALD, Items.OBSIDIAN, INFUSED_LAVA_CRYSTAL.get(), GUARDIAN_SCALE.get(), WITHER_BONE.get(), ENDER_DRAGON_SCALE.get()).collect(Collectors.toList());
-    public static final List<IItemProvider> BLOCK_MATERIALS_ORDERED = Stream.of(COAL_BLOCK, REDSTONE_BLOCK, LAPIS_BLOCK, EMERALD_BLOCK, COMPRESSED_OBSIDIAN.get(), INFUSED_LAVA_CRYSTAL.get(), GUARDIAN_SCALE.get(), WITHER_BONE.get(), ENDER_DRAGON_SCALE.get()).collect(Collectors.toList());
-    public static final List<IItemProvider> LOW_TO_MID_TIER_MATERIAL_LIST = Stream.of(COAL_BLOCK, REDSTONE_BLOCK, LAPIS_BLOCK, EMERALD_BLOCK, COMPRESSED_OBSIDIAN.get()).collect(Collectors.toList());
+    public static final List<ItemLike> MATERIALS_ORDERED = Stream.of(COAL, REDSTONE, LAPIS_LAZULI, EMERALD, Items.OBSIDIAN, INFUSED_LAVA_CRYSTAL.get(), GUARDIAN_SCALE.get(), WITHER_BONE.get(), ENDER_DRAGON_SCALE.get()).collect(Collectors.toList());
+    public static final List<ItemLike> BLOCK_MATERIALS_ORDERED = Stream.of(COAL_BLOCK, REDSTONE_BLOCK, LAPIS_BLOCK, EMERALD_BLOCK, COMPRESSED_OBSIDIAN.get(), INFUSED_LAVA_CRYSTAL.get(), GUARDIAN_SCALE.get(), WITHER_BONE.get(), ENDER_DRAGON_SCALE.get()).collect(Collectors.toList());
+    public static final List<ItemLike> LOW_TO_MID_TIER_MATERIAL_LIST = Stream.of(COAL_BLOCK, REDSTONE_BLOCK, LAPIS_BLOCK, EMERALD_BLOCK, COMPRESSED_OBSIDIAN.get()).collect(Collectors.toList());
 
     public Recipes(DataGenerator generatorIn) {
         super(generatorIn);
     }
 
     @Override
-    protected void buildShapelessRecipes(Consumer<IFinishedRecipe> con) {
+    protected void buildCraftingRecipes(Consumer<FinishedRecipe> con) {
         this.registerCraftingRecipes(con);
         this.registerSmithingRecipes(con);
     }
 
-    private void registerCraftingRecipes(Consumer<IFinishedRecipe> con) {
+    private void registerCraftingRecipes(Consumer<FinishedRecipe> con) {
         CraftingRecipeMaker crafter = new CraftingRecipeMaker(generator);
         //StoneBricks+CastleBlocks
         int l = AP_STONE_BRICKS_LENGTH;
@@ -129,7 +129,7 @@ public class Recipes extends RecipeProvider implements IDataProvider, ICondition
         IntStream.range(0, bound).forEach(i -> {
             Item mace = MACES[i].get();
             String path = getPath(mace).replace("item_", "").replace("_mace", "");
-            IItemProvider material = BLOCK_MATERIALS_ORDERED.get(i);
+            ItemLike material = BLOCK_MATERIALS_ORDERED.get(i);
             crafter.build(con, Result.build(mace, "maces", path), GridInput.build(" DD", " SD", "S  ", 'S', 'D'), i > 4 ? OBSIDIAN_STICK.get() : WOODEN_ROD.get(), material);
             crafter.build(con, Result.build(mace, "maces", path).setSuffix("_alt"), GridInput.build("DD ", "DS ", "  S", 'S', 'D'), i > 4 ? OBSIDIAN_STICK.get() : WOODEN_ROD.get(), material);
         });
@@ -167,7 +167,7 @@ public class Recipes extends RecipeProvider implements IDataProvider, ICondition
         crafter.build(con, Result.build(SNOW_BRICK_SLAB.get(), 4).setGroup("snow_brick_slab").setSuffix(""), GridInput.buildSlab('X'), SNOW_BRICK.get());
     }
 
-    private void registerSmithingRecipes(Consumer<IFinishedRecipe> con) {
+    private void registerSmithingRecipes(Consumer<FinishedRecipe> con) {
         SmithingRecipeMaker smither = new SmithingRecipeMaker(generator);
         //ArmorBase + Soul = Complete Form
         smither.buildBaseToFullSmithing(con, SUPER_STAR_BASES, WITHER_BOSS_SOUL.get());

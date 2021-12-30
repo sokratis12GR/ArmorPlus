@@ -1,7 +1,7 @@
 package com.sofodev.armorplus.registry.items.tools.render;
 
 import com.sofodev.armorplus.registry.items.tools.APMaceItem;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 import static com.sofodev.armorplus.utils.Utils.setRL;

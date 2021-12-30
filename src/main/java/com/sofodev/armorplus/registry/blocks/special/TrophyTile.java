@@ -2,29 +2,30 @@ package com.sofodev.armorplus.registry.blocks.special;
 
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.registry.ModBlocks;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SUpdateTileEntityPacket;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.ResourceLocationException;
-import net.minecraft.util.StringUtils;
-import net.minecraft.util.WeightedSpawnerEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.ResourceLocationException;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.Connection;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.StringUtil;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.SpawnData;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
+import java.util.Optional;
 import java.util.function.Function;
 
-public class TrophyTile extends TileEntity {
+public class TrophyTile extends BlockEntity {
 
-    public WeightedSpawnerEntity entityData = new WeightedSpawnerEntity();
+    private SpawnData entityData = new SpawnData();
     /**
      * Cached instance of the entity to render as a trophy.
      */
@@ -35,16 +36,16 @@ public class TrophyTile extends TileEntity {
      */
     private float scale = 0.2f;
 
-    public TrophyTile() {
-        super(ModBlocks.TROPHY_TYPE.get());
+    public TrophyTile(BlockPos pos, BlockState state) {
+        super(ModBlocks.TROPHY_TYPE.get(), pos, state);
     }
 
     @Nullable
     private ResourceLocation getEntityId() {
-        String id = this.entityData.getTag().getString("id");
+        String id = this.entityData.getEntityToSpawn().getString("id");
 
         try {
-            return StringUtils.isNullOrEmpty(id) ? null : new ResourceLocation(id);
+            return StringUtil.isNullOrEmpty(id) ? null : new ResourceLocation(id);
         } catch (ResourceLocationException resourcelocationexception) {
             BlockPos pos = this.getBlockPos();
             ArmorPlus.LOGGER.warn("Invalid entity id '{}' at trophy {}:[{},{},{}]", id, this.getLevel().dimension().location(), pos.getX(), pos.getY(), pos.getZ());
@@ -53,7 +54,7 @@ public class TrophyTile extends TileEntity {
     }
 
     public void setEntityId(EntityType<?> type) {
-        this.entityData.getTag().putString("id", ForgeRegistries.ENTITIES.getKey(type).toString());
+        this.entityData.getEntityToSpawn().putString("id", ForgeRegistries.ENTITIES.getKey(type).toString());
         this.sendBlockUpdate();
     }
 
@@ -67,10 +68,10 @@ public class TrophyTile extends TileEntity {
     }
 
     @Override
-    public void load(BlockState state, CompoundNBT tag) {
-        super.load(state, tag);
+    public void load(CompoundTag tag) {
+        super.load(tag);
         if (tag.contains("DisplayEntity", 10)) {
-            this.setNextEntityData(new WeightedSpawnerEntity(1, tag.getCompound("DisplayEntity")));
+            this.setNextEntityData(new SpawnData(tag.getCompound("DisplayEntity"), Optional.empty()));
         }
         if (tag.contains("EntityScale", 99)) {
             this.scale = tag.getFloat("EntityScale");
@@ -82,13 +83,14 @@ public class TrophyTile extends TileEntity {
         }
     }
 
+
     @Override
-    public CompoundNBT save(CompoundNBT tag) {
+    public CompoundTag save(CompoundTag tag) {
         super.save(tag);
         ResourceLocation resourcelocation = this.getEntityId();
         if (resourcelocation != null) {
             tag.putFloat("EntityScale", this.scale);
-            tag.put("DisplayEntity", this.entityData.getTag().copy());
+            tag.put("DisplayEntity", this.entityData.getEntityToSpawn().copy());
         }
         return tag;
     }
@@ -97,9 +99,9 @@ public class TrophyTile extends TileEntity {
     @OnlyIn(Dist.CLIENT)
     public Entity getDisplayEntity() {
         if (this.displayEntity == null) {
-            this.displayEntity = EntityType.loadEntityRecursive(this.entityData.getTag(), this.getLevel(), Function.identity());
-            if (this.entityData.getTag().size() == 1) {
-                this.entityData.getTag().contains("id", 8);
+            this.displayEntity = EntityType.loadEntityRecursive(this.entityData.entityToSpawn(), this.getLevel(), Function.identity());
+            if (this.entityData.entityToSpawn().size() == 1) {
+                this.entityData.entityToSpawn().contains("id", 8);
             }
         }
 
@@ -108,7 +110,7 @@ public class TrophyTile extends TileEntity {
 
     @Nullable
     @Override
-    public World getLevel() {
+    public Level getLevel() {
         return super.getLevel();
     }
 
@@ -117,35 +119,34 @@ public class TrophyTile extends TileEntity {
         return super.getBlockPos();
     }
 
-    public void setNextEntityData(WeightedSpawnerEntity data) {
+    public void setNextEntityData(SpawnData data) {
         this.entityData = data;
     }
 
     @Override
-    @Nullable
-    public SUpdateTileEntityPacket getUpdatePacket() {
-        return new SUpdateTileEntityPacket(this.getBlockPos(), -20, this.getUpdateTag());
-    }
-
-    @Override
-    public CompoundNBT getUpdateTag() {
-        return this.save(new CompoundNBT());
+    public void handleUpdateTag(CompoundTag tag) {
+        super.handleUpdateTag(tag);
     }
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
-        this.load(level.getBlockState(pkt.getPos()), pkt.getTag());
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
+        this.load(pkt.getTag());
+    }
+
+//    @Override
+//    public Packet<ClientGamePacketListener> getUpdatePacket() {
+//        return new Packet<ClientGamePacketListener>(this.getBlockPos(), -20, this.getUpdateTag());
+//    }
+
+    @Override
+    public CompoundTag getUpdateTag() {
+        return this.save(new CompoundTag());
     }
 
     @Override
     public boolean onlyOpCanSetNbt() {
         return false;
-    }
-
-    @Override
-    public void handleUpdateTag(BlockState state, CompoundNBT tag) {
-        super.handleUpdateTag(state, tag);
     }
 
     @Override

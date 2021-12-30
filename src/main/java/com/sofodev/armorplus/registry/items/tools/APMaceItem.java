@@ -2,18 +2,23 @@ package com.sofodev.armorplus.registry.items.tools;
 
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.registry.items.tools.properties.mace.IAPMace;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.*;
-import net.minecraft.nbt.CompoundNBT;
+import com.sofodev.armorplus.registry.items.tools.render.APMaceRenderer;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.*;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.client.IItemRenderProperties;
+import net.minecraftforge.network.PacketDistributor;
 import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -23,35 +28,53 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib3.network.GeckoLibNetwork;
+import software.bernie.geckolib3.network.ISyncable;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
 import java.util.List;
-import java.util.Objects;
+import java.util.Random;
 import java.util.UUID;
+import java.util.function.Consumer;
 import java.util.stream.IntStream;
 
 import static com.sofodev.armorplus.registry.items.tools.properties.mace.DestructionShape.PLUS;
 import static com.sofodev.armorplus.registry.items.tools.properties.mace.DestructionShape.SQUARE;
+import static net.minecraft.core.Direction.*;
 import static net.minecraft.tags.BlockTags.WITHER_IMMUNE;
-import static net.minecraft.util.Direction.*;
 import static software.bernie.geckolib3.core.PlayState.CONTINUE;
 import static software.bernie.geckolib3.core.PlayState.STOP;
 
-public class APMaceItem extends SwordItem implements IAnimatable {
+public class APMaceItem extends SwordItem implements IAnimatable, ISyncable {
 
     public final IAPMace mat;
-    public AnimationFactory factory = new AnimationFactory(this);
     public final String controllerName = "maceController";
+    public AnimationFactory factory = new AnimationFactory(this);
+    Random random = new Random();
 
     public APMaceItem(IAPMace mat, Item.Properties props) {
         super(mat.get(), (int) (mat.get().getAttackDamageBonus() + mat.getType().getDmg()), mat.getType().getAttackSpeed(),
                 props.tab(ArmorPlus.AP_WEAPON_GROUP)
         );
         this.mat = mat;
+        GeckoLibNetwork.registerSyncable(this);
     }
 
-    public static int getIDFromStack(ItemStack stack) {
-        return Objects.hash(stack.getItem(), stack.getCount(), stack.hasTag() ? stack.getTag().toString() : 1);
+    @Override
+    public String getSyncKey() {
+        return mat.getName() + this.getClass().getName();
+    }
+
+    @Override
+    public void initializeClient(Consumer<IItemRenderProperties> consumer) {
+        super.initializeClient(consumer);
+        consumer.accept(new IItemRenderProperties() {
+            private final BlockEntityWithoutLevelRenderer renderer = new APMaceRenderer();
+
+            public BlockEntityWithoutLevelRenderer getItemStackRenderer() {
+                return this.renderer;
+            }
+        });
     }
 
     @Override
@@ -64,12 +87,8 @@ public class APMaceItem extends SwordItem implements IAnimatable {
         return super.shouldOverrideMultiplayerNbt();
     }
 
-    public static AnimationController getControllerForStack(AnimationFactory factory, ItemStack stack, String controllerName) {
-        return factory.getOrCreateAnimationData(GeckoLibUtil.getIDFromStack(stack)).getAnimationControllers().get(controllerName);
-    }
-
     @Override
-    public boolean canAttackBlock(BlockState state, World worldIn, BlockPos pos, PlayerEntity player) {
+    public boolean canAttackBlock(BlockState state, Level worldIn, BlockPos pos, Player player) {
         return !player.isCreative();
     }
 
@@ -84,10 +103,10 @@ public class APMaceItem extends SwordItem implements IAnimatable {
     }
 
     @Override
-    public void releaseUsing(ItemStack stack, World world, LivingEntity living, int timeLeft) {
-        if (living instanceof PlayerEntity) {
-            PlayerEntity player = (PlayerEntity) living;
-            CompoundNBT nbt = stack.getTag();
+    public void releaseUsing(ItemStack stack, Level world, LivingEntity living, int timeLeft) {
+        if (living instanceof Player) {
+            Player player = (Player) living;
+            CompoundTag nbt = stack.getTag();
             if (nbt != null && nbt.hasUUID("key")) {
                 AnimationController<?> controller = GeckoLibUtil.getControllerForStack(this.factory, stack, this.controllerName);
                 Animation currentAnimation = controller.getCurrentAnimation();
@@ -96,11 +115,14 @@ public class APMaceItem extends SwordItem implements IAnimatable {
                     if (currentAnimation != null) {
                         currentAnimation.loop = false;
                     }
-                    if (world.isClientSide) {
-                        this.swingAnimation(controller);
-                    } else {
+                    if (!world.isClientSide) {
+                        int id = GeckoLibUtil.guaranteeIDForStack(stack, (ServerLevel) world);
+                        PacketDistributor.PacketTarget target = PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> {
+                            return player;
+                        });
+                        GeckoLibNetwork.syncAnimation(target, this, id, 1);
                         //check if the offhand is empty
-                        boolean isOffHandEmpty = player.getItemBySlot(EquipmentSlotType.OFFHAND).isEmpty();
+                        boolean isOffHandEmpty = player.getItemBySlot(EquipmentSlot.OFFHAND).isEmpty();
                         if (isOffHandEmpty) {
                             BlockPos destructionPos = new BlockPos(player.position());
                             Direction direction = player.getMotionDirection();
@@ -119,45 +141,50 @@ public class APMaceItem extends SwordItem implements IAnimatable {
     }
 
     @Override
-    public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
-        ItemStack stack = this.setTag(player.getItemInHand(hand));
-        CompoundNBT nbt = stack.getTag();
-        if (nbt != null && nbt.hasUUID("key")) {
-            AnimationController<?> controller = GeckoLibUtil.getControllerForStack(this.factory, stack, this.controllerName);
-            if (world.isClientSide) {
-                this.chargeAnimation(controller);
-                return ActionResult.pass(stack);
+    public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
+        if (!world.isClientSide) {
+            ItemStack stack = this.setTag(player.getItemInHand(hand));
+            CompoundTag nbt = stack.getTag();
+            if (nbt != null && nbt.hasUUID("key")) {
+                int id = GeckoLibUtil.guaranteeIDForStack(stack, (ServerLevel) world);
+                PacketDistributor.PacketTarget target = PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> {
+                    return player;
+                });
+                GeckoLibNetwork.syncAnimation(target, this, id, 0);
+            }
+            if (stack.getDamageValue() >= stack.getMaxDamage() - 1) {
+                return InteractionResultHolder.fail(stack);
+            } else {
+                player.startUsingItem(hand);
+                return InteractionResultHolder.consume(stack);
             }
         }
-        if (stack.getDamageValue() >= stack.getMaxDamage() - 1) {
-            return ActionResult.fail(stack);
-        } else {
-            player.startUsingItem(hand);
-            return ActionResult.consume(stack);
-        }
+        return super.use(world, player, hand);
     }
 
     @Override
     public boolean onEntitySwing(ItemStack stack, LivingEntity entity) {
-        World world = entity.level;
-        ItemStack itemStack = this.setTag(stack);
-        CompoundNBT nbt = stack.getTag();
-        if (nbt != null && nbt.hasUUID("key")) {
-            AnimationController<?> controller = GeckoLibUtil.getControllerForStack(this.factory, itemStack, this.controllerName);
-            if (world.isClientSide && entity instanceof PlayerEntity) {
-                this.swingAnimation(controller);
-                return true;
+        Level world = entity.level;
+        if (!world.isClientSide) {
+            ItemStack itemStack = this.setTag(stack);
+            CompoundTag nbt = stack.getTag();
+            if (nbt != null && nbt.hasUUID("key")) {
+                AnimationController<?> controller = GeckoLibUtil.getControllerForStack(this.factory, itemStack, this.controllerName);
+                int id = GeckoLibUtil.guaranteeIDForStack(stack, (ServerLevel) world);
+                PacketDistributor.PacketTarget target = PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> {
+                    return entity;
+                });
+                GeckoLibNetwork.syncAnimation(target, this, id, 1);
             }
         }
-
         return true;
     }
 
     private ItemStack setTag(ItemStack stack) {
-        CompoundNBT tag = stack.getTag();
+        CompoundTag tag = stack.getTag();
         UUID randomUUID = UUID.randomUUID();
         if (tag == null) {
-            tag = new CompoundNBT();
+            tag = new CompoundTag();
             tag.putUUID("key", randomUUID);
             stack.setTag(tag);
         }
@@ -169,35 +196,36 @@ public class APMaceItem extends SwordItem implements IAnimatable {
     }
 
     @Override
-    public UseAction getUseAnimation(ItemStack stack) {
-        return UseAction.NONE;
+    public UseAnim getUseAnimation(ItemStack p_41452_) {
+        return UseAnim.NONE;
     }
 
-    public void chargeAnimation(AnimationController<?> controller) {
-        if (controller.getAnimationState() == AnimationState.Stopped) {
-            controller.setAnimation(new AnimationBuilder()
-                    .addAnimation("animation.mace.charge", false)
-                    .addAnimation("animation.mace.hold_charge", true));
-        }
-    }
+//    public void chargeAnimation(AnimationController<?> controller) {
+//        if (controller.getAnimationState() == AnimationState.Stopped) {
+//            controller.setAnimation(new AnimationBuilder()
+//                    .addAnimation("animation.mace.charge", false)
+//                    .addAnimation("animation.mace.hold_charge", true));
+//        }
+//    }
+//
+//    public void swingAnimation(AnimationController<?> controller) {
+//        if (controller.getAnimationState() == AnimationState.Stopped) {
+//            controller.markNeedsReload();
+//            controller.setAnimation(new AnimationBuilder().addAnimation("animation.mace.swing_attack", false));
+//        }
+//    }
 
-    public void swingAnimation(AnimationController<?> controller) {
-        if (controller.getAnimationState() == AnimationState.Stopped) {
-            controller.markNeedsReload();
-            controller.setAnimation(new AnimationBuilder().addAnimation("animation.mace.swing_attack", false));
-        }
-    }
-
-    private void executeDestruction(PlayerEntity player, IAPMace mat, World world, ItemStack stack, BlockPos destructionPos, Direction direction, boolean flag) {
+    private void executeDestruction(Player player, IAPMace mat, Level world, ItemStack stack, BlockPos destructionPos, Direction direction, boolean flag) {
         this.destroyBlocksInLineDirectional(mat, world, destructionPos, direction, flag);
         int damage = mat.destructionRange();
         //Damages the item and executes the animation
-        stack.hurtAndBreak(random.nextInt(damage) + (damage * damage), player, (entity) -> entity.broadcastBreakEvent(EquipmentSlotType.MAINHAND));
+
+        stack.hurtAndBreak(random.nextInt(damage) + (damage * damage), player, (entity) -> entity.broadcastBreakEvent(EquipmentSlot.MAINHAND));
         player.getCooldowns().addCooldown(stack.getItem(), mat.cooldown() * 20);
         player.awardStat(Stats.ITEM_USED.get(this));
     }
 
-    private void destroyBlocksInLineDirectional(IAPMace mat, World world, BlockPos destructionPos, Direction direction, boolean isNorthOrSouth) {
+    private void destroyBlocksInLineDirectional(IAPMace mat, Level world, BlockPos destructionPos, Direction direction, boolean isNorthOrSouth) {
         IntStream.range(0, mat.destructionRange()).forEach(offset -> {
             if (mat.hasAOEDestruction()) {
                 BlockPos westOrNorth = isNorthOrSouth ? destructionPos.west() : destructionPos.north();
@@ -226,14 +254,14 @@ public class APMaceItem extends SwordItem implements IAnimatable {
      * @param direction      the direction the player is facing
      * @param offset         the offset value.
      */
-    private void destroyBlockInLine(World world, BlockPos destructionPos, Direction direction, int offset) {
+    private void destroyBlockInLine(Level world, BlockPos destructionPos, Direction direction, int offset) {
         BlockPos pos = directionalOffset(destructionPos, direction, offset);
         this.destroyBlock(world, pos);
         this.destroyBlock(world, pos.above());
         this.destroyBlock(world, pos.above().above());
     }
 
-    private void destroyBlockSingleLine(World world, BlockPos destructionPos, Direction direction, int i) {
+    private void destroyBlockSingleLine(Level world, BlockPos destructionPos, Direction direction, int i) {
         this.destroyBlock(world, directionalOffset(destructionPos, direction, i).above());
     }
 
@@ -241,7 +269,7 @@ public class APMaceItem extends SwordItem implements IAnimatable {
      * @param world the world object
      * @param pos   the BlockPos that we will use to destroy the block
      */
-    private void destroyBlock(World world, BlockPos pos) {
+    private void destroyBlock(Level world, BlockPos pos) {
         if (!WITHER_IMMUNE.contains(world.getBlockState(pos).getBlock())) world.destroyBlock(pos, true);
     }
 
@@ -275,4 +303,25 @@ public class APMaceItem extends SwordItem implements IAnimatable {
     public AnimationFactory getFactory() {
         return this.factory;
     }
+
+    public void onAnimationSync(int id, int state) {
+        if (state == 0) {
+            AnimationController<?> controller = GeckoLibUtil.getControllerForID(this.factory, id, this.controllerName);
+            if (controller.getAnimationState() == AnimationState.Stopped) {
+                controller.markNeedsReload();
+                controller.setAnimation(new AnimationBuilder()
+                        .addAnimation("animation.mace.charge", false)
+                        .addAnimation("animation.mace.hold_charge", true));
+            }
+        }
+        if (state == 1) {
+            AnimationController<?> controller = GeckoLibUtil.getControllerForID(this.factory, id, this.controllerName);
+            if (controller.getAnimationState() == AnimationState.Stopped) {
+                controller.markNeedsReload();
+                controller.setAnimation((new AnimationBuilder()).addAnimation("animation.mace.swing_attack", false));
+            }
+        }
+
+    }
+
 }

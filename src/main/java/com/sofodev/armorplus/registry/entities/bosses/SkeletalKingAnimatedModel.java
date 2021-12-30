@@ -1,12 +1,12 @@
 package com.sofodev.armorplus.registry.entities.bosses;
 
 import com.sofodev.armorplus.ArmorPlus;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Mob;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
-public class SkeletalKingAnimatedModel<T extends MobEntity & IAnimatable> extends AnimatedGeoModel<T> {
+public class SkeletalKingAnimatedModel<T extends Mob & IAnimatable> extends AnimatedGeoModel<T> {
 
     @Override
     public ResourceLocation getModelLocation(T object) {

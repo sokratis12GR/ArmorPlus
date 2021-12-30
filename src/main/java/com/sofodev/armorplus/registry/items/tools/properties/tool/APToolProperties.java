@@ -1,14 +1,14 @@
 package com.sofodev.armorplus.registry.items.tools.properties.tool;
 
 import com.sofodev.armorplus.registry.items.armors.APRepair;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.IItemProvider;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 
 import static com.sofodev.armorplus.utils.Utils.getRepairStacks;
-import static net.minecraft.item.Items.*;
+import static net.minecraft.world.item.Items.*;
 
-public enum APToolProperties implements IItemTier {
+public enum APToolProperties implements Tier {
     COAL_PROP(1, 60, 2.0f, 0f, 10, COAL),
     REDSTONE_PROP(2, 250, 6.0f, 1f, 60, REDSTONE),
     LAPIS_PROP(2, 250, 6.0f, 1f, 60, LAPIS_LAZULI),
@@ -28,7 +28,7 @@ public enum APToolProperties implements IItemTier {
     private final int enchantability;
     private final APRepair repair;
 
-    APToolProperties(int harvestLevel, int maxUses, float efficiency, float attackDamage, int enchantability, IItemProvider... repair) {
+    APToolProperties(int harvestLevel, int maxUses, float efficiency, float attackDamage, int enchantability, ItemLike... repair) {
         this(harvestLevel, maxUses, efficiency, attackDamage, enchantability, new APRepair(repair));
     }
 

@@ -1,25 +1,27 @@
 package com.sofodev.armorplus.registry.blocks.special;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
-import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
-import net.minecraft.entity.Entity;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
+import net.minecraft.world.entity.Entity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class TrophyTileEntityRenderer extends TileEntityRenderer<TrophyTile> {
-    public TrophyTileEntityRenderer(TileEntityRendererDispatcher p_i226016_1_) {
-        super(p_i226016_1_);
+public class TrophyTileEntityRenderer implements BlockEntityRenderer<TrophyTile> {
+    public TrophyTileEntityRenderer(BlockEntityRendererProvider.Context ctx) {
+//        super(p_i226016_1_);
     }
 
-    public void render(TrophyTile tile, float partialTicks, MatrixStack matrix, IRenderTypeBuffer buffer, int combinedLight, int combinedOverlay) {
+    @Override
+    public void render(TrophyTile tile, float partialTicks, PoseStack matrix, MultiBufferSource buffer, int combinedLight, int combinedOverlay) {
         matrix.pushPose();
         matrix.translate(0.5D, 1, 0.5D);
-        TrophyTile trophy = (TrophyTile) tile.getTileEntity();
+        TrophyTile trophy = (TrophyTile) tile;
         Entity entity = trophy.getDisplayEntity();
         if (entity != null) {
             float scale = trophy.getEntityScale();
@@ -27,8 +29,8 @@ public class TrophyTileEntityRenderer extends TileEntityRenderer<TrophyTile> {
             //      matrix.mulPose(Vector3f.YP.rotationDegrees((float) MathHelper.lerp(partialTicks, oSpin, spin) * 0.2f));
             matrix.translate(0.0D, -0.2F, 0.0D);
             matrix.scale(scale, scale, scale);
-            EntityRendererManager manager = Minecraft.getInstance().getEntityRenderDispatcher();
-            float f = entity.yRot + (entity.yRot - entity.yRotO) * partialTicks;
+            EntityRenderDispatcher manager = Minecraft.getInstance().getEntityRenderDispatcher();
+            float f = entity.getYRot() + (entity.getYRot() - entity.yRotO) * partialTicks;
             manager.render(entity, 0.0D, 0.0D, 0.0D, f, partialTicks, matrix, buffer, combinedLight);
         }
         matrix.popPose();

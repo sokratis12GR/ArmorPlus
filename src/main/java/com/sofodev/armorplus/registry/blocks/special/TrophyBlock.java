@@ -1,75 +1,66 @@
 package com.sofodev.armorplus.registry.blocks.special;
 
 import com.sofodev.armorplus.registry.blocks.APBlock;
-import net.minecraft.block.BlockRenderType;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.WeightedSpawnerEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.SpawnData;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Optional;
 
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
 
-public class TrophyBlock extends APBlock {
+public class TrophyBlock extends APBlock implements EntityBlock {
 
     public TrophyBlock() {
         super(Properties.copy(Blocks.SPAWNER));
-    }
-
-    @Nullable
-    @Override
-    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return new TrophyTile();
-    }
-
-    @Override
-    public boolean hasTileEntity(BlockState state) {
-        return true;
     }
 
     /**
      * Called by ItemBlocks after a block is set in the world, to allow post-place logic
      */
     @Override
-    public void setPlacedBy(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
-        CompoundNBT tag = stack.getTag();
-        TileEntity tile = world.getBlockEntity(pos);
+    public void setPlacedBy(Level world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
+        CompoundTag tag = stack.getTag();
+        BlockEntity tile = world.getBlockEntity(pos);
         if (tag != null && tile instanceof TrophyTile) {
             TrophyTile trophy = (TrophyTile) tile;
             if (tag.contains("DisplayEntity", 10)) {
-                trophy.setNextEntityData(new WeightedSpawnerEntity(1, tag.getCompound("DisplayEntity")));
+                trophy.setNextEntityData(new SpawnData(tag.getCompound("DisplayEntity"), Optional.empty()));
             }
             if (tag.contains("EntityScale", 99)) {
                 trophy.setEntityScale(tag.getFloat("EntityScale"));
             }
             trophy.save(tag);
             tile.setChanged();
-            world.setBlockEntity(pos, tile);
+            world.setBlockEntity(tile);
         }
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable IBlockReader level, List<ITextComponent> tooltip, ITooltipFlag flag) {
-        CompoundNBT tag = stack.getTagElement("BlockEntityTag");
+    public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
+        CompoundTag tag = stack.getTagElement("BlockEntityTag");
         if (tag != null && tag.contains("DisplayEntity", 10) && tag.getCompound("DisplayEntity").contains("id", 8)) {
             ResourceLocation rl = new ResourceLocation(tag.getCompound("DisplayEntity").getString("id"));
             if (ForgeRegistries.ENTITIES.getValue(rl) != null) {
-                Entity entity = ForgeRegistries.ENTITIES.getValue(rl).create((World) level);
+                Entity entity = ForgeRegistries.ENTITIES.getValue(rl).create((Level) level);
                 if (entity != null) {
                     tooltip.add(translate("tooltip.armorplus.trophy.dropped_by", entity.getName()));
                 }
@@ -79,21 +70,30 @@ public class TrophyBlock extends APBlock {
     }
 
     @Override
-    public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player) {
-        ItemStack itemstack = super.getPickBlock(state, target, world, pos, player);
-        TrophyTile tileTrophy = (TrophyTile) world.getBlockEntity(pos);
-        CompoundNBT tag = tileTrophy.save(new CompoundNBT());
-        tileTrophy.setChanged();
-        if (!tag.isEmpty()) {
-            itemstack.addTagElement("BlockEntityTag", tag);
-        }
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player) {
+        return super.getCloneItemStack(state, target, world, pos, player);
+    }
 
-        return super.getPickBlock(state, target, world, pos, player);
+//    @Override
+//    public ItemStack getPickBlock(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player) {
+//        ItemStack itemstack = super.getPickBlock(state, target, world, pos, player);
+//        TrophyTile tileTrophy = (TrophyTile) world.getBlockEntity(pos);
+//        CompoundTag tag = tileTrophy.save(new CompoundTag());
+//        tileTrophy.setChanged();
+//        if (!tag.isEmpty()) {
+//            itemstack.addTagElement("BlockEntityTag", tag);
+//        }
+//
+//        return super.asBlock().getCloneItemStack(state, target, world, pos, player);
+//    }
+
+    @Override
+    public RenderShape getRenderShape(BlockState p_60550_) {
+        return RenderShape.MODEL;
     }
 
     @Override
-    public BlockRenderType getRenderShape(BlockState p_149645_1_) {
-        return BlockRenderType.MODEL;
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new TrophyTile(pos, state);
     }
-
 }

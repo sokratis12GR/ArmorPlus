@@ -2,21 +2,18 @@ package com.sofodev.armorplus.registry.items.arrows;
 
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.registry.entities.arrows.ArrowType;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.projectile.AbstractArrowEntity;
-import net.minecraft.item.ArrowItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Rarity;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.world.World;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.item.*;
+import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static net.minecraft.enchantment.EnchantmentHelper.getItemEnchantmentLevel;
-import static net.minecraft.enchantment.Enchantments.INFINITY_ARROWS;
+import static net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel;
+import static net.minecraft.world.item.enchantment.Enchantments.INFINITY_ARROWS;
 
 public class APArrowItem extends ArrowItem {
 
@@ -33,17 +30,17 @@ public class APArrowItem extends ArrowItem {
     }
 
     @Override
-    public AbstractArrowEntity createArrow(World world, ItemStack stack, LivingEntity shooter) {
+    public AbstractArrow createArrow(Level world, ItemStack stack, LivingEntity shooter) {
         return type.createArrow(shooter, world);
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
         type.appendHoverText(tooltip);
     }
 
     @Override
-    public boolean isInfinite(ItemStack stack, ItemStack bow, net.minecraft.entity.player.PlayerEntity player) {
+    public boolean isInfinite(ItemStack stack, ItemStack bow, Player player) {
         int enchant = getItemEnchantmentLevel(INFINITY_ARROWS, bow);
         return enchant > 0;
     }

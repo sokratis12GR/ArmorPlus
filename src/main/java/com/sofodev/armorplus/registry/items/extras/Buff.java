@@ -1,15 +1,16 @@
 package com.sofodev.armorplus.registry.items.extras;
 
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Effect;
-import net.minecraft.world.World;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Locale;
 
 import static com.sofodev.armorplus.utils.Utils.setVanillaLocation;
-import static net.minecraft.potion.Effects.WITHER;
+import static net.minecraft.world.effect.MobEffects.WITHER;
 
 public enum Buff implements IBuff {
     NONE,
@@ -33,7 +34,7 @@ public enum Buff implements IBuff {
     },
     WITHER_IMMUNITY(true) {
         @Override
-        public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
+        public void onArmorTick(ItemStack stack, Level world, Player player) {
             if (!world.isClientSide) {
                 player.removeEffect(WITHER);
             }
@@ -41,7 +42,7 @@ public enum Buff implements IBuff {
     },
     WATER_WEAKNESS(true) {
         @Override
-        public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
+        public void onArmorTick(ItemStack stack, Level world, Player player) {
             if (!world.isClientSide) {
                 boolean water = player.isUnderWater();
                 if (water) {
@@ -55,7 +56,7 @@ public enum Buff implements IBuff {
     },
     FIRE_WEAKNESS(true) {
         @Override
-        public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
+        public void onArmorTick(ItemStack stack, Level world, Player player) {
             if (!world.isClientSide) {
                 boolean fire = player.isOnFire();
                 if (fire) {
@@ -66,9 +67,13 @@ public enum Buff implements IBuff {
     },
     NATURAL_IMMUNITY(true) {
         @Override
-        public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
-            FIRE_RESISTANCE.onArmorTick(stack, world, player);
-            RESISTANCE.onArmorTick(stack, world, player);
+        public void onArmorTick(ItemStack stack, Level world, Player player) {
+            if (!player.hasEffect(FIRE_RESISTANCE.getEffect())){
+                player.addEffect(new MobEffectInstance(FIRE_RESISTANCE.getEffect(), 60,0, false, false));
+            }
+            if (!player.hasEffect(RESISTANCE.getEffect())){
+                player.addEffect(new MobEffectInstance(RESISTANCE.getEffect(), 60,0, false, false));
+            }
             if (!world.isClientSide && player.getRemainingFireTicks() > 0) {
                 player.clearFire();
             }
@@ -76,7 +81,7 @@ public enum Buff implements IBuff {
     },
     FIRE_EXTINGUISH(true) {
         @Override
-        public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
+        public void onArmorTick(ItemStack stack, Level world, Player player) {
             if (!world.isClientSide && player.getRemainingFireTicks() > 0) {
                 player.clearFire();
             }
@@ -84,12 +89,12 @@ public enum Buff implements IBuff {
     };
 
     private final boolean isEffect;
-    private final Effect effect;
+    private final MobEffect effect;
     private final boolean requireFullSet;
 
     Buff(boolean isEffect, boolean requireFullSet) {
         this.isEffect = isEffect;
-        this.effect = ForgeRegistries.POTIONS.getValue(setVanillaLocation(this.name().toLowerCase(Locale.ENGLISH)));
+        this.effect = ForgeRegistries.MOB_EFFECTS.getValue(setVanillaLocation(this.name().toLowerCase(Locale.ENGLISH)));
         this.requireFullSet = requireFullSet;
     }
 
@@ -107,7 +112,7 @@ public enum Buff implements IBuff {
     }
 
     @Override
-    public Effect getEffect() {
+    public MobEffect getEffect() {
         return effect;
     }
 

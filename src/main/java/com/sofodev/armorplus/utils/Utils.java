@@ -5,16 +5,16 @@
 package com.sofodev.armorplus.utils;
 
 import com.sofodev.armorplus.registry.items.armors.APRepair;
-import net.minecraft.block.Block;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.fml.loading.FMLConfig;
 import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -31,7 +31,7 @@ import static java.lang.String.format;
 import static java.util.Arrays.stream;
 import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.toList;
-import static net.minecraft.inventory.EquipmentSlotType.*;
+import static net.minecraft.world.entity.EquipmentSlot.*;
 
 /**
  * @author Sokratis Fotkatzikis
@@ -39,7 +39,7 @@ import static net.minecraft.inventory.EquipmentSlotType.*;
 public final class Utils {
 
     public static ItemStack[] emptyArmor = new ItemStack[4];
-    public static EquipmentSlotType[] equipmentSlots = new EquipmentSlotType[]{HEAD, CHEST, LEGS, FEET};
+    public static EquipmentSlot[] equipmentSlots = new EquipmentSlot[]{HEAD, CHEST, LEGS, FEET};
 
     static {
         Arrays.fill(emptyArmor, ItemStack.EMPTY);
@@ -59,7 +59,7 @@ public final class Utils {
 
     public static ItemStack checkNBT(ItemStack stack) {
         if (stack.getTag() == null) {
-            stack.setTag(new CompoundNBT());
+            stack.setTag(new CompoundTag());
         }
         return stack;
     }
@@ -70,7 +70,7 @@ public final class Utils {
         return stack;
     }
 
-    public static ItemStack getStackFromSlot(PlayerEntity player, EquipmentSlotType slot) {
+    public static ItemStack getStackFromSlot(Player player, EquipmentSlot slot) {
         return player.getItemBySlot(slot);
     }
 
@@ -184,7 +184,7 @@ public final class Utils {
         return ItemStack.EMPTY;
     }
 
-    public static String getNormalizedName(EquipmentSlotType slot) {
+    public static String getNormalizedName(EquipmentSlot slot) {
         switch (slot) {
             case HEAD:
                 return "helmet";
@@ -206,8 +206,8 @@ public final class Utils {
         return getForgeConfig().resolve("armorplus.json");
     }
 
-    public static boolean allowsFlightByDefault(PlayerEntity player) {
-        return player.abilities.instabuild || player.isSpectator();
+    public static boolean allowsFlightByDefault(Player player) {
+        return player.getAbilities().instabuild || player.isSpectator();
     }
 
     public static List<ItemStack> getRepairStacks(APRepair repair) {
@@ -225,7 +225,7 @@ public final class Utils {
     }
 
     @Nullable
-    public static ItemEntity spawnAtLocation(PlayerEntity player, ItemStack stack, BlockPos pos) {
+    public static ItemEntity spawnAtLocation(Player player, ItemStack stack, BlockPos pos) {
         if (stack.isEmpty() || player.level.isClientSide) {
             return null;
         }

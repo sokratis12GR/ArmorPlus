@@ -17,16 +17,15 @@ import com.sofodev.armorplus.registry.items.special.ThankYouItem;
 import com.sofodev.armorplus.registry.items.tools.*;
 import com.sofodev.armorplus.registry.items.tools.properties.mace.APMaceMaterial;
 import com.sofodev.armorplus.registry.items.tools.properties.tool.APToolMaterial;
-import com.sofodev.armorplus.registry.items.tools.render.APMaceRenderer;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArrowItem;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArrowItem;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Arrays;
 import java.util.Set;
@@ -37,9 +36,9 @@ import java.util.stream.Stream;
 import static com.sofodev.armorplus.ArmorPlus.*;
 import static com.sofodev.armorplus.registry.items.armors.APArmorMaterial.SLAYER;
 import static com.sofodev.armorplus.utils.Utils.getNormalizedName;
-import static net.minecraft.inventory.EquipmentSlotType.*;
-import static net.minecraft.inventory.EquipmentSlotType.Group.ARMOR;
-import static net.minecraft.util.text.TextFormatting.*;
+import static net.minecraft.ChatFormatting.*;
+import static net.minecraft.world.entity.EquipmentSlot.*;
+import static net.minecraft.world.entity.EquipmentSlot.Type.ARMOR;
 
 @Mod.EventBusSubscriber(modid = ArmorPlus.MODID, bus = Bus.MOD)
 public class ModItems {
@@ -146,7 +145,7 @@ public class ModItems {
      * @param slot the equipment slot we will be assigning the set to, which will help distinguishing different equipment from one another.
      * @return a full registered armor set list that contains a set of all available {@link APArmorMaterial#values()} materials for that equipment slot.
      */
-    public static Set<RegistryObject<APArmorItem>> registerArmorForSlot(EquipmentSlotType slot) {
+    public static Set<RegistryObject<APArmorItem>> registerArmorForSlot(EquipmentSlot slot) {
         return Arrays.stream(APArmorMaterial.values())
                 .map(mat -> ITEMS.register(String.format("%s_%s", mat.getName(), getNormalizedName(slot)),
                         () -> new APArmorItem(mat, slot)))
@@ -189,7 +188,7 @@ public class ModItems {
         IntStream.range(0, AP_MACE_MAT_LENGTH).forEach(i -> {
             APMaceMaterial mat = APMaceMaterial.values()[i];
             maces[i] = ITEMS.register(String.format("%s_mace", mat.getName()), () -> new APMaceItem(mat, new Item.Properties()
-                    .setISTER(() -> APMaceRenderer::new)));
+            ));
         });
     }
 
@@ -216,7 +215,7 @@ public class ModItems {
      * @return a set of item registry objects that consists of "base" items for the specified armor material.
      */
     private static Set<RegistryObject<Item>> registerArmorBases(APArmorMaterial material) {
-        Stream<EquipmentSlotType> armorSlots = Arrays.stream(EquipmentSlotType.values()).filter((v) -> v.getType() == ARMOR);
+        Stream<EquipmentSlot> armorSlots = Arrays.stream(EquipmentSlot.values()).filter((v) -> v.getType() == ARMOR);
         return armorSlots.map(slot -> ITEMS.register(String.format("%s_%s_base", material.getName(), getNormalizedName(slot)),
                         () -> (Item) new APItemBase()))
                 .collect(Collectors.toSet());

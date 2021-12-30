@@ -1,8 +1,8 @@
 package com.sofodev.armorplus.registry.blocks.castle;
 
-import net.minecraft.block.Block;
+import net.minecraft.world.level.block.Block;
 
-import static net.minecraft.block.AbstractBlock.Properties.copy;
+import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.copy;
 
 public class CastleBlock extends Block {
 

@@ -1,27 +1,27 @@
 package com.sofodev.armorplus.commands.sub;
 
 import com.mojang.brigadier.Command;
-import net.minecraft.command.CommandSource;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.event.ClickEvent;
+import net.minecraft.ChatFormatting;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.network.chat.ClickEvent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 
 import java.util.Arrays;
 
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
-import static net.minecraft.util.text.TextFormatting.BLUE;
-import static net.minecraft.util.text.event.ClickEvent.Action.OPEN_URL;
+import static net.minecraft.ChatFormatting.BLUE;
+import static net.minecraft.network.chat.ClickEvent.Action.OPEN_URL;
 
 /**
  * @author Sokratis Fotkatzikis
  */
 public class NodecraftCommand {
 
-    public static int execute(CommandSource sender) {
+    public static int execute(CommandSourceStack sender) {
         ClickEvent promoLink = new ClickEvent(OPEN_URL, "https://nodecraft.com/r/armorplus");
         Style linkStyle = Style.EMPTY.applyFormat(BLUE).setUnderlined(true).withClickEvent(promoLink);
-        sendMessages(sender, translate(TextFormatting.AQUA, "commands.armorplus.nodecraft.about.text"),
+        sendMessages(sender, translate(ChatFormatting.AQUA, "commands.armorplus.nodecraft.about.text"),
                 translate("commands.armorplus.nodecraft.promo.start.text")
                         .append(translate("commands.armorplus.nodecraft.promo.middle.text").setStyle(linkStyle))
                         .append(translate("commands.armorplus.nodecraft.promo.end.text", "30%")
@@ -29,7 +29,7 @@ public class NodecraftCommand {
         return Command.SINGLE_SUCCESS;
     }
 
-    private static void sendMessages(CommandSource sender, ITextComponent... messages) {
+    private static void sendMessages(CommandSourceStack sender, Component... messages) {
         Arrays.stream(messages).forEach(msg -> sender.sendSuccess(msg, false));
     }
 }

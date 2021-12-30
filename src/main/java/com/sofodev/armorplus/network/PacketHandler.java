@@ -2,7 +2,7 @@ package com.sofodev.armorplus.network;
 
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.network.packet.PacketFlyingSync;
-import net.minecraftforge.fml.network.simple.SimpleChannel;
+import net.minecraftforge.network.simple.SimpleChannel;
 
 import static com.sofodev.armorplus.utils.Utils.setRL;
 

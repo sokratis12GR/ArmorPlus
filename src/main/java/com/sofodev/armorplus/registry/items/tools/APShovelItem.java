@@ -3,9 +3,9 @@ package com.sofodev.armorplus.registry.items.tools;
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.registry.items.tools.properties.tool.IAPTool;
 import com.sofodev.armorplus.registry.items.tools.properties.tool.Tool;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Rarity;
-import net.minecraft.item.ShovelItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.ShovelItem;
 
 import static com.sofodev.armorplus.registry.items.tools.properties.tool.APToolType.SHOVEL;
 

@@ -4,11 +4,11 @@ import com.sofodev.armorplus.registry.enchantments.FuriousEnchantment;
 import com.sofodev.armorplus.registry.enchantments.LifeStealEnchantment;
 import com.sofodev.armorplus.registry.enchantments.SoulStealerEnchantment;
 import com.sofodev.armorplus.registry.enchantments.UnknownEnchantment;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 

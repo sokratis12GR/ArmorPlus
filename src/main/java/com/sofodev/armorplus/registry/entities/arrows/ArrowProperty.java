@@ -2,34 +2,34 @@ package com.sofodev.armorplus.registry.entities.arrows;
 
 import com.sofodev.armorplus.registry.ModPotions;
 import com.sofodev.armorplus.registry.items.extras.EffectData;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectInstance;
+import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.LivingEntity;
 
 public class ArrowProperty implements IArrow {
 
     private final String name;
-    private final IParticleData particleType;
+    private final SimpleParticleType particleType;
     private final double dmg;
     private final EffectData data;
 
-    public ArrowProperty(String name, double dmg, IParticleData particleType, EffectData data) {
+    public ArrowProperty(String name, double dmg, SimpleParticleType particleType, EffectData data) {
         this.name = name;
         this.dmg = dmg;
         this.particleType = particleType;
         this.data = data;
     }
 
-    public ArrowProperty(String name, double dmg, IParticleData particleType) {
+    public ArrowProperty(String name, double dmg, SimpleParticleType particleType) {
         this(name, dmg, particleType, new EffectData(ModPotions.EMPTY.get()));
     }
 
-    public static ArrowProperty create(String name, double dmg, IParticleData particle, EffectData data) {
+    public static ArrowProperty create(String name, double dmg, SimpleParticleType particle, EffectData data) {
         return new ArrowProperty(name, dmg, particle, data);
     }
 
-    public static ArrowProperty create(String name, double dmg, IParticleData particle) {
+    public static ArrowProperty create(String name, double dmg, SimpleParticleType particle) {
         return new ArrowProperty(name, dmg, particle, new EffectData(ModPotions.EMPTY.get()));
     }
 
@@ -43,7 +43,7 @@ public class ArrowProperty implements IArrow {
     }
 
     @Override
-    public IParticleData getParticle() {
+    public SimpleParticleType getParticle() {
         return this.particleType;
     }
 
@@ -55,9 +55,9 @@ public class ArrowProperty implements IArrow {
     @Override
     public IArrow hit(LivingEntity living) {
         EffectData effData = this.getData();
-        Effect eff = effData.getEffect();
+        MobEffect eff = effData.getEffect();
         if (eff != null) { // APPotions.EMPTY
-            living.addEffect(new EffectInstance(eff, effData.getDuration(), effData.getAmplifier()));
+            living.addEffect(new MobEffectInstance(eff, effData.getDuration(), effData.getAmplifier()));
         }
         return this;
     }

@@ -1,14 +1,14 @@
 package com.sofodev.armorplus.registry.entities.bosses.extras;
 
-import net.minecraft.entity.IRangedAttackMob;
-import net.minecraft.entity.ai.goal.RangedAttackGoal;
+import net.minecraft.world.entity.ai.goal.RangedAttackGoal;
+import net.minecraft.world.entity.monster.RangedAttackMob;
 
 /**
  * @author Sokratis Fotkatzikis
  */
 public class SpecificRangedAttackGoal extends RangedAttackGoal {
 
-    public SpecificRangedAttackGoal(IRangedAttackMob attacker, EntityAIType type) {
+    public SpecificRangedAttackGoal(RangedAttackMob attacker, EntityAIType type) {
         super(attacker, type.getMoveSpeed(), type.getMaxAttackTime(), type.getMaxAttackDistanceIn());
     }
 

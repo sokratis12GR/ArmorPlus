@@ -1,13 +1,14 @@
 package com.sofodev.armorplus.registry.items.tools.properties.tool;
 
+import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.registry.items.extras.BuffInstance;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Rarity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -17,7 +18,7 @@ public interface IAPTool {
     /**
      * @return The IITemTier properties of the tool
      */
-    IItemTier get();
+    Tier get();
 
     /**
      * A list of all the BuffInstances for the tool
@@ -47,8 +48,11 @@ public interface IAPTool {
      * @param pos    - BlockState's position in the world
      * @param player - The player breaking the block
      */
-    default void onBlockMined(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity player) {
+    default void onBlockMined(ItemStack stack, Level world, BlockState state, BlockPos pos, LivingEntity player) {
 
     }
 
+    default ArmorPlusConfig.MaterialConfig config() {
+        return ArmorPlusConfig.enhancedMaterial;
+    }
 }

@@ -1,14 +1,14 @@
 package com.sofodev.armorplus.registry.items.special;
 
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Rarity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.world.World;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
@@ -16,7 +16,7 @@ import java.util.List;
 
 import static com.sofodev.armorplus.ArmorPlus.AP_ITEM_GROUP;
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
-import static net.minecraft.util.text.TextFormatting.DARK_PURPLE;
+import static net.minecraft.ChatFormatting.DARK_PURPLE;
 
 public class SoulItem extends Item {
 
@@ -36,7 +36,7 @@ public class SoulItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flagIn) {
         if (world != null && world.isClientSide) {
             if (entity != null && !entity.isEmpty()) {
                 EntityType<?> value = ForgeRegistries.ENTITIES.getValue(new ResourceLocation(entity));
@@ -54,10 +54,10 @@ public class SoulItem extends Item {
         super.appendHoverText(stack, world, tooltip, flagIn);
     }
 
-    @Override
-    public int getRGBDurabilityForDisplay(ItemStack stack) {
-        return 0;
-    }
+//    @Override
+//    public int getRGBDurabilityForDisplay(ItemStack stack) {
+//        return 0;
+//    }
 
     @Override
     public boolean isFoil(ItemStack stack) {

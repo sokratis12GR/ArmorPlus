@@ -2,16 +2,16 @@ package com.sofodev.armorplus.utils;
 
 import com.sofodev.armorplus.registry.items.extras.BuffInstance;
 import com.sofodev.armorplus.registry.items.tools.properties.tool.IAPTool;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.util.text.*;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.*;
 
 import java.util.List;
 
 import static com.sofodev.armorplus.utils.RomanNumeralUtil.generate;
-import static net.minecraft.util.text.Style.EMPTY;
-import static net.minecraft.util.text.TextFormatting.*;
+import static net.minecraft.ChatFormatting.*;
 
 public class ToolTipUtils {
 
@@ -22,15 +22,15 @@ public class ToolTipUtils {
      * @param keyBinding the keybind that the users will need to press to display the more information (replaces [Key])
      * @param formatting the formatting of the tooltip, its color and style.
      */
-    public static void showInfo(List<ITextComponent> tooltip, KeyBinding keyBinding, TextFormatting formatting) {
+    public static void showInfo(List<Component> tooltip, KeyMapping keyBinding, ChatFormatting formatting) {
         tooltip.add(translate(GRAY, "tooltip.armorplus.shift.showinfo", translate(formatting, keyBinding.getName())));
     }
 
     /**
      * Adds a basic damage information about arrows
      */
-    public static void appendArrowHoverText(List<ITextComponent> tooltip, ITextComponent effect, double damage, TextFormatting formatting) {
-        KeyBinding keyBindSneak = Minecraft.getInstance().options.keyShift;
+    public static void appendArrowHoverText(List<Component> tooltip, Component effect, double damage, ChatFormatting formatting) {
+        KeyMapping keyBindSneak = Minecraft.getInstance().options.keyShift;
         if (Screen.hasShiftDown()) {
             tooltip.add(translate("tooltip.armorplus.arrow.ability_desc", effect));
             tooltip.add(translate("tooltip.armorplus.arrow.ability", damage));
@@ -39,9 +39,9 @@ public class ToolTipUtils {
         }
     }
 
-    public static void addBuffInformation(IAPTool tool, List<ITextComponent> tooltip, String condition, boolean applyToSelf) {
+    public static void addBuffInformation(IAPTool tool, List<Component> tooltip, String condition, boolean applyToSelf, boolean enabled) {
         if (!tool.getBuffInstances().get().isEmpty()) {
-            tooltip.add(translate(YELLOW, "tooltip.armorplus.condition"));
+            tooltip.add(translate(YELLOW, "tooltip.armorplus.condition", enabled ? "" : "(DISABLED)"));
             tooltip.add(translate(GOLD, "tooltip.armorplus.condition." + condition));
             tooltip.add(translate(GREEN, "tooltip.armorplus." + (applyToSelf ? "provides" : "applies")));
             for (BuffInstance buff : tool.getBuffInstances().get()) {
@@ -52,27 +52,27 @@ public class ToolTipUtils {
         }
     }
 
-    public static void addExperimentalItemInformation(List<ITextComponent> tooltip) {
+    public static void addExperimentalItemInformation(List<Component> tooltip) {
         tooltip.add(translate(RED, "tooltip.armorplus.not_accessible"));
         tooltip.add(translate(RED, "tooltip.armorplus.not_accessible.2"));
         tooltip.add(translate(RED, "tooltip.armorplus.not_accessible.3"));
     }
 
-    public static IFormattableTextComponent translate(Color color, String key, Object... args) {
-        return new TranslationTextComponent(key, args).setStyle(EMPTY.withColor(color));
+    public static MutableComponent translate(TextColor color, String key, Object... args) {
+        return new TranslatableComponent(key, args).setStyle(Style.EMPTY.withColor(color));
     }
 
 
-    public static IFormattableTextComponent translate(Style style, String key, Object... args) {
-        return new TranslationTextComponent(key, args).setStyle(style);
+    public static MutableComponent translate(Style style, String key, Object... args) {
+        return new TranslatableComponent(key, args).setStyle(style);
     }
 
-    public static IFormattableTextComponent translate(TextFormatting formatting, String key, Object... args) {
-        return new TranslationTextComponent(key, args).withStyle(formatting);
+    public static MutableComponent translate(ChatFormatting formatting, String key, Object... args) {
+        return new TranslatableComponent(key, args).withStyle(formatting);
     }
 
-    public static TextComponent translate(String key, Object... args) {
-        return new TranslationTextComponent(key, args);
+    public static MutableComponent translate(String key, Object... args) {
+        return new TranslatableComponent(key, args);
     }
 
 }

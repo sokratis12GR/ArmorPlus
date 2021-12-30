@@ -1,11 +1,11 @@
 // package com.sofodev.armorplus.registry.entities.bosses;
 
-// import com.mojang.blaze3d.matrix.MatrixStack;
+// import com.mojang.blaze3d.matrix.PoseStack;
 // import com.mojang.blaze3d.vertex.IVertexBuilder;
 // import com.sofodev.armorplus.utils.RenderingUtils;
 // import net.minecraft.client.renderer.entity.model.EntityModel;
 // import net.minecraft.client.renderer.model.ModelRenderer;
-// import net.minecraft.entity.Entity;
+// import net.minecraft.world.entity.Entity;
 
 // /**
 //  * OverlordOfguardians - EPIIC_THUNDERCAT
@@ -435,7 +435,7 @@
 //     }
 //
 //     @Override
-//     public void render(MatrixStack matrixStackIn, IVertexBuilder bufferIn, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha) {
+//     public void render(PoseStack matrixStackIn, IVertexBuilder bufferIn, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha) {
 //         mainHeadBox.render(matrixStackIn, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha);
 //     }
 //

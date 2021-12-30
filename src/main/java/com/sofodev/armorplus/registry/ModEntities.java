@@ -3,28 +3,23 @@ package com.sofodev.armorplus.registry;
 import com.sofodev.armorplus.registry.entities.arrows.APArrowEntity;
 import com.sofodev.armorplus.registry.entities.arrows.ArrowType;
 import com.sofodev.armorplus.registry.entities.arrows.impl.*;
-import com.sofodev.armorplus.registry.entities.bosses.DemonicDragonEntity;
 import com.sofodev.armorplus.registry.entities.bosses.SkeletalKingEntity;
 import com.sofodev.armorplus.registry.entities.bosses.data.MobType;
-import com.sofodev.armorplus.registry.entities.normal.BoreasEntity;
-import com.sofodev.armorplus.registry.entities.normal.FrostWolfAlphaEntity;
-import com.sofodev.armorplus.registry.entities.normal.FrostWolfEntity;
 import com.sofodev.armorplus.registry.entities.normal.WitherlingEntity;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.EntityType.Builder;
-import net.minecraft.entity.projectile.AbstractArrowEntity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.registry.entities.arrows.ArrowType.*;
 import static com.sofodev.armorplus.utils.Utils.setRL;
-import static net.minecraft.entity.EntityClassification.MISC;
+import static net.minecraft.world.entity.MobCategory.MISC;
 
 public class ModEntities {
 
@@ -54,14 +49,14 @@ public class ModEntities {
             () -> build(SkeletalKingEntity::new, MobType.SKELETAL_KING));
     public static final RegistryObject<EntityType<WitherlingEntity>> WITHERLING = register("witherling",
             () -> build(WitherlingEntity::new, MobType.WITHERLING));
-    public static final RegistryObject<EntityType<DemonicDragonEntity>> DEMONIC_DRAGON = register("demonic_dragon",
-            () -> build(DemonicDragonEntity::new, MobType.DEMONIC_DRAGON));
-    public static final RegistryObject<EntityType<FrostWolfEntity>> FROST_WOLF = register("frost_wolf",
-            () -> build(FrostWolfEntity::new, MobType.FROST_WOLF));
-    public static final RegistryObject<EntityType<FrostWolfAlphaEntity>> FROST_WOLF_ALPHA = register("frost_wolf_alpha",
-            () -> build(FrostWolfAlphaEntity::new, MobType.FROST_WOLF_ALPHA));
-    public static final RegistryObject<EntityType<BoreasEntity>> BOREAS = register("boreas",
-            () -> build(BoreasEntity::new, MobType.BOREAS));
+//    public static final RegistryObject<EntityType<DemonicDragonEntity>> DEMONIC_DRAGON = register("demonic_dragon",
+//            () -> build(DemonicDragonEntity::new, MobType.DEMONIC_DRAGON));
+//    public static final RegistryObject<EntityType<FrostWolfEntity>> FROST_WOLF = register("frost_wolf",
+//            () -> build(FrostWolfEntity::new, MobType.FROST_WOLF));
+//    public static final RegistryObject<EntityType<FrostWolfAlphaEntity>> FROST_WOLF_ALPHA = register("frost_wolf_alpha",
+//            () -> build(FrostWolfAlphaEntity::new, MobType.FROST_WOLF_ALPHA));
+//    public static final RegistryObject<EntityType<BoreasEntity>> BOREAS = register("boreas",
+//            () -> build(BoreasEntity::new, MobType.BOREAS));
 
     /////////////////////
     // UTILITY METHODS //
@@ -78,12 +73,12 @@ public class ModEntities {
      * @param data      The Arrow data used for the creation of the entityAttachCapabilitiesEvent (in this case its name)
      * @return an EntityType object with all the required information.
      */
-    private static <T extends AbstractArrowEntity> EntityType<T> buildArrow(EntityType.IFactory<T> factoryIn, ArrowType data) {
-        return build(data.getItemArrowName(), Builder.of(factoryIn, MISC).sized(0.5f, 0.5f));
+    private static <T extends AbstractArrow> EntityType<T> buildArrow(EntityType.EntityFactory<T> factoryIn, ArrowType data) {
+        return build(data.getItemArrowName(), EntityType.Builder.of(factoryIn, MISC).sized(0.5f, 0.5f));
     }
 
-    private static <T extends Entity> EntityType<T> build(EntityType.IFactory<T> factory, MobType data) {
-        Builder<T> builder = Builder.of(factory, data.getClassification())
+    private static <T extends Entity> EntityType<T> build(EntityType.EntityFactory<T> factory, MobType data) {
+        EntityType.Builder<T> builder = EntityType.Builder.of(factory, data.getClassification())
                 .setTrackingRange(data.getTrackingRange())
                 .sized(data.getWidth(), data.getHeight());
         if (data.isImmuneToFire()) {
@@ -93,7 +88,7 @@ public class ModEntities {
         return build(data.getName(), builder);
     }
 
-    private static <T extends Entity> EntityType<T> build(String id, Builder<T> builder) {
+    private static <T extends Entity> EntityType<T> build(String id, EntityType.Builder<T> builder) {
         ResourceLocation rl = setRL(id);
         return builder.build(rl.toString());
     }

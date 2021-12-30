@@ -1,9 +1,9 @@
 package com.sofodev.armorplus.registry.enchantments;
 
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentType;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
 public class APEnchantment extends Enchantment {
 
@@ -14,11 +14,11 @@ public class APEnchantment extends Enchantment {
     private boolean isTreasure;
     private boolean isBookAllowed;
 
-    protected APEnchantment(Rarity rarityIn, EnchantmentType typeIn, EquipmentSlotType[] slots) {
+    protected APEnchantment(Rarity rarityIn, EnchantmentCategory typeIn, EquipmentSlot[] slots) {
         super(rarityIn, typeIn, slots);
     }
 
-    public APEnchantment(Enchantment.Rarity rarity, EnchantmentType type, EquipmentSlotType[] allowedSlots,
+    public APEnchantment(Enchantment.Rarity rarity, EnchantmentCategory type, EquipmentSlot[] allowedSlots,
                          int min, int max, int minEnchantability, int maxEnchantability, boolean isTreasure, boolean isBookAllowed) {
         super(rarity, type, allowedSlots);
         this.min = min;

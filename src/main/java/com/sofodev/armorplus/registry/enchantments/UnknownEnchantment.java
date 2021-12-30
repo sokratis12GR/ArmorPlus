@@ -1,10 +1,11 @@
 package com.sofodev.armorplus.registry.enchantments;
 
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
 
-import static net.minecraft.enchantment.EnchantmentType.*;
+import static net.minecraft.world.item.enchantment.EnchantmentCategory.*;
 
 /**
  * The "Unknown" enchantment provides different effects based on the item it is applied on
@@ -12,7 +13,7 @@ import static net.minecraft.enchantment.EnchantmentType.*;
 public class UnknownEnchantment extends APEnchantment {
 
     public UnknownEnchantment() {
-        super(Rarity.VERY_RARE, WEAPON, EquipmentSlotType.values(),
+        super(Enchantment.Rarity.VERY_RARE, WEAPON, EquipmentSlot.values(),
                 1, 1, 30, 60, true, true
         );
     }

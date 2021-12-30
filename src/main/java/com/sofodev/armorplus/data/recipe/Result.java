@@ -1,49 +1,49 @@
 package com.sofodev.armorplus.data.recipe;
 
 import com.sofodev.armorplus.utils.DataUtils;
-import net.minecraft.util.IItemProvider;
+import net.minecraft.world.level.ItemLike;
 
 import java.util.Optional;
 
 public class Result {
     private String path = "";
     private String group;
-    private IItemProvider object;
+    private ItemLike object;
     private int count;
     private String prefix = "";
     private String suffix = "";
 
-    public Result(IItemProvider object, int count) {
+    public Result(ItemLike object, int count) {
         this.object = object;
         this.count = count;
         this.group = DataUtils.getPath(object);
     }
 
-    public Result(IItemProvider object) {
+    public Result(ItemLike object) {
         this(object, 1);
     }
 
-    public static Result build(IItemProvider object, int count) {
+    public static Result build(ItemLike object, int count) {
         return new Result(object, count);
     }
 
-    public static Result build(IItemProvider object, int count, String group) {
+    public static Result build(ItemLike object, int count, String group) {
         return new Result(object, count).setGroup(group);
     }
 
-    public static Result build(IItemProvider object, int count, String group, String path) {
+    public static Result build(ItemLike object, int count, String group, String path) {
         return new Result(object, count).setGroup(group).setPath(path);
     }
 
-    public static Result build(IItemProvider object) {
+    public static Result build(ItemLike object) {
         return new Result(object);
     }
 
-    public static Result build(IItemProvider object, String group) {
+    public static Result build(ItemLike object, String group) {
         return new Result(object).setGroup(group);
     }
 
-    public static Result build(IItemProvider object, String group, String path) {
+    public static Result build(ItemLike object, String group, String path) {
         return new Result(object).setGroup(group).setPath(path);
     }
 
@@ -57,7 +57,7 @@ public class Result {
         return this;
     }
 
-    public Result setObject(IItemProvider object) {
+    public Result setObject(ItemLike object) {
         this.object = object;
         return this;
     }
@@ -94,7 +94,7 @@ public class Result {
         return count;
     }
 
-    public IItemProvider getObject() {
+    public ItemLike getObject() {
         return object;
     }
 

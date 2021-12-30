@@ -1,9 +1,9 @@
 package com.sofodev.armorplus.registry.entities.bosses.data;
 
-import net.minecraft.entity.EntityClassification;
+import net.minecraft.world.entity.MobCategory;
 
-import static net.minecraft.entity.EntityClassification.CREATURE;
-import static net.minecraft.entity.EntityClassification.MONSTER;
+import static net.minecraft.world.entity.MobCategory.CREATURE;
+import static net.minecraft.world.entity.MobCategory.MONSTER;
 
 public class MobType {
     public static final MobType SKELETAL_KING = new MobType("skeletal_king", MONSTER, 2f, 2f, true);
@@ -17,33 +17,33 @@ public class MobType {
     public static final MobType BOREAS = new MobType("boreas", MONSTER, 1f, 3f, false);
 
     private String name;
-    private EntityClassification classification;
+    private MobCategory classification;
     private float width;
     private float height;
     private boolean isImmuneToFire;
     private int trackingRange;
 
-    MobType(String name, EntityClassification classification) {
+    MobType(String name, MobCategory classification) {
         this(name, classification, 10);
     }
 
-    MobType(String name, EntityClassification classification, float width, float height) {
+    MobType(String name, MobCategory classification, float width, float height) {
         this(name, classification, width, height, 10);
     }
 
-    MobType(String name, EntityClassification classification, int trackingRange) {
+    MobType(String name, MobCategory classification, int trackingRange) {
         this(name, classification, 1.0f, 1.0f, trackingRange);
     }
 
-    MobType(String name, EntityClassification classification, float width, float height, int trackingRange) {
+    MobType(String name, MobCategory classification, float width, float height, int trackingRange) {
         this(name, classification, width, height, trackingRange, false);
     }
 
-    MobType(String name, EntityClassification classification, float width, float height, boolean isImmuneToFire) {
+    MobType(String name, MobCategory classification, float width, float height, boolean isImmuneToFire) {
         this(name, classification, width, height, 10, isImmuneToFire);
     }
 
-    MobType(String name, EntityClassification classification, float width, float height, int trackingRange, boolean isImmuneToFire) {
+    MobType(String name, MobCategory classification, float width, float height, int trackingRange, boolean isImmuneToFire) {
         this.name = name;
         this.classification = classification;
         this.width = width;
@@ -56,7 +56,7 @@ public class MobType {
         return name;
     }
 
-    public EntityClassification getClassification() {
+    public MobCategory getClassification() {
         return classification;
     }
 

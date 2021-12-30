@@ -1,7 +1,7 @@
 package com.sofodev.armorplus.registry.blocks.special;
 
 import com.sofodev.armorplus.registry.blocks.APBlock;
-import net.minecraft.block.material.Material;
+import net.minecraft.world.level.material.Material;
 
 public class SoulBox extends APBlock {
     public SoulBox() {

@@ -3,17 +3,17 @@ package com.sofodev.armorplus.registry.blocks.special;
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.registry.blocks.APBlockItem;
 import com.sofodev.armorplus.registry.items.APRarity;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.World;
+import net.minecraft.ChatFormatting;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
@@ -29,14 +29,14 @@ public class TrophyItem extends APBlockItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
-        CompoundNBT tag = stack.getTag();
+    public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
+        CompoundTag tag = stack.getTag();
         if (tag != null && tag.contains("DisplayEntity", 10) && tag.getCompound("DisplayEntity").contains("id", 8)) {
             ResourceLocation rl = new ResourceLocation(tag.getCompound("DisplayEntity").getString("id"));
             if (ForgeRegistries.ENTITIES.getValue(rl) != null) {
                 Entity entity = ForgeRegistries.ENTITIES.getValue(rl).create(world);
                 if (entity != null) {
-                    tooltip.add(translate(TextFormatting.GRAY, "tooltip.armorplus.trophy.dropped_by", entity.getName()));
+                    tooltip.add(translate(ChatFormatting.GRAY, "tooltip.armorplus.trophy.dropped_by", entity.getName()));
                 }
             }
         }
@@ -45,7 +45,8 @@ public class TrophyItem extends APBlockItem {
     }
 
     @Override
-    protected boolean placeBlock(BlockItemUseContext ctx, BlockState state) {
+    protected boolean placeBlock(BlockPlaceContext ctx, BlockState state) {
         return ctx.getLevel().setBlock(ctx.getClickedPos(), state, 26);
     }
+
 }

@@ -1,27 +1,27 @@
 package com.sofodev.armorplus.registry.items.extras;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.Potions;
-import net.minecraft.util.text.IFormattableTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.Level;
 
 import java.util.Locale;
 
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
 import static com.sofodev.armorplus.utils.Utils.convertToSeconds;
-import static net.minecraft.util.text.TextFormatting.DARK_AQUA;
+import static net.minecraft.ChatFormatting.DARK_AQUA;
 
 public class BuffInstance {
 
-    private IBuff buff;
-    private int amplifier;
     private final boolean instant;
     private final Potion potion;
+    private IBuff buff;
+    private int amplifier;
     private boolean enabled;
 
     public BuffInstance(IBuff buff, int amplifier) {
@@ -40,7 +40,7 @@ public class BuffInstance {
         this.amplifier = amplifier;
         this.instant = instant;
         if (buff.isEffect() && buff.getEffect() != null) {
-            this.potion = new Potion(new EffectInstance(buff.getEffect(), convertToSeconds(duration), amplifier, false, false));
+            this.potion = new Potion(new MobEffectInstance(buff.getEffect(), convertToSeconds(duration), amplifier, false, false));
         } else {
             this.potion = Potions.EMPTY;
         }
@@ -74,32 +74,20 @@ public class BuffInstance {
         return new BuffInstance(buff);
     }
 
-    public BuffInstance setBuff(IBuff buff) {
-        this.buff = buff;
-        return this;
-    }
-
-    public BuffInstance setEnabled(boolean enabled) {
-        this.enabled = enabled;
-        return this;
-    }
-
-    public BuffInstance setAmplifier(int amplifier) {
-        this.amplifier = amplifier;
-        return this;
-    }
-
     /**
-     * Uses the {@link ArmorItem#onArmorTick(ItemStack, World, PlayerEntity)} function to trigger buffs
+     * Uses the {@link ArmorItem#onArmorTick(ItemStack, Level, Player)} function to trigger buffs
      * <p>
      * Applies Buff's effects.
      * <p>
      * If the buff is an effect it will be either applied instantly (even if you already have the effect))
      */
-    public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
+    public void onArmorTick(ItemStack stack, Level world, Player player) {
+        //instant - x - true
+        //!instant - y - false
+        // instant -> else |
         buff.onArmorTick(stack, world, player);
         if (buff.isEffect()) {
-            for (EffectInstance pot : this.getPotion().getEffects()) {
+            for (MobEffectInstance pot : this.getPotion().getEffects()) {
                 if (!instant) {
                     if (!player.getActiveEffects().contains(pot)) {
                         player.addEffect(pot);
@@ -129,15 +117,30 @@ public class BuffInstance {
         return buff;
     }
 
+    public BuffInstance setBuff(IBuff buff) {
+        this.buff = buff;
+        return this;
+    }
+
     public int getAmplifier() {
         return amplifier;
+    }
+
+    public BuffInstance setAmplifier(int amplifier) {
+        this.amplifier = amplifier;
+        return this;
     }
 
     public boolean isEnabled() {
         return this.enabled;
     }
 
-    public IFormattableTextComponent getTranslatedName() {
+    public BuffInstance setEnabled(boolean enabled) {
+        this.enabled = enabled;
+        return this;
+    }
+
+    public MutableComponent getTranslatedName() {
         String name = this.buff.name().toLowerCase(Locale.ENGLISH);
         return this.buff.isEffect() ? translate(DARK_AQUA, "armorplus.effect." + name) : translate(DARK_AQUA, "armorplus.buff." + name);
     }

@@ -2,8 +2,8 @@ package com.sofodev.armorplus.events;
 
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.registry.items.tools.APMaceItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.event.RenderItemInFrameEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -17,7 +17,7 @@ public class ClientEvents {
 
     @SubscribeEvent
     public static void onItemFrameRender(RenderItemInFrameEvent event) {
-        ItemStack stack = event.getItem();
+        ItemStack stack = event.getItemStack();
         Item item = stack.getItem();
         if (item instanceof APMaceItem) {
             APMaceItem mace = (APMaceItem) item;

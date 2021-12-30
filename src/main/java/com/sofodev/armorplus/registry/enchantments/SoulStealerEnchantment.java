@@ -1,17 +1,17 @@
 package com.sofodev.armorplus.registry.enchantments;
 
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.AxeItem;
-import net.minecraft.item.BowItem;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.BowItem;
+import net.minecraft.world.item.ItemStack;
 
-import static net.minecraft.enchantment.EnchantmentType.WEAPON;
-import static net.minecraft.inventory.EquipmentSlotType.MAINHAND;
+import static net.minecraft.world.entity.EquipmentSlot.MAINHAND;
+import static net.minecraft.world.item.enchantment.EnchantmentCategory.WEAPON;
 
 public class SoulStealerEnchantment extends APEnchantment {
 
     public SoulStealerEnchantment() {
-        super(Rarity.VERY_RARE, WEAPON, new EquipmentSlotType[]{MAINHAND},
+        super(Rarity.VERY_RARE, WEAPON, new EquipmentSlot[]{MAINHAND},
                 1, 1, 10, 60, false, true
         );
     }

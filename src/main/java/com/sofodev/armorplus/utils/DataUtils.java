@@ -1,10 +1,10 @@
 package com.sofodev.armorplus.utils;
 
-import net.minecraft.item.Item;
-import net.minecraft.util.IItemProvider;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 import static com.sofodev.armorplus.utils.Utils.setRL;
 
@@ -14,7 +14,7 @@ public class DataUtils {
         return object.getId().getPath();
     }
 
-    public static String getPath(IItemProvider item) {
+    public static String getPath(ItemLike item) {
         ResourceLocation rl = item.asItem().getRegistryName();
 
         if (rl != null) return rl.getPath();

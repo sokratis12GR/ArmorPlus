@@ -1,8 +1,8 @@
 package com.sofodev.armorplus.registry.items.tools.properties.mace;
 
 import com.sofodev.armorplus.registry.items.tools.properties.tool.APToolMaterial;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.Rarity;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.Tier;
 
 import java.util.Locale;
 
@@ -10,6 +10,7 @@ import static com.sofodev.armorplus.registry.items.tools.properties.mace.APMaceT
 import static com.sofodev.armorplus.registry.items.tools.properties.mace.DestructionShape.PLUS;
 import static com.sofodev.armorplus.registry.items.tools.properties.mace.DestructionShape.SQUARE;
 import static com.sofodev.armorplus.registry.items.tools.properties.tool.APToolMaterial.*;
+
 
 public enum APMaceMaterial implements IAPMace {
     COAL_MACE(COAL_MAT, LIGHT, 5, 1),
@@ -24,7 +25,7 @@ public enum APMaceMaterial implements IAPMace {
     SLAYER_MACE(SLAYER_MAT, HEAVY, 20, 12, SQUARE),
     ;
 
-    private final IItemTier material;
+    private final Tier material;
     private final Rarity rarity;
     private final APMaceType type;
     private final int cooldown;
@@ -51,7 +52,7 @@ public enum APMaceMaterial implements IAPMace {
     }
 
     @Override
-    public IItemTier get() {
+    public Tier get() {
         return this.material;
     }
 

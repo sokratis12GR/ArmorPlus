@@ -1,14 +1,14 @@
 package com.sofodev.armorplus.registry.items.tools.properties.mace;
 
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.Rarity;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.Tier;
 
 public interface IAPMace {
 
     /**
      * @return The IITemTier properties of the mace
      */
-    IItemTier get();
+    Tier get();
 
 
     /**

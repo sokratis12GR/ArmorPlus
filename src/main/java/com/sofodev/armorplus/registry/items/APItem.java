@@ -1,7 +1,7 @@
 package com.sofodev.armorplus.registry.items;
 
 import com.sofodev.armorplus.ArmorPlus;
-import net.minecraft.item.Item;
+import net.minecraft.world.item.Item;
 
 public class APItem extends Item {
 

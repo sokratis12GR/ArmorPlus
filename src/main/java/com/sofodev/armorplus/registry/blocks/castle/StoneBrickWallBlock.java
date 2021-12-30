@@ -1,14 +1,14 @@
 package com.sofodev.armorplus.registry.blocks.castle;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.WallBlock;
-import net.minecraft.block.WallHeight;
-import net.minecraft.state.BooleanProperty;
-import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.WallBlock;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.WallSide;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
-import static net.minecraft.block.AbstractBlock.Properties.copy;
+import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.copy;
 
 public class StoneBrickWallBlock extends WallBlock {
 
@@ -16,6 +16,6 @@ public class StoneBrickWallBlock extends WallBlock {
 
     public StoneBrickWallBlock(Block block) {
         super(copy(block));
-        this.registerDefaultState(this.stateDefinition.any().setValue(UP, TRUE).setValue(NORTH_WALL, WallHeight.NONE).setValue(EAST_WALL, WallHeight.NONE).setValue(SOUTH_WALL, WallHeight.NONE).setValue(WEST_WALL, WallHeight.NONE).setValue(WATERLOGGED, FALSE));
+        this.registerDefaultState(this.stateDefinition.any().setValue(UP, TRUE).setValue(NORTH_WALL, WallSide.NONE).setValue(EAST_WALL, WallSide.NONE).setValue(SOUTH_WALL, WallSide.NONE).setValue(WEST_WALL, WallSide.NONE).setValue(WATERLOGGED, FALSE));
     }
 }

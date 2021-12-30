@@ -1,13 +1,13 @@
 package com.sofodev.armorplus.registry.blocks.castle;
 
-import net.minecraft.block.material.MaterialColor;
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.world.level.material.MaterialColor;
 
+import java.io.Serializable;
 import java.util.Locale;
 
-import static net.minecraft.block.material.MaterialColor.*;
+import static net.minecraft.world.level.material.MaterialColor.*;
 
-public enum BrickColor implements IStringSerializable {
+public enum BrickColor implements Serializable {
     BLACK(TERRACOTTA_BLACK),
     BLUE(TERRACOTTA_BLUE),
     GREEN(TERRACOTTA_GREEN),
@@ -27,12 +27,7 @@ public enum BrickColor implements IStringSerializable {
         return color;
     }
 
-    @Override
-    public String getSerializedName() {
-        return name().toLowerCase(Locale.ENGLISH);
-    }
-
     public String getName() {
-        return getSerializedName();
+        return name().toLowerCase(Locale.ENGLISH);
     }
 }

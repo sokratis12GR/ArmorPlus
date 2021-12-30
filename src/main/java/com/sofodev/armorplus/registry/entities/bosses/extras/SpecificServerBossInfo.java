@@ -1,18 +1,18 @@
 package com.sofodev.armorplus.registry.entities.bosses.extras;
 
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.world.server.ServerBossInfo;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerBossEvent;
 
-import static net.minecraft.world.BossInfo.Color.*;
-import static net.minecraft.world.BossInfo.Overlay.NOTCHED_12;
-import static net.minecraft.world.BossInfo.Overlay.NOTCHED_20;
+import static net.minecraft.world.BossEvent.BossBarColor.*;
+import static net.minecraft.world.BossEvent.BossBarOverlay.NOTCHED_12;
+import static net.minecraft.world.BossEvent.BossBarOverlay.NOTCHED_20;
 
 /**
  * @author Sokratis Fotkatzikis
  */
-public class SpecificServerBossInfo extends ServerBossInfo {
+public class SpecificServerBossInfo extends ServerBossEvent {
 
-    public SpecificServerBossInfo(ITextComponent nameIn, BossInfoDungeonType type) {
+    public SpecificServerBossInfo(Component nameIn, BossInfoDungeonType type) {
         super(nameIn, type.getColor(), type.getOverlay());
         this.setDarkenScreen(type.isDarkenSky());
         this.setPlayBossMusic(type.canPlayEndBossMusic());
@@ -25,23 +25,23 @@ public class SpecificServerBossInfo extends ServerBossInfo {
         THE_MEANING_OF_EVERYTHING(GREEN, NOTCHED_20, true, true),
         ;
 
-        private final Color color;
-        private final Overlay overlay;
+        private final BossBarColor color;
+        private final BossBarOverlay overlay;
         private final boolean darkenSky;
         private final boolean playEndBossMusic;
 
-        BossInfoDungeonType(Color color, Overlay overlay, boolean darkenSky, boolean playEndBossMusic) {
+        BossInfoDungeonType(BossBarColor color, BossBarOverlay overlay, boolean darkenSky, boolean playEndBossMusic) {
             this.color = color;
             this.overlay = overlay;
             this.darkenSky = darkenSky;
             this.playEndBossMusic = playEndBossMusic;
         }
 
-        public Color getColor() {
+        public BossBarColor getColor() {
             return this.color;
         }
 
-        public Overlay getOverlay() {
+        public BossBarOverlay getOverlay() {
             return this.overlay;
         }
 

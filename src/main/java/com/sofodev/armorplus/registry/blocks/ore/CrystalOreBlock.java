@@ -1,16 +1,13 @@
 package com.sofodev.armorplus.registry.blocks.ore;
 
-import net.minecraft.block.OreBlock;
-import net.minecraft.block.material.Material;
-
-import static net.minecraftforge.common.ToolType.PICKAXE;
+import net.minecraft.world.level.block.OreBlock;
+import net.minecraft.world.level.material.Material;
 
 public class CrystalOreBlock extends OreBlock {
 
     public CrystalOreBlock(Variant variant) {
         super(Properties.of(Material.STONE).strength(variant.getHardness(), variant.getResistance()).requiresCorrectToolForDrops()
-                .lightLevel((light) -> 8).harvestTool(PICKAXE).harvestLevel(variant.getHarvestLevel())
-        );
+                .lightLevel((light) -> 8));
     }
 
 }

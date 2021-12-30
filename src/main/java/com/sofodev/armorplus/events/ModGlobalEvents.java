@@ -16,35 +16,31 @@ import com.sofodev.armorplus.registry.items.tools.properties.tool.IAPTool;
 import com.sofodev.armorplus.registry.items.tools.properties.tool.Tool;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.advancements.PlayerAdvancements;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentData;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.boss.WitherEntity;
-import net.minecraft.entity.boss.dragon.EnderDragonEntity;
-import net.minecraft.entity.effect.LightningBoltEntity;
-import net.minecraft.entity.item.ArmorStandEntity;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.entity.merchant.villager.VillagerProfession;
-import net.minecraft.entity.monster.*;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.*;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.Direction;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.WeightedSpawnerEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.World;
-import net.minecraftforge.common.BasicTrade;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.PlayerAdvancements;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
+import net.minecraft.world.entity.boss.wither.WitherBoss;
+import net.minecraft.world.entity.decoration.ArmorStand;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.monster.*;
+import net.minecraft.world.entity.npc.VillagerProfession;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.EnchantmentInstance;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.SpawnData;
+import net.minecraftforge.common.BasicItemListing;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
@@ -56,8 +52,11 @@ import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.registries.ForgeRegistries;
+import software.bernie.geckolib3.network.GeckoLibNetwork;
 import software.bernie.geckolib3.util.GeckoLibUtil;
+import software.bernie.shadowed.eliotlash.mclib.utils.MathHelper;
 
 import java.util.List;
 import java.util.Map;
@@ -76,8 +75,8 @@ import static com.sofodev.armorplus.utils.ItemArmorUtility.areExactMatch;
 import static com.sofodev.armorplus.utils.Utils.*;
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
-import static net.minecraft.item.Items.*;
-import static net.minecraft.util.math.vector.Vector3d.atBottomCenterOf;
+import static net.minecraft.world.item.Items.*;
+import static net.minecraft.world.phys.Vec3.atBottomCenterOf;
 import static net.minecraftforge.registries.ForgeRegistries.ENCHANTMENTS;
 
 @Mod.EventBusSubscriber(modid = ArmorPlus.MODID)
@@ -90,7 +89,7 @@ public class ModGlobalEvents {
 
     @SubscribeEvent
     public static void onArrowLooseEvent(ArrowLooseEvent e) {
-        World world = e.getWorld();
+        Level world = e.getWorld();
         if (!world.isClientSide()) {
             ItemStack bow = e.getBow();
             int charge = e.getCharge();
@@ -107,7 +106,7 @@ public class ModGlobalEvents {
                     BlockPos position = entity.blockPosition();
                     int distance = 5 + (charge / (charge / 2));
                     IntStream.range(distance, charge).forEach(i -> {
-                        LightningBoltEntity lightningboltentity = EntityType.LIGHTNING_BOLT.create(world);
+                        LightningBolt lightningboltentity = EntityType.LIGHTNING_BOLT.create(world);
                         if (lightningboltentity != null) {
                             switch (direction) {
                                 case NORTH:
@@ -134,8 +133,8 @@ public class ModGlobalEvents {
 
     @SubscribeEvent
     public static void onPlayerTickEvent(PlayerTickEvent e) {
-        PlayerEntity player = e.player;
-        World world = player.level;
+        Player player = e.player;
+        Level world = player.level;
         Map<Enchantment, Integer> enchantmentList;
         if (!world.isClientSide()) {
             boolean thundering = world.isThundering();
@@ -149,17 +148,17 @@ public class ModGlobalEvents {
                             Item itemHead = item.getItem();
                             if (itemHead instanceof ArmorItem) {
                                 ArmorItem armorItem = (ArmorItem) itemHead;
-                                IArmorMaterial material = armorItem.getMaterial();
+                                ArmorMaterial material = armorItem.getMaterial();
                                 enchantmentList = EnchantmentHelper.getEnchantments(item);
                                 if (!enchantmentList.isEmpty()) {
                                     hasUnknownEnchant = enchantmentList.containsKey(ENCHANTMENTS.getValue(setRL("unknown")));
-                                    if (hasUnknownEnchant && (armorItem).getSlot() == EquipmentSlotType.HEAD && (material == ArmorMaterial.IRON || material == ArmorMaterial.CHAIN || material == ArmorMaterial.GOLD)) {
+                                    if (hasUnknownEnchant && (armorItem).getSlot() == EquipmentSlot.HEAD && (material == ArmorMaterials.IRON || material == ArmorMaterials.CHAIN || material == ArmorMaterials.GOLD)) {
                                         BlockPos blockpos = player.blockPosition();
                                         if (world.canSeeSky(blockpos)) {
-                                            LightningBoltEntity lightningboltentity = EntityType.LIGHTNING_BOLT.create(world);
+                                            LightningBolt lightningboltentity = EntityType.LIGHTNING_BOLT.create(world);
                                             if (lightningboltentity != null) {
                                                 lightningboltentity.moveTo(atBottomCenterOf(blockpos));
-                                                lightningboltentity.setCause((ServerPlayerEntity) player);
+                                                lightningboltentity.setCause((ServerPlayer) player);
                                                 lightningboltentity.setDamage(0f);
                                                 world.addFreshEntity(lightningboltentity);
                                             }
@@ -179,7 +178,7 @@ public class ModGlobalEvents {
                 IAPArmor mat = ((APArmorItem) item).getMat();
                 boolean areExactMatch = areExactMatch(mat, player);
                 List<IBuff> buffList = mat.getBuffInstances().get().stream().map(BuffInstance::getBuff).collect(toList());
-                if (areExactMatch) {
+                if (areExactMatch && mat.config().enableArmorEffects.get()) {
                     if (!buffList.isEmpty()) {
                         if (buffList.contains(FLIGHT)) shouldApplyFlight(e, player);
                         if (buffList.contains(WATER_WEAKNESS)) shouldApplyWaterWeakness(player);
@@ -194,8 +193,8 @@ public class ModGlobalEvents {
 
     @SubscribeEvent
     public static void onLivingDamageEvent(LivingDamageEvent e) {
-        if (e.getSource().getEntity() instanceof PlayerEntity) {
-            PlayerEntity player = (PlayerEntity) e.getSource().getEntity();
+        if (e.getSource().getEntity() instanceof Player) {
+            Player player = (Player) e.getSource().getEntity();
             if (!player.level.isClientSide()) {
                 ItemStack stack = player.getMainHandItem();
                 Item item = stack.getItem();
@@ -220,32 +219,32 @@ public class ModGlobalEvents {
             ItemStack enderDragonSoul = new ItemStack(ModItems.ENDER_DRAGON_SOUL.get(), 1);
             ItemStack elderGuardianSoul = new ItemStack(ModItems.ELDER_GUARDIAN_SOUL.get(), 1);
             e.getTrades().put(1, asList(
-                    new BasicTrade(new ItemStack(EMERALD, 3 + rand.nextInt(5)), new ItemStack(ModItems.LAVA_SHARD.get(), 3 + rand.nextInt(3)), 16, 2, 0.4f),
-                    new BasicTrade(new ItemStack(EMERALD, 3 + rand.nextInt(5)), new ItemStack(ModItems.FROST_SHARD.get(), 3 + rand.nextInt(3)), 16, 2, 0.4f),
-                    new BasicTrade(new ItemStack(EMERALD, 3 + rand.nextInt(5)), new ItemStack(Items.BLAZE_POWDER, 3 + rand.nextInt(3)), 16, 2, 0.4f)
+                    new BasicItemListing(new ItemStack(EMERALD, 3 + rand.nextInt(5)), new ItemStack(ModItems.LAVA_SHARD.get(), 3 + rand.nextInt(3)), 16, 2, 0.4f),
+                    new BasicItemListing(new ItemStack(EMERALD, 3 + rand.nextInt(5)), new ItemStack(ModItems.FROST_SHARD.get(), 3 + rand.nextInt(3)), 16, 2, 0.4f),
+                    new BasicItemListing(new ItemStack(EMERALD, 3 + rand.nextInt(5)), new ItemStack(Items.BLAZE_POWDER, 3 + rand.nextInt(3)), 16, 2, 0.4f)
             ));
             e.getTrades().put(2, asList(
-                    new BasicTrade(new ItemStack(EMERALD, 6 + rand.nextInt(4)), new ItemStack(ModItems.LAVA_SHARD.get(), 5 + rand.nextInt(4)), 8, 6, 0.2f),
-                    new BasicTrade(new ItemStack(EMERALD, 6 + rand.nextInt(4)), new ItemStack(ModItems.FROST_SHARD.get(), 5 + rand.nextInt(4)), 8, 6, 0.2f),
-                    new BasicTrade(new ItemStack(EMERALD, 6 + rand.nextInt(4)), new ItemStack(Items.BLAZE_ROD, 2 + rand.nextInt(2)), 8, 6, 0.2f),
-                    new BasicTrade(new ItemStack(EMERALD, 8 + rand.nextInt(6)), new ItemStack(LAVA_CRYSTAL.get(), 1 + rand.nextInt(2)), 8, 10, 0.2f),
-                    new BasicTrade(new ItemStack(EMERALD, 8 + rand.nextInt(6)), new ItemStack(FROST_CRYSTAL.get(), 1 + rand.nextInt(2)), 8, 10, 0.2f)
+                    new BasicItemListing(new ItemStack(EMERALD, 6 + rand.nextInt(4)), new ItemStack(ModItems.LAVA_SHARD.get(), 5 + rand.nextInt(4)), 8, 6, 0.2f),
+                    new BasicItemListing(new ItemStack(EMERALD, 6 + rand.nextInt(4)), new ItemStack(ModItems.FROST_SHARD.get(), 5 + rand.nextInt(4)), 8, 6, 0.2f),
+                    new BasicItemListing(new ItemStack(EMERALD, 6 + rand.nextInt(4)), new ItemStack(Items.BLAZE_ROD, 2 + rand.nextInt(2)), 8, 6, 0.2f),
+                    new BasicItemListing(new ItemStack(EMERALD, 8 + rand.nextInt(6)), new ItemStack(LAVA_CRYSTAL.get(), 1 + rand.nextInt(2)), 8, 10, 0.2f),
+                    new BasicItemListing(new ItemStack(EMERALD, 8 + rand.nextInt(6)), new ItemStack(FROST_CRYSTAL.get(), 1 + rand.nextInt(2)), 8, 10, 0.2f)
             ));
             e.getTrades().put(3, asList(
-                    new BasicTrade(new ItemStack(LAVA_CRYSTAL.get(), 4 + rand.nextInt(20)), new ItemStack(SOUL_SAND, 4 + rand.nextInt(16)), new ItemStack(ModItems.WITHER_SKELETON_SOUL.get()), 6, 15, 0.05f),
-                    new BasicTrade(new ItemStack(LAVA_CRYSTAL.get(), 4 + rand.nextInt(20)), new ItemStack(SOUL_SAND, 4 + rand.nextInt(16)), new ItemStack(ModItems.SLAYER_SOUL.get()), 6, 15, 0.05f),
-                    new BasicTrade(new ItemStack(LAVA_CRYSTAL.get(), 4 + rand.nextInt(20)), new ItemStack(PRISMARINE, 4 + rand.nextInt(16)), new ItemStack(ModItems.GUARDIAN_SOUL.get()), 6, 15, 0.05f),
-                    new BasicTrade(new ItemStack(LAVA_CRYSTAL.get(), 4 + rand.nextInt(20)), new ItemStack(END_STONE, 4 + rand.nextInt(16)), new ItemStack(ModItems.ENDERMAN_SOUL.get()), 6, 15, 0.05f)
+                    new BasicItemListing(new ItemStack(LAVA_CRYSTAL.get(), 4 + rand.nextInt(20)), new ItemStack(SOUL_SAND, 4 + rand.nextInt(16)), new ItemStack(ModItems.WITHER_SKELETON_SOUL.get()), 6, 15, 0.05f),
+                    new BasicItemListing(new ItemStack(LAVA_CRYSTAL.get(), 4 + rand.nextInt(20)), new ItemStack(SOUL_SAND, 4 + rand.nextInt(16)), new ItemStack(ModItems.SLAYER_SOUL.get()), 6, 15, 0.05f),
+                    new BasicItemListing(new ItemStack(LAVA_CRYSTAL.get(), 4 + rand.nextInt(20)), new ItemStack(PRISMARINE, 4 + rand.nextInt(16)), new ItemStack(ModItems.GUARDIAN_SOUL.get()), 6, 15, 0.05f),
+                    new BasicItemListing(new ItemStack(LAVA_CRYSTAL.get(), 4 + rand.nextInt(20)), new ItemStack(END_STONE, 4 + rand.nextInt(16)), new ItemStack(ModItems.ENDERMAN_SOUL.get()), 6, 15, 0.05f)
             ));
-            ItemStack priceBook = EnchantedBookItem.createForEnchantment(new EnchantmentData(SOUL_STEALER.get(), 1));
+            ItemStack priceBook = EnchantedBookItem.createForEnchantment(new EnchantmentInstance(SOUL_STEALER.get(), 1));
             e.getTrades().put(4, asList(
-                    new BasicTrade(new ItemStack(LAVA_CRYSTAL.get(), 6 + rand.nextInt(10)), witherSoul, elderGuardianSoul, 2, 20, 0.0f),
-                    new BasicTrade(new ItemStack(LAVA_CRYSTAL.get(), 6 + rand.nextInt(10)), enderDragonSoul, elderGuardianSoul, 2, 20, 0.0f),
-                    new BasicTrade(new ItemStack(LAVA_CRYSTAL.get(), 6 + rand.nextInt(10)), elderGuardianSoul, witherSoul, 2, 20, 0.0f),
-                    new BasicTrade(new ItemStack(LAVA_CRYSTAL.get(), 6 + rand.nextInt(10)), enderDragonSoul, witherSoul, 2, 20, 0.0f),
-                    new BasicTrade(new ItemStack(LAVA_CRYSTAL.get(), 6 + rand.nextInt(10)), witherSoul, enderDragonSoul, 2, 20, 0.0f),
-                    new BasicTrade(new ItemStack(LAVA_CRYSTAL.get(), 6 + rand.nextInt(10)), elderGuardianSoul, enderDragonSoul, 2, 20, 0.0f),
-                    new BasicTrade(new ItemStack(LAVA_CRYSTAL.get(), 10 + rand.nextInt(10)), priceBook, 2, 20, 0.0f)
+                    new BasicItemListing(new ItemStack(LAVA_CRYSTAL.get(), 6 + rand.nextInt(10)), witherSoul, elderGuardianSoul, 2, 20, 0.0f),
+                    new BasicItemListing(new ItemStack(LAVA_CRYSTAL.get(), 6 + rand.nextInt(10)), enderDragonSoul, elderGuardianSoul, 2, 20, 0.0f),
+                    new BasicItemListing(new ItemStack(LAVA_CRYSTAL.get(), 6 + rand.nextInt(10)), elderGuardianSoul, witherSoul, 2, 20, 0.0f),
+                    new BasicItemListing(new ItemStack(LAVA_CRYSTAL.get(), 6 + rand.nextInt(10)), enderDragonSoul, witherSoul, 2, 20, 0.0f),
+                    new BasicItemListing(new ItemStack(LAVA_CRYSTAL.get(), 6 + rand.nextInt(10)), witherSoul, enderDragonSoul, 2, 20, 0.0f),
+                    new BasicItemListing(new ItemStack(LAVA_CRYSTAL.get(), 6 + rand.nextInt(10)), elderGuardianSoul, enderDragonSoul, 2, 20, 0.0f),
+                    new BasicItemListing(new ItemStack(LAVA_CRYSTAL.get(), 10 + rand.nextInt(10)), priceBook, 2, 20, 0.0f)
             ));
             //Tier Emerald Trades
             //Boss Soul for Boss Soul exchange without cost.
@@ -266,18 +265,18 @@ public class ModGlobalEvents {
             int crystalAmount = Math.min(10 + bound, 64);
             ItemStack crystalCost = new ItemStack(LAVA_CRYSTAL.get(), crystalAmount);
             e.getTrades().put(5, asList(
-                    new BasicTrade(witherSoul, elderGuardianSoul, 3, 25, 0f),
-                    new BasicTrade(enderDragonSoul, elderGuardianSoul, 3, 25, 0f),
-                    new BasicTrade(elderGuardianSoul, witherSoul, 3, 25, 0f),
-                    new BasicTrade(enderDragonSoul, witherSoul, 3, 25, 0f),
-                    new BasicTrade(witherSoul, enderDragonSoul, 3, 25, 0f),
-                    new BasicTrade(elderGuardianSoul, enderDragonSoul, 3, 25, 0f),
-                    new BasicTrade(crystalCost, priceILBA, 1, 30, 0f),
-                    new BasicTrade(crystalCost, priceILS, 1, 30, 0f),
-                    new BasicTrade(crystalCost, priceDA, 1, 30, 0f),
-                    new BasicTrade(crystalCost, priceDS, 1, 30, 0f),
-                    new BasicTrade(crystalCost, priceNA, 1, 30, 0f),
-                    new BasicTrade(crystalCost, priceNS, 1, 30, 0f)
+                    new BasicItemListing(witherSoul, elderGuardianSoul, 3, 25, 0f),
+                    new BasicItemListing(enderDragonSoul, elderGuardianSoul, 3, 25, 0f),
+                    new BasicItemListing(elderGuardianSoul, witherSoul, 3, 25, 0f),
+                    new BasicItemListing(enderDragonSoul, witherSoul, 3, 25, 0f),
+                    new BasicItemListing(witherSoul, enderDragonSoul, 3, 25, 0f),
+                    new BasicItemListing(elderGuardianSoul, enderDragonSoul, 3, 25, 0f),
+                    new BasicItemListing(crystalCost, priceILBA, 1, 30, 0f),
+                    new BasicItemListing(crystalCost, priceILS, 1, 30, 0f),
+                    new BasicItemListing(crystalCost, priceDA, 1, 30, 0f),
+                    new BasicItemListing(crystalCost, priceDS, 1, 30, 0f),
+                    new BasicItemListing(crystalCost, priceNA, 1, 30, 0f),
+                    new BasicItemListing(crystalCost, priceNS, 1, 30, 0f)
             ));
         }
     }
@@ -288,9 +287,9 @@ public class ModGlobalEvents {
         //disable for now, but don't remove
         final boolean isRunning = false;
         if (isRunning && !e.getWorld().isClientSide()) {
-            if (e.getEntity() instanceof ServerPlayerEntity) {
-                ServerPlayerEntity player = (ServerPlayerEntity) e.getEntity();
-                CompoundNBT nbt = player.serializeNBT();
+            if (e.getEntity() instanceof ServerPlayer) {
+                ServerPlayer player = (ServerPlayer) e.getEntity();
+                CompoundTag nbt = player.serializeNBT();
                 if (nbt != null && (!nbt.hasUUID("key") || !nbt.getBoolean("thanked"))) {
                     PlayerAdvancements advancements = player.getAdvancements();
                     AdvancementProgress progress = advancements.getOrStartProgress(Advancement.Builder.advancement().build(setRL("story/thank_you_6m")));
@@ -307,31 +306,31 @@ public class ModGlobalEvents {
 
     //Flight Control Start
 
-    private static void shouldApplyFlight(PlayerTickEvent e, PlayerEntity player) {
+    private static void shouldApplyFlight(PlayerTickEvent e, Player player) {
         if (e.phase == TickEvent.Phase.END && e.side.isServer()) {
-            if (!player.abilities.mayfly || allowsFlightByDefault(player)) {
-                player.abilities.mayfly = true;
+            if (!player.getAbilities().mayfly || allowsFlightByDefault(player)) {
+                player.getAbilities().mayfly = true;
                 updateClientServerFlight(player, true);
                 //       ArmorPlus.LOGGER.info("Enabling flight, hasFlight: " + flightData.wasFlyingAllowed());
             }
         }
     }
 
-    private static void attemptDisableFlight(PlayerTickEvent e, PlayerEntity player) {
+    private static void attemptDisableFlight(PlayerTickEvent e, Player player) {
         if (e.phase == TickEvent.Phase.END && e.side.isServer()) {
             player.getArmorSlots().forEach(i -> {
                 if (!i.isEmpty() || flightData.allowFlying() && flightData.wasFlyingAllowed()) {
-                    if (player.abilities.mayfly && flightData.allowFlying() && flightData.wasFlyingAllowed() && !allowsFlightByDefault(player)) {
-                        player.abilities.mayfly = false;
-                        player.abilities.flying = false;
+                    if (player.getAbilities().mayfly && flightData.allowFlying() && flightData.wasFlyingAllowed() && !allowsFlightByDefault(player)) {
+                        player.getAbilities().mayfly = false;
+                        player.getAbilities().flying = false;
                         updateClientServerFlight(player, false);
                         flightData.setFlying(false);
                         flightData.setAllowFlying(false);
                         //    ArmorPlus.LOGGER.info("Disabling flight [0], hasFlight: " + flightData.allowFlying());
                     } else if ((i.getItem() instanceof APArmorItem)) {
-                        if (areExactMatch(((APArmorItem) i.getItem()).getMat(), player) && player.abilities.mayfly) {
-                            player.abilities.mayfly = false;
-                            player.abilities.flying = false;
+                        if (areExactMatch(((APArmorItem) i.getItem()).getMat(), player) && player.getAbilities().mayfly) {
+                            player.getAbilities().mayfly = false;
+                            player.getAbilities().flying = false;
                             updateClientServerFlight(player, false);
                             flightData.setFlying(false);
                             flightData.setAllowFlying(false);
@@ -343,26 +342,26 @@ public class ModGlobalEvents {
         }
     }
 
-    private static void updateClientServerFlight(PlayerEntity player, boolean allowFlying) {
-        updateClientServerFlight(player, allowFlying, allowFlying && player.abilities.flying);
+    private static void updateClientServerFlight(Player player, boolean allowFlying) {
+        updateClientServerFlight(player, allowFlying, allowFlying && player.getAbilities().flying);
     }
 
-    private static void updateClientServerFlight(PlayerEntity player, boolean allowFlying, boolean isFlying) {
-        ArmorPlus.PACKET_HANDLER.sendTo(new PacketFlyingSync(allowFlying, isFlying), (ServerPlayerEntity) player);
-        player.abilities.mayfly = allowFlying;
-        player.abilities.flying = isFlying;
+    private static void updateClientServerFlight(Player player, boolean allowFlying, boolean isFlying) {
+        ArmorPlus.PACKET_HANDLER.sendTo(new PacketFlyingSync(allowFlying, isFlying), (ServerPlayer) player);
+        player.getAbilities().mayfly = allowFlying;
+        player.getAbilities().flying = isFlying;
         updateFlightData(player);
     }
 
-    private static void updateFlightData(PlayerEntity player) {
-        flightData.setFlying(player.abilities.flying);
-        flightData.setAllowFlying(player.abilities.mayfly);
-        flightData.setWasFlyingAllowed(player.abilities.mayfly);
+    private static void updateFlightData(Player player) {
+        flightData.setFlying(player.getAbilities().flying);
+        flightData.setAllowFlying(player.getAbilities().mayfly);
+        flightData.setWasFlyingAllowed(player.getAbilities().mayfly);
     }
 
     //Flight Control End
 
-    private static void shouldApplyWaterWeakness(PlayerEntity player) {
+    private static void shouldApplyWaterWeakness(Player player) {
         if (player.isInWater()) {
             waterTicks++;
             if ((waterTicks + 1) % 20 == 0) {
@@ -377,8 +376,8 @@ public class ModGlobalEvents {
 
     @SubscribeEvent
     public static void onAttackEntityEvent(AttackEntityEvent event) {
-        World world = event.getEntityLiving().level;
-        PlayerEntity player = event.getPlayer();
+        Level world = event.getEntityLiving().level;
+        Player player = event.getPlayer();
         Entity target = event.getTarget();
         float attackDamage = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
         double movedDistance = player.walkDist - player.walkDistO;
@@ -391,16 +390,16 @@ public class ModGlobalEvents {
                 enchantmentList = EnchantmentHelper.getEnchantments(stack);
                 hasUnknown = enchantmentList.containsKey(ENCHANTMENTS.getValue(setRL("unknown")));
                 BlockPos position = target.blockPosition();
-                LightningBoltEntity northBolt = EntityType.LIGHTNING_BOLT.create(world);
-                LightningBoltEntity southBolt = EntityType.LIGHTNING_BOLT.create(world);
-                LightningBoltEntity westBolt = EntityType.LIGHTNING_BOLT.create(world);
-                LightningBoltEntity eastBolt = EntityType.LIGHTNING_BOLT.create(world);
-                LightningBoltEntity centreBolt = EntityType.LIGHTNING_BOLT.create(world);
+                LightningBolt northBolt = EntityType.LIGHTNING_BOLT.create(world);
+                LightningBolt southBolt = EntityType.LIGHTNING_BOLT.create(world);
+                LightningBolt westBolt = EntityType.LIGHTNING_BOLT.create(world);
+                LightningBolt eastBolt = EntityType.LIGHTNING_BOLT.create(world);
+                LightningBolt centreBolt = EntityType.LIGHTNING_BOLT.create(world);
                 if (northBolt != null && southBolt != null && westBolt != null && eastBolt != null && centreBolt != null) {
-                    northBolt.moveTo(atBottomCenterOf(position.north(1)));
-                    southBolt.moveTo(atBottomCenterOf(position.south(1)));
-                    westBolt.moveTo(atBottomCenterOf(position.west(1)));
-                    eastBolt.moveTo(atBottomCenterOf(position.east(1)));
+                    northBolt.moveTo(atBottomCenterOf(position.north(2)));
+                    southBolt.moveTo(atBottomCenterOf(position.south(2)));
+                    westBolt.moveTo(atBottomCenterOf(position.west(2)));
+                    eastBolt.moveTo(atBottomCenterOf(position.east(2)));
                     centreBolt.moveTo(atBottomCenterOf(position));
                     world.addFreshEntity(northBolt);
                     world.addFreshEntity(southBolt);
@@ -408,8 +407,8 @@ public class ModGlobalEvents {
                     world.addFreshEntity(eastBolt);
                     world.addFreshEntity(centreBolt);
                 }
-                player.addEffect(new EffectInstance(SLOWNESS.getEffect(), convertToSeconds(4)));
-                player.addEffect(new EffectInstance(MINING_FATIGUE.getEffect(), convertToSeconds(4)));
+                player.addEffect(new MobEffectInstance(SLOWNESS.getEffect(), convertToSeconds(4)));
+                player.addEffect(new MobEffectInstance(MINING_FATIGUE.getEffect(), convertToSeconds(4)));
             }
         }
         if (player.isOnGround() && movedDistance < (double) player.getSpeed() && stack.getItem() instanceof APMaceItem) {
@@ -421,17 +420,21 @@ public class ModGlobalEvents {
 
             for (LivingEntity entity : world.getEntitiesOfClass(LivingEntity.class, target.getBoundingBox().inflate(1.0D, 0.25D, 1.0D))) {
                 boolean isNewTarget = entity != player && entity != target;
-                boolean isValidTarget = !player.isAlliedTo(entity) && (!(entity instanceof ArmorStandEntity) || !((ArmorStandEntity) entity).isMarker());
+                boolean isValidTarget = !player.isAlliedTo(entity) && (!(entity instanceof ArmorStand) || !((ArmorStand) entity).isMarker());
                 boolean isReachable = player.distanceToSqr(entity) < 15.0D;
                 if (isNewTarget && isValidTarget && isReachable) {
-                    double ratioX = MathHelper.sin(player.yRot * ((float) Math.PI / 180F));
-                    double ratioZ = -MathHelper.cos(player.yRot * ((float) Math.PI / 180F));
+                    double ratioX = MathHelper.wrapDegrees(player.getYRot() * ((float) Math.PI / 180F));
+                    double ratioZ = -MathHelper.wrapDegrees(player.getYRot() * ((float) Math.PI / 180F));
                     entity.knockback(0.4F, ratioX, ratioZ);
                     entity.hurt(DamageSource.playerAttack(player), sweepingDamage);
                 }
             }
-            if (world.isClientSide) {
-                mace.swingAnimation(GeckoLibUtil.getControllerForStack(mace.factory, stack, mace.controllerName));
+            if (!world.isClientSide) {
+                int id = GeckoLibUtil.guaranteeIDForStack(stack, (ServerLevel) world);
+                PacketDistributor.PacketTarget packetTarget = PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> {
+                    return player;
+                });
+                GeckoLibNetwork.syncAnimation(packetTarget, mace, id, 1);
             }
             world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_ATTACK_SWEEP, player.getSoundSource(), 1.0F, 1.0F);
             player.sweepAttack();
@@ -467,13 +470,13 @@ public class ModGlobalEvents {
         int amountFourToSix = RAND.nextInt(3) + 4; //4+(0..1..2)
         LivingEntity entity = event.getEntityLiving();
         Entity trueSource = event.getSource().getEntity();
-        boolean isSourcePlayer = trueSource instanceof ServerPlayerEntity;
-        ServerPlayerEntity player;
+        boolean isSourcePlayer = trueSource instanceof ServerPlayer;
+        ServerPlayer player;
         ItemStack heldItem;
         boolean hasSoulStealer = false;
         Map<Enchantment, Integer> enchantmentList;
         if (isSourcePlayer) {
-            player = (ServerPlayerEntity) trueSource;
+            player = (ServerPlayer) trueSource;
             heldItem = player.getMainHandItem();
             if (!heldItem.isEmpty()) {
                 enchantmentList = EnchantmentHelper.getEnchantments(heldItem);
@@ -481,39 +484,39 @@ public class ModGlobalEvents {
             }
         }
         if (entity != null) {
-            if (entity instanceof WitherEntity) {
+            if (entity instanceof WitherBoss) {
                 dropTrophyItem(entity, EntityType.WITHER, 0.2F);
                 dropItem(entity, "wither_bone", amountFourToSix);
                 if (hasSoulStealer) {
                     dropItem(entity, "soul_wither_boss", 1);
                 }
-            } else if (entity instanceof EnderDragonEntity) {
+            } else if (entity instanceof EnderDragon) {
                 dropTrophyItem(entity, EntityType.ENDER_DRAGON, 0.1F);
                 dropItem(entity, "ender_dragon_scale", amountFourToSix);
                 if (hasSoulStealer) {
                     dropItem(entity, "soul_ender_dragon", 1);
                 }
-            } else if (entity instanceof ElderGuardianEntity) {
+            } else if (entity instanceof ElderGuardian) {
                 dropTrophyItem(entity, EntityType.ELDER_GUARDIAN, 0.2F);
                 dropItem(entity, "guardian_scale", amountFourToSix);
                 if (hasSoulStealer) {
                     dropItem(entity, "soul_elder_guardian", 1);
                 }
-            } else if (entity instanceof WitherSkeletonEntity) {
+            } else if (entity instanceof WitherSkeleton) {
                 dropItem(entity, "wither_bone", amountZeroToTwo);
                 if (hasSoulStealer && oneInFourChance) {
                     dropItem(entity, "soul_wither_skeleton", 1);
                 }
-            } else if (entity instanceof GuardianEntity) {
+            } else if (entity instanceof Guardian) {
                 dropItem(entity, "guardian_scale", amountZeroToTwo);
                 if (hasSoulStealer && oneInFourChance) {
                     dropItem(entity, "soul_guardian", 1);
                 }
-            } else if (entity instanceof EndermanEntity) {
+            } else if (entity instanceof EnderMan) {
                 if (hasSoulStealer && oneInFourChance) {
                     dropItem(entity, "soul_enderman", 1);
                 }
-            } else if (entity instanceof BlazeEntity) {
+            } else if (entity instanceof Blaze) {
                 if (hasSoulStealer && oneInFourChance) {
                     dropItem(entity, "soul_blaze", 1);
                 }
@@ -523,10 +526,10 @@ public class ModGlobalEvents {
 
     private static void dropTrophyItem(LivingEntity entity, EntityType<?> type, float scale) {
         ItemStack trophy = new ItemStack(getAPItem("trophy"));
-        CompoundNBT tag = new CompoundNBT();
-        WeightedSpawnerEntity trophyEntity = new WeightedSpawnerEntity();
-        trophyEntity.getTag().putString("id", ForgeRegistries.ENTITIES.getKey(type).toString());
-        tag.put("DisplayEntity", trophyEntity.getTag().copy());
+        CompoundTag tag = new CompoundTag();
+        SpawnData trophyEntity = new SpawnData();
+        trophyEntity.getEntityToSpawn().putString("id", ForgeRegistries.ENTITIES.getKey(type).toString());
+        tag.put("DisplayEntity", trophyEntity.getEntityToSpawn().copy());
         tag.putFloat("EntityScale", scale);
         trophy.setTag(tag);
         entity.spawnAtLocation(trophy);

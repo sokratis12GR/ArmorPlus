@@ -1,11 +1,11 @@
 package com.sofodev.armorplus.registry.items;
 
-import net.minecraft.item.Rarity;
-import net.minecraft.util.text.TextFormatting;
+import net.minecraft.ChatFormatting;
+import net.minecraft.world.item.Rarity;
 
 import java.util.Locale;
 
-import static net.minecraft.util.text.TextFormatting.*;
+import static net.minecraft.ChatFormatting.*;
 
 public enum APRarity {
     NONE(RESET),
@@ -20,13 +20,13 @@ public enum APRarity {
     ENDER_DRAGON(DARK_PURPLE),
     SLAYER(DARK_PURPLE);
 
-    private final TextFormatting color;
+    private final ChatFormatting color;
 
-    APRarity(TextFormatting color) {
+    APRarity(ChatFormatting color) {
         this.color = color;
     }
 
-    public TextFormatting getColor() {
+    public ChatFormatting getColor() {
         return color;
     }
 

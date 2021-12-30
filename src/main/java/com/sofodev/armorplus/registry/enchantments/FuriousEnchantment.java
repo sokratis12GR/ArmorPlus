@@ -1,22 +1,22 @@
 package com.sofodev.armorplus.registry.enchantments;
 
 import com.sofodev.armorplus.utils.Utils;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.potion.EffectInstance;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 
 import static com.sofodev.armorplus.registry.enchantments.FuriousEnchantment.Levels.limit;
-import static net.minecraft.enchantment.Enchantment.Rarity.RARE;
-import static net.minecraft.enchantment.EnchantmentType.WEARABLE;
-import static net.minecraft.inventory.EquipmentSlotType.*;
-import static net.minecraft.potion.Effects.DAMAGE_BOOST;
-import static net.minecraft.potion.Effects.MOVEMENT_SPEED;
+import static net.minecraft.world.effect.MobEffects.DAMAGE_BOOST;
+import static net.minecraft.world.effect.MobEffects.MOVEMENT_SPEED;
+import static net.minecraft.world.entity.EquipmentSlot.*;
+import static net.minecraft.world.item.enchantment.Enchantment.Rarity.RARE;
+import static net.minecraft.world.item.enchantment.EnchantmentCategory.WEARABLE;
 
 public class FuriousEnchantment extends APEnchantment {
 
     public FuriousEnchantment() {
-        super(RARE, WEARABLE, new EquipmentSlotType[]{HEAD, CHEST, LEGS, FEET},
+        super(RARE, WEARABLE, new EquipmentSlot[]{HEAD, CHEST, LEGS, FEET},
                 1, 3, 10, 15, true, true
         );
     }
@@ -35,9 +35,9 @@ public class FuriousEnchantment extends APEnchantment {
             level = limit();
         }
         Levels lvl = Levels.values()[level];
-        user.addEffect(new EffectInstance(DAMAGE_BOOST, Utils.convertToSeconds(lvl.strSecs), lvl.strLevel, false, false));
+        user.addEffect(new MobEffectInstance(DAMAGE_BOOST, Utils.convertToSeconds(lvl.strSecs), lvl.strLevel, false, false));
         if (lvl.hasFastLegs) {
-            user.addEffect(new EffectInstance(MOVEMENT_SPEED, Utils.convertToSeconds(lvl.speedSecs), lvl.speedLevel, false, false));
+            user.addEffect(new MobEffectInstance(MOVEMENT_SPEED, Utils.convertToSeconds(lvl.speedSecs), lvl.speedLevel, false, false));
         }
     }
 

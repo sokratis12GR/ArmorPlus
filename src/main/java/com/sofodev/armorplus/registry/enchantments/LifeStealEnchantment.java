@@ -1,21 +1,21 @@
 package com.sofodev.armorplus.registry.enchantments;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.SwordItem;
-import net.minecraft.item.ToolItem;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.DiggerItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SwordItem;
 
 import static com.sofodev.armorplus.registry.enchantments.LifeStealEnchantment.Levels.limit;
-import static net.minecraft.enchantment.EnchantmentType.WEAPON;
-import static net.minecraft.inventory.EquipmentSlotType.MAINHAND;
+import static net.minecraft.world.entity.EquipmentSlot.MAINHAND;
+import static net.minecraft.world.item.enchantment.EnchantmentCategory.WEAPON;
 
 public class LifeStealEnchantment extends APEnchantment {
 
     public LifeStealEnchantment() {
-        super(Rarity.VERY_RARE, WEAPON, new EquipmentSlotType[]{MAINHAND},
+        super(Rarity.VERY_RARE, WEAPON, new EquipmentSlot[]{MAINHAND},
                 1, 3, 10, 30, true, true
         );
     }
@@ -43,8 +43,8 @@ public class LifeStealEnchantment extends APEnchantment {
         if (mainHand.isEmpty()) return;
         if (!isCorrectItem(handItem)) {
             user.heal(lvl.healingFactor);
-        } else if (handItem instanceof ToolItem) {
-            damageDealt = ((ToolItem) handItem).getTier().getAttackDamageBonus();
+        } else if (handItem instanceof DiggerItem) {
+            damageDealt = ((DiggerItem) handItem).getTier().getAttackDamageBonus();
             user.heal(level * softCap(damageDealt, 10, 1) / 4);
         } else if (handItem instanceof SwordItem) {
             damageDealt = ((SwordItem) handItem).getDamage();
@@ -66,7 +66,7 @@ public class LifeStealEnchantment extends APEnchantment {
     }
 
     private boolean isCorrectItem(Item item) {
-        return item instanceof SwordItem || item instanceof ToolItem;
+        return item instanceof SwordItem || item instanceof DiggerItem;
     }
 
     public enum Levels {

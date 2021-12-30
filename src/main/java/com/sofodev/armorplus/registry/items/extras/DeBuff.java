@@ -1,9 +1,9 @@
 package com.sofodev.armorplus.registry.items.extras;
 
 import com.sofodev.armorplus.utils.Utils;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Effect;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Locale;
@@ -32,13 +32,13 @@ public enum DeBuff implements IBuff {
         }
     };
 
-    public Random rand = new Random();
     private final boolean isEffect;
-    private final Effect effect;
+    private final MobEffect effect;
+    public Random rand = new Random();
 
     DeBuff(boolean isEffect) {
         this.isEffect = isEffect;
-        this.effect = ForgeRegistries.POTIONS.getValue(Utils.setVanillaLocation(this.name().toLowerCase(Locale.ENGLISH)));
+        this.effect = ForgeRegistries.MOB_EFFECTS.getValue(Utils.setVanillaLocation(this.name().toLowerCase(Locale.ENGLISH)));
     }
 
     DeBuff() {
@@ -51,7 +51,7 @@ public enum DeBuff implements IBuff {
     }
 
     @Override
-    public Effect getEffect() {
+    public MobEffect getEffect() {
         return effect;
     }
 

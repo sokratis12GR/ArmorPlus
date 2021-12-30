@@ -1,7 +1,7 @@
 package com.sofodev.armorplus.registry.items.armors;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.IItemProvider;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,7 +11,7 @@ public class APRepair {
 
     private List<ItemStack> repairStacks = new ArrayList<>();
     private List<String> repair = new ArrayList<>();
-    private List<IItemProvider> repairItems = new ArrayList<>();
+    private List<ItemLike> repairItems = new ArrayList<>();
 
     public APRepair(ItemStack... repair) {
         this.repairStacks = Arrays.asList(repair);
@@ -21,7 +21,7 @@ public class APRepair {
         this.repair = Arrays.asList(repair);
     }
 
-    public APRepair(IItemProvider... repair) {
+    public APRepair(ItemLike... repair) {
         repairItems = Arrays.asList(repair);
     }
 
@@ -41,11 +41,11 @@ public class APRepair {
         this.repair = repair;
     }
 
-    public List<IItemProvider> getRepairItems() {
+    public List<ItemLike> getRepairItems() {
         return repairItems;
     }
 
-    public void setRepairItems(List<IItemProvider> repairItems) {
+    public void setRepairItems(List<ItemLike> repairItems) {
         this.repairItems = repairItems;
     }
 }
