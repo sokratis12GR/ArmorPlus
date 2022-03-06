@@ -1,7 +1,7 @@
 buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
-        maven { url "https://plugins.gradle.org/m2/"} // Required for CurseGradle
+        maven { url "https://plugins.gradle.org/m2/" } // Required for CurseGradle
         mavenCentral()
     }
     dependencies {
@@ -50,7 +50,7 @@ minecraft {
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
             mods {
-                examplemod {
+                armorplus {
                     source sourceSets.main
                 }
             }
@@ -80,14 +80,18 @@ repositories {
             includeGroup "curse.maven"
         }
     }
+    maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.1-39.0.9'
+    minecraft 'net.minecraftforge:forge:1.18.1-39.0.75'
 
-    implementation fg.deobf("curse.maven:geckolib-388172:3558943") //Geckolib (3.0.49)
+//    implementation fg.deobf("curse.maven:geckolib-388172:3629662") //Geckolib (1.18-3.0.32)
     implementation fg.deobf("curse.maven:thedragonlib-248055:3584757") //TheDragonLib
-    implementation fg.deobf("curse.maven:jei-238222:3574041") //JEI
+    implementation fg.deobf("curse.maven:jei-238222:3599262") //JEI 1.18.1-9.2.1.69
+//    implementation fg.deobf("curse.maven:patchouli-306770:3630725") //Patchouli 1.18.1-65
+    implementation fg.deobf('software.bernie.geckolib:geckolib-1.18-forge:3.0.11')
+
 //    implementation fg.deobf("curse.maven:cyanide-forge-541676:3545771") //Cyanide-Forge
 //    compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.16.4-50:api") //Patchouli
 //    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.16.4-50") //Patchouli
