@@ -1,12 +1,13 @@
 {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/armorplus",
     "promos": {
-        "1.18.1-latest": "1.18.1-18.0.2-beta",
-        "1.18.1-recommended": "1.18.1-18.0.2-beta"
+        "1.18.1-latest": "1.18.1-18.0.3-beta",
+        "1.18.1-recommended": "1.18.1-18.0.3-beta"
     },
     "1.18.1": {
         "1.18.1-18.0.0-beta": "Ported to 1.18.1\n\n- Items (Armors, Weapons, Blocks, Arrows, Souls, Materials, Etc), Effects (Buffs, Debuffs) \n- World Gen is unstable (unfinished, and most likely doesn't work)\n- Biomes are unstable as well\n- 3D Models for some items will be broken\n- Entities (except arrow entities) aren't added yet, next release",
         "1.18.1-18.0.1-beta": "- Fixes all advancements and recipes being given to the player upon picking up any item.\n- Fixes all arrows not having correct ability descriptions.\n- Fixes all bows not having a correct drawing animation texture.\n- Fixes trophy blocks not having a correct special renderer.\n- New Ore Generation settings for Lava/Frost Crystals:\n    - Stone will now only spawn from Y: 0 to Y: 200, can only replace stone, air exposure is 0.5 (50%)\n    - Obsidian will now only spawn from Y: -30 to Y: 0, can only replace deepslate, air exposure is 0.3 (30%)\n    - Compressed will now only spawn from Y: -60 to Y: -30, can only replace deepslate, air exposure is 0.1 (10%)\n- Fixed maces not having a texture and causing crashes on right/left click.\n- Added the following COMMON configs\n    - Special Effect Toggles (enable/disable armor & weapon effects for each material)\n        - When a toggle is turned on, the effects of the set will be disabled, tooltips will show (DISABLED) on\n          abilities when they have been disabled.\n    - World Gen Values and Toggles (enable/disable, veinSize, exposure, minY, maxY, etc) for each Ore.\n",
-        "1.18.1-18.0.2-beta": "- Fixes blocks being unbreakable\n- Added tool requirements for different blocks and corrected some loot drops (these changed in 1.17/1.18 so had to adapt).\n  - all blocks for the time being, require pickaxes, ores have different tool requirement depending on the type they are on\n"
+        "1.18.1-18.0.2-beta": "- Fixes blocks being unbreakable\n- Added tool requirements for different blocks and corrected some loot drops (these changed in 1.17/1.18 so had to adapt).\n  - all blocks for the time being, require pickaxes, ores have different tool requirement depending on the type they are on\n",
+        "1.18.1-18.0.3-beta": "* Technical Fix: Now uses saveAdditional instead of save method for tile entities.\n* Added variant light levels for Crystal Ores:\n  * Stone: 0; Obsidian: 4; Compressed: 8; (To fit with their environment and to provide an indicator of how much value they hold)\n* Fixes Trident's unknown enchantment effect being applied to all tridents.\n"
     }
 }
