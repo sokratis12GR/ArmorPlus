@@ -69,6 +69,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> SNOW_BRICK_SLAB = regWithItem("snow_brick_slab", () -> new StoneBrickSlabBlock(SNOW_BRICK.get()));
     public static final RegistryObject<Block> PETRIFIED_SOULS = regWithItem("petrified_souls", () -> new APBlock(copy(Blocks.TERRACOTTA)));
     public static final RegistryObject<Block> SOUL_BOX = regWithItem("soul_box", SoulBox::new);
+    public static final RegistryObject<BlockEntityType<TrophyTile>> TROPHY_TYPE = TILE_ENTITIES.register("trophy",
+            () -> build(BlockEntityType.Builder.of(TrophyTile::new, TROPHY.get())));
 
     static {
         registerBlocks();
@@ -76,8 +78,7 @@ public class ModBlocks {
 
     public static RegistryObject<Block> register(String name, Supplier<? extends Block> sup) {
         return BLOCKS.register(name, sup);
-    }    public static final RegistryObject<BlockEntityType<TrophyTile>> TROPHY_TYPE = TILE_ENTITIES.register("trophy",
-            () -> build(BlockEntityType.Builder.of(TrophyTile::new, TROPHY.get())));
+    }
 
     public static RegistryObject<Block> regWithItem(String name, Supplier<? extends Block> sup) {
         RegistryObject<Block> block = register(name, sup);

@@ -7,6 +7,6 @@ import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.co
 public class CastleBlock extends Block {
 
     public CastleBlock(Block block) {
-        super(copy(block));
+        super(copy(block).requiresCorrectToolForDrops());
     }
 }

@@ -34,7 +34,7 @@ public class StoneBrickSlabBlock extends Block implements SimpleWaterloggedBlock
     protected static final VoxelShape TOP_SHAPE = Block.box(0.0D, 8.0D, 0.0D, 16.0D, 16.0D, 16.0D);
 
     public StoneBrickSlabBlock(Block block) {
-        super(copy(block));
+        super(copy(block).requiresCorrectToolForDrops());
         this.registerDefaultState(this.defaultBlockState().setValue(TYPE, SlabType.BOTTOM).setValue(WATERLOGGED, Boolean.valueOf(false)));
     }
 

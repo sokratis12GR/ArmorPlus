@@ -5,6 +5,6 @@ import net.minecraft.world.level.material.Material;
 
 public class SoulBox extends APBlock {
     public SoulBox() {
-        super(Properties.of(Material.METAL).strength(5f, 100f).lightLevel((i) -> 10));
+        super(Properties.of(Material.METAL).strength(5f, 100f).requiresCorrectToolForDrops().lightLevel((i) -> 10));
     }
 }

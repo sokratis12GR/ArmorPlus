@@ -56,7 +56,7 @@ public class StoneBrickStairsBlock extends Block implements SimpleWaterloggedBlo
     private final Supplier<BlockState> stateSupplier;
 
     public StoneBrickStairsBlock(Supplier<BlockState> state, Block block) {
-        super(copy(block));
+        super(copy(block).requiresCorrectToolForDrops());
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(HALF, Half.BOTTOM).setValue(SHAPE, StairsShape.STRAIGHT).setValue(WATERLOGGED, Boolean.FALSE));
         this.modelBlock = Blocks.AIR; // These are unused, fields are redirected
         this.modelState = Blocks.AIR.defaultBlockState();

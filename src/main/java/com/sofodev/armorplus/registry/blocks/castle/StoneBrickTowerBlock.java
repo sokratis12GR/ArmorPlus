@@ -24,7 +24,7 @@ public class StoneBrickTowerBlock extends Block {
     protected static final VoxelShape VOXEL = Shapes.join(BASE, CORNERS, OR);
 
     public StoneBrickTowerBlock(Block block) {
-        super(copy(block));
+        super(copy(block).requiresCorrectToolForDrops());
     }
 
     //@Override

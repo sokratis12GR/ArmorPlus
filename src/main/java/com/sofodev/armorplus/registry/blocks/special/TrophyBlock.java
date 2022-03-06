@@ -48,7 +48,7 @@ public class TrophyBlock extends APBlock implements EntityBlock {
             if (tag.contains("EntityScale", 99)) {
                 trophy.setEntityScale(tag.getFloat("EntityScale"));
             }
-            trophy.save(tag);
+            trophy.saveAdditional(tag);
             tile.setChanged();
             world.setBlockEntity(tile);
         }

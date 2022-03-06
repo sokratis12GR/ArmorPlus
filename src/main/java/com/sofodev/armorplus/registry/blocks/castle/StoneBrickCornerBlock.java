@@ -32,7 +32,7 @@ public class StoneBrickCornerBlock extends Block implements SimpleWaterloggedBlo
     public static final VoxelShape SE_C = join(box(8, 8, 8, 16, 16, 16), box(0, 0, 0, 16, 8, 16), OR);
 
     public StoneBrickCornerBlock(Block block) {
-        super(copy(block));
+        super(copy(block).requiresCorrectToolForDrops());
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false));
     }
 

@@ -1,0 +1,13 @@
+{
+    "replace": false,
+    "values": [
+        "armorplus:ore_lava_crystal_obsidian",
+        "armorplus:ore_frost_crystal_obsidian",
+        "armorplus:block_frost_crystal",
+        "armorplus:block_infused_frost_crystal",
+        "armorplus:lava_infused_obsidian",
+        "armorplus:block_lava_crystal",
+        "armorplus:block_infused_lava_crystal",
+        "armorplus:compressed_lava_crystal"
+    ]
+}

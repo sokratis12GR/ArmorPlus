@@ -388,27 +388,31 @@ public class ModGlobalEvents {
         if (!world.isClientSide()) {
             if (!stack.isEmpty() && stack.getItem() instanceof TridentItem) {
                 enchantmentList = EnchantmentHelper.getEnchantments(stack);
-                hasUnknown = enchantmentList.containsKey(ENCHANTMENTS.getValue(setRL("unknown")));
-                BlockPos position = target.blockPosition();
-                LightningBolt northBolt = EntityType.LIGHTNING_BOLT.create(world);
-                LightningBolt southBolt = EntityType.LIGHTNING_BOLT.create(world);
-                LightningBolt westBolt = EntityType.LIGHTNING_BOLT.create(world);
-                LightningBolt eastBolt = EntityType.LIGHTNING_BOLT.create(world);
-                LightningBolt centreBolt = EntityType.LIGHTNING_BOLT.create(world);
-                if (northBolt != null && southBolt != null && westBolt != null && eastBolt != null && centreBolt != null) {
-                    northBolt.moveTo(atBottomCenterOf(position.north(2)));
-                    southBolt.moveTo(atBottomCenterOf(position.south(2)));
-                    westBolt.moveTo(atBottomCenterOf(position.west(2)));
-                    eastBolt.moveTo(atBottomCenterOf(position.east(2)));
-                    centreBolt.moveTo(atBottomCenterOf(position));
-                    world.addFreshEntity(northBolt);
-                    world.addFreshEntity(southBolt);
-                    world.addFreshEntity(westBolt);
-                    world.addFreshEntity(eastBolt);
-                    world.addFreshEntity(centreBolt);
+                if (!enchantmentList.isEmpty()) {
+                    hasUnknown = enchantmentList.containsKey(ENCHANTMENTS.getValue(setRL("unknown")));
+                    if (hasUnknown) {
+                        BlockPos position = target.blockPosition();
+                        LightningBolt northBolt = EntityType.LIGHTNING_BOLT.create(world);
+                        LightningBolt southBolt = EntityType.LIGHTNING_BOLT.create(world);
+                        LightningBolt westBolt = EntityType.LIGHTNING_BOLT.create(world);
+                        LightningBolt eastBolt = EntityType.LIGHTNING_BOLT.create(world);
+                        LightningBolt centreBolt = EntityType.LIGHTNING_BOLT.create(world);
+                        if (northBolt != null && southBolt != null && westBolt != null && eastBolt != null && centreBolt != null) {
+                            northBolt.moveTo(atBottomCenterOf(position.north(2)));
+                            southBolt.moveTo(atBottomCenterOf(position.south(2)));
+                            westBolt.moveTo(atBottomCenterOf(position.west(2)));
+                            eastBolt.moveTo(atBottomCenterOf(position.east(2)));
+                            centreBolt.moveTo(atBottomCenterOf(position));
+                            world.addFreshEntity(northBolt);
+                            world.addFreshEntity(southBolt);
+                            world.addFreshEntity(westBolt);
+                            world.addFreshEntity(eastBolt);
+                            world.addFreshEntity(centreBolt);
+                        }
+                        player.addEffect(new MobEffectInstance(SLOWNESS.getEffect(), convertToSeconds(4)));
+                        player.addEffect(new MobEffectInstance(MINING_FATIGUE.getEffect(), convertToSeconds(4)));
+                    }
                 }
-                player.addEffect(new MobEffectInstance(SLOWNESS.getEffect(), convertToSeconds(4)));
-                player.addEffect(new MobEffectInstance(MINING_FATIGUE.getEffect(), convertToSeconds(4)));
             }
         }
         if (player.isOnGround() && movedDistance < (double) player.getSpeed() && stack.getItem() instanceof APMaceItem) {

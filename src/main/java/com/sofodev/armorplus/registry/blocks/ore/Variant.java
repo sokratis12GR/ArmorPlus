@@ -1,18 +1,18 @@
 package com.sofodev.armorplus.registry.blocks.ore;
 
 public enum Variant {
-    STONE(10f, 500f, 2),
-    OBSIDIAN(20f, 1000f, 3),
-    ORIGINAL(25f, 2000f, 4);
+    STONE(10f, 500f, 0),
+    OBSIDIAN(20f, 1000f, 4),
+    ORIGINAL(25f, 2000f, 8);
 
     private final float hardness;
     private final float resistance;
-    private final int harvestLevel;
+    private final int lightValue;
 
-    Variant(float hardness, float resistance, int harvestLevel) {
+    Variant(float hardness, float resistance, int lightValue) {
         this.hardness = hardness;
         this.resistance = resistance;
-        this.harvestLevel = harvestLevel;
+        this.lightValue = lightValue;
     }
 
     public float getHardness() {
@@ -23,7 +23,7 @@ public enum Variant {
         return this.resistance;
     }
 
-    public int getHarvestLevel() {
-        return this.harvestLevel;
+    public int getLightValue() {
+        return lightValue;
     }
 }

@@ -5,12 +5,16 @@ import com.sofodev.armorplus.registry.ModBlocks;
 import net.minecraft.ResourceLocationException;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.Connection;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.StringUtil;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.SpawnData;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -20,7 +24,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
-import java.util.Optional;
 import java.util.function.Function;
 
 public class TrophyTile extends BlockEntity {
@@ -70,12 +73,22 @@ public class TrophyTile extends BlockEntity {
     @Override
     public void load(CompoundTag tag) {
         super.load(tag);
-        if (tag.contains("DisplayEntity", 10)) {
-            this.setNextEntityData(new SpawnData(tag.getCompound("DisplayEntity"), Optional.empty()));
-        }
+//        if (tag.contains("DisplayEntity", 10)) {
+//            this.setNextEntityData(new SpawnData(tag.getCompound("DisplayEntity"), Optional.empty()));
+//        }
         if (tag.contains("EntityScale", 99)) {
             this.scale = tag.getFloat("EntityScale");
         }
+        boolean containsSpawnData = tag.contains("SpawnData", 10);
+        SpawnData spawndata;
+        if (containsSpawnData) {
+            spawndata = SpawnData.CODEC.parse(NbtOps.INSTANCE, tag.getCompound("SpawnData")).resultOrPartial((string) -> {
+                ArmorPlus.LOGGER.warn("Invalid SpawnData: {}", (Object) string);
+            }).orElseGet(SpawnData::new);
+        } else {
+            spawndata = new SpawnData();
+        }
+        this.setNextEntityData(spawndata);
         if (this.getLevel() != null) {
             ResourceLocation rl = new ResourceLocation(tag.getCompound("DisplayEntity").getString("id"));
             EntityType<?> type = ForgeRegistries.ENTITIES.getValue(rl);
@@ -83,16 +96,18 @@ public class TrophyTile extends BlockEntity {
         }
     }
 
-
     @Override
-    public CompoundTag save(CompoundTag tag) {
-        super.save(tag);
+    public void saveAdditional(CompoundTag tag) {
         ResourceLocation resourcelocation = this.getEntityId();
-        if (resourcelocation != null) {
-            tag.putFloat("EntityScale", this.scale);
-            tag.put("DisplayEntity", this.entityData.getEntityToSpawn().copy());
+        if (resourcelocation == null) {
+            return;
         }
-        return tag;
+        tag.putFloat("EntityScale", this.scale);
+//        tag.put("DisplayEntity", this.entityData.getEntityToSpawn().copy());
+        tag.put("SpawnData", SpawnData.CODEC.encodeStart(NbtOps.INSTANCE, this.entityData).result().orElseThrow(() -> {
+            return new IllegalStateException("Invalid SpawnData");
+        }));
+        super.saveAdditional(tag);
     }
 
     @Nullable
@@ -100,8 +115,7 @@ public class TrophyTile extends BlockEntity {
     public Entity getDisplayEntity() {
         if (this.displayEntity == null) {
             this.displayEntity = EntityType.loadEntityRecursive(this.entityData.entityToSpawn(), this.getLevel(), Function.identity());
-            if (this.entityData.entityToSpawn().size() == 1) {
-                this.entityData.entityToSpawn().contains("id", 8);
+            if (this.entityData.getEntityToSpawn().size() == 1 && this.entityData.getEntityToSpawn().contains("id", 8) && this.displayEntity instanceof Mob) {
             }
         }
 
@@ -134,14 +148,15 @@ public class TrophyTile extends BlockEntity {
         this.load(pkt.getTag());
     }
 
-//    @Override
-//    public Packet<ClientGamePacketListener> getUpdatePacket() {
-//        return new Packet<ClientGamePacketListener>(this.getBlockPos(), -20, this.getUpdateTag());
-//    }
+    //TODO: EXTENSIVELY TEST
+    @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
 
     @Override
     public CompoundTag getUpdateTag() {
-        return this.save(new CompoundTag());
+        return this.saveWithFullMetadata();
     }
 
     @Override

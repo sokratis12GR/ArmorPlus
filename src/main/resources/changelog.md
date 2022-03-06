@@ -1,3 +1,18 @@
+ArmorPlus 1.18.1-18.0.3 (BETA)
+----------------------------
+
+- Technical Fix: Now uses saveAdditional instead of save method for tile entities.
+- Added variant light levels for Crystal Ores:
+  - Stone: 0; Obsidian: 4; Compressed: 8; (To fit with their environment and to provide an indicator of how much value they hold)
+- Fixes Trident's unknown enchantment effect being applied to all tridents.
+
+ArmorPlus 1.18.1-18.0.2 (BETA)
+----------------------------
+
+- Fixes blocks being unbreakable
+- Added tool requirements for different blocks and corrected some loot drops (these changed in 1.17/1.18 so had to adapt).
+  - all blocks for the time being, require pickaxes, ores have different tool requirement depending on the type they are on
+
 ArmorPlus 1.18.1-18.0.1 (BETA)
 ----------------------------
 

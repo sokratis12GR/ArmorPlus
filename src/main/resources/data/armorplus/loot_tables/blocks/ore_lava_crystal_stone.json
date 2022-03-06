@@ -3,6 +3,7 @@
   "pools": [
     {
       "rolls": 1,
+      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:alternatives",
@@ -35,7 +36,8 @@
                     "min": 1.0,
                     "max": 2.0,
                     "type": "minecraft:uniform"
-                  }
+                  },
+                  "add": false
                 },
                 {
                   "function": "minecraft:apply_bonus",

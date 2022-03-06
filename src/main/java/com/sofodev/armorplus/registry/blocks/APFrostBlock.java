@@ -7,7 +7,7 @@ import net.minecraft.world.level.material.MaterialColor;
 public class APFrostBlock extends Block {
 
     public APFrostBlock() {
-        super(Properties.of(Material.STONE, MaterialColor.COLOR_LIGHT_BLUE).strength(5.0f, 1000.0f).lightLevel((light) -> 8));
+        super(Properties.of(Material.STONE, MaterialColor.COLOR_LIGHT_BLUE).strength(5.0f, 1000.0f).lightLevel((light) -> 8).requiresCorrectToolForDrops());
     }
 
     public APFrostBlock(Properties props) {
