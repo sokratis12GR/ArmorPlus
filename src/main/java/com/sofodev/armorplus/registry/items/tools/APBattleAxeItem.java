@@ -34,7 +34,7 @@ public class APBattleAxeItem extends AxeItem implements Tool {
 
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (!target.level.isClientSide) {
+        if (!target.level.isClientSide && mat.config().enableWeaponEffects.get()) {
             mat.getBuffInstances().get().forEach(instance -> instance.hitEntity(stack, target, attacker));
         }
         return super.hurtEnemy(stack, target, attacker);
@@ -42,7 +42,7 @@ public class APBattleAxeItem extends AxeItem implements Tool {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        addBuffInformation(mat, tooltip, "on_hit", false);
+        addBuffInformation(mat, tooltip, "on_hit", false, mat.config().enableWeaponEffects.get());
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
 

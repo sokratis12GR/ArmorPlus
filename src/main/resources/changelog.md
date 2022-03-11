@@ -1,9 +1,33 @@
+ArmorPlus 1.16.5-16.6.1
+----------------------------
+
+* Added variant light levels for Crystal Ores:
+    * Stone: 0; Obsidian: 4; Compressed: 8; (To fit with their environment and to provide an indicator of how much value they hold)
+* Fixes Trident's unknown enchantment effect being applied to all tridents.
+
+ArmorPlus 1.16.5-16.6.0
+----------------------------
+
+- Added the following COMMON configs
+    - Special Effect Toggles (enable/disable armor & weapon effects for each material)
+        - When a toggle is turned on, the effects of the set will be disabled, tooltips will show (DISABLED) on
+          abilities when they have been disabled.
+    - World Gen Values and Toggles (enable/disable, veinSize, exposure, minY, maxY, etc) for each Ore.
+- Fixed Natural Immunity effects having bubbles.
+
+ArmorPlus 1.16.5-16.5.2
+----------------------------
+
+* Added a localization entry for "armorplus.buff.fire_extinguish"
+* Fixed an issue where **Natural Immunity** wouldn't provide any effects.
+
 ArmorPlus 1.16.5-16.5.1
 ----------------------------
 
 * Changed mod's short description to more accurately represent the mod and what it does.
 * Fixed crashes related at empty buff lists, which were causing all non effect armors to cause crashes.
-* Removed any and all configs related to the armors directly (didn't actually work so there was no point in them), kept the world gen configs.
+* Removed any and all configs related to the armors directly (didn't actually work so there was no point in them), kept
+  the world gen configs.
 
 ArmorPlus 1.16.5-16.5.0
 ----------------------------
@@ -14,26 +38,31 @@ ArmorPlus 1.16.5-16.5.0
 * Infused Lava tools now use obsidian sticks instead of regular sticks for their recipes.
 * Super Star Armor now provides Fire Resistance as well (and **Fire Extinguish** which removes any visual fire).
 * All armor bases now require a core in their crafting recipe:
-  * Guardian Bases: Prismarine
-  * Super Star Bases: Nether Star
-  * Ender Dragon Bases: Dragon Breath
-* Slayer Base now requires all the mentioned above bases (Guardian, Super Star, Ender Dragon) alongside some ultimate material to be crafted.
-  * Introduced slayer bases for weapons and tools.
+    * Guardian Bases: Prismarine
+    * Super Star Bases: Nether Star
+    * Ender Dragon Bases: Dragon Breath
+* Slayer Base now requires all the mentioned above bases (Guardian, Super Star, Ender Dragon) alongside some ultimate
+  material to be crafted.
+    * Introduced slayer bases for weapons and tools.
 * Slayer armor and tools will now retain all of its material's powers and claim them as their own.
-  * Increased the attack damage done by tools by 1.5 intervals.
-* The current iteration of Obsidian Armor is now renamed to Enriched Obsidian Armor and will provide additional toughness level.
+    * Increased the attack damage done by tools by 1.5 intervals.
+* The current iteration of Obsidian Armor is now renamed to Enriched Obsidian Armor and will provide additional
+  toughness level.
 * Slightly buffed the durability of the Slayer Armor, Enriched Obsidian Armor and its tools
 * Added Wither Immunity to the Ender Dragon Armor like in 1.12.2
 * Frost Armor's Fire Weakness adds another 5 seconds to any fire damage taken.
 * Infused Lava Armor's Water Weakness halves all your underwater breathing air by 2 for each tick.
 * Removed Herobrine.
 * Added some more functionality to the **Unknown** enchantment
-  * **__SPOILER ALERT__**:
-    * Wearing a metal helmet during a thunderstorm has a 25% chance to spawn a harmless thunder on top of the player.
-    * Using a bow with the enchantment on will spawn a sequential line of lightning bolts, eats 10 durability per summoned lightning bolt per tick.
-    * Attacking with a trident with the enchantment, 5 lightning bolts will spawn surrounding the target (may damage you in the process).
-    * A few more
-    
+    * **__SPOILER ALERT__**:
+        * Wearing a metal helmet during a thunderstorm has a 25% chance to spawn a harmless thunder on top of the
+          player.
+        * Using a bow with the enchantment on will spawn a sequential line of lightning bolts, eats 10 durability per
+          summoned lightning bolt per tick.
+        * Attacking with a trident with the enchantment, 5 lightning bolts will spawn surrounding the target (may damage
+          you in the process).
+        * A few more
+
 ArmorPlus 1.16.5-16.4.1
 ----------------------------
 

@@ -1,5 +1,6 @@
 package com.sofodev.armorplus.registry.items.tools.properties.tool;
 
+import com.sofodev.armorplus.config.ArmorPlusConfig.MaterialConfig;
 import com.sofodev.armorplus.registry.items.extras.BuffInstance;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
@@ -11,6 +12,8 @@ import net.minecraft.world.World;
 
 import java.util.List;
 import java.util.function.Supplier;
+
+import static com.sofodev.armorplus.config.ArmorPlusConfig.enhancedMaterial;
 
 public interface IAPTool {
 
@@ -49,6 +52,10 @@ public interface IAPTool {
      */
     default void onBlockMined(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity player) {
 
+    }
+
+    default MaterialConfig config() {
+        return enhancedMaterial;
     }
 
 }

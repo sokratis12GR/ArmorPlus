@@ -3,6 +3,7 @@ package com.sofodev.armorplus.registry.items.extras;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Effect;
+import net.minecraft.potion.EffectInstance;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -67,8 +68,12 @@ public enum Buff implements IBuff {
     NATURAL_IMMUNITY(true) {
         @Override
         public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
-            FIRE_RESISTANCE.onArmorTick(stack, world, player);
-            RESISTANCE.onArmorTick(stack, world, player);
+            if (!player.hasEffect(FIRE_RESISTANCE.getEffect())) {
+                player.addEffect(new EffectInstance(FIRE_RESISTANCE.getEffect(), 60, 0, false, false));
+            }
+            if (!player.hasEffect(RESISTANCE.getEffect())) {
+                player.addEffect(new EffectInstance(RESISTANCE.getEffect(), 60, 0, false, false));
+            }
             if (!world.isClientSide && player.getRemainingFireTicks() > 0) {
                 player.clearFire();
             }

@@ -97,6 +97,9 @@ public class BuffInstance {
      * If the buff is an effect it will be either applied instantly (even if you already have the effect))
      */
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
+        //instant - x - true
+        //!instant - y - false
+        // instant -> else |
         buff.onArmorTick(stack, world, player);
         if (buff.isEffect()) {
             for (EffectInstance pot : this.getPotion().getEffects()) {

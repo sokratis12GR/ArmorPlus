@@ -1,5 +1,7 @@
 package com.sofodev.armorplus;
 
+import com.sofodev.armorplus.config.ArmorPlusConfig;
+import com.sofodev.armorplus.config.ConfigHelper;
 import com.sofodev.armorplus.events.WorldGenEvents;
 import com.sofodev.armorplus.network.PacketHandler;
 import com.sofodev.armorplus.registry.ModBlocks;
@@ -38,6 +40,7 @@ import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -75,7 +78,7 @@ public class ArmorPlus {
 
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
-    public static final String VERSION = "1.16.5-16.5.1";
+    public static final String VERSION = "1.16.5-16.5.2";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
     public static final PacketHandler PACKET_HANDLER = new PacketHandler();
     /**
@@ -109,7 +112,7 @@ public class ArmorPlus {
             return new ItemStack(getAPItem("ender_dragon_battle_axe"));
         }
     };
-    //    public static ArmorPlusConfig config;
+    public static ArmorPlusConfig config;
     public static ArmorPlus instance;
 
     public ArmorPlus() {
@@ -120,16 +123,11 @@ public class ArmorPlus {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModLoadingContext modLoadingCTX = ModLoadingContext.get();
 
-//        ArmorPlus.config = ConfigHelper.register(
-//                ModLoadingContext.get(), FMLJavaModLoadingContext.get(),
-//                ModConfig.Type.SERVER, ArmorPlusConfig::new);
-        //--//--\\--\\
-        //ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, APConfig.clientSpec);
-        //  modLoadingCTX.registerConfig(ModConfig.Type.SERVER, APConfig.SERVER_SPEC, "armorplus-server.toml");
-        //  modLoadingCTX.registerConfig(ModConfig.Type.COMMON, APConfig.COMMON_SPEC, "armorplus-common.toml");
-        //  modEventBus.register(APConfig.class);
-        // APConfig.loadConfig(APConfig.SERVER_SPEC, FMLPaths.CONFIGDIR.get().resolve("armorplus-server.toml").toString());
-        // APConfig.loadConfig(APConfig.COMMON_SPEC, FMLPaths.CONFIGDIR.get().resolve("armorplus-common.toml").toString());
+        //Config Start
+        ArmorPlus.config = ConfigHelper.register(
+                ModLoadingContext.get(), FMLJavaModLoadingContext.get(),
+                ModConfig.Type.COMMON, ArmorPlusConfig::new);
+        //Config End
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
         ENCHANTMENTS.register(modEventBus);

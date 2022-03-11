@@ -33,27 +33,27 @@ public class APArmorItem extends ArmorItem {
     @Override
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
         if (!world.isClientSide) {
-            //           if (APConfig.ServerConfig.redstoneMaterial.enableArmorEffects.get()) {
-            if (mat.getBuffInstances().get() == null || mat.getBuffInstances().get().isEmpty()) return;
-            mat.getBuffInstances().get().forEach(instance -> {
-                if (instance.getBuff() instanceof Buff && instance.isEnabled()) {
-                    if (instance.getBuff().requiresFullSet()) {
-                        if (areExactMatch(mat, player)) {
+            if (mat.config().enableArmorEffects.get()) {
+                if (mat.getBuffInstances().get() == null || mat.getBuffInstances().get().isEmpty()) return;
+                mat.getBuffInstances().get().forEach(instance -> {
+                    if (instance.getBuff() instanceof Buff && instance.isEnabled()) {
+                        if (instance.getBuff().requiresFullSet()) {
+                            if (areExactMatch(mat, player)) {
+                                instance.onArmorTick(stack, world, player);
+                            }
+                        } else {
                             instance.onArmorTick(stack, world, player);
                         }
-                    } else {
-                        instance.onArmorTick(stack, world, player);
                     }
-                }
-            });
-            //         }
+                });
+            }
         }
     }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         if (!mat.getBuffInstances().get().isEmpty()) {
-            tooltip.add(translate(YELLOW, "tooltip.armorplus.condition"));
+            tooltip.add(translate(YELLOW, "tooltip.armorplus.condition", mat.config().enableArmorEffects.get() ? "" : "(DISABLED)"));
             tooltip.add(translate(GOLD, "tooltip.armorplus.condition.full_set"));
             tooltip.add(translate(GREEN, "tooltip.armorplus.provides"));
             for (BuffInstance buff : mat.getBuffInstances().get()) {

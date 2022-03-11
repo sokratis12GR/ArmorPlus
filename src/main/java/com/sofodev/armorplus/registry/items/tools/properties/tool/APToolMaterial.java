@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.items.tools.properties.tool;
 
+import com.sofodev.armorplus.config.ArmorPlusConfig;
+import com.sofodev.armorplus.config.ArmorPlusConfig.*;
 import com.sofodev.armorplus.registry.items.APRarity;
 import com.sofodev.armorplus.registry.items.extras.BuffInstance;
 import com.sofodev.armorplus.utils.Utils;
@@ -16,6 +18,7 @@ import net.minecraft.world.World;
 import java.util.*;
 import java.util.function.Supplier;
 
+import static com.sofodev.armorplus.config.ArmorPlusConfig.*;
 import static com.sofodev.armorplus.registry.items.APRarity.OBSIDIAN;
 import static com.sofodev.armorplus.registry.items.APRarity.*;
 import static com.sofodev.armorplus.registry.items.extras.DeBuff.*;
@@ -26,19 +29,44 @@ import static net.minecraft.block.Blocks.*;
 public enum APToolMaterial implements IAPTool {
     COAL_MAT(COAL, COAL_PROP, () -> withBuffs(
             new BuffInstance(BLINDNESS, 0, 10)
-    )),
+    )) {
+        @Override
+        public MaterialConfig config() {
+            return coalMaterial;
+        }
+    },
     REDSTONE_MAT(REDSTONE, REDSTONE_PROP, () -> withBuffs(
             new BuffInstance(MINING_FATIGUE, 1, 10)
-    )),
+    )) {
+        @Override
+        public MaterialConfig config() {
+            return redstoneMaterial;
+        }
+    },
     LAPIS_MAT(LAPIS, LAPIS_PROP, () -> withBuffs(
             new BuffInstance(NAUSEA, 0, 10)
-    )),
+    )) {
+        @Override
+        public ArmorPlusConfig.MaterialConfig config() {
+            return lapisMaterial;
+        }
+    },
     EMERALD_MAT(EMERALD, EMERALD_PROP, () -> withBuffs(
             new BuffInstance(SLOWNESS, 0, 20)
-    )),
+    )) {
+        @Override
+        public ArmorPlusConfig.MaterialConfig config() {
+            return emeraldMaterial;
+        }
+    },
     OBSIDIAN_MAT(OBSIDIAN, OBSIDIAN_PROP, () -> withBuffs(
             new BuffInstance(WEAKNESS, 2, 20)
-    )),
+    )) {
+        @Override
+        public ArmorPlusConfig.MaterialConfig config() {
+            return obsidianMaterial;
+        }
+    },
     INFUSED_LAVA_MAT(INFUSED_LAVA, INFUSED_LAVA_PROP, () -> withBuffs(
             new BuffInstance(IGNITE)
     )) {
@@ -68,6 +96,11 @@ public enum APToolMaterial implements IAPTool {
             //    }
             //TODO: Implement a list of all vanilla block furnace recipes.
         }
+
+        @Override
+        public MaterialConfig config() {
+            return infusedLavaMaterial;
+        }
     },
     GUARDIAN_MAT(GUARDIAN, GUARDIAN_PROP, () -> withBuffs(
             new BuffInstance(WEAKNESS, 1, 4),
@@ -76,6 +109,11 @@ public enum APToolMaterial implements IAPTool {
         @Override
         public void onBlockMined(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity player) {
             //TODO: WIP (new guardian pickaxe effect)
+        }
+
+        @Override
+        public MaterialConfig config() {
+            return guardianMaterial;
         }
     },
     SUPER_STAR_MAT(SUPER_STAR, SUPER_STAR_PROP, () -> withBuffs(
@@ -91,6 +129,11 @@ public enum APToolMaterial implements IAPTool {
                 player.spawnAtLocation(new ItemStack(SOUL_SAND, 1), 0);
             }
         }
+
+        @Override
+        public MaterialConfig config() {
+            return superStarMaterial;
+        }
     },
     ENDER_DRAGON_MAT(ENDER_DRAGON, ENDER_DRAGON_PROP, () -> withBuffs(
             new BuffInstance(WITHER, 3, 4),
@@ -101,7 +144,11 @@ public enum APToolMaterial implements IAPTool {
             if (state == END_STONE.defaultBlockState() && random.nextInt(3) == 1) {
                 player.spawnAtLocation(new ItemStack(Items.ENDER_PEARL, 1), 0);
             }
+        }
 
+        @Override
+        public MaterialConfig config() {
+            return enderDragonMaterial;
         }
     },
     SLAYER_MAT(SLAYER, SLAYER_PROP, () -> withBuffs(
@@ -122,6 +169,11 @@ public enum APToolMaterial implements IAPTool {
             if (state == SAND.defaultBlockState() && random.nextInt(3) == 1) {
                 player.spawnAtLocation(new ItemStack(SOUL_SAND, 1), 0);
             }
+        }
+
+        @Override
+        public MaterialConfig config() {
+            return slayerMaterial;
         }
     };
 

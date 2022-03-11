@@ -9,7 +9,7 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import static com.sofodev.armorplus.config.APConfig.COMMON;
+import static com.sofodev.armorplus.config.ArmorPlusConfig.*;
 import static com.sofodev.armorplus.registry.ModConfiguredFeatures.*;
 import static java.util.Arrays.stream;
 import static net.minecraft.world.biome.Biome.Category.*;
@@ -26,15 +26,15 @@ public class WorldGenEvents {
         boolean isFreezing = event.getClimate().temperatureModifier == FROZEN;
 
         if (!matchesBiomes(event.getCategory(), ICY, THEEND, OCEAN, NONE)) {
-            withConfiguration(event, CF_ORE_LAVA_CR_STONE, COMMON.oreLavaCrystalStone.enabled.get());
-            withConfiguration(event, CF_ORE_LAVA_CR_OBSIDIAN, COMMON.oreLavaCrystalObsidian.enabled.get());
-            withConfiguration(event, CF_ORE_LAVA_CRYSTAL, COMMON.oreLavaCrystalCompressed.enabled.get());
+            withConfiguration(event, CF_ORE_LAVA_CR_STONE, oreLavaCrystalStone.enabled.get());
+            withConfiguration(event, CF_ORE_LAVA_CR_OBSIDIAN, oreLavaCrystalObsidian.enabled.get());
+            withConfiguration(event, CF_ORE_LAVA_CRYSTAL, oreLavaCrystalCompressed.enabled.get());
         }
 
         if (isSnowy || isSnowing || isFreezing) {
-            withConfiguration(event, CF_ORE_FROST_CR_STONE, COMMON.oreFrostCrystalStone.enabled.get());
-            withConfiguration(event, CF_ORE_FROST_CR_OBSIDIAN, COMMON.oreFrostCrystalObsidian.enabled.get());
-            withConfiguration(event, CF_ORE_FROST_CRYSTAL, COMMON.oreFrostCrystalCompressed.enabled.get());
+            withConfiguration(event, CF_ORE_FROST_CR_STONE, oreFrostCrystalStone.enabled.get());
+            withConfiguration(event, CF_ORE_FROST_CR_OBSIDIAN, oreFrostCrystalObsidian.enabled.get());
+            withConfiguration(event, CF_ORE_FROST_CRYSTAL, oreFrostCrystalCompressed.enabled.get());
         }
     }
 

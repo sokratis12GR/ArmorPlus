@@ -9,7 +9,7 @@ public class CrystalOreBlock extends OreBlock {
 
     public CrystalOreBlock(Variant variant) {
         super(Properties.of(Material.STONE).strength(variant.getHardness(), variant.getResistance()).requiresCorrectToolForDrops()
-                .lightLevel((light) -> 8).harvestTool(PICKAXE).harvestLevel(variant.getHarvestLevel())
+                .lightLevel((light) -> variant.getLightValue()).harvestTool(PICKAXE).harvestLevel(variant.getHarvestLevel())
         );
     }
 

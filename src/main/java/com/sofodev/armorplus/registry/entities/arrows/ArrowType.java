@@ -86,7 +86,7 @@ public class ArrowType {
     }
 
     public TranslationTextComponent getAbilityDescription() {
-        return new TranslationTextComponent("info.armorplus." + getName() + "_arrow.ability_desc");
+        return new TranslationTextComponent("tooltip.armorplus." + getName() + "_arrow.ability_desc");
     }
 
     public TextFormatting getFormatting() {

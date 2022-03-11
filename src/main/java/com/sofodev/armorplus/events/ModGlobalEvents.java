@@ -179,7 +179,7 @@ public class ModGlobalEvents {
                 IAPArmor mat = ((APArmorItem) item).getMat();
                 boolean areExactMatch = areExactMatch(mat, player);
                 List<IBuff> buffList = mat.getBuffInstances().get().stream().map(BuffInstance::getBuff).collect(toList());
-                if (areExactMatch) {
+                if (areExactMatch && mat.config().enableArmorEffects.get()) {
                     if (!buffList.isEmpty()) {
                         if (buffList.contains(FLIGHT)) shouldApplyFlight(e, player);
                         if (buffList.contains(WATER_WEAKNESS)) shouldApplyWaterWeakness(player);
@@ -389,27 +389,32 @@ public class ModGlobalEvents {
         if (!world.isClientSide()) {
             if (!stack.isEmpty() && stack.getItem() instanceof TridentItem) {
                 enchantmentList = EnchantmentHelper.getEnchantments(stack);
-                hasUnknown = enchantmentList.containsKey(ENCHANTMENTS.getValue(setRL("unknown")));
-                BlockPos position = target.blockPosition();
-                LightningBoltEntity northBolt = EntityType.LIGHTNING_BOLT.create(world);
-                LightningBoltEntity southBolt = EntityType.LIGHTNING_BOLT.create(world);
-                LightningBoltEntity westBolt = EntityType.LIGHTNING_BOLT.create(world);
-                LightningBoltEntity eastBolt = EntityType.LIGHTNING_BOLT.create(world);
-                LightningBoltEntity centreBolt = EntityType.LIGHTNING_BOLT.create(world);
-                if (northBolt != null && southBolt != null && westBolt != null && eastBolt != null && centreBolt != null) {
-                    northBolt.moveTo(atBottomCenterOf(position.north(1)));
-                    southBolt.moveTo(atBottomCenterOf(position.south(1)));
-                    westBolt.moveTo(atBottomCenterOf(position.west(1)));
-                    eastBolt.moveTo(atBottomCenterOf(position.east(1)));
-                    centreBolt.moveTo(atBottomCenterOf(position));
-                    world.addFreshEntity(northBolt);
-                    world.addFreshEntity(southBolt);
-                    world.addFreshEntity(westBolt);
-                    world.addFreshEntity(eastBolt);
-                    world.addFreshEntity(centreBolt);
+                if (!enchantmentList.isEmpty()) {
+                    hasUnknown = enchantmentList.containsKey(ENCHANTMENTS.getValue(setRL("unknown")));
+                    if (hasUnknown) {
+                        BlockPos position = target.blockPosition();
+
+                        LightningBoltEntity northBolt = EntityType.LIGHTNING_BOLT.create(world);
+                        LightningBoltEntity southBolt = EntityType.LIGHTNING_BOLT.create(world);
+                        LightningBoltEntity westBolt = EntityType.LIGHTNING_BOLT.create(world);
+                        LightningBoltEntity eastBolt = EntityType.LIGHTNING_BOLT.create(world);
+                        LightningBoltEntity centreBolt = EntityType.LIGHTNING_BOLT.create(world);
+                        if (northBolt != null && southBolt != null && westBolt != null && eastBolt != null && centreBolt != null) {
+                            northBolt.moveTo(atBottomCenterOf(position.north(1)));
+                            southBolt.moveTo(atBottomCenterOf(position.south(1)));
+                            westBolt.moveTo(atBottomCenterOf(position.west(1)));
+                            eastBolt.moveTo(atBottomCenterOf(position.east(1)));
+                            centreBolt.moveTo(atBottomCenterOf(position));
+                            world.addFreshEntity(northBolt);
+                            world.addFreshEntity(southBolt);
+                            world.addFreshEntity(westBolt);
+                            world.addFreshEntity(eastBolt);
+                            world.addFreshEntity(centreBolt);
+                        }
+                        player.addEffect(new EffectInstance(SLOWNESS.getEffect(), convertToSeconds(4)));
+                        player.addEffect(new EffectInstance(MINING_FATIGUE.getEffect(), convertToSeconds(4)));
+                    }
                 }
-                player.addEffect(new EffectInstance(SLOWNESS.getEffect(), convertToSeconds(4)));
-                player.addEffect(new EffectInstance(MINING_FATIGUE.getEffect(), convertToSeconds(4)));
             }
         }
         if (player.isOnGround() && movedDistance < (double) player.getSpeed() && stack.getItem() instanceof APMaceItem) {

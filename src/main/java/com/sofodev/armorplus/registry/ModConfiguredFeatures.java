@@ -13,7 +13,7 @@ import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 import net.minecraftforge.fml.RegistryObject;
 
-import static com.sofodev.armorplus.config.APConfig.COMMON;
+import static com.sofodev.armorplus.config.ArmorPlusConfig.*;
 import static com.sofodev.armorplus.registry.ModBlocks.*;
 import static com.sofodev.armorplus.registry.features.APOreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD;
 import static com.sofodev.armorplus.utils.Utils.setRL;
@@ -23,17 +23,17 @@ public class ModConfiguredFeatures {
 
     //Configured Features
     public static final ConfiguredFeature<?, ?> CF_ORE_LAVA_CR_STONE = createOreConfiguredFeature(BASE_STONE_OVERWORLD, ORE_LAVA_CRYSTAL_STONE,
-            COMMON.oreLavaCrystalStone.veinSize.get(), COMMON.oreLavaCrystalStone.offset.get(), COMMON.oreLavaCrystalStone.range.get());
+            oreLavaCrystalStone.veinSize.get(), oreLavaCrystalStone.minY.get(), oreLavaCrystalStone.maxY.get());
     public static final ConfiguredFeature<?, ?> CF_ORE_LAVA_CR_OBSIDIAN = createOreConfiguredFeature(BASE_STONE_OVERWORLD, ORE_LAVA_CRYSTAL_OBSIDIAN,
-            COMMON.oreLavaCrystalObsidian.veinSize.get(), COMMON.oreLavaCrystalObsidian.offset.get(), COMMON.oreLavaCrystalObsidian.range.get());
+            oreLavaCrystalObsidian.veinSize.get(), oreLavaCrystalObsidian.minY.get(), oreLavaCrystalObsidian.maxY.get());
     public static final ConfiguredFeature<?, ?> CF_ORE_LAVA_CRYSTAL = createOreConfiguredFeature(BASE_STONE_OVERWORLD, ORE_LAVA_CRYSTAL,
-            COMMON.oreLavaCrystalCompressed.veinSize.get(), COMMON.oreLavaCrystalCompressed.offset.get(), COMMON.oreLavaCrystalCompressed.range.get());
+            oreLavaCrystalCompressed.veinSize.get(), oreLavaCrystalCompressed.minY.get(), oreLavaCrystalCompressed.maxY.get());
     public static final ConfiguredFeature<?, ?> CF_ORE_FROST_CR_STONE = createOreConfiguredFeature(BASE_STONE_OVERWORLD, ORE_FROST_CRYSTAL_STONE,
-            COMMON.oreFrostCrystalStone.veinSize.get(), COMMON.oreFrostCrystalStone.offset.get(), COMMON.oreFrostCrystalStone.range.get());
+            oreFrostCrystalStone.veinSize.get(), oreFrostCrystalStone.minY.get(), oreFrostCrystalStone.maxY.get());
     public static final ConfiguredFeature<?, ?> CF_ORE_FROST_CR_OBSIDIAN = createOreConfiguredFeature(BASE_STONE_OVERWORLD, ORE_FROST_CRYSTAL_OBSIDIAN,
-            COMMON.oreFrostCrystalObsidian.veinSize.get(), COMMON.oreFrostCrystalObsidian.offset.get(), COMMON.oreFrostCrystalObsidian.range.get());
+            oreFrostCrystalObsidian.veinSize.get(), oreFrostCrystalObsidian.minY.get(), oreFrostCrystalObsidian.maxY.get());
     public static final ConfiguredFeature<?, ?> CF_ORE_FROST_CRYSTAL = createOreConfiguredFeature(BASE_STONE_OVERWORLD, ORE_FROST_CRYSTAL,
-            COMMON.oreFrostCrystalCompressed.veinSize.get(), COMMON.oreFrostCrystalCompressed.offset.get(), COMMON.oreFrostCrystalCompressed.range.get());
+            oreFrostCrystalCompressed.veinSize.get(), oreFrostCrystalCompressed.minY.get(), oreFrostCrystalCompressed.maxY.get());
 
     public static final SurfaceBuilderConfig CONFIG_SOUL_VALLEY = new SurfaceBuilderConfig(SOUL_SOIL.defaultBlockState(), SOUL_SOIL.defaultBlockState(), SOUL_SAND.defaultBlockState());
     public static final SurfaceBuilderConfig CONFIG_POSSESSED_GROUNDS = new SurfaceBuilderConfig(BASALT.defaultBlockState(), BLACKSTONE.defaultBlockState(), GRAVEL.defaultBlockState());
@@ -59,15 +59,15 @@ public class ModConfiguredFeatures {
      * <p>
      * The filling block will be determined by the specified {@link RuleTest} in {@param replace}, and the filler will be our block of choice {@param block}.
      * We can determine the size of the veins that can appear by tweaking the {@param veinSize} accordingly.
-     * Then we set the minimal offset (Y coordinate) that the ore generation can occur via {@param yOffset}.
-     * And finally we can adjust the maximum length (Y coordinate) that our ore generation can occur by changing the {@param yRange}.
+     * Then we set the minimal offset (Y coordinate) that the ore generation can occur via {@param minY}.
+     * And finally we can adjust the maximum length (Y coordinate) that our ore generation can occur by changing the {@param maxY}.
      *
      * @return The finished ConfiguredFeature entry.
      */
-    private static ConfiguredFeature<?, ?> createOreConfiguredFeature(RuleTest replace, RegistryObject<Block> block, int veinSize, int yOffset, int yRange) {
+    private static ConfiguredFeature<?, ?> createOreConfiguredFeature(RuleTest replace, RegistryObject<Block> block, int veinSize, int minY, int maxY) {
         return ModFeatures.ORE_CONFIG.get()
                 .configured(new APOreFeatureConfig(replace, block.get().defaultBlockState(), veinSize))
-                .decorated(Placement.RANGE.configured(new TopSolidRangeConfig(yOffset, 0, yRange)))
+                .decorated(Placement.RANGE.configured(new TopSolidRangeConfig(minY, 0, maxY)))
                 .squared();
     }
 
