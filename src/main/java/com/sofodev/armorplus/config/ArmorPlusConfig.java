@@ -6,6 +6,7 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.util.List;
 
+import static com.sofodev.armorplus.ArmorPlus.MODNAME;
 import static java.util.Arrays.asList;
 
 public class ArmorPlusConfig {
@@ -37,6 +38,15 @@ public class ArmorPlusConfig {
     public static OreConfig oreFrostCrystalObsidian;
     public static OreConfig oreFrostCrystalCompressed;
 
+    public static ConfigValueListener<List<? extends String>> enchantsThatWontWorkWithSoulHarden;
+    public static BossDropConfig witherBossDrops;
+    public static BossDropConfig enderDragonDrops;
+    public static BossDropConfig elderGuardianDrops;
+    public static DropConfig witherSkeletonDrops;
+    public static DropConfig guardianDrops;
+    public static DropConfig endermanDrops;
+    public static DropConfig blazeDrops;
+
     public ArmorPlusConfig(ForgeConfigSpec.Builder builder, ConfigHelper.Subscriber subscriber) {
         //Advancements
         builder.comment("Configure advancements")
@@ -60,13 +70,13 @@ public class ArmorPlusConfig {
                 .defineList("smeltingInput", asList("minecraft:iron_ore", "minecraft:gold_ore",
                                 "minecraft:sand", "minecraft:sandstone", "minecraft:wet_sponge", "minecraft:clay", "minecraft:stone_bricks", "minecraft:cobblestone", "minecraft:stone",
                                 "minecraft:acacia_log", "minecraft:birch_log", "minecraft:dark_oak_log", "minecraft:jungle_log", "minecraft:oak_log", "minecraft:spruce_log",
-                                "minecraft:netherrack", "minecraft:ancient_debris", "minecraft:stone_bricks"),
+                                "minecraft:netherrack", "minecraft:ancient_debris", "minecraft:stone_bricks", "armorplus:ore_lava_crystal", "armorplus:ore_frost_crystal"),
                         s -> ResourceLocation.tryParse((String) s) != null));
         autoSmeltingOutput = subscriber.subscribe(builder.comment("Infused Lava Tools: Smelting Recipe Output (Items)")
                 .defineList("smeltingOutput", asList("minecraft:iron_ingot", "minecraft:gold_ingot", "minecraft:glass", "minecraft:smooth_sandstone", "minecraft:sponge",
                                 "minecraft:terracotta", "minecraft:cracked_stone_bricks", "minecraft:stone", "minecraft:stone",
                                 "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal",
-                                "minecraft:nether_brick", "minecraft:netherite_scrap", "minecraft:cracked_stone_bricks"),
+                                "minecraft:nether_brick", "minecraft:netherite_scrap", "minecraft:cracked_stone_bricks", "armorplus:infused_lava_crystal", "armorplus:infused_frost_crystal"),
                         s -> ResourceLocation.tryParse((String) s) != null));
         builder.pop(2);
         frostMaterial = new MaterialConfig(builder, subscriber, "frost");
@@ -84,6 +94,22 @@ public class ArmorPlusConfig {
         oreFrostCrystalStone = new OreConfig(builder, subscriber, "frost_crystal_stone", 5, 0.5, 12, 20);
         oreFrostCrystalObsidian = new OreConfig(builder, subscriber, "frost_crystal_obsidian", 4, 0.3, 6, 10);
         oreFrostCrystalCompressed = new OreConfig(builder, subscriber, "frost_crystal_compressed", 3, 0.1, 0, 4);
+        builder.pop();
+        builder.comment("Enchantment Configuration").push("enchantments");
+        enchantsThatWontWorkWithSoulHarden = subscriber.subscribe(builder.comment("is a list of registry names that will not work with the enchantment \"Soul Harden\"")
+                .defineList("disallowWithSoulHardenList",
+                        asList("minecraft:mending", "minecraft:unbreaking", "minecraft:vanishing_curse"),
+                        s -> ResourceLocation.tryParse((String) s) != null)
+        );
+        builder.pop();
+        builder.comment("Mob Drops Configuration").push("drops");
+        witherBossDrops = new BossDropConfig(builder, subscriber, "wither_boss");
+        enderDragonDrops = new BossDropConfig(builder, subscriber, "ender_dragon");
+        elderGuardianDrops = new BossDropConfig(builder, subscriber, "elder_guardian");
+        witherSkeletonDrops = new DropConfig(builder, subscriber, "wither_skeleton");
+        guardianDrops = new DropConfig(builder, subscriber, "guardian");
+        endermanDrops = new DropConfig(builder, subscriber, "enderman");
+        blazeDrops = new DropConfig(builder, subscriber, "blaze");
         builder.pop();
     }
 
@@ -116,12 +142,45 @@ public class ArmorPlusConfig {
         public ConfigValueListener<Boolean> enableWeaponEffects;
 
         public MaterialConfig(ForgeConfigSpec.Builder builder, ConfigHelper.Subscriber subscriber, String name) {
-            builder.comment(name + " equipment Configuration")
+            builder.comment(name + " equipment configuration")
                     .push(name);
             enableArmorEffects = subscriber.subscribe(builder.comment(name + " armor: enable/disable full set effects")
                     .define("enableArmorEffects", true));
             enableWeaponEffects = subscriber.subscribe(builder.comment(name + " weapons: enable/disable on hit effects")
                     .define("enableWeaponEffects", true));
+            builder.pop();
+        }
+    }
+
+    public static class DropConfig {
+        public ConfigValueListener<Boolean> enableRegularDrops;
+        public ConfigValueListener<Boolean> enableSoulDrops; //Obtained via Soul Stealer
+
+        public DropConfig(ForgeConfigSpec.Builder builder, ConfigHelper.Subscriber subscriber, String name) {
+            builder.comment(name + " drop configuration")
+                    .push(name);
+            enableRegularDrops = subscriber.subscribe(builder.comment(MODNAME + "'s " + name + " regular drops: enable/disable")
+                    .define("enableRegularDrops", true));
+            enableSoulDrops = subscriber.subscribe(builder.comment(MODNAME + "'s " + name + " soul drops: enable/disable")
+                    .define("enableSoulDrops", true));
+            builder.pop();
+        }
+    }
+
+    public static class BossDropConfig {
+        public ConfigValueListener<Boolean> enableTrophyDrops;
+        public ConfigValueListener<Boolean> enableRegularDrops;
+        public ConfigValueListener<Boolean> enableSoulDrops; //Obtained via Soul Stealer
+
+        public BossDropConfig(ForgeConfigSpec.Builder builder, ConfigHelper.Subscriber subscriber, String name) {
+            builder.comment(name + " drop configuration")
+                    .push(name);
+            enableTrophyDrops = subscriber.subscribe(builder.comment(MODNAME + "'s " + name + " trophy drops: enable/disable")
+                    .define("enableTrophyDrops", true));
+            enableRegularDrops = subscriber.subscribe(builder.comment(MODNAME + "'s " + name + " regular drops: enable/disable")
+                    .define("enableRegularDrops", true));
+            enableSoulDrops = subscriber.subscribe(builder.comment(MODNAME + "'s " + name + " soul drops: enable/disable")
+                    .define("enableSoulDrops", true));
             builder.pop();
         }
     }

@@ -109,7 +109,7 @@ public enum APArmorMaterial implements IAPArmor {
     SUPER_STAR(SUPER_STAR_PROP, true, WHITE, () -> withBuffs(
             new BuffInstance(WITHER_IMMUNITY),
             new BuffInstance(REGENERATION, 0),
-            new BuffInstance(FIRE_RESISTANCE),
+            new BuffInstance(FIRE_RESISTANCE, 0),
             new BuffInstance(FIRE_EXTINGUISH)
     )) {
         @Override

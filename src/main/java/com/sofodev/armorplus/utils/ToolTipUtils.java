@@ -41,7 +41,7 @@ public class ToolTipUtils {
 
     public static void addBuffInformation(IAPTool tool, List<ITextComponent> tooltip, String condition, boolean applyToSelf, boolean enabled) {
         if (!tool.getBuffInstances().get().isEmpty()) {
-            tooltip.add(translate(YELLOW, "tooltip.armorplus.condition", enabled ? "(DISABLED)" : ""));
+            tooltip.add(translate(YELLOW, "tooltip.armorplus.condition", enabled ? "" : "(DISABLED)"));
             tooltip.add(translate(GOLD, "tooltip.armorplus.condition." + condition));
             tooltip.add(translate(GREEN, "tooltip.armorplus." + (applyToSelf ? "provides" : "applies")));
             for (BuffInstance buff : tool.getBuffInstances().get()) {

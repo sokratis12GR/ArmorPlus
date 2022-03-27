@@ -1,8 +1,33 @@
+ArmorPlus 1.16.5-16.7.0
+----------------------------
+
+* Added new enchant
+    * **Soul Harden**: Your armor/wearable doesn't take any damage from anything, but takes half of its "max" durability
+      as damage when the player who had it equipped previously was slain.
+        * MAX Uses: 2 Soul Bound Durability uses
+        * Added a config to check for which enchants it cannot be used with (by default mending, unbreaking, curse of
+          vanishing).
+* Added the following COMMON config entries
+    * Mob drops added by ArmorPlus can now be enabled and/or disabled for each individual entity
+        * enableRegularDrops (Default: true)
+        * enableTrophyDrops (Default: true)
+        * enableSoulDrops (Default: true)
+* Fixed (DISABLED) being displayed for enabled effects instead of disabled effects for tools.
+* Infused Lava Crystal Pickaxe will now always infuse a crystal dropped from compressed obsidian variant of the lava
+  and/or frost crystal ore (added to default config)
+* Fixed & Updated the `/armorplus patreon` command which is now `/armorplus support`, and now lists both GitHub sponsors
+  and Patreon as options with which one could support development.
+    * Was previously using the `/armorplus wiki` localization/translations which lead to issues with execution.
+* Fixed a few instances where the Fire Resistance buff wasn't applied correctly.
+* Changed the Obsidian Stick recipe from a shapeless 2 obsidian requirement to a shaped recipe in 2 rows, similar to the
+  wooden stick recipe but with obsidian.
+
 ArmorPlus 1.16.5-16.6.1
 ----------------------------
 
 * Added variant light levels for Crystal Ores:
-    * Stone: 0; Obsidian: 4; Compressed: 8; (To fit with their environment and to provide an indicator of how much value they hold)
+    * Stone: 0; Obsidian: 4; Compressed: 8; (To fit with their environment and to provide an indicator of how much value
+      they hold)
 * Fixes Trident's unknown enchantment effect being applied to all tridents.
 
 ArmorPlus 1.16.5-16.6.0
