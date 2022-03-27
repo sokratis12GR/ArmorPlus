@@ -1,5 +1,6 @@
 package com.sofodev.armorplus.data;
 
+import com.sofodev.armorplus.data.recipe.Grid;
 import com.sofodev.armorplus.data.recipe.GridInput;
 import com.sofodev.armorplus.data.recipe.Result;
 import com.sofodev.armorplus.registry.ModBlocks;
@@ -160,7 +161,7 @@ public class Recipes extends RecipeProvider implements DataProvider, IConditionB
         crafter.build(con, Result.build(SLAYER_SOUL.get(), 1).setGroup("slayer").setSuffix(""), ELDER_GUARDIAN_SOUL.get(), WITHER_BOSS_SOUL.get(), ENDER_DRAGON_SOUL.get());
         //Other
         crafter.build(con, Result.build(SOUL_BOX.get()).setGroup("villager").setSuffix(""), GridInput.build("ASA", "SGS", "ASA", 'A', 'S', 'G'), Items.STONE, SOUL_SAND, GLOWSTONE);
-        crafter.build(con, Result.build(OBSIDIAN_STICK.get(), 4).setGroup("materials").setSuffix(""), Items.OBSIDIAN, Items.OBSIDIAN);
+        crafter.build(con, Result.build(OBSIDIAN_STICK.get(), 4).setGroup("materials").setSuffix(""), GridInput.build(Grid.build("X", "X", " "), 'X'), Items.OBSIDIAN);
         crafter.build(con, Result.build(WOODEN_ROD.get(), 2).setGroup("materials").setSuffix(""), STICK, STICK, STICK, STICK);
         crafter.build(con, Result.build(SNOW_BRICK.get(), 4).setGroup("snow_brick").setSuffix(""), GridInput.buildSmallSquare('X'), SNOW_BLOCK);
         crafter.build(con, Result.build(SNOW_BRICK_STAIRS.get(), 4).setGroup("snow_brick_stairs").setSuffix(""), GridInput.buildStairs('X'), SNOW_BRICK.get());

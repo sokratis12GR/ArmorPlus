@@ -13,7 +13,7 @@ public class ArmorPlusCommand {
                 .then(Commands.literal("info").executes(ctx -> info(ctx.getSource())))
                 .then(Commands.literal("nodecraft").executes(ctx -> nodecraft(ctx.getSource())))
                 .then(Commands.literal("wiki").executes(ctx -> wiki(ctx.getSource())))
-                .then(Commands.literal("patreon").executes(ctx -> patreon(ctx.getSource())))
+                .then(Commands.literal("support").executes(ctx -> support(ctx.getSource())))
         );
     }
 
@@ -33,7 +33,7 @@ public class ArmorPlusCommand {
         return WikiCommand.execute(source);
     }
 
-    private static int patreon(CommandSourceStack source) {
-        return PatreonCommand.execute(source);
+    private static int support(CommandSourceStack source) {
+        return SupportCommand.execute(source);
     }
 }

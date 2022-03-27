@@ -46,6 +46,7 @@ import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.EntityStruckByLightningEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
@@ -58,12 +59,14 @@ import software.bernie.geckolib3.network.GeckoLibNetwork;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 import software.bernie.shadowed.eliotlash.mclib.utils.MathHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.stream.IntStream;
 
 import static com.sofodev.armorplus.ArmorPlus.LOGGER;
+import static com.sofodev.armorplus.config.ArmorPlusConfig.*;
 import static com.sofodev.armorplus.registry.ModEnchantments.SOUL_STEALER;
 import static com.sofodev.armorplus.registry.ModItems.FROST_CRYSTAL;
 import static com.sofodev.armorplus.registry.ModItems.LAVA_CRYSTAL;
@@ -190,25 +193,6 @@ public class ModGlobalEvents {
             }
         }
     }
-
-    @SubscribeEvent
-    public static void onLivingDamageEvent(LivingDamageEvent e) {
-        if (e.getSource().getEntity() instanceof Player) {
-            Player player = (Player) e.getSource().getEntity();
-            if (!player.level.isClientSide()) {
-                ItemStack stack = player.getMainHandItem();
-                Item item = stack.getItem();
-                if (item instanceof Tool) {
-                    IAPTool mat = ((Tool) item).getMat();
-                    List<IBuff> buffList = mat.getBuffInstances().get().stream().map(BuffInstance::getBuff).collect(toList());
-                    if (!buffList.isEmpty()) {
-                        if (buffList.contains(IGNITE)) IGNITE.hitEntity(stack, e.getEntityLiving(), player);
-                    }
-                }
-            }
-        }
-    }
-
 
     @SubscribeEvent
     public static void onVillagerTradesEvent(VillagerTradesEvent e) {
@@ -463,6 +447,109 @@ public class ModGlobalEvents {
         }
     }
 
+
+    //
+    // ITEMSTACK EVENTS
+    //
+
+    @SubscribeEvent
+    public static void onLivingDamageEvent(LivingDamageEvent event) {
+        LivingEntity entity = event.getEntityLiving();
+        if (entity instanceof Player) {
+            Player player = (Player) entity;
+            if (!player.level.isClientSide()) {
+                ItemStack stack = player.getMainHandItem();
+                Item item = stack.getItem();
+                if (item instanceof Tool) {
+                    IAPTool mat = ((Tool) item).getMat();
+                    List<IBuff> buffList = mat.getBuffInstances().get().stream().map(BuffInstance::getBuff).collect(toList());
+                    if (!buffList.isEmpty()) {
+                        if (buffList.contains(IGNITE)) IGNITE.hitEntity(stack, entity, player);
+                    }
+                }
+            }
+        }
+
+        List<ItemStack> armor = new ArrayList<>();
+        for (ItemStack slotStack : entity.getArmorSlots()) {
+            armor.add(slotStack);
+        }
+        if (!armor.isEmpty()) {
+            for (ItemStack stack : armor) {
+                Map<Enchantment, Integer> enchantmentList;
+                boolean hasSoulHarden;
+                if (!stack.isDamageableItem() || !(stack.getItem() instanceof ArmorItem)) {
+                    continue;
+                }
+                ArmorItem item = (ArmorItem) stack.getItem();
+                enchantmentList = EnchantmentHelper.getEnchantments(stack);
+                if (enchantmentList.isEmpty()) {
+                    continue;
+                }
+                hasSoulHarden = enchantmentList.containsKey(ENCHANTMENTS.getValue(setRL("soul_harden")));
+                if (!hasSoulHarden) {
+                    continue;
+                }
+                int maxDamageValue = stack.getMaxDamage(); // the max itemstack damage value
+                int currentDamageValue = maxDamageValue - stack.getDamageValue(); // Get the actual itemstack value
+                int halfDamageValue = Math.min(maxDamageValue / 2, Math.floorDiv(maxDamageValue, 2)); // We get the smallest possible number of a division by 2
+                if (currentDamageValue == maxDamageValue) {
+                    stack.setDamageValue(0);
+                } else {
+                    stack.setDamageValue(stack.getDamageValue() - 1);
+                }
+            }
+        }
+    }
+
+
+    /**
+     * By using the LivingDeathEvent event, we then check the slain entity's inventory (just before it's slain), and if
+     * it contained a list of armors we follow with the next steps of checking if said armors are valid, check if it has
+     * any enchantment and if said enchantment matches one of our criteria, in this case we check for "Soul Harden",
+     * afterwards we check the current amount of durability and act accordingly (full -> half, half -> none, remove item.)
+     *
+     * @param event The event is triggered only when an entity is killed/removed from the world.
+     */
+    @SubscribeEvent
+    public static void onLivingDeathEvent(LivingDeathEvent event) {
+        LivingEntity entity = event.getEntityLiving();
+        List<ItemStack> armor = new ArrayList<>();
+        for (ItemStack slotStack : entity.getArmorSlots()) {
+            armor.add(slotStack);
+        }
+        if (!armor.isEmpty()) {
+            for (ItemStack stack : armor) {
+                Map<Enchantment, Integer> enchantmentList;
+                boolean hasSoulHarden;
+                if (!stack.isDamageableItem() || !(stack.getItem() instanceof ArmorItem)) {
+                    continue;
+                }
+                ArmorItem item = (ArmorItem) stack.getItem();
+                enchantmentList = EnchantmentHelper.getEnchantments(stack);
+                if (enchantmentList.isEmpty()) {
+                    continue;
+                }
+                hasSoulHarden = enchantmentList.containsKey(ENCHANTMENTS.getValue(setRL("soul_harden")));
+                if (!hasSoulHarden) {
+                    continue;
+                }
+                int maxDamageValue = stack.getMaxDamage(); // the max itemstack damage value
+                int incomingDamageValue = stack.getDamageValue();
+                int currentDamageValue = maxDamageValue - incomingDamageValue; // Get the actual itemstack value
+                int halfDamageValue = Math.min(maxDamageValue / 2, Math.floorDiv(maxDamageValue, 2)); // We get the smallest possible number of a division by 2
+                if (currentDamageValue == maxDamageValue) {
+                    stack.setDamageValue(halfDamageValue);
+                } else if (incomingDamageValue >= halfDamageValue) {
+                    stack.setDamageValue(halfDamageValue);
+                } else {
+                    stack.setDamageValue(maxDamageValue);
+                    stack.setCount(0);
+                }
+            }
+        }
+    }
+
     //
     // ENTITY DROPS
     //
@@ -489,39 +576,45 @@ public class ModGlobalEvents {
         }
         if (entity != null) {
             if (entity instanceof WitherBoss) {
-                dropTrophyItem(entity, EntityType.WITHER, 0.2F);
-                dropItem(entity, "wither_bone", amountFourToSix);
-                if (hasSoulStealer) {
+                if (witherBossDrops.enableTrophyDrops.get()) dropTrophyItem(entity, EntityType.WITHER, 0.2F);
+                if (witherBossDrops.enableRegularDrops.get()) dropItem(entity, "wither_bone", amountFourToSix);
+                if (hasSoulStealer && witherBossDrops.enableSoulDrops.get()) {
                     dropItem(entity, "soul_wither_boss", 1);
                 }
             } else if (entity instanceof EnderDragon) {
-                dropTrophyItem(entity, EntityType.ENDER_DRAGON, 0.1F);
-                dropItem(entity, "ender_dragon_scale", amountFourToSix);
-                if (hasSoulStealer) {
+                if (enderDragonDrops.enableTrophyDrops.get()) dropTrophyItem(entity, EntityType.ENDER_DRAGON, 0.1F);
+                if (enderDragonDrops.enableRegularDrops.get()) dropItem(entity, "ender_dragon_scale", amountFourToSix);
+                if (hasSoulStealer && enderDragonDrops.enableSoulDrops.get()) {
                     dropItem(entity, "soul_ender_dragon", 1);
                 }
             } else if (entity instanceof ElderGuardian) {
-                dropTrophyItem(entity, EntityType.ELDER_GUARDIAN, 0.2F);
-                dropItem(entity, "guardian_scale", amountFourToSix);
-                if (hasSoulStealer) {
+                if (elderGuardianDrops.enableTrophyDrops.get()) dropTrophyItem(entity, EntityType.ELDER_GUARDIAN, 0.2F);
+                if (elderGuardianDrops.enableRegularDrops.get()) dropItem(entity, "guardian_scale", amountFourToSix);
+                if (hasSoulStealer && elderGuardianDrops.enableSoulDrops.get()) {
                     dropItem(entity, "soul_elder_guardian", 1);
                 }
             } else if (entity instanceof WitherSkeleton) {
-                dropItem(entity, "wither_bone", amountZeroToTwo);
-                if (hasSoulStealer && oneInFourChance) {
+                if (witherSkeletonDrops.enableRegularDrops.get()) dropItem(entity, "wither_bone", amountZeroToTwo);
+                if (hasSoulStealer && oneInFourChance && witherSkeletonDrops.enableSoulDrops.get()) {
                     dropItem(entity, "soul_wither_skeleton", 1);
                 }
             } else if (entity instanceof Guardian) {
-                dropItem(entity, "guardian_scale", amountZeroToTwo);
-                if (hasSoulStealer && oneInFourChance) {
+                if (guardianDrops.enableRegularDrops.get()) dropItem(entity, "guardian_scale", amountZeroToTwo);
+                if (hasSoulStealer && oneInFourChance && guardianDrops.enableSoulDrops.get()) {
                     dropItem(entity, "soul_guardian", 1);
                 }
             } else if (entity instanceof EnderMan) {
-                if (hasSoulStealer && oneInFourChance) {
+                if (endermanDrops.enableRegularDrops.get()) {
+                    //No drops as of this moment
+                }
+                if (hasSoulStealer && oneInFourChance && endermanDrops.enableSoulDrops.get()) {
                     dropItem(entity, "soul_enderman", 1);
                 }
             } else if (entity instanceof Blaze) {
-                if (hasSoulStealer && oneInFourChance) {
+                if (blazeDrops.enableRegularDrops.get()) {
+                    //No drops as of this moment
+                }
+                if (hasSoulStealer && oneInFourChance && blazeDrops.enableSoulDrops.get()) {
                     dropItem(entity, "soul_blaze", 1);
                 }
             }

@@ -1,3 +1,27 @@
+ArmorPlus 1.18.1-18.0.4 (BETA)
+----------------------------
+
+* Added native support for 1.18.2 (next release only 1.18.2+)
+* Added new enchant
+      * **Soul Harden**: Your armor/wearable doesn't take any damage from anything, but takes half of its "max" durability
+      as damage when the player who had it equipped previously was slain.
+        * MAX Uses: 2 Soul Bound Durability uses
+        * Added a config to check for which enchants it cannot be used with (by default mending, unbreaking, curse of
+          vanishing).
+* Added the following COMMON config entries
+    * Mob drops added by ArmorPlus can now be enabled and/or disabled for each individual entity
+        * enableRegularDrops (Default: true)
+        * enableTrophyDrops (Default: true)
+        * enableSoulDrops (Default: true)
+* Infused Lava Crystal Pickaxe will now always infuse a crystal dropped from compressed obsidian variant of the lava
+  and/or frost crystal ore (added to default config)
+* Fixed & Updated the `/armorplus patreon` command which is now `/armorplus support`, and now lists both GitHub sponsors
+  and Patreon as options with which one could support development.
+    * Was previously using the `/armorplus wiki` localization/translations which lead to issues with execution.
+* Fixed a few instances where the Fire Resistance buff wasn't applied correctly.
+* Changed the Obsidian Stick recipe from a shapeless 2 obsidian requirement to a shaped recipe in 2 rows, similar to the
+  wooden stick recipe but with obsidian.
+
 ArmorPlus 1.18.1-18.0.3 (BETA)
 ----------------------------
 

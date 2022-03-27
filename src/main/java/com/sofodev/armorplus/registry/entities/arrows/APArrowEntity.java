@@ -100,7 +100,7 @@ public abstract class APArrowEntity extends AbstractArrow {
 
     @Override
     public EntityType<?> getType() {
-        return this.type;
+        return this.type == null ? EntityType.ARROW : this.type;
     }
 
     @Override
