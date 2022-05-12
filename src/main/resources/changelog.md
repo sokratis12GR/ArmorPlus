@@ -1,3 +1,9 @@
+ArmorPlus 1.18.2-18.0.5 (BETA)
+----------------------------
+
+* Updated **ONLY** for 1.18.2+
+* Fixes TAG system related breaking changes that occur between versions.
+
 ArmorPlus 1.18.1-18.0.4 (BETA)
 ----------------------------
 

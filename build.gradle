@@ -27,7 +27,7 @@ println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getPro
 
 minecraft {
     //mappings channel: 'snapshot', version: '20201028-1.16.3'
-    mappings channel: 'official', version: '1.18.1'
+    mappings channel: 'official', version: '1.18.2'
 
     accessTransformer = file('src/main/resources/META-INF/armorplus_at.cfg')
 
@@ -84,7 +84,8 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.1-39.0.75'
+    minecraft 'net.minecraftforge:forge:1.18.2-40.0.32'
+//    minecraft 'net.minecraftforge:forge:1.18.2-40.0.25'
 
 //    implementation fg.deobf("curse.maven:geckolib-388172:3629662") //Geckolib (1.18-3.0.32)
     implementation fg.deobf("curse.maven:thedragonlib-248055:3584757") //TheDragonLib
@@ -159,7 +160,7 @@ curseforge {
         changelog = file('src/main/resources/changelog.md')
         changelogType = 'markdown'
         releaseType = 'beta'
-        addGameVersion '1.18.1'
+        addGameVersion '1.18.2'
         relations curseRelations
     }
 }
