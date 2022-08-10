@@ -1,17 +1,11 @@
-buildscript {
-    repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
-        maven { url "https://plugins.gradle.org/m2/" } // Required for CurseGradle
-        mavenCentral()
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-        classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.4.0" //CurseForge Gradle Plugin
-    }
+plugins {
+    id 'eclipse'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '5.1.+'
+    id "com.matthewprenger.cursegradle" version "1.4.0"
 }
 
 apply plugin: 'net.minecraftforge.gradle'
-// Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: "com.matthewprenger.cursegradle" // Required for CurseGradle
@@ -23,11 +17,10 @@ archivesBaseName = mod_id
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
+println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 
 minecraft {
-    //mappings channel: 'snapshot', version: '20201028-1.16.3'
-    mappings channel: 'official', version: '1.18.2'
+    mappings channel: 'official', version: '1.19.2'
 
     accessTransformer = file('src/main/resources/META-INF/armorplus_at.cfg')
 
@@ -38,8 +31,10 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'armorplus'
+
             mods {
-                examplemod {
+                armorplus {
                     source sourceSets.main
                 }
             }
@@ -49,6 +44,27 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'armorplus'
+            
+            mods {
+                armorplus {
+                    source sourceSets.main
+                }
+            }
+        }
+        
+        // This run config launches GameTestServer and runs all registered gametests, then exits.
+        // By default, the server will crash when no gametests are provided.
+        // The gametest system is also enabled by default for other run configs under the /test command.
+        gameTestServer {
+            workingDirectory project.file('run')
+
+            property 'forge.logging.markers', 'REGISTRIES'
+
+            property 'forge.logging.console.level', 'debug'
+
+            property 'forge.enabledGameTestNamespaces', 'armorplus'
+
             mods {
                 armorplus {
                     source sourceSets.main
@@ -62,7 +78,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
             args '--mod', 'armorplus', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
             mods {
-                examplemod {
+                armorplus {
                     source sourceSets.main
                 }
             }
@@ -84,30 +100,15 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.2-40.0.32'
-//    minecraft 'net.minecraftforge:forge:1.18.2-40.0.25'
+    //Game
+    minecraft 'net.minecraftforge:forge:1.19.2-43.0.0'
 
-//    implementation fg.deobf("curse.maven:geckolib-388172:3629662") //Geckolib (1.18-3.0.32)
-    implementation fg.deobf("curse.maven:thedragonlib-248055:3584757") //TheDragonLib
-    implementation fg.deobf("curse.maven:jei-238222:3599262") //JEI 1.18.1-9.2.1.69
-//    implementation fg.deobf("curse.maven:patchouli-306770:3630725") //Patchouli 1.18.1-65
-    implementation fg.deobf('software.bernie.geckolib:geckolib-1.18-forge:3.0.11')
+    //Required
+    implementation fg.deobf("curse.maven:thedragonlib-248055:3849178") //TheDragonLib
+    implementation fg.deobf("curse.maven:geckolib-388172:3918706") //geckolib-forge-1.19-3.1.14
+    implementation fg.deobf("curse.maven:jei-238222:3920263") //jei-1.19.1-forge-11.2.0.243
 
-//    implementation fg.deobf("curse.maven:cyanide-forge-541676:3545771") //Cyanide-Forge
-//    compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.16.4-50:api") //Patchouli
-//    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.16.4-50") //Patchouli
-//    implementation fg.deobf("curse.maven:mekanism:3183270") //Mekanism
-
-
-//    implementation fg.deobf('software.bernie.geckolib:forge-1.16.5-geckolib:3.0.13') //Geckolib
-//    implementation fg.deobf("curse.maven:ichunutil:3062089")
-//    implementation fg.deobf("curse.maven:tabula-minecraft-modeler:3062126")
-//    implementation fg.deobf("curse.maven:corail-tombstone:3169275")
-//    implementation fg.deobf("curse.maven:reliquary-v1-3:3119035")
-//    implementation fg.deobf("curse.maven:better-diving:3214276")
-//    implementation fg.deobf('curse.maven:minecolonies:3126211')
-//    implementation fg.deobf("curse.maven:structurize:3119907") //Minecolonie Dep
-    //implementation fg.deobf("curse.maven:blame:3181314")
+    //Optional
 
 }
 
@@ -160,8 +161,12 @@ curseforge {
         changelog = file('src/main/resources/changelog.md')
         changelogType = 'markdown'
         releaseType = 'beta'
-        addGameVersion '1.18.2'
+        addGameVersion '1.19'
         relations curseRelations
     }
 }
 //End CurseGradle Implementation
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
