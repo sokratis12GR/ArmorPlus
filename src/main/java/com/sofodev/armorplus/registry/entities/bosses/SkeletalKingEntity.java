@@ -8,7 +8,6 @@ import com.sofodev.armorplus.registry.entities.bosses.extras.SpecificServerBossI
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
@@ -115,7 +114,7 @@ public class SkeletalKingEntity extends Monster implements RangedAttackMob, IAni
 
     @Override
     public Component getCustomName() {
-        return new TextComponent("Skeletal King");
+        return Component.literal("Skeletal King");
     }
 
     @Override
@@ -178,7 +177,7 @@ public class SkeletalKingEntity extends Monster implements RangedAttackMob, IAni
                 split.setPos(getX(), getY(), getZ());
                 split.finalizeSpawn((ServerLevelAccessor) level, this.level.getCurrentDifficultyAt(new BlockPos(this.blockPosition())), MobSpawnType.NATURAL, null, null);
                 this.level.addFreshEntity(split);
-                split.setCustomName(new TextComponent(GOLD + "" + BOLD + name));
+                split.setCustomName(Component.literal(GOLD + "" + BOLD + name));
                 split.setCustomNameVisible(true);
                 split.setInvisible(false);
                 split.setInvulnerable(false);

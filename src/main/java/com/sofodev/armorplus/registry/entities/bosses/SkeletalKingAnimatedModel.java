@@ -9,17 +9,17 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 public class SkeletalKingAnimatedModel<T extends Mob & IAnimatable> extends AnimatedGeoModel<T> {
 
     @Override
-    public ResourceLocation getModelLocation(T object) {
+    public ResourceLocation getModelResource(T t) {
         return new ResourceLocation(ArmorPlus.MODID, "geo/skeletal_king.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureLocation(T object) {
+    public ResourceLocation getTextureResource(T t) {
         return new ResourceLocation(ArmorPlus.MODID, "textures/entity/dungeon/skeletal_king_texture.png");
     }
 
     @Override
-    public ResourceLocation getAnimationFileLocation(T object) {
+    public ResourceLocation getAnimationResource(T t) {
         return new ResourceLocation(ArmorPlus.MODID, "animations/skeletal_king.animation.json");
     }
 }

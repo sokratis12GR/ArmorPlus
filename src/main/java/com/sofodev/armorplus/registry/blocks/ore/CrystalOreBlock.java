@@ -1,12 +1,13 @@
 package com.sofodev.armorplus.registry.blocks.ore;
 
-import net.minecraft.world.level.block.OreBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 
-public class CrystalOreBlock extends OreBlock {
+public class CrystalOreBlock extends Block {
 
     public CrystalOreBlock(Variant variant) {
-        super(Properties.of(Material.STONE).strength(variant.getHardness(), variant.getResistance()).requiresCorrectToolForDrops()
+        super(BlockBehaviour.Properties.of(Material.STONE).strength(variant.getHardness(), variant.getResistance()).requiresCorrectToolForDrops()
                 .lightLevel((light) -> variant.getLightValue()));
     }
 

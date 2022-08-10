@@ -23,7 +23,7 @@ import static net.minecraft.world.entity.MobCategory.MISC;
 
 public class ModEntities {
 
-    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITIES, MODID);
+    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, MODID);
 
     //Arrows
     public static final RegistryObject<EntityType<APArrowEntity>> COAL_ARROW = register("coal_arrow",
@@ -62,7 +62,7 @@ public class ModEntities {
     // UTILITY METHODS //
     /////////////////////
 
-    public static <T extends Entity> RegistryObject<EntityType<T>> register(String name, Supplier<EntityType<T>> sup) {
+    public static <ENTITY extends Entity> RegistryObject<EntityType<ENTITY>> register(String name, Supplier<EntityType<ENTITY>> sup) {
         return ENTITY_TYPES.register(name, sup);
     }
 
@@ -73,12 +73,12 @@ public class ModEntities {
      * @param data      The Arrow data used for the creation of the entityAttachCapabilitiesEvent (in this case its name)
      * @return an EntityType object with all the required information.
      */
-    private static <T extends AbstractArrow> EntityType<T> buildArrow(EntityType.EntityFactory<T> factoryIn, ArrowType data) {
+    private static <ENTITY extends AbstractArrow> EntityType<ENTITY> buildArrow(EntityType.EntityFactory<ENTITY> factoryIn, ArrowType data) {
         return build(data.getItemArrowName(), EntityType.Builder.of(factoryIn, MISC).sized(0.5f, 0.5f));
     }
 
-    private static <T extends Entity> EntityType<T> build(EntityType.EntityFactory<T> factory, MobType data) {
-        EntityType.Builder<T> builder = EntityType.Builder.of(factory, data.getClassification())
+    private static <ENTITY extends Entity> EntityType<ENTITY> build(EntityType.EntityFactory<ENTITY> factory, MobType data) {
+        EntityType.Builder<ENTITY> builder = EntityType.Builder.of(factory, data.getClassification())
                 .setTrackingRange(data.getTrackingRange())
                 .sized(data.getWidth(), data.getHeight());
         if (data.isImmuneToFire()) {
@@ -88,7 +88,7 @@ public class ModEntities {
         return build(data.getName(), builder);
     }
 
-    private static <T extends Entity> EntityType<T> build(String id, EntityType.Builder<T> builder) {
+    private static <ENTITY extends Entity> EntityType<ENTITY> build(String id, EntityType.Builder<ENTITY> builder) {
         ResourceLocation rl = setRL(id);
         return builder.build(rl.toString());
     }

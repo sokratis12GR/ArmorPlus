@@ -16,11 +16,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.util.*;
 import java.util.function.Supplier;
 
+import static com.sofodev.armorplus.ArmorPlus.SMELTING_MAP;
 import static com.sofodev.armorplus.config.ArmorPlusConfig.*;
 import static com.sofodev.armorplus.registry.items.APRarity.OBSIDIAN;
 import static com.sofodev.armorplus.registry.items.APRarity.*;
 import static com.sofodev.armorplus.registry.items.extras.DeBuff.*;
-import static com.sofodev.armorplus.registry.items.tools.APPickaxeItem.SMELTING_MAP;
 import static com.sofodev.armorplus.registry.items.tools.properties.tool.APToolProperties.*;
 import static net.minecraft.world.item.Items.NETHERRACK;
 import static net.minecraft.world.item.Items.SOUL_SAND;

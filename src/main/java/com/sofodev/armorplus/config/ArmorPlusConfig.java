@@ -174,14 +174,14 @@ public class ArmorPlusConfig {
         public ConfigValueListener<Boolean> enableSoulDrops; //Obtained via Soul Stealer
 
         public BossDropConfig(ForgeConfigSpec.Builder builder, ConfigHelper.Subscriber subscriber, String name) {
-            builder.comment(name + " drop configuration")
+            builder.comment(name + " drop configuration" + " (CURRENTLY DISABLED BY THE MOD)")
                     .push(name);
             enableTrophyDrops = subscriber.subscribe(builder.comment(MODNAME + "'s " + name + " trophy drops: enable/disable")
-                    .define("enableTrophyDrops", true));
+                    .define("enableTrophyDrops", false));
             enableRegularDrops = subscriber.subscribe(builder.comment(MODNAME + "'s " + name + " regular drops: enable/disable")
-                    .define("enableRegularDrops", true));
+                    .define("enableRegularDrops", false));
             enableSoulDrops = subscriber.subscribe(builder.comment(MODNAME + "'s " + name + " soul drops: enable/disable")
-                    .define("enableSoulDrops", true));
+                    .define("enableSoulDrops", false));
             builder.pop();
         }
     }

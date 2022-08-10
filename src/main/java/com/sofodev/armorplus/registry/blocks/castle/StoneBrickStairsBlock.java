@@ -3,6 +3,7 @@ package com.sofodev.armorplus.registry.blocks.castle;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -148,8 +149,7 @@ public class StoneBrickStairsBlock extends Block implements SimpleWaterloggedBlo
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
-        this.modelBlock.animateTick(stateIn, worldIn, pos, rand);
+    public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, RandomSource rand) {
     }
 
     @Override
@@ -209,12 +209,12 @@ public class StoneBrickStairsBlock extends Block implements SimpleWaterloggedBlo
      * Performs a random tick on a block.
      */
     @Override
-    public void randomTick(BlockState state, ServerLevel worldIn, BlockPos pos, Random random) {
+    public void randomTick(BlockState state, ServerLevel worldIn, BlockPos pos, RandomSource random) {
         this.modelBlock.randomTick(state, worldIn, pos, random);
     }
 
     @Override
-    public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
+    public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, RandomSource rand) {
         this.modelBlock.tick(state, worldIn, pos, rand);
     }
 

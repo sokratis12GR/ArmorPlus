@@ -8,12 +8,14 @@ import com.sofodev.armorplus.registry.items.armors.APRepair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.fml.loading.FMLConfig;
 import net.minecraftforge.fml.loading.FMLPaths;
@@ -127,6 +129,14 @@ public final class Utils {
 
     public static Item getAPItem(String name) {
         return ForgeRegistries.ITEMS.getValue(setRL(name));
+    }
+
+    public static Item getAPItem(ResourceKey<Item> key) {
+        return ForgeRegistries.ITEMS.getDelegateOrThrow(key).get();
+    }
+
+    public static ItemStack createSingleStack(ItemLike item){
+        return new ItemStack(item, 1);
     }
 
     public static Block getAPBlock(String name) {

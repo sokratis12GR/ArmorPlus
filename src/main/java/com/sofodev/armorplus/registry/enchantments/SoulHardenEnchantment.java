@@ -8,6 +8,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
 import java.util.Objects;
@@ -35,9 +36,8 @@ public class SoulHardenEnchantment extends APEnchantment {
     protected boolean checkCompatibility(Enchantment ench) {
         List<Boolean> compatibilityList = enchantsThatWontWorkWithSoulHarden.get()
                 .stream()
-                .filter(enchant -> Objects.requireNonNull(ench.getRegistryName()).toString().equals(enchant))
-                .map(enchant -> false)
-                .collect(Collectors.toList());
+                .filter(enchant -> Objects.requireNonNull(ForgeRegistries.ENCHANTMENTS.getKey(ench)).toString().equals(enchant))
+                .map(enchant -> false).toList();
         return areAllCompatible(compatibilityList) && super.checkCompatibility(ench);
     }
 

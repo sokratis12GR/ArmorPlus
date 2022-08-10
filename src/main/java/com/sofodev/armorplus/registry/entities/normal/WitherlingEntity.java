@@ -1,9 +1,9 @@
 package com.sofodev.armorplus.registry.entities.normal;
 
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -41,7 +41,7 @@ public class WitherlingEntity extends Monster implements IAnimatable {
 
     @Override
     public Component getCustomName() {
-        return new TextComponent("Witherling");
+        return Component.literal("Witherling");
     }
 
     public static AttributeSupplier.Builder registerAttributes() {
@@ -76,11 +76,8 @@ public class WitherlingEntity extends Monster implements IAnimatable {
         return true;
     }
 
-    /**
-     * Gives armor or weapon for entity based on given DifficultyInstance
-     */
     @Override
-    protected void populateDefaultEquipmentSlots(DifficultyInstance difficulty) {
+    protected void populateDefaultEquipmentSlots(RandomSource p_217055_, DifficultyInstance p_217056_) {
         this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.STONE_AXE));
     }
 

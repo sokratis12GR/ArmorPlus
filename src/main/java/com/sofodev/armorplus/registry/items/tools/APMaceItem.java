@@ -17,7 +17,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.IItemRenderProperties;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import net.minecraftforge.network.PacketDistributor;
 import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -53,9 +53,8 @@ public class APMaceItem extends SwordItem implements IAnimatable, ISyncable {
     Random random = new Random();
 
     public APMaceItem(IAPMace mat, Item.Properties props) {
-        super(mat.get(), (int) (mat.get().getAttackDamageBonus() + mat.getType().getDmg()), mat.getType().getAttackSpeed(),
-                props.tab(ArmorPlus.AP_WEAPON_GROUP)
-        );
+        super(mat.get(), (int) (mat.get().getAttackDamageBonus() + mat.getType().getDmg()), mat.getType()
+                .getAttackSpeed(), props.tab(ArmorPlus.AP_WEAPON_GROUP));
         this.mat = mat;
         GeckoLibNetwork.registerSyncable(this);
     }
@@ -66,9 +65,9 @@ public class APMaceItem extends SwordItem implements IAnimatable, ISyncable {
     }
 
     @Override
-    public void initializeClient(Consumer<IItemRenderProperties> consumer) {
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
         super.initializeClient(consumer);
-        consumer.accept(new IItemRenderProperties() {
+        consumer.accept(new IClientItemExtensions() {
             private final BlockEntityWithoutLevelRenderer renderer = new APMaceRenderer();
 
             public BlockEntityWithoutLevelRenderer getItemStackRenderer() {
@@ -200,20 +199,20 @@ public class APMaceItem extends SwordItem implements IAnimatable, ISyncable {
         return UseAnim.NONE;
     }
 
-//    public void chargeAnimation(AnimationController<?> controller) {
-//        if (controller.getAnimationState() == AnimationState.Stopped) {
-//            controller.setAnimation(new AnimationBuilder()
-//                    .addAnimation("animation.mace.charge", false)
-//                    .addAnimation("animation.mace.hold_charge", true));
-//        }
-//    }
-//
-//    public void swingAnimation(AnimationController<?> controller) {
-//        if (controller.getAnimationState() == AnimationState.Stopped) {
-//            controller.markNeedsReload();
-//            controller.setAnimation(new AnimationBuilder().addAnimation("animation.mace.swing_attack", false));
-//        }
-//    }
+    //    public void chargeAnimation(AnimationController<?> controller) {
+    //        if (controller.getAnimationState() == AnimationState.Stopped) {
+    //            controller.setAnimation(new AnimationBuilder()
+    //                    .addAnimation("animation.mace.charge", false)
+    //                    .addAnimation("animation.mace.hold_charge", true));
+    //        }
+    //    }
+    //
+    //    public void swingAnimation(AnimationController<?> controller) {
+    //        if (controller.getAnimationState() == AnimationState.Stopped) {
+    //            controller.markNeedsReload();
+    //            controller.setAnimation(new AnimationBuilder().addAnimation("animation.mace.swing_attack", false));
+    //        }
+    //    }
 
     private void executeDestruction(Player player, IAPMace mat, Level world, ItemStack stack, BlockPos destructionPos, Direction direction, boolean flag) {
         this.destroyBlocksInLineDirectional(mat, world, destructionPos, direction, flag);
@@ -270,7 +269,7 @@ public class APMaceItem extends SwordItem implements IAnimatable, ISyncable {
      * @param pos   the BlockPos that we will use to destroy the block
      */
     private void destroyBlock(Level world, BlockPos pos) {
-        if (!WITHER_IMMUNE.contains(world.getBlockState(pos).getBlock())) world.destroyBlock(pos, true);
+        if (!world.getBlockState(pos).is(WITHER_IMMUNE)) world.destroyBlock(pos, true);
     }
 
     /**
@@ -309,8 +308,7 @@ public class APMaceItem extends SwordItem implements IAnimatable, ISyncable {
             AnimationController<?> controller = GeckoLibUtil.getControllerForID(this.factory, id, this.controllerName);
             if (controller.getAnimationState() == AnimationState.Stopped) {
                 controller.markNeedsReload();
-                controller.setAnimation(new AnimationBuilder()
-                        .addAnimation("animation.mace.charge", false)
+                controller.setAnimation(new AnimationBuilder().addAnimation("animation.mace.charge", false)
                         .addAnimation("animation.mace.hold_charge", true));
             }
         }

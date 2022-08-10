@@ -39,7 +39,7 @@ public class SoulItem extends Item {
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flagIn) {
         if (world != null && world.isClientSide) {
             if (entity != null && !entity.isEmpty()) {
-                EntityType<?> value = ForgeRegistries.ENTITIES.getValue(new ResourceLocation(entity));
+                EntityType<?> value = ForgeRegistries.ENTITY_TYPES.getValue(new ResourceLocation(entity));
                 if (value != null) {
                     Entity entity = value.create(world);
                     if (entity != null) {

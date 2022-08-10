@@ -9,17 +9,17 @@ import static com.sofodev.armorplus.utils.Utils.setRL;
 public class MaceModel extends AnimatedGeoModel<APMaceItem> {
 
     @Override
-    public ResourceLocation getModelLocation(APMaceItem item) {
+    public ResourceLocation getModelResource(APMaceItem item) {
         return setRL("geo/mace.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureLocation(APMaceItem item) {
+    public ResourceLocation getTextureResource(APMaceItem item) {
         return setRL("textures/items/" + item.mat.getName() + "_mace.png");
     }
 
     @Override
-    public ResourceLocation getAnimationFileLocation(APMaceItem item) {
+    public ResourceLocation getAnimationResource(APMaceItem item) {
         return setRL("animations/mace.animation.json");
     }
 }

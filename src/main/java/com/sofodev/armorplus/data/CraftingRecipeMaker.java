@@ -10,6 +10,7 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ArrowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -269,7 +270,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
         this.buildFilling(con, Result.build(arrow.get(), 8, group, path), material, Items.ARROW);
     }
 
-    public void buildColoredBrick(Consumer<FinishedRecipe> con, RegistryObject<Block> bricks, Tags.IOptionalNamedTag<Item> color) {
+    public void buildColoredBrick(Consumer<FinishedRecipe> con, RegistryObject<Block> bricks, TagKey<Item> color) {
         this.buildFilling(con, Result.build(bricks.get(), 8, "colored_stone_bricks", "bricks"), Items.STONE_BRICKS, of(color));
     }
 

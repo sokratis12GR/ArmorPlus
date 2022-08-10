@@ -59,20 +59,20 @@ public class ToolTipUtils {
     }
 
     public static MutableComponent translate(TextColor color, String key, Object... args) {
-        return new TranslatableComponent(key, args).setStyle(Style.EMPTY.withColor(color));
+        return Component.translatable(key, args).setStyle(Style.EMPTY.withColor(color));
     }
 
 
     public static MutableComponent translate(Style style, String key, Object... args) {
-        return new TranslatableComponent(key, args).setStyle(style);
+        return Component.translatable(key, args).setStyle(style);
     }
 
     public static MutableComponent translate(ChatFormatting formatting, String key, Object... args) {
-        return new TranslatableComponent(key, args).withStyle(formatting);
+        return Component.translatable(key, args).withStyle(formatting);
     }
 
     public static MutableComponent translate(String key, Object... args) {
-        return new TranslatableComponent(key, args);
+        return Component.translatable(key, args);
     }
 
 }

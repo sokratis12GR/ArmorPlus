@@ -16,7 +16,6 @@ public class DummyBiome {
                 .build();
         Biome.BiomeBuilder builder = new Biome.BiomeBuilder()
                 .precipitation(Biome.Precipitation.SNOW)
-                .biomeCategory(Biome.BiomeCategory.PLAINS)
                 .downfall(0.4f)
                 .temperature(0.0f)
                 .temperatureAdjustment(Biome.TemperatureModifier.FROZEN)

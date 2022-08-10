@@ -4,13 +4,11 @@ package com.sofodev.armorplus.events;
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.events.data.FlightData;
 import com.sofodev.armorplus.network.packet.PacketFlyingSync;
-import com.sofodev.armorplus.registry.ModItems;
 import com.sofodev.armorplus.registry.items.armors.APArmorItem;
 import com.sofodev.armorplus.registry.items.armors.IAPArmor;
 import com.sofodev.armorplus.registry.items.extras.BuffInstance;
 import com.sofodev.armorplus.registry.items.extras.IBuff;
 import com.sofodev.armorplus.registry.items.materials.FrostCrystalItem;
-import com.sofodev.armorplus.registry.items.tools.APMaceItem;
 import com.sofodev.armorplus.registry.items.tools.properties.mace.APMaceType;
 import com.sofodev.armorplus.registry.items.tools.properties.tool.IAPTool;
 import com.sofodev.armorplus.registry.items.tools.properties.tool.Tool;
@@ -19,6 +17,7 @@ import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.PlayerAdvancements;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -32,25 +31,21 @@ import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.*;
-import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.SpawnData;
-import net.minecraftforge.common.BasicItemListing;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.EntityStruckByLightningEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.network.PacketDistributor;
@@ -67,18 +62,13 @@ import java.util.stream.IntStream;
 
 import static com.sofodev.armorplus.ArmorPlus.LOGGER;
 import static com.sofodev.armorplus.config.ArmorPlusConfig.*;
-import static com.sofodev.armorplus.registry.ModEnchantments.SOUL_STEALER;
-import static com.sofodev.armorplus.registry.ModItems.FROST_CRYSTAL;
-import static com.sofodev.armorplus.registry.ModItems.LAVA_CRYSTAL;
-import static com.sofodev.armorplus.registry.ModVillagers.SOUL_EXCHANGER;
+import static com.sofodev.armorplus.registry.ModItems.THANK_YOU_6M;
 import static com.sofodev.armorplus.registry.items.extras.Buff.FLIGHT;
 import static com.sofodev.armorplus.registry.items.extras.Buff.WATER_WEAKNESS;
 import static com.sofodev.armorplus.registry.items.extras.DeBuff.*;
 import static com.sofodev.armorplus.utils.ItemArmorUtility.areExactMatch;
 import static com.sofodev.armorplus.utils.Utils.*;
-import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
-import static net.minecraft.world.item.Items.*;
 import static net.minecraft.world.phys.Vec3.atBottomCenterOf;
 import static net.minecraftforge.registries.ForgeRegistries.ENCHANTMENTS;
 
@@ -92,7 +82,7 @@ public class ModGlobalEvents {
 
     @SubscribeEvent
     public static void onArrowLooseEvent(ArrowLooseEvent e) {
-        Level world = e.getWorld();
+        Level world = e.getLevel();
         if (!world.isClientSide()) {
             ItemStack bow = e.getBow();
             int charge = e.getCharge();
@@ -180,7 +170,7 @@ public class ModGlobalEvents {
                 }
                 IAPArmor mat = ((APArmorItem) item).getMat();
                 boolean areExactMatch = areExactMatch(mat, player);
-                List<IBuff> buffList = mat.getBuffInstances().get().stream().map(BuffInstance::getBuff).collect(toList());
+                List<IBuff> buffList = mat.getBuffInstances().get().stream().map(BuffInstance::getBuff).toList();
                 if (areExactMatch && mat.config().enableArmorEffects.get()) {
                     if (!buffList.isEmpty()) {
                         if (buffList.contains(FLIGHT)) shouldApplyFlight(e, player);
@@ -194,31 +184,32 @@ public class ModGlobalEvents {
         }
     }
 
-    @SubscribeEvent
+    /*@SubscribeEvent
     public static void onVillagerTradesEvent(VillagerTradesEvent e) {
         Random rand = new Random();
+        RandomSource randSource = RandomSource.create();
         VillagerProfession type = e.getType();
-        if (type.equals(SOUL_EXCHANGER.get())) {
-            ItemStack witherSoul = new ItemStack(ModItems.WITHER_BOSS_SOUL.get(), 1);
-            ItemStack enderDragonSoul = new ItemStack(ModItems.ENDER_DRAGON_SOUL.get(), 1);
-            ItemStack elderGuardianSoul = new ItemStack(ModItems.ELDER_GUARDIAN_SOUL.get(), 1);
+        if (type.equals(ForgeRegistries.VILLAGER_PROFESSIONS.getValue(setRL("soul_exchanger")))) {
+            ItemStack witherSoul = new ItemStack(getAPItem(WITHER_BOSS_SOUL.getKey()), 1);
+            ItemStack enderDragonSoul = new ItemStack(getAPItem(ENDER_DRAGON_SOUL.getKey()), 1);
+            ItemStack elderGuardianSoul = new ItemStack(getAPItem(ELDER_GUARDIAN_SOUL.getKey()), 1);
             e.getTrades().put(1, asList(
-                    new BasicItemListing(new ItemStack(EMERALD, 3 + rand.nextInt(5)), new ItemStack(ModItems.LAVA_SHARD.get(), 3 + rand.nextInt(3)), 16, 2, 0.4f),
-                    new BasicItemListing(new ItemStack(EMERALD, 3 + rand.nextInt(5)), new ItemStack(ModItems.FROST_SHARD.get(), 3 + rand.nextInt(3)), 16, 2, 0.4f),
+                    new BasicItemListing(new ItemStack(EMERALD, 3 + rand.nextInt(5)), new ItemStack(LAVA_SHARD.get(), 3 + rand.nextInt(3)), 16, 2, 0.4f),
+                    new BasicItemListing(new ItemStack(EMERALD, 3 + rand.nextInt(5)), new ItemStack(FROST_SHARD.get(), 3 + rand.nextInt(3)), 16, 2, 0.4f),
                     new BasicItemListing(new ItemStack(EMERALD, 3 + rand.nextInt(5)), new ItemStack(Items.BLAZE_POWDER, 3 + rand.nextInt(3)), 16, 2, 0.4f)
             ));
             e.getTrades().put(2, asList(
-                    new BasicItemListing(new ItemStack(EMERALD, 6 + rand.nextInt(4)), new ItemStack(ModItems.LAVA_SHARD.get(), 5 + rand.nextInt(4)), 8, 6, 0.2f),
-                    new BasicItemListing(new ItemStack(EMERALD, 6 + rand.nextInt(4)), new ItemStack(ModItems.FROST_SHARD.get(), 5 + rand.nextInt(4)), 8, 6, 0.2f),
+                    new BasicItemListing(new ItemStack(EMERALD, 6 + rand.nextInt(4)), new ItemStack(LAVA_SHARD.get(), 5 + rand.nextInt(4)), 8, 6, 0.2f),
+                    new BasicItemListing(new ItemStack(EMERALD, 6 + rand.nextInt(4)), new ItemStack(FROST_SHARD.get(), 5 + rand.nextInt(4)), 8, 6, 0.2f),
                     new BasicItemListing(new ItemStack(EMERALD, 6 + rand.nextInt(4)), new ItemStack(Items.BLAZE_ROD, 2 + rand.nextInt(2)), 8, 6, 0.2f),
                     new BasicItemListing(new ItemStack(EMERALD, 8 + rand.nextInt(6)), new ItemStack(LAVA_CRYSTAL.get(), 1 + rand.nextInt(2)), 8, 10, 0.2f),
                     new BasicItemListing(new ItemStack(EMERALD, 8 + rand.nextInt(6)), new ItemStack(FROST_CRYSTAL.get(), 1 + rand.nextInt(2)), 8, 10, 0.2f)
             ));
             e.getTrades().put(3, asList(
-                    new BasicItemListing(new ItemStack(LAVA_CRYSTAL.get(), 4 + rand.nextInt(20)), new ItemStack(SOUL_SAND, 4 + rand.nextInt(16)), new ItemStack(ModItems.WITHER_SKELETON_SOUL.get()), 6, 15, 0.05f),
-                    new BasicItemListing(new ItemStack(LAVA_CRYSTAL.get(), 4 + rand.nextInt(20)), new ItemStack(SOUL_SAND, 4 + rand.nextInt(16)), new ItemStack(ModItems.SLAYER_SOUL.get()), 6, 15, 0.05f),
-                    new BasicItemListing(new ItemStack(LAVA_CRYSTAL.get(), 4 + rand.nextInt(20)), new ItemStack(PRISMARINE, 4 + rand.nextInt(16)), new ItemStack(ModItems.GUARDIAN_SOUL.get()), 6, 15, 0.05f),
-                    new BasicItemListing(new ItemStack(LAVA_CRYSTAL.get(), 4 + rand.nextInt(20)), new ItemStack(END_STONE, 4 + rand.nextInt(16)), new ItemStack(ModItems.ENDERMAN_SOUL.get()), 6, 15, 0.05f)
+                    new BasicItemListing(new ItemStack(LAVA_CRYSTAL.get(), 4 + rand.nextInt(20)), new ItemStack(SOUL_SAND, 4 + rand.nextInt(16)), new ItemStack(WITHER_SKELETON_SOUL.get()), 6, 15, 0.05f),
+                    new BasicItemListing(new ItemStack(LAVA_CRYSTAL.get(), 4 + rand.nextInt(20)), new ItemStack(SOUL_SAND, 4 + rand.nextInt(16)), new ItemStack(SLAYER_SOUL.get()), 6, 15, 0.05f),
+                    new BasicItemListing(new ItemStack(LAVA_CRYSTAL.get(), 4 + rand.nextInt(20)), new ItemStack(PRISMARINE, 4 + rand.nextInt(16)), new ItemStack(GUARDIAN_SOUL.get()), 6, 15, 0.05f),
+                    new BasicItemListing(new ItemStack(LAVA_CRYSTAL.get(), 4 + rand.nextInt(20)), new ItemStack(END_STONE, 4 + rand.nextInt(16)), new ItemStack(ENDERMAN_SOUL.get()), 6, 15, 0.05f)
             ));
             ItemStack priceBook = EnchantedBookItem.createForEnchantment(new EnchantmentInstance(SOUL_STEALER.get(), 1));
             e.getTrades().put(4, asList(
@@ -234,12 +225,12 @@ public class ModGlobalEvents {
             //Boss Soul for Boss Soul exchange without cost.
             //Soul Stealer enchanted gear.
             int bound = 5 + rand.nextInt(15);
-            ItemStack priceILBA = EnchantmentHelper.enchantItem(rand, new ItemStack(getAPItem("infused_lava_battle_axe")), bound, false);
-            ItemStack priceILS = EnchantmentHelper.enchantItem(rand, new ItemStack(getAPItem("infused_lava_sword")), bound, false);
-            ItemStack priceDA = EnchantmentHelper.enchantItem(rand, new ItemStack(Items.DIAMOND_AXE), bound, false);
-            ItemStack priceDS = EnchantmentHelper.enchantItem(rand, new ItemStack(Items.DIAMOND_SWORD), bound, false);
-            ItemStack priceNA = EnchantmentHelper.enchantItem(rand, new ItemStack(Items.NETHERITE_AXE), bound, false);
-            ItemStack priceNS = EnchantmentHelper.enchantItem(rand, new ItemStack(Items.NETHERITE_SWORD), bound, false);
+            ItemStack priceILBA = EnchantmentHelper.enchantItem(randSource, new ItemStack(getAPItem("infused_lava_battle_axe")), bound, false);
+            ItemStack priceILS = EnchantmentHelper.enchantItem(randSource, new ItemStack(getAPItem("infused_lava_sword")), bound, false);
+            ItemStack priceDA = EnchantmentHelper.enchantItem(randSource, new ItemStack(Items.DIAMOND_AXE), bound, false);
+            ItemStack priceDS = EnchantmentHelper.enchantItem(randSource, new ItemStack(Items.DIAMOND_SWORD), bound, false);
+            ItemStack priceNA = EnchantmentHelper.enchantItem(randSource, new ItemStack(Items.NETHERITE_AXE), bound, false);
+            ItemStack priceNS = EnchantmentHelper.enchantItem(randSource, new ItemStack(Items.NETHERITE_SWORD), bound, false);
             priceILBA.enchant(SOUL_STEALER.get(), 1);
             priceILS.enchant(SOUL_STEALER.get(), 1);
             priceDA.enchant(SOUL_STEALER.get(), 1);
@@ -263,25 +254,26 @@ public class ModGlobalEvents {
                     new BasicItemListing(crystalCost, priceNS, 1, 30, 0f)
             ));
         }
-    }
+    }*/
 
     @SubscribeEvent
-    public static void onPlayerJoinWorldEvent(EntityJoinWorldEvent e) {
+    public static void onPlayerJoinWorldEvent(EntityJoinLevelEvent e) {
 
         //disable for now, but don't remove
         final boolean isRunning = false;
-        if (isRunning && !e.getWorld().isClientSide()) {
+        if (isRunning && !e.getLevel().isClientSide()) {
             if (e.getEntity() instanceof ServerPlayer) {
                 ServerPlayer player = (ServerPlayer) e.getEntity();
                 CompoundTag nbt = player.serializeNBT();
                 if (nbt != null && (!nbt.hasUUID("key") || !nbt.getBoolean("thanked"))) {
                     PlayerAdvancements advancements = player.getAdvancements();
-                    AdvancementProgress progress = advancements.getOrStartProgress(Advancement.Builder.advancement().build(setRL("story/thank_you_6m")));
+                    AdvancementProgress progress = advancements.getOrStartProgress(Advancement.Builder.advancement()
+                            .build(setRL("story/thank_you_6m")));
                     if (!progress.isDone()) {
                         nbt.putBoolean("thanked", true);
                         player.addAdditionalSaveData(nbt);
                         player.serializeNBT();
-                        player.spawnAtLocation(new ItemStack(ModItems.THANK_YOU_6M.get()));
+                        player.spawnAtLocation(new ItemStack(THANK_YOU_6M.get()));
                     }
                 }
             }
@@ -360,8 +352,8 @@ public class ModGlobalEvents {
 
     @SubscribeEvent
     public static void onAttackEntityEvent(AttackEntityEvent event) {
-        Level world = event.getEntityLiving().level;
-        Player player = event.getPlayer();
+        Level world = event.getEntity().level;
+        Player player = event.getEntity();
         Entity target = event.getTarget();
         float attackDamage = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
         double movedDistance = player.walkDist - player.walkDistO;
@@ -399,34 +391,35 @@ public class ModGlobalEvents {
                 }
             }
         }
-        if (player.isOnGround() && movedDistance < (double) player.getSpeed() && stack.getItem() instanceof APMaceItem) {
-            isMace = true;
-        }
-        if (isMace) {
-            APMaceItem mace = (APMaceItem) stack.getItem();
-            float sweepingDamage = 1.0F + APMaceType.getMaceSweepingRatio(mace.mat.getType()) * attackDamage;
-
-            for (LivingEntity entity : world.getEntitiesOfClass(LivingEntity.class, target.getBoundingBox().inflate(1.0D, 0.25D, 1.0D))) {
-                boolean isNewTarget = entity != player && entity != target;
-                boolean isValidTarget = !player.isAlliedTo(entity) && (!(entity instanceof ArmorStand) || !((ArmorStand) entity).isMarker());
-                boolean isReachable = player.distanceToSqr(entity) < 15.0D;
-                if (isNewTarget && isValidTarget && isReachable) {
-                    double ratioX = MathHelper.wrapDegrees(player.getYRot() * ((float) Math.PI / 180F));
-                    double ratioZ = -MathHelper.wrapDegrees(player.getYRot() * ((float) Math.PI / 180F));
-                    entity.knockback(0.4F, ratioX, ratioZ);
-                    entity.hurt(DamageSource.playerAttack(player), sweepingDamage);
-                }
-            }
-            if (!world.isClientSide) {
-                int id = GeckoLibUtil.guaranteeIDForStack(stack, (ServerLevel) world);
-                PacketDistributor.PacketTarget packetTarget = PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> {
-                    return player;
-                });
-                GeckoLibNetwork.syncAnimation(packetTarget, mace, id, 1);
-            }
-            world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_ATTACK_SWEEP, player.getSoundSource(), 1.0F, 1.0F);
-            player.sweepAttack();
-        }
+//        if (player.isOnGround() && movedDistance < (double) player.getSpeed() && stack.getItem() instanceof APMaceItem) {
+//            isMace = true;
+//        }
+//        if (isMace) {
+//            APMaceItem mace = (APMaceItem) stack.getItem();
+//            float sweepingDamage = 1.0F + APMaceType.getMaceSweepingRatio(mace.mat.getType()) * attackDamage;
+//
+//            for (LivingEntity entity : world.getEntitiesOfClass(LivingEntity.class, target.getBoundingBox()
+//                    .inflate(1.0D, 0.25D, 1.0D))) {
+//                boolean isNewTarget = entity != player && entity != target;
+//                boolean isValidTarget = !player.isAlliedTo(entity) && (!(entity instanceof ArmorStand) || !((ArmorStand) entity).isMarker());
+//                boolean isReachable = player.distanceToSqr(entity) < 15.0D;
+//                if (isNewTarget && isValidTarget && isReachable) {
+//                    double ratioX = MathHelper.wrapDegrees(player.getYRot() * ((float) Math.PI / 180F));
+//                    double ratioZ = -MathHelper.wrapDegrees(player.getYRot() * ((float) Math.PI / 180F));
+//                    entity.knockback(0.4F, ratioX, ratioZ);
+//                    entity.hurt(DamageSource.playerAttack(player), sweepingDamage);
+//                }
+//            }
+//            if (!world.isClientSide) {
+//                int id = GeckoLibUtil.guaranteeIDForStack(stack, (ServerLevel) world);
+//                PacketDistributor.PacketTarget packetTarget = PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> {
+//                    return player;
+//                });
+//                GeckoLibNetwork.syncAnimation(packetTarget, mace, id, 1);
+//            }
+//            world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_ATTACK_SWEEP, player.getSoundSource(), 1.0F, 1.0F);
+//            player.sweepAttack();
+//        }
     }
 
     @SubscribeEvent
@@ -454,7 +447,7 @@ public class ModGlobalEvents {
 
     @SubscribeEvent
     public static void onLivingDamageEvent(LivingDamageEvent event) {
-        LivingEntity entity = event.getEntityLiving();
+        LivingEntity entity = event.getEntity();
         if (entity instanceof Player) {
             Player player = (Player) entity;
             if (!player.level.isClientSide()) {
@@ -462,7 +455,11 @@ public class ModGlobalEvents {
                 Item item = stack.getItem();
                 if (item instanceof Tool) {
                     IAPTool mat = ((Tool) item).getMat();
-                    List<IBuff> buffList = mat.getBuffInstances().get().stream().map(BuffInstance::getBuff).collect(toList());
+                    List<IBuff> buffList = mat.getBuffInstances()
+                            .get()
+                            .stream()
+                            .map(BuffInstance::getBuff)
+                            .collect(toList());
                     if (!buffList.isEmpty()) {
                         if (buffList.contains(IGNITE)) IGNITE.hitEntity(stack, entity, player);
                     }
@@ -513,7 +510,7 @@ public class ModGlobalEvents {
      */
     @SubscribeEvent
     public static void onLivingDeathEvent(LivingDeathEvent event) {
-        LivingEntity entity = event.getEntityLiving();
+        LivingEntity entity = event.getEntity();
         List<ItemStack> armor = new ArrayList<>();
         for (ItemStack slotStack : entity.getArmorSlots()) {
             armor.add(slotStack);
@@ -559,7 +556,7 @@ public class ModGlobalEvents {
         boolean oneInFourChance = RAND.nextInt(4) == 0; // 1/4 chance
         int amountZeroToTwo = RAND.nextInt(3); //0..1..2
         int amountFourToSix = RAND.nextInt(3) + 4; //4+(0..1..2)
-        LivingEntity entity = event.getEntityLiving();
+        LivingEntity entity = event.getEntity();
         Entity trueSource = event.getSource().getEntity();
         boolean isSourcePlayer = trueSource instanceof ServerPlayer;
         ServerPlayer player;
@@ -625,7 +622,9 @@ public class ModGlobalEvents {
         ItemStack trophy = new ItemStack(getAPItem("trophy"));
         CompoundTag tag = new CompoundTag();
         SpawnData trophyEntity = new SpawnData();
-        trophyEntity.getEntityToSpawn().putString("id", ForgeRegistries.ENTITIES.getKey(type).toString());
+        ResourceLocation key = ForgeRegistries.ENTITY_TYPES.getKey(type);
+        if (key == null) key = new ResourceLocation("minecraft:pig");
+        trophyEntity.getEntityToSpawn().putString("id", key.toString());
         tag.put("DisplayEntity", trophyEntity.getEntityToSpawn().copy());
         tag.putFloat("EntityScale", scale);
         trophy.setTag(tag);

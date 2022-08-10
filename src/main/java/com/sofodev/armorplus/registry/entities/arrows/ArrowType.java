@@ -4,7 +4,6 @@ import com.sofodev.armorplus.registry.entities.arrows.impl.*;
 import com.sofodev.armorplus.utils.ToolTipUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Arrow;
@@ -85,8 +84,8 @@ public class ArrowType {
         return name;
     }
 
-    public TranslatableComponent getAbilityDescription() {
-        return new TranslatableComponent("tooltip.armorplus." + getName() + "_arrow.ability_desc");
+    public Component getAbilityDescription() {
+        return Component.translatable("tooltip.armorplus." + getName() + "_arrow.ability_desc");
     }
 
     public ChatFormatting getFormatting() {

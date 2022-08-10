@@ -1,5 +1,6 @@
 package com.sofodev.armorplus.data;
 
+import com.sofodev.armorplus.registry.ModBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
@@ -37,18 +38,18 @@ public class LootTables extends BaseLootTableProvider {
         );
     }
 
-    protected static LootTable.Builder droppingWithContents(Block block, ResourceLocation key) {
-        return LootTable.lootTable().withPool(LootPool.lootPool()
-                .setRolls(ConstantValue.exactly(1))
-                .add(LootItem.lootTableItem(block)
-                        .apply(CopyNameFunction.copyName(CopyNameFunction.NameSource.BLOCK_ENTITY))
-                        .apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY)
-                                .copy("Lock", "BlockEntityTag.Lock")
-                                .copy("LootTable", "BlockEntityTag.LootTable")
-                                .copy("LootTableSeed", "BlockEntityTag.LootTableSeed"))
-                        .apply(SetContainerContents.setContents(TROPHY_TYPE.get()).withEntry(DynamicLoot.dynamicEntry(key)))
-                ));
-    }
+//    protected static LootTable.Builder droppingWithContents(Block block, ResourceLocation key) {
+//        return LootTable.lootTable().withPool(LootPool.lootPool()
+//                .setRolls(ConstantValue.exactly(1))
+//                .add(LootItem.lootTableItem(block)
+//                        .apply(CopyNameFunction.copyName(CopyNameFunction.NameSource.BLOCK_ENTITY))
+//                        .apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY)
+//                                .copy("Lock", "BlockEntityTag.Lock")
+//                                .copy("LootTable", "BlockEntityTag.LootTable")
+//                                .copy("LootTableSeed", "BlockEntityTag.LootTableSeed"))
+//                        .apply(SetContainerContents.setContents(TROPHY_TYPE.get()).withEntry(DynamicLoot.dynamicEntry(key)))
+//                ));
+//    }
 
     //////////////////////////
     // From BlockLootTables //
@@ -56,7 +57,7 @@ public class LootTables extends BaseLootTableProvider {
 
     @Override
     protected void addTables() {
-        blockList.addAll(blocks);
+        blockList = BLOCKS.getEntries().stream().toList();
         this.removeEntries(ORE_FROST_CRYSTAL, ORE_FROST_CRYSTAL_STONE, ORE_FROST_CRYSTAL_OBSIDIAN,
                 ORE_LAVA_CRYSTAL, ORE_LAVA_CRYSTAL_STONE, ORE_LAVA_CRYSTAL_OBSIDIAN);
 

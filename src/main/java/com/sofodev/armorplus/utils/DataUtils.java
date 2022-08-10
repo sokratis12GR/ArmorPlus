@@ -15,7 +15,7 @@ public class DataUtils {
     }
 
     public static String getPath(ItemLike item) {
-        ResourceLocation rl = item.asItem().getRegistryName();
+        ResourceLocation rl = ForgeRegistries.ITEMS.getKey(item.asItem());
 
         if (rl != null) return rl.getPath();
         else throw new NullPointerException("INVALID PATH FOR ITEM | The item is not registered yet!!!");

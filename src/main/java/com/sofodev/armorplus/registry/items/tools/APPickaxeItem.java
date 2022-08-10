@@ -26,41 +26,11 @@ import static com.sofodev.armorplus.utils.ToolTipUtils.addBuffInformation;
 
 public class APPickaxeItem extends PickaxeItem implements Tool {
 
-    public static Map<Block, ItemLike> SMELTING_MAP = registerSmeltingMap();
     private final IAPTool mat;
 
     public APPickaxeItem(IAPTool mat) {
         super(mat.get(), (int) (mat.get().getAttackDamageBonus() + PICKAXE.getDmg()), PICKAXE.getAttackSpeed(), new Item.Properties().tab(ArmorPlus.AP_WEAPON_GROUP));
         this.mat = mat;
-    }
-
-    private static Map<Block, ItemLike> registerSmeltingMap() {
-        HashMap<Block, ItemLike> map = new HashMap<>();
-//        List<? extends String> input = asList("minecraft:iron_ore", "minecraft:gold_ore",
-//                "minecraft:sand", "minecraft:sandstone", "minecraft:wet_sponge", "minecraft:clay", "minecraft:stone_bricks", "minecraft:cobblestone", "minecraft:stone",
-//                "minecraft:acacia_log", "minecraft:birch_log", "minecraft:dark_oak_log", "minecraft:jungle_log", "minecraft:oak_log", "minecraft:spruce_log",
-//                "minecraft:netherrack", "minecraft:ancient_debris", "minecraft:stone_bricks");
-//        List<? extends String> output = asList("minecraft:iron_ingot", "minecraft:gold_ingot", "minecraft:glass", "minecraft:smooth_sandstone", "minecraft:sponge",
-//                "minecraft:terracotta", "minecraft:cracked_stone_bricks", "minecraft:stone", "minecraft:stone",
-//                "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal",
-//                "minecraft:nether_brick", "minecraft:netherite_scrap", "minecraft:cracked_stone_bricks");
-        List<? extends String> input = autoSmeltingInput.get();
-        List<? extends String> output = autoSmeltingOutput.get();
-        if (input.size() != output.size()) {
-            throw new IllegalArgumentException("autoSmeltingInput and autoSmeltingOutput in config/ap_config.toml must have the same size!");
-        }
-        for (int i = 0; i < input.size(); i++) {
-            String entryInput = input.get(i);
-            String entryOutput = output.get(i);
-            Block fromBlock = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(entryInput));
-            Item toItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation(entryOutput));
-            if (fromBlock != null && toItem != null) {
-                map.put(fromBlock, toItem);
-            } else {
-                ArmorPlus.LOGGER.error("Block with the registry name: " + entryInput + " or Item with the registry name: " + entryOutput + " don't exist. Failed to add auto smelt recipe");
-            }
-        }
-        return map;
     }
 
     @Override
