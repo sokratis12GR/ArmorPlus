@@ -19,10 +19,12 @@ Credits for all the people who helped with the mod translation can be found **[h
 ### [Grab the latest publicly available versions from curseforge.](https://www.curseforge.com/minecraft/mc-mods/armorplus/files)
 
 ~~[ArmorPlus Developing Addons/Integrations Wiki](https://github.com/sokratis12GR/ArmorPlus/wiki)~~
+* **1.19.2**
+  * Latest: [1.19.2-19.0.0](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/3924641)
 * **1.18.2**
-  * Recommended: [1.18.2-18.0.5-beta](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/3719363)
+  * Latest: [1.18.2-18.1.0-beta](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/3830482)
 * **1.16.5**
-  * Recommended: [1.16.5-16.7.0](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/3710849)
+  * Recommended: [1.16.5-16.8.1](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/3860026)
 * **1.12.2**
   * Recommended: [1.12.2-11.28.0.69](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/2952741)
 * **1.11.2**
@@ -34,7 +36,7 @@ Credits for all the people who helped with the mod translation can be found **[h
 
 * **[Tesla](https://minecraft.curseforge.com/projects/tesla)** (Not in 1.12+)
 * **RF** (Not in 1.11+)
-* **[Tinkers' Construct](https://minecraft.curseforge.com/projects/tinkers-construct)** (Not in 1.16.3+, yet)
+* **[Tinkers' Construct](https://minecraft.curseforge.com/projects/tinkers-construct)** (Not in 1.16.3+)
 * **[The One Probe](https://minecraft.curseforge.com/projects/the-one-probe)** (Not in 1.16.3+)
 * **[Just Enough Items](https://minecraft.curseforge.com/projects/just-enough-items-jei)**
 * **[Baubles](https://minecraft.curseforge.com/projects/baubles)** (Not in 1.12)
@@ -46,8 +48,10 @@ Credits for all the people who helped with the mod translation can be found **[h
 
 ## Mod's Official Wiki
 
-The Official Wiki for this mod is
-**[FTB Gamepedia ArmorPlus](https://ftb.fandom.com/wiki/ArmorPlus)**
+The Official Wiki for this mod is: **[FTB Gamepedia ArmorPlus](https://ftb.fandom.com/wiki/ArmorPlus)** 
+^ (Warning: May contain outdated and/or inaccurate information) ^
+
+In order to check in-game recipes it is recommended to always use JEI (Just Enough Items)'s recipe look up functionality.
 
 ## GitHub Information
 
