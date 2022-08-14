@@ -22,7 +22,7 @@ Credits for all the people who helped with the mod translation can be found **[h
 * **1.19.2**
   * Latest: [1.19.2-19.0.0](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/3924641)
 * **1.18.2**
-  * Latest: [1.18.2-18.1.0-beta](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/3830482)
+  * Latest: [1.18.2-18.2.0](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/3933975)
 * **1.16.5**
   * Recommended: [1.16.5-16.8.1](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/3860026)
 * **1.12.2**
