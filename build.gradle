@@ -26,13 +26,10 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
 minecraft {
-    //mappings channel: 'snapshot', version: '20201028-1.16.3'
     mappings channel: 'official', version: '1.18.2'
 
     accessTransformer = file('src/main/resources/META-INF/armorplus_at.cfg')
 
-    // Default run configurations.
-    // These can be tweaked, removed, or duplicated as needed.
     runs {
         client {
             workingDirectory project.file('run')
@@ -84,34 +81,13 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.2-40.0.32'
-//    minecraft 'net.minecraftforge:forge:1.18.2-40.0.25'
+    minecraft 'net.minecraftforge:forge:1.18.2-40.1.73'
 
-//    implementation fg.deobf("curse.maven:geckolib-388172:3629662") //Geckolib (1.18-3.0.32)
+    implementation fg.deobf("curse.maven:geckolib-388172:3918702") //Geckolib 1.18-3.0.33.jar
     implementation fg.deobf("curse.maven:thedragonlib-248055:3584757") //TheDragonLib
-    implementation fg.deobf("curse.maven:jei-238222:3599262") //JEI 1.18.1-9.2.1.69
-//    implementation fg.deobf("curse.maven:patchouli-306770:3630725") //Patchouli 1.18.1-65
-    implementation fg.deobf('software.bernie.geckolib:geckolib-1.18-forge:3.0.11')
-
-//    implementation fg.deobf("curse.maven:cyanide-forge-541676:3545771") //Cyanide-Forge
-//    compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.16.4-50:api") //Patchouli
-//    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.16.4-50") //Patchouli
-//    implementation fg.deobf("curse.maven:mekanism:3183270") //Mekanism
-
-
-//    implementation fg.deobf('software.bernie.geckolib:forge-1.16.5-geckolib:3.0.13') //Geckolib
-//    implementation fg.deobf("curse.maven:ichunutil:3062089")
-//    implementation fg.deobf("curse.maven:tabula-minecraft-modeler:3062126")
-//    implementation fg.deobf("curse.maven:corail-tombstone:3169275")
-//    implementation fg.deobf("curse.maven:reliquary-v1-3:3119035")
-//    implementation fg.deobf("curse.maven:better-diving:3214276")
-//    implementation fg.deobf('curse.maven:minecolonies:3126211')
-//    implementation fg.deobf("curse.maven:structurize:3119907") //Minecolonie Dep
-    //implementation fg.deobf("curse.maven:blame:3181314")
-
+    implementation fg.deobf("curse.maven:jei-238222:3885885") //JEI 1.18.2-9.7.1.232.jar
 }
 
-// Example for how to get properties into the manifest for reading by the runtime..
 jar {
     manifest {
         attributes([
@@ -126,11 +102,7 @@ jar {
     }
 }
 
-// Example configuration to allow publishing using the maven-publish task
-// This is the preferred method to reobfuscate your jar file
 jar.finalizedBy('reobfJar')
-// However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing
-//publish.dependsOn('reobfJar')
 
 publishing {
     publications {
