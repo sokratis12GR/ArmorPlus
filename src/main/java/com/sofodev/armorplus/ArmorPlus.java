@@ -15,7 +15,6 @@ import com.sofodev.armorplus.registry.entities.normal.WitherlingRenderer;
 import com.sofodev.armorplus.registry.items.armors.APArmorMaterial;
 import com.sofodev.armorplus.registry.items.tools.properties.mace.APMaceMaterial;
 import com.sofodev.armorplus.registry.items.tools.properties.tool.APToolProperties;
-import com.sofodev.armorplus.utils.GlobalVars;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
@@ -53,8 +52,8 @@ import static com.sofodev.armorplus.registry.ModEntities.*;
 import static com.sofodev.armorplus.registry.ModItems.BOWS;
 import static com.sofodev.armorplus.registry.ModItems.ITEMS;
 import static com.sofodev.armorplus.registry.ModPotions.EFFECTS;
-import static com.sofodev.armorplus.registry.ModVillagers.POI_TYPES;
-import static com.sofodev.armorplus.registry.ModVillagers.PROFESSIONS;
+import static com.sofodev.armorplus.registry.ModVillagerPOI.POI_TYPES;
+import static com.sofodev.armorplus.registry.ModVillagerProfessions.PROFESSIONS;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
 import static com.sofodev.armorplus.utils.Utils.setName;
 import static net.minecraftforge.api.distmarker.Dist.CLIENT;
@@ -67,7 +66,7 @@ public class ArmorPlus {
 
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
-    public static final String VERSION = "1.18.1-18.0.4";
+    public static final String VERSION = "1.18.2-18.2.0";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
     public static final PacketHandler PACKET_HANDLER = new PacketHandler();
     /**
@@ -113,22 +112,18 @@ public class ArmorPlus {
         ModLoadingContext modLoadingCTX = ModLoadingContext.get();
 
         //Config Start
-        ArmorPlus.config = ConfigHelper.register(
-                ModLoadingContext.get(), FMLJavaModLoadingContext.get(),
-                ModConfig.Type.COMMON, ArmorPlusConfig::new);
+        ArmorPlus.config = ConfigHelper.register(ModLoadingContext.get(), FMLJavaModLoadingContext.get(), ModConfig.Type.COMMON, ArmorPlusConfig::new);
         //Config End
+        //Re-arranged registry order according to: https://gist.github.com/pupnewfster/ea38cf3744f23d6b65d67e6f279d5942
         BLOCKS.register(modEventBus);
+        ATTRIBUTES.register(modEventBus);
+        EFFECTS.register(modEventBus);
+        ENTITY_TYPES.register(modEventBus);
         ITEMS.register(modEventBus);
         ENCHANTMENTS.register(modEventBus);
         TILE_ENTITIES.register(modEventBus);
-        ENTITY_TYPES.register(modEventBus);
-        EFFECTS.register(modEventBus);
-//        SURFACE_BUILDERS.register(modEventBus); - Removed in 1.18
-//        FEATURES.register(modEventBus); - Not needed yet.
-        ATTRIBUTES.register(modEventBus);
         PROFESSIONS.register(modEventBus);
         POI_TYPES.register(modEventBus);
-//        BIOMES.register(modEventBus); - Not needed yet.
 
         modEventBus.addListener(this::onCommonSetup);
         MinecraftForge.EVENT_BUS.addListener(WorldGenEvents::onBiomeLoad);
@@ -173,11 +168,7 @@ public class ArmorPlus {
     }
 
     private void afterSetup() {
-        GlobalVars.registerAfterEverything();
         ModConfiguredFeatures.registerConfiguredFeatures();
-//        BiomeManager.addBiome(BiomeManager.BiomeType.ICY, new BiomeManager.BiomeEntry(ResourceKey.create(Registry.BIOME_REGISTRY, FROZEN_PLAINS.getId()), 5)); // Not needed yet.
-//        BiomeManager.addBiome(BiomeManager.BiomeType.DESERT, new BiomeManager.BiomeEntry(ResourceKey.create(Registry.BIOME_REGISTRY, VALLEY_OF_SOULS.getId()), 5)); // Not needed yet.
-//        BiomeManager.addBiome(BiomeManager.BiomeType.DESERT, new BiomeManager.BiomeEntry(ResourceKey.create(Registry.BIOME_REGISTRY, POSSESSED_GROUNDS.getId()), 5)); // Not needed yet.
         PACKET_HANDLER.initialize();
     }
 
@@ -193,10 +184,6 @@ public class ArmorPlus {
         registerRenderingHandler(ENDER_DRAGON_ARROW.get(), "ender_dragon");
         EntityRenderers.register(SKELETAL_KING.get(), SkeletalKingRenderer::new);
         EntityRenderers.register(WITHERLING.get(), WitherlingRenderer::new);
-//        register(DEMONIC_DRAGON.get(), DemonicDragonRenderer::new);           // TODO: Fix misc entities.
-//        register(FROST_WOLF.get(), FrostWolfRenderer::new);           // TODO: Fix misc entities.
-//        register(FROST_WOLF_ALPHA.get(), FrostWolfAlphaRenderer::new);            // TODO: Fix misc entities.
-//        register(BOREAS.get(), BoreasRenderer::new);          // TODO: Fix misc entities.
         this.setRenderLayer(List.of(TROPHY));
         BlockEntityRenderers.register(TROPHY_TYPE.get(), TrophyTileEntityRenderer::new);
         registerBowOverrides();
@@ -210,8 +197,7 @@ public class ArmorPlus {
     @Nullable
     public <T> T findObjectByKey(ResourceKey<T> key) {
         Registry<T> registry = (Registry<T>) Registry.REGISTRY.get(key.getRegistryName());
-        if (registry == null)
-            return null;
+        if (registry == null) return null;
         return registry.get(key.getRegistryName());
     }
 }
