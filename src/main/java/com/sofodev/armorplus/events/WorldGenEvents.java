@@ -1,5 +1,6 @@
 package com.sofodev.armorplus.events;
 
+import net.minecraft.core.Holder;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
@@ -32,7 +33,7 @@ public class WorldGenEvents {
         }
     }
 
-    private static void withConfiguration(BiomeLoadingEvent event, PlacedFeature placedFeature, boolean enabled) {
+    private static void withConfiguration(BiomeLoadingEvent event, Holder<PlacedFeature> placedFeature, boolean enabled) {
         if (enabled) {
             event.getGeneration().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeature);
         }

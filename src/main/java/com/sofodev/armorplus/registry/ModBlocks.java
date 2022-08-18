@@ -31,7 +31,6 @@ import static com.sofodev.armorplus.registry.blocks.castle.BrickColor.values;
 import static com.sofodev.armorplus.registry.blocks.ore.Variant.*;
 import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.copy;
 
-@Mod.EventBusSubscriber(modid = ArmorPlus.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
     public static final DeferredRegister<BlockEntityType<?>> TILE_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, MODID);

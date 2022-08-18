@@ -70,7 +70,7 @@ import static com.sofodev.armorplus.config.ArmorPlusConfig.*;
 import static com.sofodev.armorplus.registry.ModEnchantments.SOUL_STEALER;
 import static com.sofodev.armorplus.registry.ModItems.FROST_CRYSTAL;
 import static com.sofodev.armorplus.registry.ModItems.LAVA_CRYSTAL;
-import static com.sofodev.armorplus.registry.ModVillagers.SOUL_EXCHANGER;
+import static com.sofodev.armorplus.registry.ModVillagerProfessions.SOUL_EXCHANGER;
 import static com.sofodev.armorplus.registry.items.extras.Buff.FLIGHT;
 import static com.sofodev.armorplus.registry.items.extras.Buff.WATER_WEAKNESS;
 import static com.sofodev.armorplus.registry.items.extras.DeBuff.*;
@@ -180,7 +180,11 @@ public class ModGlobalEvents {
                 }
                 IAPArmor mat = ((APArmorItem) item).getMat();
                 boolean areExactMatch = areExactMatch(mat, player);
-                List<IBuff> buffList = mat.getBuffInstances().get().stream().map(BuffInstance::getBuff).collect(toList());
+                List<IBuff> buffList = mat.getBuffInstances()
+                        .get()
+                        .stream()
+                        .map(BuffInstance::getBuff)
+                        .collect(toList());
                 if (areExactMatch && mat.config().enableArmorEffects.get()) {
                     if (!buffList.isEmpty()) {
                         if (buffList.contains(FLIGHT)) shouldApplyFlight(e, player);
@@ -276,7 +280,8 @@ public class ModGlobalEvents {
                 CompoundTag nbt = player.serializeNBT();
                 if (nbt != null && (!nbt.hasUUID("key") || !nbt.getBoolean("thanked"))) {
                     PlayerAdvancements advancements = player.getAdvancements();
-                    AdvancementProgress progress = advancements.getOrStartProgress(Advancement.Builder.advancement().build(setRL("story/thank_you_6m")));
+                    AdvancementProgress progress = advancements.getOrStartProgress(Advancement.Builder.advancement()
+                            .build(setRL("story/thank_you_6m")));
                     if (!progress.isDone()) {
                         nbt.putBoolean("thanked", true);
                         player.addAdditionalSaveData(nbt);
@@ -406,7 +411,8 @@ public class ModGlobalEvents {
             APMaceItem mace = (APMaceItem) stack.getItem();
             float sweepingDamage = 1.0F + APMaceType.getMaceSweepingRatio(mace.mat.getType()) * attackDamage;
 
-            for (LivingEntity entity : world.getEntitiesOfClass(LivingEntity.class, target.getBoundingBox().inflate(1.0D, 0.25D, 1.0D))) {
+            for (LivingEntity entity : world.getEntitiesOfClass(LivingEntity.class, target.getBoundingBox()
+                    .inflate(1.0D, 0.25D, 1.0D))) {
                 boolean isNewTarget = entity != player && entity != target;
                 boolean isValidTarget = !player.isAlliedTo(entity) && (!(entity instanceof ArmorStand) || !((ArmorStand) entity).isMarker());
                 boolean isReachable = player.distanceToSqr(entity) < 15.0D;
@@ -462,7 +468,11 @@ public class ModGlobalEvents {
                 Item item = stack.getItem();
                 if (item instanceof Tool) {
                     IAPTool mat = ((Tool) item).getMat();
-                    List<IBuff> buffList = mat.getBuffInstances().get().stream().map(BuffInstance::getBuff).collect(toList());
+                    List<IBuff> buffList = mat.getBuffInstances()
+                            .get()
+                            .stream()
+                            .map(BuffInstance::getBuff)
+                            .collect(toList());
                     if (!buffList.isEmpty()) {
                         if (buffList.contains(IGNITE)) IGNITE.hitEntity(stack, entity, player);
                     }

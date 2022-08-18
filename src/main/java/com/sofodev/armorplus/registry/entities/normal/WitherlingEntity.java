@@ -110,7 +110,8 @@ public class WitherlingEntity extends Monster implements IAnimatable {
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if (event.isMoving()) {
-            event.getController().setAnimation((new AnimationBuilder()).addAnimation("animation.skeletal_king.move", true));
+            event.getController()
+                    .setAnimation((new AnimationBuilder()).addAnimation("animation.skeletal_king.move", true));
             return PlayState.CONTINUE;
         }
         return PlayState.STOP;

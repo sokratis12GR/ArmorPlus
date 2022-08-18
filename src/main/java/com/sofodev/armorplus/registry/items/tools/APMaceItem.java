@@ -19,6 +19,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.IItemRenderProperties;
 import net.minecraftforge.network.PacketDistributor;
+import net.minecraftforge.registries.ForgeRegistries;
 import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -33,6 +34,7 @@ import software.bernie.geckolib3.network.ISyncable;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 import java.util.UUID;
 import java.util.function.Consumer;
@@ -53,7 +55,8 @@ public class APMaceItem extends SwordItem implements IAnimatable, ISyncable {
     Random random = new Random();
 
     public APMaceItem(IAPMace mat, Item.Properties props) {
-        super(mat.get(), (int) (mat.get().getAttackDamageBonus() + mat.getType().getDmg()), mat.getType().getAttackSpeed(),
+        super(mat.get(), (int) (mat.get().getAttackDamageBonus() + mat.getType().getDmg()), mat.getType()
+                        .getAttackSpeed(),
                 props.tab(ArmorPlus.AP_WEAPON_GROUP)
         );
         this.mat = mat;
@@ -200,20 +203,20 @@ public class APMaceItem extends SwordItem implements IAnimatable, ISyncable {
         return UseAnim.NONE;
     }
 
-//    public void chargeAnimation(AnimationController<?> controller) {
-//        if (controller.getAnimationState() == AnimationState.Stopped) {
-//            controller.setAnimation(new AnimationBuilder()
-//                    .addAnimation("animation.mace.charge", false)
-//                    .addAnimation("animation.mace.hold_charge", true));
-//        }
-//    }
-//
-//    public void swingAnimation(AnimationController<?> controller) {
-//        if (controller.getAnimationState() == AnimationState.Stopped) {
-//            controller.markNeedsReload();
-//            controller.setAnimation(new AnimationBuilder().addAnimation("animation.mace.swing_attack", false));
-//        }
-//    }
+    //    public void chargeAnimation(AnimationController<?> controller) {
+    //        if (controller.getAnimationState() == AnimationState.Stopped) {
+    //            controller.setAnimation(new AnimationBuilder()
+    //                    .addAnimation("animation.mace.charge", false)
+    //                    .addAnimation("animation.mace.hold_charge", true));
+    //        }
+    //    }
+    //
+    //    public void swingAnimation(AnimationController<?> controller) {
+    //        if (controller.getAnimationState() == AnimationState.Stopped) {
+    //            controller.markNeedsReload();
+    //            controller.setAnimation(new AnimationBuilder().addAnimation("animation.mace.swing_attack", false));
+    //        }
+    //    }
 
     private void executeDestruction(Player player, IAPMace mat, Level world, ItemStack stack, BlockPos destructionPos, Direction direction, boolean flag) {
         this.destroyBlocksInLineDirectional(mat, world, destructionPos, direction, flag);
@@ -270,7 +273,10 @@ public class APMaceItem extends SwordItem implements IAnimatable, ISyncable {
      * @param pos   the BlockPos that we will use to destroy the block
      */
     private void destroyBlock(Level world, BlockPos pos) {
-        if (!WITHER_IMMUNE.contains(world.getBlockState(pos).getBlock())) world.destroyBlock(pos, true);
+        boolean isWitherImmune = Objects.requireNonNull(ForgeRegistries.BLOCKS.tags())
+                .getTag(WITHER_IMMUNE)
+                .contains(world.getBlockState(pos).getBlock());
+        if (!isWitherImmune) world.destroyBlock(pos, true);
     }
 
     /**

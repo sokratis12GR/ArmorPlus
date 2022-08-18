@@ -49,15 +49,6 @@ public class ModEntities {
             () -> build(SkeletalKingEntity::new, MobType.SKELETAL_KING));
     public static final RegistryObject<EntityType<WitherlingEntity>> WITHERLING = register("witherling",
             () -> build(WitherlingEntity::new, MobType.WITHERLING));
-//    public static final RegistryObject<EntityType<DemonicDragonEntity>> DEMONIC_DRAGON = register("demonic_dragon",
-//            () -> build(DemonicDragonEntity::new, MobType.DEMONIC_DRAGON));
-//    public static final RegistryObject<EntityType<FrostWolfEntity>> FROST_WOLF = register("frost_wolf",
-//            () -> build(FrostWolfEntity::new, MobType.FROST_WOLF));
-//    public static final RegistryObject<EntityType<FrostWolfAlphaEntity>> FROST_WOLF_ALPHA = register("frost_wolf_alpha",
-//            () -> build(FrostWolfAlphaEntity::new, MobType.FROST_WOLF_ALPHA));
-//    public static final RegistryObject<EntityType<BoreasEntity>> BOREAS = register("boreas",
-//            () -> build(BoreasEntity::new, MobType.BOREAS));
-
     /////////////////////
     // UTILITY METHODS //
     /////////////////////

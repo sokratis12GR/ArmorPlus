@@ -20,11 +20,5 @@ public class ModAttributes {
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.SKELETAL_KING.get(), SkeletalKingEntity.registerAttributes().build());
         event.put(ModEntities.WITHERLING.get(), WitherlingEntity.registerAttributes().build());
-//        event.put(ModEntities.DEMONIC_DRAGON.get(), DemonicDragonEntity.registerAttributes().build());
-//        event.put(ModEntities.FROST_WOLF.get(), FrostWolfEntity.registerAttributes().build());
-//        event.put(ModEntities.FROST_WOLF_ALPHA.get(), FrostWolfAlphaEntity.registerAttributes().build());
-//        event.put(ModEntities.BOREAS.get(), BoreasEntity.registerAttributes().build());
-        //TODO Fix Mobs
-//        event.validateEntityAttributes();
     }
 }

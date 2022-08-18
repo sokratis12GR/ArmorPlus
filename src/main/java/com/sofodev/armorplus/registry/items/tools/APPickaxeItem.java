@@ -36,14 +36,7 @@ public class APPickaxeItem extends PickaxeItem implements Tool {
 
     private static Map<Block, ItemLike> registerSmeltingMap() {
         HashMap<Block, ItemLike> map = new HashMap<>();
-//        List<? extends String> input = asList("minecraft:iron_ore", "minecraft:gold_ore",
-//                "minecraft:sand", "minecraft:sandstone", "minecraft:wet_sponge", "minecraft:clay", "minecraft:stone_bricks", "minecraft:cobblestone", "minecraft:stone",
-//                "minecraft:acacia_log", "minecraft:birch_log", "minecraft:dark_oak_log", "minecraft:jungle_log", "minecraft:oak_log", "minecraft:spruce_log",
-//                "minecraft:netherrack", "minecraft:ancient_debris", "minecraft:stone_bricks");
-//        List<? extends String> output = asList("minecraft:iron_ingot", "minecraft:gold_ingot", "minecraft:glass", "minecraft:smooth_sandstone", "minecraft:sponge",
-//                "minecraft:terracotta", "minecraft:cracked_stone_bricks", "minecraft:stone", "minecraft:stone",
-//                "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal",
-//                "minecraft:nether_brick", "minecraft:netherite_scrap", "minecraft:cracked_stone_bricks");
+
         List<? extends String> input = autoSmeltingInput.get();
         List<? extends String> output = autoSmeltingOutput.get();
         if (input.size() != output.size()) {

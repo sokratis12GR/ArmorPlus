@@ -129,7 +129,6 @@ public class ModItems {
     public static final RegistryObject<Item> LAVA_SHARD = ITEMS.register("lava_shard", () -> new MaterialItem(false, GOLD, new Item.Properties()));
     public static final RegistryObject<Item> FROST_SHARD = ITEMS.register("frost_shard", () -> new MaterialItem(false, AQUA, new Item.Properties()));
     public static final RegistryObject<Item> THANK_YOU_6M = ITEMS.register("thank_you_6m", ThankYouItem::new);
-    public static final RegistryObject<Item> TROPHY = ITEMS.register("trophy", () -> new TrophyItem(ModBlocks.TROPHY));
 
     static {
         registerToolForType(SWORDS, BATTLE_AXES, PICKAXES, BOWS);
