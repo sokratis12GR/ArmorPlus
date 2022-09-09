@@ -1,3 +1,14 @@
+ArmorPlus 1.19.2-19.1.0 (BETA)
+----------------------------
+
+* Re-introduced world generation features
+  * Ore Lava Crystal
+    * Now configurable via the data pack instead of a configuration file
+  * Ore Frost Crystal
+    * Now configurable via the data pack instead of a configuration file
+* Removed redundant code (Code Cleanup): Biomes, Surface Builders, Certain Entities
+* Mace rendering is still broken.
+
 ArmorPlus 1.19.2-19.0.0 (BETA)
 ----------------------------
 
