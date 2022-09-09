@@ -21,9 +21,9 @@ public class WorldGenEvents {
 //        }
 //    }
 //
-//    private static void withConfiguration(BiomeLoadingEvent event, Holder<PlacedFeature> placedFeature, boolean enabled) {
+//    private static void withConfiguration(BiomeLoadingEvent event, Holder<PlacedFeature> feature, boolean enabled) {
 //        if (enabled) {
-//            event.getGeneration().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeature);
+//            event.getGeneration().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, feature);
 //        }
 //    }
 //

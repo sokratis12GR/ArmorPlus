@@ -88,13 +88,6 @@ public class ModBlocks {
         return registerBlockWithItem(name, BLOCKS, ITEMS, blockSupplier, APBlockItem::new);
     }
 
-    //    public static RegistryObject<Block> registerTrophyBlock(String name, Supplier<Block> blockSupplier) {
-    //        RegistryObject<Block> block = BLOCKS.register(name, blockSupplier);
-    //        Function<Block, Item> itemFunction = block1 -> new TrophyItem(blockSupplier);
-    //        ITEMS.register(name, () -> itemFunction.apply(block.get()));
-    //        return block;
-    //    }
-
     private static <T extends BlockEntity> BlockEntityType<T> build(BlockEntityType.Builder<T> builder) {
         return builder.build(null);
     }

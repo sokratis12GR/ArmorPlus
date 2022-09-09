@@ -1,8 +1,6 @@
 package com.sofodev.armorplus.events;
 
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.data.LootTables;
-import com.sofodev.armorplus.data.Recipes;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -13,8 +11,8 @@ public class DataGenerators {
 
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
-//        DataGenerator generator = event.getGenerator();
-//        generator.addProvider(event.includeServer(), new Recipes(generator));
-//        generator.addProvider(event.includeServer(), new LootTables(generator));
+       DataGenerator generator = event.getGenerator();
+//       generator.addProvider(event.includeServer(), new Recipes(generator));
+//       generator.addProvider(event.includeServer(), new LootTables(generator));
     }
 }
