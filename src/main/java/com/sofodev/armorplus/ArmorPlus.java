@@ -66,7 +66,7 @@ public class ArmorPlus {
 
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
-    public static final String VERSION = "1.18.2-18.2.0";
+    public static final String VERSION = "1.18.2-18.2.1";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
     public static final PacketHandler PACKET_HANDLER = new PacketHandler();
     /**

@@ -471,8 +471,7 @@ public class ModGlobalEvents {
                     List<IBuff> buffList = mat.getBuffInstances()
                             .get()
                             .stream()
-                            .map(BuffInstance::getBuff)
-                            .collect(toList());
+                            .map(BuffInstance::getBuff).toList();
                     if (!buffList.isEmpty()) {
                         if (buffList.contains(IGNITE)) IGNITE.hitEntity(stack, entity, player);
                     }
@@ -586,19 +585,19 @@ public class ModGlobalEvents {
         }
         if (entity != null) {
             if (entity instanceof WitherBoss) {
-                if (witherBossDrops.enableTrophyDrops.get()) dropTrophyItem(entity, EntityType.WITHER, 0.2F);
+                //                if (witherBossDrops.enableTrophyDrops.get()) dropTrophyItem(entity, EntityType.WITHER, 0.2F);
                 if (witherBossDrops.enableRegularDrops.get()) dropItem(entity, "wither_bone", amountFourToSix);
                 if (hasSoulStealer && witherBossDrops.enableSoulDrops.get()) {
                     dropItem(entity, "soul_wither_boss", 1);
                 }
             } else if (entity instanceof EnderDragon) {
-                if (enderDragonDrops.enableTrophyDrops.get()) dropTrophyItem(entity, EntityType.ENDER_DRAGON, 0.1F);
+//                if (enderDragonDrops.enableTrophyDrops.get()) dropTrophyItem(entity, EntityType.ENDER_DRAGON, 0.1F);
                 if (enderDragonDrops.enableRegularDrops.get()) dropItem(entity, "ender_dragon_scale", amountFourToSix);
                 if (hasSoulStealer && enderDragonDrops.enableSoulDrops.get()) {
                     dropItem(entity, "soul_ender_dragon", 1);
                 }
             } else if (entity instanceof ElderGuardian) {
-                if (elderGuardianDrops.enableTrophyDrops.get()) dropTrophyItem(entity, EntityType.ELDER_GUARDIAN, 0.2F);
+//                if (elderGuardianDrops.enableTrophyDrops.get()) dropTrophyItem(entity, EntityType.ELDER_GUARDIAN, 0.2F);
                 if (elderGuardianDrops.enableRegularDrops.get()) dropItem(entity, "guardian_scale", amountFourToSix);
                 if (hasSoulStealer && elderGuardianDrops.enableSoulDrops.get()) {
                     dropItem(entity, "soul_elder_guardian", 1);
@@ -631,16 +630,16 @@ public class ModGlobalEvents {
         }
     }
 
-    private static void dropTrophyItem(LivingEntity entity, EntityType<?> type, float scale) {
-        ItemStack trophy = new ItemStack(getAPItem("trophy"));
-        CompoundTag tag = new CompoundTag();
-        SpawnData trophyEntity = new SpawnData();
-        trophyEntity.getEntityToSpawn().putString("id", ForgeRegistries.ENTITIES.getKey(type).toString());
-        tag.put("DisplayEntity", trophyEntity.getEntityToSpawn().copy());
-        tag.putFloat("EntityScale", scale);
-        trophy.setTag(tag);
-        entity.spawnAtLocation(trophy);
-    }
+//    private static void dropTrophyItem(LivingEntity entity, EntityType<?> type, float scale) {
+//        ItemStack trophy = new ItemStack(getAPItem("trophy"));
+//        CompoundTag tag = new CompoundTag();
+//        SpawnData trophyEntity = new SpawnData();
+//        trophyEntity.getEntityToSpawn().putString("id", ForgeRegistries.ENTITIES.getKey(type).toString());
+//        tag.put("DisplayEntity", trophyEntity.getEntityToSpawn().copy());
+//        tag.putFloat("EntityScale", scale);
+//        trophy.setTag(tag);
+//        entity.spawnAtLocation(trophy);
+//    }
 
     private static void dropItem(Entity entity, String item, int amount) {
         entity.spawnAtLocation(new ItemStack(getAPItem(item), amount));

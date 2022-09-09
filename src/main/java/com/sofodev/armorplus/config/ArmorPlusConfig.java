@@ -160,28 +160,25 @@ public class ArmorPlusConfig {
         public DropConfig(ForgeConfigSpec.Builder builder, ConfigHelper.Subscriber subscriber, String name) {
             builder.comment(name + " drop configuration")
                     .push(name);
-            enableRegularDrops = subscriber.subscribe(builder.comment(MODNAME + "'s " + name + " regular drops: enable/disable")
+            enableRegularDrops = subscriber.subscribe(builder.comment(MODNAME + "'s " + name + " regular drops (the default mob drops): enable/disable")
                     .define("enableRegularDrops", true));
-            enableSoulDrops = subscriber.subscribe(builder.comment(MODNAME + "'s " + name + " soul drops: enable/disable")
+            enableSoulDrops = subscriber.subscribe(builder.comment(MODNAME + "'s " + name + " soul drops (acquired via the use of Soul Stealer): enable/disable")
                     .define("enableSoulDrops", true));
             builder.pop();
         }
     }
 
     public static class BossDropConfig {
-        public ConfigValueListener<Boolean> enableTrophyDrops;
         public ConfigValueListener<Boolean> enableRegularDrops;
         public ConfigValueListener<Boolean> enableSoulDrops; //Obtained via Soul Stealer
 
         public BossDropConfig(ForgeConfigSpec.Builder builder, ConfigHelper.Subscriber subscriber, String name) {
-            builder.comment(name + " drop configuration" + " (CURRENTLY DISABLED BY THE MOD)")
+            builder.comment(name + " drop configuration")
                     .push(name);
-            enableTrophyDrops = subscriber.subscribe(builder.comment(MODNAME + "'s " + name + " trophy drops: enable/disable")
-                    .define("enableTrophyDrops", false));
-            enableRegularDrops = subscriber.subscribe(builder.comment(MODNAME + "'s " + name + " regular drops: enable/disable")
-                    .define("enableRegularDrops", false));
-            enableSoulDrops = subscriber.subscribe(builder.comment(MODNAME + "'s " + name + " soul drops: enable/disable")
-                    .define("enableSoulDrops", false));
+            enableRegularDrops = subscriber.subscribe(builder.comment(MODNAME + "'s " + name + " regular drops (the default mob drops): enable/disable")
+                    .define("enableRegularDrops", true));
+            enableSoulDrops = subscriber.subscribe(builder.comment(MODNAME + "'s " + name + " soul drops (acquired via the use of Soul Stealer): enable/disable")
+                    .define("enableSoulDrops", true));
             builder.pop();
         }
     }
