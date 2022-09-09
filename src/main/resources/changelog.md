@@ -1,17 +1,25 @@
+ArmorPlus 1.18.2-18.2.1
+----------------------------
+
+* Removed the configuration option for trophy drops.
+* Fixed an issue with bosses not dropping their souls (with soul stealer) nor their items (default drops).
+    * Can't update but want to fix? Go to the configuration file `config/armorplus-common.toml` and replace `false`
+      with `true` on the boss drops for souls and regular drops, but NOT for trophies.
+
 ArmorPlus 1.18.2-18.2.0
 ----------------------------
 
 * **Out of BETA release.**
 * Re-arranged the registration order to match more closely to the actual registration order so issues are avoided.
 * Internal Code Cleanup:
-  * Removed a lot of unused/redundant classes and files.
+    * Removed a lot of unused/redundant classes and files.
 
 ArmorPlus 1.18.2-18.1.0 (BETA)
 ----------------------------
 
 * ***REMOVED MOB TROPHIES***
-  * Reason: All current trophies will cause crashes and issues after being destroyed by a player and replaced.
-  
+    * Reason: All current trophies will cause crashes and issues after being destroyed by a player and replaced.
+
 ArmorPlus 1.18.2-18.0.5 (BETA)
 ----------------------------
 
