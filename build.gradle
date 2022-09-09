@@ -101,7 +101,7 @@ repositories {
 
 dependencies {
     //Game
-    minecraft 'net.minecraftforge:forge:1.19.2-43.0.0'
+    minecraft 'net.minecraftforge:forge:1.19.2-43.1.16'
 
     //Required
     implementation fg.deobf("curse.maven:thedragonlib-248055:3849178") //TheDragonLib
