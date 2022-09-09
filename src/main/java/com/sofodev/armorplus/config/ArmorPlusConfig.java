@@ -87,7 +87,7 @@ public class ArmorPlusConfig {
         slayerMaterial = new MaterialConfig(builder, subscriber, "slayer");
         enhancedMaterial = new MaterialConfig(builder, subscriber, "enhanced");
         builder.pop();
-        builder.push("world_gen");
+        builder.comment("[REMOVED] - WORLD GEN - Is now handled by DATA PACKS!").push("world_gen");
         oreLavaCrystalStone = new OreConfig(builder, subscriber, "lava_crystal_stone", 5, 0.5, 0, 200);
         oreLavaCrystalObsidian = new OreConfig(builder, subscriber, "lava_crystal_obsidian", 4, 0.3, -30, 0);
         oreLavaCrystalCompressed = new OreConfig(builder, subscriber, "lava_crystal_compressed", 3, 0.1, -60, -30);

@@ -1,0 +1,6 @@
+{
+    "type": "forge:add_features",
+    "biomes": "#forge:is_cold",
+    "features": "armorplus:ore_frost_crystal",
+    "step": "underground_ores"
+}

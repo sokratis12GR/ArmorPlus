@@ -1,0 +1,6 @@
+{
+    "type": "forge:add_features",
+    "biomes": "#minecraft:is_overworld",
+    "features": "armorplus:ore_lava_crystal_stone",
+    "step": "underground_ores"
+}
