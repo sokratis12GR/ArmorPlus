@@ -20,7 +20,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 
 minecraft {
-    mappings channel: 'official', version: '1.19.2'
+    mappings channel: 'official', version: '1.19.3'
 
     accessTransformer = file('src/main/resources/META-INF/armorplus_at.cfg')
 
@@ -101,12 +101,12 @@ repositories {
 
 dependencies {
     //Game
-    minecraft 'net.minecraftforge:forge:1.19.2-43.1.16'
+    minecraft 'net.minecraftforge:forge:1.19.3-44.1.5'
 
     //Required
     implementation fg.deobf("curse.maven:thedragonlib-248055:3849178") //TheDragonLib
-    implementation fg.deobf("curse.maven:geckolib-388172:3918706") //geckolib-forge-1.19-3.1.14
-    implementation fg.deobf("curse.maven:jei-238222:3920263") //jei-1.19.1-forge-11.2.0.243
+    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19.3:4.0.3')
+    implementation fg.deobf("curse.maven:jei-238222:4346825") //jei-1.19.2-forge-11.5.0.297.jar
 
     //Optional
 
