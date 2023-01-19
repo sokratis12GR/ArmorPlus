@@ -19,7 +19,7 @@ public class APBattleAxeItem extends AxeItem implements Tool {
     private final IAPTool mat;
 
     public APBattleAxeItem(IAPTool mat) {
-        super(mat.get(), mat.get().getAttackDamageBonus() + BATTLE_AXE.getDmg(), BATTLE_AXE.getAttackSpeed(), new Item.Properties().tab(ArmorPlus.AP_WEAPON_GROUP));
+        super(mat.get(), mat.get().getAttackDamageBonus() + BATTLE_AXE.getDmg(), BATTLE_AXE.getAttackSpeed(), new Item.Properties());
         this.mat = mat;
     }
 

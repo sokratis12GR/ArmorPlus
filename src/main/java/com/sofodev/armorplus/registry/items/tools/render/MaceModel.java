@@ -2,11 +2,11 @@ package com.sofodev.armorplus.registry.items.tools.render;
 
 import com.sofodev.armorplus.registry.items.tools.APMaceItem;
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib.model.GeoModel;
 
 import static com.sofodev.armorplus.utils.Utils.setRL;
 
-public class MaceModel extends AnimatedGeoModel<APMaceItem> {
+public class MaceModel extends GeoModel<APMaceItem> {
 
     @Override
     public ResourceLocation getModelResource(APMaceItem item) {
@@ -15,7 +15,7 @@ public class MaceModel extends AnimatedGeoModel<APMaceItem> {
 
     @Override
     public ResourceLocation getTextureResource(APMaceItem item) {
-        return setRL("textures/items/" + item.mat.getName() + "_mace.png");
+        return setRL("textures/item/" + item.mat.getName() + "_mace.png");
     }
 
     @Override

@@ -22,7 +22,7 @@ public class APSwordItem extends SwordItem implements Tool {
     private final IAPTool mat;
 
     public APSwordItem(IAPTool mat) {
-        super(mat.get(), (int) (mat.get().getAttackDamageBonus() + SWORD.getDmg()), SWORD.getAttackSpeed(), new Properties().tab(ArmorPlus.AP_WEAPON_GROUP));
+        super(mat.get(), (int) (mat.get().getAttackDamageBonus() + SWORD.getDmg()), SWORD.getAttackSpeed(), new Properties());
         this.mat = mat;
     }
 

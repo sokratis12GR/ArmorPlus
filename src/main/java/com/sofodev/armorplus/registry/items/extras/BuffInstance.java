@@ -10,8 +10,10 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 
+import java.util.List;
 import java.util.Locale;
 
+import static com.sofodev.armorplus.registry.items.extras.Buff.NONE;
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
 import static com.sofodev.armorplus.utils.Utils.convertToSeconds;
 import static net.minecraft.ChatFormatting.DARK_AQUA;
@@ -24,8 +26,16 @@ public class BuffInstance {
     private int amplifier;
     private boolean enabled;
 
+    public BuffInstance(boolean enabled, IBuff buff, int amplifier) {
+        this(enabled ? buff : NONE, amplifier, 20, true);
+    }
+
     public BuffInstance(IBuff buff, int amplifier) {
         this(buff, amplifier, 20, true);
+    }
+
+    public BuffInstance(boolean enabled, IBuff buff, int amplifier, int duration) {
+        this(enabled ? buff : NONE, amplifier, duration, false);
     }
 
     public BuffInstance(IBuff buff, int amplifier, int duration) {
@@ -50,6 +60,14 @@ public class BuffInstance {
     /**
      * This constructor is used so that special abilities can be used directly, without the need of them to be potion abilities.
      */
+    public BuffInstance(boolean enabled, IBuff buff) {
+        this.buff = enabled ? buff : NONE;
+        this.amplifier = -1;
+        this.instant = true;
+        this.potion = Potions.EMPTY;
+        this.enabled = true;
+    }
+
     public BuffInstance(IBuff buff) {
         this.buff = buff;
         this.amplifier = -1;
@@ -87,15 +105,19 @@ public class BuffInstance {
         // instant -> else |
         buff.onArmorTick(stack, world, player);
         if (buff.isEffect()) {
-            for (MobEffectInstance pot : this.getPotion().getEffects()) {
+            this.getPotion().getEffects().forEach(pot -> {
                 if (!instant) {
-                    if (!player.getActiveEffects().contains(pot)) {
-                        player.addEffect(pot);
+                    List<MobEffectInstance> playerEffects = player.getActiveEffects().stream().toList();
+                    if (!playerEffects.isEmpty()) {
+                        for (MobEffectInstance instance : playerEffects){
+                            if (instance.getEffect().getDisplayName().toString().equals(pot.getEffect().getDisplayName().toString())) continue;
+                            player.addEffect(pot);
+                        }
                     }
                 } else {
                     player.addEffect(pot);
                 }
-            }
+            });
         }
     }
 
@@ -147,12 +169,6 @@ public class BuffInstance {
 
     @Override
     public String toString() {
-        return "BuffInstance{" +
-                "buff=" + buff +
-                ", amplifier=" + amplifier +
-                ", instant=" + instant +
-                ", potion=" + potion +
-                ", enabled=" + enabled +
-                '}';
+        return "BuffInstance{" + "buff=" + buff + ", amplifier=" + amplifier + ", instant=" + instant + ", potion=" + potion + ", enabled=" + enabled + '}';
     }
 }

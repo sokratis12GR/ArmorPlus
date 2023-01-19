@@ -8,9 +8,7 @@ import net.minecraft.world.item.ItemStack;
 public class APBowItem extends BowItem {
 
     public APBowItem(IAPTool tool) {
-        super(new Properties().durability((int) (tool.get().getUses() * 0.5))
-                .tab(ArmorPlus.AP_WEAPON_GROUP)
-                .rarity(tool.getRarity())
+        super(new Properties().durability((int) (tool.get().getUses() * 0.5)).rarity(tool.getRarity())
         );
     }
 

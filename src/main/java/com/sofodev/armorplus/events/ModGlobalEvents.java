@@ -9,6 +9,7 @@ import com.sofodev.armorplus.registry.items.armors.IAPArmor;
 import com.sofodev.armorplus.registry.items.extras.BuffInstance;
 import com.sofodev.armorplus.registry.items.extras.IBuff;
 import com.sofodev.armorplus.registry.items.materials.FrostCrystalItem;
+import com.sofodev.armorplus.registry.items.tools.APMaceItem;
 import com.sofodev.armorplus.registry.items.tools.properties.mace.APMaceType;
 import com.sofodev.armorplus.registry.items.tools.properties.tool.IAPTool;
 import com.sofodev.armorplus.registry.items.tools.properties.tool.Tool;
@@ -50,8 +51,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.registries.ForgeRegistries;
-import software.bernie.geckolib3.network.GeckoLibNetwork;
-import software.bernie.geckolib3.util.GeckoLibUtil;
+import software.bernie.geckolib.animatable.GeoItem;
+import software.bernie.geckolib.util.GeckoLibUtil;
 import software.bernie.shadowed.eliotlash.mclib.utils.MathHelper;
 
 import java.util.ArrayList;
@@ -391,35 +392,35 @@ public class ModGlobalEvents {
                 }
             }
         }
-//        if (player.isOnGround() && movedDistance < (double) player.getSpeed() && stack.getItem() instanceof APMaceItem) {
-//            isMace = true;
-//        }
-//        if (isMace) {
-//            APMaceItem mace = (APMaceItem) stack.getItem();
-//            float sweepingDamage = 1.0F + APMaceType.getMaceSweepingRatio(mace.mat.getType()) * attackDamage;
-//
-//            for (LivingEntity entity : world.getEntitiesOfClass(LivingEntity.class, target.getBoundingBox()
-//                    .inflate(1.0D, 0.25D, 1.0D))) {
-//                boolean isNewTarget = entity != player && entity != target;
-//                boolean isValidTarget = !player.isAlliedTo(entity) && (!(entity instanceof ArmorStand) || !((ArmorStand) entity).isMarker());
-//                boolean isReachable = player.distanceToSqr(entity) < 15.0D;
-//                if (isNewTarget && isValidTarget && isReachable) {
-//                    double ratioX = MathHelper.wrapDegrees(player.getYRot() * ((float) Math.PI / 180F));
-//                    double ratioZ = -MathHelper.wrapDegrees(player.getYRot() * ((float) Math.PI / 180F));
-//                    entity.knockback(0.4F, ratioX, ratioZ);
-//                    entity.hurt(DamageSource.playerAttack(player), sweepingDamage);
-//                }
-//            }
-//            if (!world.isClientSide) {
-//                int id = GeckoLibUtil.guaranteeIDForStack(stack, (ServerLevel) world);
-//                PacketDistributor.PacketTarget packetTarget = PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> {
-//                    return player;
-//                });
-//                GeckoLibNetwork.syncAnimation(packetTarget, mace, id, 1);
-//            }
-//            world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_ATTACK_SWEEP, player.getSoundSource(), 1.0F, 1.0F);
-//            player.sweepAttack();
-//        }
+        if (player.isOnGround() && movedDistance < (double) player.getSpeed() && stack.getItem() instanceof APMaceItem) {
+            isMace = true;
+        }
+        if (isMace) {
+            APMaceItem mace = (APMaceItem) stack.getItem();
+            float sweepingDamage = 1.0F + APMaceType.getMaceSweepingRatio(mace.mat.getType()) * attackDamage;
+
+            for (LivingEntity entity : world.getEntitiesOfClass(LivingEntity.class, target.getBoundingBox()
+                    .inflate(1.0D, 0.25D, 1.0D))) {
+                boolean isNewTarget = entity != player && entity != target;
+                boolean isValidTarget = !player.isAlliedTo(entity) && (!(entity instanceof ArmorStand) || !((ArmorStand) entity).isMarker());
+                boolean isReachable = player.distanceToSqr(entity) < 15.0D;
+                if (isNewTarget && isValidTarget && isReachable) {
+                    double ratioX = MathHelper.wrapDegrees(player.getYRot() * ((float) Math.PI / 180F));
+                    double ratioZ = -MathHelper.wrapDegrees(player.getYRot() * ((float) Math.PI / 180F));
+                    entity.knockback(0.4F, ratioX, ratioZ);
+                    entity.hurt(DamageSource.playerAttack(player), sweepingDamage);
+                }
+            }
+            if (world instanceof ServerLevel serverLevel) {
+                ItemStack newStack = mace.setTag(player.getMainHandItem());
+                CompoundTag nbt = newStack.getTag();
+                if (nbt != null && nbt.hasUUID("key")) {
+                    mace.triggerAnim(player, GeoItem.getOrAssignId(player.getMainHandItem(), serverLevel), mace.controllerName, "animation.mace.swipe_attack");
+                }
+            }
+            world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_ATTACK_SWEEP, player.getSoundSource(), 1.0F, 1.0F);
+            player.sweepAttack();
+        }
     }
 
     @SubscribeEvent
@@ -448,8 +449,7 @@ public class ModGlobalEvents {
     @SubscribeEvent
     public static void onLivingDamageEvent(LivingDamageEvent event) {
         LivingEntity entity = event.getEntity();
-        if (entity instanceof Player) {
-            Player player = (Player) entity;
+        if (entity instanceof Player player) {
             if (!player.level.isClientSide()) {
                 ItemStack stack = player.getMainHandItem();
                 Item item = stack.getItem();
@@ -458,10 +458,9 @@ public class ModGlobalEvents {
                     List<IBuff> buffList = mat.getBuffInstances()
                             .get()
                             .stream()
-                            .map(BuffInstance::getBuff)
-                            .collect(toList());
+                            .map(BuffInstance::getBuff).toList();
                     if (!buffList.isEmpty()) {
-                        if (buffList.contains(IGNITE)) IGNITE.hitEntity(stack, entity, player);
+//                        if (buffList.contains(IGNITE)) IGNITE.hitEntity(stack, entity, player); // This damages the player with ignite
                     }
                 }
             }

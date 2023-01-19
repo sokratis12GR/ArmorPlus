@@ -19,7 +19,7 @@ import static net.minecraft.world.Containers.dropItemStack;
 public class ThankYouItem extends APItem {
 
     public ThankYouItem() {
-        super(new Properties().fireResistant().stacksTo(0).tab(CreativeModeTab.TAB_SEARCH));
+        super(new Properties().fireResistant().stacksTo(0));
     }
 
     @Override

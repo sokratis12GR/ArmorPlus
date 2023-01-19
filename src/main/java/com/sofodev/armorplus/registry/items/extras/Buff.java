@@ -13,7 +13,7 @@ import static com.sofodev.armorplus.utils.Utils.setVanillaLocation;
 import static net.minecraft.world.effect.MobEffects.WITHER;
 
 public enum Buff implements IBuff {
-    NONE,
+    NONE(false, false),
     /*Potion Effect Related*/
     NIGHT_VISION,
     WATER_BREATHING,

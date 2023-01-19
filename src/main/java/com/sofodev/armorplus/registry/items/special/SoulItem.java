@@ -24,13 +24,13 @@ public class SoulItem extends Item {
     private final String entity;
 
     public SoulItem(String entity) {
-        super(new Properties().tab(AP_ITEM_GROUP).rarity(Rarity.EPIC).fireResistant().stacksTo(16));
+        super(new Properties().rarity(Rarity.EPIC).fireResistant().stacksTo(16));
         this.entity = entity;
         this.isBoss = true;
     }
 
     public SoulItem(boolean isBoss, String entity) {
-        super(new Properties().tab(AP_ITEM_GROUP).rarity(Rarity.RARE).fireResistant().stacksTo(32));
+        super(new Properties().rarity(Rarity.RARE).fireResistant().stacksTo(32));
         this.entity = entity;
         this.isBoss = isBoss;
     }

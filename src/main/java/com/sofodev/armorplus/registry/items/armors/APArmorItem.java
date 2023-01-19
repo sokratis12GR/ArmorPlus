@@ -57,6 +57,7 @@ public class APArmorItem extends ArmorItem {
             tooltip.add(translate(GOLD, "tooltip.armorplus.condition.full_set"));
             tooltip.add(translate(GREEN, "tooltip.armorplus.provides"));
             for (BuffInstance buff : mat.getBuffInstances().get()) {
+                if (buff.getBuff() == Buff.NONE) continue;
                 int lvl = buff.getAmplifier() + 1;
                 String theLvl = lvl > 0 ? " " + generate(lvl) : "";
                 tooltip.add(translate(DARK_AQUA, "tooltip.armorplus.buff", buff.getTranslatedName(), theLvl));

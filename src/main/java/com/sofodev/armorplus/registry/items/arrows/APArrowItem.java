@@ -20,7 +20,7 @@ public class APArrowItem extends ArrowItem {
     private final ArrowType type;
 
     public APArrowItem(ArrowType type) {
-        super(new Item.Properties().tab(ArmorPlus.AP_WEAPON_GROUP).rarity(Rarity.create("ARROW_TYPE", type.getFormatting())));
+        super(new Item.Properties().rarity(Rarity.create("ARROW_TYPE", type.getFormatting())));
         this.type = type;
     }
 

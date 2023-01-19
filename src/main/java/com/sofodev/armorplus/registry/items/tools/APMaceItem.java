@@ -18,21 +18,18 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
-import net.minecraftforge.network.PacketDistributor;
-import software.bernie.geckolib3.core.AnimationState;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.Animation;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
-import software.bernie.geckolib3.network.GeckoLibNetwork;
-import software.bernie.geckolib3.network.ISyncable;
-import software.bernie.geckolib3.util.GeckoLibUtil;
+import software.bernie.geckolib.animatable.GeoItem;
+import software.bernie.geckolib.animatable.SingletonGeoAnimatable;
+import software.bernie.geckolib.constant.DataTickets;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
-import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 import java.util.function.Consumer;
@@ -42,35 +39,40 @@ import static com.sofodev.armorplus.registry.items.tools.properties.mace.Destruc
 import static com.sofodev.armorplus.registry.items.tools.properties.mace.DestructionShape.SQUARE;
 import static net.minecraft.core.Direction.*;
 import static net.minecraft.tags.BlockTags.WITHER_IMMUNE;
-import static software.bernie.geckolib3.core.PlayState.CONTINUE;
-import static software.bernie.geckolib3.core.PlayState.STOP;
+import static software.bernie.geckolib.core.object.PlayState.CONTINUE;
+import static software.bernie.geckolib.core.object.PlayState.STOP;
 
-public class APMaceItem extends SwordItem implements IAnimatable, ISyncable {
+public class APMaceItem extends SwordItem implements GeoItem {
+    private static final RawAnimation ATTACK = RawAnimation.begin().thenPlay("animation.mace.attack");
+    private static final RawAnimation SWIPE_ATTACK = RawAnimation.begin().thenPlay("animation.mace.swipe_attack");
+    private static final RawAnimation SWING_ATTACK = RawAnimation.begin().thenPlay("animation.mace.swing_attack");
+    private static final RawAnimation CHARGE = RawAnimation.begin().thenPlay("animation.mace.charge");
+    private static final RawAnimation HOLD_CHARGE = RawAnimation.begin().thenPlay("animation.mace.hold_charge");
 
     public final IAPMace mat;
     public final String controllerName = "maceController";
-    public AnimationFactory factory = new AnimationFactory(this);
+    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     Random random = new Random();
 
     public APMaceItem(IAPMace mat, Item.Properties props) {
         super(mat.get(), (int) (mat.get().getAttackDamageBonus() + mat.getType().getDmg()), mat.getType()
-                .getAttackSpeed(), props.tab(ArmorPlus.AP_WEAPON_GROUP));
+                .getAttackSpeed(), props);
         this.mat = mat;
-        GeckoLibNetwork.registerSyncable(this);
-    }
 
-    @Override
-    public String getSyncKey() {
-        return mat.getName() + this.getClass().getName();
+
+        SingletonGeoAnimatable.registerSyncedAnimatable(this);
     }
 
     @Override
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-        super.initializeClient(consumer);
         consumer.accept(new IClientItemExtensions() {
-            private final BlockEntityWithoutLevelRenderer renderer = new APMaceRenderer();
+            private APMaceRenderer renderer;
 
-            public BlockEntityWithoutLevelRenderer getItemStackRenderer() {
+            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
+                if (this.renderer == null) {
+                    this.renderer = new APMaceRenderer();
+                }
+
                 return this.renderer;
             }
         });
@@ -102,24 +104,15 @@ public class APMaceItem extends SwordItem implements IAnimatable, ISyncable {
     }
 
     @Override
-    public void releaseUsing(ItemStack stack, Level world, LivingEntity living, int timeLeft) {
+    public void releaseUsing(ItemStack stack, Level level, LivingEntity living, int timeLeft) {
         if (living instanceof Player) {
             Player player = (Player) living;
             CompoundTag nbt = stack.getTag();
             if (nbt != null && nbt.hasUUID("key")) {
-                AnimationController<?> controller = GeckoLibUtil.getControllerForStack(this.factory, stack, this.controllerName);
-                Animation currentAnimation = controller.getCurrentAnimation();
                 int chargeTime = this.getUseDuration(stack) - timeLeft;
                 if (chargeTime >= mat.getType().getChargeSpeed()) {
-                    if (currentAnimation != null) {
-                        currentAnimation.loop = false;
-                    }
-                    if (!world.isClientSide) {
-                        int id = GeckoLibUtil.guaranteeIDForStack(stack, (ServerLevel) world);
-                        PacketDistributor.PacketTarget target = PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> {
-                            return player;
-                        });
-                        GeckoLibNetwork.syncAnimation(target, this, id, 1);
+                    if (level instanceof ServerLevel serverLevel) {
+                        this.triggerAnim(player, GeoItem.getOrAssignId(player.getItemInHand(player.getUsedItemHand()), serverLevel), controllerName, "animation.mace.swing_attack");
                         //check if the offhand is empty
                         boolean isOffHandEmpty = player.getItemBySlot(EquipmentSlot.OFFHAND).isEmpty();
                         if (isOffHandEmpty) {
@@ -128,9 +121,9 @@ public class APMaceItem extends SwordItem implements IAnimatable, ISyncable {
                             boolean isNorthOrSouth = direction == NORTH || direction == SOUTH;
                             boolean isWestOrEast = direction == EAST || direction == WEST;
                             if (isNorthOrSouth) {
-                                this.executeDestruction(player, mat, world, stack, destructionPos, direction, true);
+                                this.executeDestruction(player, mat, level, stack, destructionPos, direction, true);
                             } else if (isWestOrEast) {
-                                this.executeDestruction(player, mat, world, stack, destructionPos, direction, false);
+                                this.executeDestruction(player, mat, level, stack, destructionPos, direction, false);
                             }
                         }
                     }
@@ -140,16 +133,12 @@ public class APMaceItem extends SwordItem implements IAnimatable, ISyncable {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
-        if (!world.isClientSide) {
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        if (level instanceof ServerLevel serverLevel) {
             ItemStack stack = this.setTag(player.getItemInHand(hand));
             CompoundTag nbt = stack.getTag();
             if (nbt != null && nbt.hasUUID("key")) {
-                int id = GeckoLibUtil.guaranteeIDForStack(stack, (ServerLevel) world);
-                PacketDistributor.PacketTarget target = PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> {
-                    return player;
-                });
-                GeckoLibNetwork.syncAnimation(target, this, id, 0);
+                triggerAnim(player, GeoItem.getOrAssignId(player.getItemInHand(hand), serverLevel), controllerName, "animation.mace.hold_charge");
             }
             if (stack.getDamageValue() >= stack.getMaxDamage() - 1) {
                 return InteractionResultHolder.fail(stack);
@@ -158,28 +147,23 @@ public class APMaceItem extends SwordItem implements IAnimatable, ISyncable {
                 return InteractionResultHolder.consume(stack);
             }
         }
-        return super.use(world, player, hand);
+        return super.use(level, player, hand);
     }
 
     @Override
     public boolean onEntitySwing(ItemStack stack, LivingEntity entity) {
-        Level world = entity.level;
-        if (!world.isClientSide) {
+        Level level = entity.level;
+        if (level instanceof ServerLevel serverLevel) {
             ItemStack itemStack = this.setTag(stack);
             CompoundTag nbt = stack.getTag();
             if (nbt != null && nbt.hasUUID("key")) {
-                AnimationController<?> controller = GeckoLibUtil.getControllerForStack(this.factory, itemStack, this.controllerName);
-                int id = GeckoLibUtil.guaranteeIDForStack(stack, (ServerLevel) world);
-                PacketDistributor.PacketTarget target = PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> {
-                    return entity;
-                });
-                GeckoLibNetwork.syncAnimation(target, this, id, 1);
+                triggerAnim(entity, GeoItem.getOrAssignId(entity.getItemInHand(entity.getUsedItemHand()), serverLevel), controllerName, "animation.mace.swing_attack");
             }
         }
         return true;
     }
 
-    private ItemStack setTag(ItemStack stack) {
+    public ItemStack setTag(ItemStack stack) {
         CompoundTag tag = stack.getTag();
         UUID randomUUID = UUID.randomUUID();
         if (tag == null) {
@@ -198,21 +182,6 @@ public class APMaceItem extends SwordItem implements IAnimatable, ISyncable {
     public UseAnim getUseAnimation(ItemStack p_41452_) {
         return UseAnim.NONE;
     }
-
-    //    public void chargeAnimation(AnimationController<?> controller) {
-    //        if (controller.getAnimationState() == AnimationState.Stopped) {
-    //            controller.setAnimation(new AnimationBuilder()
-    //                    .addAnimation("animation.mace.charge", false)
-    //                    .addAnimation("animation.mace.hold_charge", true));
-    //        }
-    //    }
-    //
-    //    public void swingAnimation(AnimationController<?> controller) {
-    //        if (controller.getAnimationState() == AnimationState.Stopped) {
-    //            controller.markNeedsReload();
-    //            controller.setAnimation(new AnimationBuilder().addAnimation("animation.mace.swing_attack", false));
-    //        }
-    //    }
 
     private void executeDestruction(Player player, IAPMace mat, Level world, ItemStack stack, BlockPos destructionPos, Direction direction, boolean flag) {
         this.destroyBlocksInLineDirectional(mat, world, destructionPos, direction, flag);
@@ -282,44 +251,45 @@ public class APMaceItem extends SwordItem implements IAnimatable, ISyncable {
         return pos.relative(direction, offset + 1);
     }
 
-    private <P extends Item & IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        List<ItemStack> stackData = event.getExtraDataOfType(ItemStack.class);
-        if (!stackData.isEmpty()) {
-            ItemStack stack = stackData.get(0);
-            if (!stack.isEmpty()) {
-                return stack.isFramed() ? STOP : CONTINUE;
-            }
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add((new AnimationController(this, this.controllerName, 20, this::predicate)).triggerableAnim("swing_attack", SWING_ATTACK));
+    }
+
+    private <P extends Item & GeoAnimatable> PlayState predicate(AnimationState<P> event) {
+        ItemStack stack = event.getData(DataTickets.ITEMSTACK);
+        if (!stack.isEmpty()) {
+            return stack.isFramed() ? STOP : CONTINUE;
         }
         return STOP;
     }
 
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return this.cache;
+    }
+
+//    @Override
+//    public void onAnimationSync(int id, int state) {
+//        if (state == 0) {
+//            AnimationController<?> controller = GeckoLibUtil.getControllerForID(this.factory, id, this.controllerName);
+//            if (controller.getAnimationState() == AnimationState.Stopped) {
+//                controller.markNeedsReload();
+//                controller.setAnimation(new AnimationBuilder().addAnimation("animation.mace.charge", false)
+//                        .addAnimation("animation.mace.hold_charge", true));
+//            }
+//        }
+//        if (state == 1) {
+//            AnimationController<?> controller = GeckoLibUtil.getControllerForID(this.factory, id, this.controllerName);
+//            if (controller.getAnimationState() == AnimationState.Stopped) {
+//                controller.markNeedsReload();
+//                controller.setAnimation((new AnimationBuilder()).addAnimation("animation.mace.swing_attack", false));
+//            }
+//        }
+//
+//    }
+
     @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, this.controllerName, 20, this::predicate));
+    public double getTick(Object o) {
+        return 0;
     }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return this.factory;
-    }
-
-    public void onAnimationSync(int id, int state) {
-        if (state == 0) {
-            AnimationController<?> controller = GeckoLibUtil.getControllerForID(this.factory, id, this.controllerName);
-            if (controller.getAnimationState() == AnimationState.Stopped) {
-                controller.markNeedsReload();
-                controller.setAnimation(new AnimationBuilder().addAnimation("animation.mace.charge", false)
-                        .addAnimation("animation.mace.hold_charge", true));
-            }
-        }
-        if (state == 1) {
-            AnimationController<?> controller = GeckoLibUtil.getControllerForID(this.factory, id, this.controllerName);
-            if (controller.getAnimationState() == AnimationState.Stopped) {
-                controller.markNeedsReload();
-                controller.setAnimation((new AnimationBuilder()).addAnimation("animation.mace.swing_attack", false));
-            }
-        }
-
-    }
-
 }
