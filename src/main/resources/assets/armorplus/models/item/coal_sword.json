@@ -1,6 +1,6 @@
 {
   "parent": "armorplus:item/handheld_sword",
   "textures": {
-    "layer0": "armorplus:items/coal_sword"
+    "layer0": "armorplus:item/coal_sword"
   }
 }

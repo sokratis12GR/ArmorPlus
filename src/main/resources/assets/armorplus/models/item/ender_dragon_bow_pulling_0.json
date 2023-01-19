@@ -1,6 +1,6 @@
 {
   "parent": "item/bow",
   "textures": {
-    "layer0": "armorplus:items/ender_dragon_bow_pulling_0"
+    "layer0": "armorplus:item/ender_dragon_bow_pulling_0"
   }
 }

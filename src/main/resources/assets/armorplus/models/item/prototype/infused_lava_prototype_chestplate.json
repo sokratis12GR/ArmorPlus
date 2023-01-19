@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "armorplus:items/lava_chestplate"
+    "layer0": "armorplus:item/lava_chestplate"
   }
 }

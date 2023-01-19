@@ -1,6 +1,6 @@
 {
   "parent": "block/template_wall_post",
   "textures": {
-    "wall": "armorplus:blocks/green_castle_block"
+    "wall": "armorplus:block/green_castle_block"
   }
 }

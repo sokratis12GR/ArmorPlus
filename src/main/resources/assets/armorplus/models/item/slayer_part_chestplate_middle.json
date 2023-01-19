@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "armorplus:items/slayer_chestplate_middle"
+    "layer0": "armorplus:item/slayer_chestplate_middle"
   }
 }

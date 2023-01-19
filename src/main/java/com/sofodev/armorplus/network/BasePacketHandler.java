@@ -1,7 +1,5 @@
 package com.sofodev.armorplus.network;
 
-import com.mojang.math.Vector3d;
-import com.mojang.math.Vector3f;
 import com.sofodev.armorplus.ArmorPlus;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -19,6 +17,8 @@ import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 import net.minecraftforge.server.ServerLifecycleHooks;
+import org.joml.Vector3d;
+import org.joml.Vector3f;
 
 import java.util.Optional;
 import java.util.function.BiConsumer;
@@ -38,7 +38,9 @@ public abstract class BasePacketHandler {
         channelBuilder = channelBuilder.clientAcceptedVersions(protocolVersion::equals);
         protocolVersion = getProtocolVersion();
         protocolVersion.getClass();
-        return channelBuilder.serverAcceptedVersions(protocolVersion::equals).networkProtocolVersion(BasePacketHandler::getProtocolVersion).simpleChannel();
+        return channelBuilder.serverAcceptedVersions(protocolVersion::equals)
+                .networkProtocolVersion(BasePacketHandler::getProtocolVersion)
+                .simpleChannel();
     }
 
     private static String getProtocolVersion() {
@@ -64,11 +66,13 @@ public abstract class BasePacketHandler {
     public abstract void initialize();
 
     protected <MSG> void registerClientToServer(Class<MSG> type, BiConsumer<MSG, FriendlyByteBuf> encoder, Function<FriendlyByteBuf, MSG> decoder, BiConsumer<MSG, Supplier<NetworkEvent.Context>> consumer) {
-        this.getChannel().registerMessage(this.index++, type, encoder, decoder, consumer, Optional.of(NetworkDirection.PLAY_TO_SERVER));
+        this.getChannel()
+                .registerMessage(this.index++, type, encoder, decoder, consumer, Optional.of(NetworkDirection.PLAY_TO_SERVER));
     }
 
     protected <MSG> void registerServerToClient(Class<MSG> type, BiConsumer<MSG, FriendlyByteBuf> encoder, Function<FriendlyByteBuf, MSG> decoder, BiConsumer<MSG, Supplier<NetworkEvent.Context>> consumer) {
-        this.getChannel().registerMessage(this.index++, type, encoder, decoder, consumer, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
+        this.getChannel()
+                .registerMessage(this.index++, type, encoder, decoder, consumer, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
     }
 
     public <MSG> void sendTo(MSG message, ServerPlayer player) {

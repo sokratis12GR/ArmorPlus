@@ -1,6 +1,6 @@
 {
   "parent": "block/wall_inventory",
   "textures": {
-    "wall": "armorplus:blocks/orange_stone_brick"
+    "wall": "armorplus:block/orange_stone_brick"
   }
 }

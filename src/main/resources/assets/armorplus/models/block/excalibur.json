@@ -1,10 +1,10 @@
 {
 	"credit": "Created by Sokratis Fotkatzikis",
 	"textures": {
-		"6": "armorplus:blocks/stone_bot",
-		"7": "armorplus:blocks/stone_top",
-		"8": "armorplus:blocks/blade_color",
-		"9": "armorplus:blocks/handle"
+		"6": "armorplus:block/stone_bot",
+		"7": "armorplus:block/stone_top",
+		"8": "armorplus:block/blade_color",
+		"9": "armorplus:block/handle"
 	},
 	"elements": [
 		{

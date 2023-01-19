@@ -2,10 +2,10 @@
   "parent": "block/block",
   "ambientocclusion": false,
   "textures": {
-    "particle": "armorplus:blocks/lava_cactus_side",
-    "bottom": "armorplus:blocks/lava_cactus_bottom",
-    "top": "armorplus:blocks/lava_cactus_top",
-    "side": "armorplus:blocks/lava_cactus_side"
+    "particle": "armorplus:block/lava_cactus_side",
+    "bottom": "armorplus:block/lava_cactus_bottom",
+    "top": "armorplus:block/lava_cactus_top",
+    "side": "armorplus:block/lava_cactus_side"
   },
   "elements": [
     {

@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "armorplus:items/frost_crystal"
+    "layer0": "armorplus:item/frost_crystal"
   }
 }
 

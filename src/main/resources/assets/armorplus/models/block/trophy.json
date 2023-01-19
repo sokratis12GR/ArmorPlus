@@ -1,8 +1,8 @@
 {
   "__comment": "Model created by sokratis12GR",
   "textures": {
-    "particle": "armorplus:blocks/block_lava_crystal",
-    "0": "armorplus:blocks/block_lava_crystal"
+    "particle": "armorplus:block/block_lava_crystal",
+    "0": "armorplus:block/block_lava_crystal"
   },
   "elements": [
     {

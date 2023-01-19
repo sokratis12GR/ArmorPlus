@@ -1,6 +1,6 @@
 {
   "parent": "armorplus:item/handheld_battle_axe",
   "textures": {
-    "layer0": "armorplus:items/coal_battle_axe"
+    "layer0": "armorplus:item/coal_battle_axe"
   }
 }

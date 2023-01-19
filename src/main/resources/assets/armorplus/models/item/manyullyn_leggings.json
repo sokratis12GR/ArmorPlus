@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "armorplus:items/manyullyn_leggings"
+    "layer0": "armorplus:item/manyullyn_leggings"
   }
 }
 

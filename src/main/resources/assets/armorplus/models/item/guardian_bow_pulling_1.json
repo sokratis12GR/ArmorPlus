@@ -1,6 +1,6 @@
 {
   "parent": "item/bow",
   "textures": {
-    "layer0": "armorplus:items/guardian_bow_pulling_1"
+    "layer0": "armorplus:item/guardian_bow_pulling_1"
   }
 }

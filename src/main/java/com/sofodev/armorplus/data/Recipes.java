@@ -8,6 +8,7 @@ import com.sofodev.armorplus.registry.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -42,14 +43,13 @@ public class Recipes extends RecipeProvider implements DataProvider, IConditionB
     private DataGenerator generator;
 
     public Recipes(DataGenerator generatorIn) {
-        super(generatorIn);
+        super(generatorIn.getPackOutput());
         generator = generatorIn;
     }
 
     @Override
-    protected void buildCraftingRecipes(Consumer<FinishedRecipe> con) {
+    protected void buildRecipes(Consumer<FinishedRecipe> con) {
         this.registerCraftingRecipes(con);
-        this.registerSmithingRecipes(con);
     }
 
     private void registerCraftingRecipes(Consumer<FinishedRecipe> con) {
@@ -133,8 +133,8 @@ public class Recipes extends RecipeProvider implements DataProvider, IConditionB
             Item mace = MACES[i].get();
             String path = getPath(mace).replace("item_", "").replace("_mace", "");
             ItemLike material = BLOCK_MATERIALS_ORDERED.get(i);
-            crafter.build(con, Result.build(mace, "maces", path), GridInput.build(" DD", " SD", "S  ", 'S', 'D'), i > 4 ? OBSIDIAN_STICK.get() : WOODEN_ROD.get(), material);
-            crafter.build(con, Result.build(mace, "maces", path).setSuffix("_alt"), GridInput.build("DD ", "DS ", "  S", 'S', 'D'), i > 4 ? OBSIDIAN_STICK.get() : WOODEN_ROD.get(), material);
+            crafter.build(con, RecipeCategory.COMBAT, Result.build(mace, "maces", path), GridInput.build(" DD", " SD", "S  ", 'S', 'D'), i > 4 ? OBSIDIAN_STICK.get() : WOODEN_ROD.get(), material);
+            crafter.build(con, RecipeCategory.COMBAT, Result.build(mace, "maces", path).setSuffix("_alt"), GridInput.build("DD ", "DS ", "  S", 'S', 'D'), i > 4 ? OBSIDIAN_STICK.get() : WOODEN_ROD.get(), material);
         });
         //Storage Blocks
         crafter.buildStorage(con, COMPRESSED_LAVA_CRYSTAL.get(), ModBlocks.LAVA_CRYSTAL.get());
@@ -146,7 +146,7 @@ public class Recipes extends RecipeProvider implements DataProvider, IConditionB
         crafter.buildStorage(con, ModItems.FROST_CRYSTAL.get(), FROST_SHARD.get());
 
         //Ultimate Material
-        crafter.build(con, Result.build(THE_ULTIMATE_MATERIAL.get(), 1),
+        crafter.build(con, RecipeCategory.MISC, Result.build(THE_ULTIMATE_MATERIAL.get(), 1),
                 INFUSED_FROST_LAVA_CRYSTAL.get(), WITHER_BONE.get(), ENDER_DRAGON_SCALE.get(), GUARDIAN_SCALE.get()
         );
         //Slayer Set
@@ -160,47 +160,15 @@ public class Recipes extends RecipeProvider implements DataProvider, IConditionB
         crafter.buildBow(con, SLAYER_BOW_BASE, THE_ULTIMATE_MATERIAL.get(),
                 SUPER_STAR_BOW_BASE.get(), ENDER_DRAGON_BOW_BASE.get(), GUARDIAN_BOW_BASE.get());
 
-        crafter.build(con, Result.build(SLAYER_SOUL.get(), 1).setGroup("slayer").setSuffix(""), ELDER_GUARDIAN_SOUL.get(), WITHER_BOSS_SOUL.get(), ENDER_DRAGON_SOUL.get());
+        crafter.build(con, RecipeCategory.MISC, Result.build(SLAYER_SOUL.get(), 1).setGroup("slayer").setSuffix(""), ELDER_GUARDIAN_SOUL.get(), WITHER_BOSS_SOUL.get(), ENDER_DRAGON_SOUL.get());
         //Other
-        crafter.build(con, Result.build(SOUL_BOX.get()).setGroup("villager").setSuffix(""), GridInput.build("ASA", "SGS", "ASA", 'A', 'S', 'G'), Items.STONE, SOUL_SAND, GLOWSTONE);
-        crafter.build(con, Result.build(OBSIDIAN_STICK.get(), 4).setGroup("materials").setSuffix(""), GridInput.build(Grid.build("X", "X", " "), 'X'), Items.OBSIDIAN);
-        crafter.build(con, Result.build(WOODEN_ROD.get(), 2).setGroup("materials").setSuffix(""), STICK, STICK, STICK, STICK);
-        crafter.build(con, Result.build(SNOW_BRICK.get(), 4).setGroup("snow_brick").setSuffix(""), GridInput.buildSmallSquare('X'), SNOW_BLOCK);
-        crafter.build(con, Result.build(SNOW_BRICK_STAIRS.get(), 4).setGroup("snow_brick_stairs").setSuffix(""), GridInput.buildStairs('X'), SNOW_BRICK.get());
-        crafter.build(con, Result.build(SNOW_BRICK_SLAB.get(), 4).setGroup("snow_brick_slab").setSuffix(""), GridInput.buildSlab('X'), SNOW_BRICK.get());
+        crafter.build(con, RecipeCategory.BUILDING_BLOCKS, Result.build(SOUL_BOX.get()).setGroup("villager").setSuffix(""), GridInput.build("ASA", "SGS", "ASA", 'A', 'S', 'G'), Items.STONE, SOUL_SAND, GLOWSTONE);
+        crafter.build(con, RecipeCategory.MISC, Result.build(OBSIDIAN_STICK.get(), 4).setGroup("materials").setSuffix(""), GridInput.build(Grid.build("X", "X", " "), 'X'), Items.OBSIDIAN);
+        crafter.build(con, RecipeCategory.MISC, Result.build(WOODEN_ROD.get(), 2).setGroup("materials").setSuffix(""), STICK, STICK, STICK, STICK);
+        crafter.build(con, RecipeCategory.BUILDING_BLOCKS, Result.build(SNOW_BRICK.get(), 4).setGroup("snow_brick").setSuffix(""), GridInput.buildSmallSquare('X'), SNOW_BLOCK);
+        crafter.build(con, RecipeCategory.BUILDING_BLOCKS, Result.build(SNOW_BRICK_STAIRS.get(), 4).setGroup("snow_brick_stairs").setSuffix(""), GridInput.buildStairs('X'), SNOW_BRICK.get());
+        crafter.build(con, RecipeCategory.BUILDING_BLOCKS, Result.build(SNOW_BRICK_SLAB.get(), 4).setGroup("snow_brick_slab").setSuffix(""), GridInput.buildSlab('X'), SNOW_BRICK.get());
     }
 
-    private void registerSmithingRecipes(Consumer<FinishedRecipe> con) {
-        SmithingRecipeMaker smither = new SmithingRecipeMaker(generator);
-        //ArmorBase + Soul = Complete Form
-        smither.buildBaseToFullSmithing(con, SUPER_STAR_BASES, WITHER_BOSS_SOUL.get());
-        smither.buildBaseToFullSmithing(con, GUARDIAN_BASES, ELDER_GUARDIAN_SOUL.get());
-        smither.buildBaseToFullSmithing(con, ENDER_DRAGON_BASES, ENDER_DRAGON_SOUL.get());
-        smither.buildBaseToFullSmithing(con, SLAYER_BASES, SLAYER_SOUL.get());
 
-        smither.buildBaseToFullSmithing(con, WITHER_BOSS_SOUL.get(),
-                SUPER_STAR_SWORD_BASE, SUPER_STAR_BATTLE_AXE_BASE, SUPER_STAR_PICKAXE_BASE, SUPER_STAR_BOW_BASE
-        );
-        smither.buildBaseToFullSmithing(con, ELDER_GUARDIAN_SOUL.get(),
-                GUARDIAN_SWORD_BASE, GUARDIAN_BATTLE_AXE_BASE, GUARDIAN_PICKAXE_BASE, GUARDIAN_BOW_BASE
-        );
-        smither.buildBaseToFullSmithing(con, ENDER_DRAGON_SOUL.get(),
-                ENDER_DRAGON_SWORD_BASE, ENDER_DRAGON_BATTLE_AXE_BASE, ENDER_DRAGON_PICKAXE_BASE, ENDER_DRAGON_BOW_BASE
-        );
-        smither.buildBaseToFullSmithing(con, SLAYER_SOUL.get(),
-                SLAYER_SWORD_BASE, SLAYER_BATTLE_AXE_BASE, SLAYER_PICKAXE_BASE, SLAYER_BOW_BASE
-        );
-
-        smither.buildVanillaToEnhancedSmithing(con, NETHERITE_HELMET, ENHANCED_NETHERITE);
-        smither.buildVanillaToEnhancedSmithing(con, NETHERITE_CHESTPLATE, ENHANCED_NETHERITE);
-        smither.buildVanillaToEnhancedSmithing(con, NETHERITE_LEGGINGS, ENHANCED_NETHERITE);
-        smither.buildVanillaToEnhancedSmithing(con, NETHERITE_BOOTS, ENHANCED_NETHERITE);
-        smither.buildSmithing(con, INFUSED_LAVA_CRYSTAL.get(), INFUSED_FROST_CRYSTAL.get(), INFUSED_FROST_LAVA_CRYSTAL.get());
-        smither.buildSmithing(con, INFUSED_FROST_CRYSTAL.get(), INFUSED_LAVA_CRYSTAL.get(), INFUSED_FROST_LAVA_CRYSTAL.get());
-    }
-
-    @Override
-    public String getName() {
-        return "Recipes";
-    }
 }

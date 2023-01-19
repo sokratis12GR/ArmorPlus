@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "armorplus:items/mace_head"
+    "layer0": "armorplus:item/mace_head"
   }
 }

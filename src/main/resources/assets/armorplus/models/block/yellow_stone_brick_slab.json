@@ -1,8 +1,8 @@
 {
     "parent": "minecraft:block/slab",
     "textures": {
-        "bottom": "armorplus:blocks/yellow_stone_brick",
-        "top": "armorplus:blocks/yellow_stone_brick",
-        "side": "armorplus:blocks/yellow_stone_brick"
+        "bottom": "armorplus:block/yellow_stone_brick",
+        "top": "armorplus:block/yellow_stone_brick",
+        "side": "armorplus:block/yellow_stone_brick"
     }
 }

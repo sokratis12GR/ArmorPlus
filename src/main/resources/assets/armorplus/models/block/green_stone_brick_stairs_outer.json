@@ -1,8 +1,8 @@
 {
     "parent": "minecraft:block/outer_stairs",
     "textures": {
-        "bottom": "armorplus:blocks/green_stone_brick",
-        "top": "armorplus:blocks/green_stone_brick",
-        "side": "armorplus:blocks/green_stone_brick"
+        "bottom": "armorplus:block/green_stone_brick",
+        "top": "armorplus:block/green_stone_brick",
+        "side": "armorplus:block/green_stone_brick"
     }
 }

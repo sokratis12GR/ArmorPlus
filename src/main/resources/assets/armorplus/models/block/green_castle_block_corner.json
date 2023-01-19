@@ -1,8 +1,8 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "particle": "armorplus:blocks/green_castle_block",
-    "0": "armorplus:blocks/green_castle_block"
+    "particle": "armorplus:block/green_castle_block",
+    "0": "armorplus:block/green_castle_block"
   },
   "elements": [
     {

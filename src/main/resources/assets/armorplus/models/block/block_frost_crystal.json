@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "armorplus:blocks/block_frost_crystal"
+    "all": "armorplus:block/block_frost_crystal"
   }
 }

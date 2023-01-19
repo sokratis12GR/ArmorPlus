@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "armorplus:items/wither_bone"
+    "layer0": "armorplus:item/wither_bone"
   }
 }

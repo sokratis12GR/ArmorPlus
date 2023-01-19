@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "armorplus:items/emerald_leggings"
+    "layer0": "armorplus:item/emerald_leggings"
   }
 }

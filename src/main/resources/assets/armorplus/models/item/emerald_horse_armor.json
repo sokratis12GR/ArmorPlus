@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "armorplus:items/emerald_horse_armor"
+    "layer0": "armorplus:item/emerald_horse_armor"
   }
 }

@@ -1,10 +1,10 @@
 {
 	"credit": "Created by Sokratis Fotkatzikis",
 	"textures": {
-		"0": "armorplus:blocks/pillar_top",
-		"2": "armorplus:blocks/pillar_mid",
-		"3": "armorplus:blocks/pillar_bot",
-		"particle": "armorplus:blocks/pillar_top"
+		"0": "armorplus:block/pillar_top",
+		"2": "armorplus:block/pillar_mid",
+		"3": "armorplus:block/pillar_bot",
+		"particle": "armorplus:block/pillar_top"
 	},
 	"elements": [
 		{

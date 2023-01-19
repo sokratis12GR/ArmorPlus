@@ -1,6 +1,6 @@
 {
   "parent": "block/template_wall_side",
   "textures": {
-    "wall": "armorplus:blocks/green_stone_brick"
+    "wall": "armorplus:block/green_stone_brick"
   }
 }

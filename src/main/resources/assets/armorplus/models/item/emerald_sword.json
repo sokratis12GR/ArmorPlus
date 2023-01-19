@@ -1,6 +1,6 @@
 {
   "parent": "armorplus:item/handheld_sword",
   "textures": {
-    "layer0": "armorplus:items/emerald_sword"
+    "layer0": "armorplus:item/emerald_sword"
   }
 }

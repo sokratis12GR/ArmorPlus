@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/cube_all",
 	"textures": {
-		"0": "armorplus:blocks/black_castle_block",
-		"particle": "armorplus:blocks/black_castle_block"
+		"0": "armorplus:block/black_castle_block",
+		"particle": "armorplus:block/black_castle_block"
 	},
 	"elements": [
 		{

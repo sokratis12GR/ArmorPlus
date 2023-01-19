@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "armorplus:items/lapis_boots"
+    "layer0": "armorplus:item/lapis_boots"
   }
 }
 

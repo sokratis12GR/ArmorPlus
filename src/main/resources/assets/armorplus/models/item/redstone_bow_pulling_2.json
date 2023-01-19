@@ -1,6 +1,6 @@
 {
   "parent": "item/bow",
   "textures": {
-    "layer0": "armorplus:items/redstone_bow_pulling_2"
+    "layer0": "armorplus:item/redstone_bow_pulling_2"
   }
 }

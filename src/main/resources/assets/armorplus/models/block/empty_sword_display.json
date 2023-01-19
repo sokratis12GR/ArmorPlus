@@ -1,9 +1,9 @@
 {
 	"credit": "Created by Sokratis Fotkatzikis",
 	"textures": {
-		"0": "armorplus:blocks/stone_bot",
-		"1": "armorplus:blocks/stone_top",
-		"particle": "armorplus:blocks/stone_top"
+		"0": "armorplus:block/stone_bot",
+		"1": "armorplus:block/stone_top",
+		"particle": "armorplus:block/stone_top"
 	},
 	"elements": [
 		{

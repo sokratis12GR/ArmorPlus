@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "armorplus:blocks/white_castle_block"
+    "all": "armorplus:block/white_castle_block"
   }
 }

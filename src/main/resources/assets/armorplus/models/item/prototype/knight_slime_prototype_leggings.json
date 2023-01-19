@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "armorplus:items/knight_slime_leggings"
+    "layer0": "armorplus:item/knight_slime_leggings"
   }
 }
 

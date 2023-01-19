@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "armorplus:items/guardian_arrow"
+    "layer0": "armorplus:item/guardian_arrow"
   }
 }

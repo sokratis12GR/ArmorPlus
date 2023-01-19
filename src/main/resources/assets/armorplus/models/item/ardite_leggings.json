@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "armorplus:items/ardite_leggings"
+    "layer0": "armorplus:item/ardite_leggings"
   }
 }
 

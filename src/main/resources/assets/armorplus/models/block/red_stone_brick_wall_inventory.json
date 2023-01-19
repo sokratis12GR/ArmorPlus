@@ -1,6 +1,6 @@
 {
   "parent": "block/wall_inventory",
   "textures": {
-    "wall": "armorplus:blocks/red_stone_brick"
+    "wall": "armorplus:block/red_stone_brick"
   }
 }

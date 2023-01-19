@@ -1,6 +1,6 @@
 {
   "parent": "block/wall_inventory",
   "textures": {
-    "wall": "armorplus:blocks/white_castle_block"
+    "wall": "armorplus:block/white_castle_block"
   }
 }

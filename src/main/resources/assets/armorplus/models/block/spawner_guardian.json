@@ -1,8 +1,8 @@
 {
   "parent": "block/block",
   "textures": {
-    "particle": "armorplus:blocks/spawner",
-    "all": "armorplus:blocks/spawner"
+    "particle": "armorplus:block/spawner",
+    "all": "armorplus:block/spawner"
   },
   "elements": [
     {

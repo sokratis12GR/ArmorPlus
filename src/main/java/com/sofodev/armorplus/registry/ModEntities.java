@@ -3,9 +3,6 @@ package com.sofodev.armorplus.registry;
 import com.sofodev.armorplus.registry.entities.arrows.APArrowEntity;
 import com.sofodev.armorplus.registry.entities.arrows.ArrowType;
 import com.sofodev.armorplus.registry.entities.arrows.impl.*;
-import com.sofodev.armorplus.registry.entities.bosses.SkeletalKingEntity;
-import com.sofodev.armorplus.registry.entities.bosses.data.MobType;
-import com.sofodev.armorplus.registry.entities.normal.WitherlingEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -44,19 +41,6 @@ public class ModEntities {
             () -> buildArrow(SuperStarArrowEntity::new, SUPER_STAR));
     public static final RegistryObject<EntityType<APArrowEntity>> ENDER_DRAGON_ARROW = register("ender_dragon_arrow",
             () -> buildArrow(EnderDragonArrowEntity::new, ENDER_DRAGON));
-    //Bosses-Minions-Projectiles
-    public static final RegistryObject<EntityType<SkeletalKingEntity>> SKELETAL_KING = register("skeletal_king",
-            () -> build(SkeletalKingEntity::new, MobType.SKELETAL_KING));
-    public static final RegistryObject<EntityType<WitherlingEntity>> WITHERLING = register("witherling",
-            () -> build(WitherlingEntity::new, MobType.WITHERLING));
-//    public static final RegistryObject<EntityType<DemonicDragonEntity>> DEMONIC_DRAGON = register("demonic_dragon",
-//            () -> build(DemonicDragonEntity::new, MobType.DEMONIC_DRAGON));
-//    public static final RegistryObject<EntityType<FrostWolfEntity>> FROST_WOLF = register("frost_wolf",
-//            () -> build(FrostWolfEntity::new, MobType.FROST_WOLF));
-//    public static final RegistryObject<EntityType<FrostWolfAlphaEntity>> FROST_WOLF_ALPHA = register("frost_wolf_alpha",
-//            () -> build(FrostWolfAlphaEntity::new, MobType.FROST_WOLF_ALPHA));
-//    public static final RegistryObject<EntityType<BoreasEntity>> BOREAS = register("boreas",
-//            () -> build(BoreasEntity::new, MobType.BOREAS));
 
     /////////////////////
     // UTILITY METHODS //
@@ -75,17 +59,6 @@ public class ModEntities {
      */
     private static <ENTITY extends AbstractArrow> EntityType<ENTITY> buildArrow(EntityType.EntityFactory<ENTITY> factoryIn, ArrowType data) {
         return build(data.getItemArrowName(), EntityType.Builder.of(factoryIn, MISC).sized(0.5f, 0.5f));
-    }
-
-    private static <ENTITY extends Entity> EntityType<ENTITY> build(EntityType.EntityFactory<ENTITY> factory, MobType data) {
-        EntityType.Builder<ENTITY> builder = EntityType.Builder.of(factory, data.getClassification())
-                .setTrackingRange(data.getTrackingRange())
-                .sized(data.getWidth(), data.getHeight());
-        if (data.isImmuneToFire()) {
-            builder.fireImmune();
-        }
-
-        return build(data.getName(), builder);
     }
 
     private static <ENTITY extends Entity> EntityType<ENTITY> build(String id, EntityType.Builder<ENTITY> builder) {

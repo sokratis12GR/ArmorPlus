@@ -1,8 +1,8 @@
 {
     "parent": "minecraft:block/stairs",
     "textures": {
-        "bottom": "armorplus:blocks/purple_castle_block",
-        "top": "armorplus:blocks/purple_castle_block",
-        "side": "armorplus:blocks/purple_castle_block"
+        "bottom": "armorplus:block/purple_castle_block",
+        "top": "armorplus:block/purple_castle_block",
+        "side": "armorplus:block/purple_castle_block"
     }
 }

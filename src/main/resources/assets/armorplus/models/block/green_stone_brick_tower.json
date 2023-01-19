@@ -2,8 +2,8 @@
 	"credit": "Created by Sokratis Fotkatzikis",
 	"parent": "block/cube_all",
 	"textures": {
-		"0": "armorplus:blocks/green_stone_brick",
-		"particle": "armorplus:blocks/green_stone_brick"
+		"0": "armorplus:block/green_stone_brick",
+		"particle": "armorplus:block/green_stone_brick"
 	},
 	"elements": [
 		{

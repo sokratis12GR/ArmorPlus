@@ -1,8 +1,8 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "particle": "armorplus:blocks/yellow_stone_brick",
-    "0": "armorplus:blocks/yellow_stone_brick"
+    "particle": "armorplus:block/yellow_stone_brick",
+    "0": "armorplus:block/yellow_stone_brick"
   },
   "elements": [
     {

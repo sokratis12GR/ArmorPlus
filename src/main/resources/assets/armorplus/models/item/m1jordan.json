@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "armorplus:items/m1jordan"
+    "layer0": "armorplus:item/m1jordan"
   }
 }

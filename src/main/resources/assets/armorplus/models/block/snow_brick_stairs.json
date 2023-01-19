@@ -1,8 +1,8 @@
 {
     "parent": "minecraft:block/stairs",
     "textures": {
-        "bottom": "armorplus:blocks/snow_brick",
-        "top": "armorplus:blocks/snow_brick",
-        "side": "armorplus:blocks/snow_brick"
+        "bottom": "armorplus:block/snow_brick",
+        "top": "armorplus:block/snow_brick",
+        "side": "armorplus:block/snow_brick"
     }
 }

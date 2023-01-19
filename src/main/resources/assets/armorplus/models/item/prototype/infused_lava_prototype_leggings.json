@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "armorplus:items/lava_leggings"
+    "layer0": "armorplus:item/lava_leggings"
   }
 }
 

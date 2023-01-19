@@ -1,7 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "armorplus:items/slayer_bow"
+        "layer0": "armorplus:item/slayer_bow"
     },
     "display": {
         "thirdperson_righthand": {

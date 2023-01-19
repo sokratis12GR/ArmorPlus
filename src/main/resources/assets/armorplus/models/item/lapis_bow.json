@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "armorplus:items/lapis_bow"
+    "layer0": "armorplus:item/lapis_bow"
   },
   "display": {
     "thirdperson_righthand": {
