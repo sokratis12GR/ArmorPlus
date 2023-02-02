@@ -31,13 +31,15 @@ Credits for all the people who helped with the mod translation can be found **[h
 
 ## Mod Integrations
 
-* **[Tesla](https://minecraft.curseforge.com/projects/tesla)** (Not in 1.12+)
-* **RF** (Not in 1.11+)
-* **[Tinkers' Construct](https://minecraft.curseforge.com/projects/tinkers-construct)** (Not in 1.16.3+)
-* **[The One Probe](https://minecraft.curseforge.com/projects/the-one-probe)** (Not in 1.16.3+)
-* **[Just Enough Items](https://minecraft.curseforge.com/projects/just-enough-items-jei)**
-* **[Baubles](https://minecraft.curseforge.com/projects/baubles)** (Not in 1.12)
-* **[CraftTweaker](https://minecraft.curseforge.com/projects/crafttweaker)** [ZenScript Samples](https://gist.github.com/sokratis12GR/4a56e48af0d49b5d832fb22ebc8ce56b) (Not in 1.16.3+)
+| Mod | Supported Until MC Version |
+| --- | -------------------------- |
+| **[Tesla](https://minecraft.curseforge.com/projects/tesla)** | 1.11.2 |
+| **RF** | 1.10.2 |
+| **[Tinkers' Construct](https://minecraft.curseforge.com/projects/tinkers-construct)** | 1.12.2 |
+| **[The One Probe](https://minecraft.curseforge.com/projects/the-one-probe)** | 1.12.2 |
+| **[Just Enough Items](https://minecraft.curseforge.com/projects/just-enough-items-jei)** | 1.20 |
+| **[Baubles](https://minecraft.curseforge.com/projects/baubles)** | 1.11.2 |
+| **[CraftTweaker](https://minecraft.curseforge.com/projects/crafttweaker)** [ZenScript Samples](https://gist.github.com/sokratis12GR/4a56e48af0d49b5d832fb22ebc8ce56b) | 1.12.2 |
 
 ## ArmorPlus Community Discord
 
