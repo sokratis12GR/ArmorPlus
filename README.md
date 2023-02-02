@@ -18,19 +18,16 @@ Credits for all the people who helped with the mod translation can be found **[h
 
 ### [Grab the latest publicly available versions from curseforge.](https://www.curseforge.com/minecraft/mc-mods/armorplus/files)
 
-~~[ArmorPlus Developing Addons/Integrations Wiki](https://github.com/sokratis12GR/ArmorPlus/wiki)~~
-* **1.19.2**
-  * Latest: [1.19.2-19.0.0](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/3924641)
-* **1.18.2**
-  * Latest: [1.18.2-18.2.0](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/3933975)
-* **1.16.5**
-  * Recommended: [1.16.5-16.8.1](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/3860026)
-* **1.12.2**
-  * Recommended: [1.12.2-11.28.0.69](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/2952741)
-* **1.11.2**
-  * Recommended: [1.11.2-10.8.0.1](https://minecraft.curseforge.com/projects/armorplus/files/2473960)
-* **1.10.2**
-  * Recommended: [1.10.2-8.7.1.2](https://minecraft.curseforge.com/projects/armorplus/files/2431043)
+
+| MC Version | Is Supported | Recommended | Latest
+| --- | :---: | --- | --- |
+| **1.19.3** | True  | [1.19.3-19.2.0](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/4353467)          | ~ |
+| **1.19.2** | False | ~ | [1.19.2-19.1.0-beta](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/3970063)
+| **1.18.2** | True  | [1.18.2-18.3.0](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/4376882)          | ~ |
+| **1.16.5** | False | [1.16.5-16.8.1](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/3860026)          | ~ |
+| **1.12.2** | False | [1.12.2-11.28.0.69](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/2952741)      | ~ |
+| **1.11.2** | False | [1.11.2-10.8.0.1](https://minecraft.curseforge.com/projects/armorplus/files/2473960)           | ~ |
+| **1.10.2** | False | [1.10.2-8.7.1.2](https://minecraft.curseforge.com/projects/armorplus/files/2431043)            | ~ |
 
 ## Mod Integrations
 
