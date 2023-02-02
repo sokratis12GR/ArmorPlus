@@ -12,6 +12,7 @@ import net.minecraft.world.level.Level;
 
 import java.util.Locale;
 
+import static com.sofodev.armorplus.registry.items.extras.Buff.NONE;
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
 import static com.sofodev.armorplus.utils.Utils.convertToSeconds;
 import static net.minecraft.ChatFormatting.DARK_AQUA;
@@ -24,8 +25,16 @@ public class BuffInstance {
     private int amplifier;
     private boolean enabled;
 
+    public BuffInstance(boolean enabled, IBuff buff, int amplifier) {
+        this(enabled ? buff : NONE, amplifier, 20, true);
+    }
+
     public BuffInstance(IBuff buff, int amplifier) {
         this(buff, amplifier, 20, true);
+    }
+
+    public BuffInstance(boolean enabled, IBuff buff, int amplifier, int duration) {
+        this(enabled ? buff : NONE, amplifier, duration, false);
     }
 
     public BuffInstance(IBuff buff, int amplifier, int duration) {
@@ -44,6 +53,14 @@ public class BuffInstance {
         } else {
             this.potion = Potions.EMPTY;
         }
+        this.enabled = true;
+    }
+
+    public BuffInstance(boolean enabled, IBuff buff) {
+        this.buff = enabled ? buff : NONE;
+        this.amplifier = -1;
+        this.instant = true;
+        this.potion = Potions.EMPTY;
         this.enabled = true;
     }
 

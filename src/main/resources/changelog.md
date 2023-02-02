@@ -1,3 +1,18 @@
+ArmorPlus 1.18.2-18.3.0
+----------------------------
+
+* Removed The Skeletal King & Witherling [Entities will not return].
+* Balance change of default abilities:
+    * for the guardian armour, it will now extinguish fire, provide night vision and jump boost II (as guardians have a very high jump ability).
+    * for the ender dragon armour, it will now extinguish fire and have fire resistance.
+    * for the super star armour, it will now provide you with absorption (permanent extra 2 hearts as long as you wear the armour).
+    * for the slayer armour, it will now have all the mentioned above buffs to the other armours.
+* Added the ability to control which abilities are present in the higher tier armours: guardian, super star, ender dragon, slayer.
+* Fixed a bug causing Maces to crash with newer versions of Geckolib installed. (closes #271)
+* Fixed a bug causing players to get ignited by their own weapons when hit while holding them. (closes #260)
+* Updated to support Geckolib 3.0.57 and later.
+* Updated to support Forge 40.2.0 and later.
+
 ArmorPlus 1.18.2-18.2.1
 ----------------------------
 

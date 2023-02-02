@@ -7,17 +7,13 @@ import com.sofodev.armorplus.network.PacketHandler;
 import com.sofodev.armorplus.registry.ModConfiguredFeatures;
 import com.sofodev.armorplus.registry.ModItems;
 import com.sofodev.armorplus.registry.blocks.castle.BrickColor;
-import com.sofodev.armorplus.registry.blocks.special.TrophyTileEntityRenderer;
 import com.sofodev.armorplus.registry.entities.arrows.APArrowEntity;
 import com.sofodev.armorplus.registry.entities.arrows.APArrowRenderer;
-import com.sofodev.armorplus.registry.entities.bosses.SkeletalKingRenderer;
-import com.sofodev.armorplus.registry.entities.normal.WitherlingRenderer;
 import com.sofodev.armorplus.registry.items.armors.APArmorMaterial;
 import com.sofodev.armorplus.registry.items.tools.properties.mace.APMaceMaterial;
 import com.sofodev.armorplus.registry.items.tools.properties.tool.APToolProperties;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.Registry;
@@ -45,7 +41,6 @@ import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.sofodev.armorplus.registry.ModAttributes.ATTRIBUTES;
 import static com.sofodev.armorplus.registry.ModBlocks.*;
 import static com.sofodev.armorplus.registry.ModEnchantments.ENCHANTMENTS;
 import static com.sofodev.armorplus.registry.ModEntities.*;
@@ -66,7 +61,7 @@ public class ArmorPlus {
 
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
-    public static final String VERSION = "1.18.2-18.2.1";
+    public static final String VERSION = "1.18.2-18.3.0";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
     public static final PacketHandler PACKET_HANDLER = new PacketHandler();
     /**
@@ -116,7 +111,6 @@ public class ArmorPlus {
         //Config End
         //Re-arranged registry order according to: https://gist.github.com/pupnewfster/ea38cf3744f23d6b65d67e6f279d5942
         BLOCKS.register(modEventBus);
-        ATTRIBUTES.register(modEventBus);
         EFFECTS.register(modEventBus);
         ENTITY_TYPES.register(modEventBus);
         ITEMS.register(modEventBus);
@@ -182,10 +176,6 @@ public class ArmorPlus {
         registerRenderingHandler(GUARDIAN_ARROW.get(), "guardian");
         registerRenderingHandler(SUPER_STAR_ARROW.get(), "super_star");
         registerRenderingHandler(ENDER_DRAGON_ARROW.get(), "ender_dragon");
-        EntityRenderers.register(SKELETAL_KING.get(), SkeletalKingRenderer::new);
-        EntityRenderers.register(WITHERLING.get(), WitherlingRenderer::new);
-        this.setRenderLayer(List.of(TROPHY));
-        BlockEntityRenderers.register(TROPHY_TYPE.get(), TrophyTileEntityRenderer::new);
         registerBowOverrides();
     }
 

@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.registry.items.armors;
 
 import com.sofodev.armorplus.ArmorPlus;
+import com.sofodev.armorplus.registry.ModItems;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorMaterial;
@@ -35,13 +36,13 @@ public enum APArmorProperties implements ArmorMaterial {
     MANYULLYN_PROP(66, new int[]{3, 5, 5, 3}, 30, ARMOR_EQUIP_NETHERITE, 2.0f, AIR),
     SLAYER_PROP(169, new int[]{4, 8, 9, 4}, 60, ARMOR_EQUIP_NETHERITE, 5.0f, "the_ultimate_material"),
     /*Enhanced Vanilla Armor*/
-    ENHANCED_CHAINMAIL_PROP(false, 20, new int[]{2, 5, 6, 3}, 15, ARMOR_EQUIP_CHAIN, 1.0f, "chainmail"),
+    ENHANCED_CHAINMAIL_PROP(false, 20, new int[]{2, 5, 6, 3}, 15, ARMOR_EQUIP_CHAIN, 1.0f, "armorplus:chainmail"),
     ENHANCED_GOLD_PROP(false, 10, new int[]{2, 4, 5, 2}, 30, ARMOR_EQUIP_GOLD, 1.0f, GOLD_INGOT),
     ENHANCED_IRON_PROP(false, 20, new int[]{2, 5, 6, 2}, 15, ARMOR_EQUIP_IRON, 2.0f, IRON_INGOT),
     ENHANCED_DIAMOND_PROP(false, 35, new int[]{3, 6, 7, 3}, 20, ARMOR_EQUIP_DIAMOND, 3.0f, DIAMOND),
     ENHANCED_NETHERITE_PROP(false, 47, new int[]{3, 6, 8, 3}, 25, ARMOR_EQUIP_NETHERITE, 4.0F, NETHERITE_INGOT),
     FROST_PROP(55, new int[]{3, 6, 8, 3}, 16, ARMOR_EQUIP_DIAMOND, 1.0f, "infused_frost_crystal"),
-    FROST_LAVA_PROP(70, new int[]{4, 7, 8, 3}, 32, ARMOR_EQUIP_NETHERITE, 2.0f, AIR);
+    FROST_LAVA_PROP(70, new int[]{4, 7, 8, 3}, 32, ARMOR_EQUIP_NETHERITE, 2.0f, "infused_frost_lava_crystal");
     /**
      * Holds the 'base' maxDamage that each armorType have.
      */
@@ -118,7 +119,7 @@ public enum APArmorProperties implements ArmorMaterial {
     @Override
     @OnlyIn(Dist.CLIENT)
     public String getName() {
-        return special ? (ArmorPlus.MODID + ":" + name) : ("minecraft:" + name);
+        return special ? (ArmorPlus.MODID + ":" + name) : (name);
     }
 
     @Override

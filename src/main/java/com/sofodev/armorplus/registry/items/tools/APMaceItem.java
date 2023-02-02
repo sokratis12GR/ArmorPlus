@@ -25,6 +25,7 @@ import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.Animation;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.builder.ILoopType;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
@@ -116,7 +117,7 @@ public class APMaceItem extends SwordItem implements IAnimatable, ISyncable {
                 int chargeTime = this.getUseDuration(stack) - timeLeft;
                 if (chargeTime >= mat.getType().getChargeSpeed()) {
                     if (currentAnimation != null) {
-                        currentAnimation.loop = false;
+                        currentAnimation.loop = ILoopType.EDefaultLoopTypes.LOOP;
                     }
                     if (!world.isClientSide) {
                         int id = GeckoLibUtil.guaranteeIDForStack(stack, (ServerLevel) world);
