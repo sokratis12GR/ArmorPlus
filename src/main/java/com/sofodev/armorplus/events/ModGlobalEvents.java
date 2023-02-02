@@ -112,18 +112,10 @@ public class ModGlobalEvents {
                         LightningBolt lightningboltentity = EntityType.LIGHTNING_BOLT.create(world);
                         if (lightningboltentity != null) {
                             switch (direction) {
-                                case NORTH:
-                                    lightningboltentity.moveTo(atBottomCenterOf(position.north(i)));
-                                    break;
-                                case SOUTH:
-                                    lightningboltentity.moveTo(atBottomCenterOf(position.south(i)));
-                                    break;
-                                case WEST:
-                                    lightningboltentity.moveTo(atBottomCenterOf(position.west(i)));
-                                    break;
-                                case EAST:
-                                    lightningboltentity.moveTo(atBottomCenterOf(position.east(i)));
-                                    break;
+                                case NORTH -> lightningboltentity.moveTo(atBottomCenterOf(position.north(i)));
+                                case SOUTH -> lightningboltentity.moveTo(atBottomCenterOf(position.south(i)));
+                                case WEST -> lightningboltentity.moveTo(atBottomCenterOf(position.west(i)));
+                                case EAST -> lightningboltentity.moveTo(atBottomCenterOf(position.east(i)));
                             }
                             world.addFreshEntity(lightningboltentity);
                             bow.hurtAndBreak(10, (LivingEntity) entity, event -> event.broadcastBreakEvent(((LivingEntity) entity).getUsedItemHand()));
@@ -149,8 +141,7 @@ public class ModGlobalEvents {
                     if (chance == 100) {
                         for (ItemStack item : player.getArmorSlots()) {
                             Item itemHead = item.getItem();
-                            if (itemHead instanceof ArmorItem) {
-                                ArmorItem armorItem = (ArmorItem) itemHead;
+                            if (itemHead instanceof ArmorItem armorItem) {
                                 ArmorMaterial material = armorItem.getMaterial();
                                 enchantmentList = EnchantmentHelper.getEnchantments(item);
                                 if (!enchantmentList.isEmpty()) {
@@ -183,8 +174,7 @@ public class ModGlobalEvents {
                 List<IBuff> buffList = mat.getBuffInstances()
                         .get()
                         .stream()
-                        .map(BuffInstance::getBuff)
-                        .collect(toList());
+                        .map(BuffInstance::getBuff).toList();
                 if (areExactMatch && mat.config().enableArmorEffects.get()) {
                     if (!buffList.isEmpty()) {
                         if (buffList.contains(FLIGHT)) shouldApplyFlight(e, player);
@@ -275,8 +265,7 @@ public class ModGlobalEvents {
         //disable for now, but don't remove
         final boolean isRunning = false;
         if (isRunning && !e.getWorld().isClientSide()) {
-            if (e.getEntity() instanceof ServerPlayer) {
-                ServerPlayer player = (ServerPlayer) e.getEntity();
+            if (e.getEntity() instanceof ServerPlayer player) {
                 CompoundTag nbt = player.serializeNBT();
                 if (nbt != null && (!nbt.hasUUID("key") || !nbt.getBoolean("thanked"))) {
                     PlayerAdvancements advancements = player.getAdvancements();
@@ -437,8 +426,7 @@ public class ModGlobalEvents {
 
     @SubscribeEvent
     public static void onStructByLightningEvent(EntityStruckByLightningEvent event) {
-        if (!event.getEntity().level.isClientSide && event.getEntity() instanceof ItemEntity) {
-            ItemEntity entity = (ItemEntity) event.getEntity();
+        if (!event.getEntity().level.isClientSide && event.getEntity() instanceof ItemEntity entity) {
             Item item = entity.getItem().getItem();
             if (item instanceof FrostCrystalItem) {
                 boolean infused = ((FrostCrystalItem) item).isInfused();
@@ -461,8 +449,7 @@ public class ModGlobalEvents {
     @SubscribeEvent
     public static void onLivingDamageEvent(LivingDamageEvent event) {
         LivingEntity entity = event.getEntityLiving();
-        if (entity instanceof Player) {
-            Player player = (Player) entity;
+        if (entity instanceof Player player) {
             if (!player.level.isClientSide()) {
                 ItemStack stack = player.getMainHandItem();
                 Item item = stack.getItem();
@@ -473,7 +460,7 @@ public class ModGlobalEvents {
                             .stream()
                             .map(BuffInstance::getBuff).toList();
                     if (!buffList.isEmpty()) {
-                        if (buffList.contains(IGNITE)) IGNITE.hitEntity(stack, entity, player);
+//                        if (buffList.contains(IGNITE)) IGNITE.hitEntity(stack, entity, player);
                     }
                 }
             }
@@ -487,10 +474,9 @@ public class ModGlobalEvents {
             for (ItemStack stack : armor) {
                 Map<Enchantment, Integer> enchantmentList;
                 boolean hasSoulHarden;
-                if (!stack.isDamageableItem() || !(stack.getItem() instanceof ArmorItem)) {
+                if (!stack.isDamageableItem() || !(stack.getItem() instanceof ArmorItem item)) {
                     continue;
                 }
-                ArmorItem item = (ArmorItem) stack.getItem();
                 enchantmentList = EnchantmentHelper.getEnchantments(stack);
                 if (enchantmentList.isEmpty()) {
                     continue;
@@ -531,10 +517,9 @@ public class ModGlobalEvents {
             for (ItemStack stack : armor) {
                 Map<Enchantment, Integer> enchantmentList;
                 boolean hasSoulHarden;
-                if (!stack.isDamageableItem() || !(stack.getItem() instanceof ArmorItem)) {
+                if (!stack.isDamageableItem() || !(stack.getItem() instanceof ArmorItem item)) {
                     continue;
                 }
-                ArmorItem item = (ArmorItem) stack.getItem();
                 enchantmentList = EnchantmentHelper.getEnchantments(stack);
                 if (enchantmentList.isEmpty()) {
                     continue;

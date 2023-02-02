@@ -37,19 +37,6 @@ public class LootTables extends BaseLootTableProvider {
         );
     }
 
-    protected static LootTable.Builder droppingWithContents(Block block, ResourceLocation key) {
-        return LootTable.lootTable().withPool(LootPool.lootPool()
-                .setRolls(ConstantValue.exactly(1))
-                .add(LootItem.lootTableItem(block)
-                        .apply(CopyNameFunction.copyName(CopyNameFunction.NameSource.BLOCK_ENTITY))
-                        .apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY)
-                                .copy("Lock", "BlockEntityTag.Lock")
-                                .copy("LootTable", "BlockEntityTag.LootTable")
-                                .copy("LootTableSeed", "BlockEntityTag.LootTableSeed"))
-                        .apply(SetContainerContents.setContents(TROPHY_TYPE.get()).withEntry(DynamicLoot.dynamicEntry(key)))
-                ));
-    }
-
     //////////////////////////
     // From BlockLootTables //
     //////////////////////////

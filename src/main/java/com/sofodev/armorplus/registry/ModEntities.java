@@ -3,9 +3,6 @@ package com.sofodev.armorplus.registry;
 import com.sofodev.armorplus.registry.entities.arrows.APArrowEntity;
 import com.sofodev.armorplus.registry.entities.arrows.ArrowType;
 import com.sofodev.armorplus.registry.entities.arrows.impl.*;
-import com.sofodev.armorplus.registry.entities.bosses.SkeletalKingEntity;
-import com.sofodev.armorplus.registry.entities.bosses.data.MobType;
-import com.sofodev.armorplus.registry.entities.normal.WitherlingEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -44,11 +41,7 @@ public class ModEntities {
             () -> buildArrow(SuperStarArrowEntity::new, SUPER_STAR));
     public static final RegistryObject<EntityType<APArrowEntity>> ENDER_DRAGON_ARROW = register("ender_dragon_arrow",
             () -> buildArrow(EnderDragonArrowEntity::new, ENDER_DRAGON));
-    //Bosses-Minions-Projectiles
-    public static final RegistryObject<EntityType<SkeletalKingEntity>> SKELETAL_KING = register("skeletal_king",
-            () -> build(SkeletalKingEntity::new, MobType.SKELETAL_KING));
-    public static final RegistryObject<EntityType<WitherlingEntity>> WITHERLING = register("witherling",
-            () -> build(WitherlingEntity::new, MobType.WITHERLING));
+
     /////////////////////
     // UTILITY METHODS //
     /////////////////////
@@ -66,17 +59,6 @@ public class ModEntities {
      */
     private static <T extends AbstractArrow> EntityType<T> buildArrow(EntityType.EntityFactory<T> factoryIn, ArrowType data) {
         return build(data.getItemArrowName(), EntityType.Builder.of(factoryIn, MISC).sized(0.5f, 0.5f));
-    }
-
-    private static <T extends Entity> EntityType<T> build(EntityType.EntityFactory<T> factory, MobType data) {
-        EntityType.Builder<T> builder = EntityType.Builder.of(factory, data.getClassification())
-                .setTrackingRange(data.getTrackingRange())
-                .sized(data.getWidth(), data.getHeight());
-        if (data.isImmuneToFire()) {
-            builder.fireImmune();
-        }
-
-        return build(data.getName(), builder);
     }
 
     private static <T extends Entity> EntityType<T> build(String id, EntityType.Builder<T> builder) {

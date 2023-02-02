@@ -1,7 +1,6 @@
 package com.sofodev.armorplus.registry;
 
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.registry.blocks.special.TrophyItem;
 import com.sofodev.armorplus.registry.entities.arrows.ArrowType;
 import com.sofodev.armorplus.registry.items.APItemBase;
 import com.sofodev.armorplus.registry.items.armors.APArmorItem;
