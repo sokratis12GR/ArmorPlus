@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "base": {
     "item": "armorplus:ender_dragon_boots_base"
   },
@@ -8,5 +8,8 @@
   },
   "result": {
     "item": "armorplus:ender_dragon_boots"
+  },
+  "template": {
+    "item": "armorplus:ender_dragon_scale"
   }
 }

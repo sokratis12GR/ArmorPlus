@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "base": {
     "item": "armorplus:infused_lava_crystal"
   },
@@ -8,5 +8,8 @@
   },
   "result": {
     "item": "armorplus:infused_frost_lava_crystal"
+  },
+  "template": {
+    "item": "minecraft:lava_bucket"
   }
 }

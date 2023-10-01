@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "base": {
     "item": "armorplus:guardian_battle_axe_base"
   },
@@ -8,5 +8,8 @@
   },
   "result": {
     "item": "armorplus:guardian_battle_axe"
+  },
+  "template": {
+    "item": "armorplus:guardian_scale"
   }
 }
