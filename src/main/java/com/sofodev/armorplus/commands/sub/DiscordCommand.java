@@ -19,7 +19,7 @@ public class DiscordCommand {
     public static int execute(CommandSourceStack sender) {
         String discord = "https://discord.gg/JCWbJvA";
         Style ap = Style.EMPTY.withClickEvent(new ClickEvent(OPEN_URL, discord)).withHoverEvent(new HoverEvent(SHOW_TEXT, translate("commands.armorplus.discord.hover")));
-        sender.sendSuccess(translate(AQUA, "commands.armorplus.discord.line_one", discord).setStyle(ap), true);
+        sender.sendSuccess(()-> translate(AQUA, "commands.armorplus.discord.line_one", discord).setStyle(ap), true);
         return Command.SINGLE_SUCCESS;
     }
 }

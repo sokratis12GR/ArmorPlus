@@ -2,14 +2,16 @@ package com.sofodev.armorplus.registry.entities.arrows;
 
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.network.NetworkHooks;
-import net.minecraftforge.network.PlayMessages;
+import net.minecraftforge.network.NetworkRegistry;
+import net.minecraftforge.network.packets.SpawnEntity;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Objects;
@@ -50,7 +52,7 @@ public abstract class APArrowEntity extends AbstractArrow {
         }
     }
 
-    public APArrowEntity(EntityType<? extends APArrowEntity> type, PlayMessages.SpawnEntity packet, Level world, ArrowProperty property) {
+    public APArrowEntity(EntityType<? extends APArrowEntity> type, SpawnEntity packet, Level world, ArrowProperty property) {
         this(type, packet.getPosX(), packet.getPosY(), packet.getPosZ(), world, property);
         this.type = type;
         this.setRot(packet.getHeadYaw(), packet.getPitch());
@@ -106,13 +108,14 @@ public abstract class APArrowEntity extends AbstractArrow {
 
     @Override
     public Packet<ClientGamePacketListener>  getAddEntityPacket() {
-        return NetworkHooks.getEntitySpawningPacket(this);
+        Entity entity = this.getOwner();
+        return new ClientboundAddEntityPacket(this, entity == null ? this.getId() : entity.getId());
     }
 
     @Override
     protected void doPostHurtEffects(LivingEntity target) {
         super.doPostHurtEffects(target);
-        if (!level.isClientSide) {
+        if (!level().isClientSide) {
             this.prop.hit(target);
         }
     }

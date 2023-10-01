@@ -4,7 +4,7 @@ import com.sofodev.armorplus.registry.entities.arrows.APArrowEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.network.PlayMessages;
+import net.minecraftforge.network.packets.SpawnEntity;
 
 import static com.sofodev.armorplus.registry.ModEntities.LAPIS_ARROW;
 import static com.sofodev.armorplus.registry.entities.arrows.APArrowProperty.LAPIS_ARROW_PROP;
@@ -27,7 +27,7 @@ public class LapisArrowEntity extends APArrowEntity {
         super(LAPIS_ARROW.get(), shooter, world, LAPIS_ARROW_PROP);
     }
 
-    public LapisArrowEntity(PlayMessages.SpawnEntity packet, Level world) {
+    public LapisArrowEntity(SpawnEntity packet, Level world) {
         super(LAPIS_ARROW.get(), packet, world, LAPIS_ARROW_PROP);
     }
 

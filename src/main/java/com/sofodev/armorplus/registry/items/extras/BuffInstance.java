@@ -1,6 +1,8 @@
 package com.sofodev.armorplus.registry.items.extras;
 
+import com.sofodev.armorplus.registry.ModPotions;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -21,7 +23,7 @@ import static net.minecraft.ChatFormatting.DARK_AQUA;
 public class BuffInstance {
 
     private final boolean instant;
-    private final Potion potion;
+    private final MobEffectInstance effect;
     private IBuff buff;
     private int amplifier;
     private boolean enabled;
@@ -50,9 +52,9 @@ public class BuffInstance {
         this.amplifier = amplifier;
         this.instant = instant;
         if (buff.isEffect() && buff.getEffect() != null) {
-            this.potion = new Potion(new MobEffectInstance(buff.getEffect(), convertToSeconds(duration), amplifier, false, false));
+            this.effect = new MobEffectInstance(buff.getEffect(), convertToSeconds(duration), amplifier, false, false);
         } else {
-            this.potion = Potions.EMPTY;
+            this.effect = new MobEffectInstance(ModPotions.EMPTY.get());
         }
         this.enabled = true;
     }
@@ -64,7 +66,7 @@ public class BuffInstance {
         this.buff = enabled ? buff : NONE;
         this.amplifier = -1;
         this.instant = true;
-        this.potion = Potions.EMPTY;
+        this.effect = new MobEffectInstance(ModPotions.EMPTY.get());
         this.enabled = true;
     }
 
@@ -72,7 +74,7 @@ public class BuffInstance {
         this.buff = buff;
         this.amplifier = -1;
         this.instant = true;
-        this.potion = Potions.EMPTY;
+        this.effect = new MobEffectInstance(ModPotions.EMPTY.get());
         this.enabled = true;
     }
 
@@ -99,40 +101,39 @@ public class BuffInstance {
      * <p>
      * If the buff is an effect it will be either applied instantly (even if you already have the effect))
      */
+    @SuppressWarnings("removal")
     public void onArmorTick(ItemStack stack, Level world, Player player) {
         //instant - x - true
         //!instant - y - false
         // instant -> else |
         buff.onArmorTick(stack, world, player);
         if (buff.isEffect()) {
-            this.getPotion().getEffects().forEach(pot -> {
                 if (!instant) {
                     List<MobEffectInstance> playerEffects = player.getActiveEffects().stream().toList();
                     if (!playerEffects.isEmpty()) {
                         for (MobEffectInstance instance : playerEffects){
-                            if (instance.getEffect().getDisplayName().toString().equals(pot.getEffect().getDisplayName().toString())) continue;
-                            player.addEffect(pot);
+                            if (instance.getEffect().getDisplayName().toString().equals(effect.getEffect().getDisplayName().toString())) continue;
+                            player.addEffect(effect);
                         }
                     }
                 } else {
-                    player.addEffect(pot);
+                    player.addEffect(effect);
                 }
-            });
         }
     }
 
     public void hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         buff.hitEntity(stack, target, attacker);
         if (buff.isEffect()) {
-            this.getPotion().getEffects().forEach(target::addEffect);
+            target.addEffect(effect);
         }
     }
 
     /**
      * Returns a potion effect, might be {@link Potions#EMPTY} if the buff provided is not an effect.
      */
-    public Potion getPotion() {
-        return potion;
+    public MobEffectInstance getEffect() {
+        return effect;
     }
 
     public IBuff getBuff() {
@@ -169,6 +170,6 @@ public class BuffInstance {
 
     @Override
     public String toString() {
-        return "BuffInstance{" + "buff=" + buff + ", amplifier=" + amplifier + ", instant=" + instant + ", potion=" + potion + ", enabled=" + enabled + '}';
+        return "BuffInstance{buff=%s, amplifier=%d, instant=%s, potion=%s, enabled=%s}".formatted(buff, amplifier, instant, effect, enabled);
     }
 }

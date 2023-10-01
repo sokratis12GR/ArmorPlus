@@ -116,7 +116,7 @@ public class APMaceItem extends SwordItem implements GeoItem {
                         //check if the offhand is empty
                         boolean isOffHandEmpty = player.getItemBySlot(EquipmentSlot.OFFHAND).isEmpty();
                         if (isOffHandEmpty) {
-                            BlockPos destructionPos = new BlockPos(player.position());
+                            BlockPos destructionPos = new BlockPos((int) player.position().x, (int) player.position().y, (int) player.position().z);
                             Direction direction = player.getMotionDirection();
                             boolean isNorthOrSouth = direction == NORTH || direction == SOUTH;
                             boolean isWestOrEast = direction == EAST || direction == WEST;
@@ -152,7 +152,7 @@ public class APMaceItem extends SwordItem implements GeoItem {
 
     @Override
     public boolean onEntitySwing(ItemStack stack, LivingEntity entity) {
-        Level level = entity.level;
+        Level level = entity.level();
         if (level instanceof ServerLevel serverLevel) {
             ItemStack itemStack = this.setTag(stack);
             CompoundTag nbt = stack.getTag();

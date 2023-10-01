@@ -156,9 +156,9 @@ public class ConfigHelper {
          * @return A reload-sensitive wrapper around your config object value. Use listener.get() to get the most up-to-date object.
          */
         public <T> ConfigObjectListener<T> subscribeObject(ForgeConfigSpec.Builder builder,
-                                                           String name,
-                                                           Codec<T> codec,
-                                                           T defaultObject) {
+                String name,
+                Codec<T> codec,
+                T defaultObject) {
 
             DataResult<Object> encodeResult = codec.encodeStart(TomlConfigOps.INSTANCE, defaultObject);
             Object encodedObject = encodeResult.getOrThrow(false, s -> LOGGER.error("Unable to encode default value: ", s));
@@ -278,7 +278,7 @@ public class ConfigHelper {
         public DataResult<Number> getNumberValue(Object input) {
             return input instanceof Number
                     ? DataResult.success((Number) input)
-                    : DataResult.error("Not a number: " + input);
+                    : DataResult.error(() -> "Not a number: " + input);
         }
 
         @Override
@@ -294,7 +294,7 @@ public class ConfigHelper {
         @Override
         public DataResult<String> getStringValue(Object input) {
             if (input instanceof Config || input instanceof Collection) {
-                return DataResult.error("Not a string: " + input);
+                return DataResult.error(() -> "Not a string: " + input);
             } else {
                 return DataResult.success(String.valueOf(input));
             }
@@ -308,7 +308,7 @@ public class ConfigHelper {
         @Override
         public DataResult<Object> mergeToList(Object list, Object value) {
             if (!(list instanceof Collection) && list != this.empty()) {
-                return DataResult.error("mergeToList called with not a list: " + list, list);
+                return DataResult.error(() -> "mergeToList called with not a list: " + list, list);
             }
             final Collection<Object> result = new ArrayList<>();
             if (list != this.empty()) {
@@ -322,12 +322,12 @@ public class ConfigHelper {
         @Override
         public DataResult<Object> mergeToMap(Object map, Object key, Object value) {
             if (!(map instanceof Config) && map != this.empty()) {
-                return DataResult.error("mergeToMap called with not a map: " + map, map);
+                return DataResult.error(() -> "mergeToMap called with not a map: " + map, map);
             }
             DataResult<String> stringResult = this.getStringValue(key);
             Optional<PartialResult<String>> badResult = stringResult.error();
             if (badResult.isPresent()) {
-                return DataResult.error("key is not a string: " + key, map);
+                return DataResult.error(() -> "key is not a string: " + key, map);
             }
             Optional<String> result = stringResult.result();
             return stringResult.flatMap(s -> {
@@ -345,10 +345,12 @@ public class ConfigHelper {
         @Override
         public DataResult<Stream<Pair<Object, Object>>> getMapValues(Object input) {
             if (!(input instanceof Config)) {
-                return DataResult.error("Not a Config: " + input);
+                return DataResult.error(() -> "Not a Config: " + input);
             }
             final Config config = (Config) input;
-            return DataResult.success(config.entrySet().stream().map(entry -> Pair.of(entry.getKey(), entry.getValue())));
+            return DataResult.success(config.entrySet()
+                    .stream()
+                    .map(entry -> Pair.of(entry.getKey(), entry.getValue())));
         }
 
         @Override
@@ -365,7 +367,7 @@ public class ConfigHelper {
                 Collection<Object> collection = (Collection<Object>) input;
                 return DataResult.success(collection.stream());
             }
-            return DataResult.error("Not a collection: " + input);
+            return DataResult.error(() -> "Not a collection: " + input);
         }
 
         @Override
@@ -429,7 +431,7 @@ public class ConfigHelper {
                     }
                     return DataResult.success(result);
                 }
-                return DataResult.error("mergeToMap called with not a Config: " + prefix, prefix);
+                return DataResult.error(() -> "mergeToMap called with not a Config: " + prefix, prefix);
             }
 
         }

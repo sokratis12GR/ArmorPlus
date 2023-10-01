@@ -28,6 +28,6 @@ public class InfoCommand {
     }
 
     private static void sendMessages(CommandSourceStack sender, Component... messages) {
-        Arrays.stream(messages).forEach(message -> sender.sendSuccess(message, false));
+        Arrays.stream(messages).forEach(message -> sender.sendSuccess(()-> message, false));
     }
 }

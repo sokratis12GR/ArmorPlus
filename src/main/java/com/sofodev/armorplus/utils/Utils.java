@@ -13,6 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
@@ -131,6 +132,10 @@ public final class Utils {
         return ForgeRegistries.ITEMS.getValue(setRL(name));
     }
 
+    public static ItemStack getAPItemStack(String name){
+        return new ItemStack(getAPItem(name));
+    }
+
     public static Item getAPItem(ResourceKey<Item> key) {
         return ForgeRegistries.ITEMS.getDelegateOrThrow(key).get();
     }
@@ -194,19 +199,19 @@ public final class Utils {
         return ItemStack.EMPTY;
     }
 
-    public static String getNormalizedName(EquipmentSlot slot) {
-        switch (slot) {
-            case HEAD:
-                return "helmet";
-            case LEGS:
-                return "leggings";
-            case CHEST:
-                return "chestplate";
-            case FEET:
-                return "boots";
-        }
-        return slot.getName();
-    }
+//    public static String getNormalizedName(ArmorItem.Type slot) {
+//        switch (slot) {
+//            case ArmorItem.Type.HELMET:
+//                return "helmet";
+//            case ArmorItem.Type.LEGGINGS:
+//                return "leggings";
+//            case ArmorItem.Type.CHESTPLATE:
+//                return "chestplate";
+//            case ArmorItem.Type.BOOTS:
+//                return "boots";
+//        }
+//        return slot.getName();
+//    }
 
     public static Path getForgeConfig() {
         return FMLPaths.GAMEDIR.get().resolve(FMLConfig.defaultConfigPath());
@@ -236,14 +241,14 @@ public final class Utils {
 
     @Nullable
     public static ItemEntity spawnAtLocation(Player player, ItemStack stack, BlockPos pos) {
-        if (stack.isEmpty() || player.level.isClientSide) {
+        if (stack.isEmpty() || player.level().isClientSide) {
             return null;
         }
-        ItemEntity itementity = new ItemEntity(player.level, pos.getX(), pos.getY(), pos.getZ(), stack);
+        ItemEntity itementity = new ItemEntity(player.level(), pos.getX(), pos.getY(), pos.getZ(), stack);
         itementity.setDefaultPickUpDelay();
         if (player.captureDrops() != null) player.captureDrops().add(itementity);
         else {
-            player.level.addFreshEntity(itementity);
+            player.level().addFreshEntity(itementity);
         }
         return itementity;
     }
