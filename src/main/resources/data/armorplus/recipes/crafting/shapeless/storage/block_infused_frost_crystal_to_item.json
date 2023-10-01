@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "armorplus:storage",
+  "ingredients": [
+    {
+      "item": "armorplus:compressed_infused_frost_crystal"
+    }
+  ],
+  "result": {
+    "item": "armorplus:block_infused_frost_crystal",
+    "count": 9
+  }
+}

@@ -11,14 +11,15 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraftforge.event.network.CustomPayloadEvent;
+import net.minecraftforge.network.ChannelBuilder;
 import net.minecraftforge.network.NetworkDirection;
-import net.minecraftforge.network.NetworkEvent;
-import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
-import net.minecraftforge.network.simple.SimpleChannel;
+import net.minecraftforge.network.SimpleChannel;
 import net.minecraftforge.server.ServerLifecycleHooks;
 import org.joml.Vector3d;
 import org.joml.Vector3f;
+import software.bernie.geckolib.network.packet.AnimDataSyncPacket;
 
 import java.util.Optional;
 import java.util.function.BiConsumer;
@@ -32,19 +33,8 @@ public abstract class BasePacketHandler {
     }
 
     protected static SimpleChannel createChannel(ResourceLocation name) {
-        NetworkRegistry.ChannelBuilder channelBuilder = NetworkRegistry.ChannelBuilder.named(name);
-        String protocolVersion = getProtocolVersion();
-        protocolVersion.getClass();
-        channelBuilder = channelBuilder.clientAcceptedVersions(protocolVersion::equals);
-        protocolVersion = getProtocolVersion();
-        protocolVersion.getClass();
-        return channelBuilder.serverAcceptedVersions(protocolVersion::equals)
-                .networkProtocolVersion(BasePacketHandler::getProtocolVersion)
-                .simpleChannel();
-    }
-
-    private static String getProtocolVersion() {
-        return ArmorPlus.instance == null ? "999.999.999" : ArmorPlus.VERSION.replace("-", ".");
+        ChannelBuilder channelBuilder = ChannelBuilder.named(name);
+        return channelBuilder.simpleChannel();
     }
 
     public static String readString(FriendlyByteBuf buffer) {
@@ -65,22 +55,20 @@ public abstract class BasePacketHandler {
 
     public abstract void initialize();
 
-    protected <MSG> void registerClientToServer(Class<MSG> type, BiConsumer<MSG, FriendlyByteBuf> encoder, Function<FriendlyByteBuf, MSG> decoder, BiConsumer<MSG, Supplier<NetworkEvent.Context>> consumer) {
-        this.getChannel()
-                .registerMessage(this.index++, type, encoder, decoder, consumer, Optional.of(NetworkDirection.PLAY_TO_SERVER));
+    protected <MSG> void registerClientToServer(Class<MSG> type, BiConsumer<MSG, FriendlyByteBuf> encoder, Function<FriendlyByteBuf, MSG> decoder, BiConsumer<MSG, CustomPayloadEvent.Context> consumer) {
+        this.getChannel().messageBuilder(type, NetworkDirection.PLAY_TO_SERVER).encoder(encoder).decoder(decoder).consumerMainThread(consumer).add();
     }
 
-    protected <MSG> void registerServerToClient(Class<MSG> type, BiConsumer<MSG, FriendlyByteBuf> encoder, Function<FriendlyByteBuf, MSG> decoder, BiConsumer<MSG, Supplier<NetworkEvent.Context>> consumer) {
-        this.getChannel()
-                .registerMessage(this.index++, type, encoder, decoder, consumer, Optional.of(NetworkDirection.PLAY_TO_CLIENT));
+    protected <MSG> void registerServerToClient(Class<MSG> type, BiConsumer<MSG, FriendlyByteBuf> encoder, Function<FriendlyByteBuf, MSG> decoder, BiConsumer<MSG, CustomPayloadEvent.Context> consumer) {
+        this.getChannel().messageBuilder(type, NetworkDirection.PLAY_TO_CLIENT).encoder(encoder).decoder(decoder).consumerMainThread(consumer).add();
     }
 
     public <MSG> void sendTo(MSG message, ServerPlayer player) {
-        this.getChannel().sendTo(message, player.connection.getConnection(), NetworkDirection.PLAY_TO_CLIENT);
+        this.getChannel().send(message, player.connection.getConnection());
     }
 
     public <MSG> void sendToAll(MSG message) {
-        this.getChannel().send(PacketDistributor.ALL.noArg(), message);
+        this.getChannel().send(message, PacketDistributor.ALL.noArg());
     }
 
     public <MSG> void sendToAllIfLoaded(MSG message) {
@@ -91,25 +79,19 @@ public abstract class BasePacketHandler {
     }
 
     public <MSG> void sendToDimension(MSG message, ResourceKey<Level> dimension) {
-        this.getChannel().send(PacketDistributor.DIMENSION.with(() -> {
-            return dimension;
-        }), message);
+        this.getChannel().send(message, PacketDistributor.DIMENSION.with(dimension));
     }
 
     public <MSG> void sendToServer(MSG message) {
-        this.getChannel().sendToServer(message);
+        this.getChannel().send(message, PacketDistributor.SERVER.noArg());
     }
 
     public <MSG> void sendToAllTracking(MSG message, Entity entity) {
-        this.getChannel().send(PacketDistributor.TRACKING_ENTITY.with(() -> {
-            return entity;
-        }), message);
+        this.getChannel().send(message, PacketDistributor.TRACKING_ENTITY.with(entity));
     }
 
     public <MSG> void sendToAllTrackingAndSelf(MSG message, Entity entity) {
-        this.getChannel().send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> {
-            return entity;
-        }), message);
+        this.getChannel().send(message, PacketDistributor.TRACKING_ENTITY_AND_SELF.with(entity));
     }
 
     public <MSG> void sendToAllTracking(MSG message, BlockEntity tile) {
@@ -122,9 +104,8 @@ public abstract class BasePacketHandler {
                 this.sendTo(message, p);
             });
         } else {
-            this.getChannel().send(PacketDistributor.TRACKING_CHUNK.with(() -> {
-                return world.getChunk(pos.getX() >> 4, pos.getZ() >> 4);
-            }), message);
+            this.getChannel()
+                    .send(message, PacketDistributor.TRACKING_CHUNK.with(world.getChunk(pos.getX() >> 4, pos.getZ() >> 4)));
         }
 
     }

@@ -4,7 +4,7 @@ import com.sofodev.armorplus.registry.entities.arrows.APArrowEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.network.PlayMessages;
+import net.minecraftforge.network.packets.SpawnEntity;
 
 import static com.sofodev.armorplus.registry.ModEntities.EMERALD_ARROW;
 import static com.sofodev.armorplus.registry.entities.arrows.APArrowProperty.EMERALD_ARROW_PROP;
@@ -27,7 +27,7 @@ public class EmeraldArrowEntity extends APArrowEntity {
         super(EMERALD_ARROW.get(), shooter, world, EMERALD_ARROW_PROP);
     }
 
-    public EmeraldArrowEntity(PlayMessages.SpawnEntity packet, Level world) {
+    public EmeraldArrowEntity(SpawnEntity packet, Level world) {
         super(EMERALD_ARROW.get(), packet, world, EMERALD_ARROW_PROP);
     }
 }

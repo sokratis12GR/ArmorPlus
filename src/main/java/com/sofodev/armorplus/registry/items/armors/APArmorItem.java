@@ -23,10 +23,10 @@ public class APArmorItem extends ArmorItem {
 
     private IAPArmor mat;
 
-    public APArmorItem(IAPArmor mat, EquipmentSlot slot) {
+    public APArmorItem(IAPArmor mat, ArmorItem.Type slot) {
         super(mat.get(), slot, mat.isImmuneToFire()
-                ? mat.getProperties().defaultDurability(mat.get().getDurabilityForSlot(slot)).fireResistant()
-                : mat.getProperties().defaultDurability(mat.get().getDurabilityForSlot(slot)));
+                ? mat.getProperties().defaultDurability(mat.get().getDurabilityForType(slot)).fireResistant()
+                : mat.getProperties().defaultDurability(mat.get().getDurabilityForType(slot)));
         this.mat = mat;
     }
 

@@ -13,9 +13,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -46,7 +45,6 @@ public class ModBlocks {
     public static final RegistryObject<Block>[] CASTLE_BLOCK_WALLS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
     public static final RegistryObject<Block>[] CASTLE_BLOCK_STAIRS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
     public static final RegistryObject<Block>[] CASTLE_BLOCK_SLABS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
-    //    public static final RegistryObject<Block> TROPHY = registerTrophyBlock("trophy", TrophyBlock::new);
     public static final RegistryObject<Block> COMPRESSED_OBSIDIAN = registerBlockWithItem("compressed_obsidian", () -> new Block(copy(Blocks.OBSIDIAN)));
     public static final RegistryObject<Block> ORE_LAVA_CRYSTAL = registerBlockWithItem("ore_lava_crystal", () -> new CrystalOreBlock(ORIGINAL));
     public static final RegistryObject<Block> ORE_LAVA_CRYSTAL_STONE = registerBlockWithItem("ore_lava_crystal_stone", () -> new CrystalOreBlock(STONE));
@@ -55,14 +53,13 @@ public class ModBlocks {
     public static final RegistryObject<Block> INFUSED_LAVA_CRYSTAL = registerBlockWithItem("block_infused_lava_crystal", APLavaBlock::new);
     public static final RegistryObject<Block> COMPRESSED_LAVA_CRYSTAL = registerBlockWithItem("compressed_lava_crystal", APLavaBlock::new);
     public static final RegistryObject<Block> COMPRESSED_INFUSED_LAVA_CRYSTAL = registerBlockWithItem("compressed_infused_lava_crystal", APLavaBlock::new);
-    public static final RegistryObject<Block> LAVA_INFUSED_OBSIDIAN = registerBlockWithItem("lava_infused_obsidian", () -> new APLavaBlock(Block.Properties.of(Material.STONE, MaterialColor.COLOR_PURPLE)
-            .strength(25.0f, 2000.0f)));
+    public static final RegistryObject<Block> LAVA_INFUSED_OBSIDIAN = registerBlockWithItem("lava_infused_obsidian", () -> new APLavaBlock(BlockBehaviour.Properties.copy(Blocks.STONE).mapColor(MapColor.COLOR_PURPLE).strength(25.0f, 2000.0f)));
     public static final RegistryObject<Block> ORE_FROST_CRYSTAL = registerBlockWithItem("ore_frost_crystal", () -> new CrystalOreBlock(ORIGINAL));
     public static final RegistryObject<Block> ORE_FROST_CRYSTAL_STONE = registerBlockWithItem("ore_frost_crystal_stone", () -> new CrystalOreBlock(STONE));
     public static final RegistryObject<Block> ORE_FROST_CRYSTAL_OBSIDIAN = registerBlockWithItem("ore_frost_crystal_obsidian", () -> new CrystalOreBlock(OBSIDIAN));
     public static final RegistryObject<Block> FROST_CRYSTAL = registerBlockWithItem("block_frost_crystal", APFrostBlock::new);
     public static final RegistryObject<Block> INFUSED_FROST_CRYSTAL = registerBlockWithItem("block_infused_frost_crystal", APFrostBlock::new);
-    public static final RegistryObject<Block> SNOW_BRICK = registerBlockWithItem("snow_brick", () -> new APBlock(Material.SNOW, 2.0f, 20f));
+    public static final RegistryObject<Block> SNOW_BRICK = registerBlockWithItem("snow_brick", () -> new APBlock(Blocks.SNOW, 2.0f, 20f));
     public static final RegistryObject<Block> SNOW_BRICK_STAIRS = registerBlockWithItem("snow_brick_stairs", () -> new StoneBrickStairsBlock(() -> SNOW_BRICK.get()
             .defaultBlockState(), SNOW_BRICK.get()));
     public static final RegistryObject<Block> SNOW_BRICK_SLAB = registerBlockWithItem("snow_brick_slab", () -> new StoneBrickSlabBlock(SNOW_BRICK.get()));

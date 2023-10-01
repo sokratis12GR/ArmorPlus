@@ -17,6 +17,7 @@ import com.sofodev.armorplus.registry.items.tools.*;
 import com.sofodev.armorplus.registry.items.tools.properties.mace.APMaceMaterial;
 import com.sofodev.armorplus.registry.items.tools.properties.tool.APToolMaterial;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArrowItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.fml.common.Mod;
@@ -34,9 +35,7 @@ import java.util.stream.Stream;
 
 import static com.sofodev.armorplus.ArmorPlus.*;
 import static com.sofodev.armorplus.registry.items.armors.APArmorMaterial.SLAYER;
-import static com.sofodev.armorplus.utils.Utils.getNormalizedName;
 import static net.minecraft.ChatFormatting.*;
-import static net.minecraft.world.entity.EquipmentSlot.*;
 import static net.minecraft.world.entity.EquipmentSlot.Type.ARMOR;
 
 @Mod.EventBusSubscriber(modid = ArmorPlus.MODID, bus = Bus.MOD)
@@ -45,10 +44,10 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
 
     //Armors
-    public static final Set<RegistryObject<APArmorItem>> HELMETS = registerArmorForSlot(HEAD);
-    public static final Set<RegistryObject<APArmorItem>> CHESTPLATES = registerArmorForSlot(CHEST);
-    public static final Set<RegistryObject<APArmorItem>> LEGGINGS = registerArmorForSlot(LEGS);
-    public static final Set<RegistryObject<APArmorItem>> BOOTS = registerArmorForSlot(FEET);
+    public static final Set<RegistryObject<APArmorItem>> HELMETS = registerArmorForSlot(ArmorItem.Type.HELMET);
+    public static final Set<RegistryObject<APArmorItem>> CHESTPLATES = registerArmorForSlot(ArmorItem.Type.CHESTPLATE);
+    public static final Set<RegistryObject<APArmorItem>> LEGGINGS = registerArmorForSlot(ArmorItem.Type.LEGGINGS);
+    public static final Set<RegistryObject<APArmorItem>> BOOTS = registerArmorForSlot(ArmorItem.Type.BOOTS);
 
     //ArmorBases (Soulless)
     public static final Set<RegistryObject<Item>> SUPER_STAR_BASES = registerArmorBases(APArmorMaterial.SUPER_STAR);
@@ -150,9 +149,9 @@ public class ModItems {
      * @param slot the equipment slot we will be assigning the set to, which will help distinguishing different equipment from one another.
      * @return a full registered armor set list that contains a set of all available {@link APArmorMaterial#values()} materials for that equipment slot.
      */
-    public static Set<RegistryObject<APArmorItem>> registerArmorForSlot(EquipmentSlot slot) {
+    public static Set<RegistryObject<APArmorItem>> registerArmorForSlot(ArmorItem.Type slot) {
         return Arrays.stream(APArmorMaterial.values())
-                .map(mat -> register(String.format("%s_%s", mat.getName(), getNormalizedName(slot)), () -> new APArmorItem(mat, slot)))
+                .map(mat -> register(String.format("%s_%s", mat.getName(), slot.getName()), () -> new APArmorItem(mat, slot)))
                 .collect(Collectors.toSet());
     }
 
@@ -208,8 +207,8 @@ public class ModItems {
      * @return a set of item registry objects that consists of "base" items for the specified armor material.
      */
     private static Set<RegistryObject<Item>> registerArmorBases(APArmorMaterial material) {
-        Stream<EquipmentSlot> armorSlots = Arrays.stream(EquipmentSlot.values()).filter((v) -> v.getType() == ARMOR);
-        return armorSlots.map(slot -> register(String.format("%s_%s_base", material.getName(), getNormalizedName(slot)), () -> (Item) new APItemBase()))
+        Stream<ArmorItem.Type> armorSlots = Arrays.stream(ArmorItem.Type.values());
+        return armorSlots.map(slot -> register(String.format("%s_%s_base", material.getName(), slot.getName()), () -> (Item) new APItemBase()))
                 .collect(Collectors.toSet());
     }
 }

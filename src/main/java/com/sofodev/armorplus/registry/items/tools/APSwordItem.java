@@ -39,7 +39,7 @@ public class APSwordItem extends SwordItem implements Tool {
 
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (!target.level.isClientSide && mat.config().enableWeaponEffects.get()) {
+        if (!target.level().isClientSide && mat.config().enableWeaponEffects.get()) {
             mat.getBuffInstances().get().forEach(instance -> instance.hitEntity(stack, target, attacker));
         }
         return super.hurtEnemy(stack, target, attacker);

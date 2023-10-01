@@ -22,7 +22,7 @@ public class SupportCommand {
         String githubSponsorLink = "https://github.com/sponsors/sokratis12GR";
         Style patreon = Style.EMPTY.withColor(GOLD).withClickEvent(new ClickEvent(OPEN_URL, patreonLink)).withHoverEvent(new HoverEvent(SHOW_TEXT, translate("commands.armorplus.patreon.link_open")));
         Style github = Style.EMPTY.withColor(AQUA).withClickEvent(new ClickEvent(OPEN_URL, githubSponsorLink)).withHoverEvent(new HoverEvent(SHOW_TEXT, translate("commands.armorplus.github.link_open")));
-        sender.sendSuccess(translate(AQUA, "commands.armorplus.patreon.link_details", patreonLink).setStyle(patreon)
+        sender.sendSuccess(()-> translate(AQUA, "commands.armorplus.patreon.link_details", patreonLink).setStyle(patreon)
                         .append("\n")
                         .append(translate(AQUA, "commands.armorplus.github.link_details", githubSponsorLink).setStyle(github)),
                 false);

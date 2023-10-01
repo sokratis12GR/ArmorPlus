@@ -26,7 +26,7 @@ public enum DeBuff implements IBuff {
     IGNITE(false) {
         @Override
         public void hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-            if (!attacker.level.isClientSide && target != null) {
+            if (!attacker.level().isClientSide && target != null) {
                 target.setSecondsOnFire(rand.nextInt(6) + 1);
             }
         }

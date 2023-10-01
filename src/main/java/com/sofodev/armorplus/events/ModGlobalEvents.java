@@ -3,7 +3,6 @@ package com.sofodev.armorplus.events;
 
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.events.data.FlightData;
-import com.sofodev.armorplus.network.packet.PacketFlyingSync;
 import com.sofodev.armorplus.registry.items.armors.APArmorItem;
 import com.sofodev.armorplus.registry.items.armors.IAPArmor;
 import com.sofodev.armorplus.registry.items.extras.BuffInstance;
@@ -23,7 +22,7 @@ import net.minecraft.server.PlayerAdvancements;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -49,11 +48,8 @@ import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.registries.ForgeRegistries;
 import software.bernie.geckolib.animatable.GeoItem;
-import software.bernie.geckolib.util.GeckoLibUtil;
-import software.bernie.shadowed.eliotlash.mclib.utils.MathHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,10 +62,10 @@ import static com.sofodev.armorplus.config.ArmorPlusConfig.*;
 import static com.sofodev.armorplus.registry.ModItems.THANK_YOU_6M;
 import static com.sofodev.armorplus.registry.items.extras.Buff.FLIGHT;
 import static com.sofodev.armorplus.registry.items.extras.Buff.WATER_WEAKNESS;
-import static com.sofodev.armorplus.registry.items.extras.DeBuff.*;
+import static com.sofodev.armorplus.registry.items.extras.DeBuff.MINING_FATIGUE;
+import static com.sofodev.armorplus.registry.items.extras.DeBuff.SLOWNESS;
 import static com.sofodev.armorplus.utils.ItemArmorUtility.areExactMatch;
 import static com.sofodev.armorplus.utils.Utils.*;
-import static java.util.stream.Collectors.toList;
 import static net.minecraft.world.phys.Vec3.atBottomCenterOf;
 import static net.minecraftforge.registries.ForgeRegistries.ENCHANTMENTS;
 
@@ -95,7 +91,7 @@ public class ModGlobalEvents {
             if (!enchantmentList.isEmpty()) {
                 hasUnknownEnchant = enchantmentList.containsKey(ENCHANTMENTS.getValue(setRL("unknown")));
                 if (hasUnknownEnchant) {
-                    Entity entity = e.getEntity();
+                    LivingEntity entity = e.getEntity();
                     Direction direction = entity.getDirection();
                     BlockPos position = entity.blockPosition();
                     int distance = 5 + (charge / (charge / 2));
@@ -103,21 +99,13 @@ public class ModGlobalEvents {
                         LightningBolt lightningboltentity = EntityType.LIGHTNING_BOLT.create(world);
                         if (lightningboltentity != null) {
                             switch (direction) {
-                                case NORTH:
-                                    lightningboltentity.moveTo(atBottomCenterOf(position.north(i)));
-                                    break;
-                                case SOUTH:
-                                    lightningboltentity.moveTo(atBottomCenterOf(position.south(i)));
-                                    break;
-                                case WEST:
-                                    lightningboltentity.moveTo(atBottomCenterOf(position.west(i)));
-                                    break;
-                                case EAST:
-                                    lightningboltentity.moveTo(atBottomCenterOf(position.east(i)));
-                                    break;
+                                case NORTH -> lightningboltentity.moveTo(atBottomCenterOf(position.north(i)));
+                                case SOUTH -> lightningboltentity.moveTo(atBottomCenterOf(position.south(i)));
+                                case WEST -> lightningboltentity.moveTo(atBottomCenterOf(position.west(i)));
+                                case EAST -> lightningboltentity.moveTo(atBottomCenterOf(position.east(i)));
                             }
                             world.addFreshEntity(lightningboltentity);
-                            bow.hurtAndBreak(10, (LivingEntity) entity, event -> event.broadcastBreakEvent(((LivingEntity) entity).getUsedItemHand()));
+                            bow.hurtAndBreak(10, entity, event -> event.broadcastBreakEvent(entity.getUsedItemHand()));
                         }
                     });
                 }
@@ -128,7 +116,7 @@ public class ModGlobalEvents {
     @SubscribeEvent
     public static void onPlayerTickEvent(PlayerTickEvent e) {
         Player player = e.player;
-        Level world = player.level;
+        Level world = player.level();
         Map<Enchantment, Integer> enchantmentList;
         if (!world.isClientSide()) {
             boolean thundering = world.isThundering();
@@ -140,13 +128,12 @@ public class ModGlobalEvents {
                     if (chance == 100) {
                         for (ItemStack item : player.getArmorSlots()) {
                             Item itemHead = item.getItem();
-                            if (itemHead instanceof ArmorItem) {
-                                ArmorItem armorItem = (ArmorItem) itemHead;
+                            if (itemHead instanceof ArmorItem armorItem) {
                                 ArmorMaterial material = armorItem.getMaterial();
                                 enchantmentList = EnchantmentHelper.getEnchantments(item);
                                 if (!enchantmentList.isEmpty()) {
                                     hasUnknownEnchant = enchantmentList.containsKey(ENCHANTMENTS.getValue(setRL("unknown")));
-                                    if (hasUnknownEnchant && (armorItem).getSlot() == EquipmentSlot.HEAD && (material == ArmorMaterials.IRON || material == ArmorMaterials.CHAIN || material == ArmorMaterials.GOLD)) {
+                                    if (hasUnknownEnchant && (armorItem).getEquipmentSlot() == EquipmentSlot.HEAD && (material == ArmorMaterials.IRON || material == ArmorMaterials.CHAIN || material == ArmorMaterials.GOLD)) {
                                         BlockPos blockpos = player.blockPosition();
                                         if (world.canSeeSky(blockpos)) {
                                             LightningBolt lightningboltentity = EntityType.LIGHTNING_BOLT.create(world);
@@ -263,8 +250,7 @@ public class ModGlobalEvents {
         //disable for now, but don't remove
         final boolean isRunning = false;
         if (isRunning && !e.getLevel().isClientSide()) {
-            if (e.getEntity() instanceof ServerPlayer) {
-                ServerPlayer player = (ServerPlayer) e.getEntity();
+            if (e.getEntity() instanceof ServerPlayer player) {
                 CompoundTag nbt = player.serializeNBT();
                 if (nbt != null && (!nbt.hasUUID("key") || !nbt.getBoolean("thanked"))) {
                     PlayerAdvancements advancements = player.getAdvancements();
@@ -288,7 +274,7 @@ public class ModGlobalEvents {
             if (!player.getAbilities().mayfly || allowsFlightByDefault(player)) {
                 player.getAbilities().mayfly = true;
                 updateClientServerFlight(player, true);
-                //       ArmorPlus.LOGGER.info("Enabling flight, hasFlight: " + flightData.wasFlyingAllowed());
+//                       ArmorPlus.LOGGER.info("Enabling flight, hasFlight: " + flightData.wasFlyingAllowed());
             }
         }
     }
@@ -303,7 +289,7 @@ public class ModGlobalEvents {
                         updateClientServerFlight(player, false);
                         flightData.setFlying(false);
                         flightData.setAllowFlying(false);
-                        //    ArmorPlus.LOGGER.info("Disabling flight [0], hasFlight: " + flightData.allowFlying());
+//                            ArmorPlus.LOGGER.info("Disabling flight [0], hasFlight: " + flightData.allowFlying());
                     } else if ((i.getItem() instanceof APArmorItem)) {
                         if (areExactMatch(((APArmorItem) i.getItem()).getMat(), player) && player.getAbilities().mayfly) {
                             player.getAbilities().mayfly = false;
@@ -311,7 +297,7 @@ public class ModGlobalEvents {
                             updateClientServerFlight(player, false);
                             flightData.setFlying(false);
                             flightData.setAllowFlying(false);
-                            //    ArmorPlus.LOGGER.info("Disabling flight [1], hasFlight: " + flightData.wasFlyingAllowed());
+//                                ArmorPlus.LOGGER.info("Disabling flight [1], hasFlight: " + flightData.wasFlyingAllowed());
                         }
                     }
                 }
@@ -324,7 +310,6 @@ public class ModGlobalEvents {
     }
 
     private static void updateClientServerFlight(Player player, boolean allowFlying, boolean isFlying) {
-        ArmorPlus.PACKET_HANDLER.sendTo(new PacketFlyingSync(allowFlying, isFlying), (ServerPlayer) player);
         player.getAbilities().mayfly = allowFlying;
         player.getAbilities().flying = isFlying;
         updateFlightData(player);
@@ -353,7 +338,7 @@ public class ModGlobalEvents {
 
     @SubscribeEvent
     public static void onAttackEntityEvent(AttackEntityEvent event) {
-        Level world = event.getEntity().level;
+        Level world = event.getEntity().level();
         Player player = event.getEntity();
         Entity target = event.getTarget();
         float attackDamage = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
@@ -392,7 +377,7 @@ public class ModGlobalEvents {
                 }
             }
         }
-        if (player.isOnGround() && movedDistance < (double) player.getSpeed() && stack.getItem() instanceof APMaceItem) {
+        if (player.onGround() && movedDistance < (double) player.getSpeed() && stack.getItem() instanceof APMaceItem) {
             isMace = true;
         }
         if (isMace) {
@@ -405,10 +390,10 @@ public class ModGlobalEvents {
                 boolean isValidTarget = !player.isAlliedTo(entity) && (!(entity instanceof ArmorStand) || !((ArmorStand) entity).isMarker());
                 boolean isReachable = player.distanceToSqr(entity) < 15.0D;
                 if (isNewTarget && isValidTarget && isReachable) {
-                    double ratioX = MathHelper.wrapDegrees(player.getYRot() * ((float) Math.PI / 180F));
-                    double ratioZ = -MathHelper.wrapDegrees(player.getYRot() * ((float) Math.PI / 180F));
+                    double ratioX = Mth.wrapDegrees(player.getYRot() * ((float) Math.PI / 180F));
+                    double ratioZ = -Mth.wrapDegrees(player.getYRot() * ((float) Math.PI / 180F));
                     entity.knockback(0.4F, ratioX, ratioZ);
-                    entity.hurt(DamageSource.playerAttack(player), sweepingDamage);
+                    entity.hurt(player.damageSources().playerAttack(player), sweepingDamage);
                 }
             }
             if (world instanceof ServerLevel serverLevel) {
@@ -425,8 +410,7 @@ public class ModGlobalEvents {
 
     @SubscribeEvent
     public static void onStructByLightningEvent(EntityStruckByLightningEvent event) {
-        if (!event.getEntity().level.isClientSide && event.getEntity() instanceof ItemEntity) {
-            ItemEntity entity = (ItemEntity) event.getEntity();
+        if (!event.getEntity().level().isClientSide && event.getEntity() instanceof ItemEntity entity) {
             Item item = entity.getItem().getItem();
             if (item instanceof FrostCrystalItem) {
                 boolean infused = ((FrostCrystalItem) item).isInfused();
@@ -450,7 +434,7 @@ public class ModGlobalEvents {
     public static void onLivingDamageEvent(LivingDamageEvent event) {
         LivingEntity entity = event.getEntity();
         if (entity instanceof Player player) {
-            if (!player.level.isClientSide()) {
+            if (!player.level().isClientSide()) {
                 ItemStack stack = player.getMainHandItem();
                 Item item = stack.getItem();
                 if (item instanceof Tool) {
@@ -460,7 +444,7 @@ public class ModGlobalEvents {
                             .stream()
                             .map(BuffInstance::getBuff).toList();
                     if (!buffList.isEmpty()) {
-//                        if (buffList.contains(IGNITE)) IGNITE.hitEntity(stack, entity, player); // This damages the player with ignite
+                        //                        if (buffList.contains(IGNITE)) IGNITE.hitEntity(stack, entity, player); // This damages the player with ignite
                     }
                 }
             }

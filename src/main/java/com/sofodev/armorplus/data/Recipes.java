@@ -9,6 +9,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -48,11 +49,11 @@ public class Recipes extends RecipeProvider implements DataProvider, IConditionB
     }
 
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> con) {
+    protected void buildRecipes(RecipeOutput con) {
         this.registerCraftingRecipes(con);
     }
 
-    private void registerCraftingRecipes(Consumer<FinishedRecipe> con) {
+    private void registerCraftingRecipes(RecipeOutput con) {
         CraftingRecipeMaker crafter = new CraftingRecipeMaker(generator);
         //StoneBricks+CastleBlocks
         int l = AP_STONE_BRICKS_LENGTH;

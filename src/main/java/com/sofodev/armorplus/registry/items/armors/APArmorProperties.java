@@ -3,6 +3,7 @@ package com.sofodev.armorplus.registry.items.armors;
 import com.sofodev.armorplus.ArmorPlus;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
@@ -91,13 +92,13 @@ public enum APArmorProperties implements ArmorMaterial {
     }
 
     @Override
-    public int getDurabilityForSlot(EquipmentSlot slot) {
-        return MAX_DAMAGE_ARRAY[slot.getIndex()] * this.durability;
+    public int getDurabilityForType(ArmorItem.Type slot) {
+        return MAX_DAMAGE_ARRAY[slot.getSlot().getIndex()] * this.durability;
     }
 
     @Override
-    public int getDefenseForSlot(EquipmentSlot slot) {
-        return damageReduction[slot.getIndex()];
+    public int getDefenseForType(ArmorItem.Type slot) {
+        return damageReduction[slot.getSlot().getIndex()];
     }
 
     @Override

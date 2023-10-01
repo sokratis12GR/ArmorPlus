@@ -30,6 +30,6 @@ public class NodecraftCommand {
     }
 
     private static void sendMessages(CommandSourceStack sender, Component... messages) {
-        Arrays.stream(messages).forEach(msg -> sender.sendSuccess(msg, false));
+        Arrays.stream(messages).forEach(msg -> sender.sendSuccess(()-> msg, false));
     }
 }

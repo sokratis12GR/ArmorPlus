@@ -76,17 +76,17 @@ public class ArmorPlusConfig {
         guardianMaterial = new AdvancedMaterialConfig(builder, subscriber, "guardian", true, 0, true, 0, false, 0,
                 false, 0, false, 0, true, 1, false, 0, false, 0,
                 false, 0, false, 0, false, 0, false, 0, false, 0,
-                false, 0, false, false, true, true);
+                false, 0, false, false, false, true);
         superStarMaterial = new AdvancedMaterialConfig(builder, subscriber, "super_star", false, 0, false, 0, false, 0,
                 false, 0, false, 0, false, 0, true, 0, false, 0,
                 true, 0, false, 0, false, 0, false, 0, true, 0,
-                false, 0, false, true, true, true);
+                false, 0, false, true, false, true);
         enderDragonMaterial = new AdvancedMaterialConfig(builder, subscriber, "ender_dragon", false, 0, false, 0, false, 0,
                 false, 0, false, 0, false, 0, false, 0, false, 0,
                 true, 0, false, 0, false, 0, false, 0, false, 0,
                 true, 0, true, true, false, true);
         slayerMaterial = new AdvancedMaterialConfig(builder, subscriber, "slayer", false, 0, true, 0, false, 0,
-                false, 0, true, 0, false, 0, true, 0, false, 0,
+                false, 0, false, 0, true, 1, true, 0, false, 0,
                 true, 0, false, 0, false, 0, false, 0, true, 0,
                 true, 0, true, true, true, true);
         enhancedMaterial = new MaterialConfig(builder, subscriber, "enhanced");

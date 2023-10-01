@@ -14,7 +14,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static com.sofodev.armorplus.ArmorPlus.AP_ITEM_GROUP;
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
 import static net.minecraft.ChatFormatting.DARK_PURPLE;
 

@@ -1,10 +1,10 @@
 package com.sofodev.armorplus.data;
 
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.UpgradeRecipeBuilder;
+import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
@@ -12,16 +12,13 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Arrays;
 import java.util.Set;
-import java.util.function.Consumer;
 
 import static com.sofodev.armorplus.registry.ModItems.*;
-import static com.sofodev.armorplus.registry.ModItems.INFUSED_FROST_LAVA_CRYSTAL;
 import static com.sofodev.armorplus.utils.DataUtils.getPath;
 import static com.sofodev.armorplus.utils.DataUtils.quickModLookupItem;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
 import static com.sofodev.armorplus.utils.Utils.setRL;
 import static net.minecraft.world.item.Items.*;
-import static net.minecraft.world.item.Items.NETHERITE_BOOTS;
 
 public class SmithingRecipeMaker extends RecipeProvider {
     private DataGenerator generator;
@@ -35,26 +32,28 @@ public class SmithingRecipeMaker extends RecipeProvider {
         return new SmithingRecipeMaker(generator);
     }
 
-    public void buildBaseToFullSmithing(Consumer<FinishedRecipe> consumer, Set<RegistryObject<Item>> bases, ItemLike soul) {
+    public void buildBaseToFullSmithing(RecipeOutput consumer, Set<RegistryObject<Item>> bases, ItemLike soul) {
         bases.forEach(base -> this.buildBaseToFullSmithing(consumer, base, soul));
     }
 
-    public void buildBaseToFullSmithing(Consumer<FinishedRecipe> consumer, RegistryObject<Item> base, ItemLike soul) {
+    public void buildBaseToFullSmithing(RecipeOutput consumer, RegistryObject<Item> base, ItemLike soul) {
         this.buildSmithing(consumer, base.get(), soul, RecipeCategory.COMBAT, quickModLookupItem(base.getId()));
     }
 
     @SafeVarargs
-    public final void buildBaseToFullSmithing(Consumer<FinishedRecipe> consumer, ItemLike soul, RegistryObject<Item>... bases) {
-        Arrays.stream(bases).forEach(base -> this.buildSmithing(consumer, base.get(), soul, RecipeCategory.COMBAT, quickModLookupItem(base.getId())));
+    public final void buildBaseToFullSmithing(RecipeOutput consumer, ItemLike soul, RegistryObject<Item>... bases) {
+        Arrays.stream(bases)
+                .forEach(base -> this.buildSmithing(consumer, base.get(), soul, RecipeCategory.COMBAT, quickModLookupItem(base.getId())));
     }
 
-    public void buildVanillaToEnhancedSmithing(Consumer<FinishedRecipe> consumer, ItemLike vanilla, RegistryObject<Item> mat) {
+    public void buildVanillaToEnhancedSmithing(RecipeOutput consumer, ItemLike vanilla, RegistryObject<Item> mat) {
         this.buildSmithing(consumer, vanilla, mat.get(), RecipeCategory.COMBAT, getAPItem(getPath(vanilla)));
     }
 
-    public void buildSmithing(Consumer<FinishedRecipe> consumer, ItemLike base, ItemLike addition, RecipeCategory category, ItemLike result) {
+    public void buildSmithing(RecipeOutput consumer, ItemLike base, ItemLike addition, RecipeCategory category, ItemLike result) {
         String path = getPath(base);
-        UpgradeRecipeBuilder.smithing(Ingredient.of(base), //Base
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(base),//Base
+                        Ingredient.EMPTY,
                         Ingredient.of(addition), //Addition
                         category,
                         result.asItem() // Result
@@ -63,10 +62,11 @@ public class SmithingRecipeMaker extends RecipeProvider {
     }
 
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> con) {
+    protected void buildRecipes(RecipeOutput con) {
         registerSmithingRecipes(con);
     }
-    private void registerSmithingRecipes(Consumer<FinishedRecipe> con) {
+
+    private void registerSmithingRecipes(RecipeOutput con) {
         SmithingRecipeMaker smither = new SmithingRecipeMaker(generator);
         //ArmorBase + Soul = Complete Form
         smither.buildBaseToFullSmithing(con, SUPER_STAR_BASES, WITHER_BOSS_SOUL.get());

@@ -4,7 +4,7 @@ import com.sofodev.armorplus.registry.entities.arrows.APArrowEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.network.PlayMessages;
+import net.minecraftforge.network.packets.SpawnEntity;
 
 import static com.sofodev.armorplus.registry.ModEntities.SUPER_STAR_ARROW;
 import static com.sofodev.armorplus.registry.entities.arrows.APArrowProperty.SUPER_STAR_ARROW_PROP;
@@ -28,7 +28,7 @@ public class SuperStarArrowEntity extends APArrowEntity {
         super(SUPER_STAR_ARROW.get(), shooter, world, SUPER_STAR_ARROW_PROP);
     }
 
-    public SuperStarArrowEntity(PlayMessages.SpawnEntity packet, Level world) {
+    public SuperStarArrowEntity(SpawnEntity packet, Level world) {
         super(SUPER_STAR_ARROW.get(), packet, world, SUPER_STAR_ARROW_PROP);
     }
 }

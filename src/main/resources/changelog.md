@@ -1,36 +1,22 @@
-ArmorPlus 1.19.3-19.2.0
+ArmorPlus 1.20.2-20.0.0
 ----------------------------
 
-* Removed The Skeletal King & Witherling [Entities will not return].
-* Balance change of default abilities:
-  * for the guardian armour, it will now extinguish fire, provide night vision and jump boost II (as guardians have a very high jump ability).
-  * for the ender dragon armour, it will now extinguish fire and have fire resistance. 
-  * for the super star armour, it will now provide you with absorption (permanent extra 2 hearts as long as you wear the armour).
-  * for the slayer armour, it will now have all the mentioned above buffs to the other armours.
-* Added the ability to control which abilities are present in the higher tier armours: guardian, super star, ender dragon, slayer.
-* Fixed a bug causing the Ender Dragon and other bosses to not drop their souls or loot.
-* Bumped required version to 1.19.3 and above. 
-* Bumped required Geckolib version to 4.0.2 and above.
+* Requires Geckolib 1.20.2-4.2.3 or later
+* Requires TheDragonLib 1.20.2-1.0.0 or later
 
-ArmorPlus 1.19.2-19.1.0 (BETA)
-----------------------------
+**Ported to 1.20.2**
 
-* Re-introduced world generation features
-  * Ore Lava Crystal
-    * Now configurable via the data pack instead of a configuration file
-  * Ore Frost Crystal
-    * Now configurable via the data pack instead of a configuration file
-* Removed redundant code (Code Cleanup): Biomes, Surface Builders, Certain Entities
-* Mace rendering is still broken.
+Added recipes for Frost & Infused Frost >> Block variants and vice versa
 
-ArmorPlus 1.19.2-19.0.0 (BETA)
-----------------------------
+### Smithing Recipe Changes:
 
-* Requires Geckolib 3.0.23 or later
-* Requires TheDragonLib 1.19-1.0.0 or later
+**Frost/Lava Crystal** combination now requires a **Lava Bucket**
+**Enhanced Netherite Bases** now require an additional **Enhanced Netherite Ingot**
+**Ender Dragon Bases** now require an additional **Ender Dragon Scale**
+**Guardian Bases** now require an additional **Guardian Scale**
+**Super Star Bases** now require an additional **Wither Bone**
+**Slayer Bases** now require an additional **The Ultimate Material**
 
-Ported to 1.19.2
+### Known Bugs:
 
-- World Gen of ores is disabled at this given moment.
-- Removed all biomes from previous versions.
-- Expect further releases to require new chunks to function properly
+**Flight** is not working as intended.
