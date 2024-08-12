@@ -109,8 +109,8 @@ public class StoneBrickSlabBlock extends Block implements SimpleWaterloggedBlock
     }
 
     @Override
-    public boolean canPlaceLiquid(Player player, BlockGetter worldIn, BlockPos pos, BlockState state, Fluid fluidIn) {
-        return state.getValue(TYPE) != SlabType.DOUBLE && SimpleWaterloggedBlock.super.canPlaceLiquid(player, worldIn, pos, state, fluidIn);
+    public boolean canPlaceLiquid(BlockGetter getter, BlockPos pos, BlockState state, Fluid fluidIn) {
+        return state.getValue(TYPE) != SlabType.DOUBLE && SimpleWaterloggedBlock.super.canPlaceLiquid(getter, pos, state, fluidIn);
     }
 
     /**

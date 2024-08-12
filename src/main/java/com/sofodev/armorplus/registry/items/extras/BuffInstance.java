@@ -2,13 +2,11 @@ package com.sofodev.armorplus.registry.items.extras;
 
 import com.sofodev.armorplus.registry.ModPotions;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 
@@ -95,30 +93,33 @@ public class BuffInstance {
     }
 
     /**
-     * Uses the {@link ArmorItem#onArmorTick(ItemStack, Level, Player)} function to trigger buffs
+     * Uses the {@link ArmorItem#onInventoryTick(ItemStack, Level, Player, int, int)} function to trigger buffs
      * <p>
      * Applies Buff's effects.
      * <p>
      * If the buff is an effect it will be either applied instantly (even if you already have the effect))
      */
     @SuppressWarnings("removal")
-    public void onArmorTick(ItemStack stack, Level world, Player player) {
+    public void onInventoryTick(ItemStack stack, Level world, Player player) {
         //instant - x - true
         //!instant - y - false
         // instant -> else |
-        buff.onArmorTick(stack, world, player);
+        buff.onInventoryTick(stack, world, player);
         if (buff.isEffect()) {
-                if (!instant) {
-                    List<MobEffectInstance> playerEffects = player.getActiveEffects().stream().toList();
-                    if (!playerEffects.isEmpty()) {
-                        for (MobEffectInstance instance : playerEffects){
-                            if (instance.getEffect().getDisplayName().toString().equals(effect.getEffect().getDisplayName().toString())) continue;
-                            player.addEffect(effect);
-                        }
+            if (!instant) {
+                List<MobEffectInstance> playerEffects = player.getActiveEffects().stream().toList();
+                if (!playerEffects.isEmpty()) {
+                    for (MobEffectInstance instance : playerEffects) {
+                        if (instance.getEffect()
+                                .getDisplayName()
+                                .toString()
+                                .equals(effect.getEffect().getDisplayName().toString())) continue;
+                        player.addEffect(effect);
                     }
-                } else {
-                    player.addEffect(effect);
                 }
+            } else {
+                player.addEffect(effect);
+            }
         }
     }
 

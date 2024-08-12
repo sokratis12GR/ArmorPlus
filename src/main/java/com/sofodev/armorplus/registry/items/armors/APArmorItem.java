@@ -31,24 +31,25 @@ public class APArmorItem extends ArmorItem {
     }
 
     @Override
-    public void onArmorTick(ItemStack stack, Level world, Player player) {
-        if (!world.isClientSide) {
+    public void onInventoryTick(ItemStack stack, Level level, Player player, int slotIndex, int selectedIndex) {
+        if (!level.isClientSide()) {
             if (mat.config().enableArmorEffects.get()) {
                 if (mat.getBuffInstances().get() == null || mat.getBuffInstances().get().isEmpty()) return;
                 mat.getBuffInstances().get().forEach(instance -> {
                     if (instance.getBuff() instanceof Buff && instance.isEnabled()) {
                         if (instance.getBuff().requiresFullSet()) {
                             if (areExactMatch(mat, player)) {
-                                instance.onArmorTick(stack, world, player);
+                                instance.onInventoryTick(stack, level, player);
                             }
                         } else {
-                            instance.onArmorTick(stack, world, player);
+                            instance.onInventoryTick(stack, level, player);
                         }
                     }
                 });
             }
         }
     }
+
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {

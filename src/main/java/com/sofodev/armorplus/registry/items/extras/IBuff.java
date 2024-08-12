@@ -29,7 +29,7 @@ public interface IBuff {
      * <p>
      * Used to apply buff (effects) or abilities, on armor tick.
      */
-    default void onArmorTick(ItemStack stack, Level world, Player player) {
+    default void onInventoryTick(ItemStack stack, Level world, Player player) {
     }
 
     default void hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {

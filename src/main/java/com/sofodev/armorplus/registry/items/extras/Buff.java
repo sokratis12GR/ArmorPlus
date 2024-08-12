@@ -34,7 +34,7 @@ public enum Buff implements IBuff {
     },
     WITHER_IMMUNITY(true) {
         @Override
-        public void onArmorTick(ItemStack stack, Level world, Player player) {
+        public void onInventoryTick(ItemStack stack, Level world, Player player) {
             if (!world.isClientSide) {
                 player.removeEffect(WITHER);
             }
@@ -42,7 +42,7 @@ public enum Buff implements IBuff {
     },
     WATER_WEAKNESS(true) {
         @Override
-        public void onArmorTick(ItemStack stack, Level world, Player player) {
+        public void onInventoryTick(ItemStack stack, Level world, Player player) {
             if (!world.isClientSide) {
                 boolean water = player.isUnderWater();
                 if (water) {
@@ -56,7 +56,7 @@ public enum Buff implements IBuff {
     },
     FIRE_WEAKNESS(true) {
         @Override
-        public void onArmorTick(ItemStack stack, Level world, Player player) {
+        public void onInventoryTick(ItemStack stack, Level world, Player player) {
             if (!world.isClientSide) {
                 boolean fire = player.isOnFire();
                 if (fire) {
@@ -67,7 +67,7 @@ public enum Buff implements IBuff {
     },
     NATURAL_IMMUNITY(true) {
         @Override
-        public void onArmorTick(ItemStack stack, Level world, Player player) {
+        public void onInventoryTick(ItemStack stack, Level world, Player player) {
             if (!player.hasEffect(FIRE_RESISTANCE.getEffect())){
                 player.addEffect(new MobEffectInstance(FIRE_RESISTANCE.getEffect(), 60,0, false, false));
             }
@@ -81,7 +81,7 @@ public enum Buff implements IBuff {
     },
     FIRE_EXTINGUISH(true) {
         @Override
-        public void onArmorTick(ItemStack stack, Level world, Player player) {
+        public void onInventoryTick(ItemStack stack, Level world, Player player) {
             if (!world.isClientSide && player.getRemainingFireTicks() > 0) {
                 player.clearFire();
             }
