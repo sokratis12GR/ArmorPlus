@@ -108,12 +108,13 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
     //Required
-    implementation fg.deobf("curse.maven:thedragonlib-248055:4771324") //TheDragonLib 1.20.2-1.0.0
-    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.20.2:4.2.3')
+    implementation fg.deobf("curse.maven:thedragonlib-248055:5054515") //TheDragonLib 1.20.2-1.0.0
+    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.20.1:4.4')
     //implementation fg.deobf("curse.maven:sword-displays-392762:4357828")
 
     //Optional
-    implementation fg.deobf("curse.maven:jei-238222:4767571") //jei-1.20.2-forge-16.0.0.28.jar
+    implementation fg.deobf("curse.maven:jei-238222:4712868") //jei-1.20.1-forge-15.2.0.27.jar
+
 
 }
 
@@ -184,8 +185,8 @@ curseforge {
         id = '237366'
         changelog = file('src/main/resources/changelog.md')
         changelogType = 'markdown'
-        releaseType = 'beta'
-        addGameVersion '1.20.2'
+        releaseType = 'release'
+        addGameVersion '1.20.1'
         relations curseRelations
     }
 }
