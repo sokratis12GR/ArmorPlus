@@ -11,7 +11,7 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.network.NetworkRegistry;
-import net.minecraftforge.network.packets.SpawnEntity;
+import net.minecraftforge.network.PlayMessages;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Objects;
@@ -52,7 +52,7 @@ public abstract class APArrowEntity extends AbstractArrow {
         }
     }
 
-    public APArrowEntity(EntityType<? extends APArrowEntity> type, SpawnEntity packet, Level world, ArrowProperty property) {
+    public APArrowEntity(EntityType<? extends APArrowEntity> type, PlayMessages.SpawnEntity packet, Level world, ArrowProperty property) {
         this(type, packet.getPosX(), packet.getPosY(), packet.getPosZ(), world, property);
         this.type = type;
         this.setRot(packet.getHeadYaw(), packet.getPitch());

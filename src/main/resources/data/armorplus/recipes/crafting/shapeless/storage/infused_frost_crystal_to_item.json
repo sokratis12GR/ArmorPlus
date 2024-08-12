@@ -3,7 +3,7 @@
   "group": "armorplus:storage",
   "ingredients": [
     {
-      "item": "armorplus:block_frost_lava_crystal"
+      "item": "armorplus:block_infused_frost_crystal"
     }
   ],
   "result": {

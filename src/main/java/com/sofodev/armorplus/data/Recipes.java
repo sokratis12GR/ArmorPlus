@@ -9,7 +9,6 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -49,11 +48,11 @@ public class Recipes extends RecipeProvider implements DataProvider, IConditionB
     }
 
     @Override
-    protected void buildRecipes(RecipeOutput con) {
+    protected void buildRecipes(Consumer<FinishedRecipe> con) {
         this.registerCraftingRecipes(con);
     }
 
-    private void registerCraftingRecipes(RecipeOutput con) {
+    private void registerCraftingRecipes(Consumer<FinishedRecipe> con) {
         CraftingRecipeMaker crafter = new CraftingRecipeMaker(generator);
         //StoneBricks+CastleBlocks
         int l = AP_STONE_BRICKS_LENGTH;
@@ -170,6 +169,5 @@ public class Recipes extends RecipeProvider implements DataProvider, IConditionB
         crafter.build(con, RecipeCategory.BUILDING_BLOCKS, Result.build(SNOW_BRICK_STAIRS.get(), 4).setGroup("snow_brick_stairs").setSuffix(""), GridInput.buildStairs('X'), SNOW_BRICK.get());
         crafter.build(con, RecipeCategory.BUILDING_BLOCKS, Result.build(SNOW_BRICK_SLAB.get(), 4).setGroup("snow_brick_slab").setSuffix(""), GridInput.buildSlab('X'), SNOW_BRICK.get());
     }
-
 
 }

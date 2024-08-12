@@ -2,7 +2,6 @@ package com.sofodev.armorplus;
 
 import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.config.ConfigHelper;
-import com.sofodev.armorplus.network.PacketHandler;
 import com.sofodev.armorplus.registry.ModBlocks;
 import com.sofodev.armorplus.registry.ModItems;
 import com.sofodev.armorplus.registry.blocks.castle.BrickColor;
@@ -69,9 +68,8 @@ public class ArmorPlus {
 
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
-    public static final String VERSION = "1.20.2-20.0.0";
+    public static final String VERSION = "1.20.1-20.0.3";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
-    public static final PacketHandler PACKET_HANDLER = new PacketHandler();
 
     /**
      * Used as an "upper ground" variable, which sets the limit for the sets which use these materials.
@@ -176,7 +174,6 @@ public class ArmorPlus {
 
     private void afterSetup() {
         //        GlobalVars.registerAfterEverything();
-        PACKET_HANDLER.initialize();
         SMELTING_MAP = registerSmeltingMap();
     }
 

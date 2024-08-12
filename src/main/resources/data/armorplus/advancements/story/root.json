@@ -13,7 +13,7 @@
         "show_toast": false,
         "announce_to_chat": false,
         "hidden": false,
-        "background": "armorplus:textures/items/compressed_obsidian.png"
+        "background": "armorplus:textures/item/compressed_obsidian.png"
     },
     "criteria": {
         "crafting_table": {

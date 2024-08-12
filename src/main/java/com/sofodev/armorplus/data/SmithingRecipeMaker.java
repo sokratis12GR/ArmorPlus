@@ -1,8 +1,8 @@
 package com.sofodev.armorplus.data;
 
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
 import net.minecraft.world.item.Item;
@@ -12,6 +12,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Arrays;
 import java.util.Set;
+import java.util.function.Consumer;
 
 import static com.sofodev.armorplus.registry.ModItems.*;
 import static com.sofodev.armorplus.utils.DataUtils.getPath;
@@ -32,25 +33,25 @@ public class SmithingRecipeMaker extends RecipeProvider {
         return new SmithingRecipeMaker(generator);
     }
 
-    public void buildBaseToFullSmithing(RecipeOutput consumer, Set<RegistryObject<Item>> bases, ItemLike soul) {
+    public void buildBaseToFullSmithing(Consumer<FinishedRecipe> consumer, Set<RegistryObject<Item>> bases, ItemLike soul) {
         bases.forEach(base -> this.buildBaseToFullSmithing(consumer, base, soul));
     }
 
-    public void buildBaseToFullSmithing(RecipeOutput consumer, RegistryObject<Item> base, ItemLike soul) {
+    public void buildBaseToFullSmithing(Consumer<FinishedRecipe> consumer, RegistryObject<Item> base, ItemLike soul) {
         this.buildSmithing(consumer, base.get(), soul, RecipeCategory.COMBAT, quickModLookupItem(base.getId()));
     }
 
     @SafeVarargs
-    public final void buildBaseToFullSmithing(RecipeOutput consumer, ItemLike soul, RegistryObject<Item>... bases) {
+    public final void buildBaseToFullSmithing(Consumer<FinishedRecipe> consumer, ItemLike soul, RegistryObject<Item>... bases) {
         Arrays.stream(bases)
                 .forEach(base -> this.buildSmithing(consumer, base.get(), soul, RecipeCategory.COMBAT, quickModLookupItem(base.getId())));
     }
 
-    public void buildVanillaToEnhancedSmithing(RecipeOutput consumer, ItemLike vanilla, RegistryObject<Item> mat) {
+    public void buildVanillaToEnhancedSmithing(Consumer<FinishedRecipe> consumer, ItemLike vanilla, RegistryObject<Item> mat) {
         this.buildSmithing(consumer, vanilla, mat.get(), RecipeCategory.COMBAT, getAPItem(getPath(vanilla)));
     }
 
-    public void buildSmithing(RecipeOutput consumer, ItemLike base, ItemLike addition, RecipeCategory category, ItemLike result) {
+    public void buildSmithing(Consumer<FinishedRecipe> consumer, ItemLike base, ItemLike addition, RecipeCategory category, ItemLike result) {
         String path = getPath(base);
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(base),//Base
                         Ingredient.EMPTY,
@@ -62,11 +63,11 @@ public class SmithingRecipeMaker extends RecipeProvider {
     }
 
     @Override
-    protected void buildRecipes(RecipeOutput con) {
+    protected void buildRecipes(Consumer<FinishedRecipe> con) {
         registerSmithingRecipes(con);
     }
 
-    private void registerSmithingRecipes(RecipeOutput con) {
+    private void registerSmithingRecipes(Consumer<FinishedRecipe> con) {
         SmithingRecipeMaker smither = new SmithingRecipeMaker(generator);
         //ArmorBase + Soul = Complete Form
         smither.buildBaseToFullSmithing(con, SUPER_STAR_BASES, WITHER_BOSS_SOUL.get());
