@@ -2,7 +2,6 @@ package com.sofodev.armorplus.events;
 
 
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.events.data.FlightData;
 import com.sofodev.armorplus.registry.items.armors.APArmorItem;
 import com.sofodev.armorplus.registry.items.armors.IAPArmor;
 import com.sofodev.armorplus.registry.items.extras.BuffInstance;
@@ -37,13 +36,13 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.SpawnData;
-import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.EntityStruckByLightningEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -75,7 +74,7 @@ public class ModGlobalEvents {
     public static final Random RAND = new Random();
     public static int waterTicks = 0;
     public static int thunderingTicks = 0;
-    public static FlightData flightData = new FlightData(false, false, false);
+    //    public static FlightData flightData = new FlightData(false, false, false);
 
     @SubscribeEvent
     public static void onArrowLooseEvent(ArrowLooseEvent e) {
@@ -112,6 +111,7 @@ public class ModGlobalEvents {
             }
         }
     }
+
 
     @SubscribeEvent
     public static void onPlayerTickEvent(PlayerTickEvent e) {
@@ -151,27 +151,36 @@ public class ModGlobalEvents {
                     }
                 }
             }
-            for (ItemStack stack : player.getArmorSlots()) {
-                Item item = stack.getItem();
-                if (!(item instanceof APArmorItem)) {
-                    return;
-                }
-                IAPArmor mat = ((APArmorItem) item).getMat();
-                boolean areExactMatch = areExactMatch(mat, player);
-                List<IBuff> buffList = mat.getBuffInstances().get().stream().map(BuffInstance::getBuff).toList();
-                if (areExactMatch && mat.config().enableArmorEffects.get()) {
-                    if (!buffList.isEmpty()) {
-                        if (buffList.contains(FLIGHT)) shouldApplyFlight(e, player);
-                        if (buffList.contains(WATER_WEAKNESS)) shouldApplyWaterWeakness(player);
-                    }
-                } else {
-                    attemptDisableFlight(e, player);
-                    return;
-                }
-            }
         }
     }
 
+    @SubscribeEvent
+    public static void onEquipmentChange(LivingEquipmentChangeEvent e) {
+        if (e.getEntity() instanceof Player player) {
+            Level world = player.level();
+            if (!world.isClientSide()) {
+                for (ItemStack stack : player.getArmorSlots()) {
+                    Item item = stack.getItem();
+                    if (!(item instanceof APArmorItem)) {
+                        if (!allowsFlightByDefault(player)) {
+                            attemptDisableFlight(player);
+                        }
+                        return;
+                    }
+                    IAPArmor mat = ((APArmorItem) item).getMat();
+                    boolean areExactMatch = areExactMatch(mat, player);
+                    List<IBuff> buffList = mat.getBuffInstances().get().stream().map(BuffInstance::getBuff).toList();
+                    if (areExactMatch && mat.config().enableArmorEffects.get()) {
+                        if (!buffList.isEmpty()) {
+                            if (buffList.contains(FLIGHT)) shouldApplyFlight(player);
+                            if (buffList.contains(WATER_WEAKNESS)) shouldApplyWaterWeakness(player);
+                        }
+                    }
+                }
+            }
+        }
+
+    }
     /*@SubscribeEvent
     public static void onVillagerTradesEvent(VillagerTradesEvent e) {
         Random rand = new Random();
@@ -269,57 +278,26 @@ public class ModGlobalEvents {
 
     //Flight Control Start
 
-    private static void shouldApplyFlight(PlayerTickEvent e, Player player) {
-        if (e.phase == TickEvent.Phase.END && e.side.isServer()) {
-            if (!player.getAbilities().mayfly || allowsFlightByDefault(player)) {
-                player.getAbilities().mayfly = true;
-                updateClientServerFlight(player, true);
-//                       ArmorPlus.LOGGER.info("Enabling flight, hasFlight: " + flightData.wasFlyingAllowed());
-            }
-        }
+    private static void shouldApplyFlight(Player player) {
+        player.getAbilities().mayfly = true;
+        player.onUpdateAbilities();
     }
 
-    private static void attemptDisableFlight(PlayerTickEvent e, Player player) {
-        if (e.phase == TickEvent.Phase.END && e.side.isServer()) {
-            player.getArmorSlots().forEach(i -> {
-                if (!i.isEmpty() || flightData.allowFlying() && flightData.wasFlyingAllowed()) {
-                    if (player.getAbilities().mayfly && flightData.allowFlying() && flightData.wasFlyingAllowed() && !allowsFlightByDefault(player)) {
-                        player.getAbilities().mayfly = false;
-                        player.getAbilities().flying = false;
-                        updateClientServerFlight(player, false);
-                        flightData.setFlying(false);
-                        flightData.setAllowFlying(false);
-//                            ArmorPlus.LOGGER.info("Disabling flight [0], hasFlight: " + flightData.allowFlying());
-                    } else if ((i.getItem() instanceof APArmorItem)) {
-                        if (areExactMatch(((APArmorItem) i.getItem()).getMat(), player) && player.getAbilities().mayfly) {
-                            player.getAbilities().mayfly = false;
-                            player.getAbilities().flying = false;
-                            updateClientServerFlight(player, false);
-                            flightData.setFlying(false);
-                            flightData.setAllowFlying(false);
-//                                ArmorPlus.LOGGER.info("Disabling flight [1], hasFlight: " + flightData.wasFlyingAllowed());
-                        }
-                    }
-                }
-            });
-        }
+    private static void attemptDisableFlight(Player player) {
+        player.getAbilities().mayfly = false;
+        player.getAbilities().flying = false;
+        player.onUpdateAbilities();
+
     }
 
-    private static void updateClientServerFlight(Player player, boolean allowFlying) {
-        updateClientServerFlight(player, allowFlying, allowFlying && player.getAbilities().flying);
-    }
-
-    private static void updateClientServerFlight(Player player, boolean allowFlying, boolean isFlying) {
-        player.getAbilities().mayfly = allowFlying;
-        player.getAbilities().flying = isFlying;
-        updateFlightData(player);
-    }
-
-    private static void updateFlightData(Player player) {
-        flightData.setFlying(player.getAbilities().flying);
-        flightData.setAllowFlying(player.getAbilities().mayfly);
-        flightData.setWasFlyingAllowed(player.getAbilities().mayfly);
-    }
+    //    private static void updateClientServerFlight(Player player, boolean allowFlying) {
+    //        updateClientServerFlight(player, allowFlying, allowFlying && player.getAbilities().flying);
+    //    }
+    //
+    //    private static void updateClientServerFlight(Player player, boolean allowFlying, boolean isFlying) {
+    //        player.getAbilities().mayfly = allowFlying;
+    //        player.getAbilities().flying = isFlying;
+    //    }
 
     //Flight Control End
 
@@ -439,10 +417,7 @@ public class ModGlobalEvents {
                 Item item = stack.getItem();
                 if (item instanceof Tool) {
                     IAPTool mat = ((Tool) item).getMat();
-                    List<IBuff> buffList = mat.getBuffInstances()
-                            .get()
-                            .stream()
-                            .map(BuffInstance::getBuff).toList();
+                    List<IBuff> buffList = mat.getBuffInstances().get().stream().map(BuffInstance::getBuff).toList();
                     if (!buffList.isEmpty()) {
                         //                        if (buffList.contains(IGNITE)) IGNITE.hitEntity(stack, entity, player); // This damages the player with ignite
                     }
