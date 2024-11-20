@@ -74,6 +74,7 @@ public class ModGlobalEvents {
     public static final Random RAND = new Random();
     public static int waterTicks = 0;
     public static int thunderingTicks = 0;
+    public static boolean flightState = false;
     //    public static FlightData flightData = new FlightData(false, false, false);
 
     @SubscribeEvent
@@ -277,16 +278,27 @@ public class ModGlobalEvents {
     }
 
     //Flight Control Start
+    private static boolean toogleFlightState(Player player) {
+        flightState = !flightState;
+    }
+
+    private static boolean isFlying(Player player) {
+        return flightState;
+    }
 
     private static void shouldApplyFlight(Player player) {
+        toogleFlightState(player);
         player.getAbilities().mayfly = true;
         player.onUpdateAbilities();
     }
 
     private static void attemptDisableFlight(Player player) {
-        player.getAbilities().mayfly = false;
-        player.getAbilities().flying = false;
-        player.onUpdateAbilities();
+        if (isFlying(player)) {
+            toogleFlightState(player);
+            player.getAbilities().mayfly = false;
+            player.getAbilities().flying = false;
+            player.onUpdateAbilities();
+        }
 
     }
 
