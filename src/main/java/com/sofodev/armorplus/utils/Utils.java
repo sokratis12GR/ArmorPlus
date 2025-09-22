@@ -125,7 +125,7 @@ public final class Utils {
     }
 
     public static Item getItemByName(String name) {
-        return ForgeRegistries.ITEMS.getValue(new ResourceLocation(name));
+        return ForgeRegistries.ITEMS.getValue(ResourceLocation.parse(name));
     }
 
     public static Item getAPItem(String name) {
@@ -149,11 +149,11 @@ public final class Utils {
     }
 
     public static ResourceLocation setRL(String path) {
-        return new ResourceLocation(MODID, path);
+        return ResourceLocation.fromNamespaceAndPath(MODID, path);
     }
 
     public static ResourceLocation setVanillaLocation(String path) {
-        return new ResourceLocation(path);
+        return ResourceLocation.withDefaultNamespace(path);
     }
 
     public static String setLocation(String path) {
@@ -190,7 +190,7 @@ public final class Utils {
 
     public static ItemStack getTCIngot(int meta) {
         if (Loader.TCONSTRUCT.isLoaded()) {
-            Item ingot = ForgeRegistries.ITEMS.getValue(new ResourceLocation("tconstruct:ingots"));
+            Item ingot = ForgeRegistries.ITEMS.getValue(ResourceLocation.parse("tconstruct:ingots"));
             if (ingot != null) {
                 return new ItemStack(ingot, 1);
             }

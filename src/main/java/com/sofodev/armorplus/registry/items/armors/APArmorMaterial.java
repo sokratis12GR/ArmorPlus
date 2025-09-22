@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.registry.items.armors;
 
 import com.sofodev.armorplus.config.ArmorPlusConfig;
+import com.sofodev.armorplus.config.ConfigHelper;
 import com.sofodev.armorplus.registry.items.extras.BuffInstance;
 import net.minecraft.ChatFormatting;
 import net.minecraft.world.item.ArmorMaterial;
@@ -98,75 +99,19 @@ public enum APArmorMaterial implements IAPArmor {
         }
     },
     /*Tier 3*/
-    GUARDIAN(GUARDIAN_PROP, true, BLUE, () -> withBuffs(
-            new BuffInstance(guardianMaterial.enableNIGHT_VISION.get(), NIGHT_VISION, guardianMaterial.amplifierNIGHT_VISION.get()),
-            new BuffInstance(guardianMaterial.enableWATER_BREATHING.get(), WATER_BREATHING, guardianMaterial.amplifierWATER_BREATHING.get()),
-            new BuffInstance(guardianMaterial.enableSTRENGTH.get(), STRENGTH, guardianMaterial.amplifierSTRENGTH.get()),
-            new BuffInstance(guardianMaterial.enableSPEED.get(), SPEED, guardianMaterial.amplifierSPEED.get()),
-            new BuffInstance(guardianMaterial.enableHASTE.get(), HASTE, guardianMaterial.amplifierHASTE.get()),
-            new BuffInstance(guardianMaterial.enableJUMP_BOOST.get(), JUMP_BOOST, guardianMaterial.amplifierJUMP_BOOST.get()),
-            new BuffInstance(guardianMaterial.enableREGENERATION.get(), REGENERATION, guardianMaterial.amplifierREGENERATION.get(), 200),
-            new BuffInstance(guardianMaterial.enableRESISTANCE.get(), RESISTANCE, guardianMaterial.amplifierRESISTANCE.get()),
-            new BuffInstance(guardianMaterial.enableFIRE_RESISTANCE.get(), FIRE_RESISTANCE, guardianMaterial.amplifierFIRE_RESISTANCE.get()),
-            new BuffInstance(guardianMaterial.enableSATURATION.get(), SATURATION, guardianMaterial.amplifierSATURATION.get()),
-            new BuffInstance(guardianMaterial.enableINVISIBILITY.get(), INVISIBILITY, guardianMaterial.amplifierINVISIBILITY.get()),
-            new BuffInstance(guardianMaterial.enableHEALTH_BOOST.get(), HEALTH_BOOST, guardianMaterial.amplifierHEALTH_BOOST.get(), 200),
-            new BuffInstance(guardianMaterial.enableABSORPTION.get(), ABSORPTION, guardianMaterial.amplifierABSORPTION.get(), 200),
-            new BuffInstance(guardianMaterial.enableSLOW_FALLING.get(), SLOW_FALLING, guardianMaterial.amplifierSLOW_FALLING.get()),
-            new BuffInstance(guardianMaterial.enableFLIGHT.get(), FLIGHT),
-            new BuffInstance(guardianMaterial.enableWITHER_IMMUNITY.get(), WITHER_IMMUNITY),
-            new BuffInstance(guardianMaterial.enableNATURAL_IMMUNITY.get(), NATURAL_IMMUNITY),
-            new BuffInstance(guardianMaterial.enableFIRE_EXTINGUISH.get(), FIRE_EXTINGUISH))) {
+    GUARDIAN(GUARDIAN_PROP, true, BLUE, fromConfig(()->guardianMaterial)) {
         @Override
         public MaterialConfig config() {
             return guardianMaterial;
         }
     },
-    SUPER_STAR(SUPER_STAR_PROP, true, WHITE, () -> withBuffs(
-            new BuffInstance(superStarMaterial.enableNIGHT_VISION.get(), NIGHT_VISION, superStarMaterial.amplifierNIGHT_VISION.get()),
-            new BuffInstance(superStarMaterial.enableWATER_BREATHING.get(), WATER_BREATHING, superStarMaterial.amplifierWATER_BREATHING.get()),
-            new BuffInstance(superStarMaterial.enableSTRENGTH.get(), STRENGTH, superStarMaterial.amplifierSTRENGTH.get()),
-            new BuffInstance(superStarMaterial.enableSPEED.get(), SPEED, superStarMaterial.amplifierSPEED.get()),
-            new BuffInstance(superStarMaterial.enableHASTE.get(), HASTE, superStarMaterial.amplifierHASTE.get()),
-            new BuffInstance(superStarMaterial.enableJUMP_BOOST.get(), JUMP_BOOST, superStarMaterial.amplifierJUMP_BOOST.get()),
-            new BuffInstance(superStarMaterial.enableREGENERATION.get(), REGENERATION, superStarMaterial.amplifierREGENERATION.get(), 200),
-            new BuffInstance(superStarMaterial.enableRESISTANCE.get(), RESISTANCE, superStarMaterial.amplifierRESISTANCE.get()),
-            new BuffInstance(superStarMaterial.enableFIRE_RESISTANCE.get(), FIRE_RESISTANCE, superStarMaterial.amplifierFIRE_RESISTANCE.get()),
-            new BuffInstance(superStarMaterial.enableSATURATION.get(), SATURATION, superStarMaterial.amplifierSATURATION.get()),
-            new BuffInstance(superStarMaterial.enableINVISIBILITY.get(), INVISIBILITY, superStarMaterial.amplifierINVISIBILITY.get()),
-            new BuffInstance(superStarMaterial.enableHEALTH_BOOST.get(), HEALTH_BOOST, superStarMaterial.amplifierHEALTH_BOOST.get(), 200),
-            new BuffInstance(superStarMaterial.enableABSORPTION.get(), ABSORPTION, superStarMaterial.amplifierABSORPTION.get(), 200),
-            new BuffInstance(superStarMaterial.enableSLOW_FALLING.get(), SLOW_FALLING, superStarMaterial.amplifierSLOW_FALLING.get()),
-            new BuffInstance(superStarMaterial.enableFLIGHT.get(), FLIGHT),
-            new BuffInstance(superStarMaterial.enableWITHER_IMMUNITY.get(), WITHER_IMMUNITY),
-            new BuffInstance(superStarMaterial.enableNATURAL_IMMUNITY.get(), NATURAL_IMMUNITY),
-            new BuffInstance(superStarMaterial.enableFIRE_EXTINGUISH.get(), FIRE_EXTINGUISH)
-    )) {
+    SUPER_STAR(SUPER_STAR_PROP, true, WHITE, fromConfig(()->superStarMaterial)) {
         @Override
         public MaterialConfig config() {
             return superStarMaterial;
         }
     },
-    ENDER_DRAGON(ENDER_DRAGON_PROP, true, DARK_PURPLE, () -> withBuffs(
-            new BuffInstance(enderDragonMaterial.enableNIGHT_VISION.get(), NIGHT_VISION, enderDragonMaterial.amplifierNIGHT_VISION.get()),
-            new BuffInstance(enderDragonMaterial.enableWATER_BREATHING.get(), WATER_BREATHING, enderDragonMaterial.amplifierWATER_BREATHING.get()),
-            new BuffInstance(enderDragonMaterial.enableSTRENGTH.get(), STRENGTH, enderDragonMaterial.amplifierSTRENGTH.get()),
-            new BuffInstance(enderDragonMaterial.enableSPEED.get(), SPEED, enderDragonMaterial.amplifierSPEED.get()),
-            new BuffInstance(enderDragonMaterial.enableHASTE.get(), HASTE, enderDragonMaterial.amplifierHASTE.get()),
-            new BuffInstance(enderDragonMaterial.enableJUMP_BOOST.get(), JUMP_BOOST, enderDragonMaterial.amplifierJUMP_BOOST.get()),
-            new BuffInstance(enderDragonMaterial.enableREGENERATION.get(), REGENERATION, enderDragonMaterial.amplifierREGENERATION.get(), 200),
-            new BuffInstance(enderDragonMaterial.enableRESISTANCE.get(), RESISTANCE, enderDragonMaterial.amplifierRESISTANCE.get()),
-            new BuffInstance(enderDragonMaterial.enableFIRE_RESISTANCE.get(), FIRE_RESISTANCE, enderDragonMaterial.amplifierFIRE_RESISTANCE.get()),
-            new BuffInstance(enderDragonMaterial.enableSATURATION.get(), SATURATION, enderDragonMaterial.amplifierSATURATION.get()),
-            new BuffInstance(enderDragonMaterial.enableINVISIBILITY.get(), INVISIBILITY, enderDragonMaterial.amplifierINVISIBILITY.get()),
-            new BuffInstance(enderDragonMaterial.enableHEALTH_BOOST.get(), HEALTH_BOOST, enderDragonMaterial.amplifierHEALTH_BOOST.get(), 200),
-            new BuffInstance(enderDragonMaterial.enableABSORPTION.get(), ABSORPTION, enderDragonMaterial.amplifierABSORPTION.get(), 200),
-            new BuffInstance(enderDragonMaterial.enableSLOW_FALLING.get(), SLOW_FALLING, enderDragonMaterial.amplifierSLOW_FALLING.get()),
-            new BuffInstance(enderDragonMaterial.enableFLIGHT.get(), FLIGHT),
-            new BuffInstance(enderDragonMaterial.enableWITHER_IMMUNITY.get(), WITHER_IMMUNITY),
-            new BuffInstance(enderDragonMaterial.enableNATURAL_IMMUNITY.get(), NATURAL_IMMUNITY),
-            new BuffInstance(enderDragonMaterial.enableFIRE_EXTINGUISH.get(), FIRE_EXTINGUISH)
-    )) {
+    ENDER_DRAGON(ENDER_DRAGON_PROP, true, DARK_PURPLE, fromConfig(()->enderDragonMaterial)) {
         @Override
         public MaterialConfig config() {
             return enderDragonMaterial;
@@ -179,26 +124,7 @@ public enum APArmorMaterial implements IAPArmor {
     PIG_IRON(PIG_IRON_PROP, LIGHT_PURPLE),
     MANYULLYN(MANYULLYN_PROP, DARK_PURPLE),
     /*Tier Slayer*/
-    SLAYER(SLAYER_PROP, true, DARK_PURPLE, () -> withBuffs(
-            new BuffInstance(slayerMaterial.enableNIGHT_VISION.get(), NIGHT_VISION, slayerMaterial.amplifierNIGHT_VISION.get()),
-            new BuffInstance(slayerMaterial.enableWATER_BREATHING.get(), WATER_BREATHING, slayerMaterial.amplifierWATER_BREATHING.get()),
-            new BuffInstance(slayerMaterial.enableSTRENGTH.get(), STRENGTH, slayerMaterial.amplifierSTRENGTH.get()),
-            new BuffInstance(slayerMaterial.enableSPEED.get(), SPEED, slayerMaterial.amplifierSPEED.get()),
-            new BuffInstance(slayerMaterial.enableHASTE.get(), HASTE, slayerMaterial.amplifierHASTE.get()),
-            new BuffInstance(slayerMaterial.enableJUMP_BOOST.get(), JUMP_BOOST, slayerMaterial.amplifierJUMP_BOOST.get()),
-            new BuffInstance(slayerMaterial.enableREGENERATION.get(), REGENERATION, slayerMaterial.amplifierREGENERATION.get(), 200),
-            new BuffInstance(slayerMaterial.enableRESISTANCE.get(), RESISTANCE, slayerMaterial.amplifierRESISTANCE.get()),
-            new BuffInstance(slayerMaterial.enableFIRE_RESISTANCE.get(), FIRE_RESISTANCE, slayerMaterial.amplifierFIRE_RESISTANCE.get()),
-            new BuffInstance(slayerMaterial.enableSATURATION.get(), SATURATION, slayerMaterial.amplifierSATURATION.get()),
-            new BuffInstance(slayerMaterial.enableINVISIBILITY.get(), INVISIBILITY, slayerMaterial.amplifierINVISIBILITY.get()),
-            new BuffInstance(slayerMaterial.enableHEALTH_BOOST.get(), HEALTH_BOOST, slayerMaterial.amplifierHEALTH_BOOST.get(), 200),
-            new BuffInstance(slayerMaterial.enableABSORPTION.get(), ABSORPTION, slayerMaterial.amplifierABSORPTION.get(), 200),
-            new BuffInstance(slayerMaterial.enableSLOW_FALLING.get(), SLOW_FALLING, slayerMaterial.amplifierSLOW_FALLING.get()),
-            new BuffInstance(slayerMaterial.enableFLIGHT.get(), FLIGHT),
-            new BuffInstance(slayerMaterial.enableWITHER_IMMUNITY.get(), WITHER_IMMUNITY),
-            new BuffInstance(slayerMaterial.enableNATURAL_IMMUNITY.get(), NATURAL_IMMUNITY),
-            new BuffInstance(slayerMaterial.enableFIRE_EXTINGUISH.get(), FIRE_EXTINGUISH)
-    )) {
+    SLAYER(SLAYER_PROP, true, DARK_PURPLE, fromConfig(()->slayerMaterial)) {
         @Override
         public MaterialConfig config() {
             return slayerMaterial;
@@ -253,6 +179,34 @@ public enum APArmorMaterial implements IAPArmor {
         this.isImmuneToFire = isImmuneToFire;
         this.buffs = buffs;
         this.formatting = formatting;
+    }
+
+    private static Supplier<List<BuffInstance>> fromConfig(Supplier<ArmorPlusConfig.AdvancedMaterialConfig> configSupplier) {
+        return () -> {
+            ArmorPlusConfig.AdvancedMaterialConfig config = configSupplier.get();
+            if (config == null) return List.of(); // config not ready yet
+
+            return Arrays.asList(
+                    new BuffInstance(config.enableNIGHT_VISION.get(), NIGHT_VISION, config.amplifierNIGHT_VISION.get()),
+                    new BuffInstance(config.enableWATER_BREATHING.get(), WATER_BREATHING, config.amplifierWATER_BREATHING.get()),
+                    new BuffInstance(config.enableSTRENGTH.get(), STRENGTH, config.amplifierSTRENGTH.get()),
+                    new BuffInstance(config.enableSPEED.get(), SPEED, config.amplifierSPEED.get()),
+                    new BuffInstance(config.enableHASTE.get(), HASTE, config.amplifierHASTE.get()),
+                    new BuffInstance(config.enableJUMP_BOOST.get(), JUMP_BOOST, config.amplifierJUMP_BOOST.get()),
+                    new BuffInstance(config.enableREGENERATION.get(), REGENERATION, config.amplifierREGENERATION.get(), 200),
+                    new BuffInstance(config.enableRESISTANCE.get(), RESISTANCE, config.amplifierRESISTANCE.get()),
+                    new BuffInstance(config.enableFIRE_RESISTANCE.get(), FIRE_RESISTANCE, config.amplifierFIRE_RESISTANCE.get()),
+                    new BuffInstance(config.enableSATURATION.get(), SATURATION, config.amplifierSATURATION.get()),
+                    new BuffInstance(config.enableINVISIBILITY.get(), INVISIBILITY, config.amplifierINVISIBILITY.get()),
+                    new BuffInstance(config.enableHEALTH_BOOST.get(), HEALTH_BOOST, config.amplifierHEALTH_BOOST.get(), 200),
+                    new BuffInstance(config.enableABSORPTION.get(), ABSORPTION, config.amplifierABSORPTION.get(), 200),
+                    new BuffInstance(config.enableSLOW_FALLING.get(), SLOW_FALLING, config.amplifierSLOW_FALLING.get()),
+                    new BuffInstance(config.enableFLIGHT.get(), FLIGHT),
+                    new BuffInstance(config.enableWITHER_IMMUNITY.get(), WITHER_IMMUNITY),
+                    new BuffInstance(config.enableNATURAL_IMMUNITY.get(), NATURAL_IMMUNITY),
+                    new BuffInstance(config.enableFIRE_EXTINGUISH.get(), FIRE_EXTINGUISH)
+            );
+        };
     }
 
     private static List<BuffInstance> withBuffs(BuffInstance... buffs) {

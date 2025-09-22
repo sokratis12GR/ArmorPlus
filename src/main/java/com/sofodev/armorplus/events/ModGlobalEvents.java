@@ -23,6 +23,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
@@ -54,6 +55,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.function.Supplier;
 import java.util.stream.IntStream;
 
 import static com.sofodev.armorplus.ArmorPlus.LOGGER;
@@ -74,114 +76,382 @@ public class ModGlobalEvents {
     public static final Random RAND = new Random();
     public static int waterTicks = 0;
     public static int thunderingTicks = 0;
-    public static boolean flightState = false;
-    //    public static FlightData flightData = new FlightData(false, false, false);
+    private static final String ARMORPLUS_FLIGHT_TAG = "ArmorPlusFlight";
+    private static final String ARMORPLUS_PREV_MAYFLY = "ArmorPlusPrevMayfly";
 
-    @SubscribeEvent
-    public static void onArrowLooseEvent(ArrowLooseEvent e) {
-        Level world = e.getLevel();
-        if (!world.isClientSide()) {
-            ItemStack bow = e.getBow();
-            int charge = e.getCharge();
-            LOGGER.info("Charge at: " + charge);
-            Map<Enchantment, Integer> enchantmentList;
-            boolean hasUnknownEnchant = false;
+    private static boolean hasEnchant(ItemStack stack, String name) {
+        Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(stack);
+        return !enchantments.isEmpty() && enchantments.containsKey(ENCHANTMENTS.getValue(setRL(name)));
+    }
 
-            enchantmentList = EnchantmentHelper.getEnchantments(bow);
-            if (!enchantmentList.isEmpty()) {
-                hasUnknownEnchant = enchantmentList.containsKey(ENCHANTMENTS.getValue(setRL("unknown")));
-                if (hasUnknownEnchant) {
-                    LivingEntity entity = e.getEntity();
-                    Direction direction = entity.getDirection();
-                    BlockPos position = entity.blockPosition();
-                    int distance = 5 + (charge / (charge / 2));
-                    IntStream.range(distance, charge).forEach(i -> {
-                        LightningBolt lightningboltentity = EntityType.LIGHTNING_BOLT.create(world);
-                        if (lightningboltentity != null) {
-                            switch (direction) {
-                                case NORTH -> lightningboltentity.moveTo(atBottomCenterOf(position.north(i)));
-                                case SOUTH -> lightningboltentity.moveTo(atBottomCenterOf(position.south(i)));
-                                case WEST -> lightningboltentity.moveTo(atBottomCenterOf(position.west(i)));
-                                case EAST -> lightningboltentity.moveTo(atBottomCenterOf(position.east(i)));
-                            }
-                            world.addFreshEntity(lightningboltentity);
-                            bow.hurtAndBreak(10, entity, event -> event.broadcastBreakEvent(entity.getUsedItemHand()));
-                        }
-                    });
+    private static boolean isFullArmorWithBuff(Player player, IBuff buff) {
+        for (ItemStack stack : player.getArmorSlots()) {
+            if (stack.getItem() instanceof APArmorItem armor) {
+                IAPArmor mat = armor.getMat();
+                if (areExactMatch(mat, player) && mat.config().enableArmorEffects.get()) {
+                    return mat.getBuffInstances().get().stream()
+                            .map(BuffInstance::getBuff)
+                            .anyMatch(b -> b.equals(buff));
                 }
             }
         }
+        return false;
     }
 
+    private static void grantFlight(Player player) {
+        if (player.isCreative() || player.isSpectator()) return;
+
+        if (!player.getPersistentData().contains(ARMORPLUS_PREV_MAYFLY)) {
+            player.getPersistentData().putBoolean(ARMORPLUS_PREV_MAYFLY, player.getAbilities().mayfly);
+        }
+
+        player.getAbilities().mayfly = true;
+        player.getPersistentData().putBoolean(ARMORPLUS_FLIGHT_TAG, true);
+        player.onUpdateAbilities();
+    }
+
+    private static void revokeFlight(Player player) {
+        if (player.isCreative() || player.isSpectator()) return;
+
+        boolean hadAPFlight = player.getPersistentData().getBoolean(ARMORPLUS_FLIGHT_TAG);
+        if (!hadAPFlight) return;
+
+        player.getPersistentData().remove(ARMORPLUS_FLIGHT_TAG);
+
+        boolean prevMayfly = player.getPersistentData().getBoolean(ARMORPLUS_PREV_MAYFLY);
+        player.getAbilities().mayfly = prevMayfly;
+
+        if (player.getAbilities().flying) player.getAbilities().flying = false;
+
+        // Remove stored previous state
+        player.getPersistentData().remove(ARMORPLUS_PREV_MAYFLY);
+
+        player.onUpdateAbilities();
+    }
+
+    private static void checkAndApplyFlight(Player player) {
+        boolean hasOurFlight = isFullArmorWithBuff(player, FLIGHT);
+
+        if (hasOurFlight) {
+            grantFlight(player);
+        } else {
+            revokeFlight(player);
+        }
+    }
+
+    private static void checkAndApplyBuffs(Player player) {
+        checkAndApplyFlight(player);
+
+        if (isFullArmorWithBuff(player, WATER_WEAKNESS) && player.isInWaterRainOrBubble()) {
+            player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 200, 0, false, false, true));
+        }
+    }
 
     @SubscribeEvent
     public static void onPlayerTickEvent(PlayerTickEvent e) {
         Player player = e.player;
         Level world = player.level();
-        Map<Enchantment, Integer> enchantmentList;
-        if (!world.isClientSide()) {
-            boolean thundering = world.isThundering();
-            if (thundering) {
-                boolean hasUnknownEnchant = false;
-                thunderingTicks++;
-                if ((thunderingTicks + 1) % 20 == 0) {
-                    int chance = RAND.nextInt(100) + 1;
-                    if (chance == 100) {
-                        for (ItemStack item : player.getArmorSlots()) {
-                            Item itemHead = item.getItem();
-                            if (itemHead instanceof ArmorItem armorItem) {
-                                ArmorMaterial material = armorItem.getMaterial();
-                                enchantmentList = EnchantmentHelper.getEnchantments(item);
-                                if (!enchantmentList.isEmpty()) {
-                                    hasUnknownEnchant = enchantmentList.containsKey(ENCHANTMENTS.getValue(setRL("unknown")));
-                                    if (hasUnknownEnchant && (armorItem).getEquipmentSlot() == EquipmentSlot.HEAD && (material == ArmorMaterials.IRON || material == ArmorMaterials.CHAIN || material == ArmorMaterials.GOLD)) {
-                                        BlockPos blockpos = player.blockPosition();
-                                        if (world.canSeeSky(blockpos)) {
-                                            LightningBolt lightningboltentity = EntityType.LIGHTNING_BOLT.create(world);
-                                            if (lightningboltentity != null) {
-                                                lightningboltentity.moveTo(atBottomCenterOf(blockpos));
-                                                lightningboltentity.setCause((ServerPlayer) player);
-                                                lightningboltentity.setDamage(0f);
-                                                world.addFreshEntity(lightningboltentity);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+        if (world.isClientSide()) return;
+
+        checkAndApplyBuffs(player);
+
+        if (!world.isThundering()) return;
+        thunderingTicks++;
+        if ((thunderingTicks + 1) % 20 != 0 || RAND.nextInt(100) + 1 != 100) return;
+
+        for (ItemStack item : player.getArmorSlots()) {
+            if (!(item.getItem() instanceof ArmorItem armor)) continue;
+            if (!hasEnchant(item, "unknown")) continue;
+            if (armor.getEquipmentSlot() != EquipmentSlot.HEAD) continue;
+
+            ArmorMaterial material = armor.getMaterial();
+            if (material != ArmorMaterials.IRON && material != ArmorMaterials.CHAIN && material != ArmorMaterials.GOLD)
+                continue;
+
+            BlockPos pos = player.blockPosition();
+            if (!world.canSeeSky(pos)) continue;
+
+            LightningBolt bolt = EntityType.LIGHTNING_BOLT.create(world);
+            if (bolt != null) {
+                bolt.moveTo(atBottomCenterOf(pos));
+                bolt.setCause((ServerPlayer) player);
+                bolt.setDamage(0f);
+                world.addFreshEntity(bolt);
             }
         }
     }
 
     @SubscribeEvent
     public static void onEquipmentChange(LivingEquipmentChangeEvent e) {
-        if (e.getEntity() instanceof Player player) {
-            Level world = player.level();
-            if (!world.isClientSide()) {
-                for (ItemStack stack : player.getArmorSlots()) {
-                    Item item = stack.getItem();
-                    if (!(item instanceof APArmorItem)) {
-                        if (!allowsFlightByDefault(player)) {
-                            attemptDisableFlight(player);
-                        }
-                        return;
-                    }
-                    IAPArmor mat = ((APArmorItem) item).getMat();
-                    boolean areExactMatch = areExactMatch(mat, player);
-                    List<IBuff> buffList = mat.getBuffInstances().get().stream().map(BuffInstance::getBuff).toList();
-                    if (areExactMatch && mat.config().enableArmorEffects.get()) {
-                        if (!buffList.isEmpty()) {
-                            if (buffList.contains(FLIGHT)) shouldApplyFlight(player);
-                            if (buffList.contains(WATER_WEAKNESS)) shouldApplyWaterWeakness(player);
-                        }
-                    }
-                }
+        if (e.getEntity() instanceof Player player && !player.level().isClientSide()) {
+            checkAndApplyBuffs(player);
+        }
+    }
+
+
+    @SubscribeEvent
+    public static void onArrowLooseEvent(ArrowLooseEvent e) {
+        Level world = e.getLevel();
+        if (world.isClientSide()) return;
+
+        ItemStack bow = e.getBow();
+        if (!hasEnchant(bow, "unknown")) return;
+
+        int charge = e.getCharge();
+        LivingEntity shooter = e.getEntity();
+        BlockPos pos = shooter.blockPosition();
+        Direction dir = shooter.getDirection();
+
+        IntStream.range(5 + (charge / (charge / 2)), charge).forEach(i -> {
+            LightningBolt bolt = EntityType.LIGHTNING_BOLT.create(world);
+            if (bolt == null) return;
+            switch (dir) {
+                case NORTH -> bolt.moveTo(atBottomCenterOf(pos.north(i)));
+                case SOUTH -> bolt.moveTo(atBottomCenterOf(pos.south(i)));
+                case WEST -> bolt.moveTo(atBottomCenterOf(pos.west(i)));
+                case EAST -> bolt.moveTo(atBottomCenterOf(pos.east(i)));
+            }
+            world.addFreshEntity(bolt);
+            bow.hurtAndBreak(10, shooter, ev -> ev.broadcastBreakEvent(shooter.getUsedItemHand()));
+        });
+    }
+
+    @SubscribeEvent
+    public static void onAttackEntityEvent(AttackEntityEvent e) {
+        Player player = e.getEntity();
+        Level world = player.level();
+        if (world.isClientSide()) return;
+
+        ItemStack mainHand = player.getMainHandItem();
+        Entity target = e.getTarget();
+
+        // Trident with "unknown" enchant lightning strike
+        if (mainHand.getItem() instanceof TridentItem && hasEnchant(mainHand, "unknown")) {
+            spawnLightningCross(world, target.blockPosition());
+            player.addEffect(new MobEffectInstance(SLOWNESS.getEffect(), convertToSeconds(4)));
+            player.addEffect(new MobEffectInstance(MINING_FATIGUE.getEffect(), convertToSeconds(4)));
+        }
+
+        // Mace sweeping attack
+        if (player.onGround() && mainHand.getItem() instanceof APMaceItem mace) {
+            double movedDistance = player.walkDist - player.walkDistO;
+            if (movedDistance < player.getSpeed()) performMaceSweep(world, player, target, mace);
+        }
+    }
+
+    private static void spawnLightningCross(Level world, BlockPos pos) {
+        List<BlockPos> positions = List.of(pos, pos.north(2), pos.south(2), pos.east(2), pos.west(2));
+        for (BlockPos p : positions) {
+            LightningBolt bolt = EntityType.LIGHTNING_BOLT.create(world);
+            if (bolt != null) {
+                bolt.moveTo(atBottomCenterOf(p));
+                world.addFreshEntity(bolt);
+            }
+        }
+    }
+
+    private static void performMaceSweep(Level world, Player player, Entity target, APMaceItem mace) {
+        float baseDmg = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
+        float sweepDmg = 1.0F + APMaceType.getMaceSweepingRatio(mace.mat.getType()) * baseDmg;
+
+        for (LivingEntity entity : world.getEntitiesOfClass(LivingEntity.class, target.getBoundingBox().inflate(1, 0.25, 1))) {
+            if (entity == player || entity == target || player.isAlliedTo(entity)) continue;
+            if (entity instanceof ArmorStand stand && stand.isMarker()) continue;
+            if (player.distanceToSqr(entity) >= 15) continue;
+
+            double x = Mth.wrapDegrees(player.getYRot() * ((float) Math.PI / 180F));
+            double z = -x;
+            entity.knockback(0.4F, x, z);
+            entity.hurt(player.damageSources().playerAttack(player), sweepDmg);
+        }
+
+        if (world instanceof ServerLevel server) {
+            ItemStack stack = mace.setTag(player.getMainHandItem());
+            CompoundTag tag = stack.getTag();
+            if (tag != null && tag.hasUUID("key")) {
+                mace.triggerAnim(player, GeoItem.getOrAssignId(stack, server), mace.controllerName, "animation.mace.swipe_attack");
             }
         }
 
+        world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_ATTACK_SWEEP, player.getSoundSource(), 1.0F, 1.0F);
+        player.sweepAttack();
     }
+
+    @SubscribeEvent
+    public static void onStructByLightningEvent(EntityStruckByLightningEvent event) {
+        if (!event.getEntity().level().isClientSide && event.getEntity() instanceof ItemEntity entity) {
+            Item item = entity.getItem().getItem();
+            if (item instanceof FrostCrystalItem) {
+                boolean infused = ((FrostCrystalItem) item).isInfused();
+                if (!infused) {
+                    FrostCrystalItem infusedCrystal = (FrostCrystalItem) getAPItem("infused_frost_crystal");
+                    entity.spawnAtLocation(new ItemStack(infusedCrystal, entity.getItem().getCount()), 1f);
+                    entity.getItem().setCount(0);
+                    event.getLightning().setVisualOnly(true);
+                    event.setCanceled(true);
+                }
+            }
+        }
+    }
+
+
+    //
+    // ITEMSTACK EVENTS
+    //
+
+    @SubscribeEvent
+    public static void onLivingDamageEvent(LivingDamageEvent event) {
+        LivingEntity entity = event.getEntity();
+        for (ItemStack stack : entity.getArmorSlots()) {
+            if (!stack.isDamageableItem() || !(stack.getItem() instanceof ArmorItem)) continue;
+
+            Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(stack);
+            if (enchantments.isEmpty()) continue;
+            if (!enchantments.containsKey(ENCHANTMENTS.getValue(setRL("soul_harden")))) continue;
+
+            int max = stack.getMaxDamage();
+            int current = max - stack.getDamageValue();
+
+            if (current == max) {
+                stack.setDamageValue(0);
+            } else {
+                stack.setDamageValue(stack.getDamageValue() - 1);
+            }
+        }
+    }
+
+
+    /**
+     * By using the LivingDeathEvent event, we then check the slain entity's inventory (just before it's slain), and if
+     * it contained a list of armors we follow with the next steps of checking if said armors are valid, check if it has
+     * any enchantment and if said enchantment matches one of our criteria, in this case we check for "Soul Harden",
+     * afterwards we check the current amount of durability and act accordingly (full -> half, half -> none, remove item.)
+     *
+     * @param event The event is triggered only when an entity is killed/removed from the world.
+     */
+    @SubscribeEvent
+    public static void onLivingDeathEvent(LivingDeathEvent event) {
+        LivingEntity entity = event.getEntity();
+
+        for (ItemStack stack : entity.getArmorSlots()) {
+            if (!stack.isDamageableItem() || !(stack.getItem() instanceof ArmorItem)) continue;
+
+            Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(stack);
+            if (enchantments.isEmpty()) continue;
+            if (!enchantments.containsKey(ENCHANTMENTS.getValue(setRL("soul_harden")))) continue;
+
+            int max = stack.getMaxDamage();
+            int incoming = stack.getDamageValue();
+            int current = max - incoming;
+            int half = Math.min(max / 2, Math.floorDiv(max, 2));
+
+            if (current == max) {
+                stack.setDamageValue(half);
+            } else if (incoming >= half) {
+                stack.setDamageValue(half);
+            } else {
+                stack.setDamageValue(max);
+                stack.setCount(0);
+            }
+        }
+    }
+
+    //
+    // ENTITY DROPS
+    //
+
+    @SubscribeEvent
+    public static void onMobDeathEvent(LivingDropsEvent event) {
+        LivingEntity entity = event.getEntity();
+        Entity killer = event.getSource().getEntity();
+
+        boolean hasSoulStealer = false;
+        if (killer instanceof ServerPlayer player) {
+            ItemStack held = player.getMainHandItem();
+            hasSoulStealer = !held.isEmpty() &&
+                    EnchantmentHelper.getEnchantments(held).containsKey(ENCHANTMENTS.getValue(setRL("soul_stealer")));
+        }
+
+        record MobDropConfig(Supplier<Boolean> trophyEnabled, Supplier<Boolean> regularEnabled,
+                             Supplier<Boolean> soulEnabled, String regularItem, int regularAmountMin,
+                             int regularAmountMax, String soulItem, float trophyScale) {}
+
+        // Map the mob class to the configuration
+        Map<Class<? extends LivingEntity>, MobDropConfig> dropMap = Map.of(
+                WitherBoss.class, new MobDropConfig(() -> witherBossDrops.enableTrophyDrops.get(),
+                        () -> witherBossDrops.enableRegularDrops.get(),
+                        () -> witherBossDrops.enableSoulDrops.get(),
+                        "wither_bone", 4, 6, "soul_wither_boss", 0.2f),
+                EnderDragon.class, new MobDropConfig(() -> enderDragonDrops.enableTrophyDrops.get(),
+                        () -> enderDragonDrops.enableRegularDrops.get(),
+                        () -> enderDragonDrops.enableSoulDrops.get(),
+                        "ender_dragon_scale", 4, 6, "soul_ender_dragon", 0.1f),
+                ElderGuardian.class, new MobDropConfig(() -> elderGuardianDrops.enableTrophyDrops.get(),
+                        () -> elderGuardianDrops.enableRegularDrops.get(),
+                        () -> elderGuardianDrops.enableSoulDrops.get(),
+                        "guardian_scale", 4, 6, "soul_elder_guardian", 0.2f),
+                WitherSkeleton.class, new MobDropConfig(() -> false,
+                        () -> witherSkeletonDrops.enableRegularDrops.get(),
+                        () -> witherSkeletonDrops.enableSoulDrops.get(),
+                        "wither_bone", 0, 3, "soul_wither_skeleton", 0f),
+                Guardian.class, new MobDropConfig(() -> false,
+                        () -> guardianDrops.enableRegularDrops.get(),
+                        () -> guardianDrops.enableSoulDrops.get(),
+                        "guardian_scale", 0, 3, "soul_guardian", 0f),
+                EnderMan.class, new MobDropConfig(() -> false,
+                        () -> false,
+                        () -> endermanDrops.enableSoulDrops.get(),
+                        null, 0, 0, "soul_enderman", 0f),
+                Blaze.class, new MobDropConfig(() -> false,
+                        () -> false,
+                        () -> blazeDrops.enableSoulDrops.get(),
+                        null, 0, 0, "soul_blaze", 0f)
+        );
+
+
+        MobDropConfig cfg = dropMap.entrySet().stream()
+                .filter(entry -> entry.getKey().isInstance(entity))
+                .map(Map.Entry::getValue)
+                .findFirst()
+                .orElse(null);
+
+        if (cfg == null) return;
+
+        // Trophy
+        if (cfg.trophyEnabled.get()) dropTrophyItem(entity, entity.getType(), cfg.trophyScale);
+
+        // Regular drops
+        if (cfg.regularEnabled.get() && cfg.regularItem != null) {
+            int amount = RAND.nextInt(cfg.regularAmountMax - cfg.regularAmountMin + 1) + cfg.regularAmountMin;
+            dropItem(entity, cfg.regularItem, amount);
+        }
+
+        // Soul drops
+        if (hasSoulStealer && cfg.soulEnabled.get() && cfg.soulItem != null) {
+            boolean drop = !(entity instanceof WitherSkeleton || entity instanceof Guardian
+                    || entity instanceof EnderMan || entity instanceof Blaze) || RAND.nextInt(4) == 0;
+            if (drop) dropItem(entity, cfg.soulItem, 1);
+        }
+    }
+
+    private static void dropTrophyItem(LivingEntity entity, EntityType<?> type, float scale) {
+        ItemStack trophy = new ItemStack(getAPItem("trophy"));
+        CompoundTag tag = new CompoundTag();
+        SpawnData trophyEntity = new SpawnData();
+        ResourceLocation key = ForgeRegistries.ENTITY_TYPES.getKey(type);
+        if (key == null) key = ResourceLocation.parse("minecraft:pig");
+        trophyEntity.getEntityToSpawn().putString("id", key.toString());
+        tag.put("DisplayEntity", trophyEntity.getEntityToSpawn().copy());
+        tag.putFloat("EntityScale", scale);
+        trophy.setTag(tag);
+        entity.spawnAtLocation(trophy);
+    }
+
+    private static void dropItem(Entity entity, String item, int amount) {
+        entity.spawnAtLocation(new ItemStack(getAPItem(item), amount));
+    }
+
+
     /*@SubscribeEvent
     public static void onVillagerTradesEvent(VillagerTradesEvent e) {
         Random rand = new Random();
@@ -254,354 +524,4 @@ public class ModGlobalEvents {
         }
     }*/
 
-    @SubscribeEvent
-    public static void onPlayerJoinWorldEvent(EntityJoinLevelEvent e) {
-
-        //disable for now, but don't remove
-        final boolean isRunning = false;
-        if (isRunning && !e.getLevel().isClientSide()) {
-            if (e.getEntity() instanceof ServerPlayer player) {
-                CompoundTag nbt = player.serializeNBT();
-                if (nbt != null && (!nbt.hasUUID("key") || !nbt.getBoolean("thanked"))) {
-                    PlayerAdvancements advancements = player.getAdvancements();
-                    AdvancementProgress progress = advancements.getOrStartProgress(Advancement.Builder.advancement()
-                            .build(setRL("story/thank_you_6m")));
-                    if (!progress.isDone()) {
-                        nbt.putBoolean("thanked", true);
-                        player.addAdditionalSaveData(nbt);
-                        player.serializeNBT();
-                        player.spawnAtLocation(new ItemStack(THANK_YOU_6M.get()));
-                    }
-                }
-            }
-        }
-    }
-
-    //Flight Control Start
-    private static boolean toogleFlightState(Player player) {
-        flightState = !flightState;
-    }
-
-    private static boolean isFlying(Player player) {
-        return flightState;
-    }
-
-    private static void shouldApplyFlight(Player player) {
-        toogleFlightState(player);
-        player.getAbilities().mayfly = true;
-        player.onUpdateAbilities();
-    }
-
-    private static void attemptDisableFlight(Player player) {
-        if (isFlying(player)) {
-            toogleFlightState(player);
-            player.getAbilities().mayfly = false;
-            player.getAbilities().flying = false;
-            player.onUpdateAbilities();
-        }
-
-    }
-
-    //    private static void updateClientServerFlight(Player player, boolean allowFlying) {
-    //        updateClientServerFlight(player, allowFlying, allowFlying && player.getAbilities().flying);
-    //    }
-    //
-    //    private static void updateClientServerFlight(Player player, boolean allowFlying, boolean isFlying) {
-    //        player.getAbilities().mayfly = allowFlying;
-    //        player.getAbilities().flying = isFlying;
-    //    }
-
-    //Flight Control End
-
-    private static void shouldApplyWaterWeakness(Player player) {
-        if (player.isInWater()) {
-            waterTicks++;
-            if ((waterTicks + 1) % 20 == 0) {
-                for (ItemStack stack : player.getArmorSlots()) {
-                    if (!stack.isEmpty() && stack.getEquipmentSlot() != null) {
-                        stack.hurtAndBreak(1, player, event -> event.broadcastBreakEvent(stack.getEquipmentSlot()));
-                    }
-                }
-            }
-        }
-    }
-
-    @SubscribeEvent
-    public static void onAttackEntityEvent(AttackEntityEvent event) {
-        Level world = event.getEntity().level();
-        Player player = event.getEntity();
-        Entity target = event.getTarget();
-        float attackDamage = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
-        double movedDistance = player.walkDist - player.walkDistO;
-        boolean isMace = false;
-        ItemStack stack = player.getMainHandItem();
-        boolean hasUnknown = false;
-        Map<Enchantment, Integer> enchantmentList;
-        if (!world.isClientSide()) {
-            if (!stack.isEmpty() && stack.getItem() instanceof TridentItem) {
-                enchantmentList = EnchantmentHelper.getEnchantments(stack);
-                if (!enchantmentList.isEmpty()) {
-                    hasUnknown = enchantmentList.containsKey(ENCHANTMENTS.getValue(setRL("unknown")));
-                    if (hasUnknown) {
-                        BlockPos position = target.blockPosition();
-                        LightningBolt northBolt = EntityType.LIGHTNING_BOLT.create(world);
-                        LightningBolt southBolt = EntityType.LIGHTNING_BOLT.create(world);
-                        LightningBolt westBolt = EntityType.LIGHTNING_BOLT.create(world);
-                        LightningBolt eastBolt = EntityType.LIGHTNING_BOLT.create(world);
-                        LightningBolt centreBolt = EntityType.LIGHTNING_BOLT.create(world);
-                        if (northBolt != null && southBolt != null && westBolt != null && eastBolt != null && centreBolt != null) {
-                            northBolt.moveTo(atBottomCenterOf(position.north(2)));
-                            southBolt.moveTo(atBottomCenterOf(position.south(2)));
-                            westBolt.moveTo(atBottomCenterOf(position.west(2)));
-                            eastBolt.moveTo(atBottomCenterOf(position.east(2)));
-                            centreBolt.moveTo(atBottomCenterOf(position));
-                            world.addFreshEntity(northBolt);
-                            world.addFreshEntity(southBolt);
-                            world.addFreshEntity(westBolt);
-                            world.addFreshEntity(eastBolt);
-                            world.addFreshEntity(centreBolt);
-                        }
-                        player.addEffect(new MobEffectInstance(SLOWNESS.getEffect(), convertToSeconds(4)));
-                        player.addEffect(new MobEffectInstance(MINING_FATIGUE.getEffect(), convertToSeconds(4)));
-                    }
-                }
-            }
-        }
-        if (player.onGround() && movedDistance < (double) player.getSpeed() && stack.getItem() instanceof APMaceItem) {
-            isMace = true;
-        }
-        if (isMace) {
-            APMaceItem mace = (APMaceItem) stack.getItem();
-            float sweepingDamage = 1.0F + APMaceType.getMaceSweepingRatio(mace.mat.getType()) * attackDamage;
-
-            for (LivingEntity entity : world.getEntitiesOfClass(LivingEntity.class, target.getBoundingBox()
-                    .inflate(1.0D, 0.25D, 1.0D))) {
-                boolean isNewTarget = entity != player && entity != target;
-                boolean isValidTarget = !player.isAlliedTo(entity) && (!(entity instanceof ArmorStand) || !((ArmorStand) entity).isMarker());
-                boolean isReachable = player.distanceToSqr(entity) < 15.0D;
-                if (isNewTarget && isValidTarget && isReachable) {
-                    double ratioX = Mth.wrapDegrees(player.getYRot() * ((float) Math.PI / 180F));
-                    double ratioZ = -Mth.wrapDegrees(player.getYRot() * ((float) Math.PI / 180F));
-                    entity.knockback(0.4F, ratioX, ratioZ);
-                    entity.hurt(player.damageSources().playerAttack(player), sweepingDamage);
-                }
-            }
-            if (world instanceof ServerLevel serverLevel) {
-                ItemStack newStack = mace.setTag(player.getMainHandItem());
-                CompoundTag nbt = newStack.getTag();
-                if (nbt != null && nbt.hasUUID("key")) {
-                    mace.triggerAnim(player, GeoItem.getOrAssignId(player.getMainHandItem(), serverLevel), mace.controllerName, "animation.mace.swipe_attack");
-                }
-            }
-            world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_ATTACK_SWEEP, player.getSoundSource(), 1.0F, 1.0F);
-            player.sweepAttack();
-        }
-    }
-
-    @SubscribeEvent
-    public static void onStructByLightningEvent(EntityStruckByLightningEvent event) {
-        if (!event.getEntity().level().isClientSide && event.getEntity() instanceof ItemEntity entity) {
-            Item item = entity.getItem().getItem();
-            if (item instanceof FrostCrystalItem) {
-                boolean infused = ((FrostCrystalItem) item).isInfused();
-                if (!infused) {
-                    FrostCrystalItem infusedCrystal = (FrostCrystalItem) getAPItem("infused_frost_crystal");
-                    entity.spawnAtLocation(new ItemStack(infusedCrystal, entity.getItem().getCount()), 1f);
-                    entity.getItem().setCount(0);
-                    event.getLightning().setVisualOnly(true);
-                    event.setCanceled(true);
-                }
-            }
-        }
-    }
-
-
-    //
-    // ITEMSTACK EVENTS
-    //
-
-    @SubscribeEvent
-    public static void onLivingDamageEvent(LivingDamageEvent event) {
-        LivingEntity entity = event.getEntity();
-        if (entity instanceof Player player) {
-            if (!player.level().isClientSide()) {
-                ItemStack stack = player.getMainHandItem();
-                Item item = stack.getItem();
-                if (item instanceof Tool) {
-                    IAPTool mat = ((Tool) item).getMat();
-                    List<IBuff> buffList = mat.getBuffInstances().get().stream().map(BuffInstance::getBuff).toList();
-                    if (!buffList.isEmpty()) {
-                        //                        if (buffList.contains(IGNITE)) IGNITE.hitEntity(stack, entity, player); // This damages the player with ignite
-                    }
-                }
-            }
-        }
-
-        List<ItemStack> armor = new ArrayList<>();
-        for (ItemStack slotStack : entity.getArmorSlots()) {
-            armor.add(slotStack);
-        }
-        if (!armor.isEmpty()) {
-            for (ItemStack stack : armor) {
-                Map<Enchantment, Integer> enchantmentList;
-                boolean hasSoulHarden;
-                if (!stack.isDamageableItem() || !(stack.getItem() instanceof ArmorItem)) {
-                    continue;
-                }
-                ArmorItem item = (ArmorItem) stack.getItem();
-                enchantmentList = EnchantmentHelper.getEnchantments(stack);
-                if (enchantmentList.isEmpty()) {
-                    continue;
-                }
-                hasSoulHarden = enchantmentList.containsKey(ENCHANTMENTS.getValue(setRL("soul_harden")));
-                if (!hasSoulHarden) {
-                    continue;
-                }
-                int maxDamageValue = stack.getMaxDamage(); // the max itemstack damage value
-                int currentDamageValue = maxDamageValue - stack.getDamageValue(); // Get the actual itemstack value
-                int halfDamageValue = Math.min(maxDamageValue / 2, Math.floorDiv(maxDamageValue, 2)); // We get the smallest possible number of a division by 2
-                if (currentDamageValue == maxDamageValue) {
-                    stack.setDamageValue(0);
-                } else {
-                    stack.setDamageValue(stack.getDamageValue() - 1);
-                }
-            }
-        }
-    }
-
-
-    /**
-     * By using the LivingDeathEvent event, we then check the slain entity's inventory (just before it's slain), and if
-     * it contained a list of armors we follow with the next steps of checking if said armors are valid, check if it has
-     * any enchantment and if said enchantment matches one of our criteria, in this case we check for "Soul Harden",
-     * afterwards we check the current amount of durability and act accordingly (full -> half, half -> none, remove item.)
-     *
-     * @param event The event is triggered only when an entity is killed/removed from the world.
-     */
-    @SubscribeEvent
-    public static void onLivingDeathEvent(LivingDeathEvent event) {
-        LivingEntity entity = event.getEntity();
-        List<ItemStack> armor = new ArrayList<>();
-        for (ItemStack slotStack : entity.getArmorSlots()) {
-            armor.add(slotStack);
-        }
-        if (!armor.isEmpty()) {
-            for (ItemStack stack : armor) {
-                Map<Enchantment, Integer> enchantmentList;
-                boolean hasSoulHarden;
-                if (!stack.isDamageableItem() || !(stack.getItem() instanceof ArmorItem)) {
-                    continue;
-                }
-                ArmorItem item = (ArmorItem) stack.getItem();
-                enchantmentList = EnchantmentHelper.getEnchantments(stack);
-                if (enchantmentList.isEmpty()) {
-                    continue;
-                }
-                hasSoulHarden = enchantmentList.containsKey(ENCHANTMENTS.getValue(setRL("soul_harden")));
-                if (!hasSoulHarden) {
-                    continue;
-                }
-                int maxDamageValue = stack.getMaxDamage(); // the max itemstack damage value
-                int incomingDamageValue = stack.getDamageValue();
-                int currentDamageValue = maxDamageValue - incomingDamageValue; // Get the actual itemstack value
-                int halfDamageValue = Math.min(maxDamageValue / 2, Math.floorDiv(maxDamageValue, 2)); // We get the smallest possible number of a division by 2
-                if (currentDamageValue == maxDamageValue) {
-                    stack.setDamageValue(halfDamageValue);
-                } else if (incomingDamageValue >= halfDamageValue) {
-                    stack.setDamageValue(halfDamageValue);
-                } else {
-                    stack.setDamageValue(maxDamageValue);
-                    stack.setCount(0);
-                }
-            }
-        }
-    }
-
-    //
-    // ENTITY DROPS
-    //
-
-    @SubscribeEvent
-    public static void onMobDeathEvent(LivingDropsEvent event) {
-        boolean oneInFourChance = RAND.nextInt(4) == 0; // 1/4 chance
-        int amountZeroToTwo = RAND.nextInt(3); //0..1..2
-        int amountFourToSix = RAND.nextInt(3) + 4; //4+(0..1..2)
-        LivingEntity entity = event.getEntity();
-        Entity trueSource = event.getSource().getEntity();
-        boolean isSourcePlayer = trueSource instanceof ServerPlayer;
-        ServerPlayer player;
-        ItemStack heldItem;
-        boolean hasSoulStealer = false;
-        Map<Enchantment, Integer> enchantmentList;
-        if (isSourcePlayer) {
-            player = (ServerPlayer) trueSource;
-            heldItem = player.getMainHandItem();
-            if (!heldItem.isEmpty()) {
-                enchantmentList = EnchantmentHelper.getEnchantments(heldItem);
-                hasSoulStealer = enchantmentList.containsKey(ENCHANTMENTS.getValue(setRL("soul_stealer")));
-            }
-        }
-        if (entity != null) {
-            if (entity instanceof WitherBoss) {
-                if (witherBossDrops.enableTrophyDrops.get()) dropTrophyItem(entity, EntityType.WITHER, 0.2F);
-                if (witherBossDrops.enableRegularDrops.get()) dropItem(entity, "wither_bone", amountFourToSix);
-                if (hasSoulStealer && witherBossDrops.enableSoulDrops.get()) {
-                    dropItem(entity, "soul_wither_boss", 1);
-                }
-            } else if (entity instanceof EnderDragon) {
-                if (enderDragonDrops.enableTrophyDrops.get()) dropTrophyItem(entity, EntityType.ENDER_DRAGON, 0.1F);
-                if (enderDragonDrops.enableRegularDrops.get()) dropItem(entity, "ender_dragon_scale", amountFourToSix);
-                if (hasSoulStealer && enderDragonDrops.enableSoulDrops.get()) {
-                    dropItem(entity, "soul_ender_dragon", 1);
-                }
-            } else if (entity instanceof ElderGuardian) {
-                if (elderGuardianDrops.enableTrophyDrops.get()) dropTrophyItem(entity, EntityType.ELDER_GUARDIAN, 0.2F);
-                if (elderGuardianDrops.enableRegularDrops.get()) dropItem(entity, "guardian_scale", amountFourToSix);
-                if (hasSoulStealer && elderGuardianDrops.enableSoulDrops.get()) {
-                    dropItem(entity, "soul_elder_guardian", 1);
-                }
-            } else if (entity instanceof WitherSkeleton) {
-                if (witherSkeletonDrops.enableRegularDrops.get()) dropItem(entity, "wither_bone", amountZeroToTwo);
-                if (hasSoulStealer && oneInFourChance && witherSkeletonDrops.enableSoulDrops.get()) {
-                    dropItem(entity, "soul_wither_skeleton", 1);
-                }
-            } else if (entity instanceof Guardian) {
-                if (guardianDrops.enableRegularDrops.get()) dropItem(entity, "guardian_scale", amountZeroToTwo);
-                if (hasSoulStealer && oneInFourChance && guardianDrops.enableSoulDrops.get()) {
-                    dropItem(entity, "soul_guardian", 1);
-                }
-            } else if (entity instanceof EnderMan) {
-                if (endermanDrops.enableRegularDrops.get()) {
-                    //No drops as of this moment
-                }
-                if (hasSoulStealer && oneInFourChance && endermanDrops.enableSoulDrops.get()) {
-                    dropItem(entity, "soul_enderman", 1);
-                }
-            } else if (entity instanceof Blaze) {
-                if (blazeDrops.enableRegularDrops.get()) {
-                    //No drops as of this moment
-                }
-                if (hasSoulStealer && oneInFourChance && blazeDrops.enableSoulDrops.get()) {
-                    dropItem(entity, "soul_blaze", 1);
-                }
-            }
-        }
-    }
-
-    private static void dropTrophyItem(LivingEntity entity, EntityType<?> type, float scale) {
-        ItemStack trophy = new ItemStack(getAPItem("trophy"));
-        CompoundTag tag = new CompoundTag();
-        SpawnData trophyEntity = new SpawnData();
-        ResourceLocation key = ForgeRegistries.ENTITY_TYPES.getKey(type);
-        if (key == null) key = new ResourceLocation("minecraft:pig");
-        trophyEntity.getEntityToSpawn().putString("id", key.toString());
-        tag.put("DisplayEntity", trophyEntity.getEntityToSpawn().copy());
-        tag.putFloat("EntityScale", scale);
-        trophy.setTag(tag);
-        entity.spawnAtLocation(trophy);
-    }
-
-    private static void dropItem(Entity entity, String item, int amount) {
-        entity.spawnAtLocation(new ItemStack(getAPItem(item), amount));
-    }
 }

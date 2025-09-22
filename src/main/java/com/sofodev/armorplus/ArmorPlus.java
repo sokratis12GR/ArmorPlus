@@ -68,7 +68,7 @@ public class ArmorPlus {
 
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
-    public static final String VERSION = "1.20.1-20.0.3";
+    public static final String VERSION = "1.20.1-20.1.0";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
 
     /**
@@ -116,14 +116,7 @@ public class ArmorPlus {
 
     private static Map<Block, ItemLike> registerSmeltingMap() {
         HashMap<Block, ItemLike> map = new HashMap<>();
-        //        List<? extends String> input = asList("minecraft:iron_ore", "minecraft:gold_ore",
-        //                "minecraft:sand", "minecraft:sandstone", "minecraft:wet_sponge", "minecraft:clay", "minecraft:stone_bricks", "minecraft:cobblestone", "minecraft:stone",
-        //                "minecraft:acacia_log", "minecraft:birch_log", "minecraft:dark_oak_log", "minecraft:jungle_log", "minecraft:oak_log", "minecraft:spruce_log",
-        //                "minecraft:netherrack", "minecraft:ancient_debris", "minecraft:stone_bricks");
-        //        List<? extends String> output = asList("minecraft:iron_ingot", "minecraft:gold_ingot", "minecraft:glass", "minecraft:smooth_sandstone", "minecraft:sponge",
-        //                "minecraft:terracotta", "minecraft:cracked_stone_bricks", "minecraft:stone", "minecraft:stone",
-        //                "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal",
-        //                "minecraft:nether_brick", "minecraft:netherite_scrap", "minecraft:cracked_stone_bricks");
+
         List<? extends String> input = autoSmeltingInput.get();
         List<? extends String> output = autoSmeltingOutput.get();
         if (input.size() != output.size()) {
@@ -132,12 +125,12 @@ public class ArmorPlus {
         for (int i = 0; i < input.size(); i++) {
             String entryInput = input.get(i);
             String entryOutput = output.get(i);
-            Block fromBlock = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(entryInput));
-            Item toItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation(entryOutput));
+            Block fromBlock = ForgeRegistries.BLOCKS.getValue(ResourceLocation.parse(entryInput));
+            Item toItem = ForgeRegistries.ITEMS.getValue(ResourceLocation.parse(entryOutput));
             if (fromBlock != null && toItem != null) {
                 map.put(fromBlock, toItem);
             } else {
-                ArmorPlus.LOGGER.error("Block with the registry name: " + entryInput + " or Item with the registry name: " + entryOutput + " don't exist. Failed to add auto smelt recipe");
+                ArmorPlus.LOGGER.error("Block with the registry name: {} or Item with the registry name: {} don't exist. Failed to add auto smelt recipe", entryInput, entryOutput);
             }
         }
         return map;
@@ -152,7 +145,7 @@ public class ArmorPlus {
     private static void registerBowOverrides() {
         Arrays.stream(BOWS).forEach(bow -> {
             ItemProperties.register(bow.map(Item::asItem)
-                    .orElse(ItemStack.EMPTY.getItem()), new ResourceLocation("pull"), (stack, level, player, val) -> {
+                    .orElse(ItemStack.EMPTY.getItem()), ResourceLocation.withDefaultNamespace("pull"), (stack, level, player, val) -> {
                 if (player == null) {
                     return 0.0F;
                 } else {
@@ -160,7 +153,7 @@ public class ArmorPlus {
                 }
             });
             ItemProperties.register(bow.map(Item::asItem)
-                    .orElse(ItemStack.EMPTY.getItem()), new ResourceLocation("pulling"), (stack, level, player, val) -> player != null && player.isUsingItem() && player.getUseItem() == stack ? 1.0F : 0.0F);
+                    .orElse(ItemStack.EMPTY.getItem()), ResourceLocation.withDefaultNamespace("pulling"), (stack, level, player, val) -> player != null && player.isUsingItem() && player.getUseItem() == stack ? 1.0F : 0.0F);
         });
     }
 

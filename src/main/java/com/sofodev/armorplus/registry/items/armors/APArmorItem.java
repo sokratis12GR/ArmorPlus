@@ -12,6 +12,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
+import java.util.Collections;
 import java.util.List;
 
 import static com.sofodev.armorplus.utils.ItemArmorUtility.areExactMatch;
@@ -32,39 +33,43 @@ public class APArmorItem extends ArmorItem {
 
     @Override
     public void onInventoryTick(ItemStack stack, Level level, Player player, int slotIndex, int selectedIndex) {
-        if (!level.isClientSide()) {
-            if (mat.config().enableArmorEffects.get()) {
-                if (mat.getBuffInstances().get() == null || mat.getBuffInstances().get().isEmpty()) return;
-                mat.getBuffInstances().get().forEach(instance -> {
-                    if (instance.getBuff() instanceof Buff && instance.isEnabled()) {
-                        if (instance.getBuff().requiresFullSet()) {
-                            if (areExactMatch(mat, player)) {
-                                instance.onInventoryTick(stack, level, player);
-                            }
-                        } else {
-                            instance.onInventoryTick(stack, level, player);
-                        }
-                    }
-                });
+        if (level.isClientSide() || !mat.config().enableArmorEffects.get()) return;
+
+        List<BuffInstance> buffs = mat.getBuffInstances() != null ? mat.getBuffInstances().get() : List.of();
+        if (buffs.isEmpty()) return;
+
+        for (BuffInstance instance : buffs) {
+            if (!(instance.getBuff() instanceof Buff) || !instance.isEnabled()) continue;
+
+            if (instance.getBuff().requiresFullSet() && !areExactMatch(mat, player)) continue;
+
+            if (instance.getBuff().isEffect()) {
+                if (!player.hasEffect(instance.getEffect().getEffect())) {
+                    instance.onInventoryTick(stack, level, player);
+                }
+            } else {
+                instance.onInventoryTick(stack, level, player);
             }
         }
     }
 
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
-        if (!mat.getBuffInstances().get().isEmpty()) {
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+        List<BuffInstance> buffs = mat.getBuffInstances().get();
+        if (!buffs.isEmpty()) {
             tooltip.add(translate(YELLOW, "tooltip.armorplus.condition", mat.config().enableArmorEffects.get() ? "" : "(DISABLED)"));
             tooltip.add(translate(GOLD, "tooltip.armorplus.condition.full_set"));
             tooltip.add(translate(GREEN, "tooltip.armorplus.provides"));
-            for (BuffInstance buff : mat.getBuffInstances().get()) {
+
+            for (BuffInstance buff : buffs) {
                 if (buff.getBuff() == Buff.NONE) continue;
                 int lvl = buff.getAmplifier() + 1;
-                String theLvl = lvl > 0 ? " " + generate(lvl) : "";
-                tooltip.add(translate(DARK_AQUA, "tooltip.armorplus.buff", buff.getTranslatedName(), theLvl));
+                String roman = lvl > 0 ? " " + generate(lvl) : "";
+                tooltip.add(translate(DARK_AQUA, "tooltip.armorplus.buff", buff.getTranslatedName(), roman));
             }
         }
-        super.appendHoverText(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, level, tooltip, flag);
     }
 
     @Override

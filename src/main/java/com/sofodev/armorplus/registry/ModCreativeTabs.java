@@ -41,7 +41,7 @@ public class ModCreativeTabs {
             .title(Component.translatable("tabs.armorplus.core"))
             .withLabelColor(0xFFFFFF)
             .withSearchBar(40)
-            .withBackgroundLocation(new ResourceLocation(MODID, "textures/gui/container/creative_inventory/tab_armorplus_small_search.png"))
+            .withBackgroundLocation(ResourceLocation.fromNamespaceAndPath(MODID, "textures/gui/container/creative_inventory/tab_armorplus_small_search.png"))
             .displayItems((featureFlags, output) -> {
                 addEquipmentToOutput(output, "coal");
                 addEquipmentToOutput(output, "redstone");
@@ -58,7 +58,7 @@ public class ModCreativeTabs {
             .icon(() -> new ItemStack(getAPItem("cobalt_chestplate")))
             .title(Component.translatable("tabs.armorplus.extra"))
             .withLabelColor(0xFFFFFF)
-            .withBackgroundLocation(new ResourceLocation(MODID, "textures/gui/container/creative_inventory/tab_armorplus_small_search.png"))
+            .withBackgroundLocation(ResourceLocation.fromNamespaceAndPath(MODID, "textures/gui/container/creative_inventory/tab_armorplus_small_search.png"))
             .withSearchBar(40)
             .displayItems((featureFlags, output) -> {
                 addSetToOutput(output, "chainmail");
@@ -86,7 +86,7 @@ public class ModCreativeTabs {
     public static final RegistryObject<CreativeModeTab> AP_ITEM_GROUP = register("items", () -> CreativeModeTab.builder()
             .icon(() -> new ItemStack(ModItems.INFUSED_LAVA_CRYSTAL.get()))
             .title(Component.translatable("tabs.armorplus.items"))
-            .withBackgroundLocation(new ResourceLocation(MODID, "textures/gui/container/creative_inventory/tab_armorplus.png"))
+            .withBackgroundLocation(ResourceLocation.fromNamespaceAndPath(MODID, "textures/gui/container/creative_inventory/tab_armorplus.png"))
             .withSearchBar()
             .withLabelColor(0xFFFFFF)
             .displayItems((featureFlags, output) -> {
@@ -142,7 +142,7 @@ public class ModCreativeTabs {
     public static final RegistryObject<CreativeModeTab> AP_BLOCK_GROUP = register("blocks", () -> CreativeModeTab.builder()
             .icon(() -> new ItemStack(ModBlocks.INFUSED_LAVA_CRYSTAL.get()))
             .title(Component.translatable("tabs.armorplus.blocks"))
-            .withBackgroundLocation(new ResourceLocation(MODID, "textures/gui/container/creative_inventory/tab_armorplus.png"))
+            .withBackgroundLocation(ResourceLocation.fromNamespaceAndPath(MODID, "textures/gui/container/creative_inventory/tab_armorplus.png"))
             .withLabelColor(0xFFFFFF)
             .withSearchBar()
             .displayItems((featureFlags, output) -> {

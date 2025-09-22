@@ -114,6 +114,7 @@ dependencies {
 
     //Optional
     implementation fg.deobf("curse.maven:jei-238222:4712868") //jei-1.20.1-forge-15.2.0.27.jar
+    implementation fg.deobf("curse.maven:vampirism-become-a-vampire-233029:6289561") //Vampirism (for flight compat test)
 
 
 }
