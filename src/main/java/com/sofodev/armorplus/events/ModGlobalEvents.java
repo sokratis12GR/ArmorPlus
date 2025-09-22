@@ -22,6 +22,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
@@ -31,12 +32,15 @@ import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.*;
+import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.SpawnData;
+import net.minecraftforge.common.BasicItemListing;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.EntityStruckByLightningEvent;
@@ -46,6 +50,7 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
+import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -60,13 +65,17 @@ import java.util.stream.IntStream;
 
 import static com.sofodev.armorplus.ArmorPlus.LOGGER;
 import static com.sofodev.armorplus.config.ArmorPlusConfig.*;
-import static com.sofodev.armorplus.registry.ModItems.THANK_YOU_6M;
+import static com.sofodev.armorplus.registry.ModBlocks.LAVA_CRYSTAL;
+import static com.sofodev.armorplus.registry.ModEnchantments.SOUL_STEALER;
+import static com.sofodev.armorplus.registry.ModItems.*;
 import static com.sofodev.armorplus.registry.items.extras.Buff.FLIGHT;
 import static com.sofodev.armorplus.registry.items.extras.Buff.WATER_WEAKNESS;
 import static com.sofodev.armorplus.registry.items.extras.DeBuff.MINING_FATIGUE;
 import static com.sofodev.armorplus.registry.items.extras.DeBuff.SLOWNESS;
 import static com.sofodev.armorplus.utils.ItemArmorUtility.areExactMatch;
 import static com.sofodev.armorplus.utils.Utils.*;
+import static java.util.Arrays.asList;
+import static net.minecraft.world.item.Items.*;
 import static net.minecraft.world.phys.Vec3.atBottomCenterOf;
 import static net.minecraftforge.registries.ForgeRegistries.ENCHANTMENTS;
 
@@ -452,7 +461,7 @@ public class ModGlobalEvents {
     }
 
 
-    /*@SubscribeEvent
+    @SubscribeEvent
     public static void onVillagerTradesEvent(VillagerTradesEvent e) {
         Random rand = new Random();
         RandomSource randSource = RandomSource.create();
@@ -522,6 +531,6 @@ public class ModGlobalEvents {
                     new BasicItemListing(crystalCost, priceNS, 1, 30, 0f)
             ));
         }
-    }*/
+    }
 
 }

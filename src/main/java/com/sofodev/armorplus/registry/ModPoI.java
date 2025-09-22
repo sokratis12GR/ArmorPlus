@@ -19,7 +19,7 @@ public class ModPoI {
 
     public static final DeferredRegister<PoiType> POI_TYPES = DeferredRegister.create(ForgeRegistries.POI_TYPES, MODID);
 
-    public static final RegistryObject<PoiType> EXCHANGER_POI = registerPOI("soul_exchanger", ModBlocks.SOUL_BOX, 1, 1);
+    public static final RegistryObject<PoiType> EXCHANGER_POI = registerPOI("soul_exchanger", ModBlocks.SOUL_BOX, 1, 10);
 
     public static RegistryObject<PoiType> registerPOI(String name, Supplier<? extends PoiType> sup) {
         return POI_TYPES.register(name, sup);
