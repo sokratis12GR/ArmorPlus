@@ -101,24 +101,13 @@ public class BuffInstance {
      */
     @SuppressWarnings("removal")
     public void onInventoryTick(ItemStack stack, Level world, Player player) {
-        //instant - x - true
-        //!instant - y - false
-        // instant -> else |
         buff.onInventoryTick(stack, world, player);
+
         if (buff.isEffect()) {
-            if (!instant) {
-                List<MobEffectInstance> playerEffects = player.getActiveEffects().stream().toList();
-                if (!playerEffects.isEmpty()) {
-                    for (MobEffectInstance instance : playerEffects) {
-                        if (instance.getEffect()
-                                .getDisplayName()
-                                .toString()
-                                .equals(effect.getEffect().getDisplayName().toString())) continue;
-                        player.addEffect(effect);
-                    }
-                }
-            } else {
-                player.addEffect(effect);
+            MobEffectInstance currentEffect = effect;
+
+            if (instant || !player.hasEffect(currentEffect.getEffect())) {
+                player.addEffect(currentEffect);
             }
         }
     }
