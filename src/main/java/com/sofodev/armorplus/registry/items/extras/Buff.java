@@ -2,6 +2,7 @@ package com.sofodev.armorplus.registry.items.extras;
 
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -11,6 +12,7 @@ import java.util.Locale;
 
 import static com.sofodev.armorplus.utils.Utils.setVanillaLocation;
 import static net.minecraft.world.effect.MobEffects.WITHER;
+
 
 public enum Buff implements IBuff {
     NONE(false, false),
@@ -30,8 +32,7 @@ public enum Buff implements IBuff {
     ABSORPTION,
     SLOW_FALLING,
     /*Mechanical*/
-    FLIGHT(true) {
-    },
+    FLIGHT(true),
     WITHER_IMMUNITY(true) {
         @Override
         public void onInventoryTick(ItemStack stack, Level world, Player player) {
@@ -43,13 +44,10 @@ public enum Buff implements IBuff {
     WATER_WEAKNESS(true) {
         @Override
         public void onInventoryTick(ItemStack stack, Level world, Player player) {
-            if (!world.isClientSide) {
-                boolean water = player.isUnderWater();
-                if (water) {
-                    int supply = player.getAirSupply();
-                    if (supply > 1 && supply <= player.getMaxAirSupply()) {
-                        player.setAirSupply(supply / 2);
-                    }
+            if (!world.isClientSide && player.isUnderWater()) {
+                int supply = player.getAirSupply();
+                if (supply > 1) {
+                    player.setAirSupply(supply / 2);
                 }
             }
         }
@@ -57,22 +55,19 @@ public enum Buff implements IBuff {
     FIRE_WEAKNESS(true) {
         @Override
         public void onInventoryTick(ItemStack stack, Level world, Player player) {
-            if (!world.isClientSide) {
-                boolean fire = player.isOnFire();
-                if (fire) {
-                    player.setRemainingFireTicks(player.getRemainingFireTicks() + 5);
-                }
+            if (!world.isClientSide && player.isOnFire()) {
+                player.setRemainingFireTicks(player.getRemainingFireTicks() + 5);
             }
         }
     },
     NATURAL_IMMUNITY(true) {
         @Override
         public void onInventoryTick(ItemStack stack, Level world, Player player) {
-            if (!player.hasEffect(FIRE_RESISTANCE.getEffect())){
-                player.addEffect(new MobEffectInstance(FIRE_RESISTANCE.getEffect(), 60,0, false, false));
+            if (!player.hasEffect(MobEffects.FIRE_RESISTANCE)) {
+                player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 60, 0, false, false));
             }
-            if (!player.hasEffect(RESISTANCE.getEffect())){
-                player.addEffect(new MobEffectInstance(RESISTANCE.getEffect(), 60,0, false, false));
+            if (!player.hasEffect(MobEffects.DAMAGE_RESISTANCE)) {
+                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 60, 0, false, false));
             }
             if (!world.isClientSide && player.getRemainingFireTicks() > 0) {
                 player.clearFire();
@@ -87,6 +82,7 @@ public enum Buff implements IBuff {
             }
         }
     };
+
 
     private final boolean isEffect;
     private final MobEffect effect;
