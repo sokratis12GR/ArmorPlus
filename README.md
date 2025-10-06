@@ -18,29 +18,6 @@ Credits for all the people who helped with the mod translation can be found **[h
 
 ### [Grab the latest publicly available versions from curseforge.](https://www.curseforge.com/minecraft/mc-mods/armorplus/files)
 
-
-| MC Version | Is Supported | Recommended | Latest
-| --- | :---: | --- | --- |
-| **1.19.3** | True  | [1.19.3-19.2.0](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/4353467)          | ~ |
-| **1.19.2** | False | ~ | [1.19.2-19.1.0-beta](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/3970063)
-| **1.18.2** | True  | [1.18.2-18.3.0](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/4376882)          | ~ |
-| **1.16.5** | False | [1.16.5-16.8.1](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/3860026)          | ~ |
-| **1.12.2** | False | [1.12.2-11.28.0.69](https://www.curseforge.com/minecraft/mc-mods/armorplus/files/2952741)      | ~ |
-| **1.11.2** | False | [1.11.2-10.8.0.1](https://minecraft.curseforge.com/projects/armorplus/files/2473960)           | ~ |
-| **1.10.2** | False | [1.10.2-8.7.1.2](https://minecraft.curseforge.com/projects/armorplus/files/2431043)            | ~ |
-
-## Mod Integrations
-
-| Mod | Supported Until MC Version |
-| --- | -------------------------- |
-| **[Tesla](https://minecraft.curseforge.com/projects/tesla)** | 1.11.2 |
-| **RF** | 1.10.2 |
-| **[Tinkers' Construct](https://minecraft.curseforge.com/projects/tinkers-construct)** | 1.12.2 |
-| **[The One Probe](https://minecraft.curseforge.com/projects/the-one-probe)** | 1.12.2 |
-| **[Just Enough Items](https://minecraft.curseforge.com/projects/just-enough-items-jei)** | 1.20 |
-| **[Baubles](https://minecraft.curseforge.com/projects/baubles)** | 1.11.2 |
-| **[CraftTweaker](https://minecraft.curseforge.com/projects/crafttweaker)** [ZenScript Samples](https://gist.github.com/sokratis12GR/4a56e48af0d49b5d832fb22ebc8ce56b) | 1.12.2 |
-
 ## ArmorPlus Community Discord
 
 [![Discord](https://img.shields.io/discord/275731168203243521.svg?style=flat&colorB=7289DA)](https://discord.gg/JCWbJvA )
