@@ -243,7 +243,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
         AdvancementHolder guardianSoulObtained = createAdvancement(
                 "obtained_guardian_soul",
                 lavaCrystal,
-                getAPItem("soul_guardian"),
+                getAPItem("soul_elder_guardian"),
                 null,
                 AdvancementType.GOAL,
                 true,

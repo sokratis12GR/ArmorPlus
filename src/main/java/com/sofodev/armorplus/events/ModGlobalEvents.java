@@ -8,33 +8,24 @@ import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import com.sofodev.armorplus.registry.item.extra.IBuff;
 import com.sofodev.armorplus.registry.item.material.FrostCrystalItem;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.entity.boss.wither.WitherBoss;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.SpawnData;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.entity.EntityStruckByLightningEvent;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.Map;
 import java.util.Random;
-import java.util.function.Supplier;
 
-import static com.sofodev.armorplus.ArmorPlus.config;
 import static com.sofodev.armorplus.registry.item.extra.Buff.FLIGHT;
 import static com.sofodev.armorplus.registry.item.extra.Buff.WATER_WEAKNESS;
 import static com.sofodev.armorplus.utils.ItemArmorUtility.areExactMatch;
@@ -49,11 +40,6 @@ public class ModGlobalEvents {
     public static int thunderingTicks = 0;
     private static final String ARMORPLUS_FLIGHT_TAG = "ArmorPlusFlight";
     private static final String ARMORPLUS_PREV_MAYFLY = "ArmorPlusPrevMayfly";
-
-//    private static boolean hasEnchant(ItemStack stack, String name) {
-//        Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(stack);
-//        return !enchantments.isEmpty() && enchantments.containsKey(ENCHANTMENTS.getValue(setRL(name)));
-//    }
 
     private static boolean isFullArmorWithBuff(Player player, IBuff buff) {
         for (ItemStack stack : player.getArmorSlots()) {
@@ -159,94 +145,6 @@ public class ModGlobalEvents {
         }
     }
 
-
-//    @SubscribeEvent
-//    public static void onArrowLooseEvent(ArrowLooseEvent e) {
-//        Level world = e.getLevel();
-//        if (world.isClientSide()) return;
-//
-//        ItemStack bow = e.getBow();
-//        if (!hasEnchant(bow, "unknown")) return;
-//
-//        int charge = e.getCharge();
-//        LivingEntity shooter = e.getEntity();
-//        BlockPos pos = shooter.blockPosition();
-//        Direction dir = shooter.getDirection();
-//
-//        IntStream.range(5 + (charge / (charge / 2)), charge).forEach(i -> {
-//            LightningBolt bolt = EntityType.LIGHTNING_BOLT.create(world);
-//            if (bolt == null) return;
-//            switch (dir) {
-//                case NORTH -> bolt.moveTo(atBottomCenterOf(pos.north(i)));
-//                case SOUTH -> bolt.moveTo(atBottomCenterOf(pos.south(i)));
-//                case WEST -> bolt.moveTo(atBottomCenterOf(pos.west(i)));
-//                case EAST -> bolt.moveTo(atBottomCenterOf(pos.east(i)));
-//            }
-//            world.addFreshEntity(bolt);
-//            bow.hurtAndBreak(10, shooter, ev -> ev.broadcastBreakEvent(shooter.getUsedItemHand()));
-//        });
-//    }
-
-/*    @SubscribeEvent
-    public static void onAttackEntityEvent(AttackEntityEvent e) {
-        Player player = e.getEntity();
-        Level world = player.level();
-        if (world.isClientSide()) return;
-
-        ItemStack mainHand = player.getMainHandItem();
-        Entity target = e.getTarget();
-
-        // Trident with "unknown" enchant lightning strike
-        if (mainHand.getItem() instanceof TridentItem && hasEnchant(mainHand, "unknown")) {
-            spawnLightningCross(world, target.blockPosition());
-            player.addEffect(new MobEffectInstance(SLOWNESS.getEffect(), convertToSeconds(4)));
-            player.addEffect(new MobEffectInstance(MINING_FATIGUE.getEffect(), convertToSeconds(4)));
-        }
-
-        // Mace sweeping attack
-        if (player.onGround() && mainHand.getItem() instanceof APMaceItem mace) {
-            double movedDistance = player.walkDist - player.walkDistO;
-            if (movedDistance < player.getSpeed()) performMaceSweep(world, player, target, mace);
-        }
-    }*/
-
-/*    private static void spawnLightningCross(Level world, BlockPos pos) {
-        List<BlockPos> positions = List.of(pos, pos.north(2), pos.south(2), pos.east(2), pos.west(2));
-        for (BlockPos p : positions) {
-            LightningBolt bolt = EntityType.LIGHTNING_BOLT.create(world);
-            if (bolt != null) {
-                bolt.moveTo(atBottomCenterOf(p));
-                world.addFreshEntity(bolt);
-            }
-        }
-    }
-
-    private static void performMaceSweep(Level world, Player player, Entity target, APMaceItem mace) {
-        float baseDmg = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
-        float sweepDmg = 1.0F + APMaceType.getMaceSweepingRatio(mace.mat.getType()) * baseDmg;
-
-        for (LivingEntity entity : world.getEntitiesOfClass(LivingEntity.class, target.getBoundingBox().inflate(1, 0.25, 1))) {
-            if (entity == player || entity == target || player.isAlliedTo(entity)) continue;
-            if (entity instanceof ArmorStand stand && stand.isMarker()) continue;
-            if (player.distanceToSqr(entity) >= 15) continue;
-
-            double x = Mth.wrapDegrees(player.getYRot() * ((float) Math.PI / 180F));
-            double z = -x;
-            entity.knockback(0.4F, x, z);
-            entity.hurt(player.damageSources().playerAttack(player), sweepDmg);
-        }
-
-        if (world instanceof ServerLevel server) {
-            ItemStack stack = mace.setTag(player.getMainHandItem());
-            CompoundTag tag = stack.getTag();
-            if (tag != null && tag.hasUUID("key")) {
-                mace.triggerAnim(player, GeoItem.getOrAssignId(stack, server), mace.controllerName, "animation.mace.swipe_attack");
-            }
-        }
-
-        world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_ATTACK_SWEEP, player.getSoundSource(), 1.0F, 1.0F);
-        player.sweepAttack();
-    }*/
 
     @SubscribeEvent
     public static void onStructByLightningEvent(EntityStruckByLightningEvent event) {
