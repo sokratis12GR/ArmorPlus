@@ -1,13 +1,12 @@
 package com.sofodev.armorplus.registry;
 
-import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.registry.blocks.APBlock;
-import com.sofodev.armorplus.registry.blocks.APBlockItem;
-import com.sofodev.armorplus.registry.blocks.APFrostBlock;
-import com.sofodev.armorplus.registry.blocks.APLavaBlock;
-import com.sofodev.armorplus.registry.blocks.castle.*;
-import com.sofodev.armorplus.registry.blocks.ore.CrystalOreBlock;
-import com.sofodev.armorplus.registry.blocks.special.SoulBox;
+import com.sofodev.armorplus.registry.block.APBlock;
+import com.sofodev.armorplus.registry.block.APBlockItem;
+import com.sofodev.armorplus.registry.block.APFrostBlock;
+import com.sofodev.armorplus.registry.block.APLavaBlock;
+import com.sofodev.armorplus.registry.block.castle.*;
+import com.sofodev.armorplus.registry.block.ore.CrystalOreBlock;
+import com.sofodev.armorplus.registry.block.special.SoulBox;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -26,9 +25,9 @@ import java.util.stream.IntStream;
 import static com.sofodev.armorplus.ArmorPlus.AP_STONE_BRICKS_LENGTH;
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.registry.ModItems.ITEMS;
-import static com.sofodev.armorplus.registry.blocks.castle.BrickColor.values;
-import static com.sofodev.armorplus.registry.blocks.ore.Variant.*;
-import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.copy;
+import static com.sofodev.armorplus.registry.block.castle.BrickColor.values;
+import static com.sofodev.armorplus.registry.block.ore.Variant.*;
+import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.ofFullCopy;
 
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
@@ -45,7 +44,7 @@ public class ModBlocks {
     public static final RegistryObject<Block>[] CASTLE_BLOCK_WALLS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
     public static final RegistryObject<Block>[] CASTLE_BLOCK_STAIRS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
     public static final RegistryObject<Block>[] CASTLE_BLOCK_SLABS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
-    public static final RegistryObject<Block> COMPRESSED_OBSIDIAN = registerBlockWithItem("compressed_obsidian", () -> new Block(copy(Blocks.OBSIDIAN)));
+    public static final RegistryObject<Block> COMPRESSED_OBSIDIAN = registerBlockWithItem("compressed_obsidian", () -> new Block(ofFullCopy(Blocks.OBSIDIAN)));
     public static final RegistryObject<Block> ORE_LAVA_CRYSTAL = registerBlockWithItem("ore_lava_crystal", () -> new CrystalOreBlock(ORIGINAL));
     public static final RegistryObject<Block> ORE_LAVA_CRYSTAL_STONE = registerBlockWithItem("ore_lava_crystal_stone", () -> new CrystalOreBlock(STONE));
     public static final RegistryObject<Block> ORE_LAVA_CRYSTAL_OBSIDIAN = registerBlockWithItem("ore_lava_crystal_obsidian", () -> new CrystalOreBlock(OBSIDIAN));
@@ -53,7 +52,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> INFUSED_LAVA_CRYSTAL = registerBlockWithItem("block_infused_lava_crystal", APLavaBlock::new);
     public static final RegistryObject<Block> COMPRESSED_LAVA_CRYSTAL = registerBlockWithItem("compressed_lava_crystal", APLavaBlock::new);
     public static final RegistryObject<Block> COMPRESSED_INFUSED_LAVA_CRYSTAL = registerBlockWithItem("compressed_infused_lava_crystal", APLavaBlock::new);
-    public static final RegistryObject<Block> LAVA_INFUSED_OBSIDIAN = registerBlockWithItem("lava_infused_obsidian", () -> new APLavaBlock(BlockBehaviour.Properties.copy(Blocks.STONE).mapColor(MapColor.COLOR_PURPLE).strength(25.0f, 2000.0f)));
+    public static final RegistryObject<Block> LAVA_INFUSED_OBSIDIAN = registerBlockWithItem("lava_infused_obsidian", () -> new APLavaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).mapColor(MapColor.COLOR_PURPLE).strength(25.0f, 2000.0f)));
     public static final RegistryObject<Block> ORE_FROST_CRYSTAL = registerBlockWithItem("ore_frost_crystal", () -> new CrystalOreBlock(ORIGINAL));
     public static final RegistryObject<Block> ORE_FROST_CRYSTAL_STONE = registerBlockWithItem("ore_frost_crystal_stone", () -> new CrystalOreBlock(STONE));
     public static final RegistryObject<Block> ORE_FROST_CRYSTAL_OBSIDIAN = registerBlockWithItem("ore_frost_crystal_obsidian", () -> new CrystalOreBlock(OBSIDIAN));
@@ -63,7 +62,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> SNOW_BRICK_STAIRS = registerBlockWithItem("snow_brick_stairs", () -> new StoneBrickStairsBlock(() -> SNOW_BRICK.get()
             .defaultBlockState(), SNOW_BRICK.get()));
     public static final RegistryObject<Block> SNOW_BRICK_SLAB = registerBlockWithItem("snow_brick_slab", () -> new StoneBrickSlabBlock(SNOW_BRICK.get()));
-    public static final RegistryObject<Block> PETRIFIED_SOULS = registerBlockWithItem("petrified_souls", () -> new APBlock(copy(Blocks.TERRACOTTA)));
+    public static final RegistryObject<Block> PETRIFIED_SOULS = registerBlockWithItem("petrified_souls", () -> new APBlock(ofFullCopy(Blocks.TERRACOTTA)));
     public static final RegistryObject<Block> SOUL_BOX = registerBlockWithItem("soul_box", SoulBox::new);
     //    public static final RegistryObject<BlockEntityType<TrophyTile>> TROPHY_TYPE = TILE_ENTITIES.register("trophy", () -> build(BlockEntityType.Builder.of(TrophyTile::new, TROPHY.get())));
 
