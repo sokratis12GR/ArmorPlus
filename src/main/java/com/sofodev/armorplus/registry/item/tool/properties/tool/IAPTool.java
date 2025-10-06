@@ -54,6 +54,6 @@ public interface IAPTool {
     }
 
     default IMaterialConfig config() {
-        return ArmorPlus.config.enhancedMaterial();
+        return ArmorPlus.config.enhancedMaterial;
     }
 }

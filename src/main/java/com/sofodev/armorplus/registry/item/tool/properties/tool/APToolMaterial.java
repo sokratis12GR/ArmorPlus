@@ -35,7 +35,7 @@ public enum APToolMaterial implements IAPTool {
     )) {
         @Override
         public MaterialConfig config() {
-            return config.coalMaterial();
+            return config.coalMaterial;
         }
     },
     REDSTONE_MAT(REDSTONE, REDSTONE_PROP, () -> withBuffs(
@@ -43,7 +43,7 @@ public enum APToolMaterial implements IAPTool {
     )) {
         @Override
         public MaterialConfig config() {
-            return config.redstoneMaterial();
+            return config.redstoneMaterial;
         }
     },
     LAPIS_MAT(LAPIS, LAPIS_PROP, () -> withBuffs(
@@ -51,7 +51,7 @@ public enum APToolMaterial implements IAPTool {
     )) {
         @Override
         public MaterialConfig config() {
-            return config.lapisMaterial();
+            return config.lapisMaterial;
         }
     },
     EMERALD_MAT(EMERALD, EMERALD_PROP, () -> withBuffs(
@@ -59,7 +59,7 @@ public enum APToolMaterial implements IAPTool {
     )) {
         @Override
         public MaterialConfig config() {
-            return config.emeraldMaterial();
+            return config.emeraldMaterial;
         }
     },
     OBSIDIAN_MAT(OBSIDIAN, OBSIDIAN_PROP, () -> withBuffs(
@@ -67,7 +67,7 @@ public enum APToolMaterial implements IAPTool {
     )) {
         @Override
         public MaterialConfig config() {
-            return config.obsidianMaterial();
+            return config.obsidianMaterial;
         }
     },
     INFUSED_LAVA_MAT(INFUSED_LAVA, INFUSED_LAVA_PROP, () -> withBuffs(
@@ -87,7 +87,7 @@ public enum APToolMaterial implements IAPTool {
 
         @Override
         public MaterialConfig config() {
-            return config.infusedLavaMaterial();
+            return config.infusedLavaMaterial;
         }
     },
     GUARDIAN_MAT(GUARDIAN, GUARDIAN_PROP, () -> withBuffs(
@@ -101,7 +101,7 @@ public enum APToolMaterial implements IAPTool {
 
         @Override
         public AdvancedMaterialConfig config() {
-            return config.guardianMaterial();
+            return config.guardianMaterial;
         }
     },
     SUPER_STAR_MAT(SUPER_STAR, SUPER_STAR_PROP, () -> withBuffs(
@@ -120,7 +120,7 @@ public enum APToolMaterial implements IAPTool {
 
         @Override
         public AdvancedMaterialConfig config() {
-            return config.superStarMaterial();
+            return config.superStarMaterial;
         }
     },
     ENDER_DRAGON_MAT(ENDER_DRAGON, ENDER_DRAGON_PROP, () -> withBuffs(
@@ -136,7 +136,7 @@ public enum APToolMaterial implements IAPTool {
 
         @Override
         public AdvancedMaterialConfig config() {
-            return config.enderDragonMaterial();
+            return config.enderDragonMaterial;
         }
     },
     SLAYER_MAT(SLAYER, SLAYER_PROP, () -> withBuffs(
@@ -161,7 +161,7 @@ public enum APToolMaterial implements IAPTool {
 
         @Override
         public ArmorPlusConfig.IMaterialConfig config() {
-            return config.slayerMaterial();
+            return config.slayerMaterial;
         }
     };
 

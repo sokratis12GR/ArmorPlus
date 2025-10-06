@@ -93,45 +93,12 @@ public class ArmorPlus {
         PROFESSIONS.register(modEventBus);
         POI_TYPES.register(modEventBus);
 
-        modEventBus.addListener(this::onCommonSetup);
 
-    }
-
-    private static Map<Block, ItemLike> registerSmeltingMap() {
-        HashMap<Block, ItemLike> map = new HashMap<>();
-
-        List<? extends String> input = config.autoSmeltingInput().get();
-        List<? extends String> output = config.autoSmeltingOutput().get();
-        if (input.size() != output.size()) {
-            throw new IllegalArgumentException("autoSmeltingInput and autoSmeltingOutput in config/ap_config.toml must have the same size!");
-        }
-        for (int i = 0; i < input.size(); i++) {
-            String entryInput = input.get(i);
-            String entryOutput = output.get(i);
-            Block fromBlock = ForgeRegistries.BLOCKS.getValue(ResourceLocation.parse(entryInput));
-            Item toItem = ForgeRegistries.ITEMS.getValue(ResourceLocation.parse(entryOutput));
-            if (fromBlock != null && toItem != null) {
-                map.put(fromBlock, toItem);
-            } else {
-                ArmorPlus.LOGGER.error("Block with the registry name: {} or Item with the registry name: {} don't exist. Failed to add auto smelt recipe", entryInput, entryOutput);
-            }
-        }
-        return map;
     }
 
     public static ArmorPlus getInstance() {
         return instance;
     }
-
-    public void onCommonSetup(FMLCommonSetupEvent event) {
-        event.enqueueWork(this::afterSetup);
-    }
-
-    private void afterSetup() {
-        //        GlobalVars.registerAfterEverything();
-        SMELTING_MAP = registerSmeltingMap();
-    }
-
 
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
