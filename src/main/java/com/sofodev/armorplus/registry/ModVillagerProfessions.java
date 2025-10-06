@@ -9,19 +9,15 @@ import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import javax.annotation.Nullable;
-import java.util.Set;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.registry.ModPoI.EXCHANGER_POI;
-import static com.sofodev.armorplus.utils.Utils.setRL;
 
 public class ModVillagerProfessions {
 
@@ -33,16 +29,31 @@ public class ModVillagerProfessions {
         return PROFESSIONS.register(name, sup);
     }
 
-    private static RegistryObject<VillagerProfession> register(String nameIn, ResourceKey<PoiType> jobSite, @Nullable SoundEvent soundIn) {
+    private static RegistryObject<VillagerProfession> register(String nameIn,
+                                                               ResourceKey<PoiType> jobSite,
+                                                               SoundEvent soundIn) {
         return register(nameIn, (heldJobSite) -> heldJobSite.is(jobSite), (heldJobSite) -> heldJobSite.is(jobSite), soundIn);
     }
 
-    public static RegistryObject<VillagerProfession> register(String nameIn, Predicate<Holder<PoiType>> heldJobSite, Predicate<Holder<PoiType>> acquirableJobSite, @Nullable SoundEvent soundIn) {
+    public static RegistryObject<VillagerProfession> register(String nameIn,
+                                                              Predicate<Holder<PoiType>> heldJobSite,
+                                                              Predicate<Holder<PoiType>> acquirableJobSite,
+                                                              SoundEvent soundIn) {
         return register(nameIn, heldJobSite, acquirableJobSite, ImmutableSet.of(), ImmutableSet.of(), soundIn);
     }
 
-    public static RegistryObject<VillagerProfession> register(String nameIn, Predicate<Holder<PoiType>> heldJobSite, Predicate<Holder<PoiType>> acquirableJobSite, ImmutableSet<Item> specificItemsIn, ImmutableSet<Block> relatedWorldBlocksIn, @Nullable SoundEvent soundIn) {
-        return register(nameIn, () -> new VillagerProfession(nameIn, heldJobSite, acquirableJobSite, specificItemsIn, relatedWorldBlocksIn, soundIn));
+    public static RegistryObject<VillagerProfession> register(String nameIn,
+                                                              Predicate<Holder<PoiType>> heldJobSite,
+                                                              Predicate<Holder<PoiType>> acquirableJobSite,
+                                                              ImmutableSet<Item> specificItemsIn,
+                                                              ImmutableSet<Block> relatedWorldBlocksIn,
+                                                              SoundEvent soundIn) {
+        return register(nameIn, () -> new VillagerProfession(nameIn,
+                heldJobSite,
+                acquirableJobSite,
+                specificItemsIn,
+                relatedWorldBlocksIn,
+                soundIn));
     }
 
 }
