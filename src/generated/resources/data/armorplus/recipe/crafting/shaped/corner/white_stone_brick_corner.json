@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "armorplus:stone_brick_corner",
+  "key": {
+    "S": {
+      "item": "armorplus:white_stone_brick"
+    }
+  },
+  "pattern": [
+    "   ",
+    "S  ",
+    "SSS"
+  ],
+  "result": {
+    "count": 4,
+    "id": "armorplus:white_stone_brick_corner"
+  }
+}

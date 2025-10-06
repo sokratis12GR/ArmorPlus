@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "armorplus:soul_elder_guardian"
+  },
+  "base": {
+    "item": "armorplus:guardian_leggings_base"
+  },
+  "result": {
+    "count": 1,
+    "id": "armorplus:guardian_leggings"
+  },
+  "template": []
+}

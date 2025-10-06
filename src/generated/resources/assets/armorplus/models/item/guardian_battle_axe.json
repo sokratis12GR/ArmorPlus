@@ -1,0 +1,6 @@
+{
+  "parent": "armorplus:item/handheld_battle_axe",
+  "textures": {
+    "layer0": "armorplus:item/guardian_battle_axe"
+  }
+}

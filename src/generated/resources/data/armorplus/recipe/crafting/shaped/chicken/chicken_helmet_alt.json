@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:chicken",
+  "key": {
+    "S": {
+      "item": "minecraft:feather"
+    }
+  },
+  "pattern": [
+    "   ",
+    "SSS",
+    "S S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:chicken_helmet"
+  }
+}

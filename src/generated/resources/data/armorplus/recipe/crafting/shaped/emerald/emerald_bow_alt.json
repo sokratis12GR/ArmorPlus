@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:emerald_bows",
+  "key": {
+    "M": {
+      "item": "minecraft:emerald_block"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    " MS",
+    "M S",
+    " MS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:emerald_bow"
+  }
+}

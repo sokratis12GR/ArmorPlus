@@ -1,0 +1,76 @@
+{
+  "parent": "armorplus:story/obtained_guardian_soul",
+  "criteria": {
+    "armorplus:guardian_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:guardian_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:guardian_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:guardian_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:guardian_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:guardian_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:guardian_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:guardian_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.guardian_armor.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "armorplus:guardian_chestplate"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.guardian_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:guardian_helmet"
+    ],
+    [
+      "armorplus:guardian_chestplate"
+    ],
+    [
+      "armorplus:guardian_leggings"
+    ],
+    [
+      "armorplus:guardian_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

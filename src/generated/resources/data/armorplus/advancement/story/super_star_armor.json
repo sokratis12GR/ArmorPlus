@@ -1,0 +1,76 @@
+{
+  "parent": "armorplus:story/obtained_wither_soul",
+  "criteria": {
+    "armorplus:super_star_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:super_star_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:super_star_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:super_star_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:super_star_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:super_star_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:super_star_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:super_star_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.super_star_armor.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "armorplus:super_star_chestplate"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.super_star_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:super_star_helmet"
+    ],
+    [
+      "armorplus:super_star_chestplate"
+    ],
+    [
+      "armorplus:super_star_leggings"
+    ],
+    [
+      "armorplus:super_star_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

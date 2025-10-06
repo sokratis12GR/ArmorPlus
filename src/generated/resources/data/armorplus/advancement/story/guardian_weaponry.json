@@ -1,0 +1,63 @@
+{
+  "parent": "armorplus:story/guardian_armor",
+  "criteria": {
+    "armorplus:guardian_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:guardian_battle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:guardian_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:guardian_mace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:guardian_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:guardian_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.guardian_weaponry.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "armorplus:guardian_sword"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.guardian_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:guardian_sword"
+    ],
+    [
+      "armorplus:guardian_battle_axe"
+    ],
+    [
+      "armorplus:guardian_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

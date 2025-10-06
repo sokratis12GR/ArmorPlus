@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "armorplus:storage",
+  "key": {
+    "X": {
+      "item": "armorplus:lava_crystal"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:block_lava_crystal"
+  }
+}

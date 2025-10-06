@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_req": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:enhanced_netherite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "armorplus:smithing/netherite_leggings"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_req"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "armorplus:smithing/netherite_leggings"
+    ]
+  }
+}

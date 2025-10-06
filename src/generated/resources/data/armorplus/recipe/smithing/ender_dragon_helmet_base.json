@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "armorplus:soul_ender_dragon"
+  },
+  "base": {
+    "item": "armorplus:ender_dragon_helmet_base"
+  },
+  "result": {
+    "count": 1,
+    "id": "armorplus:ender_dragon_helmet"
+  },
+  "template": []
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "armorplus:soul_slayer"
+  },
+  "base": {
+    "item": "armorplus:slayer_pickaxe_base"
+  },
+  "result": {
+    "count": 1,
+    "id": "armorplus:slayer_pickaxe"
+  },
+  "template": []
+}

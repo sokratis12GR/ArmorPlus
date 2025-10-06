@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "armorplus:infused_frost_crystal"
+  },
+  "base": {
+    "item": "armorplus:infused_lava_crystal"
+  },
+  "result": {
+    "count": 1,
+    "id": "armorplus:infused_frost_lava_crystal"
+  },
+  "template": []
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "armorplus:storage",
+  "ingredients": [
+    {
+      "item": "armorplus:frost_crystal"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "armorplus:frost_shard"
+  }
+}

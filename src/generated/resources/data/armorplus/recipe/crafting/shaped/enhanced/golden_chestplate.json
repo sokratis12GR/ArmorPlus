@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:ap_en_gold",
+  "key": {
+    "S": {
+      "item": "armorplus:enhanced_gold"
+    }
+  },
+  "pattern": [
+    "S S",
+    "SSS",
+    "SSS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:golden_chestplate"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:coal",
+  "key": {
+    "S": {
+      "item": "minecraft:coal_block"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "S S",
+    "   "
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:coal_helmet"
+  }
+}

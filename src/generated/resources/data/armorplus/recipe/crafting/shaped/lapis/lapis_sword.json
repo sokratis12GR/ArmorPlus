@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:lapis_swords",
+  "key": {
+    "M": {
+      "item": "minecraft:lapis_block"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "M  ",
+    "M  ",
+    "S  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:lapis_sword"
+  }
+}

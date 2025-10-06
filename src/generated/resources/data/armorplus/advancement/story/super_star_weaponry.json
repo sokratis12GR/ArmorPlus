@@ -1,0 +1,63 @@
+{
+  "parent": "armorplus:story/super_star_armor",
+  "criteria": {
+    "armorplus:super_star_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:super_star_battle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:super_star_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:super_star_mace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:super_star_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:super_star_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.super_star_weaponry.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "armorplus:super_star_sword"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.super_star_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:super_star_sword"
+    ],
+    [
+      "armorplus:super_star_battle_axe"
+    ],
+    [
+      "armorplus:super_star_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

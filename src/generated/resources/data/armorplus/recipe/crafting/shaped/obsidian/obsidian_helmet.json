@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:obsidian",
+  "key": {
+    "S": {
+      "item": "armorplus:compressed_obsidian"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "S S",
+    "   "
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:obsidian_helmet"
+  }
+}

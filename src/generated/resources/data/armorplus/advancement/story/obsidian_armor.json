@@ -1,0 +1,75 @@
+{
+  "parent": "armorplus:story/root",
+  "criteria": {
+    "armorplus:obsidian_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:obsidian_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:obsidian_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:obsidian_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:obsidian_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:obsidian_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:obsidian_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:obsidian_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.obsidian_armor.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "armorplus:obsidian_chestplate"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.obsidian_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:obsidian_helmet"
+    ],
+    [
+      "armorplus:obsidian_chestplate"
+    ],
+    [
+      "armorplus:obsidian_leggings"
+    ],
+    [
+      "armorplus:obsidian_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}
