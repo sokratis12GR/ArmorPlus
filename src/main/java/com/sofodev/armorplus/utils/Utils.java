@@ -150,7 +150,7 @@ public final class Utils {
         return ResourceLocation.fromNamespaceAndPath(MODID, path);
     }
 
-    public static ResourceLocation setVanillaLocation(String path) {
+    public static ResourceLocation mcLoc(String path) {
         return ResourceLocation.withDefaultNamespace(path);
     }
 

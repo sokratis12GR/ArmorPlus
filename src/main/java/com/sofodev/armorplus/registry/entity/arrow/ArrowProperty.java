@@ -1,11 +1,11 @@
 package com.sofodev.armorplus.registry.entity.arrow;
 
-import com.sofodev.armorplus.registry.ModPotions;
 import com.sofodev.armorplus.registry.item.extra.EffectData;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -28,7 +28,7 @@ public class ArrowProperty implements IArrow {
     }
 
     public ArrowProperty(String name, double dmg, SimpleParticleType particleType) {
-        this(name, dmg, particleType, new EffectData(ModPotions.EMPTY));
+        this(name, dmg, particleType, new EffectData(MobEffects.BLINDNESS));
     }
 
     public static ArrowProperty create(String name, double dmg, SimpleParticleType particle, EffectData data) {
@@ -36,7 +36,7 @@ public class ArrowProperty implements IArrow {
     }
 
     public static ArrowProperty create(String name, double dmg, SimpleParticleType particle) {
-        return new ArrowProperty(name, dmg, particle, new EffectData(ModPotions.EMPTY));
+        return new ArrowProperty(name, dmg, particle, new EffectData(MobEffects.BLINDNESS));
     }
 
     public String getName() {
@@ -61,9 +61,9 @@ public class ArrowProperty implements IArrow {
     @Override
     public IArrow hit(LivingEntity living) {
         EffectData effData = this.getData();
-        MobEffect eff = effData.getEffect().get();
-        if (eff != null) { // APPotions.EMPTY
-            living.addEffect(new MobEffectInstance(Holder.direct(eff), effData.getDuration(), effData.getAmplifier()));
+        Holder<MobEffect> eff = effData.effect();
+        if (eff != null) {
+            living.addEffect(new MobEffectInstance(eff, effData.duration(), effData.amplifier()));
         }
         return this;
     }

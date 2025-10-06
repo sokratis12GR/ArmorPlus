@@ -19,7 +19,7 @@ import static net.minecraft.world.Containers.dropItemStack;
 public class ThankYouItem extends APItem {
 
     public ThankYouItem() {
-        super(new Properties().fireResistant().stacksTo(0));
+        super(new Properties().fireResistant().stacksTo(1));
     }
 
 
@@ -39,10 +39,7 @@ public class ThankYouItem extends APItem {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
-        if (!world.isClientSide) {
-            dropItemStack(world, player.getX(), player.getY(), player.getZ(), new ItemStack(Items.CAKE));
-            player.getMainHandItem().setCount(0);
-        }
+
         return super.use(world, player, hand);
     }
 }

@@ -1,7 +1,6 @@
 package com.sofodev.armorplus.registry.item.extra;
 
 import com.sofodev.armorplus.registry.ModPotions;
-import net.minecraft.core.Holder;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -52,7 +51,7 @@ public class BuffInstance {
         if (buff.isEffect() && buff.getEffect() != null) {
             this.effect = new MobEffectInstance(buff.getEffect(), convertToSeconds(duration), amplifier, false, false);
         } else {
-            this.effect = new MobEffectInstance(Holder.direct(ModPotions.EMPTY.get()));
+            this.effect = null;
         }
         this.enabled = true;
     }
@@ -64,7 +63,7 @@ public class BuffInstance {
         this.buff = enabled ? buff : NONE;
         this.amplifier = -1;
         this.instant = true;
-        this.effect = new MobEffectInstance(Holder.direct(ModPotions.EMPTY.get()));
+        this.effect = new MobEffectInstance(ModPotions.EMPTY.getHolder().orElseThrow());
         this.enabled = true;
     }
 
@@ -72,7 +71,7 @@ public class BuffInstance {
         this.buff = buff;
         this.amplifier = -1;
         this.instant = true;
-        this.effect = new MobEffectInstance(Holder.direct(ModPotions.EMPTY.get()));
+        this.effect = new MobEffectInstance(ModPotions.EMPTY.getHolder().orElseThrow());
         this.enabled = true;
     }
 
@@ -105,7 +104,7 @@ public class BuffInstance {
 
         if (buff.isEffect()) {
             MobEffectInstance currentEffect = effect;
-
+            if (currentEffect == null) return;
             if (instant || !player.hasEffect(currentEffect.getEffect())) {
                 player.addEffect(currentEffect);
             }
@@ -115,7 +114,9 @@ public class BuffInstance {
     public void hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         buff.hitEntity(stack, target, attacker);
         if (buff.isEffect()) {
-            target.addEffect(effect);
+            MobEffectInstance currentEffect = effect;
+            if (currentEffect == null) return;
+            target.addEffect(currentEffect);
         }
     }
 

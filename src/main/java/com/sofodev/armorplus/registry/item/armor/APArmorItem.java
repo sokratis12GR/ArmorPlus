@@ -24,8 +24,8 @@ public class APArmorItem extends ArmorItem {
 
     public APArmorItem(IAPArmor mat, ArmorItem.Type slot) {
         super(mat.get().get(), slot, mat.isImmuneToFire()
-                ? mat.getProperties().fireResistant()
-                : mat.getProperties());
+                ? mat.getProperties().fireResistant().stacksTo(1)
+                : mat.getProperties().stacksTo(1));
         this.mat = mat;
     }
 

@@ -17,7 +17,6 @@ public class ModPotions {
 
     public static final DeferredRegister<MobEffect> EFFECTS = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, MODID);
 
-    //    public static final RegistryObject<MobEffect> EMPTY = register("empty", () -> new MobEffect(MobEffectCategory.NEUTRAL, 1));
     public static final RegistryObject<MobEffect> EMPTY = register("empty", () -> new InstantenousMobEffect(MobEffectCategory.NEUTRAL, 1));
 
     public static RegistryObject<MobEffect> register(String name, Supplier<? extends MobEffect> sup) {

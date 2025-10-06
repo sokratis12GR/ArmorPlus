@@ -150,6 +150,7 @@ public class ModItems {
      */
     public static Set<RegistryObject<? extends APArmorItem>> registerArmorForSlot(ArmorItem.Type slot) {
         return Arrays.stream(APArmorMaterial.values())
+                .filter(type -> slot != ArmorItem.Type.BODY) // skip BODY
                 .map(mat -> register(String.format("%s_%s", mat.getName(), slot.getName()), () -> new APArmorItem(mat, slot) {
                     @Override
                     public Component getName(ItemStack p_41458_) {

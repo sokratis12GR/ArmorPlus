@@ -7,12 +7,12 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Locale;
 
-import static com.sofodev.armorplus.utils.Utils.setVanillaLocation;
+import static com.sofodev.armorplus.utils.Utils.mcLoc;
 import static net.minecraft.world.effect.MobEffects.WITHER;
+import static net.minecraftforge.registries.ForgeRegistries.MOB_EFFECTS;
 
 
 public enum Buff implements IBuff {
@@ -86,12 +86,12 @@ public enum Buff implements IBuff {
 
 
     private final boolean isEffect;
-    private final MobEffect effect;
+    private final Holder<MobEffect> effect;
     private final boolean requireFullSet;
 
     Buff(boolean isEffect, boolean requireFullSet) {
         this.isEffect = isEffect;
-        this.effect = ForgeRegistries.MOB_EFFECTS.getValue(setVanillaLocation(this.name().toLowerCase(Locale.ENGLISH)));
+        this.effect = MOB_EFFECTS.getHolder(mcLoc(this.name().toLowerCase(Locale.ENGLISH))).orElse(null);
         this.requireFullSet = requireFullSet;
     }
 
@@ -110,7 +110,7 @@ public enum Buff implements IBuff {
 
     @Override
     public Holder<MobEffect> getEffect() {
-        return Holder.direct(effect);
+        return effect;
     }
 
     @Override

@@ -34,12 +34,12 @@ public enum DeBuff implements IBuff {
     };
 
     private final boolean isEffect;
-    private final MobEffect effect;
+    private final Holder<MobEffect> effect;
     public Random rand = new Random();
 
     DeBuff(boolean isEffect) {
         this.isEffect = isEffect;
-        this.effect = ForgeRegistries.MOB_EFFECTS.getValue(Utils.setVanillaLocation(this.name().toLowerCase(Locale.ENGLISH)));
+        this.effect = ForgeRegistries.MOB_EFFECTS.getHolder(Utils.mcLoc(this.name().toLowerCase(Locale.ENGLISH))).orElse(null);
     }
 
     DeBuff() {
@@ -53,7 +53,7 @@ public enum DeBuff implements IBuff {
 
     @Override
     public Holder<MobEffect> getEffect() {
-        return Holder.direct(effect);
+        return effect;
     }
 
     @Override

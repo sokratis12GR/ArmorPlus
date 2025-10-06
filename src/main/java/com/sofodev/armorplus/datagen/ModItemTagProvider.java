@@ -45,6 +45,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
         mirrorMinecraftTag("enchantable/weapon", ARMORPLUS_SWORDS, ARMORPLUS_BATTLE_AXES, ARMORPLUS_MACES);
         mirrorMinecraftTag("enchantable/sword", ARMORPLUS_SWORDS);
+        mirrorMinecraftTag("enchantable/bow", ARMORPLUS_BOWS);
+        mirrorMinecraftTag("enchantable/mining", ARMORPLUS_PICKAXES, ARMORPLUS_BATTLE_AXES);
+        mirrorMinecraftTag("enchantable/mining_loot", ARMORPLUS_PICKAXES, ARMORPLUS_BATTLE_AXES);
         mirrorMinecraftTag("enchantable/sharp_weapon", ARMORPLUS_SWORDS, ARMORPLUS_BATTLE_AXES);
 
 
@@ -69,6 +72,12 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 ARMORPLUS_LEGGINGS,
                 ARMORPLUS_BOOTS);
 
+        mirrorMinecraftTag("enchantable/equippable",
+                ARMORPLUS_HELMETS,
+                ARMORPLUS_CHESTPLATES,
+                ARMORPLUS_LEGGINGS,
+                ARMORPLUS_BOOTS);
+
         mirrorMinecraftTag("trimmable_armor",
                 ARMORPLUS_HELMETS,
                 ARMORPLUS_CHESTPLATES,
@@ -86,6 +95,21 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 ARMORPLUS_PICKAXES,
                 ARMORPLUS_BOWS,
                 ARMORPLUS_MACES);
+
+        mirrorMinecraftTag("enchantables",
+                "enchantable/weapon",
+                "enchantable/sword",
+                "enchantable/bow",
+                "enchantable/mining",
+                "enchantable/mining_loot",
+                "enchantable/sharp_weapon",
+                "enchantable/head_armor",
+                "enchantable/chest_armor",
+                "enchantable/leg_armor",
+                "enchantable/foot_armor",
+                "enchantable/armor",
+                "enchantable/durability"
+        );
 
         TagKey<Item> ARMORPLUS_ARROWS = modTag("arrows");
 
@@ -113,6 +137,22 @@ public class ModItemTagProvider extends ItemTagsProvider {
         if (mirrors != null) {
             for (TagKey<Item> mirror : mirrors) {
                 tag(tagKey).addTag(mirror);
+            }
+        }
+
+        return tagKey;
+    }
+
+    private TagKey<Item> mirrorMinecraftTag(String path, String... mirrors) {
+        TagKey<Item> tagKey = TagKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace(path));
+
+        if (mirrors != null) {
+            for (String mirror : mirrors) {
+                ResourceLocation loc = mirror.contains(":")
+                        ? ResourceLocation.parse(mirror)
+                        : ResourceLocation.withDefaultNamespace(mirror);
+
+                tag(tagKey).addTag(TagKey.create(Registries.ITEM, loc));
             }
         }
 

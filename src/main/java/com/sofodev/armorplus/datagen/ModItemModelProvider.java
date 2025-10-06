@@ -195,6 +195,6 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     private ItemModelBuilder generateBlockItemModel(RegistryObject<? extends Block> item) {
         return withExistingParent(item.getId().getPath(),
-                ResourceLocation.parse("item/generated"));
+                ResourceLocation.fromNamespaceAndPath(MODID, "block/" + item.getId().getPath()));
     }
 }

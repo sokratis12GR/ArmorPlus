@@ -412,9 +412,9 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
 
         // ── Thank You Advancement ──
         AdvancementHolder thankYou = createAdvancement(
-                "thank_you_6m",
+                "thank_you",
                 root,
-                getAPItem("redstone_chestplate"),
+                getAPItem("thank_you"),
                 null,
                 AdvancementType.TASK,
                 true,
