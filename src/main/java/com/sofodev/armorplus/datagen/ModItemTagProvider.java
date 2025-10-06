@@ -1,0 +1,148 @@
+package com.sofodev.armorplus.datagen;
+
+import com.sofodev.armorplus.registry.ModItems;
+import com.sofodev.armorplus.registry.item.armor.APArmorItem;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.RegistryObject;
+
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+
+import static com.sofodev.armorplus.ArmorPlus.MODID;
+
+public class ModItemTagProvider extends ItemTagsProvider {
+    public ModItemTagProvider(
+            PackOutput output,
+            CompletableFuture<HolderLookup.Provider> lookupProvider,
+            CompletableFuture<TagLookup<Block>> blockTags,
+            ExistingFileHelper existingFileHelper
+    ) {
+        super(output, lookupProvider, blockTags, MODID, existingFileHelper);
+    }
+
+    @Override
+    protected void addTags(HolderLookup.Provider lookup) {
+        TagKey<Item> ARMORPLUS_SWORDS = modTag("swords");
+        TagKey<Item> ARMORPLUS_BATTLE_AXES = modTag("battle_axes");
+        TagKey<Item> ARMORPLUS_PICKAXES = modTag("pickaxes");
+        TagKey<Item> ARMORPLUS_BOWS = modTag("bows");
+        TagKey<Item> ARMORPLUS_MACES = modTag("maces");
+
+        addAllItems(ARMORPLUS_SWORDS, ModItems.SWORDS);
+        addAllItems(ARMORPLUS_BATTLE_AXES, ModItems.BATTLE_AXES);
+        addAllItems(ARMORPLUS_PICKAXES, ModItems.PICKAXES);
+        addAllItems(ARMORPLUS_BOWS, ModItems.BOWS);
+        addAllItems(ARMORPLUS_MACES, ModItems.MACES);
+
+        mirrorMinecraftTag("enchantable/weapon", ARMORPLUS_SWORDS, ARMORPLUS_BATTLE_AXES, ARMORPLUS_MACES);
+        mirrorMinecraftTag("enchantable/sword", ARMORPLUS_SWORDS);
+        mirrorMinecraftTag("enchantable/sharp_weapon", ARMORPLUS_SWORDS, ARMORPLUS_BATTLE_AXES);
+
+
+        TagKey<Item> ARMORPLUS_HELMETS = modTag("helmets");
+        TagKey<Item> ARMORPLUS_CHESTPLATES = modTag("chestplates");
+        TagKey<Item> ARMORPLUS_LEGGINGS = modTag("leggings");
+        TagKey<Item> ARMORPLUS_BOOTS = modTag("boots");
+
+        addAllItems(ARMORPLUS_HELMETS, ModItems.HELMETS);
+        addAllItems(ARMORPLUS_CHESTPLATES, ModItems.CHESTPLATES);
+        addAllItems(ARMORPLUS_LEGGINGS, ModItems.LEGGINGS);
+        addAllItems(ARMORPLUS_BOOTS, ModItems.BOOTS);
+
+        mirrorMinecraftTag("enchantable/head_armor", ARMORPLUS_HELMETS);
+        mirrorMinecraftTag("enchantable/chest_armor", ARMORPLUS_CHESTPLATES);
+        mirrorMinecraftTag("enchantable/leg_armor", ARMORPLUS_LEGGINGS);
+        mirrorMinecraftTag("enchantable/foot_armor", ARMORPLUS_BOOTS);
+
+        mirrorMinecraftTag("enchantable/armor",
+                ARMORPLUS_HELMETS,
+                ARMORPLUS_CHESTPLATES,
+                ARMORPLUS_LEGGINGS,
+                ARMORPLUS_BOOTS);
+
+        mirrorMinecraftTag("trimmable_armor",
+                ARMORPLUS_HELMETS,
+                ARMORPLUS_CHESTPLATES,
+                ARMORPLUS_LEGGINGS,
+                ARMORPLUS_BOOTS
+        );
+
+        mirrorMinecraftTag("enchantable/durability",
+                ARMORPLUS_HELMETS,
+                ARMORPLUS_CHESTPLATES,
+                ARMORPLUS_LEGGINGS,
+                ARMORPLUS_BOOTS,
+                ARMORPLUS_SWORDS,
+                ARMORPLUS_BATTLE_AXES,
+                ARMORPLUS_PICKAXES,
+                ARMORPLUS_BOWS,
+                ARMORPLUS_MACES);
+
+        TagKey<Item> ARMORPLUS_ARROWS = modTag("arrows");
+
+        addAllItems(ARMORPLUS_ARROWS, ModItems.ITEM_COAL_ARROW,
+                ModItems.ITEM_LAPIS_ARROW,
+                ModItems.ITEM_REDSTONE_ARROW,
+                ModItems.ITEM_EMERALD_ARROW,
+                ModItems.ITEM_OBSIDIAN_ARROW,
+                ModItems.ITEM_INFUSED_LAVA_ARROW,
+                ModItems.ITEM_GUARDIAN_ARROW,
+                ModItems.ITEM_SUPER_STAR_ARROW,
+                ModItems.ITEM_ENDER_DRAGON_ARROW
+        );
+        mirrorMinecraftTag("arrows", ARMORPLUS_ARROWS);
+
+    }
+
+    private TagKey<Item> modTag(String path) {
+        return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MODID, path));
+    }
+
+    private TagKey<Item> mirrorMinecraftTag(String path, TagKey<Item>... mirrors) {
+        TagKey<Item> tagKey = TagKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace(path));
+
+        if (mirrors != null) {
+            for (TagKey<Item> mirror : mirrors) {
+                tag(tagKey).addTag(mirror);
+            }
+        }
+
+        return tagKey;
+    }
+
+    @SafeVarargs
+    private void addAllItems(TagAppender<Item> tag, RegistryObject<? extends Item>... items) {
+        for (RegistryObject<? extends Item> obj : items) {
+            tag.add(ResourceKey.create(Registries.ITEM, obj.getId()));
+        }
+    }
+
+    private void addAllItems(TagAppender<Item> tag, Set<RegistryObject<? extends APArmorItem>> items) {
+        for (RegistryObject<? extends APArmorItem> obj : items) {
+            tag.add(ResourceKey.create(Registries.ITEM, obj.getId()));
+        }
+    }
+
+    @SafeVarargs
+    private void addAllItems(TagKey<Item> tagKey, RegistryObject<? extends Item>... items) {
+        for (RegistryObject<? extends Item> obj : items) {
+            tag(tagKey).add(ResourceKey.create(Registries.ITEM, obj.getId()));
+        }
+    }
+
+    private void addAllItems(TagKey<Item> tagKey, Set<RegistryObject<? extends APArmorItem>> items) {
+        for (RegistryObject<? extends APArmorItem> obj : items) {
+            tag(tagKey).add(ResourceKey.create(Registries.ITEM, obj.getId()));
+        }
+    }
+
+}
