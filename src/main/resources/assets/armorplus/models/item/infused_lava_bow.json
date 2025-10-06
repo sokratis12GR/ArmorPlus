@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "armorplus:item/lava_bow"
+    "layer0": "armorplus:item/infused_lava_bow"
   },
   "display": {
     "thirdperson_righthand": {

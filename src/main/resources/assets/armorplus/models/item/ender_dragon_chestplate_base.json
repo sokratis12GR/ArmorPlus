@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "armorplus:item/ender_dragon_chestplate_base"
-  }
-}

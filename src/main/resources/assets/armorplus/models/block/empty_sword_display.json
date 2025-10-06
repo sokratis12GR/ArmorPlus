@@ -1,79 +1,270 @@
 {
-	"credit": "Created by Sokratis Fotkatzikis",
-	"textures": {
-		"0": "armorplus:block/stone_bot",
-		"1": "armorplus:block/stone_top",
-		"particle": "armorplus:block/stone_top"
-	},
-	"elements": [
-		{
-			"name": "rock_1",
-			"from": [0, 0, 0],
-			"to": [16, 2, 16],
-			"faces": {
-				"north": {"uv": [0, 0, 16, 2], "texture": "#0"},
-				"east": {"uv": [0, 0, 16, 2], "texture": "#0"},
-				"south": {"uv": [0, 0, 16, 2], "texture": "#0"},
-				"west": {"uv": [0, 0, 16, 2], "texture": "#0"},
-				"up": {"uv": [16, 16, 0, 0], "texture": "#0"},
-				"down": {"uv": [0, 0, 16, 16], "texture": "#0"}
-			}
-		},
-		{
-			"name": "rock_2",
-			"from": [2, 2, 2],
-			"to": [14, 5, 14],
-			"faces": {
-				"north": {"uv": [2, 0, 14, 3], "texture": "#1"},
-				"east": {"uv": [2, 0, 14, 3], "texture": "#1"},
-				"south": {"uv": [2, 0, 14, 3], "texture": "#1"},
-				"west": {"uv": [2, 0, 14, 3], "texture": "#1"},
-				"up": {"uv": [14, 14, 2, 2], "texture": "#1"},
-				"down": {"uv": [14, 2, 2, 14], "texture": "#1"}
-			}
-		}
-	],
-	"display": {
-		"thirdperson_righthand": {
-			"translation": [0, 1.5, 2.5],
-			"scale": [0.2, 0.2, 0.2]
-		},
-		"thirdperson_lefthand": {
-			"translation": [0, 1.5, 2.5],
-			"scale": [0.2, 0.2, 0.2]
-		},
-		"firstperson_righthand": {
-			"rotation": [-45, 0, 0],
-			"translation": [0, 3, 2.75],
-			"scale": [0.2, 0.2, 0.2]
-		},
-		"firstperson_lefthand": {
-			"rotation": [-45, 0, 0],
-			"translation": [0, 3, 2.75],
-			"scale": [0.2, 0.2, 0.2]
-		},
-		"ground": {
-			"scale": [0.5, 0.5, 0.5]
-		},
-		"gui": {
-			"rotation": [25, -45, 0],
-			"translation": [0, -0.75, 0],
-			"scale": [0.5, 0.5, 0.5]
-		},
-		"head": {
-			"translation": [0, 1.5, 0]
-		},
-		"fixed": {
-			"rotation": [0, 90, 0],
-			"translation": [0, 0, -0.25],
-			"scale": [0.5, 0.5, 0.5]
-		}
-	},
-	"groups": [
-		{
-			"name": "rock",
-			"origin": [8, 8, 8],
-			"children": [0, 1]
-		}
-	]
+  "credit": "Created by Sokratis Fotkatzikis",
+  "textures": {
+    "0": "armorplus:block/stone_bot",
+    "1": "armorplus:block/stone_top",
+    "particle": "armorplus:block/stone_top"
+  },
+  "elements": [
+    {
+      "name": "rock_1",
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        2,
+        16
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            2
+          ],
+          "texture": "#0"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            2
+          ],
+          "texture": "#0"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            2
+          ],
+          "texture": "#0"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            2
+          ],
+          "texture": "#0"
+        },
+        "up": {
+          "uv": [
+            16,
+            16,
+            0,
+            0
+          ],
+          "texture": "#0"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#0"
+        }
+      }
+    },
+    {
+      "name": "rock_2",
+      "from": [
+        2,
+        2,
+        2
+      ],
+      "to": [
+        14,
+        5,
+        14
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            2,
+            0,
+            14,
+            3
+          ],
+          "texture": "#1"
+        },
+        "east": {
+          "uv": [
+            2,
+            0,
+            14,
+            3
+          ],
+          "texture": "#1"
+        },
+        "south": {
+          "uv": [
+            2,
+            0,
+            14,
+            3
+          ],
+          "texture": "#1"
+        },
+        "west": {
+          "uv": [
+            2,
+            0,
+            14,
+            3
+          ],
+          "texture": "#1"
+        },
+        "up": {
+          "uv": [
+            14,
+            14,
+            2,
+            2
+          ],
+          "texture": "#1"
+        },
+        "down": {
+          "uv": [
+            14,
+            2,
+            2,
+            14
+          ],
+          "texture": "#1"
+        }
+      }
+    }
+  ],
+  "display": {
+    "thirdperson_righthand": {
+      "translation": [
+        0,
+        1.5,
+        2.5
+      ],
+      "scale": [
+        0.2,
+        0.2,
+        0.2
+      ]
+    },
+    "thirdperson_lefthand": {
+      "translation": [
+        0,
+        1.5,
+        2.5
+      ],
+      "scale": [
+        0.2,
+        0.2,
+        0.2
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        -45,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        3,
+        2.75
+      ],
+      "scale": [
+        0.2,
+        0.2,
+        0.2
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        -45,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        3,
+        2.75
+      ],
+      "scale": [
+        0.2,
+        0.2,
+        0.2
+      ]
+    },
+    "ground": {
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "gui": {
+      "rotation": [
+        25,
+        -45,
+        0
+      ],
+      "translation": [
+        0,
+        -0.75,
+        0
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "head": {
+      "translation": [
+        0,
+        1.5,
+        0
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        -0.25
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    }
+  },
+  "groups": [
+    {
+      "name": "rock",
+      "origin": [
+        8,
+        8,
+        8
+      ],
+      "children": [
+        0,
+        1
+      ]
+    }
+  ]
 }
