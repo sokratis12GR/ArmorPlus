@@ -1,12 +1,10 @@
 package com.sofodev.armorplus.utils;
 
-import com.sofodev.armorplus.registry.items.armors.IAPArmor;
+import com.sofodev.armorplus.registry.item.armor.IAPArmor;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.ItemLike;
 
-import static com.sofodev.armorplus.ArmorPlus.LOGGER;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
 
 public class ItemArmorUtility {

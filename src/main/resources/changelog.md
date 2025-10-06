@@ -1,4 +1,4 @@
-* Fixed flight. 
-* Fixed certain potion effects not applying properly.
-* Fixed some instances which could cause performance spikes
-* Fixed soul_exchanger not being a valid job villagers can take
+# 1.21.1 - 21.0.0
+
+- 1.21.1 Release
+- Added support for Armor Trims for every ArmorPlus armor

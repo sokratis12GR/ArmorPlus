@@ -4,16 +4,14 @@
 
 package com.sofodev.armorplus.utils;
 
-import com.sofodev.armorplus.registry.items.armors.APRepair;
+import com.sofodev.armorplus.registry.item.armor.APRepair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
@@ -60,18 +58,18 @@ public final class Utils {
         return seconds * 20;
     }
 
-    public static ItemStack checkNBT(ItemStack stack) {
-        if (stack.getTag() == null) {
-            stack.setTag(new CompoundTag());
-        }
-        return stack;
-    }
-
-    public static ItemStack setUnbreakable(ItemStack stack) {
-        checkNBT(stack);
-        stack.getTag().putBoolean("Unbreakable", true);
-        return stack;
-    }
+//    public static ItemStack checkNBT(ItemStack stack) {
+//        if (stack.getTags() == null) {
+//            stack.setTag(new CompoundTag());
+//        }
+//        return stack;
+//    }
+//
+//    public static ItemStack setUnbreakable(ItemStack stack) {
+//        checkNBT(stack);
+//        stack.getTag().putBoolean("Unbreakable", true);
+//        return stack;
+//    }
 
     public static ItemStack getStackFromSlot(Player player, EquipmentSlot slot) {
         return player.getItemBySlot(slot);
@@ -132,7 +130,7 @@ public final class Utils {
         return ForgeRegistries.ITEMS.getValue(setRL(name));
     }
 
-    public static ItemStack getAPItemStack(String name){
+    public static ItemStack getAPItemStack(String name) {
         return new ItemStack(getAPItem(name));
     }
 
@@ -140,7 +138,7 @@ public final class Utils {
         return ForgeRegistries.ITEMS.getDelegateOrThrow(key).get();
     }
 
-    public static ItemStack createSingleStack(ItemLike item){
+    public static ItemStack createSingleStack(ItemLike item) {
         return new ItemStack(item, 1);
     }
 
