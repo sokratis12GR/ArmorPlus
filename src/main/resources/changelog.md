@@ -1,3 +1,7 @@
+# 1.21.1 - 21.0.1
+- Fixes armors having infinite durability
+- Fixes armors not being enchantable
+
 # 1.21.1 - 21.0.0
 
 - 1.21.1 Forge Release
