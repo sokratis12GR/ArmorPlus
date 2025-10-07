@@ -224,16 +224,23 @@ public final class Utils {
     }
 
     public static List<ItemStack> getRepairStacks(APRepair repair) {
-        boolean isString = !(repair.getRepair().isEmpty());
-        boolean isStack = !(repair.getRepairStacks().isEmpty());
-        boolean isItem = !(repair.getRepairItems().isEmpty());
-        if (isString) {
-            return repair.getRepair().stream().map(Utils::getAPItem).map(ItemStack::new).collect(toList());
-        } else if (isItem) {
-            return repair.getRepairItems().stream().map(ItemStack::new).collect(Collectors.toList());
-        } else if (isStack) {
+        if (!repair.getRepair().isEmpty()) {
+            return repair.getRepair().stream()
+                    .map(Utils::getAPItem)
+                    .map(ItemStack::new)
+                    .collect(Collectors.toList());
+        }
+
+        if (!repair.getRepairItems().isEmpty()) {
+            return repair.getRepairItems().stream()
+                    .map(ItemStack::new)
+                    .collect(Collectors.toList());
+        }
+
+        if (!repair.getRepairStacks().isEmpty()) {
             return repair.getRepairStacks();
         }
+
         return emptyList();
     }
 

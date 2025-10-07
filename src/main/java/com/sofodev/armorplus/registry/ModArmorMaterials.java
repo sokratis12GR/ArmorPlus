@@ -54,4 +54,15 @@ public class ModArmorMaterials {
     public static Supplier<Holder<ArmorMaterial>> getHolder(APArmorProperties prop) {
         return () -> getRegistry(prop).getHolder().orElseThrow();
     }
+
+    /**
+     * Get the Holder<ArmorMaterial> for a given enum property (from the HOLDERS map)
+     */
+    public static Supplier<Holder<ArmorMaterial>> getFromHolders(APArmorProperties prop) {
+        Supplier<Holder<ArmorMaterial>> holder = HOLDERS.get(prop);
+        if (holder == null) {
+            throw new IllegalArgumentException("No holder found for " + prop);
+        }
+        return holder;
+    }
 }

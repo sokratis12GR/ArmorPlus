@@ -1,8 +1,8 @@
 package com.sofodev.armorplus.registry.item.armor;
 
-import com.sofodev.armorplus.registry.ModArmorMaterials;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import net.minecraft.core.Holder;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -15,6 +15,7 @@ import java.util.function.Supplier;
 
 import static com.sofodev.armorplus.ArmorPlus.config;
 import static com.sofodev.armorplus.config.ArmorPlusConfig.*;
+import static com.sofodev.armorplus.registry.ModArmorMaterials.getHolder;
 import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.*;
 import static com.sofodev.armorplus.registry.item.extra.Buff.*;
 import static net.minecraft.ChatFormatting.*;
@@ -137,14 +138,8 @@ public enum APArmorMaterial implements IAPArmor {
     private final boolean isImmuneToFire;
     private final Supplier<List<BuffInstance>> buffs;
     private final net.minecraft.ChatFormatting formatting;
+    private final int durability;
 
-//    APArmorMaterial {
-//        this(ENHANCED_IRON_PROP, false, RESET, Collections::emptyList);
-//    }
-
-//    APArmorMaterial(APArmorProperties armor) {
-//        this(armor, false, RESET, Collections::emptyList);
-//    }
 
     APArmorMaterial(APArmorProperties armor, net.minecraft.ChatFormatting formatting) {
         this(armor, false, formatting, Collections::emptyList);
@@ -155,10 +150,18 @@ public enum APArmorMaterial implements IAPArmor {
     }
 
     APArmorMaterial(APArmorProperties armor, boolean isImmuneToFire, net.minecraft.ChatFormatting formatting, Supplier<List<BuffInstance>> buffs) {
-        this.armor = ModArmorMaterials.getHolder(armor);
+        this.durability = armor.getDurability();
+        this.armor = getHolder(armor);
         this.isImmuneToFire = isImmuneToFire;
         this.buffs = buffs;
         this.formatting = formatting;
+    }
+
+    /**
+     * durability for each piece
+     */
+    public int getDurability(ArmorItem.Type type) {
+        return MAX_DAMAGE_ARRAY[type.getSlot().getIndex()] * durability;
     }
 
     private static Supplier<List<BuffInstance>> fromConfig(Supplier<AdvancedMaterialConfig> configSupplier) {

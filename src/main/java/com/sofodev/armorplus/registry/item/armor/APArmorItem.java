@@ -5,10 +5,7 @@ import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
@@ -23,10 +20,17 @@ public class APArmorItem extends ArmorItem {
     private final IAPArmor mat;
 
     public APArmorItem(IAPArmor mat, ArmorItem.Type slot) {
-        super(mat.get().get(), slot, mat.isImmuneToFire()
-                ? mat.getProperties().fireResistant().stacksTo(1)
-                : mat.getProperties().stacksTo(1));
+        super(mat.get().get(),
+                slot,
+                buildProperties(mat, slot)
+        );
         this.mat = mat;
+    }
+
+    private static Item.Properties buildProperties(IAPArmor mat, ArmorItem.Type slot) {
+        Item.Properties props = mat.getProperties().stacksTo(1);
+        props.durability(mat.getDurability(slot));
+        return mat.isImmuneToFire() ? props.fireResistant() : props;
     }
 
     @Override
@@ -72,6 +76,11 @@ public class APArmorItem extends ArmorItem {
     @Override
     public Holder<ArmorMaterial> getMaterial() {
         return mat.get().get();
+    }
+
+    @Override
+    public boolean isValidRepairItem(ItemStack currentStack, ItemStack repairStack) {
+        return mat.get().get().value().repairIngredient().get().test(repairStack) || super.isValidRepairItem(currentStack, repairStack);
     }
 
     public IAPArmor getMat() {

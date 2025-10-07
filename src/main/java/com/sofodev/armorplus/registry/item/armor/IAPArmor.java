@@ -5,6 +5,7 @@ import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 
@@ -37,6 +38,8 @@ public interface IAPArmor {
     Item.Properties getProperties();
 
     boolean isImmuneToFire();
+
+    int getDurability(ArmorItem.Type type);
 
     /**
      * A list of all the BuffInstances for the armor set

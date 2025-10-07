@@ -47,7 +47,7 @@ public enum APArmorProperties {
     /**
      * Holds the 'base' maxDamage that each armorType have.
      */
-    private static final int[] MAX_DAMAGE_ARRAY = new int[]{13, 15, 16, 11};
+    protected static final int[] MAX_DAMAGE_ARRAY = new int[]{13, 15, 16, 11};
     private final String name;
     private final int durability;
     private final float toughness;
@@ -115,12 +115,10 @@ public enum APArmorProperties {
         );
     }
 
-    /**
-     * durability for each piece
-     */
-    public int getDurability(ArmorItem.Type type) {
-        return MAX_DAMAGE_ARRAY[type.getSlot().getIndex()] * durability;
+    public int getDurability() {
+        return durability;
     }
+
 
     @Override
     public String toString() {
