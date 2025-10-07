@@ -44,7 +44,7 @@ In order to check in-game recipes it is recommended to always use JEI (Just Enou
 [![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/sokratis12gr/armorplus.svg?colorB=ff5900)]()
 ### Additional
 [![GitHub contributors](https://img.shields.io/github/contributors/sokratis12gr/armorplus.svg)]()
-[![GitHub commit activity the past week, 4 weeks, year](https://img.shields.io/github/commit-activity/y/sokratis12gr/armorplus.svg)]()
+[![GitHub commit activity the past week, 4 weeks, year](https://img.shields.io/github/commit-activity/m/sokratis12gr/armorplus.svg)]()
 
 ## Licence
 
