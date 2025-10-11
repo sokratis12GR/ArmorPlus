@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "armorplus:soul_wither_boss"
+  },
+  "base": [],
+  "result": {
+    "item": "armorplus:super_star_sword"
+  },
+  "template": {
+    "item": "armorplus:super_star_sword_base"
+  }
+}

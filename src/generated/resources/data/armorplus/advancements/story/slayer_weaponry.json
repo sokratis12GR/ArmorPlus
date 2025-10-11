@@ -1,0 +1,72 @@
+{
+  "parent": "armorplus:story/slayer_armor",
+  "criteria": {
+    "armorplus:slayer_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "armorplus:slayer_battle_axe"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:slayer_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "armorplus:slayer_mace"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:slayer_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "armorplus:slayer_sword"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.armorplus.story.slayer_weaponry.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "armorplus:slayer_sword",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.armorplus.story.slayer_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:slayer_sword"
+    ],
+    [
+      "armorplus:slayer_battle_axe"
+    ],
+    [
+      "armorplus:slayer_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

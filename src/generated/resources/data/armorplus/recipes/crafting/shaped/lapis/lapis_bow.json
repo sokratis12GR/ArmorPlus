@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:lapis_bows",
+  "key": {
+    "M": {
+      "item": "minecraft:lapis_block"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    "SM ",
+    "S M",
+    "SM "
+  ],
+  "result": {
+    "item": "armorplus:lapis_bow"
+  },
+  "show_notification": true
+}

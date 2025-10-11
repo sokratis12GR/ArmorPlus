@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:ap_en_iron",
+  "key": {
+    "S": {
+      "item": "armorplus:en_iron"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "S S",
+    "   "
+  ],
+  "result": {
+    "item": "armorplus:iron_helmet"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,54 @@
+{
+  "parent": "armorplus:story/obtained_lava_crystal",
+  "criteria": {
+    "armorplus:soul_elder_guardian": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "armorplus:soul_elder_guardian"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:soul_guardian": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "armorplus:soul_guardian"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.armorplus.story.obtained_guardian_soul.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "armorplus:soul_elder_guardian"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.armorplus.story.obtained_guardian_soul.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:soul_guardian",
+      "armorplus:soul_elder_guardian"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

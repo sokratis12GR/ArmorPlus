@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "armorplus:soul_slayer"
+  },
+  "base": [],
+  "result": {
+    "item": "armorplus:slayer_leggings"
+  },
+  "template": {
+    "item": "armorplus:slayer_leggings_base"
+  }
+}

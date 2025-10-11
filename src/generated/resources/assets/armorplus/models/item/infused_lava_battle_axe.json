@@ -1,0 +1,6 @@
+{
+  "parent": "armorplus:item/handheld_battle_axe",
+  "textures": {
+    "layer0": "armorplus:item/infused_lava_battle_axe"
+  }
+}

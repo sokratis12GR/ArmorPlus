@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "armorplus:en_netherite"
+  },
+  "base": [],
+  "result": {
+    "item": "armorplus:netherite_helmet"
+  },
+  "template": {
+    "item": "minecraft:netherite_helmet"
+  }
+}

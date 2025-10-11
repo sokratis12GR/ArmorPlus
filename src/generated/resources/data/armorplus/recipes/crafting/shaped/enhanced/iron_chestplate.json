@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:ap_en_iron",
+  "key": {
+    "S": {
+      "item": "armorplus:en_iron"
+    }
+  },
+  "pattern": [
+    "S S",
+    "SSS",
+    "SSS"
+  ],
+  "result": {
+    "item": "armorplus:iron_chestplate"
+  },
+  "show_notification": true
+}

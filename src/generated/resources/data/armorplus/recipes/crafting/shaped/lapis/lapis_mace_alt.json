@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:maces",
+  "key": {
+    "D": {
+      "item": "minecraft:lapis_block"
+    },
+    "S": {
+      "item": "armorplus:wooden_rod"
+    }
+  },
+  "pattern": [
+    "DD ",
+    "DS ",
+    "  S"
+  ],
+  "result": {
+    "item": "armorplus:lapis_mace"
+  },
+  "show_notification": true
+}

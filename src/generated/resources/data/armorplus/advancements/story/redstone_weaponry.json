@@ -1,0 +1,72 @@
+{
+  "parent": "armorplus:story/redstone_armor",
+  "criteria": {
+    "armorplus:redstone_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "armorplus:redstone_battle_axe"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:redstone_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "armorplus:redstone_mace"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:redstone_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "armorplus:redstone_sword"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.armorplus.story.redstone_weaponry.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "armorplus:redstone_sword",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.armorplus.story.redstone_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:redstone_sword"
+    ],
+    [
+      "armorplus:redstone_battle_axe"
+    ],
+    [
+      "armorplus:redstone_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "armorplus:storage",
+  "key": {
+    "X": {
+      "item": "armorplus:block_infused_lava_crystal"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "result": {
+    "item": "armorplus:compressed_infused_lava_crystal"
+  },
+  "show_notification": true
+}

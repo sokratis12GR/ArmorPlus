@@ -1,0 +1,87 @@
+{
+  "parent": "armorplus:story/obtained_ender_dragon_soul",
+  "criteria": {
+    "armorplus:ender_dragon_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "armorplus:ender_dragon_boots"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:ender_dragon_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "armorplus:ender_dragon_chestplate"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:ender_dragon_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "armorplus:ender_dragon_helmet"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:ender_dragon_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "armorplus:ender_dragon_leggings"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.armorplus.story.ender_dragon_armor.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "armorplus:ender_dragon_chestplate",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.armorplus.story.ender_dragon_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:ender_dragon_helmet"
+    ],
+    [
+      "armorplus:ender_dragon_chestplate"
+    ],
+    [
+      "armorplus:ender_dragon_leggings"
+    ],
+    [
+      "armorplus:ender_dragon_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:guardian_swords",
+  "key": {
+    "C": {
+      "item": "minecraft:prismarine"
+    },
+    "M": {
+      "item": "armorplus:guardian_scale"
+    },
+    "S": {
+      "item": "armorplus:obsidian_stick"
+    }
+  },
+  "pattern": [
+    "M  ",
+    "C  ",
+    "S  "
+  ],
+  "result": {
+    "item": "armorplus:guardian_sword_base"
+  },
+  "show_notification": true
+}

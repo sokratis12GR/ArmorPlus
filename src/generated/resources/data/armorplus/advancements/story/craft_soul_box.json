@@ -1,0 +1,41 @@
+{
+  "parent": "armorplus:story/root",
+  "criteria": {
+    "armorplus:soul_box": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "armorplus:soul_box"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.armorplus.story.craft_soul_box.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "armorplus:soul_box"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.armorplus.story.craft_soul_box.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:soul_box"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

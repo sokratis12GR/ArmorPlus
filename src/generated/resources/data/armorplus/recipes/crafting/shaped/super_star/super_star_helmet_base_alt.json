@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:super_star",
+  "key": {
+    "C": {
+      "item": "minecraft:nether_star"
+    },
+    "S": {
+      "item": "armorplus:wither_bone"
+    }
+  },
+  "pattern": [
+    "   ",
+    "SCS",
+    "S S"
+  ],
+  "result": {
+    "item": "armorplus:super_star_helmet_base"
+  },
+  "show_notification": true
+}

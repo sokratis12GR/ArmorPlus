@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:infused_lava_swords",
+  "key": {
+    "M": {
+      "item": "armorplus:infused_lava_crystal"
+    },
+    "S": {
+      "item": "armorplus:obsidian_stick"
+    }
+  },
+  "pattern": [
+    "M  ",
+    "M  ",
+    "S  "
+  ],
+  "result": {
+    "item": "armorplus:infused_lava_sword"
+  },
+  "show_notification": true
+}

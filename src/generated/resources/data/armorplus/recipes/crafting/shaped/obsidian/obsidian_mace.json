@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:maces",
+  "key": {
+    "D": {
+      "item": "armorplus:compressed_obsidian"
+    },
+    "S": {
+      "item": "armorplus:wooden_rod"
+    }
+  },
+  "pattern": [
+    " DD",
+    " SD",
+    "S  "
+  ],
+  "result": {
+    "item": "armorplus:obsidian_mace"
+  },
+  "show_notification": true
+}

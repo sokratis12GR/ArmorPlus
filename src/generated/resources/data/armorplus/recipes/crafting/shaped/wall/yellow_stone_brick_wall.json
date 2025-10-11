@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "armorplus:stone_brick_wall",
+  "key": {
+    "S": {
+      "item": "armorplus:yellow_stone_brick"
+    }
+  },
+  "pattern": [
+    "   ",
+    "SSS",
+    "SSS"
+  ],
+  "result": {
+    "count": 6,
+    "item": "armorplus:yellow_stone_brick_wall"
+  },
+  "show_notification": true
+}

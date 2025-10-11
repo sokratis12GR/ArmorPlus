@@ -1,0 +1,72 @@
+{
+  "parent": "armorplus:story/ender_dragon_armor",
+  "criteria": {
+    "armorplus:ender_dragon_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "armorplus:ender_dragon_battle_axe"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:ender_dragon_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "armorplus:ender_dragon_mace"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:ender_dragon_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "armorplus:ender_dragon_sword"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.armorplus.story.ender_dragon_weaponry.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "armorplus:ender_dragon_sword",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.armorplus.story.ender_dragon_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:ender_dragon_sword"
+    ],
+    [
+      "armorplus:ender_dragon_battle_axe"
+    ],
+    [
+      "armorplus:ender_dragon_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

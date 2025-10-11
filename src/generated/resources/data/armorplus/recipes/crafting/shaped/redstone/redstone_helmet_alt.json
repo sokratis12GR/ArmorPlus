@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:redstone",
+  "key": {
+    "S": {
+      "item": "minecraft:redstone_block"
+    }
+  },
+  "pattern": [
+    "   ",
+    "SSS",
+    "S S"
+  ],
+  "result": {
+    "item": "armorplus:redstone_helmet"
+  },
+  "show_notification": true
+}

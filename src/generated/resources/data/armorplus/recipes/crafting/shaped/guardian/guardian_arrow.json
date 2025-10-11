@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "armorplus:ap_arrows",
+  "key": {
+    "S": {
+      "item": "minecraft:arrow"
+    },
+    "X": {
+      "item": "armorplus:guardian_scale"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "SXS",
+    "SSS"
+  ],
+  "result": {
+    "count": 8,
+    "item": "armorplus:guardian_arrow"
+  },
+  "show_notification": true
+}

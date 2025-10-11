@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:frost_lava",
+  "key": {
+    "S": {
+      "item": "armorplus:infused_frost_lava_crystal"
+    }
+  },
+  "pattern": [
+    "   ",
+    "S S",
+    "S S"
+  ],
+  "result": {
+    "item": "armorplus:frost_lava_boots"
+  },
+  "show_notification": true
+}

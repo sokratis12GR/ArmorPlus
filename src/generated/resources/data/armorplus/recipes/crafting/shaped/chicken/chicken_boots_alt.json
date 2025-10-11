@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:chicken",
+  "key": {
+    "S": {
+      "item": "minecraft:feather"
+    }
+  },
+  "pattern": [
+    "   ",
+    "S S",
+    "S S"
+  ],
+  "result": {
+    "item": "armorplus:chicken_boots"
+  },
+  "show_notification": true
+}

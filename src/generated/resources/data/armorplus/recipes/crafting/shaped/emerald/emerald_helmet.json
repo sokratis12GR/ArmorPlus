@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:emerald",
+  "key": {
+    "S": {
+      "item": "minecraft:emerald_block"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "S S",
+    "   "
+  ],
+  "result": {
+    "item": "armorplus:emerald_helmet"
+  },
+  "show_notification": true
+}

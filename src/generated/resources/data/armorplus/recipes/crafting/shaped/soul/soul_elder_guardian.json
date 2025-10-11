@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "armorplus:ap_souls",
+  "key": {
+    "E": {
+      "item": "minecraft:prismarine"
+    },
+    "S": {
+      "item": "armorplus:soul_guardian"
+    },
+    "X": {
+      "item": "armorplus:guardian_scale"
+    }
+  },
+  "pattern": [
+    "ESE",
+    "SXS",
+    "ESE"
+  ],
+  "result": {
+    "item": "armorplus:soul_elder_guardian"
+  },
+  "show_notification": true
+}

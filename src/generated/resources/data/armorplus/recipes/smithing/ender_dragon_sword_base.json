@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "armorplus:soul_ender_dragon"
+  },
+  "base": [],
+  "result": {
+    "item": "armorplus:ender_dragon_sword"
+  },
+  "template": {
+    "item": "armorplus:ender_dragon_sword_base"
+  }
+}

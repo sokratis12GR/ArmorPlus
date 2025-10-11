@@ -1,0 +1,27 @@
+// 1.20.1	2025-10-10T15:51:42.1611558	Tags for minecraft:item mod id armorplus
+f984da7ea4442e75c33d8ea2cece9784e9bec5e1 data/armorplus/tags/items/arrows.json
+ebbf6ad4c2d30b9bb88092e1b9f89dd44249e4b6 data/armorplus/tags/items/battle_axes.json
+7d2a14a3d3d35852e2f010a1c70750bbb645e8c0 data/armorplus/tags/items/boots.json
+e94db2d88e659606b53ab486b9197ad00e4ee2f0 data/armorplus/tags/items/bows.json
+c24ef7f1d515727907040683fb2d4b58598d8590 data/armorplus/tags/items/chestplates.json
+43657edfeec88353ac5cbb4dacac17585565d479 data/armorplus/tags/items/helmets.json
+ba8031c175395e5ba0db7ef786e1facf261f43b7 data/armorplus/tags/items/leggings.json
+74e07acf503963869dea6399fc21bfe414024637 data/armorplus/tags/items/maces.json
+ff6bee91c87e4ad6c3e67b9874e1b261758c67cc data/armorplus/tags/items/pickaxes.json
+366cbfdb9a89cb123b6030036a7ecfe15bccc28e data/armorplus/tags/items/swords.json
+b0a990f07bb6d395fe4695ef61421dd122cc5532 data/minecraft/tags/items/arrows.json
+7d923699ce64dbfaab6fdf2e4155a244edb371d0 data/minecraft/tags/items/enchantables.json
+41c878cfb126cf8d05e354f48b75272b2f881133 data/minecraft/tags/items/enchantable/armor.json
+d839be275094c3850dc0c7a5d89752f97a9a7f70 data/minecraft/tags/items/enchantable/bow.json
+da78438224d6e3a350a854e32d1eeb6c470f4a7a data/minecraft/tags/items/enchantable/chest_armor.json
+31be4dc393042904949b18fd9f5d4c3f5528374d data/minecraft/tags/items/enchantable/durability.json
+41c878cfb126cf8d05e354f48b75272b2f881133 data/minecraft/tags/items/enchantable/equippable.json
+3f83e95c574f087c068c7b1425549540d4294e13 data/minecraft/tags/items/enchantable/foot_armor.json
+83c6f9fa29d7911c08e6d7c81ec697855c9fcb01 data/minecraft/tags/items/enchantable/head_armor.json
+cc491b798089060ffd0587b646aad8b8ff54165c data/minecraft/tags/items/enchantable/leg_armor.json
+bc0563e09cb5495dca73d8f4f93782808a814829 data/minecraft/tags/items/enchantable/mining.json
+bc0563e09cb5495dca73d8f4f93782808a814829 data/minecraft/tags/items/enchantable/mining_loot.json
+bcf58c1d87b833c97e27fe7a7a5888f05f237173 data/minecraft/tags/items/enchantable/sharp_weapon.json
+6bad7cf150d5324434f118452a95843f1bda1e7c data/minecraft/tags/items/enchantable/sword.json
+e185204f397d19a4e28fd96fcd195cbc715dad8c data/minecraft/tags/items/enchantable/weapon.json
+41c878cfb126cf8d05e354f48b75272b2f881133 data/minecraft/tags/items/trimmable_armor.json

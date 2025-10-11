@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:slayer_bows",
+  "key": {
+    "A": {
+      "item": "armorplus:super_star_bow_base"
+    },
+    "B": {
+      "item": "armorplus:ender_dragon_bow_base"
+    },
+    "C": {
+      "item": "armorplus:guardian_bow_base"
+    },
+    "M": {
+      "item": "armorplus:the_ultimate_material"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    "MAS",
+    "MBS",
+    "MCS"
+  ],
+  "result": {
+    "item": "armorplus:slayer_bow_base"
+  },
+  "show_notification": true
+}

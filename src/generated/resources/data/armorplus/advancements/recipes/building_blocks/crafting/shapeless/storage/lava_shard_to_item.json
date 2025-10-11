@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_req": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "armorplus:lava_crystal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "armorplus:crafting/shapeless/storage/lava_shard_to_item"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_req",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "armorplus:crafting/shapeless/storage/lava_shard_to_item"
+    ]
+  },
+  "sends_telemetry_event": false
+}

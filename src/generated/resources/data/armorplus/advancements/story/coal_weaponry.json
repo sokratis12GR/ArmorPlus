@@ -1,0 +1,72 @@
+{
+  "parent": "armorplus:story/coal_armor",
+  "criteria": {
+    "armorplus:coal_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "armorplus:coal_battle_axe"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:coal_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "armorplus:coal_mace"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:coal_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "armorplus:coal_sword"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.armorplus.story.coal_weaponry.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "armorplus:coal_sword",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.armorplus.story.coal_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:coal_sword"
+    ],
+    [
+      "armorplus:coal_battle_axe"
+    ],
+    [
+      "armorplus:coal_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

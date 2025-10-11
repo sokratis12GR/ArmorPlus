@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_req": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "armorplus:soul_wither_boss"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "armorplus:smithing/super_star_helmet_base"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_req",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "armorplus:smithing/super_star_helmet_base"
+    ]
+  },
+  "sends_telemetry_event": false
+}

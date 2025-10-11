@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:ap_en_gold",
+  "key": {
+    "S": {
+      "item": "armorplus:en_gold"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "S S",
+    "S S"
+  ],
+  "result": {
+    "item": "armorplus:golden_leggings"
+  },
+  "show_notification": true
+}

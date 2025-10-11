@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:ap_en_diamond",
+  "key": {
+    "S": {
+      "item": "armorplus:en_diamond"
+    }
+  },
+  "pattern": [
+    "   ",
+    "S S",
+    "S S"
+  ],
+  "result": {
+    "item": "armorplus:diamond_boots"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "armorplus:materials",
+  "key": {
+    "X": {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "pattern": [
+    "X",
+    "X",
+    " "
+  ],
+  "result": {
+    "count": 4,
+    "item": "armorplus:obsidian_stick"
+  },
+  "show_notification": true
+}

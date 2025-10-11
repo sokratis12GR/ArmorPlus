@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:slayer",
+  "key": {
+    "A": {
+      "item": "armorplus:super_star_chestplate_base"
+    },
+    "B": {
+      "item": "armorplus:ender_dragon_chestplate_base"
+    },
+    "C": {
+      "item": "armorplus:guardian_chestplate_base"
+    },
+    "S": {
+      "item": "armorplus:the_ultimate_material"
+    }
+  },
+  "pattern": [
+    "A C",
+    "SBS",
+    "SSS"
+  ],
+  "result": {
+    "item": "armorplus:slayer_chestplate_base"
+  },
+  "show_notification": true
+}

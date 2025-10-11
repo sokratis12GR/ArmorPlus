@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "armorplus:snow_brick",
+  "key": {
+    "X": {
+      "item": "minecraft:snow_block"
+    }
+  },
+  "pattern": [
+    "XX ",
+    "XX ",
+    "   "
+  ],
+  "result": {
+    "count": 4,
+    "item": "armorplus:snow_brick"
+  },
+  "show_notification": true
+}

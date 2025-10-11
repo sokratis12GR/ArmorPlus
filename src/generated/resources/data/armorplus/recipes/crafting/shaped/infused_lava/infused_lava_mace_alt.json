@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:maces",
+  "key": {
+    "D": {
+      "item": "armorplus:infused_lava_crystal"
+    },
+    "S": {
+      "item": "armorplus:obsidian_stick"
+    }
+  },
+  "pattern": [
+    "DD ",
+    "DS ",
+    "  S"
+  ],
+  "result": {
+    "item": "armorplus:infused_lava_mace"
+  },
+  "show_notification": true
+}

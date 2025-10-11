@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:maces",
+  "key": {
+    "D": {
+      "item": "minecraft:redstone_block"
+    },
+    "S": {
+      "item": "armorplus:wooden_rod"
+    }
+  },
+  "pattern": [
+    " DD",
+    " SD",
+    "S  "
+  ],
+  "result": {
+    "item": "armorplus:redstone_mace"
+  },
+  "show_notification": true
+}
