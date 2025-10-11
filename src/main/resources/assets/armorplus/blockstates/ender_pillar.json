@@ -1,20 +1,40 @@
 {
   "multipart": [
     {
-      "when": {"up": "false", "down": "false"},
-      "apply": {"model": "armorplus:block_simple_pillar"}
+      "when": {
+        "up": "false",
+        "down": "false"
+      },
+      "apply": {
+        "model": "armorplus:block_simple_pillar"
+      }
     },
     {
-      "when": {"up": "true", "down": "true"},
-      "apply": {"model": "armorplus:block_simple_pillar_mid"}
+      "when": {
+        "up": "true",
+        "down": "true"
+      },
+      "apply": {
+        "model": "armorplus:block_simple_pillar_mid"
+      }
     },
     {
-      "when": {"up": "true", "down": "false"},
-      "apply": {"model": "armorplus:block_simple_pillar_bot"}
+      "when": {
+        "up": "true",
+        "down": "false"
+      },
+      "apply": {
+        "model": "armorplus:block_simple_pillar_bot"
+      }
     },
     {
-      "when": {"up": "false", "down": "true"},
-      "apply": {"model": "armorplus:block_simple_pillar_top"}
+      "when": {
+        "up": "false",
+        "down": "true"
+      },
+      "apply": {
+        "model": "armorplus:block_simple_pillar_top"
+      }
     }
   ]
 }
