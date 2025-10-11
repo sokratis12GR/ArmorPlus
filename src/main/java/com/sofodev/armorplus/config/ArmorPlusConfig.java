@@ -39,6 +39,7 @@ public class ArmorPlusConfig {
     public static DropConfig guardianDrops;
     public static DropConfig endermanDrops;
     public static DropConfig blazeDrops;
+
     public ArmorPlusConfig(ForgeConfigSpec.Builder builder, ConfigHelper.Subscriber subscriber) {
         //Advancements
         builder.comment("Configure advancements")
@@ -161,12 +162,12 @@ public class ArmorPlusConfig {
         public ConfigValueListener<Boolean> enableFIRE_EXTINGUISH;      // Index 17
 
         public AdvancedMaterialConfig(ForgeConfigSpec.Builder builder, ConfigHelper.Subscriber subscriber, String name,
-                boolean enableNightVision, int amplifierNightVision, boolean enableWaterBreathing, int amplifierWaterBreathing, boolean enableStrength, int amplifierStrength,
-                boolean enableSpeed, int amplifierSpeed, boolean enableHaste, int amplifierHaste, boolean enableJumpBoost, int amplifierJumpBoost,
-                boolean enableRegeneration, int amplifierRegeneration, boolean enableResistance, int amplifierResistance, boolean enableFireResistance, int amplifierFireResistance,
-                boolean enableSaturation, int amplifierSaturation, boolean enableInvisibility, int amplifierInvisibility, boolean enableHealthBoost, int amplifierHealthBoost,
-                boolean enableAbsorption, int amplifierAbsorption, boolean enableSlowFalling, int amplifierSlowFalling,
-                boolean enableFlight, boolean enableWitherImmunity, boolean enableNaturalImmunity, boolean enableFireExtinguish) {
+                                      boolean enableNightVision, int amplifierNightVision, boolean enableWaterBreathing, int amplifierWaterBreathing, boolean enableStrength, int amplifierStrength,
+                                      boolean enableSpeed, int amplifierSpeed, boolean enableHaste, int amplifierHaste, boolean enableJumpBoost, int amplifierJumpBoost,
+                                      boolean enableRegeneration, int amplifierRegeneration, boolean enableResistance, int amplifierResistance, boolean enableFireResistance, int amplifierFireResistance,
+                                      boolean enableSaturation, int amplifierSaturation, boolean enableInvisibility, int amplifierInvisibility, boolean enableHealthBoost, int amplifierHealthBoost,
+                                      boolean enableAbsorption, int amplifierAbsorption, boolean enableSlowFalling, int amplifierSlowFalling,
+                                      boolean enableFlight, boolean enableWitherImmunity, boolean enableNaturalImmunity, boolean enableFireExtinguish) {
             super(builder, subscriber, name);
             builder.comment(name + " extended equipment Configuration")
                     .push(name).push("effects");

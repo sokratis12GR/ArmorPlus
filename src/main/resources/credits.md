@@ -1,5 +1,6 @@
 # ArmorPlus
-## Credit to all the people who have contributed by translating the mod. 
+
+## Credit to all the people who have contributed by translating the mod.
 
 | **Name**                                                                                                                                    |         **Languages (English)**         |             **Languages**              |                       **Language codes** |
 |:--------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------:|:--------------------------------------:|-----------------------------------------:|

@@ -98,19 +98,19 @@ public enum APArmorMaterial implements IAPArmor {
         }
     },
     /*Tier 3*/
-    GUARDIAN(GUARDIAN_PROP, true, BLUE, fromConfig(()->guardianMaterial)) {
+    GUARDIAN(GUARDIAN_PROP, true, BLUE, fromConfig(() -> guardianMaterial)) {
         @Override
         public MaterialConfig config() {
             return guardianMaterial;
         }
     },
-    SUPER_STAR(SUPER_STAR_PROP, true, WHITE, fromConfig(()->superStarMaterial)) {
+    SUPER_STAR(SUPER_STAR_PROP, true, WHITE, fromConfig(() -> superStarMaterial)) {
         @Override
         public MaterialConfig config() {
             return superStarMaterial;
         }
     },
-    ENDER_DRAGON(ENDER_DRAGON_PROP, true, DARK_PURPLE, fromConfig(()->enderDragonMaterial)) {
+    ENDER_DRAGON(ENDER_DRAGON_PROP, true, DARK_PURPLE, fromConfig(() -> enderDragonMaterial)) {
         @Override
         public MaterialConfig config() {
             return enderDragonMaterial;
@@ -123,7 +123,7 @@ public enum APArmorMaterial implements IAPArmor {
     PIG_IRON(PIG_IRON_PROP, LIGHT_PURPLE),
     MANYULLYN(MANYULLYN_PROP, DARK_PURPLE),
     /*Tier Slayer*/
-    SLAYER(SLAYER_PROP, true, DARK_PURPLE, fromConfig(()->slayerMaterial)) {
+    SLAYER(SLAYER_PROP, true, DARK_PURPLE, fromConfig(() -> slayerMaterial)) {
         @Override
         public MaterialConfig config() {
             return slayerMaterial;

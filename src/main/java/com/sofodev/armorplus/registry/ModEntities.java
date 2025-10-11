@@ -44,7 +44,8 @@ public class ModEntities {
 
     /////////////////////
     // UTILITY METHODS //
-    /////////////////////
+
+    /// //////////////////
 
     public static <ENTITY extends Entity> RegistryObject<EntityType<ENTITY>> register(String name, Supplier<EntityType<ENTITY>> sup) {
         return ENTITY_TYPES.register(name, sup);

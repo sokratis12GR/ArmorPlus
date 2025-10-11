@@ -131,7 +131,7 @@ public final class Utils {
         return ForgeRegistries.ITEMS.getValue(setRL(name));
     }
 
-    public static ItemStack getAPItemStack(String name){
+    public static ItemStack getAPItemStack(String name) {
         return new ItemStack(getAPItem(name));
     }
 
@@ -139,7 +139,7 @@ public final class Utils {
         return ForgeRegistries.ITEMS.getDelegateOrThrow(key).get();
     }
 
-    public static ItemStack createSingleStack(ItemLike item){
+    public static ItemStack createSingleStack(ItemLike item) {
         return new ItemStack(item, 1);
     }
 

@@ -9,19 +9,16 @@ import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nullable;
-import java.util.Set;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.registry.ModPoI.EXCHANGER_POI;
-import static com.sofodev.armorplus.utils.Utils.setRL;
 
 public class ModVillagerProfessions {
 

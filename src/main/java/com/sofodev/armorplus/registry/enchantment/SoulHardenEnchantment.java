@@ -10,7 +10,8 @@ import java.util.Objects;
 
 import static com.sofodev.armorplus.config.ArmorPlusConfig.enchantsThatWontWorkWithSoulHarden;
 import static net.minecraft.world.entity.EquipmentSlot.*;
-import static net.minecraft.world.item.enchantment.EnchantmentCategory.*;
+import static net.minecraft.world.item.enchantment.EnchantmentCategory.ARMOR;
+import static net.minecraft.world.item.enchantment.EnchantmentCategory.WEARABLE;
 
 public class SoulHardenEnchantment extends APEnchantment {
 

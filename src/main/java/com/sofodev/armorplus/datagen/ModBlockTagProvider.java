@@ -18,10 +18,6 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.concurrent.CompletableFuture;
 
-import static com.sofodev.armorplus.registry.block.ore.Variant.OBSIDIAN;
-import static com.sofodev.armorplus.registry.block.ore.Variant.ORIGINAL;
-import static net.minecraft.tags.TagEntry.tag;
-
 public class ModBlockTagProvider extends BlockTagsProvider {
     public ModBlockTagProvider(PackOutput output,
                                CompletableFuture<HolderLookup.Provider> lookupProvider,

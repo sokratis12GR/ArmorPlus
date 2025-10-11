@@ -2,8 +2,8 @@ package com.sofodev.armorplus.registry.item.material;
 
 import com.sofodev.armorplus.registry.item.APItem;
 import net.minecraft.ChatFormatting;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 
 public class MaterialItem extends APItem {
 

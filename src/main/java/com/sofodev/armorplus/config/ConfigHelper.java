@@ -156,9 +156,9 @@ public class ConfigHelper {
          * @return A reload-sensitive wrapper around your config object value. Use listener.get() to get the most up-to-date object.
          */
         public <T> ConfigObjectListener<T> subscribeObject(ForgeConfigSpec.Builder builder,
-                String name,
-                Codec<T> codec,
-                T defaultObject) {
+                                                           String name,
+                                                           Codec<T> codec,
+                                                           T defaultObject) {
 
             DataResult<Object> encodeResult = codec.encodeStart(TomlConfigOps.INSTANCE, defaultObject);
             Object encodedObject = encodeResult.getOrThrow(false, s -> LOGGER.error("Unable to encode default value: ", s));

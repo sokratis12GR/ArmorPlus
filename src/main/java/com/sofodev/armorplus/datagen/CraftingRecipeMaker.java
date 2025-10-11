@@ -5,7 +5,6 @@ import com.sofodev.armorplus.datagen.recipe.GridInput;
 import com.sofodev.armorplus.datagen.recipe.Input;
 import com.sofodev.armorplus.datagen.recipe.Result;
 import com.sofodev.armorplus.utils.Utils;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.TagKey;
@@ -21,7 +20,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 import java.util.stream.IntStream;
 

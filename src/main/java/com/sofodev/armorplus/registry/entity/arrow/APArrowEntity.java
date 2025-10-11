@@ -106,7 +106,7 @@ public abstract class APArrowEntity extends AbstractArrow {
     }
 
     @Override
-    public Packet<ClientGamePacketListener>  getAddEntityPacket() {
+    public Packet<ClientGamePacketListener> getAddEntityPacket() {
         Entity entity = this.getOwner();
         return new ClientboundAddEntityPacket(this, entity == null ? this.getId() : entity.getId());
     }

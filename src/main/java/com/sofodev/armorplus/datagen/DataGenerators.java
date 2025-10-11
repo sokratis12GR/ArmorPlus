@@ -1,10 +1,7 @@
 package com.sofodev.armorplus.datagen;
 
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.registry.ModEnchantments;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.RegistrySetBuilder;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;

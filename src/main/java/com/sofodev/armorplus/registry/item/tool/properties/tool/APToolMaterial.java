@@ -18,8 +18,8 @@ import java.util.function.Supplier;
 
 import static com.sofodev.armorplus.ArmorPlus.SMELTING_MAP;
 import static com.sofodev.armorplus.config.ArmorPlusConfig.*;
-import static com.sofodev.armorplus.registry.item.APRarity.OBSIDIAN;
 import static com.sofodev.armorplus.registry.item.APRarity.*;
+import static com.sofodev.armorplus.registry.item.APRarity.OBSIDIAN;
 import static com.sofodev.armorplus.registry.item.extra.DeBuff.*;
 import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolProperties.*;
 import static net.minecraft.world.item.Items.NETHERRACK;
