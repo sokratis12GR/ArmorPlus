@@ -1,7 +1,7 @@
 package com.sofodev.armorplus.utils;
 
-import com.sofodev.armorplus.registry.items.extras.BuffInstance;
-import com.sofodev.armorplus.registry.items.tools.properties.tool.IAPTool;
+import com.sofodev.armorplus.registry.item.extra.BuffInstance;
+import com.sofodev.armorplus.registry.item.tool.properties.tool.IAPTool;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;

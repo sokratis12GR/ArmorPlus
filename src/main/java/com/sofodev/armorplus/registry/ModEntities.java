@@ -1,8 +1,8 @@
 package com.sofodev.armorplus.registry;
 
-import com.sofodev.armorplus.registry.entities.arrows.APArrowEntity;
-import com.sofodev.armorplus.registry.entities.arrows.ArrowType;
-import com.sofodev.armorplus.registry.entities.arrows.impl.*;
+import com.sofodev.armorplus.registry.entity.arrow.APArrowEntity;
+import com.sofodev.armorplus.registry.entity.arrow.ArrowType;
+import com.sofodev.armorplus.registry.entity.arrow.impl.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -14,7 +14,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.function.Supplier;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
-import static com.sofodev.armorplus.registry.entities.arrows.ArrowType.*;
+import static com.sofodev.armorplus.registry.entity.arrow.ArrowType.*;
 import static com.sofodev.armorplus.utils.Utils.setRL;
 import static net.minecraft.world.entity.MobCategory.MISC;
 

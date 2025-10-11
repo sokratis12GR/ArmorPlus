@@ -2,23 +2,18 @@ package com.sofodev.armorplus;
 
 import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.config.ConfigHelper;
-import com.sofodev.armorplus.registry.ModBlocks;
-import com.sofodev.armorplus.registry.ModItems;
-import com.sofodev.armorplus.registry.blocks.castle.BrickColor;
-import com.sofodev.armorplus.registry.entities.arrows.APArrowEntity;
-import com.sofodev.armorplus.registry.entities.arrows.APArrowRenderer;
-import com.sofodev.armorplus.registry.items.armors.APArmorMaterial;
-import com.sofodev.armorplus.registry.items.tools.properties.mace.APMaceMaterial;
-import com.sofodev.armorplus.registry.items.tools.properties.tool.APToolProperties;
+import com.sofodev.armorplus.registry.block.castle.BrickColor;
+import com.sofodev.armorplus.registry.entity.arrow.APArrowEntity;
+import com.sofodev.armorplus.registry.entity.arrow.APArrowRenderer;
+import com.sofodev.armorplus.registry.item.armor.APArmorMaterial;
+import com.sofodev.armorplus.registry.item.tool.properties.mace.APMaceMaterial;
+import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolProperties;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
@@ -32,7 +27,6 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.apache.logging.log4j.LogManager;
@@ -43,7 +37,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.IntStream;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.config.ArmorPlusConfig.autoSmeltingInput;
@@ -56,7 +49,6 @@ import static com.sofodev.armorplus.registry.ModItems.*;
 import static com.sofodev.armorplus.registry.ModPoI.POI_TYPES;
 import static com.sofodev.armorplus.registry.ModPotions.EFFECTS;
 import static com.sofodev.armorplus.registry.ModVillagerProfessions.PROFESSIONS;
-import static com.sofodev.armorplus.registry.blocks.castle.BrickColor.values;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
 import static net.minecraftforge.api.distmarker.Dist.CLIENT;
 import static net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus.MOD;
@@ -68,7 +60,6 @@ public class ArmorPlus {
 
     public static final String MODID = "armorplus";
     public static final String MODNAME = "ArmorPlus";
-    public static final String VERSION = "1.20.1-20.1.1";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
 
     /**
@@ -83,13 +74,12 @@ public class ArmorPlus {
     public static ArmorPlusConfig config;
     public static ArmorPlus instance;
 
-    public ArmorPlus() {
+    public ArmorPlus(FMLJavaModLoadingContext context) {
         instance = this;
         GeckoLib.initialize();
         MinecraftForge.EVENT_BUS.register(this);
-        IEventBus forgeBus = MinecraftForge.EVENT_BUS;
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        ModLoadingContext modLoadingCTX = ModLoadingContext.get();
+        IEventBus modEventBus = context.getModEventBus();
+
 
         //Config Start
         ArmorPlus.config = ConfigHelper.register(ModLoadingContext.get(), FMLJavaModLoadingContext.get(), ModConfig.Type.COMMON, ArmorPlusConfig::new);

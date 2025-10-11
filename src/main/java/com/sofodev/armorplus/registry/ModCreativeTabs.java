@@ -1,24 +1,15 @@
 package com.sofodev.armorplus.registry;
 
-import com.sofodev.armorplus.registry.blocks.castle.BrickColor;
-import com.sofodev.armorplus.registry.items.armors.APArmorMaterial;
-import com.sofodev.armorplus.registry.items.tools.properties.mace.APMaceMaterial;
-import com.sofodev.armorplus.registry.items.tools.properties.tool.APToolProperties;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.effect.InstantenousMobEffect;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackLinkedSet;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import java.util.Collection;
 import java.util.Set;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
@@ -27,7 +18,7 @@ import static com.sofodev.armorplus.ArmorPlus.AP_STONE_BRICKS_LENGTH;
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.registry.ModBlocks.*;
 import static com.sofodev.armorplus.registry.ModItems.*;
-import static com.sofodev.armorplus.registry.blocks.castle.BrickColor.values;
+import static com.sofodev.armorplus.registry.block.castle.BrickColor.values;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
 import static com.sofodev.armorplus.utils.Utils.getAPItemStack;
 
@@ -136,7 +127,7 @@ public class ModCreativeTabs {
                 output.accept(ModItems.WOODEN_ROD.get());
                 output.accept(ModItems.LAVA_SHARD.get());
                 output.accept(ModItems.FROST_SHARD.get());
-                output.accept(ModItems.THANK_YOU_6M.get());
+                output.accept(ModItems.THANK_YOU.get());
 
             }).build());
     public static final RegistryObject<CreativeModeTab> AP_BLOCK_GROUP = register("blocks", () -> CreativeModeTab.builder()

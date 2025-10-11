@@ -1,13 +1,12 @@
 package com.sofodev.armorplus.registry;
 
-import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.registry.blocks.APBlock;
-import com.sofodev.armorplus.registry.blocks.APBlockItem;
-import com.sofodev.armorplus.registry.blocks.APFrostBlock;
-import com.sofodev.armorplus.registry.blocks.APLavaBlock;
-import com.sofodev.armorplus.registry.blocks.castle.*;
-import com.sofodev.armorplus.registry.blocks.ore.CrystalOreBlock;
-import com.sofodev.armorplus.registry.blocks.special.SoulBox;
+import com.sofodev.armorplus.registry.block.APBlock;
+import com.sofodev.armorplus.registry.block.APBlockItem;
+import com.sofodev.armorplus.registry.block.APFrostBlock;
+import com.sofodev.armorplus.registry.block.APLavaBlock;
+import com.sofodev.armorplus.registry.block.castle.*;
+import com.sofodev.armorplus.registry.block.ore.CrystalOreBlock;
+import com.sofodev.armorplus.registry.block.special.SoulBox;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -26,8 +25,8 @@ import java.util.stream.IntStream;
 import static com.sofodev.armorplus.ArmorPlus.AP_STONE_BRICKS_LENGTH;
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.registry.ModItems.ITEMS;
-import static com.sofodev.armorplus.registry.blocks.castle.BrickColor.values;
-import static com.sofodev.armorplus.registry.blocks.ore.Variant.*;
+import static com.sofodev.armorplus.registry.block.castle.BrickColor.values;
+import static com.sofodev.armorplus.registry.block.ore.Variant.*;
 import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.copy;
 
 public class ModBlocks {

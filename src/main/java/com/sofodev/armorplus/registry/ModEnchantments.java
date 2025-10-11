@@ -1,8 +1,7 @@
 package com.sofodev.armorplus.registry;
 
-import com.sofodev.armorplus.registry.enchantments.*;
+import com.sofodev.armorplus.registry.enchantment.*;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
