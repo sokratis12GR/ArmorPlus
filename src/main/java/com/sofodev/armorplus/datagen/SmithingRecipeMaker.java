@@ -34,17 +34,29 @@ public class SmithingRecipeMaker extends RecipeProvider {
     }
 
     public void buildBaseToFullSmithing(Consumer<FinishedRecipe> consumer, Set<RegistryObject<Item>> bases, ItemLike soul) {
-        bases.forEach(base -> this.buildBaseToFullSmithing(consumer, base, soul));
+        for (RegistryObject<Item> base : bases) {
+            this.buildBaseToFullSmithing(consumer, base, soul);
+        }
     }
 
     public void buildBaseToFullSmithing(Consumer<FinishedRecipe> consumer, RegistryObject<Item> base, ItemLike soul) {
-        this.buildSmithing(consumer, base.get(), soul, RecipeCategory.COMBAT, quickModLookupItem(base.getId()));
+        String path = base.getId().getPath();
+        if (path.contains("_body")) return;
+
+        String fullItem = path.replace("_base", "");
+        LOGGER.info(fullItem);
+        this.buildSmithing(consumer, base.get(), soul, RecipeCategory.COMBAT, getAPItem(fullItem));
     }
 
     @SafeVarargs
     public final void buildBaseToFullSmithing(Consumer<FinishedRecipe> consumer, ItemLike soul, RegistryObject<Item>... bases) {
-        Arrays.stream(bases)
-                .forEach(base -> this.buildSmithing(consumer, base.get(), soul, RecipeCategory.COMBAT, quickModLookupItem(base.getId())));
+        Arrays.stream(bases).forEach(base -> {
+            String path = base.getId().getPath();
+            if (path.contains("_body")) return;
+            String fullItem = path.replace("_base", "");
+            LOGGER.info(fullItem);
+            this.buildSmithing(consumer, base.get(), soul, RecipeCategory.COMBAT, getAPItem(fullItem));
+        });
     }
 
     public void buildVanillaToEnhancedSmithing(Consumer<FinishedRecipe> consumer, ItemLike vanilla, RegistryObject<Item> mat) {
@@ -53,13 +65,11 @@ public class SmithingRecipeMaker extends RecipeProvider {
 
     public void buildSmithing(Consumer<FinishedRecipe> consumer, ItemLike base, ItemLike addition, RecipeCategory category, ItemLike result) {
         String path = getPath(base);
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(base),//Base
-                        Ingredient.EMPTY,
-                        Ingredient.of(addition), //Addition
-                        category,
-                        result.asItem() // Result
-                ).unlocks("has_req", has(addition))
-                .save(consumer, setRL("smithing/" + path));
+        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, //template
+                Ingredient.of(base),//Base
+                Ingredient.of(addition), //Addition
+                category, result.asItem() // Result
+        ).unlocks("has_req", has(addition)).save(consumer, setRL("smithing/" + path));
     }
 
     @Override
@@ -75,18 +85,10 @@ public class SmithingRecipeMaker extends RecipeProvider {
         smither.buildBaseToFullSmithing(con, ENDER_DRAGON_BASES, ENDER_DRAGON_SOUL.get());
         smither.buildBaseToFullSmithing(con, SLAYER_BASES, SLAYER_SOUL.get());
 
-        smither.buildBaseToFullSmithing(con, WITHER_BOSS_SOUL.get(),
-                SUPER_STAR_SWORD_BASE, SUPER_STAR_BATTLE_AXE_BASE, SUPER_STAR_PICKAXE_BASE, SUPER_STAR_BOW_BASE
-        );
-        smither.buildBaseToFullSmithing(con, ELDER_GUARDIAN_SOUL.get(),
-                GUARDIAN_SWORD_BASE, GUARDIAN_BATTLE_AXE_BASE, GUARDIAN_PICKAXE_BASE, GUARDIAN_BOW_BASE
-        );
-        smither.buildBaseToFullSmithing(con, ENDER_DRAGON_SOUL.get(),
-                ENDER_DRAGON_SWORD_BASE, ENDER_DRAGON_BATTLE_AXE_BASE, ENDER_DRAGON_PICKAXE_BASE, ENDER_DRAGON_BOW_BASE
-        );
-        smither.buildBaseToFullSmithing(con, SLAYER_SOUL.get(),
-                SLAYER_SWORD_BASE, SLAYER_BATTLE_AXE_BASE, SLAYER_PICKAXE_BASE, SLAYER_BOW_BASE
-        );
+        smither.buildBaseToFullSmithing(con, WITHER_BOSS_SOUL.get(), SUPER_STAR_SWORD_BASE, SUPER_STAR_BATTLE_AXE_BASE, SUPER_STAR_PICKAXE_BASE, SUPER_STAR_BOW_BASE);
+        smither.buildBaseToFullSmithing(con, ELDER_GUARDIAN_SOUL.get(), GUARDIAN_SWORD_BASE, GUARDIAN_BATTLE_AXE_BASE, GUARDIAN_PICKAXE_BASE, GUARDIAN_BOW_BASE);
+        smither.buildBaseToFullSmithing(con, ENDER_DRAGON_SOUL.get(), ENDER_DRAGON_SWORD_BASE, ENDER_DRAGON_BATTLE_AXE_BASE, ENDER_DRAGON_PICKAXE_BASE, ENDER_DRAGON_BOW_BASE);
+        smither.buildBaseToFullSmithing(con, SLAYER_SOUL.get(), SLAYER_SWORD_BASE, SLAYER_BATTLE_AXE_BASE, SLAYER_PICKAXE_BASE, SLAYER_BOW_BASE);
 
         smither.buildVanillaToEnhancedSmithing(con, NETHERITE_HELMET, ENHANCED_NETHERITE);
         smither.buildVanillaToEnhancedSmithing(con, NETHERITE_CHESTPLATE, ENHANCED_NETHERITE);

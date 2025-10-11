@@ -49,8 +49,9 @@ public class Recipes extends RecipeProvider implements DataProvider, IConditionB
 
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> con) {
+        SmithingRecipeMaker smither = new SmithingRecipeMaker(generator);
+        smither.buildRecipes(con);
         this.registerCraftingRecipes(con);
-        SmithingRecipeMaker.get(generator).buildRecipes(con);
     }
 
     private void registerCraftingRecipes(Consumer<FinishedRecipe> con) {

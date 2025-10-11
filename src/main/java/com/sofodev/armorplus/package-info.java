@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Sokratis Fotkatzikis (sokratis12GR) 2015-2021.
+ * Copyright (c) Sokratis Fotkatzikis (sokratis12GR) 2015-2025.
  */
 
 /**
