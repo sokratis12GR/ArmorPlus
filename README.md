@@ -2,8 +2,8 @@
 
 ![](https://raw.githubusercontent.com/sokratis12GR/ArmorPlus/1.12/headerimg.jpg "ArmorPlus")
 
-[![](http://cf.way2muchnoise.eu/full_armorplus_downloads.svg)](https://smarturl.it/armorplus)
-[![](http://cf.way2muchnoise.eu/versions/armorplus.svg)](https://smarturl.it/armorplus)
+[![](http://cf.way2muchnoise.eu/full_armorplus_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/armorplus)
+[![](http://cf.way2muchnoise.eu/versions/armorplus.svg)](https://www.curseforge.com/minecraft/mc-mods/armorplus)
 
 ## About
 
