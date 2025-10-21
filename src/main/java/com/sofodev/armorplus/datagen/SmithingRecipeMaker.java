@@ -16,7 +16,6 @@ import java.util.function.Consumer;
 
 import static com.sofodev.armorplus.registry.ModItems.*;
 import static com.sofodev.armorplus.utils.DataUtils.getPath;
-import static com.sofodev.armorplus.utils.DataUtils.quickModLookupItem;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
 import static com.sofodev.armorplus.utils.Utils.setRL;
 import static net.minecraft.world.item.Items.*;
@@ -65,8 +64,8 @@ public class SmithingRecipeMaker extends RecipeProvider {
 
     public void buildSmithing(Consumer<FinishedRecipe> consumer, ItemLike base, ItemLike addition, RecipeCategory category, ItemLike result) {
         String path = getPath(base);
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, //template
-                Ingredient.of(base),//Base
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(base), //template (base)
+                Ingredient.of(INFUSED_LAVA_CRYSTAL.get()),
                 Ingredient.of(addition), //Addition
                 category, result.asItem() // Result
         ).unlocks("has_req", has(addition)).save(consumer, setRL("smithing/" + path));

@@ -1,10 +1,23 @@
 {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/armorplus",
-    "promos": {
-        "1.19.2-latest": "1.19.2-19.0.0-beta",
-        "1.19.2-recommended": "1.19.2-19.0.0-beta"
-    },
-    "1.19.2": {
-        "1.19.2-19.0.0-beta": "Ported to 1.19.2\n\n- World Gen of ores is disabled at this given moment.\n- Removed all biomes from previous versions.\n- Expect further releases to require new chunks to function properly"
-    }
+  "homepage": "https://www.curseforge.com/minecraft/mc-mods/armorplus",
+  "promos": {
+    "1.20.1-latest": "1.20.1-20.2.0",
+    "1.20.1-recommended": "1.20.1-20.2.0",
+    "1.21.1-latest": "1.21.1-21.0.1",
+    "1.21.1-recommended": "1.21.1-21.0.1"
+  },
+  "1.20.1": {
+    "1.20.1-20.0.0": "Ported to 1.20.1",
+    "1.20.1-20.0.1": "* Flight has been re-enabled for armor pieces.\n* Frost Crystals can once again be obtained from their block variants.",
+    "1.20.1-20.0.2": "* Fixed advancement screen not having a texture\n* Fixed armorplus:block_infused_frost_crystal not giving you back armorplus:infused_frost_crystal\n",
+    "1.20.1-20.1.0": "* Fixed flight.\n* Fixed certain potion effects not applying properly.\n* Fixed some instances which could cause performance spikes",
+    "1.20.1-20.1.1": "* Fixed soul_exchanger not being a valid job villagers can take",
+    "1.20.1-20.2.0": "- Added Armor Trims for every armor piece\n- Tweaked Soul Exchanger recipes\n- Added data generation for most things\n- Added better Advancements and progression in them, also hints on how to progress via them.\n  ![](https://raw.githubusercontent.com/sokratis12GR/ArmorPlus/refs/heads/1.20.1/trims.png)\n"
+  },
+  "1.21.1": {
+    "1.21.1-21.0.0": "1.21.1 Forge Release\n- Added support for Armor Trims for every ArmorPlus armor\n- Fixes flight, ore gen, enchants, soul exchanger related bugs\n- Fixes special effects related buffs\n- Configuration updates\n- Added data generation for most things\n- Updated Villager (Soul Exchanger) trades in this version\n- Added better Advancements and progression in them, also hints on how to progress via them.",
+    "1.21.1-21.0.1": "Fixed armors having no durability and not being enchantable"
+  }
 }
+
+

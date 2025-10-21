@@ -1,3 +1,8 @@
+# 1.20.1-20.2.1
+
+- Adjusted smithing prices to include an infused lava crystal
+- Fixed smithing recipes not showing up in JEI
+
 # 1.20.1-20.2.0
 
 - Added Armor Trims for every armor piece
