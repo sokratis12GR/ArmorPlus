@@ -1,3 +1,7 @@
+# 1.20.1-20.2.2
+
+- Fixed A+ arrows crashing
+
 # 1.20.1-20.2.1
 
 - Adjusted smithing prices to include an infused lava crystal

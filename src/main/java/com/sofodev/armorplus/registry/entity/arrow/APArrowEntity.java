@@ -64,9 +64,8 @@ public abstract class APArrowEntity extends AbstractArrow {
         return prop;
     }
 
-    public APArrowEntity setProp(ArrowProperty prop) {
+    public void setProp(ArrowProperty prop) {
         this.prop = prop;
-        return this;
     }
 
     @Override
@@ -76,7 +75,10 @@ public abstract class APArrowEntity extends AbstractArrow {
 
     @Override
     public void setBaseDamage(double damageIn) {
-        super.setBaseDamage(this.prop.getDmg());
+        if (this.prop != null) {
+            super.setBaseDamage(this.prop.getDmg());
+        }
+        super.setBaseDamage(damageIn);
     }
 
     @Override
@@ -96,8 +98,12 @@ public abstract class APArrowEntity extends AbstractArrow {
 
     @Override
     protected ItemStack getPickupItem() {
-        ItemStack stack = new ItemStack(ForgeRegistries.ITEMS.getValue(setRL(prop.getName() + "_arrow")));
-        return stack.isEmpty() ? new ItemStack(ARROW) : stack;
+        if (prop != null) {
+            ItemStack stack = new ItemStack(ForgeRegistries.ITEMS.getValue(setRL(prop.getName() + "_arrow")));
+            return stack.isEmpty() ? new ItemStack(ARROW) : stack;
+        }else  {
+            return new ItemStack(ARROW);
+        }
     }
 
     @Override
