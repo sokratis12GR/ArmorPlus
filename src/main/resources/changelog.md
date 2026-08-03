@@ -1,3 +1,7 @@
+# 1.20.1-20.2.3
+
+- Fixed Infused Lava Bow not having animations
+
 # 1.20.1-20.2.2
 
 - Fixed A+ arrows crashing
