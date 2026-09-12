@@ -83,7 +83,9 @@ public abstract class APArrowEntity extends AbstractArrow {
 
     @Override
     protected ItemStack getPickupItem() {
-        return prop.getPickupItem();
+        return prop != null
+                ? prop.getPickupItem()
+                : super.getPickupItem();
     }
 
     @Override
