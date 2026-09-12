@@ -19,56 +19,56 @@ public class ArrowType {
 
     public static final ArrowType COAL = new ArrowType(COAL_ARROW_PROP, "coal", 3.0, GRAY) {
         @Override
-        public APArrowEntity createArrow(Level world, ItemStack stack, LivingEntity shooter, ItemStack result) {
-            return new CoalArrowEntity(shooter, world);
+        public APArrowEntity createArrow(Level level, ItemStack ammo, LivingEntity shooter, ItemStack weapon) {
+            return new CoalArrowEntity(shooter, level);
         }
     };
     public static final ArrowType LAPIS = new ArrowType(LAPIS_ARROW_PROP, "lapis", 3.5, DARK_AQUA) {
         @Override
-        public APArrowEntity createArrow(Level world, ItemStack stack, LivingEntity shooter, ItemStack result) {
-            return new LapisArrowEntity(shooter, world);
+        public APArrowEntity createArrow(Level level, ItemStack ammo, LivingEntity shooter, ItemStack weapon) {
+            return new LapisArrowEntity(shooter, level);
         }
     };
     public static final ArrowType REDSTONE = new ArrowType(REDSTONE_ARROW_PROP, "redstone", 3.5, DARK_RED) {
         @Override
-        public APArrowEntity createArrow(Level world, ItemStack stack, LivingEntity shooter, ItemStack result) {
-            return new RedstoneArrowEntity(shooter, world);
+        public APArrowEntity createArrow(Level level, ItemStack ammo, LivingEntity shooter, ItemStack weapon) {
+            return new RedstoneArrowEntity(shooter, level);
         }
     };
     public static final ArrowType EMERALD = new ArrowType(EMERALD_ARROW_PROP, "emerald", 5.0, DARK_GREEN) {
         @Override
-        public APArrowEntity createArrow(Level world, ItemStack stack, LivingEntity shooter, ItemStack result) {
-            return new EmeraldArrowEntity(shooter, world);
+        public APArrowEntity createArrow(Level level, ItemStack ammo, LivingEntity shooter, ItemStack weapon) {
+            return new EmeraldArrowEntity(shooter, level);
         }
     };
     public static final ArrowType OBSIDIAN = new ArrowType(OBSIDIAN_ARROW_PROP, "obsidian", 6.0, DARK_GRAY) {
         @Override
-        public AbstractArrow createArrow(Level world, ItemStack stack, LivingEntity shooter, ItemStack result) {
-            return new ObsidianArrowEntity(shooter, world);
+        public AbstractArrow createArrow(Level level, ItemStack ammo, LivingEntity shooter, ItemStack weapon) {
+            return new ObsidianArrowEntity(shooter, level);
         }
     };
     public static final ArrowType INFUSED_LAVA = new ArrowType(INFUSED_LAVA_ARROW_PROP, "infused_lava", 10.5, GOLD) {
         @Override
-        public AbstractArrow createArrow(Level world, ItemStack stack, LivingEntity shooter, ItemStack result) {
-            return new InfusedLavaArrowEntity(shooter, world);
+        public AbstractArrow createArrow(Level level, ItemStack ammo, LivingEntity shooter, ItemStack weapon) {
+            return new InfusedLavaArrowEntity(shooter, level);
         }
     };
     public static final ArrowType GUARDIAN = new ArrowType(GUARDIAN_ARROW_PROP, "guardian", 10.5, AQUA) {
         @Override
-        public AbstractArrow createArrow(Level world, ItemStack stack, LivingEntity shooter, ItemStack result) {
-            return new GuardianArrowEntity(shooter, world);
+        public AbstractArrow createArrow(Level level, ItemStack ammo, LivingEntity shooter, ItemStack weapon) {
+            return new GuardianArrowEntity(shooter, level);
         }
     };
     public static final ArrowType SUPER_STAR = new ArrowType(SUPER_STAR_ARROW_PROP, "super_star", 10.5, WHITE) {
         @Override
-        public AbstractArrow createArrow(Level world, ItemStack stack, LivingEntity shooter, ItemStack result) {
-            return new SuperStarArrowEntity(shooter, world);
+        public AbstractArrow createArrow(Level level, ItemStack ammo, LivingEntity shooter, ItemStack weapon) {
+            return new SuperStarArrowEntity(shooter, level);
         }
     };
     public static final ArrowType ENDER_DRAGON = new ArrowType(ENDER_DRAGON_ARROW_PROP, "ender_dragon", 10.5, DARK_PURPLE) {
         @Override
-        public AbstractArrow createArrow(Level world, ItemStack stack, LivingEntity shooter, ItemStack result) {
-            return new EnderDragonArrowEntity(shooter, world);
+        public AbstractArrow createArrow(Level level, ItemStack ammo, LivingEntity shooter, ItemStack weapon) {
+            return new EnderDragonArrowEntity(shooter, level);
         }
     };
 
@@ -104,8 +104,8 @@ public class ArrowType {
         return this.getName() + "_arrow";
     }
 
-    public AbstractArrow createArrow(Level world, ItemStack stack, LivingEntity shooter, ItemStack result) {
-        return new Arrow(world, shooter, stack, result);
+    public AbstractArrow createArrow(Level level, ItemStack ammo, LivingEntity shooter, ItemStack weapon) {
+        return new Arrow(level, shooter, ammo, weapon);
     }
 
     public void appendHoverText(List<Component> tooltip) {

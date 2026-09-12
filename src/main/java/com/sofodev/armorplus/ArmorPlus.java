@@ -8,10 +8,10 @@ import com.sofodev.armorplus.registry.entity.arrow.APArrowEntity;
 import com.sofodev.armorplus.registry.entity.arrow.APArrowRenderer;
 import com.sofodev.armorplus.registry.item.tool.properties.mace.APMaceMaterial;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolProperties;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
@@ -22,13 +22,12 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
-import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
@@ -37,6 +36,7 @@ import static com.sofodev.armorplus.registry.ModBlocks.BLOCKS;
 import static com.sofodev.armorplus.registry.ModBlocks.TILE_ENTITIES;
 import static com.sofodev.armorplus.registry.ModCreativeTabs.CREATIVE_MODE_TABS;
 import static com.sofodev.armorplus.registry.ModEntities.*;
+import static com.sofodev.armorplus.registry.ModItems.BOWS;
 import static com.sofodev.armorplus.registry.ModItems.ITEMS;
 import static com.sofodev.armorplus.registry.ModPoI.POI_TYPES;
 import static com.sofodev.armorplus.registry.ModPotions.EFFECTS;
@@ -94,27 +94,67 @@ public class ArmorPlus {
 
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            event.enqueueWork(() -> {
-                registerRenderingHandler(COAL_ARROW.get(), "coal");
-                registerRenderingHandler(LAPIS_ARROW.get(), "lapis");
-                registerRenderingHandler(REDSTONE_ARROW.get(), "redstone");
-                registerRenderingHandler(EMERALD_ARROW.get(), "emerald");
-                registerRenderingHandler(OBSIDIAN_ARROW.get(), "obsidian");
-                registerRenderingHandler(INFUSED_LAVA_ARROW.get(), "lava");
-                registerRenderingHandler(GUARDIAN_ARROW.get(), "guardian");
-                registerRenderingHandler(SUPER_STAR_ARROW.get(), "super_star");
-                registerRenderingHandler(ENDER_DRAGON_ARROW.get(), "ender_dragon");
-            });
+            event.enqueueWork(ClientModEvents::registerBowOverrides);
+        }
+
+        @SubscribeEvent
+        public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+            registerRenderingHandler(event, COAL_ARROW.get(), "coal");
+            registerRenderingHandler(event, LAPIS_ARROW.get(), "lapis");
+            registerRenderingHandler(event, REDSTONE_ARROW.get(), "redstone");
+            registerRenderingHandler(event, EMERALD_ARROW.get(), "emerald");
+            registerRenderingHandler(event, OBSIDIAN_ARROW.get(), "obsidian");
+            registerRenderingHandler(event, INFUSED_LAVA_ARROW.get(), "lava");
+            registerRenderingHandler(event, GUARDIAN_ARROW.get(), "guardian");
+            registerRenderingHandler(event, SUPER_STAR_ARROW.get(), "super_star");
+            registerRenderingHandler(event, ENDER_DRAGON_ARROW.get(), "ender_dragon");
         }
 
         private static void registerRenderingHandler(
-                EntityType<? extends APArrowEntity> entityClass,
+                EntityRenderersEvent.RegisterRenderers event,
+                EntityType<? extends APArrowEntity> entityType,
                 String name
         ) {
-            EntityRenderers.register(
-                    entityClass,
-                    rm -> new APArrowRenderer<>(rm, name)
+            event.registerEntityRenderer(
+                    entityType,
+                    context -> new APArrowRenderer<>(context, name)
             );
+        }
+
+        private static void registerBowOverrides() {
+            Arrays.stream(BOWS).forEach(bow -> {
+                Item item = bow.get();
+
+                ItemProperties.register(
+                        item,
+                        ResourceLocation.withDefaultNamespace("pull"),
+                        (stack, level, player, seed) -> {
+                            if (player == null) {
+                                return 0.0F;
+                            }
+
+                            if (player.getUseItem() != stack) {
+                                return 0.0F;
+                            }
+
+                            return (float) (
+                                    stack.getUseDuration(player)
+                                            - player.getUseItemRemainingTicks()
+                            ) / 20.0F;
+                        }
+                );
+
+                ItemProperties.register(
+                        item,
+                        ResourceLocation.withDefaultNamespace("pulling"),
+                        (stack, level, player, seed) ->
+                                player != null
+                                        && player.isUsingItem()
+                                        && player.getUseItem() == stack
+                                        ? 1.0F
+                                        : 0.0F
+                );
+            });
         }
     }
 }

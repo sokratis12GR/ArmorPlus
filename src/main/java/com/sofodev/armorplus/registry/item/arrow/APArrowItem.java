@@ -25,8 +25,13 @@ public class APArrowItem extends ArrowItem {
 //    }
 
     @Override
-    public AbstractArrow createArrow(Level world, ItemStack stack, LivingEntity shooter, ItemStack result) {
-        return type.createArrow(world, stack, shooter, result);
+    public AbstractArrow createArrow(
+            Level level,
+            ItemStack ammo,
+            LivingEntity shooter,
+            ItemStack weapon
+    ) {
+        return type.createArrow(level, ammo, shooter, weapon);
     }
 
     @Override
