@@ -18,7 +18,7 @@ import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.animatable.GeoItem;
 import software.bernie.geckolib.animatable.SingletonGeoAnimatable;
@@ -59,20 +59,20 @@ public class APMaceItem extends SwordItem implements GeoItem {
         SingletonGeoAnimatable.registerSyncedAnimatable(this);
     }
 
-    @Override
-    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-        consumer.accept(new IClientItemExtensions() {
-            private APMaceRenderer renderer;
-
-            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                if (this.renderer == null) {
-                    this.renderer = new APMaceRenderer();
-                }
-
-                return this.renderer;
-            }
-        });
-    }
+//    @Override
+//    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+//        consumer.accept(new IClientItemExtensions() {
+//            private APMaceRenderer renderer;
+//
+//            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
+//                if (this.renderer == null) {
+//                    this.renderer = new APMaceRenderer();
+//                }
+//
+//                return this.renderer;
+//            }
+//        });
+//    }
 
     @Override
     public Component getName(ItemStack stack) {

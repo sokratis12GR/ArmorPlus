@@ -11,8 +11,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
@@ -160,27 +160,33 @@ public class ModItemTagProvider extends ItemTagsProvider {
     }
 
     @SafeVarargs
-    private void addAllItems(TagAppender<Item> tag, RegistryObject<? extends Item>... items) {
-        for (RegistryObject<? extends Item> obj : items) {
+    private void addAllItems(TagAppender<Item> tag, DeferredHolder<? extends Item, ? extends Item>... items) {
+        for (DeferredHolder<? extends Item, ? extends Item> obj : items) {
             tag.add(ResourceKey.create(Registries.ITEM, obj.getId()));
         }
     }
 
-    private void addAllItems(TagAppender<Item> tag, Set<RegistryObject<? extends APArmorItem>> items) {
-        for (RegistryObject<? extends APArmorItem> obj : items) {
+    private void addAllItems(
+            TagAppender<Item> tag,
+            Set<? extends DeferredHolder<Item, ? extends APArmorItem>> items
+    ) {
+        for (DeferredHolder<Item, ? extends APArmorItem> obj : items) {
             tag.add(ResourceKey.create(Registries.ITEM, obj.getId()));
         }
     }
 
     @SafeVarargs
-    private void addAllItems(TagKey<Item> tagKey, RegistryObject<? extends Item>... items) {
-        for (RegistryObject<? extends Item> obj : items) {
+    private void addAllItems(TagKey<Item> tagKey, DeferredHolder<? extends Item, ? extends Item>... items) {
+        for (DeferredHolder<? extends Item, ? extends Item> obj : items) {
             tag(tagKey).add(ResourceKey.create(Registries.ITEM, obj.getId()));
         }
     }
 
-    private void addAllItems(TagKey<Item> tagKey, Set<RegistryObject<? extends APArmorItem>> items) {
-        for (RegistryObject<? extends APArmorItem> obj : items) {
+    private void addAllItems(
+            TagKey<Item> tagKey,
+            Iterable<? extends DeferredHolder<Item, ? extends Item>> items
+    ) {
+        for (DeferredHolder<Item, ? extends Item> obj : items) {
             tag(tagKey).add(ResourceKey.create(Registries.ITEM, obj.getId()));
         }
     }

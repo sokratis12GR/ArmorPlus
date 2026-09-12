@@ -11,28 +11,22 @@ import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolProperties
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,7 +37,6 @@ import static com.sofodev.armorplus.registry.ModBlocks.BLOCKS;
 import static com.sofodev.armorplus.registry.ModBlocks.TILE_ENTITIES;
 import static com.sofodev.armorplus.registry.ModCreativeTabs.CREATIVE_MODE_TABS;
 import static com.sofodev.armorplus.registry.ModEntities.*;
-import static com.sofodev.armorplus.registry.ModItems.BOWS;
 import static com.sofodev.armorplus.registry.ModItems.ITEMS;
 import static com.sofodev.armorplus.registry.ModPoI.POI_TYPES;
 import static com.sofodev.armorplus.registry.ModPotions.EFFECTS;
@@ -56,35 +49,29 @@ public class ArmorPlus {
     public static final String MODNAME = "ArmorPlus";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
 
-    /**
-     * Used as an "upper ground" variable, which sets the limit for the sets which use these materials.
-     */
     public static final int AP_TOOL_MATERIAL_LENGTH = APToolProperties.values().length;
     public static final int AP_STONE_BRICKS_LENGTH = BrickColor.values().length;
     public static final int AP_MACE_MAT_LENGTH = APMaceMaterial.values().length;
 
-    public static Map<Block, ItemLike> SMELTING_MAP = new HashMap<>();
+    public static final Map<Block, ItemLike> SMELTING_MAP = new HashMap<>();
+
     public static ArmorPlusConfig config;
     public static ArmorPlus instance;
 
-    public ArmorPlus(FMLJavaModLoadingContext context) {
-        IEventBus modEventBus = context.getModEventBus();
+    public ArmorPlus(IEventBus modEventBus, ModContainer modContainer) {
+        instance = this;
 
-        MinecraftForge.EVENT_BUS.register(this);
-        //Config Start
         ArmorPlus.config = ConfigHelper.register(
-                ModConfig.Type.COMMON, ArmorPlusConfig::create);
-        //Config End
-        //Order of registration per https://gist.github.com/pupnewfster/ea38cf3744f23d6b65d67e6f279d5942
+                modContainer,
+                ModConfig.Type.COMMON,
+                ArmorPlusConfig::create
+        );
+
         MATERIALS.register(modEventBus);
         BLOCKS.register(modEventBus);
         ENTITY_TYPES.register(modEventBus);
-        //Configured
-        //Placed
         ITEMS.register(modEventBus);
         CREATIVE_MODE_TABS.register(modEventBus);
-
-//        ENCHANTMENTS.register(modEventBus);
         TILE_ENTITIES.register(modEventBus);
         EFFECTS.register(modEventBus);
 
@@ -92,54 +79,42 @@ public class ArmorPlus {
 
         PROFESSIONS.register(modEventBus);
         POI_TYPES.register(modEventBus);
-
-
     }
 
     public static ArmorPlus getInstance() {
         return instance;
     }
 
-    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @EventBusSubscriber(
+            modid = MODID,
+            value = Dist.CLIENT,
+            bus = EventBusSubscriber.Bus.MOD
+    )
     public static class ClientModEvents {
 
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            registerRenderingHandler(COAL_ARROW.get(), "coal");
-            registerRenderingHandler(LAPIS_ARROW.get(), "lapis");
-            registerRenderingHandler(REDSTONE_ARROW.get(), "redstone");
-            registerRenderingHandler(EMERALD_ARROW.get(), "emerald");
-            registerRenderingHandler(OBSIDIAN_ARROW.get(), "obsidian");
-            registerRenderingHandler(INFUSED_LAVA_ARROW.get(), "lava");
-            registerRenderingHandler(GUARDIAN_ARROW.get(), "guardian");
-            registerRenderingHandler(SUPER_STAR_ARROW.get(), "super_star");
-            registerRenderingHandler(ENDER_DRAGON_ARROW.get(), "ender_dragon");
-            registerBowOverrides();
-        }
-
-        private static void registerRenderingHandler(EntityType<? extends APArrowEntity> entityClass, String name) {
-            EntityRenderers.register(entityClass, rm -> new APArrowRenderer<>(rm, name));
-        }
-
-        private static void registerBowOverrides() {
-            Arrays.stream(BOWS).forEach(bow -> {
-                ItemProperties.register(bow.map(Item::asItem)
-                        .orElse(ItemStack.EMPTY.getItem()), ResourceLocation.withDefaultNamespace("pull"), (stack, level, player, val) -> {
-                    if (player == null) {
-                        return 0.0F;
-                    } else {
-                        return player.getUseItem() != stack ? 0.0F : (float) (stack.getUseDuration(player) - player.getUseItemRemainingTicks()) / 20.0F;
-                    }
-                });
-                ItemProperties.register(bow.map(Item::asItem)
-                        .orElse(ItemStack.EMPTY.getItem()), ResourceLocation.withDefaultNamespace("pulling"), (stack, level, player, val) -> player != null && player.isUsingItem() && player.getUseItem() == stack ? 1.0F : 0.0F);
+            event.enqueueWork(() -> {
+                registerRenderingHandler(COAL_ARROW.get(), "coal");
+                registerRenderingHandler(LAPIS_ARROW.get(), "lapis");
+                registerRenderingHandler(REDSTONE_ARROW.get(), "redstone");
+                registerRenderingHandler(EMERALD_ARROW.get(), "emerald");
+                registerRenderingHandler(OBSIDIAN_ARROW.get(), "obsidian");
+                registerRenderingHandler(INFUSED_LAVA_ARROW.get(), "lava");
+                registerRenderingHandler(GUARDIAN_ARROW.get(), "guardian");
+                registerRenderingHandler(SUPER_STAR_ARROW.get(), "super_star");
+                registerRenderingHandler(ENDER_DRAGON_ARROW.get(), "ender_dragon");
             });
         }
 
-
-        @SuppressWarnings("removal")
-        private void setRenderLayer(List<RegistryObject<Block>> blocks) {
-            blocks.forEach(block -> ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutout()));
+        private static void registerRenderingHandler(
+                EntityType<? extends APArrowEntity> entityClass,
+                String name
+        ) {
+            EntityRenderers.register(
+                    entityClass,
+                    rm -> new APArrowRenderer<>(rm, name)
+            );
         }
     }
 }

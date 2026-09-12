@@ -8,7 +8,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 import static com.sofodev.armorplus.utils.Utils.setRL;
 import static net.minecraft.world.item.Items.ARROW;
@@ -69,7 +69,7 @@ public class ArrowProperty implements IArrow {
     }
 
     public ItemStack getPickupItem() {
-        ItemStack stack = new ItemStack(ForgeRegistries.ITEMS.getValue(setRL(this.getName() + "_arrow")));
+        ItemStack stack = new ItemStack(BuiltInRegistries.ITEM.get(setRL(this.getName() + "_arrow")));
         return stack.isEmpty() ? new ItemStack(ARROW) : stack;
     }
 

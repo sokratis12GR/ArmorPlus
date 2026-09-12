@@ -4,7 +4,6 @@ import com.sofodev.armorplus.registry.entity.arrow.APArrowEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.network.packets.SpawnEntity;
 
 import static com.sofodev.armorplus.registry.ModEntities.GUARDIAN_ARROW;
 import static com.sofodev.armorplus.registry.entity.arrow.APArrowProperty.GUARDIAN_ARROW_PROP;
@@ -27,7 +26,4 @@ public class GuardianArrowEntity extends APArrowEntity {
         super(GUARDIAN_ARROW.get(), shooter, world, GUARDIAN_ARROW_PROP);
     }
 
-    public GuardianArrowEntity(SpawnEntity packet, Level world) {
-        super(GUARDIAN_ARROW.get(), packet, world, GUARDIAN_ARROW_PROP);
-    }
 }

@@ -14,9 +14,9 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -30,57 +30,57 @@ import static com.sofodev.armorplus.registry.block.ore.Variant.*;
 import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.ofFullCopy;
 
 public class ModBlocks {
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
-    public static final DeferredRegister<BlockEntityType<?>> TILE_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, MODID);
-    public static final RegistryObject<Block>[] STONE_BRICKS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
-    public static final RegistryObject<Block>[] STONE_BRICK_TOWERS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
-    public static final RegistryObject<Block>[] STONE_BRICK_CORNERS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
-    public static final RegistryObject<Block>[] STONE_BRICK_WALLS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
-    public static final RegistryObject<Block>[] STONE_BRICK_STAIRS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
-    public static final RegistryObject<Block>[] STONE_BRICK_SLABS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
-    public static final RegistryObject<Block>[] CASTLE_BLOCKS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
-    public static final RegistryObject<Block>[] CASTLE_BLOCK_TOWERS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
-    public static final RegistryObject<Block>[] CASTLE_BLOCK_CORNERS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
-    public static final RegistryObject<Block>[] CASTLE_BLOCK_WALLS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
-    public static final RegistryObject<Block>[] CASTLE_BLOCK_STAIRS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
-    public static final RegistryObject<Block>[] CASTLE_BLOCK_SLABS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
-    public static final RegistryObject<Block> COMPRESSED_OBSIDIAN = registerBlockWithItem("compressed_obsidian", () -> new Block(ofFullCopy(Blocks.OBSIDIAN)));
-    public static final RegistryObject<Block> ORE_LAVA_CRYSTAL = registerBlockWithItem("ore_lava_crystal", () -> new CrystalOreBlock(ORIGINAL));
-    public static final RegistryObject<Block> ORE_LAVA_CRYSTAL_STONE = registerBlockWithItem("ore_lava_crystal_stone", () -> new CrystalOreBlock(STONE));
-    public static final RegistryObject<Block> ORE_LAVA_CRYSTAL_OBSIDIAN = registerBlockWithItem("ore_lava_crystal_obsidian", () -> new CrystalOreBlock(OBSIDIAN));
-    public static final RegistryObject<Block> LAVA_CRYSTAL = registerBlockWithItem("block_lava_crystal", APLavaBlock::new);
-    public static final RegistryObject<Block> INFUSED_LAVA_CRYSTAL = registerBlockWithItem("block_infused_lava_crystal", APLavaBlock::new);
-    public static final RegistryObject<Block> COMPRESSED_LAVA_CRYSTAL = registerBlockWithItem("compressed_lava_crystal", APLavaBlock::new);
-    public static final RegistryObject<Block> COMPRESSED_INFUSED_LAVA_CRYSTAL = registerBlockWithItem("compressed_infused_lava_crystal", APLavaBlock::new);
-    public static final RegistryObject<Block> LAVA_INFUSED_OBSIDIAN = registerBlockWithItem("lava_infused_obsidian", () -> new APLavaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).mapColor(MapColor.COLOR_PURPLE).strength(25.0f, 2000.0f)));
-    public static final RegistryObject<Block> ORE_FROST_CRYSTAL = registerBlockWithItem("ore_frost_crystal", () -> new CrystalOreBlock(ORIGINAL));
-    public static final RegistryObject<Block> ORE_FROST_CRYSTAL_STONE = registerBlockWithItem("ore_frost_crystal_stone", () -> new CrystalOreBlock(STONE));
-    public static final RegistryObject<Block> ORE_FROST_CRYSTAL_OBSIDIAN = registerBlockWithItem("ore_frost_crystal_obsidian", () -> new CrystalOreBlock(OBSIDIAN));
-    public static final RegistryObject<Block> FROST_CRYSTAL = registerBlockWithItem("block_frost_crystal", APFrostBlock::new);
-    public static final RegistryObject<Block> INFUSED_FROST_CRYSTAL = registerBlockWithItem("block_infused_frost_crystal", APFrostBlock::new);
-    public static final RegistryObject<Block> SNOW_BRICK = registerBlockWithItem("snow_brick", () -> new APBlock(Blocks.SNOW, 2.0f, 20f));
-    public static final RegistryObject<Block> SNOW_BRICK_STAIRS = registerBlockWithItem("snow_brick_stairs", () -> new StoneBrickStairsBlock(() -> SNOW_BRICK.get()
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(BuiltInRegistries.BLOCK, MODID);
+    public static final DeferredRegister<BlockEntityType<?>> TILE_ENTITIES = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, MODID);
+    public static final DeferredHolder<Block, Block>[] STONE_BRICKS = new DeferredHolder[AP_STONE_BRICKS_LENGTH];
+    public static final DeferredHolder<Block, Block>[] STONE_BRICK_TOWERS = new DeferredHolder[AP_STONE_BRICKS_LENGTH];
+    public static final DeferredHolder<Block, Block>[] STONE_BRICK_CORNERS = new DeferredHolder[AP_STONE_BRICKS_LENGTH];
+    public static final DeferredHolder<Block, Block>[] STONE_BRICK_WALLS = new DeferredHolder[AP_STONE_BRICKS_LENGTH];
+    public static final DeferredHolder<Block, Block>[] STONE_BRICK_STAIRS = new DeferredHolder[AP_STONE_BRICKS_LENGTH];
+    public static final DeferredHolder<Block, Block>[] STONE_BRICK_SLABS = new DeferredHolder[AP_STONE_BRICKS_LENGTH];
+    public static final DeferredHolder<Block, Block>[] CASTLE_BLOCKS = new DeferredHolder[AP_STONE_BRICKS_LENGTH];
+    public static final DeferredHolder<Block, Block>[] CASTLE_BLOCK_TOWERS = new DeferredHolder[AP_STONE_BRICKS_LENGTH];
+    public static final DeferredHolder<Block, Block>[] CASTLE_BLOCK_CORNERS = new DeferredHolder[AP_STONE_BRICKS_LENGTH];
+    public static final DeferredHolder<Block, Block>[] CASTLE_BLOCK_WALLS = new DeferredHolder[AP_STONE_BRICKS_LENGTH];
+    public static final DeferredHolder<Block, Block>[] CASTLE_BLOCK_STAIRS = new DeferredHolder[AP_STONE_BRICKS_LENGTH];
+    public static final DeferredHolder<Block, Block>[] CASTLE_BLOCK_SLABS = new DeferredHolder[AP_STONE_BRICKS_LENGTH];
+    public static final DeferredHolder<Block, Block> COMPRESSED_OBSIDIAN = registerBlockWithItem("compressed_obsidian", () -> new Block(ofFullCopy(Blocks.OBSIDIAN)));
+    public static final DeferredHolder<Block, Block> ORE_LAVA_CRYSTAL = registerBlockWithItem("ore_lava_crystal", () -> new CrystalOreBlock(ORIGINAL));
+    public static final DeferredHolder<Block, Block> ORE_LAVA_CRYSTAL_STONE = registerBlockWithItem("ore_lava_crystal_stone", () -> new CrystalOreBlock(STONE));
+    public static final DeferredHolder<Block, Block> ORE_LAVA_CRYSTAL_OBSIDIAN = registerBlockWithItem("ore_lava_crystal_obsidian", () -> new CrystalOreBlock(OBSIDIAN));
+    public static final DeferredHolder<Block, Block> LAVA_CRYSTAL = registerBlockWithItem("block_lava_crystal", APLavaBlock::new);
+    public static final DeferredHolder<Block, Block> INFUSED_LAVA_CRYSTAL = registerBlockWithItem("block_infused_lava_crystal", APLavaBlock::new);
+    public static final DeferredHolder<Block, Block> COMPRESSED_LAVA_CRYSTAL = registerBlockWithItem("compressed_lava_crystal", APLavaBlock::new);
+    public static final DeferredHolder<Block, Block> COMPRESSED_INFUSED_LAVA_CRYSTAL = registerBlockWithItem("compressed_infused_lava_crystal", APLavaBlock::new);
+    public static final DeferredHolder<Block, Block> LAVA_INFUSED_OBSIDIAN = registerBlockWithItem("lava_infused_obsidian", () -> new APLavaBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).mapColor(MapColor.COLOR_PURPLE).strength(25.0f, 2000.0f)));
+    public static final DeferredHolder<Block, Block> ORE_FROST_CRYSTAL = registerBlockWithItem("ore_frost_crystal", () -> new CrystalOreBlock(ORIGINAL));
+    public static final DeferredHolder<Block, Block> ORE_FROST_CRYSTAL_STONE = registerBlockWithItem("ore_frost_crystal_stone", () -> new CrystalOreBlock(STONE));
+    public static final DeferredHolder<Block, Block> ORE_FROST_CRYSTAL_OBSIDIAN = registerBlockWithItem("ore_frost_crystal_obsidian", () -> new CrystalOreBlock(OBSIDIAN));
+    public static final DeferredHolder<Block, Block> FROST_CRYSTAL = registerBlockWithItem("block_frost_crystal", APFrostBlock::new);
+    public static final DeferredHolder<Block, Block> INFUSED_FROST_CRYSTAL = registerBlockWithItem("block_infused_frost_crystal", APFrostBlock::new);
+    public static final DeferredHolder<Block, Block> SNOW_BRICK = registerBlockWithItem("snow_brick", () -> new APBlock(Blocks.SNOW, 2.0f, 20f));
+    public static final DeferredHolder<Block, Block> SNOW_BRICK_STAIRS = registerBlockWithItem("snow_brick_stairs", () -> new StoneBrickStairsBlock(() -> SNOW_BRICK.get()
             .defaultBlockState(), SNOW_BRICK.get()));
-    public static final RegistryObject<Block> SNOW_BRICK_SLAB = registerBlockWithItem("snow_brick_slab", () -> new StoneBrickSlabBlock(SNOW_BRICK.get()));
-    public static final RegistryObject<Block> PETRIFIED_SOULS = registerBlockWithItem("petrified_souls", () -> new APBlock(ofFullCopy(Blocks.TERRACOTTA)));
-    public static final RegistryObject<Block> SOUL_BOX = registerBlockWithItem("soul_box", SoulBox::new);
-    //    public static final RegistryObject<BlockEntityType<TrophyTile>> TROPHY_TYPE = TILE_ENTITIES.register("trophy", () -> build(BlockEntityType.Builder.of(TrophyTile::new, TROPHY.get())));
+    public static final DeferredHolder<Block, Block> SNOW_BRICK_SLAB = registerBlockWithItem("snow_brick_slab", () -> new StoneBrickSlabBlock(SNOW_BRICK.get()));
+    public static final DeferredHolder<Block, Block> PETRIFIED_SOULS = registerBlockWithItem("petrified_souls", () -> new APBlock(ofFullCopy(Blocks.TERRACOTTA)));
+    public static final DeferredHolder<Block, Block> SOUL_BOX = registerBlockWithItem("soul_box", SoulBox::new);
+    //    public static final DeferredHolder<Block, BlockEntityType<TrophyTile>> TROPHY_TYPE = TILE_ENTITIES.register("trophy", () -> build(BlockEntityType.Builder.of(TrophyTile::new, TROPHY.get())));
 
     static {
         registerBlocks();
     }
 
-    public static <BLOCK extends Block> RegistryObject<BLOCK> registerBlockWithItem(String name, DeferredRegister<Block> blocks, DeferredRegister<Item> items, Supplier<BLOCK> blockSupplier, Function<BLOCK, Item> itemFactory) {
-        RegistryObject<BLOCK> block = blocks.register(name, blockSupplier);
+    public static <BLOCK extends Block> DeferredHolder<Block, BLOCK> registerBlockWithItem(String name, DeferredRegister<Block> blocks, DeferredRegister<Item> items, Supplier<BLOCK> blockSupplier, Function<BLOCK, Item> itemFactory) {
+        DeferredHolder<Block, BLOCK> block = blocks.register(name, blockSupplier);
         items.register(name, () -> itemFactory.apply(block.get()));
         return block;
     }
 
-    public static <BLOCK extends Block> RegistryObject<BLOCK> registerBlockWithItem(String name, Supplier<BLOCK> blockSupplier, Function<BLOCK, Item> itemFactory) {
+    public static <BLOCK extends Block> DeferredHolder<Block, BLOCK> registerBlockWithItem(String name, Supplier<BLOCK> blockSupplier, Function<BLOCK, Item> itemFactory) {
         return registerBlockWithItem(name, BLOCKS, ITEMS, blockSupplier, itemFactory);
     }
 
-    public static <BLOCK extends Block> RegistryObject<BLOCK> registerBlockWithItem(String name, Supplier<BLOCK> blockSupplier) {
+    public static <BLOCK extends Block> DeferredHolder<Block, BLOCK> registerBlockWithItem(String name, Supplier<BLOCK> blockSupplier) {
         return registerBlockWithItem(name, BLOCKS, ITEMS, blockSupplier, APBlockItem::new);
     }
 

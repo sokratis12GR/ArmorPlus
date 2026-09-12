@@ -12,11 +12,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.armortrim.TrimMaterial;
 import net.minecraft.world.item.armortrim.TrimMaterials;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.client.model.generators.ItemModelBuilder;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.LinkedHashMap;
 import java.util.Set;
@@ -74,7 +74,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         generateBlockItemModel(ModBlocks.SOUL_BOX);
     }
 
-    private void generateItemModel(RegistryObject<Item> item) {
+    private void generateItemModel(DeferredHolder<Item, Item> item) {
         ResourceLocation itemId = item.getId();
         String path = itemId.getPath();
         ResourceLocation textureID = itemId;
@@ -97,50 +97,50 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     @SafeVarargs
-    private void generateItemModel(RegistryObject<Item>... items) {
-        for (RegistryObject<Item> item : items) {
+    private void generateItemModel(DeferredHolder<Item, Item>... items) {
+        for (DeferredHolder<Item, Item> item : items) {
             generateItemModel(item);
         }
     }
 
-    private void generateItemModel(Set<RegistryObject<Item>> items) {
-        for (RegistryObject<Item> item : items) {
+    private void generateItemModel(Set<DeferredHolder<Item, Item>> items) {
+        for (DeferredHolder<Item, Item> item : items) {
             generateItemModel(item);
         }
     }
 
-    private void generateSwordModel(RegistryObject<Item> item) {
+    private void generateSwordModel(DeferredHolder<Item, Item> item) {
         this.withExistingParent(item.getId().getPath(), modLoc("handheld_sword"))
                 .texture("layer0", modLoc("item/" + item.getId().getPath()));
     }
 
     @SafeVarargs
-    private void generateSwordModel(RegistryObject<Item>... items) {
-        for (RegistryObject<Item> item : items) {
+    private void generateSwordModel(DeferredHolder<Item, Item>... items) {
+        for (DeferredHolder<Item, Item> item : items) {
             generateSwordModel(item);
         }
     }
 
-    private void generateBattleAxeModel(RegistryObject<Item> item) {
+    private void generateBattleAxeModel(DeferredHolder<Item, Item> item) {
         this.withExistingParent(item.getId().getPath(), modLoc("handheld_battle_axe"))
                 .texture("layer0", modLoc("item/" + item.getId().getPath()));
     }
 
     @SafeVarargs
-    private void generateBattleAxeModel(RegistryObject<Item>... items) {
-        for (RegistryObject<Item> item : items) {
+    private void generateBattleAxeModel(DeferredHolder<Item, Item>... items) {
+        for (DeferredHolder<Item, Item> item : items) {
             generateBattleAxeModel(item);
         }
     }
 
-    private void generateArmorModels(Set<RegistryObject<? extends APArmorItem>> items) {
-        for (RegistryObject<? extends APArmorItem> obj : items) {
+    private void generateArmorModels(Set<DeferredHolder<Item, ? extends APArmorItem>> items) {
+        for (DeferredHolder<Item, ? extends APArmorItem> obj : items) {
             generateTrimmableItemModel(obj);
         }
     }
 
 
-    private void generateTrimmableItemModel(RegistryObject<? extends APArmorItem> itemRegistryObject) {
+    private void generateTrimmableItemModel(DeferredHolder<Item, ? extends APArmorItem> itemRegistryObject) {
         if (!(itemRegistryObject.get() instanceof ArmorItem armorItem)) return;
 
         String itemName = itemRegistryObject.getId().getPath();
@@ -193,7 +193,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         });
     }
 
-    private ItemModelBuilder generateBlockItemModel(RegistryObject<? extends Block> item) {
+    private ItemModelBuilder generateBlockItemModel(DeferredHolder<? extends Block, ? extends Block> item) {
         return withExistingParent(item.getId().getPath(),
                 ResourceLocation.fromNamespaceAndPath(MODID, "block/" + item.getId().getPath()));
     }

@@ -7,9 +7,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.function.Supplier;
 
@@ -20,26 +20,26 @@ import static net.minecraft.world.entity.MobCategory.MISC;
 
 public class ModEntities {
 
-    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, MODID);
+    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, MODID);
 
     //Arrows
-    public static final RegistryObject<EntityType<APArrowEntity>> COAL_ARROW = register("coal_arrow",
+    public static final DeferredHolder<EntityType<?>, EntityType<APArrowEntity>> COAL_ARROW = register("coal_arrow",
             () -> buildArrow(CoalArrowEntity::new, COAL));
-    public static final RegistryObject<EntityType<APArrowEntity>> LAPIS_ARROW = register("lapis_arrow",
+    public static final DeferredHolder<EntityType<?>, EntityType<APArrowEntity>> LAPIS_ARROW = register("lapis_arrow",
             () -> buildArrow(LapisArrowEntity::new, LAPIS));
-    public static final RegistryObject<EntityType<APArrowEntity>> REDSTONE_ARROW = register("redstone_arrow",
+    public static final DeferredHolder<EntityType<?>, EntityType<APArrowEntity>> REDSTONE_ARROW = register("redstone_arrow",
             () -> buildArrow(RedstoneArrowEntity::new, REDSTONE));
-    public static final RegistryObject<EntityType<APArrowEntity>> EMERALD_ARROW = register("emerald_arrow",
+    public static final DeferredHolder<EntityType<?>, EntityType<APArrowEntity>> EMERALD_ARROW = register("emerald_arrow",
             () -> buildArrow(EmeraldArrowEntity::new, EMERALD));
-    public static final RegistryObject<EntityType<APArrowEntity>> OBSIDIAN_ARROW = register("obsidian_arrow",
+    public static final DeferredHolder<EntityType<?>, EntityType<APArrowEntity>> OBSIDIAN_ARROW = register("obsidian_arrow",
             () -> buildArrow(ObsidianArrowEntity::new, OBSIDIAN));
-    public static final RegistryObject<EntityType<APArrowEntity>> INFUSED_LAVA_ARROW = register("infused_lava_arrow",
+    public static final DeferredHolder<EntityType<?>, EntityType<APArrowEntity>> INFUSED_LAVA_ARROW = register("infused_lava_arrow",
             () -> buildArrow(InfusedLavaArrowEntity::new, INFUSED_LAVA));
-    public static final RegistryObject<EntityType<APArrowEntity>> GUARDIAN_ARROW = register("guardian_arrow",
+    public static final DeferredHolder<EntityType<?>, EntityType<APArrowEntity>> GUARDIAN_ARROW = register("guardian_arrow",
             () -> buildArrow(GuardianArrowEntity::new, GUARDIAN));
-    public static final RegistryObject<EntityType<APArrowEntity>> SUPER_STAR_ARROW = register("super_star_arrow",
+    public static final DeferredHolder<EntityType<?>, EntityType<APArrowEntity>> SUPER_STAR_ARROW = register("super_star_arrow",
             () -> buildArrow(SuperStarArrowEntity::new, SUPER_STAR));
-    public static final RegistryObject<EntityType<APArrowEntity>> ENDER_DRAGON_ARROW = register("ender_dragon_arrow",
+    public static final DeferredHolder<EntityType<?>, EntityType<APArrowEntity>> ENDER_DRAGON_ARROW = register("ender_dragon_arrow",
             () -> buildArrow(EnderDragonArrowEntity::new, ENDER_DRAGON));
 
     /////////////////////
@@ -47,7 +47,7 @@ public class ModEntities {
 
     /// //////////////////
 
-    public static <ENTITY extends Entity> RegistryObject<EntityType<ENTITY>> register(String name, Supplier<EntityType<ENTITY>> sup) {
+    public static <ENTITY extends Entity> DeferredHolder<EntityType<?>, EntityType<ENTITY>> register(String name, Supplier<EntityType<ENTITY>> sup) {
         return ENTITY_TYPES.register(name, sup);
     }
 

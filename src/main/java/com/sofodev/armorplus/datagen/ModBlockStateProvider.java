@@ -2,9 +2,9 @@ package com.sofodev.armorplus.datagen;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 
@@ -18,7 +18,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     }
 
-    private void blockWithItem(RegistryObject<Block> block) {
+    private void blockWithItem(DeferredHolder<Block, Block> block) {
         simpleBlockWithItem(block.get(), cubeAll(block.get()));
     }
 }

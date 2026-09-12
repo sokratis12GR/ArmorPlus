@@ -7,8 +7,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.common.data.ForgeAdvancementProvider;
+import net.neoforged.neoforge.common.data.AdvancementProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -19,7 +19,7 @@ import static com.sofodev.armorplus.utils.Utils.getItemByName;
 import static net.minecraft.advancements.AdvancementRequirements.Strategy.AND;
 import static net.minecraft.advancements.AdvancementRequirements.Strategy.OR;
 
-public class ModAdvancementProvider implements ForgeAdvancementProvider.AdvancementGenerator {
+public class ModAdvancementProvider implements AdvancementProvider.AdvancementGenerator {
 
     @Override
     public void generate(HolderLookup.Provider registries, Consumer<AdvancementHolder> saver, ExistingFileHelper existingFileHelper) {

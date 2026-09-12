@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.events;
 
 import com.sofodev.armorplus.ArmorPlus;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
@@ -13,10 +14,9 @@ import net.minecraft.world.item.enchantment.providers.EnchantmentProvider;
 import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.event.village.VillagerTradesEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.village.VillagerTradesEvent;
 
 import java.util.Optional;
 import java.util.Random;
@@ -28,7 +28,7 @@ import static com.sofodev.armorplus.utils.Utils.setRL;
 import static java.util.Arrays.asList;
 import static net.minecraft.world.item.Items.*;
 
-@Mod.EventBusSubscriber(modid = ArmorPlus.MODID)
+@EventBusSubscriber(modid = ArmorPlus.MODID)
 public class ModVillagerTradesEvents {
 
     @SubscribeEvent
@@ -36,7 +36,7 @@ public class ModVillagerTradesEvents {
         Random rand = new Random();
         RandomSource randSource = RandomSource.create();
         VillagerProfession type = e.getType();
-        if (type.equals(ForgeRegistries.VILLAGER_PROFESSIONS.getValue(setRL("soul_exchanger")))) {
+        if (type.equals(BuiltInRegistries.VILLAGER_PROFESSION.get(setRL("soul_exchanger")))) {
             ItemStack witherSoul = new ItemStack(getAPItem(WITHER_BOSS_SOUL.getKey()), 1);
             ItemStack enderDragonSoul = new ItemStack(getAPItem(ENDER_DRAGON_SOUL.getKey()), 1);
             ItemStack elderGuardianSoul = new ItemStack(getAPItem(ELDER_GUARDIAN_SOUL.getKey()), 1);

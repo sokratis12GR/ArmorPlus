@@ -15,7 +15,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -43,52 +43,52 @@ public class CraftingRecipeMaker extends RecipeProvider {
         return new CraftingRecipeMaker(generator, provider);
     }
 
-    public void buildSword(RecipeOutput con, RegistryObject<? extends Item> sword, ItemLike material, ItemLike handle) {
+    public void buildSword(RecipeOutput con, DeferredHolder<? extends Item, ? extends Item> sword, ItemLike material, ItemLike handle) {
         String path = getPath(sword).replace("item_", "").replace("_sword", "").replace("_base", "");
         build(con, RecipeCategory.COMBAT, Result.build(sword.get(), path + "_swords", path), GridInput.build("M  ", "M  ", "S  ", 'S', 'M'), handle, of(material));
     }
 
-    public void buildSword(RecipeOutput con, RegistryObject<? extends Item> sword, ItemLike material, ItemLike core, ItemLike handle) {
+    public void buildSword(RecipeOutput con, DeferredHolder<? extends Item, ? extends Item> sword, ItemLike material, ItemLike core, ItemLike handle) {
         String path = getPath(sword).replace("item_", "").replace("_sword", "").replace("_base", "");
         build(con, RecipeCategory.COMBAT, Result.build(sword.get(), path + "_swords", path), GridInput.build("M  ", "C  ", "S  ", 'S', 'M', 'C'), handle, of(material), of(core));
     }
 
-    public void buildSword(RecipeOutput con, RegistryObject<? extends Item> sword, ItemLike material, ItemLike coreA, ItemLike coreB, ItemLike coreC, ItemLike handle) {
+    public void buildSword(RecipeOutput con, DeferredHolder<? extends Item, ? extends Item> sword, ItemLike material, ItemLike coreA, ItemLike coreB, ItemLike coreC, ItemLike handle) {
         String path = getPath(sword).replace("item_", "").replace("_sword", "").replace("_base", "");
         build(con, RecipeCategory.COMBAT, Result.build(sword.get(), path + "_swords", path), GridInput.build(" M ", "ABC", " S ", 'S', 'M', 'A', 'B', 'C'), handle, of(material), of(coreA), of(coreB), of(coreC));
     }
 
-    public void buildBattleAxe(RecipeOutput con, RegistryObject<? extends Item> battleAxe, ItemLike material, ItemLike handle) {
+    public void buildBattleAxe(RecipeOutput con, DeferredHolder<? extends Item, ? extends Item> battleAxe, ItemLike material, ItemLike handle) {
         String path = getPath(battleAxe).replace("item_", "").replace("_battle_axe", "").replace("_base", "");
         build(con, RecipeCategory.TOOLS, Result.build(battleAxe.get(), path + "_battle_axes", path), GridInput.build("M M", "MSM", " S ", 'S', 'M'), handle, of(material));
     }
 
-    public void buildBattleAxe(RecipeOutput con, RegistryObject<? extends Item> battleAxe, ItemLike material, ItemLike core, ItemLike handle) {
+    public void buildBattleAxe(RecipeOutput con, DeferredHolder<? extends Item, ? extends Item> battleAxe, ItemLike material, ItemLike core, ItemLike handle) {
         String path = getPath(battleAxe).replace("item_", "").replace("_battle_axe", "").replace("_base", "");
         build(con, RecipeCategory.TOOLS, Result.build(battleAxe.get(), path + "_battle_axes", path), GridInput.build("M M", "MCM", " S ", 'S', 'M', 'C'), handle, of(material), Ingredient.of(core));
     }
 
-    public void buildBattleAxe(RecipeOutput con, RegistryObject<? extends Item> battleAxe, ItemLike material, ItemLike coreA, ItemLike coreB, ItemLike coreC, ItemLike handle) {
+    public void buildBattleAxe(RecipeOutput con, DeferredHolder<? extends Item, ? extends Item> battleAxe, ItemLike material, ItemLike coreA, ItemLike coreB, ItemLike coreC, ItemLike handle) {
         String path = getPath(battleAxe).replace("item_", "").replace("_battle_axe", "").replace("_base", "");
         build(con, RecipeCategory.TOOLS, Result.build(battleAxe.get(), path + "_battle_axes", path), GridInput.build("M M", "ABC", " S ", 'S', 'M', 'A', 'B', 'C'), handle, of(material), of(coreA), of(coreB), of(coreC));
     }
 
-    public void buildPickaxe(RecipeOutput con, RegistryObject<? extends Item> battleAxe, ItemLike material, ItemLike handle) {
+    public void buildPickaxe(RecipeOutput con, DeferredHolder<? extends Item, ? extends Item> battleAxe, ItemLike material, ItemLike handle) {
         String path = getPath(battleAxe).replace("item_", "").replace("_pickaxe", "").replace("_base", "");
         build(con, RecipeCategory.TOOLS, Result.build(battleAxe.get(), path + "_pickaxes", path), GridInput.build("MMM", " S ", " S ", 'S', 'M'), handle, of(material));
     }
 
-    public void buildPickaxe(RecipeOutput con, RegistryObject<? extends Item> battleAxe, ItemLike material, ItemLike core, ItemLike handle) {
+    public void buildPickaxe(RecipeOutput con, DeferredHolder<? extends Item, ? extends Item> battleAxe, ItemLike material, ItemLike core, ItemLike handle) {
         String path = getPath(battleAxe).replace("item_", "").replace("_pickaxe", "").replace("_base", "");
         build(con, RecipeCategory.TOOLS, Result.build(battleAxe.get(), path + "_pickaxes", path), GridInput.build("MMM", " C ", " S ", 'S', 'M', 'C'), handle, of(material), of(core));
     }
 
-    public void buildPickaxe(RecipeOutput con, RegistryObject<? extends Item> battleAxe, ItemLike material, ItemLike coreA, ItemLike coreB, ItemLike coreC, ItemLike handle) {
+    public void buildPickaxe(RecipeOutput con, DeferredHolder<? extends Item, ? extends Item> battleAxe, ItemLike material, ItemLike coreA, ItemLike coreB, ItemLike coreC, ItemLike handle) {
         String path = getPath(battleAxe).replace("item_", "").replace("_pickaxe", "").replace("_base", "");
         build(con, RecipeCategory.TOOLS, Result.build(battleAxe.get(), path + "_pickaxes", path), GridInput.build("AMC", " B ", " S ", 'S', 'M', 'A', 'B', 'C'), handle, of(material), of(coreA), of(coreB), of(coreC));
     }
 
-    public void buildBow(RecipeOutput con, RegistryObject<? extends Item> bow, ItemLike material) {
+    public void buildBow(RecipeOutput con, DeferredHolder<? extends Item, ? extends Item> bow, ItemLike material) {
         String path = getPath(bow).replace("item_", "").replace("_bow", "").replace("_base", "");
         build(con, RecipeCategory.COMBAT, Result.build(bow.get(), path + "_bows", path), GridInput.build("SM ", "S M", "SM ", 'S', 'M'), Items.STRING, of(material));
 
@@ -96,7 +96,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
                 .setSuffix("_alt"), GridInput.build(" MS", "M S", " MS", 'S', 'M'), Items.STRING, of(material));
     }
 
-    public void buildBow(RecipeOutput con, RegistryObject<? extends Item> bow, ItemLike core, ItemLike material) {
+    public void buildBow(RecipeOutput con, DeferredHolder<? extends Item, ? extends Item> bow, ItemLike core, ItemLike material) {
         String path = getPath(bow).replace("item_", "").replace("_bow", "").replace("_base", "");
         build(con, RecipeCategory.COMBAT, Result.build(bow.get(), path + "_bows", path), GridInput.build("SM ", "S C", "SM ", 'S', 'M', 'C'), Items.STRING, of(material), of(core));
 
@@ -104,7 +104,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
                 .setSuffix("_alt"), GridInput.build(" MS", "C S", " MS", 'S', 'M', 'C'), Items.STRING, of(material), of(core));
     }
 
-    public void buildBow(RecipeOutput con, RegistryObject<? extends Item> bow, ItemLike material, ItemLike coreA, ItemLike coreB, ItemLike coreC) {
+    public void buildBow(RecipeOutput con, DeferredHolder<? extends Item, ? extends Item> bow, ItemLike material, ItemLike coreA, ItemLike coreB, ItemLike coreC) {
         String path = getPath(bow).replace("item_", "").replace("_bow", "").replace("_base", "");
         build(con, RecipeCategory.COMBAT, Result.build(bow.get(), path + "_bows", path), GridInput.build("SAM", "SBM", "SCM", 'S', 'M', 'A', 'B', 'C'), Items.STRING, of(material), of(coreA), of(coreB), of(coreC));
 
@@ -161,7 +161,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
     }
 
     //END - TRI-CORES
-    public void buildEnhanced(RecipeOutput con, RegistryObject<Item> enMaterial, ItemLike material) {
+    public void buildEnhanced(RecipeOutput con, DeferredHolder<Item, Item> enMaterial, ItemLike material) {
         this.buildFilling(con, Result.build(enMaterial.get(), "ap_en_mats", "enhanced"), material, Items.GLOWSTONE_DUST);
     }
 
@@ -174,26 +174,26 @@ public class CraftingRecipeMaker extends RecipeProvider {
      * @param mat        a material from the boss soul's dimension
      * @param extra      some extra ingredients from the same dimension
      */
-    public void buildSoul(RecipeOutput con, RegistryObject<Item> bossSoul, ItemLike lesserSoul, ItemLike mat, ItemLike extra) {
+    public void buildSoul(RecipeOutput con, DeferredHolder<Item, Item> bossSoul, ItemLike lesserSoul, ItemLike mat, ItemLike extra) {
         this.build(con, RecipeCategory.MISC, Result.build(bossSoul.get(), 1, "ap_souls", "soul"), GridInput.build("ESE", "SXS", "ESE", 'S', 'X', 'E'), lesserSoul, of(mat), of(extra));
     }
 
-    public void buildOrderedArrow(RecipeOutput con, List<RegistryObject<ArrowItem>> arrows) {
+    public void buildOrderedArrow(RecipeOutput con, List<DeferredHolder<Item, ArrowItem>> arrows) {
         IntStream.range(0, arrows.size())
                 .forEach(i -> buildArrow(con, arrows.get(i), Recipes.MATERIALS_ORDERED.get(i)));
     }
 
-    public void buildArrow(RecipeOutput con, RegistryObject<ArrowItem> arrow, ItemLike material) {
+    public void buildArrow(RecipeOutput con, DeferredHolder<Item, ArrowItem> arrow, ItemLike material) {
         String path = getPath(arrow).replace("item_", "").replace("_arrow", "");
         String group = "ap_arrows";
         this.buildFilling(con, Result.build(arrow.get(), 8, group, path), material, Items.ARROW);
     }
 
-    public void buildColoredBrick(RecipeOutput con, RegistryObject<Block> bricks, TagKey<Item> color) {
+    public void buildColoredBrick(RecipeOutput con, DeferredHolder<Block, Block> bricks, TagKey<Item> color) {
         this.buildFilling(con, Result.build(bricks.get(), 8, "colored_stone_bricks", "bricks"), Items.STONE_BRICKS, of(color));
     }
 
-    public void buildStoneBrick(RecipeOutput con, RegistryObject<Block> bricks, RegistryObject<Block> tower, RegistryObject<Block> corner, RegistryObject<Block> wall, RegistryObject<Block> stairs, RegistryObject<Block> slab) {
+    public void buildStoneBrick(RecipeOutput con, DeferredHolder<Block, Block> bricks, DeferredHolder<Block, Block> tower, DeferredHolder<Block, Block> corner, DeferredHolder<Block, Block> wall, DeferredHolder<Block, Block> stairs, DeferredHolder<Block, Block> slab) {
         final String group = "stone_brick";
         final String pathWall = "wall";
         final String pathTower = "tower";
@@ -469,7 +469,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
     }
 
     private void addIngredients(ShapelessRecipeBuilder builder, Ingredient input) {
-        if (!input.isSimple()) {
+        if (!input.isEmpty()) {
             builder.requires(input);
         }
     }

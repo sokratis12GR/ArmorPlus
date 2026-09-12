@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.events;
 
 import com.sofodev.armorplus.ArmorPlus;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -11,25 +12,20 @@ import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.SpawnData;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 
 import java.util.Map;
 import java.util.function.Supplier;
 
 import static com.sofodev.armorplus.ArmorPlus.config;
 import static com.sofodev.armorplus.events.ModGlobalEvents.RAND;
-import static com.sofodev.armorplus.registry.ModEnchantments.SOUL_STEALER;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
 
-@Mod.EventBusSubscriber(modid = ArmorPlus.MODID)
+@EventBusSubscriber(modid = ArmorPlus.MODID)
 public class ModDropsEvents {
-
 
     @SubscribeEvent
     public static void onMobDeathEvent(LivingDropsEvent event) {
@@ -38,15 +34,10 @@ public class ModDropsEvents {
         boolean isSourcePlayer = trueSource instanceof ServerPlayer;
         ServerPlayer player;
         ItemStack heldItem;
-        boolean hasSoulStealer = false;
-        if (isSourcePlayer) {
-            player = (ServerPlayer) trueSource;
-            heldItem = player.getMainHandItem();
-            int enchantmentLevel = EnchantmentHelper.getItemEnchantmentLevel(SOUL_STEALER.getOrThrow(player), heldItem);
-            if (enchantmentLevel > 0) {
-                hasSoulStealer = true;
-            }
-        }
+        boolean hasSoulStealer = true;
+//        if (isSourcePlayer) {
+//                hasSoulStealer = true;
+//        }
 
         record MobDropConfig(Supplier<Boolean> trophyEnabled, Supplier<Boolean> regularEnabled,
                              Supplier<Boolean> soulEnabled, String regularItem, int regularAmountMin,
@@ -116,7 +107,7 @@ public class ModDropsEvents {
         ItemStack trophy = new ItemStack(getAPItem("trophy"));
         CompoundTag tag = new CompoundTag();
         SpawnData trophyEntity = new SpawnData();
-        ResourceLocation key = ForgeRegistries.ENTITY_TYPES.getKey(type);
+        ResourceLocation key = BuiltInRegistries.ENTITY_TYPE.getKey(type);
         if (key == null) key = ResourceLocation.parse("minecraft:pig");
         trophyEntity.getEntityToSpawn().putString("id", key.toString());
         tag.put("DisplayEntity", trophyEntity.getEntityToSpawn().copy());

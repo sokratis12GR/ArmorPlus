@@ -2,6 +2,7 @@ package com.sofodev.armorplus.registry.item.extra;
 
 import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
@@ -26,7 +27,7 @@ public interface IBuff {
     Holder<MobEffect> getEffect();
 
     /**
-     * Copies the method from {@link ArmorItem#onInventoryTick(ItemStack, Level, Player, int, int)}
+     * Copies the method from {@link ArmorItem#inventoryTick(ItemStack, Level, Entity, int, boolean)}
      * <p>
      * Used to apply buff (effects) or abilities, on armor tick.
      */

@@ -28,10 +28,10 @@ import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.DynamicOps;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.config.ModConfig;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec.ConfigValue;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -67,9 +67,11 @@ public class ConfigHelper {
      * @return An instance of your config class
      */
     public static <T> T register(
+            final ModContainer modContainer,
             final ModConfig.Type configType,
-            final Function<ForgeConfigSpec.Builder, T> configFactory) {
-        return register(configType, configFactory, null);
+            final Function<ModConfigSpec.Builder, T> configFactory) {
+
+        return register(modContainer, configType, configFactory, null);
     }
 
     /**
@@ -87,18 +89,21 @@ public class ConfigHelper {
      * @return An instance of your config class
      */
     public static <T> T register(
+            final ModContainer modContainer,
             final ModConfig.Type configType,
-            final Function<ForgeConfigSpec.Builder, T> configFactory,
+            final Function<ModConfigSpec.Builder, T> configFactory,
             final @Nullable String configName) {
-        final ModLoadingContext modContext = ModLoadingContext.get();
-        final org.apache.commons.lang3.tuple.Pair<T, ForgeConfigSpec> entry = new ForgeConfigSpec.Builder()
-                .configure(configFactory);
+
+        final org.apache.commons.lang3.tuple.Pair<T, ModConfigSpec> entry =
+                new ModConfigSpec.Builder().configure(configFactory);
+
         final T config = entry.getLeft();
-        final ForgeConfigSpec spec = entry.getRight();
+        final ModConfigSpec spec = entry.getRight();
+
         if (configName == null) {
-            modContext.registerConfig(configType, spec);
+            modContainer.registerConfig(configType, spec);
         } else {
-            modContext.registerConfig(configType, spec, configName + ".toml");
+            modContainer.registerConfig(configType, spec, configName + ".toml");
         }
 
         return config;
@@ -116,7 +121,7 @@ public class ConfigHelper {
      *                      If the codec fails to deserialize the config field at a later time, an error message will be logged and this default instance will be used instead.
      * @return A reload-sensitive wrapper around your config object value. Use ConfigObject#get to get the most up-to-date object.
      */
-    public static <T> ConfigObject<T> defineObject(ForgeConfigSpec.Builder builder, String name, Codec<T> codec, T defaultObject) {
+    public static <T> ConfigObject<T> defineObject(ModConfigSpec.Builder builder, String name, Codec<T> codec, T defaultObject) {
         DataResult<Object> encodeResult = codec.encodeStart(TomlConfigOps.INSTANCE, defaultObject);
         Object encodedObject = encodeResult.getOrThrow();
         ConfigValue<Object> value = builder.define(name, encodedObject);

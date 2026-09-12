@@ -4,6 +4,7 @@ import com.sofodev.armorplus.registry.item.extra.Buff;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
@@ -34,23 +35,27 @@ public class APArmorItem extends ArmorItem {
     }
 
     @Override
-    public void onInventoryTick(ItemStack stack, Level level, Player player, int slotIndex, int selectedIndex) {
+    public void inventoryTick(ItemStack stack, Level level, Entity player, int slotIndex, boolean p_41408_) {
         if (level.isClientSide() || !mat.config().enableArmorEffects().get()) return;
 
         List<BuffInstance> buffs = mat.getBuffInstances() != null ? mat.getBuffInstances().get() : List.of();
         if (buffs.isEmpty()) return;
 
+        if (!(player instanceof Player)) return;
+        Player playerEntity = (Player) player;
+
         for (BuffInstance instance : buffs) {
             if (!(instance.getBuff() instanceof Buff) || !instance.isEnabled()) continue;
 
-            if (instance.getBuff().requiresFullSet() && !areExactMatch(mat, player)) continue;
+            if (instance.getBuff().requiresFullSet() && !areExactMatch(mat, playerEntity)) continue;
 
             if (instance.getBuff().isEffect()) {
-                if (!player.hasEffect(instance.getEffect().getEffect())) {
-                    instance.onInventoryTick(stack, level, player);
+                if (!playerEntity.hasEffect(instance.getEffect().getEffect())) {
+                    instance.onInventoryTick(stack, level, playerEntity);
                 }
+
             } else {
-                instance.onInventoryTick(stack, level, player);
+                instance.onInventoryTick(stack, level, playerEntity);
             }
         }
     }

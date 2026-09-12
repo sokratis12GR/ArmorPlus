@@ -7,6 +7,7 @@ package com.sofodev.armorplus.utils;
 import com.sofodev.armorplus.registry.item.armor.APRepair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -16,9 +17,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.fml.loading.FMLConfig;
-import net.minecraftforge.fml.loading.FMLPaths;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.fml.loading.FMLConfig;
+import net.neoforged.fml.loading.FMLPaths;
 
 import javax.annotation.Nullable;
 import java.nio.file.Path;
@@ -123,11 +123,11 @@ public final class Utils {
     }
 
     public static Item getItemByName(String name) {
-        return ForgeRegistries.ITEMS.getValue(ResourceLocation.parse(name));
+        return BuiltInRegistries.ITEM.get(ResourceLocation.parse(name));
     }
 
     public static Item getAPItem(String name) {
-        return ForgeRegistries.ITEMS.getValue(setRL(name));
+        return BuiltInRegistries.ITEM.get(setRL(name));
     }
 
     public static ItemStack getAPItemStack(String name) {
@@ -135,7 +135,7 @@ public final class Utils {
     }
 
     public static Item getAPItem(ResourceKey<Item> key) {
-        return ForgeRegistries.ITEMS.getDelegateOrThrow(key).get();
+        return BuiltInRegistries.ITEM.getHolder(key).get().value();
     }
 
     public static ItemStack createSingleStack(ItemLike item) {
@@ -143,7 +143,7 @@ public final class Utils {
     }
 
     public static Block getAPBlock(String name) {
-        return ForgeRegistries.BLOCKS.getValue(setRL(name));
+        return BuiltInRegistries.BLOCK.get(setRL(name));
     }
 
     public static ResourceLocation setRL(String path) {
@@ -188,7 +188,7 @@ public final class Utils {
 
     public static ItemStack getTCIngot(int meta) {
         if (Loader.TCONSTRUCT.isLoaded()) {
-            Item ingot = ForgeRegistries.ITEMS.getValue(ResourceLocation.parse("tconstruct:ingots"));
+            Item ingot = BuiltInRegistries.ITEM.get(ResourceLocation.parse("tconstruct:ingots"));
             if (ingot != null) {
                 return new ItemStack(ingot, 1);
             }

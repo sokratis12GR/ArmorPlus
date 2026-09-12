@@ -1,9 +1,9 @@
 package com.sofodev.armorplus.config;
 
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
-import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
+import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec.BooleanValue;
+import net.neoforged.neoforge.common.ModConfigSpec.ConfigValue;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import static java.util.Arrays.asList;
 
 public class ArmorPlusConfig {
 
-    private static final ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
+    private static final ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 
     public static MaterialConfig coalMaterial;
     public static MaterialConfig lapisMaterial;
@@ -62,7 +62,7 @@ public class ArmorPlusConfig {
     public static DropConfig blazeDrops;
 
 
-    public static ArmorPlusConfig create(ForgeConfigSpec.Builder builder) {
+    public static ArmorPlusConfig create(ModConfigSpec.Builder builder) {
         //Advancements
         builder.comment("Configure Items")
                 .push("items");
@@ -109,7 +109,7 @@ public class ArmorPlusConfig {
 
     public record MaterialConfig(ConfigValue<Boolean> enableArmorEffects, ConfigValue<Boolean> enableWeaponEffects) implements IMaterialConfig {
 
-        public static MaterialConfig create(String name, ForgeConfigSpec.Builder builder) {
+        public static MaterialConfig create(String name, ModConfigSpec.Builder builder) {
             builder.comment(name + " equipment Configuration")
                     .push(name);
             ConfigValue<Boolean> enableArmorEffects = (builder.comment(name + " armor: enable/disable full set effects")
@@ -153,7 +153,7 @@ public class ArmorPlusConfig {
                                          ConfigValue<Boolean> enableNaturalImmunity,
                                          ConfigValue<Boolean> enableFireExtinguish) implements IMaterialConfig {
 
-        public static AdvancedMaterialConfig create(String name, ForgeConfigSpec.Builder builder,
+        public static AdvancedMaterialConfig create(String name, ModConfigSpec.Builder builder,
                                                     boolean enableNightVision, int amplifierNightVision, boolean enableWaterBreathing, int amplifierWaterBreathing, boolean enableStrength, int amplifierStrength,
                                                     boolean enableSpeed, int amplifierSpeed, boolean enableHaste, int amplifierHaste, boolean enableJumpBoost, int amplifierJumpBoost,
                                                     boolean enableRegeneration, int amplifierRegeneration, boolean enableResistance, int amplifierResistance, boolean enableFireResistance, int amplifierFireResistance,
@@ -248,7 +248,7 @@ public class ArmorPlusConfig {
 
     public record DropConfig(ConfigValue<Boolean> enableRegularDrops, ConfigValue<Boolean> enableSoulDrops) {
 
-        public static DropConfig create(String name, ForgeConfigSpec.Builder builder) {
+        public static DropConfig create(String name, ModConfigSpec.Builder builder) {
             builder.comment(name + " drop configuration")
                     .push(name);
             ConfigValue<Boolean> enableRegularDrops = (builder.comment(MODNAME + "'s " + name + " regular drops: enable/disable")
@@ -266,7 +266,7 @@ public class ArmorPlusConfig {
                                  ConfigValue<Boolean> enableSoulDrops) {
 
 
-        public static BossDropConfig create(String name, ForgeConfigSpec.Builder builder) {
+        public static BossDropConfig create(String name, ModConfigSpec.Builder builder) {
             builder.comment(name + " drop configuration")
                     .push(name);
             ConfigValue<Boolean> enableTrophyDrops = (builder.comment(MODNAME + "'s " + name + " trophy drops: enable/disable  (CURRENTLY DISABLED BY THE MOD)")

@@ -18,11 +18,12 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.event.TickEvent.PlayerTickEvent;
-import net.minecraftforge.event.entity.EntityStruckByLightningEvent;
-import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.neoforge.event.entity.EntityStruckByLightningEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
 
 import java.util.Random;
 
@@ -32,7 +33,7 @@ import static com.sofodev.armorplus.utils.ItemArmorUtility.areExactMatch;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
 import static net.minecraft.world.phys.Vec3.atBottomCenterOf;
 
-@Mod.EventBusSubscriber(modid = ArmorPlus.MODID)
+@EventBusSubscriber(modid = ArmorPlus.MODID)
 public class ModGlobalEvents {
 
     public static final Random RAND = new Random();
@@ -105,8 +106,8 @@ public class ModGlobalEvents {
     }
 
     @SubscribeEvent
-    public static void onPlayerTickEvent(PlayerTickEvent e) {
-        Player player = e.player;
+    public static void onPlayerTickEvent(PlayerTickEvent.Post e) {
+        Player player = e.getEntity();
         Level world = player.level();
         if (world.isClientSide()) return;
 
@@ -121,8 +122,8 @@ public class ModGlobalEvents {
 //            if (!hasEnchant(item, "unknown")) continue;
             if (armor.getEquipmentSlot() != EquipmentSlot.HEAD) continue;
 
-            ArmorMaterial material = armor.getMaterial().get();
-            if (material != ArmorMaterials.IRON.get() && material != ArmorMaterials.CHAIN.get() && material != ArmorMaterials.GOLD.get())
+            ArmorMaterial material = armor.getMaterial().value();
+            if (material != ArmorMaterials.IRON.value() && material != ArmorMaterials.CHAIN.value() && material != ArmorMaterials.GOLD.value())
                 continue;
 
             BlockPos pos = player.blockPosition();

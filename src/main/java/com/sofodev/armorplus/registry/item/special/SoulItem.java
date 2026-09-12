@@ -9,7 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 import java.util.List;
 
@@ -38,7 +38,7 @@ public class SoulItem extends Item {
         Level level = ctx.level();
         if (level != null && level.isClientSide) {
             if (entity != null && !entity.isEmpty()) {
-                EntityType<?> value = ForgeRegistries.ENTITY_TYPES.getValue(ResourceLocation.parse(entity));
+                EntityType<?> value = BuiltInRegistries.ENTITY_TYPE.get(ResourceLocation.parse(entity));
                 if (value != null) {
                     Entity entity = value.create(level);
                     if (entity != null) {

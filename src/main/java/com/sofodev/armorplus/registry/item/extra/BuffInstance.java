@@ -3,6 +3,7 @@ package com.sofodev.armorplus.registry.item.extra;
 import com.sofodev.armorplus.registry.ModPotions;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
@@ -63,7 +64,7 @@ public class BuffInstance {
         this.buff = enabled ? buff : NONE;
         this.amplifier = -1;
         this.instant = true;
-        this.effect = new MobEffectInstance(ModPotions.EMPTY.getHolder().orElseThrow());
+        this.effect = new MobEffectInstance(ModPotions.EMPTY.getDelegate());
         this.enabled = true;
     }
 
@@ -71,7 +72,7 @@ public class BuffInstance {
         this.buff = buff;
         this.amplifier = -1;
         this.instant = true;
-        this.effect = new MobEffectInstance(ModPotions.EMPTY.getHolder().orElseThrow());
+        this.effect = new MobEffectInstance(ModPotions.EMPTY.getDelegate());
         this.enabled = true;
     }
 
@@ -92,7 +93,7 @@ public class BuffInstance {
     }
 
     /**
-     * Uses the {@link ArmorItem#onInventoryTick(ItemStack, Level, Player, int, int)} function to trigger buffs
+     * Uses the {@link ArmorItem#inventoryTick(ItemStack, Level, Entity, int, boolean)} function to trigger buffs
      * <p>
      * Applies Buff's effects.
      * <p>

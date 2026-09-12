@@ -5,7 +5,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 import java.util.Locale;
 import java.util.Random;
@@ -39,7 +39,7 @@ public enum DeBuff implements IBuff {
 
     DeBuff(boolean isEffect) {
         this.isEffect = isEffect;
-        this.effect = ForgeRegistries.MOB_EFFECTS.getHolder(Utils.mcLoc(this.name().toLowerCase(Locale.ENGLISH))).orElse(null);
+        this.effect = BuiltInRegistries.MOB_EFFECT.getHolder(Utils.mcLoc(this.name().toLowerCase(Locale.ENGLISH))).orElse(null);
     }
 
     DeBuff() {
