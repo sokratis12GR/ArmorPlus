@@ -55,6 +55,13 @@ public class ToolTipUtils {
         }
     }
 
+    /**
+     * Adds bow bonus damage information.
+     */
+    public static void addBowDamageInformation(List<Component> tooltip, double damage) {
+        tooltip.add(translate(DARK_GREEN, "tooltip.armorplus.bow.damage", damage));
+    }
+
     public static void addExperimentalItemInformation(List<Component> tooltip) {
         tooltip.add(translate(RED, "tooltip.armorplus.not_accessible"));
         tooltip.add(translate(RED, "tooltip.armorplus.not_accessible.2"));

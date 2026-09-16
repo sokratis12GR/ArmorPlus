@@ -41,6 +41,13 @@ public interface IAPTool {
     ChatFormatting getColor();
 
     /**
+     * @return Additional base damage applied to arrows fired from this material's bow.
+     */
+    default double getBowDamageBonus() {
+        return 0.0D;
+    }
+
+    /**
      * Applies a custom effect when a block is mined via the pickaxe
      *
      * @param stack  - The ItemStack object of the pickaxe

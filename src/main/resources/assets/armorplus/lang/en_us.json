@@ -765,6 +765,7 @@
   "tooltip.armorplus.not_accessible.2": "Only way to obtain this item is in Creative mode",
   "tooltip.armorplus.not_accessible.3": "Functionality is limited, experimental item",
   "tooltip.armorplus.trophy.dropped_by": "Dropped by: %s",
+  "tooltip.armorplus.bow.damage":  "+%s Arrow Damage",
   "_comment": "- Special",
   "tooltip.armorplus.thank_you.1": "10,000,000 downloads",
   "tooltip.armorplus.thank_you.2": "The adventure continues",
