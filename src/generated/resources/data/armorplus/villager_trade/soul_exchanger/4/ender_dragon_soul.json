@@ -1,0 +1,17 @@
+{
+  "additional_wants": {
+    "count": 4,
+    "id": "armorplus:soul_enderman"
+  },
+  "gives": {
+    "count": 1,
+    "id": "armorplus:soul_ender_dragon"
+  },
+  "max_uses": 4,
+  "reputation_discount": 0.05,
+  "wants": {
+    "count": 20,
+    "id": "minecraft:emerald"
+  },
+  "xp": 15
+}

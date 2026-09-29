@@ -1,0 +1,9 @@
+{
+  "amount": 2,
+  "random_sequence": "armorplus:trade_set/soul_exchanger/level_2",
+  "trades": [
+    "armorplus:soul_exchanger/2/lava_crystal",
+    "armorplus:soul_exchanger/2/frost_crystal",
+    "armorplus:soul_exchanger/2/blaze_rods"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "armorplus:the_ultimate_material",
+  "ingredients": [
+    "armorplus:infused_frost_lava_crystal",
+    "armorplus:wither_bone",
+    "armorplus:ender_dragon_scale",
+    "armorplus:guardian_scale"
+  ],
+  "result": {
+    "id": "armorplus:the_ultimate_material"
+  }
+}

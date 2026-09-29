@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "armorplus:enhanced_netherite",
+  "base": "minecraft:netherite_chestplate",
+  "result": {
+    "id": "armorplus:netherite_chestplate"
+  },
+  "template": "armorplus:infused_lava_crystal"
+}

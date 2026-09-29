@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:slayer_pickaxes",
+  "key": {
+    "A": "armorplus:super_star_pickaxe_base",
+    "B": "armorplus:ender_dragon_pickaxe_base",
+    "C": "armorplus:guardian_pickaxe_base",
+    "M": "armorplus:the_ultimate_material",
+    "S": "armorplus:obsidian_stick"
+  },
+  "pattern": [
+    "AMC",
+    " B ",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:slayer_pickaxe_base"
+  }
+}

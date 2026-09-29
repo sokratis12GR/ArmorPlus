@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:ender_dragon_battle_axes",
+  "key": {
+    "C": "minecraft:dragon_breath",
+    "M": "armorplus:ender_dragon_scale",
+    "S": "armorplus:obsidian_stick"
+  },
+  "pattern": [
+    "M M",
+    "MCM",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:ender_dragon_battle_axe_base"
+  }
+}

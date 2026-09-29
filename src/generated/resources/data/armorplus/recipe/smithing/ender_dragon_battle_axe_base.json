@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "armorplus:soul_ender_dragon",
+  "base": "armorplus:ender_dragon_battle_axe_base",
+  "result": {
+    "id": "armorplus:ender_dragon_battle_axe"
+  },
+  "template": "armorplus:infused_lava_crystal"
+}

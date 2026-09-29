@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "armorplus:soul_slayer",
+  "base": "armorplus:slayer_boots_base",
+  "result": {
+    "id": "armorplus:slayer_boots"
+  },
+  "template": "armorplus:infused_lava_crystal"
+}

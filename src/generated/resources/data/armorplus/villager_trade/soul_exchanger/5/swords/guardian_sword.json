@@ -1,0 +1,53 @@
+{
+  "additional_wants": {
+    "count": 4,
+    "id": "armorplus:guardian_scale"
+  },
+  "given_item_modifiers": [
+    {
+      "function": "minecraft:enchant_with_levels",
+      "include_additional_cost_component": false,
+      "levels": {
+        "type": "minecraft:uniform",
+        "max": 1,
+        "min": 1
+      },
+      "options": "armorplus:soul_stealer"
+    },
+    {
+      "function": "minecraft:enchant_with_levels",
+      "include_additional_cost_component": true,
+      "levels": {
+        "type": "minecraft:uniform",
+        "max": 20,
+        "min": 5
+      },
+      "options": "#minecraft:on_traded_equipment"
+    },
+    {
+      "function": "minecraft:filtered",
+      "item_filter": {
+        "items": "armorplus:guardian_sword",
+        "predicates": {
+          "minecraft:enchantments": [
+            {}
+          ]
+        }
+      },
+      "on_fail": {
+        "function": "minecraft:discard"
+      }
+    }
+  ],
+  "gives": {
+    "count": 1,
+    "id": "armorplus:guardian_sword"
+  },
+  "max_uses": 2,
+  "reputation_discount": 0.05,
+  "wants": {
+    "count": 36,
+    "id": "minecraft:emerald"
+  },
+  "xp": 30
+}

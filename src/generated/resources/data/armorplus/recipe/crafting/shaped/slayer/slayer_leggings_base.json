@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:slayer",
+  "key": {
+    "A": "armorplus:super_star_leggings_base",
+    "B": "armorplus:ender_dragon_leggings_base",
+    "C": "armorplus:guardian_leggings_base",
+    "S": "armorplus:the_ultimate_material"
+  },
+  "pattern": [
+    "ABC",
+    "S S",
+    "S S"
+  ],
+  "result": {
+    "id": "armorplus:slayer_leggings_base"
+  }
+}

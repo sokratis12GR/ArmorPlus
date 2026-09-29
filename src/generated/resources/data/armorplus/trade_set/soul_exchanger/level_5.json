@@ -1,0 +1,24 @@
+{
+  "amount": 3,
+  "random_sequence": "armorplus:trade_set/soul_exchanger/level_5",
+  "trades": [
+    "armorplus:soul_exchanger/5/slayer_soul",
+    "armorplus:soul_exchanger/5/soul_stealer_book",
+    "armorplus:soul_exchanger/5/swords/wooden_sword",
+    "armorplus:soul_exchanger/5/swords/stone_sword",
+    "armorplus:soul_exchanger/5/swords/golden_sword",
+    "armorplus:soul_exchanger/5/swords/iron_sword",
+    "armorplus:soul_exchanger/5/swords/diamond_sword",
+    "armorplus:soul_exchanger/5/swords/netherite_sword",
+    "armorplus:soul_exchanger/5/swords/coal_sword",
+    "armorplus:soul_exchanger/5/swords/redstone_sword",
+    "armorplus:soul_exchanger/5/swords/lapis_sword",
+    "armorplus:soul_exchanger/5/swords/emerald_sword",
+    "armorplus:soul_exchanger/5/swords/obsidian_sword",
+    "armorplus:soul_exchanger/5/swords/infused_lava_sword",
+    "armorplus:soul_exchanger/5/swords/guardian_sword",
+    "armorplus:soul_exchanger/5/swords/super_star_sword",
+    "armorplus:soul_exchanger/5/swords/ender_dragon_sword",
+    "armorplus:soul_exchanger/5/swords/slayer_sword"
+  ]
+}

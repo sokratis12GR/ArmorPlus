@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "armorplus:storage",
+  "ingredients": [
+    "armorplus:block_infused_lava_crystal"
+  ],
+  "result": {
+    "count": 9,
+    "id": "armorplus:infused_lava_crystal"
+  }
+}

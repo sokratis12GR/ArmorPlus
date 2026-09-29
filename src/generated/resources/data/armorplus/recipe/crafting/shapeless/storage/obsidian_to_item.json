@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "armorplus:storage",
+  "ingredients": [
+    "armorplus:compressed_obsidian"
+  ],
+  "result": {
+    "count": 9,
+    "id": "minecraft:obsidian"
+  }
+}

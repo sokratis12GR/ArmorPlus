@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:slayer",
+  "key": {
+    "A": "armorplus:super_star_helmet_base",
+    "B": "armorplus:ender_dragon_helmet_base",
+    "C": "armorplus:guardian_helmet_base",
+    "S": "armorplus:the_ultimate_material"
+  },
+  "pattern": [
+    "   ",
+    "ABC",
+    "S S"
+  ],
+  "result": {
+    "id": "armorplus:slayer_helmet_base"
+  }
+}

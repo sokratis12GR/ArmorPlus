@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:infused_lava_battle_axes",
+  "key": {
+    "M": "armorplus:infused_lava_crystal",
+    "S": "armorplus:obsidian_stick"
+  },
+  "pattern": [
+    "M M",
+    "MSM",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:infused_lava_battle_axe"
+  }
+}

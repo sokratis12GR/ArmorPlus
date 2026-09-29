@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "armorplus:infused_lava"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "armorplus:infused_lava"
+      }
+    ]
+  }
+}

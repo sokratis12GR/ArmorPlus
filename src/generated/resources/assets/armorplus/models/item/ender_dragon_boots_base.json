@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "armorplus:item/ender_dragon_boots_base"
+  }
+}

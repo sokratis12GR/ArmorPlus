@@ -1,0 +1,13 @@
+{
+  "gives": {
+    "count": 1,
+    "id": "armorplus:soul_enderman"
+  },
+  "max_uses": 8,
+  "reputation_discount": 0.05,
+  "wants": {
+    "count": 8,
+    "id": "minecraft:emerald"
+  },
+  "xp": 10
+}

@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "armorplus:manyullyn"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "armorplus:manyullyn"
+      }
+    ]
+  }
+}

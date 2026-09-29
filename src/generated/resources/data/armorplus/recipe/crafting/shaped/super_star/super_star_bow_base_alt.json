@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:super_star_bows",
+  "key": {
+    "C": "minecraft:nether_star",
+    "M": "armorplus:wither_bone",
+    "S": "minecraft:string"
+  },
+  "pattern": [
+    " MS",
+    "C S",
+    " MS"
+  ],
+  "result": {
+    "id": "armorplus:super_star_bow_base"
+  }
+}

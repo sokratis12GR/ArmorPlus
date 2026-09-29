@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "armorplus:soul_slayer",
+  "base": "armorplus:slayer_battle_axe_base",
+  "result": {
+    "id": "armorplus:slayer_battle_axe"
+  },
+  "template": "armorplus:infused_lava_crystal"
+}

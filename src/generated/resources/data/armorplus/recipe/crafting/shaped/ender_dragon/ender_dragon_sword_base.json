@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:ender_dragon_swords",
+  "key": {
+    "C": "minecraft:dragon_breath",
+    "M": "armorplus:ender_dragon_scale",
+    "S": "armorplus:obsidian_stick"
+  },
+  "pattern": [
+    "M  ",
+    "C  ",
+    "S  "
+  ],
+  "result": {
+    "id": "armorplus:ender_dragon_sword_base"
+  }
+}

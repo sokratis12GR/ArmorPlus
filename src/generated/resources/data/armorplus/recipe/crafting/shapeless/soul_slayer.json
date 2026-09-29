@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "armorplus:slayer",
+  "ingredients": [
+    "armorplus:soul_elder_guardian",
+    "armorplus:soul_wither_boss",
+    "armorplus:soul_ender_dragon"
+  ],
+  "result": {
+    "id": "armorplus:soul_slayer"
+  }
+}

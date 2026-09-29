@@ -53,14 +53,21 @@ repositories {
     maven fg.forgeMaven
     maven fg.minecraftLibsMaven
     mavenCentral()
-}
 
+    maven {
+        url = "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+}
 dependencies {
     implementation minecraft.dependency(
             "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     )
 
     annotationProcessor 'net.minecraftforge:eventbus-validator:7.0.5'
+    implementation "curse.maven:thedragonlib-248055:9012319"
 }
 
 tasks.named('processResources', ProcessResources).configure {

@@ -1,0 +1,10 @@
+{
+  "amount": 2,
+  "random_sequence": "armorplus:trade_set/soul_exchanger/level_3",
+  "trades": [
+    "armorplus:soul_exchanger/3/guardian_soul",
+    "armorplus:soul_exchanger/3/wither_skeleton_soul",
+    "armorplus:soul_exchanger/3/enderman_soul",
+    "armorplus:soul_exchanger/3/blaze_soul"
+  ]
+}

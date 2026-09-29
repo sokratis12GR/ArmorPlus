@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:infused_lava_pickaxes",
+  "key": {
+    "M": "armorplus:infused_lava_crystal",
+    "S": "armorplus:obsidian_stick"
+  },
+  "pattern": [
+    "MMM",
+    " S ",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:infused_lava_pickaxe"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:slayer_battle_axes",
+  "key": {
+    "A": "armorplus:super_star_battle_axe_base",
+    "B": "armorplus:ender_dragon_battle_axe_base",
+    "C": "armorplus:guardian_battle_axe_base",
+    "M": "armorplus:the_ultimate_material",
+    "S": "armorplus:obsidian_stick"
+  },
+  "pattern": [
+    "M M",
+    "ABC",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:slayer_battle_axe_base"
+  }
+}

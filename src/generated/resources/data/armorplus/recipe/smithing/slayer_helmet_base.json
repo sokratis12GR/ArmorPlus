@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "armorplus:soul_slayer",
+  "base": "armorplus:slayer_helmet_base",
+  "result": {
+    "id": "armorplus:slayer_helmet"
+  },
+  "template": "armorplus:infused_lava_crystal"
+}

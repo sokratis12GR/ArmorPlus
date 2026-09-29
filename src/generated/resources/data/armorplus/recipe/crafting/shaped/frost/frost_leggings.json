@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:frost",
+  "key": {
+    "S": "armorplus:infused_frost_crystal"
+  },
+  "pattern": [
+    "SSS",
+    "S S",
+    "S S"
+  ],
+  "result": {
+    "id": "armorplus:frost_leggings"
+  }
+}

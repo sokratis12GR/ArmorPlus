@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:ap_en_chainmail",
+  "key": {
+    "S": "armorplus:enhanced_chainmail"
+  },
+  "pattern": [
+    "SSS",
+    "S S",
+    "   "
+  ],
+  "result": {
+    "id": "armorplus:chainmail_helmet"
+  }
+}

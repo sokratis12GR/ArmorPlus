@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "armorplus:soul_slayer",
+  "base": "armorplus:slayer_pickaxe_base",
+  "result": {
+    "id": "armorplus:slayer_pickaxe"
+  },
+  "template": "armorplus:infused_lava_crystal"
+}

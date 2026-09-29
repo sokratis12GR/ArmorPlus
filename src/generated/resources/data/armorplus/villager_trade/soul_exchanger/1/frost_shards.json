@@ -1,0 +1,13 @@
+{
+  "gives": {
+    "count": 4,
+    "id": "armorplus:frost_shard"
+  },
+  "max_uses": 16,
+  "reputation_discount": 0.05,
+  "wants": {
+    "count": 2,
+    "id": "minecraft:emerald"
+  },
+  "xp": 2
+}

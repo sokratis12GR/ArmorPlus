@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "armorplus:ender_dragon"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "armorplus:ender_dragon"
+      }
+    ]
+  }
+}

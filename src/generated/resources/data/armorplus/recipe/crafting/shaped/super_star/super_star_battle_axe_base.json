@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:super_star_battle_axes",
+  "key": {
+    "M": "armorplus:wither_bone",
+    "S": "armorplus:obsidian_stick"
+  },
+  "pattern": [
+    "M M",
+    "MSM",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:super_star_battle_axe_base"
+  }
+}

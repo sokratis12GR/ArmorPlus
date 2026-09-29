@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:ap_en_gold",
+  "key": {
+    "S": "armorplus:enhanced_gold"
+  },
+  "pattern": [
+    "   ",
+    "S S",
+    "S S"
+  ],
+  "result": {
+    "id": "armorplus:golden_boots"
+  }
+}

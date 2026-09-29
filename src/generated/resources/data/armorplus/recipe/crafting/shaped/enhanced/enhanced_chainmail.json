@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "armorplus:ap_en_mats",
+  "key": {
+    "S": "minecraft:glowstone_dust",
+    "X": "armorplus:chainmail"
+  },
+  "pattern": [
+    "SSS",
+    "SXS",
+    "SSS"
+  ],
+  "result": {
+    "id": "armorplus:enhanced_chainmail"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:slayer_swords",
+  "key": {
+    "A": "armorplus:super_star_sword_base",
+    "B": "armorplus:ender_dragon_sword_base",
+    "C": "armorplus:guardian_sword_base",
+    "M": "armorplus:the_ultimate_material",
+    "S": "armorplus:obsidian_stick"
+  },
+  "pattern": [
+    " M ",
+    "ABC",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:slayer_sword_base"
+  }
+}

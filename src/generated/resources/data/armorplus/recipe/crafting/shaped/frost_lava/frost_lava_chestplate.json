@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:frost_lava",
+  "key": {
+    "S": "armorplus:infused_frost_lava_crystal"
+  },
+  "pattern": [
+    "S S",
+    "SSS",
+    "SSS"
+  ],
+  "result": {
+    "id": "armorplus:frost_lava_chestplate"
+  }
+}

@@ -12,7 +12,6 @@ import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.of
 import static net.minecraft.world.phys.shapes.BooleanOp.OR;
 
 public class StoneBrickTowerBlock extends Block {
-
     protected static final VoxelShape BASE = box(0.0D, 0.0D, 0.0D, 16D, 13D, 16D);
     protected static final VoxelShape C_A = box(0D, 13D, 0D, 3D, 16D, 3D);
     protected static final VoxelShape C_B = box(13D, 13D, 0D, 16D, 16D, 3D);
@@ -27,21 +26,13 @@ public class StoneBrickTowerBlock extends Block {
         super(com.sofodev.armorplus.registry.RegistryContext.blockProperties(ofFullCopy(block).requiresCorrectToolForDrops()));
     }
 
-    //@Override
-    //public BlockRenderLayer getRenderLayer() {
-    //    return BlockRenderLayer.SOLID;
-    //}
-
-    @SuppressWarnings("deprecation")
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return VOXEL;
     }
 
-    @SuppressWarnings("deprecation")
     @Override
-    public VoxelShape getCollisionShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return VOXEL;
     }
-
 }

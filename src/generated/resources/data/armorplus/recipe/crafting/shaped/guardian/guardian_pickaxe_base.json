@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:guardian_pickaxes",
+  "key": {
+    "C": "minecraft:prismarine",
+    "M": "armorplus:guardian_scale",
+    "S": "armorplus:obsidian_stick"
+  },
+  "pattern": [
+    "MMM",
+    " C ",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:guardian_pickaxe_base"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "criteria": {
+    "minecraft:crafting_table": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:crafting_table"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "armorplus:item/compressed_obsidian",
+    "description": {
+      "translate": "advancements.armorplus.story.root.description"
+    },
+    "icon": {
+      "id": "armorplus:redstone_chestplate"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.armorplus.story.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "minecraft:crafting_table"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

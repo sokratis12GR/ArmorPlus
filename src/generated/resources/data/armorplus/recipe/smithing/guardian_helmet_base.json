@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "armorplus:soul_elder_guardian",
+  "base": "armorplus:guardian_helmet_base",
+  "result": {
+    "id": "armorplus:guardian_helmet"
+  },
+  "template": "armorplus:infused_lava_crystal"
+}

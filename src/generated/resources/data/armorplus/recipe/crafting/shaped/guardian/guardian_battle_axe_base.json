@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:guardian_battle_axes",
+  "key": {
+    "C": "minecraft:prismarine",
+    "M": "armorplus:guardian_scale",
+    "S": "armorplus:obsidian_stick"
+  },
+  "pattern": [
+    "M M",
+    "MCM",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:guardian_battle_axe_base"
+  }
+}

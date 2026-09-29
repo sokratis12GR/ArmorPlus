@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:guardian",
+  "key": {
+    "C": "minecraft:prismarine",
+    "S": "armorplus:guardian_scale"
+  },
+  "pattern": [
+    "SCS",
+    "S S",
+    "S S"
+  ],
+  "result": {
+    "id": "armorplus:guardian_leggings_base"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "armorplus:soul_ender_dragon",
+  "base": "armorplus:ender_dragon_chestplate_base",
+  "result": {
+    "id": "armorplus:ender_dragon_chestplate"
+  },
+  "template": "armorplus:infused_lava_crystal"
+}

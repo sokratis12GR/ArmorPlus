@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "armorplus:knight_slime"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "armorplus:knight_slime"
+      }
+    ]
+  }
+}

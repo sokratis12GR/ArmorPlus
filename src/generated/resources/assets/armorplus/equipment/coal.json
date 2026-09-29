@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "armorplus:coal"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "armorplus:coal"
+      }
+    ]
+  }
+}

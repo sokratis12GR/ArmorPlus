@@ -1,0 +1,39 @@
+{
+  "given_item_modifiers": [
+    {
+      "function": "minecraft:enchant_with_levels",
+      "include_additional_cost_component": false,
+      "levels": {
+        "type": "minecraft:uniform",
+        "max": 1,
+        "min": 1
+      },
+      "options": "armorplus:soul_stealer"
+    },
+    {
+      "function": "minecraft:filtered",
+      "item_filter": {
+        "items": "minecraft:enchanted_book",
+        "predicates": {
+          "minecraft:stored_enchantments": [
+            {}
+          ]
+        }
+      },
+      "on_fail": {
+        "function": "minecraft:discard"
+      }
+    }
+  ],
+  "gives": {
+    "count": 1,
+    "id": "minecraft:enchanted_book"
+  },
+  "max_uses": 4,
+  "reputation_discount": 0.05,
+  "wants": {
+    "count": 24,
+    "id": "minecraft:emerald"
+  },
+  "xp": 30
+}

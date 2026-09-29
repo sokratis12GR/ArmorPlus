@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:guardian_bows",
+  "key": {
+    "C": "minecraft:prismarine",
+    "M": "armorplus:guardian_scale",
+    "S": "minecraft:string"
+  },
+  "pattern": [
+    " MS",
+    "C S",
+    " MS"
+  ],
+  "result": {
+    "id": "armorplus:guardian_bow_base"
+  }
+}

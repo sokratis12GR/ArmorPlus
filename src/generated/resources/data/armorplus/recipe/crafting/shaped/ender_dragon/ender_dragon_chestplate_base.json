@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:ender_dragon",
+  "key": {
+    "C": "minecraft:dragon_breath",
+    "S": "armorplus:ender_dragon_scale"
+  },
+  "pattern": [
+    "S S",
+    "SCS",
+    "SSS"
+  ],
+  "result": {
+    "id": "armorplus:ender_dragon_chestplate_base"
+  }
+}

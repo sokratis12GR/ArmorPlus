@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:obsidian",
+  "key": {
+    "S": "armorplus:compressed_obsidian"
+  },
+  "pattern": [
+    "S S",
+    "S S",
+    "   "
+  ],
+  "result": {
+    "id": "armorplus:obsidian_boots"
+  }
+}

@@ -1,10 +1,10 @@
 {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/armorplus",
     "promos": {
-        "1.19.2-latest": "1.19.2-19.0.0-beta",
-        "1.19.2-recommended": "1.19.2-19.0.0-beta"
+        "26.1.2-latest": "26.1.2-22.0.0",
+        "26.1.2-recommended": "26.1.2-22.0.0"
     },
-    "1.19.2": {
-        "1.19.2-19.0.0-beta": "Ported to 1.19.2\n\n- World Gen of ores is disabled at this given moment.\n- Removed all biomes from previous versions.\n- Expect further releases to require new chunks to function properly"
+    "26.1.2": {
+        "26.1.2-22.0.0": "- **26.1.2 Forge Release**\n- A couple QoL improvements\n- Updated the wiki link and commands\n- Updated Villager (Soul Exchanger) trades in this version\n  - Added a couple variations to the Master (Level 5) trade outcomes\n    - it can now generate minecraft and armorplus swords with random enchantments and soul stealer.\n- **Known Issue**: Maces do not have textures"
     }
 }

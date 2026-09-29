@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "armorplus:enhanced_netherite",
+  "base": "minecraft:netherite_boots",
+  "result": {
+    "id": "armorplus:netherite_boots"
+  },
+  "template": "armorplus:infused_lava_crystal"
+}

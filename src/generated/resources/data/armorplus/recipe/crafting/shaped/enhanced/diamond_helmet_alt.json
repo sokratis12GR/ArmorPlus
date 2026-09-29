@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:ap_en_diamond",
+  "key": {
+    "S": "armorplus:enhanced_diamond"
+  },
+  "pattern": [
+    "   ",
+    "SSS",
+    "S S"
+  ],
+  "result": {
+    "id": "armorplus:diamond_helmet"
+  }
+}
