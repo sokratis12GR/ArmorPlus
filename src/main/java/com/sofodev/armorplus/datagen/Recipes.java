@@ -33,7 +33,7 @@ import static com.sofodev.armorplus.registry.ModItems.INFUSED_LAVA_CRYSTAL;
 import static com.sofodev.armorplus.utils.DataUtils.getPath;
 import static java.util.Arrays.asList;
 import static net.minecraft.world.item.Items.*;
-import static net.minecraftforge.common.Tags.Items.*;
+import static net.neoforged.neoforge.common.Tags.Items.*;
 
 public class Recipes extends RecipeProvider {
 

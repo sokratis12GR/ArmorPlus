@@ -8,7 +8,7 @@ import com.sofodev.armorplus.registry.enchantment.SoulStealerEnchantmentEffect;
 import com.sofodev.armorplus.registry.enchantment.UnknownEnchantmentEffect;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect;
-import net.minecraftforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 

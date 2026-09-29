@@ -16,10 +16,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.SpawnData;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 import java.util.Map;
 import java.util.function.Supplier;
@@ -29,7 +30,7 @@ import static com.sofodev.armorplus.events.ModGlobalEvents.RAND;
 import static com.sofodev.armorplus.registry.ModEnchantments.SOUL_STEALER;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
 
-@Mod.EventBusSubscriber(modid = ArmorPlus.MODID)
+@EventBusSubscriber(modid = ArmorPlus.MODID)
 public class ModDropsEvents {
 
 
@@ -44,7 +45,7 @@ public class ModDropsEvents {
         if (isSourcePlayer) {
             player = (ServerPlayer) trueSource;
             heldItem = player.getMainHandItem();
-            int enchantmentLevel = EnchantmentHelper.getItemEnchantmentLevel(SOUL_STEALER.getOrThrow(player), heldItem);
+            int enchantmentLevel = heldItem.getEnchantmentLevel(player.level().registryAccess().getOrThrow(SOUL_STEALER));
             if (enchantmentLevel > 0) {
                 hasSoulStealer = true;
             }
@@ -118,7 +119,7 @@ public class ModDropsEvents {
         ItemStack trophy = new ItemStack(getAPItem("trophy"));
         CompoundTag tag = new CompoundTag();
         SpawnData trophyEntity = new SpawnData();
-        Identifier key = ForgeRegistries.ENTITY_TYPES.getKey(type);
+        Identifier key = BuiltInRegistries.ENTITY_TYPE.getKey(type);
         if (key == null) key = Identifier.parse("minecraft:pig");
         trophyEntity.getEntityToSpawn().putString("id", key.toString());
         tag.put("DisplayEntity", trophyEntity.getEntityToSpawn().copy());

@@ -8,7 +8,7 @@ import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,13 +28,13 @@ public class SmithingRecipeMaker extends RecipeProvider {
         super(registries, output);
     }
 
-    public void buildBaseToFullSmithing(RecipeOutput consumer, Set<RegistryObject<Item>> bases, ItemLike soul) {
-        for (RegistryObject<Item> base : bases) {
+    public void buildBaseToFullSmithing(RecipeOutput consumer, Set<DeferredHolder<Item, Item>> bases, ItemLike soul) {
+        for (DeferredHolder<Item, Item> base : bases) {
             this.buildBaseToFullSmithing(consumer, base, soul);
         }
     }
 
-    public void buildBaseToFullSmithing(RecipeOutput consumer, RegistryObject<Item> base, ItemLike soul) {
+    public void buildBaseToFullSmithing(RecipeOutput consumer, DeferredHolder<Item, Item> base, ItemLike soul) {
         String path = base.getId().getPath();
         if (path.contains("_body")) return;
 
@@ -44,7 +44,7 @@ public class SmithingRecipeMaker extends RecipeProvider {
     }
 
     @SafeVarargs
-    public final void buildBaseToFullSmithing(RecipeOutput consumer, ItemLike soul, RegistryObject<Item>... bases) {
+    public final void buildBaseToFullSmithing(RecipeOutput consumer, ItemLike soul, DeferredHolder<Item, Item>... bases) {
         Arrays.stream(bases).forEach(base -> {
             String path = base.getId().getPath();
             if (path.contains("_body")) return;
@@ -54,7 +54,7 @@ public class SmithingRecipeMaker extends RecipeProvider {
         });
     }
 
-    public void buildVanillaToEnhancedSmithing(RecipeOutput consumer, ItemLike vanilla, RegistryObject<Item> mat) {
+    public void buildVanillaToEnhancedSmithing(RecipeOutput consumer, ItemLike vanilla, DeferredHolder<Item, Item> mat) {
         this.buildSmithing(consumer, vanilla, mat.get(), RecipeCategory.COMBAT, getAPItem(getPath(vanilla)));
     }
 

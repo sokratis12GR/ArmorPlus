@@ -11,22 +11,20 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.data.BlockTagsProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.common.data.BlockTagsProvider;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.concurrent.CompletableFuture;
 
 public class ModBlockTagProvider extends BlockTagsProvider {
     public ModBlockTagProvider(PackOutput output,
-                               CompletableFuture<HolderLookup.Provider> lookupProvider,
-                               ExistingFileHelper helper) {
-        super(output, lookupProvider, ArmorPlus.MODID, helper);
+                               CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(output, lookupProvider, ArmorPlus.MODID);
     }
 
     @Override
     protected void addTags(HolderLookup.Provider lookup) {
-        for (RegistryObject<Block> registryBlock : ModBlocks.BLOCKS.getEntries()) {
+        for (DeferredHolder<Block, ? extends Block> registryBlock : ModBlocks.BLOCKS.getEntries()) {
             Block block = registryBlock.get();
             String path = registryBlock.getId().getPath();
 

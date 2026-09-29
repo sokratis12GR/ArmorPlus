@@ -11,8 +11,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
@@ -24,9 +23,8 @@ import static com.sofodev.armorplus.ArmorPlus.MODID;
  */
 public class ModItemTagProvider extends KeyTagProvider<Item> {
     public ModItemTagProvider(PackOutput output,
-                              CompletableFuture<HolderLookup.Provider> lookupProvider,
-                              ExistingFileHelper existingFileHelper) {
-        super(output, Registries.ITEM, lookupProvider, MODID, existingFileHelper);
+                              CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(output, Registries.ITEM, lookupProvider, MODID);
     }
 
     @Override
@@ -98,16 +96,16 @@ public class ModItemTagProvider extends KeyTagProvider<Item> {
     }
 
     @SafeVarargs
-    private final void addAllItems(TagKey<Item> tagKey, RegistryObject<? extends Item>... items) {
+    private final void addAllItems(TagKey<Item> tagKey, DeferredHolder<Item, ? extends Item>... items) {
         TagAppender<ResourceKey<Item>, Item> appender = tag(tagKey);
-        for (RegistryObject<? extends Item> obj : items) {
+        for (DeferredHolder<Item, ? extends Item> obj : items) {
             appender.add(ResourceKey.create(Registries.ITEM, obj.getId()));
         }
     }
 
-    private void addAllItems(TagKey<Item> tagKey, Set<RegistryObject<? extends APArmorItem>> items) {
+    private void addAllItems(TagKey<Item> tagKey, Set<DeferredHolder<Item, ? extends APArmorItem>> items) {
         TagAppender<ResourceKey<Item>, Item> appender = tag(tagKey);
-        for (RegistryObject<? extends APArmorItem> obj : items) {
+        for (DeferredHolder<Item, ? extends APArmorItem> obj : items) {
             appender.add(ResourceKey.create(Registries.ITEM, obj.getId()));
         }
     }

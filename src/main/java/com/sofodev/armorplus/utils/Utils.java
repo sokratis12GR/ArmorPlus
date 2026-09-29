@@ -18,9 +18,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.fml.loading.FMLConfig;
-import net.minecraftforge.fml.loading.FMLPaths;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.fml.loading.FMLConfig;
+import net.neoforged.fml.loading.FMLPaths;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 import javax.annotation.Nullable;
 import java.nio.file.Path;
@@ -125,11 +125,11 @@ public final class Utils {
     }
 
     public static Item getItemByName(String name) {
-        return ForgeRegistries.ITEMS.getValue(Identifier.parse(name));
+        return BuiltInRegistries.ITEM.getValue(Identifier.parse(name));
     }
 
     public static Item getAPItem(String name) {
-        return ForgeRegistries.ITEMS.getValue(setRL(name));
+        return BuiltInRegistries.ITEM.getValue(setRL(name));
     }
 
     public static ItemStack getAPItemStack(String name) {
@@ -137,7 +137,7 @@ public final class Utils {
     }
 
     public static Item getAPItem(ResourceKey<Item> key) {
-        return ForgeRegistries.ITEMS.getDelegateOrThrow(key).get();
+        return BuiltInRegistries.ITEM.getValueOrThrow(key);
     }
 
     public static ItemStack createSingleStack(ItemLike item) {
@@ -145,7 +145,7 @@ public final class Utils {
     }
 
     public static Block getAPBlock(String name) {
-        return ForgeRegistries.BLOCKS.getValue(setRL(name));
+        return BuiltInRegistries.BLOCK.getValue(setRL(name));
     }
 
     public static Identifier setRL(String path) {
@@ -190,7 +190,7 @@ public final class Utils {
 
     public static ItemStack getTCIngot(int meta) {
         if (Loader.TCONSTRUCT.isLoaded()) {
-            Item ingot = ForgeRegistries.ITEMS.getValue(Identifier.parse("tconstruct:ingots"));
+            Item ingot = BuiltInRegistries.ITEM.getValue(Identifier.parse("tconstruct:ingots"));
             if (ingot != null) {
                 return new ItemStack(ingot, 1);
             }

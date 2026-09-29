@@ -1,0 +1,10 @@
+// 26.1.2	2026-09-30T01:23:23.5427189	Tags for minecraft:block mod id armorplus
+6dfde5e17543e836b0cf520d654396507f82718b data/armorplus/tags/block/ores.json
+4a275fecfa217667c3174f04e5a4bc0815739f46 data/armorplus/tags/block/ores/frost_crystal.json
+67752a6dc4ea13072f9b5f5798c3c3014edc78b4 data/armorplus/tags/block/ores/lava_crystal.json
+21603889ed61bf48ce4a8cda01b6f7e3645cebd9 data/armorplus/tags/block/walls.json
+f2b6a54d7004c5b42090d80908ed056383d3c95b data/minecraft/tags/block/mineable/pickaxe.json
+f17f4e3438a15d47121acdbc9bee51b2aaaf59bf data/minecraft/tags/block/needs_diamond_tool.json
+8296e1d38f743d2d79b0ebb037c3c58ee16973e5 data/minecraft/tags/block/needs_iron_tool.json
+24109f5aea67a81452e12ab47fc59a0d0e88bbc0 data/minecraft/tags/block/needs_stone_tool.json
+21603889ed61bf48ce4a8cda01b6f7e3645cebd9 data/minecraft/tags/block/walls.json

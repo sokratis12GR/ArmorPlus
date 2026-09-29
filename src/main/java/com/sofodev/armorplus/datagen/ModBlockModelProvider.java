@@ -136,24 +136,16 @@ public final class ModBlockModelProvider implements DataProvider {
     private void corner(List<CompletableFuture<?>> writes, CachedOutput cache, String name, String texture) {
         JsonObject model = new JsonObject();
 
-        model.addProperty("parent", "minecraft:block/cube_all");
+        model.addProperty("parent", "minecraft:block/block");
 
         JsonObject textures = new JsonObject();
-
         textures.addProperty("particle", MODID + ":block/" + texture);
-
         textures.addProperty("0", MODID + ":block/" + texture);
-
-        textures.addProperty("all", MODID + ":block/" + texture);
-
         model.add("textures", textures);
 
         JsonArray elements = new JsonArray();
-
         elements.add(element(0, 0, 0, 16, 8, 16, 0, 8, 16, 16));
-
         elements.add(element(0, 8, 0, 8, 16, 8, 0, 0, 8, 8));
-
         model.add("elements", elements);
 
         saveModel(writes, cache, name, model);
@@ -161,16 +153,19 @@ public final class ModBlockModelProvider implements DataProvider {
         JsonObject state = new JsonObject();
         JsonObject variants = new JsonObject();
 
-        variants.add("facing=east", model(MODID + ":block/" + name));
+        variants.add("facing=east",
+                model(MODID + ":block/" + name));
 
-        variants.add("facing=south", rotatedModel(MODID + ":block/" + name, 90, true));
+        variants.add("facing=south",
+                rotatedModel(MODID + ":block/" + name, 90, true));
 
-        variants.add("facing=west", rotatedModel(MODID + ":block/" + name, 180, true));
+        variants.add("facing=west",
+                rotatedModel(MODID + ":block/" + name, 180, true));
 
-        variants.add("facing=north", rotatedModel(MODID + ":block/" + name, 270, true));
+        variants.add("facing=north",
+                rotatedModel(MODID + ":block/" + name, 270, true));
 
         state.add("variants", variants);
-
         saveBlockstate(writes, cache, name, state);
     }
 
@@ -229,34 +224,24 @@ public final class ModBlockModelProvider implements DataProvider {
     private void tower(List<CompletableFuture<?>> writes, CachedOutput cache, String name, String texture) {
         JsonObject model = new JsonObject();
 
-        model.addProperty("parent", "minecraft:block/cube_all");
+        model.addProperty("parent", "minecraft:block/block");
 
         JsonObject textures = new JsonObject();
-
         textures.addProperty("0", MODID + ":block/" + texture);
-
         textures.addProperty("particle", MODID + ":block/" + texture);
-
-        textures.addProperty("all", MODID + ":block/" + texture);
-
         model.add("textures", textures);
 
         JsonArray elements = new JsonArray();
 
         elements.add(towerElement(0, 0, 0, 16, 13, 16, 0, 3, 16, 16));
-
         elements.add(towerElement(0, 13, 0, 4, 16, 4, 0, 0, 4, 3));
-
         elements.add(towerElement(12, 13, 0, 16, 16, 4, 12, 0, 16, 3));
-
         elements.add(towerElement(0, 13, 12, 4, 16, 16, 0, 0, 4, 3));
-
         elements.add(towerElement(12, 13, 12, 16, 16, 16, 12, 0, 16, 3));
 
         model.add("elements", elements);
 
         saveModel(writes, cache, name, model);
-
         simpleBlockstate(writes, cache, name, MODID + ":block/" + name);
     }
 

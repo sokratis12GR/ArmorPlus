@@ -6,8 +6,8 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackLinkedSet;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.Set;
 import java.util.function.Supplier;
@@ -25,7 +25,7 @@ public class ModCreativeTabs {
 
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
-    public static final RegistryObject<CreativeModeTab> AP_CORE_GROUP = register("core", () -> CreativeModeTab.builder()
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> AP_CORE_GROUP = register("core", () -> CreativeModeTab.builder()
             .icon(() -> new ItemStack(getAPItem("infused_lava_chestplate")))
             .title(Component.translatable("tabs.armorplus.core"))
             .withLabelColor(0xFFFFFF)
@@ -43,7 +43,7 @@ public class ModCreativeTabs {
                 addEquipmentToOutput(output, "ender_dragon");
                 addEquipmentToOutput(output, "slayer");
             }).build());
-    public static final RegistryObject<CreativeModeTab> AP_EXTRA_GROUP = register("extra", () -> CreativeModeTab.builder()
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> AP_EXTRA_GROUP = register("extra", () -> CreativeModeTab.builder()
             .icon(() -> new ItemStack(getAPItem("cobalt_chestplate")))
             .title(Component.translatable("tabs.armorplus.extra"))
             .withLabelColor(0xFFFFFF)
@@ -72,7 +72,7 @@ public class ModCreativeTabs {
                 output.accept(LAVA_SHARD.get());
                 addSetToOutput(output, "manyullyn");
             }).build());
-    public static final RegistryObject<CreativeModeTab> AP_ITEM_GROUP = register("items", () -> CreativeModeTab.builder()
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> AP_ITEM_GROUP = register("items", () -> CreativeModeTab.builder()
             .icon(() -> new ItemStack(ModItems.INFUSED_LAVA_CRYSTAL.get()))
             .title(Component.translatable("tabs.armorplus.items"))
             .backgroundTexture(Identifier.fromNamespaceAndPath(MODID, "textures/gui/container/creative_inventory/tab_armorplus.png"))
@@ -128,7 +128,7 @@ public class ModCreativeTabs {
                 output.accept(ModItems.THANK_YOU.get());
 
             }).build());
-    public static final RegistryObject<CreativeModeTab> AP_BLOCK_GROUP = register("blocks", () -> CreativeModeTab.builder()
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> AP_BLOCK_GROUP = register("blocks", () -> CreativeModeTab.builder()
             .icon(() -> new ItemStack(ModBlocks.INFUSED_LAVA_CRYSTAL.get()))
             .title(Component.translatable("tabs.armorplus.blocks"))
             .backgroundTexture(Identifier.fromNamespaceAndPath(MODID, "textures/gui/container/creative_inventory/tab_armorplus.png"))
@@ -209,7 +209,7 @@ public class ModCreativeTabs {
     }
 
 
-    public static RegistryObject<CreativeModeTab> register(String name, Supplier<? extends CreativeModeTab> sup) {
+    public static DeferredHolder<CreativeModeTab, CreativeModeTab> register(String name, Supplier<? extends CreativeModeTab> sup) {
         return CREATIVE_MODE_TABS.register(name, sup);
     }
 }

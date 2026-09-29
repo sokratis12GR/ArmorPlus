@@ -8,7 +8,7 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.nio.file.Path;
 import java.util.LinkedHashSet;
@@ -35,7 +35,7 @@ public final class ModItemModelProvider implements DataProvider {
     public CompletableFuture<?> run(CachedOutput cache) {
         java.util.List<CompletableFuture<?>> writes = new java.util.ArrayList<>();
 
-        Set<RegistryObject<? extends Item>> flatItems = new LinkedHashSet<>();
+        Set<DeferredHolder<Item, ? extends Item>> flatItems = new LinkedHashSet<>();
 
         writes.add(DataProvider.saveStable(cache, handheldSword(), modelsRoot.resolve("handheld_sword.json")));
 
@@ -73,31 +73,31 @@ public final class ModItemModelProvider implements DataProvider {
 
         flatItems.addAll(SLAYER_BASES);
 
-        for (RegistryObject<? extends Item> item : flatItems) {
+        for (DeferredHolder<Item, ? extends Item> item : flatItems) {
             writes.addAll(writeTexturedItem(cache, item, "minecraft:item/generated", materialTexture(item)));
         }
 
-        for (RegistryObject<Item> sword : SWORDS) {
+        for (DeferredHolder<Item, Item> sword : SWORDS) {
             writes.addAll(writeTexturedItem(cache, sword, MODID + ":item/handheld_sword", MODID + ":item/" + sword.getId().getPath()));
         }
 
-        for (RegistryObject<Item> battleAxe : BATTLE_AXES) {
+        for (DeferredHolder<Item, Item> battleAxe : BATTLE_AXES) {
             writes.addAll(writeTexturedItem(cache, battleAxe, MODID + ":item/handheld_battle_axe", MODID + ":item/" + battleAxe.getId().getPath()));
         }
 
-        for (RegistryObject<Item> mace : MACES) {
+        for (DeferredHolder<Item, Item> mace : MACES) {
             writes.addAll(writeParentOnlyItem(cache, mace, MODID + ":item/mace.item"));
         }
 
-        for (RegistryObject<? extends com.sofodev.armorplus.registry.item.armor.APArmorItem> armor : allArmor()) {
+        for (DeferredHolder<Item, ? extends com.sofodev.armorplus.registry.item.armor.APArmorItem> armor : allArmor()) {
             writes.addAll(writeTrimmedArmor(cache, armor));
         }
 
-        for (RegistryObject<Item> bow : BOWS) {
+        for (DeferredHolder<Item, Item> bow : BOWS) {
             writes.addAll(writeBow(cache, bow));
         }
 
-        for (RegistryObject<Block> block : ModBlocks.BLOCKS.getEntries()) {
+        for (DeferredHolder<Block, ? extends Block> block : ModBlocks.BLOCKS.getEntries()) {
             writes.addAll(writeBlockItem(cache, block));
         }
 
@@ -106,8 +106,8 @@ public final class ModItemModelProvider implements DataProvider {
 
     private static final String[] TRIM_MATERIALS = {"quartz", "iron", "netherite", "redstone", "copper", "gold", "emerald", "diamond", "lapis", "amethyst"};
 
-    private Set<RegistryObject<? extends com.sofodev.armorplus.registry.item.armor.APArmorItem>> allArmor() {
-        Set<RegistryObject<? extends com.sofodev.armorplus.registry.item.armor.APArmorItem>> result = new LinkedHashSet<>();
+    private Set<DeferredHolder<Item, ? extends com.sofodev.armorplus.registry.item.armor.APArmorItem>> allArmor() {
+        Set<DeferredHolder<Item, ? extends com.sofodev.armorplus.registry.item.armor.APArmorItem>> result = new LinkedHashSet<>();
 
         result.addAll(HELMETS);
 
@@ -120,7 +120,7 @@ public final class ModItemModelProvider implements DataProvider {
         return result;
     }
 
-    private String materialTexture(RegistryObject<? extends Item> item) {
+    private String materialTexture(DeferredHolder<Item, ? extends Item> item) {
         if (item == CHAINMAIL || item == ENHANCED_CHAINMAIL) {
             return MODID + ":item/chainmail";
         }
@@ -144,7 +144,7 @@ public final class ModItemModelProvider implements DataProvider {
         return MODID + ":item/" + item.getId().getPath();
     }
 
-    private java.util.List<CompletableFuture<?>> writeTrimmedArmor(CachedOutput cache, RegistryObject<? extends Item> armor) {
+    private java.util.List<CompletableFuture<?>> writeTrimmedArmor(CachedOutput cache, DeferredHolder<Item, ? extends Item> armor) {
         String path = armor.getId().getPath();
 
         String slot = path.substring(path.lastIndexOf('_') + 1);
@@ -212,7 +212,7 @@ public final class ModItemModelProvider implements DataProvider {
         return MODID + ":item/" + path;
     }
 
-    private java.util.List<CompletableFuture<?>> writeBow(CachedOutput cache, RegistryObject<Item> bow) {
+    private java.util.List<CompletableFuture<?>> writeBow(CachedOutput cache, DeferredHolder<Item, Item> bow) {
         String path = bow.getId().getPath();
 
         java.util.List<CompletableFuture<?>> writes = new java.util.ArrayList<>();
@@ -300,7 +300,7 @@ public final class ModItemModelProvider implements DataProvider {
         return entry;
     }
 
-    private java.util.List<CompletableFuture<?>> writeTexturedItem(CachedOutput cache, RegistryObject<? extends Item> item, String parent, String texture) {
+    private java.util.List<CompletableFuture<?>> writeTexturedItem(CachedOutput cache, DeferredHolder<Item, ? extends Item> item, String parent, String texture) {
         String path = item.getId().getPath();
 
         JsonObject textures = new JsonObject();
@@ -316,11 +316,11 @@ public final class ModItemModelProvider implements DataProvider {
         return writeModelAndClientItem(cache, path, model);
     }
 
-    private java.util.List<CompletableFuture<?>> writeTexturedItem(CachedOutput cache, RegistryObject<? extends Item> item, String parent) {
+    private java.util.List<CompletableFuture<?>> writeTexturedItem(CachedOutput cache, DeferredHolder<Item, ? extends Item> item, String parent) {
         return writeTexturedItem(cache, item, parent, MODID + ":item/" + item.getId().getPath());
     }
 
-    private java.util.List<CompletableFuture<?>> writeParentOnlyItem(CachedOutput cache, RegistryObject<? extends Item> item, String parent) {
+    private java.util.List<CompletableFuture<?>> writeParentOnlyItem(CachedOutput cache, DeferredHolder<Item, ? extends Item> item, String parent) {
         String path = item.getId().getPath();
 
         JsonObject model = new JsonObject();
@@ -330,7 +330,7 @@ public final class ModItemModelProvider implements DataProvider {
         return writeModelAndClientItem(cache, path, model);
     }
 
-    private java.util.List<CompletableFuture<?>> writeBlockItem(CachedOutput cache, RegistryObject<Block> block) {
+    private java.util.List<CompletableFuture<?>> writeBlockItem(CachedOutput cache, DeferredHolder<Block, ? extends Block> block) {
         String path = block.getId().getPath();
 
         JsonObject model = new JsonObject();
@@ -431,7 +431,7 @@ public final class ModItemModelProvider implements DataProvider {
     }
 
     @SafeVarargs
-    private static void add(Set<RegistryObject<? extends Item>> target, RegistryObject<? extends Item>... values) {
+    private static void add(Set<DeferredHolder<Item, ? extends Item>> target, DeferredHolder<Item, ? extends Item>... values) {
         java.util.Collections.addAll(target, values);
     }
 

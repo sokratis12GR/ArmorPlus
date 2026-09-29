@@ -1,6 +1,6 @@
 package com.sofodev.armorplus.utils;
 
-import net.minecraftforge.fml.ModList;
+import net.neoforged.fml.ModList;
 
 
 public enum Loader {
@@ -15,6 +15,6 @@ public enum Loader {
     }
 
     public boolean isLoaded() {
-        return ModList.getModContainerById(name().toLowerCase(java.util.Locale.ROOT)).isPresent();
+        return ModList.get().getModContainerById(name().toLowerCase(java.util.Locale.ROOT)).isPresent();
     }
 }

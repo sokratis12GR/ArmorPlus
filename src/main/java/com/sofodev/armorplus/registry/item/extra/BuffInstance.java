@@ -65,7 +65,7 @@ public class BuffInstance {
         this.amplifier = -1;
         this.instant = true;
         this.durationTicks = 20;
-        this.effect = new MobEffectInstance(ModPotions.EMPTY.getHolder().orElseThrow());
+        this.effect = new MobEffectInstance(ModPotions.EMPTY);
         this.enabled = true;
     }
 
@@ -74,7 +74,7 @@ public class BuffInstance {
         this.amplifier = -1;
         this.instant = true;
         this.durationTicks = 20;
-        this.effect = new MobEffectInstance(ModPotions.EMPTY.getHolder().orElseThrow());
+        this.effect = new MobEffectInstance(ModPotions.EMPTY);
         this.enabled = true;
     }
 

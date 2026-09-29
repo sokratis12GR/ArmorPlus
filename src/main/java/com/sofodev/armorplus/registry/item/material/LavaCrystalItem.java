@@ -10,6 +10,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.block.entity.FuelValues;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -61,7 +62,7 @@ public class LavaCrystalItem extends APItem {
 
 
     @Override
-    public int getBurnTime(ItemStack itemStack, RecipeType<?> recipeType) {
+    public int getBurnTime(ItemStack itemStack, RecipeType<?> recipeType, FuelValues fuelValues) {
         return isInfused ? burnTime[1] : burnTime[0];
     }
 

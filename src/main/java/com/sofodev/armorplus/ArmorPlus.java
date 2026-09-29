@@ -3,20 +3,17 @@ package com.sofodev.armorplus;
 import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.config.ConfigHelper;
 import com.sofodev.armorplus.datagen.DataGenerators;
-import net.minecraftforge.data.event.GatherDataEvent;
 import com.sofodev.armorplus.registry.ModEnchantmentEffects;
 import com.sofodev.armorplus.registry.block.castle.BrickColor;
 import com.sofodev.armorplus.registry.item.tool.properties.mace.APMaceMaterial;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolProperties;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,10 +24,10 @@ import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.registry.ModBlocks.BLOCKS;
 import static com.sofodev.armorplus.registry.ModBlocks.TILE_ENTITIES;
 import static com.sofodev.armorplus.registry.ModCreativeTabs.CREATIVE_MODE_TABS;
-import static com.sofodev.armorplus.registry.ModEntities.*;
+import static com.sofodev.armorplus.registry.ModEntities.ENTITY_TYPES;
 import static com.sofodev.armorplus.registry.ModItems.ITEMS;
-import static com.sofodev.armorplus.registry.ModPotions.EFFECTS;
 import static com.sofodev.armorplus.registry.ModPoI.POI_TYPES;
+import static com.sofodev.armorplus.registry.ModPotions.EFFECTS;
 import static com.sofodev.armorplus.registry.ModVillagers.PROFESSIONS;
 
 @Mod(MODID)
@@ -51,28 +48,34 @@ public class ArmorPlus {
     public static ArmorPlusConfig config;
     public static ArmorPlus instance;
 
-    public ArmorPlus(FMLJavaModLoadingContext context) {
+    public ArmorPlus(IEventBus modBus, ModContainer container) {
         instance = this;
-        var modBusGroup = context.getModBusGroup();
-        GatherDataEvent.getBus(modBusGroup).addListener(DataGenerators::gatherData);
+        modBus.addListener(
+                GatherDataEvent.Client.class,
+                DataGenerators::gatherClientData
+        );
+
+        modBus.addListener(
+                GatherDataEvent.Server.class,
+                DataGenerators::gatherServerData
+        );
 
         ArmorPlus.config = ConfigHelper.register(
-                context, ModConfig.Type.COMMON, ArmorPlusConfig::create);
+                container, ModConfig.Type.COMMON, ArmorPlusConfig::create);
         //Order of registration per https://gist.github.com/pupnewfster/ea38cf3744f23d6b65d67e6f279d5942
 
 
-        BLOCKS.register(modBusGroup);
-        ENTITY_TYPES.register(modBusGroup);
-        POI_TYPES.register(modBusGroup);
-        PROFESSIONS.register(modBusGroup);
-        ITEMS.register(modBusGroup);
-        CREATIVE_MODE_TABS.register(modBusGroup);
+        BLOCKS.register(modBus);
+        ENTITY_TYPES.register(modBus);
+        POI_TYPES.register(modBus);
+        PROFESSIONS.register(modBus);
+        ITEMS.register(modBus);
+        CREATIVE_MODE_TABS.register(modBus);
 
-        TILE_ENTITIES.register(modBusGroup);
-        EFFECTS.register(modBusGroup);
+        TILE_ENTITIES.register(modBus);
+        EFFECTS.register(modBus);
 
-        ModEnchantmentEffects.ENTITY_ENCHANTMENT_EFFECTS.register(modBusGroup);
-
+        ModEnchantmentEffects.ENTITY_ENCHANTMENT_EFFECTS.register(modBus);
 
 
     }

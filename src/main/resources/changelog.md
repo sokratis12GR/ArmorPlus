@@ -1,6 +1,6 @@
 # 26.1.2 - 22.0.0
 
-- **26.1.2 Forge Release**
+- **26.1.2 NeoForge Release**
 - A couple QoL improvements
 - Updated the wiki link and commands
 - Updated Villager (Soul Exchanger) trades in this version

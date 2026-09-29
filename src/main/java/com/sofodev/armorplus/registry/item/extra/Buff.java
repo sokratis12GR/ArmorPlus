@@ -12,7 +12,7 @@ import java.util.Locale;
 
 import static com.sofodev.armorplus.utils.Utils.mcLoc;
 import static net.minecraft.world.effect.MobEffects.WITHER;
-import static net.minecraftforge.registries.ForgeRegistries.MOB_EFFECTS;
+import static net.minecraft.core.registries.BuiltInRegistries.MOB_EFFECT;
 
 
 public enum Buff implements IBuff {
@@ -91,7 +91,7 @@ public enum Buff implements IBuff {
 
     Buff(boolean isEffect, boolean requireFullSet) {
         this.isEffect = isEffect;
-        this.effect = MOB_EFFECTS.getHolder(mcLoc(this.name().toLowerCase(Locale.ENGLISH))).orElse(null);
+        this.effect = MOB_EFFECT.get(mcLoc(this.name().toLowerCase(Locale.ENGLISH))).orElse(null);
         this.requireFullSet = requireFullSet;
     }
 
@@ -111,7 +111,7 @@ public enum Buff implements IBuff {
     @Override
     public Holder<MobEffect> getEffect() {
         if (!isEffect) return null;
-        return MOB_EFFECTS.getHolder(mcLoc(this.name().toLowerCase(Locale.ENGLISH))).orElse(effect);
+        return MOB_EFFECT.get(mcLoc(this.name().toLowerCase(Locale.ENGLISH))).<Holder<MobEffect>>map(holder -> holder).orElse(effect);
     }
 
     @Override
