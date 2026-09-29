@@ -5,7 +5,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
@@ -78,8 +78,8 @@ public class ModPlacedFeatures {
      * @param configuredKey    The configured feature resource key
      * @param placedKey        The placed feature resource key
      * @param count            How many veins per chunk
-     * @param minHeight        Minimum Y (above bottom)
-     * @param maxHeight        Maximum Y (below top)
+     * @param minHeight        Minimum absolute Y
+     * @param maxHeight        Maximum absolute Y
      */
     private static void registerOrePlacedFeature(
             BootstrapContext<PlacedFeature> context,
@@ -96,8 +96,8 @@ public class ModPlacedFeatures {
                 CountPlacement.of(count),
                 InSquarePlacement.spread(),
                 HeightRangePlacement.uniform(
-                        VerticalAnchor.aboveBottom(minHeight),
-                        VerticalAnchor.belowTop(maxHeight)
+                        VerticalAnchor.absolute(minHeight),
+                        VerticalAnchor.absolute(maxHeight)
                 ),
                 BiomeFilter.biome()
         );
@@ -106,6 +106,6 @@ public class ModPlacedFeatures {
     }
 
     public static ResourceKey<PlacedFeature> createPlacedFeatureKey(String name) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(MODID, name));
+        return ResourceKey.create(Registries.PLACED_FEATURE, Identifier.fromNamespaceAndPath(MODID, name));
     }
 }

@@ -1,7 +1,6 @@
 package com.sofodev.armorplus.datagen;
 
 import net.minecraft.core.HolderLookup;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
@@ -10,29 +9,23 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.registries.RegistryObject;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
 
+import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.registry.ModItems.*;
 import static com.sofodev.armorplus.utils.DataUtils.getPath;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
-import static com.sofodev.armorplus.utils.Utils.setRL;
 import static net.minecraft.world.item.Items.*;
 
 public class SmithingRecipeMaker extends RecipeProvider {
-    private DataGenerator generator;
-    private final CompletableFuture<HolderLookup.Provider> provider;
+    private static final Logger LOGGER = LogManager.getLogger(MODID);
 
-    public SmithingRecipeMaker(DataGenerator generatorIn, CompletableFuture<HolderLookup.Provider> provider) {
-        super(generatorIn.getPackOutput(), provider);
-        generator = generatorIn;
-        this.provider = provider;
-    }
-
-    public static SmithingRecipeMaker get(DataGenerator generator, CompletableFuture<HolderLookup.Provider> provider) {
-        return new SmithingRecipeMaker(generator, provider);
+    public SmithingRecipeMaker(HolderLookup.Provider registries, RecipeOutput output) {
+        super(registries, output);
     }
 
     public void buildBaseToFullSmithing(RecipeOutput consumer, Set<RegistryObject<Item>> bases, ItemLike soul) {
@@ -67,21 +60,24 @@ public class SmithingRecipeMaker extends RecipeProvider {
 
     public void buildSmithing(RecipeOutput consumer, ItemLike base, ItemLike addition, RecipeCategory category, ItemLike result) {
         String path = getPath(base);
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, //template
-                Ingredient.of(base),//Base
-                Ingredient.of(addition), //Addition
-                category, result.asItem() // Result
-        ).unlocks("has_req", has(addition)).save(consumer, setRL("smithing/" + path));
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(INFUSED_LAVA_CRYSTAL.get()),
+                        Ingredient.of(base),
+                        Ingredient.of(addition),
+                        category,
+                        result.asItem()
+                ).unlocks("has_req", has(addition))
+                .save(consumer, com.sofodev.armorplus.utils.Utils.setLocation("smithing/" + path));
     }
 
     @Override
-    protected void buildRecipes(RecipeOutput con) {
-        registerSmithingRecipes(con);
+    protected void buildRecipes() {
+        registerSmithingRecipes(output);
     }
 
-    private void registerSmithingRecipes(RecipeOutput con) {
-        SmithingRecipeMaker smither = new SmithingRecipeMaker(generator, provider);
-        //ArmorBase + Soul = Complete Form
+    public void registerSmithingRecipes(RecipeOutput con) {
+        SmithingRecipeMaker smither = this;
+
         smither.buildBaseToFullSmithing(con, SUPER_STAR_BASES, WITHER_BOSS_SOUL.get());
         smither.buildBaseToFullSmithing(con, GUARDIAN_BASES, ELDER_GUARDIAN_SOUL.get());
         smither.buildBaseToFullSmithing(con, ENDER_DRAGON_BASES, ENDER_DRAGON_SOUL.get());

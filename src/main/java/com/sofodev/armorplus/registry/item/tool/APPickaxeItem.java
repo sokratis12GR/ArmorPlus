@@ -11,17 +11,18 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
+import java.util.function.Consumer;
+import net.minecraft.world.item.component.TooltipDisplay;
 
 import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolType.PICKAXE;
-import static com.sofodev.armorplus.utils.ToolTipUtils.addBuffInformation;
+import static com.sofodev.armorplus.utils.ToolTipUtils.*;
 
-public class APPickaxeItem extends PickaxeItem implements Tool {
+public class APPickaxeItem extends Item implements Tool {
 
     private final IAPTool mat;
 
     public APPickaxeItem(IAPTool mat) {
-        super(mat.get(), new Item.Properties().attributes(PickaxeItem.createAttributes(mat.get(),
-                (int) (mat.get().getAttackDamageBonus() + PICKAXE.getDmg()), PICKAXE.getAttackSpeed())));
+        super(com.sofodev.armorplus.registry.RegistryContext.itemProperties().pickaxe(mat.get(), (float) mat.get().attackDamageBonus() + PICKAXE.getDmg(), PICKAXE.getAttackSpeed()));
         this.mat = mat;
     }
 
@@ -30,25 +31,29 @@ public class APPickaxeItem extends PickaxeItem implements Tool {
         return super.getName(stack).copy().withStyle(mat.getColor());
     }
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> tooltip, TooltipFlag flagIn) {
-        addBuffInformation(mat, tooltip, "on_hit", false, mat.config().enableWeaponEffects().get());
-        super.appendHoverText(stack, ctx, tooltip, flagIn);
+    public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag flagIn) {
+        if (isSneakDown()) {
+            addBuffInformation(mat, tooltip, "on_hit", false, mat.config().enableWeaponEffects().get());
+        } else if (!mat.getBuffInstances().get().isEmpty()) {
+            showSneakInfo(tooltip, mat.getColor());
+        }
+        super.appendHoverText(stack, ctx, display, tooltip, flagIn);
     }
 
     @Override
     public boolean mineBlock(ItemStack stack, Level world, BlockState state, BlockPos pos, LivingEntity player) {
-        if (!player.level().isClientSide && mat.config().enableWeaponEffects().get()) {
+        if (!player.level().isClientSide() && mat.config().enableWeaponEffects().get()) {
             mat.onBlockMined(stack, world, state, pos, player);
         }
         return super.mineBlock(stack, world, state, pos, player);
     }
 
     @Override
-    public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (!target.level().isClientSide && mat.config().enableWeaponEffects().get()) {
+    public void hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        if (!target.level().isClientSide() && mat.config().enableWeaponEffects().get()) {
             mat.getBuffInstances().get().forEach(instance -> instance.hitEntity(stack, target, attacker));
         }
-        return super.hurtEnemy(stack, target, attacker);
+        super.hurtEnemy(stack, target, attacker);
     }
 
     @Override

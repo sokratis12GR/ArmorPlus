@@ -6,9 +6,8 @@ import com.sofodev.armorplus.registry.block.APLavaBlock;
 import com.sofodev.armorplus.registry.block.ore.CrystalOreBlock;
 import com.sofodev.armorplus.registry.block.ore.Variant;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
@@ -51,7 +50,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 tag(BlockTags.NEEDS_STONE_TOOL).add(block);
             }
 
-            if (path.endsWith("_wall") || path.endsWith("_tower")) {
+            if (path.endsWith("_wall")) {
+                tag(BlockTags.WALLS).add(block);
                 tag(modTag("walls")).add(block);
             }
 
@@ -60,14 +60,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .addTag(modTag("ores/lava_crystal"))
                 .addTag(modTag("ores/frost_crystal"));
 
-        TagKey<Block> MC_ORES = TagKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace("ores"));
-        tag(MC_ORES).addTag(modTag("ores"));
-
-        TagKey<Block> MC_WALLS = TagKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace("walls"));
-        tag(MC_WALLS).addTag(modTag("walls"));
     }
 
     private TagKey<Block> modTag(String name) {
-        return BlockTags.create(ResourceLocation.fromNamespaceAndPath(ArmorPlus.MODID, name));
+        return BlockTags.create(Identifier.fromNamespaceAndPath(ArmorPlus.MODID, name));
     }
 }

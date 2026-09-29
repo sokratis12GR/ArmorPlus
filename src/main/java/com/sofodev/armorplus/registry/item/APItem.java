@@ -5,7 +5,7 @@ import net.minecraft.world.item.Item;
 public class APItem extends Item {
 
     public APItem() {
-        super(new Item.Properties());
+        super(com.sofodev.armorplus.registry.RegistryContext.itemProperties());
     }
 
     public APItem(Item.Properties props) {

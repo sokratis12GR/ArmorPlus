@@ -8,7 +8,6 @@ import com.sofodev.armorplus.registry.enchantment.SoulStealerEnchantmentEffect;
 import com.sofodev.armorplus.registry.enchantment.UnknownEnchantmentEffect;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect;
-import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
@@ -26,10 +25,5 @@ public class ModEnchantmentEffects {
             ENTITY_ENCHANTMENT_EFFECTS.register("life_steal", () -> LifeStealEnchantmentEffect.CODEC);
     public static final Supplier<MapCodec<? extends EnchantmentEntityEffect>> UNKNOWN =
             ENTITY_ENCHANTMENT_EFFECTS.register("unknown", () -> UnknownEnchantmentEffect.CODEC);
-    public static final Supplier<MapCodec<? extends EnchantmentEntityEffect>> SOUL_HARDEN =
-            ENTITY_ENCHANTMENT_EFFECTS.register("soul_harden", () -> SoulStealerEnchantmentEffect.CODEC);
 
-    public static void register(IEventBus bus) {
-        ENTITY_ENCHANTMENT_EFFECTS.register(bus);
-    }
 }

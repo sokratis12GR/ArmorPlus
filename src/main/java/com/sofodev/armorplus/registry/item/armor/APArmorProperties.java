@@ -1,13 +1,18 @@
 package com.sofodev.armorplus.registry.item.armor;
 
+import net.minecraft.world.item.equipment.ArmorType;
+
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.utils.Utils;
 import net.minecraft.core.Holder;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.equipment.ArmorMaterial;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.equipment.EquipmentAsset;
+import net.minecraft.world.item.equipment.EquipmentAssets;
 import net.minecraft.world.level.ItemLike;
 
 import java.util.Arrays;
@@ -93,26 +98,21 @@ public enum APArmorProperties {
     }
 
     public ArmorMaterial toMaterial() {
-        EnumMap<ArmorItem.Type, Integer> defenseMap = new EnumMap<>(ArmorItem.Type.class);
+        EnumMap<ArmorType, Integer> defenseMap = new EnumMap<>(ArmorType.class);
+        defenseMap.put(ArmorType.HELMET, damageReduction[0]);
+        defenseMap.put(ArmorType.CHESTPLATE, damageReduction[1]);
+        defenseMap.put(ArmorType.LEGGINGS, damageReduction[2]);
+        defenseMap.put(ArmorType.BOOTS, damageReduction[3]);
+        defenseMap.put(ArmorType.BODY, damageReduction[1]);
 
-        defenseMap.put(ArmorItem.Type.HELMET, damageReduction[0]);
-        defenseMap.put(ArmorItem.Type.CHESTPLATE, damageReduction[1]);
-        defenseMap.put(ArmorItem.Type.LEGGINGS, damageReduction[2]);
-        defenseMap.put(ArmorItem.Type.BOOTS, damageReduction[3]);
+        String namespace = special ? ArmorPlus.MODID : "minecraft";
+        TagKey<Item> repairTag = TagKey.create(BuiltInRegistries.ITEM.key(),
+                Identifier.fromNamespaceAndPath(ArmorPlus.MODID, "repairs_" + name));
+        ResourceKey<EquipmentAsset> assetKey = ResourceKey.create(EquipmentAssets.ROOT_ID,
+                Identifier.fromNamespaceAndPath(namespace, name));
 
-        defenseMap.put(ArmorItem.Type.BODY, damageReduction[1]);
-
-        return new ArmorMaterial(
-                defenseMap,
-                enchantability,
-                soundEvent,
-                () -> Ingredient.of(Utils.getRepairStacks(repair).stream()),
-                List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(
-                        special ? ArmorPlus.MODID : "minecraft", name
-                ))),
-                toughness,
-                this == ENHANCED_NETHERITE_PROP ? 0.1f : 0.0f
-        );
+        return new ArmorMaterial(durability, defenseMap, enchantability, soundEvent, toughness,
+                this == ENHANCED_NETHERITE_PROP ? 0.1f : 0.0f, repairTag, assetKey);
     }
 
     public int getDurability() {

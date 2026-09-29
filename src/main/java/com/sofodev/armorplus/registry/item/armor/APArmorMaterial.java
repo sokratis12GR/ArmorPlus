@@ -1,9 +1,9 @@
 package com.sofodev.armorplus.registry.item.armor;
 
+import net.minecraft.world.item.equipment.ArmorType;
+
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
-import net.minecraft.core.Holder;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 
@@ -15,13 +15,12 @@ import java.util.function.Supplier;
 
 import static com.sofodev.armorplus.ArmorPlus.config;
 import static com.sofodev.armorplus.config.ArmorPlusConfig.*;
-import static com.sofodev.armorplus.registry.ModArmorMaterials.getHolder;
 import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.*;
 import static com.sofodev.armorplus.registry.item.extra.Buff.*;
 import static net.minecraft.ChatFormatting.*;
 
 public enum APArmorMaterial implements IAPArmor {
-    /*Tier 1*/
+    /*ToolMaterial 1*/
     COAL(COAL_PROP, GRAY, () -> withBuffs(new BuffInstance(NIGHT_VISION, 0))) {
         @Override
         public MaterialConfig config() {
@@ -56,7 +55,7 @@ public enum APArmorMaterial implements IAPArmor {
         }
     },
 
-    /*Tier 2*/
+    /*ToolMaterial 2*/
     EMERALD(EMERALD_PROP, DARK_GREEN, () -> withBuffs(new BuffInstance(SPEED, 1))) {
         @Override
         public MaterialConfig config() {
@@ -80,7 +79,7 @@ public enum APArmorMaterial implements IAPArmor {
         }
     },
 
-    /*Tier 3*/
+    /*ToolMaterial 3*/
     GUARDIAN(GUARDIAN_PROP, true, BLUE, fromConfig(() -> config.guardianMaterial)) {
         @Override
         public AdvancedMaterialConfig config() {
@@ -100,14 +99,14 @@ public enum APArmorMaterial implements IAPArmor {
         }
     },
 
-    /*Tier TConstruct*/
+    /*ToolMaterial TConstruct*/
     ARDITE(ARDITE_PROP, RED),
     COBALT(COBALT_PROP, BLUE),
     KNIGHT_SLIME(KNIGHT_SLIME_PROP, LIGHT_PURPLE),
     PIG_IRON(PIG_IRON_PROP, LIGHT_PURPLE),
     MANYULLYN(MANYULLYN_PROP, DARK_PURPLE),
 
-    /*Tier Slayer*/
+    /*ToolMaterial Slayer*/
     SLAYER(SLAYER_PROP, true, DARK_PURPLE, fromConfig(() -> config.slayerMaterial)) {
         @Override
         public AdvancedMaterialConfig config() {
@@ -134,7 +133,7 @@ public enum APArmorMaterial implements IAPArmor {
         }
     };
 
-    private final Supplier<Holder<ArmorMaterial>> armor;
+    private final ArmorMaterial armor;
     private final boolean isImmuneToFire;
     private final Supplier<List<BuffInstance>> buffs;
     private final net.minecraft.ChatFormatting formatting;
@@ -151,7 +150,7 @@ public enum APArmorMaterial implements IAPArmor {
 
     APArmorMaterial(APArmorProperties armor, boolean isImmuneToFire, net.minecraft.ChatFormatting formatting, Supplier<List<BuffInstance>> buffs) {
         this.durability = armor.getDurability();
-        this.armor = getHolder(armor);
+        this.armor = armor.toMaterial();
         this.isImmuneToFire = isImmuneToFire;
         this.buffs = buffs;
         this.formatting = formatting;
@@ -160,7 +159,7 @@ public enum APArmorMaterial implements IAPArmor {
     /**
      * durability for each piece
      */
-    public int getDurability(ArmorItem.Type type) {
+    public int getDurability(ArmorType type) {
         return MAX_DAMAGE_ARRAY[type.getSlot().getIndex()] * durability;
     }
 
@@ -202,13 +201,13 @@ public enum APArmorMaterial implements IAPArmor {
     }
 
     @Override
-    public Supplier<Holder<ArmorMaterial>> get() {
+    public ArmorMaterial get() {
         return this.armor;
     }
 
     @Override
     public Item.Properties getProperties() {
-        return new Item.Properties().rarity(Rarity.EPIC);
+        return com.sofodev.armorplus.registry.RegistryContext.itemProperties().rarity(Rarity.EPIC);
     }
 
     @Override

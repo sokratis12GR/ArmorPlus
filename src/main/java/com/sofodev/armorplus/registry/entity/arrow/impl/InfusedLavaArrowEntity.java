@@ -12,7 +12,7 @@ import static com.sofodev.armorplus.registry.entity.arrow.APArrowProperty.INFUSE
 public class InfusedLavaArrowEntity extends APArrowEntity {
 
     public InfusedLavaArrowEntity(EntityType<? extends APArrowEntity> type, Level world) {
-        super(type, world);
+        super(type, world, INFUSED_LAVA_ARROW_PROP);
     }
 
     public InfusedLavaArrowEntity(Level world) {

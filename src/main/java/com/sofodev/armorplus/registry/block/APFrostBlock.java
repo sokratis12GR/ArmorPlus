@@ -8,14 +8,14 @@ import static net.minecraft.world.level.material.MapColor.COLOR_LIGHT_BLUE;
 public class APFrostBlock extends Block {
 
     public APFrostBlock() {
-        super(Properties.ofFullCopy(STONE)
+        super(com.sofodev.armorplus.registry.RegistryContext.blockProperties(Properties.ofFullCopy(STONE)
                 .mapColor(COLOR_LIGHT_BLUE)
                 .strength(5.0f, 1000.0f)
                 .lightLevel((light) -> 8)
-                .requiresCorrectToolForDrops());
+                .requiresCorrectToolForDrops()));
     }
 
     public APFrostBlock(Properties props) {
-        super(props.lightLevel((light) -> 8));
+        super(com.sofodev.armorplus.registry.RegistryContext.blockProperties(props.lightLevel((light) -> 8)));
     }
 }

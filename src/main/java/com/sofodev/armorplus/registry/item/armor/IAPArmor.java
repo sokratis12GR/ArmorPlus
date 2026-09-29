@@ -1,12 +1,12 @@
 package com.sofodev.armorplus.registry.item.armor;
 
+import net.minecraft.world.item.equipment.ArmorType;
+
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.Holder;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.Item;
 
 import java.util.List;
@@ -25,7 +25,7 @@ public interface IAPArmor {
     /**
      * @return The IArmorMaterial of the armor set
      */
-    Supplier<Holder<ArmorMaterial>> get();
+    ArmorMaterial get();
 
     /**
      * @return ChatFormatting colour for the rarity (item name) color
@@ -39,7 +39,7 @@ public interface IAPArmor {
 
     boolean isImmuneToFire();
 
-    int getDurability(ArmorItem.Type type);
+    int getDurability(ArmorType type);
 
     /**
      * A list of all the BuffInstances for the armor set

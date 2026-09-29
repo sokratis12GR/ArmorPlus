@@ -12,7 +12,7 @@ import static com.sofodev.armorplus.registry.entity.arrow.APArrowProperty.ENDER_
 public class EnderDragonArrowEntity extends APArrowEntity {
 
     public EnderDragonArrowEntity(EntityType<? extends APArrowEntity> type, Level world) {
-        super(type, world);
+        super(type, world, ENDER_DRAGON_ARROW_PROP);
     }
 
     public EnderDragonArrowEntity(Level world) {

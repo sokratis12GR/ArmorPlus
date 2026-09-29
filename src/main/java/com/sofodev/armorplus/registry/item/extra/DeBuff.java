@@ -27,7 +27,7 @@ public enum DeBuff implements IBuff {
     IGNITE(false) {
         @Override
         public void hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-            if (!attacker.level().isClientSide && target != null) {
+            if (!attacker.level().isClientSide() && target != null) {
                 target.setRemainingFireTicks((rand.nextInt(6) + 3) * 20);
             }
         }
@@ -53,7 +53,8 @@ public enum DeBuff implements IBuff {
 
     @Override
     public Holder<MobEffect> getEffect() {
-        return effect;
+        if (!isEffect) return null;
+        return ForgeRegistries.MOB_EFFECTS.getHolder(Utils.mcLoc(this.name().toLowerCase(Locale.ENGLISH))).orElse(effect);
     }
 
     @Override

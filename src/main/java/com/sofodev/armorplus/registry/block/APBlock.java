@@ -7,22 +7,22 @@ import net.minecraft.world.level.material.MapColor;
 public class APBlock extends Block {
 
     public APBlock(Block material, MapColor color, float hardness, float resistance, int lightLevel) {
-        super(BlockBehaviour.Properties.ofFullCopy(material)
+        super(com.sofodev.armorplus.registry.RegistryContext.blockProperties(BlockBehaviour.Properties.ofFullCopy(material)
                 .mapColor(color)
                 .strength(hardness, resistance)
                 .lightLevel((light) -> lightLevel)
-                .requiresCorrectToolForDrops());
+                .requiresCorrectToolForDrops()));
     }
 
     public APBlock(Block material, float hardness, float resistance) {
-        super(BlockBehaviour.Properties.ofFullCopy(material).strength(hardness, resistance).requiresCorrectToolForDrops());
+        super(com.sofodev.armorplus.registry.RegistryContext.blockProperties(BlockBehaviour.Properties.ofFullCopy(material).strength(hardness, resistance).requiresCorrectToolForDrops()));
     }
 
     public APBlock(Block material) {
-        super(BlockBehaviour.Properties.ofFullCopy(material).requiresCorrectToolForDrops());
+        super(com.sofodev.armorplus.registry.RegistryContext.blockProperties(BlockBehaviour.Properties.ofFullCopy(material).requiresCorrectToolForDrops()));
     }
 
     public APBlock(Properties props) {
-        super(props.requiresCorrectToolForDrops());
+        super(com.sofodev.armorplus.registry.RegistryContext.blockProperties(props.requiresCorrectToolForDrops()));
     }
 }

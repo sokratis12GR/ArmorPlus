@@ -78,7 +78,7 @@ public class Result {
     }
 
     public Optional<String> getPath() {
-        if (path == null || path.equals("/")) return Optional.empty();
+        if (path == null || path.isBlank() || path.equals("/")) return Optional.empty();
         if (path.contains("/")) {
             String trimmed = path.replace("/", "").trim();
             return Optional.of(trimmed + "/");

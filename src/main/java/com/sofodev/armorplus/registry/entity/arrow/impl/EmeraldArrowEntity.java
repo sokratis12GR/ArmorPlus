@@ -12,7 +12,7 @@ import static com.sofodev.armorplus.registry.entity.arrow.APArrowProperty.EMERAL
 public class EmeraldArrowEntity extends APArrowEntity {
 
     public EmeraldArrowEntity(EntityType<? extends APArrowEntity> type, Level world) {
-        super(type, world);
+        super(type, world, EMERALD_ARROW_PROP);
     }
 
     public EmeraldArrowEntity(Level world) {

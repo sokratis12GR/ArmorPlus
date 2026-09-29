@@ -5,7 +5,6 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
@@ -21,6 +20,7 @@ public class BuffInstance {
 
     private final boolean instant;
     private final MobEffectInstance effect;
+    private final int durationTicks;
     private IBuff buff;
     private int amplifier;
     private boolean enabled;
@@ -48,8 +48,9 @@ public class BuffInstance {
         this.buff = buff;
         this.amplifier = amplifier;
         this.instant = instant;
+        this.durationTicks = convertToSeconds(duration);
         if (buff.isEffect() && buff.getEffect() != null) {
-            this.effect = new MobEffectInstance(buff.getEffect(), convertToSeconds(duration), amplifier, false, false);
+            this.effect = new MobEffectInstance(buff.getEffect(), durationTicks, amplifier, false, false);
         } else {
             this.effect = null;
         }
@@ -63,6 +64,7 @@ public class BuffInstance {
         this.buff = enabled ? buff : NONE;
         this.amplifier = -1;
         this.instant = true;
+        this.durationTicks = 20;
         this.effect = new MobEffectInstance(ModPotions.EMPTY.getHolder().orElseThrow());
         this.enabled = true;
     }
@@ -71,6 +73,7 @@ public class BuffInstance {
         this.buff = buff;
         this.amplifier = -1;
         this.instant = true;
+        this.durationTicks = 20;
         this.effect = new MobEffectInstance(ModPotions.EMPTY.getHolder().orElseThrow());
         this.enabled = true;
     }
@@ -92,7 +95,7 @@ public class BuffInstance {
     }
 
     /**
-     * Uses the {@link ArmorItem#onInventoryTick(ItemStack, Level, Player, int, int)} function to trigger buffs
+     * Uses the armor inventory tick function to trigger buffs
      * <p>
      * Applies Buff's effects.
      * <p>
@@ -103,10 +106,10 @@ public class BuffInstance {
         buff.onInventoryTick(stack, world, player);
 
         if (buff.isEffect()) {
-            MobEffectInstance currentEffect = effect;
-            if (currentEffect == null) return;
-            if (instant || !player.hasEffect(currentEffect.getEffect())) {
-                player.addEffect(currentEffect);
+            var holder = buff.getEffect();
+            if (holder == null) return;
+            if (instant || !player.hasEffect(holder)) {
+                player.addEffect(new MobEffectInstance(holder, durationTicks, amplifier, false, false));
             }
         }
     }
@@ -114,9 +117,9 @@ public class BuffInstance {
     public void hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         buff.hitEntity(stack, target, attacker);
         if (buff.isEffect()) {
-            MobEffectInstance currentEffect = effect;
-            if (currentEffect == null) return;
-            target.addEffect(currentEffect);
+            var holder = buff.getEffect();
+            if (holder == null) return;
+            target.addEffect(new MobEffectInstance(holder, durationTicks, amplifier, false, false));
         }
     }
 
@@ -124,7 +127,8 @@ public class BuffInstance {
      * Returns a potion effect, might be {@link Potions#} if the buff provided is not an effect.
      */
     public MobEffectInstance getEffect() {
-        return effect;
+        var holder = buff.getEffect();
+        return holder != null ? new MobEffectInstance(holder, durationTicks, amplifier, false, false) : effect;
     }
 
     public IBuff getBuff() {

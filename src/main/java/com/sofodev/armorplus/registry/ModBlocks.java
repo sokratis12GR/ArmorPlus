@@ -44,7 +44,7 @@ public class ModBlocks {
     public static final RegistryObject<Block>[] CASTLE_BLOCK_WALLS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
     public static final RegistryObject<Block>[] CASTLE_BLOCK_STAIRS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
     public static final RegistryObject<Block>[] CASTLE_BLOCK_SLABS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
-    public static final RegistryObject<Block> COMPRESSED_OBSIDIAN = registerBlockWithItem("compressed_obsidian", () -> new Block(ofFullCopy(Blocks.OBSIDIAN)));
+    public static final RegistryObject<Block> COMPRESSED_OBSIDIAN = registerBlockWithItem("compressed_obsidian", () -> new Block(RegistryContext.blockProperties(ofFullCopy(Blocks.OBSIDIAN))));
     public static final RegistryObject<Block> ORE_LAVA_CRYSTAL = registerBlockWithItem("ore_lava_crystal", () -> new CrystalOreBlock(ORIGINAL));
     public static final RegistryObject<Block> ORE_LAVA_CRYSTAL_STONE = registerBlockWithItem("ore_lava_crystal_stone", () -> new CrystalOreBlock(STONE));
     public static final RegistryObject<Block> ORE_LAVA_CRYSTAL_OBSIDIAN = registerBlockWithItem("ore_lava_crystal_obsidian", () -> new CrystalOreBlock(OBSIDIAN));
@@ -71,8 +71,8 @@ public class ModBlocks {
     }
 
     public static <BLOCK extends Block> RegistryObject<BLOCK> registerBlockWithItem(String name, DeferredRegister<Block> blocks, DeferredRegister<Item> items, Supplier<BLOCK> blockSupplier, Function<BLOCK, Item> itemFactory) {
-        RegistryObject<BLOCK> block = blocks.register(name, blockSupplier);
-        items.register(name, () -> itemFactory.apply(block.get()));
+        RegistryObject<BLOCK> block = blocks.register(name, () -> RegistryContext.withBlockKey(blocks.key(name), blockSupplier));
+        items.register(name, () -> RegistryContext.withItemKey(items.key(name), () -> itemFactory.apply(block.get())));
         return block;
     }
 
@@ -84,9 +84,6 @@ public class ModBlocks {
         return registerBlockWithItem(name, BLOCKS, ITEMS, blockSupplier, APBlockItem::new);
     }
 
-    private static <T extends BlockEntity> BlockEntityType<T> build(BlockEntityType.Builder<T> builder) {
-        return builder.build(null);
-    }
 
     public static void registerBlocks() {
         IntStream.range(0, AP_STONE_BRICKS_LENGTH).forEach(index -> {

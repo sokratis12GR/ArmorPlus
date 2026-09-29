@@ -2,7 +2,7 @@ package com.sofodev.armorplus.registry.entity.arrow;
 
 import com.sofodev.armorplus.registry.item.extra.EffectData;
 import net.minecraft.core.Holder;
-import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -16,26 +16,26 @@ import static net.minecraft.world.item.Items.ARROW;
 public class ArrowProperty implements IArrow {
 
     private final String name;
-    private final SimpleParticleType particleType;
+    private final ParticleOptions particleType;
     private final double dmg;
     private final EffectData data;
 
-    public ArrowProperty(String name, double dmg, SimpleParticleType particleType, EffectData data) {
+    public ArrowProperty(String name, double dmg, ParticleOptions particleType, EffectData data) {
         this.name = name;
         this.dmg = dmg;
         this.particleType = particleType;
         this.data = data;
     }
 
-    public ArrowProperty(String name, double dmg, SimpleParticleType particleType) {
+    public ArrowProperty(String name, double dmg, ParticleOptions particleType) {
         this(name, dmg, particleType, new EffectData(MobEffects.BLINDNESS));
     }
 
-    public static ArrowProperty create(String name, double dmg, SimpleParticleType particle, EffectData data) {
+    public static ArrowProperty create(String name, double dmg, ParticleOptions particle, EffectData data) {
         return new ArrowProperty(name, dmg, particle, data);
     }
 
-    public static ArrowProperty create(String name, double dmg, SimpleParticleType particle) {
+    public static ArrowProperty create(String name, double dmg, ParticleOptions particle) {
         return new ArrowProperty(name, dmg, particle, new EffectData(MobEffects.BLINDNESS));
     }
 
@@ -49,7 +49,7 @@ public class ArrowProperty implements IArrow {
     }
 
     @Override
-    public SimpleParticleType getParticle() {
+    public ParticleOptions getParticle() {
         return this.particleType;
     }
 

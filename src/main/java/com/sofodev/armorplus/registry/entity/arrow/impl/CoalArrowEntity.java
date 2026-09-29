@@ -12,7 +12,7 @@ import static com.sofodev.armorplus.registry.entity.arrow.APArrowProperty.COAL_A
 public class CoalArrowEntity extends APArrowEntity {
 
     public CoalArrowEntity(EntityType<? extends APArrowEntity> type, Level world) {
-        super(type, world);
+        super(type, world, COAL_ARROW_PROP);
     }
 
     public CoalArrowEntity(Level world) {

@@ -2,7 +2,6 @@ package com.sofodev.armorplus.utils;
 
 import net.minecraftforge.fml.ModList;
 
-import java.util.Locale;
 
 public enum Loader {
     THEDRAGONLIB,
@@ -16,6 +15,6 @@ public enum Loader {
     }
 
     public boolean isLoaded() {
-        return ModList.get().isLoaded(this.name().toLowerCase(Locale.ENGLISH));
+        return ModList.getModContainerById(name().toLowerCase(java.util.Locale.ROOT)).isPresent();
     }
 }

@@ -6,7 +6,7 @@ import com.sofodev.armorplus.datagen.recipe.Input;
 import com.sofodev.armorplus.datagen.recipe.Result;
 import com.sofodev.armorplus.utils.Utils;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ArrowItem;
@@ -21,26 +21,19 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 import java.util.stream.IntStream;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.utils.DataUtils.getPath;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
-import static com.sofodev.armorplus.utils.Utils.setRL;
-import static net.minecraft.world.item.crafting.Ingredient.EMPTY;
 import static net.minecraft.world.item.crafting.Ingredient.of;
 
 public class CraftingRecipeMaker extends RecipeProvider {
 
     public static final Logger LOGGER = LogManager.getLogger(MODID);
 
-    public CraftingRecipeMaker(DataGenerator generatorIn, CompletableFuture<HolderLookup.Provider> provider) {
-        super(generatorIn.getPackOutput(), provider);
-    }
-
-    public static CraftingRecipeMaker get(DataGenerator generator, CompletableFuture<HolderLookup.Provider> provider) {
-        return new CraftingRecipeMaker(generator, provider);
+    public CraftingRecipeMaker(HolderLookup.Provider registries, RecipeOutput output) {
+        super(registries, output);
     }
 
     public void buildSword(RecipeOutput con, RegistryObject<? extends Item> sword, ItemLike material, ItemLike handle) {
@@ -190,7 +183,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
     }
 
     public void buildColoredBrick(RecipeOutput con, RegistryObject<Block> bricks, TagKey<Item> color) {
-        this.buildFilling(con, Result.build(bricks.get(), 8, "colored_stone_bricks", "bricks"), Items.STONE_BRICKS, of(color));
+        this.buildFilling(con, Result.build(bricks.get(), 8, "colored_stone_bricks", "bricks"), Items.STONE_BRICKS, Ingredient.of(registries.lookupOrThrow(Registries.ITEM).getOrThrow(color)));
     }
 
     public void buildStoneBrick(RecipeOutput con, RegistryObject<Block> bricks, RegistryObject<Block> tower, RegistryObject<Block> corner, RegistryObject<Block> wall, RegistryObject<Block> stairs, RegistryObject<Block> slab) {
@@ -364,7 +357,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
         Grid grid = layout.getGrid();
         Input input = layout.getSimpleInput();
         this.logGrid(result, path, grid);
-        ShapedRecipeBuilder builder = ShapedRecipeBuilder.shaped(category, result.getObject(), result.getCount());
+        ShapedRecipeBuilder builder = ShapedRecipeBuilder.shaped(registries.lookupOrThrow(Registries.ITEM), category, result.getObject(), result.getCount());
         builder.define(input.getA(), mainInput);
         builder.pattern(grid.getFirstRow());
         builder.pattern(grid.getSecondRow());
@@ -373,7 +366,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
                 .forEach(i -> this.addIngredients(builder, input.getCharList().get(i + 1), additional[i]));
         builder.group(Utils.setLocation(result.getGroup().orElse(path)));
         builder.unlockedBy("has_req", has(mainInput));
-        builder.save(consumer, setRL("crafting/shaped/" + result.getPath()
+        builder.save(consumer, Utils.setLocation("crafting/shaped/" + result.getPath()
                 .orElse("")
                 .trim() + (result.getPrefix() + path + result.getSuffix())));
     }
@@ -383,7 +376,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
      * @since 16.2.0
      */
     public void build(RecipeOutput con, RecipeCategory category, Result result, GridInput layout, ItemLike input) {
-        this.build(con, category, result, layout, input, EMPTY);
+        this.build(con, category, result, layout, input, new Ingredient[0]);
     }
 
     /**
@@ -395,7 +388,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
      * @since 16.2.0
      */
     public void build(RecipeOutput consumer, RecipeCategory category, Result result, GridInput layout, ItemLike... inputs) {
-        ShapedRecipeBuilder builder = ShapedRecipeBuilder.shaped(category, result.getObject(), result.getCount());
+        ShapedRecipeBuilder builder = ShapedRecipeBuilder.shaped(registries.lookupOrThrow(Registries.ITEM), category, result.getObject(), result.getCount());
         String path = getPath(result.getObject());
         Grid grid = layout.getGrid();
         Input input = layout.getSimpleInput();
@@ -408,7 +401,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
         boolean hasGroup = result.getGroup().isPresent();
         if (hasGroup) builder.group(Utils.setLocation(result.getGroup().get()));
         builder.unlockedBy("has_req", has(inputs[0]));
-        builder.save(consumer, setRL("crafting/shaped/" + result.getPath()
+        builder.save(consumer, Utils.setLocation("crafting/shaped/" + result.getPath()
                 .orElse("")
                 .trim() + (result.getPrefix() + path + result.getSuffix())));
     }
@@ -421,9 +414,9 @@ public class CraftingRecipeMaker extends RecipeProvider {
     }
 
     private void addIngredients(ShapedRecipeBuilder builder, char character, Ingredient input) {
-        if (!input.isEmpty()) {
-            builder.define(character, input);
-        }
+        // Tag-backed ingredients are unbound HolderSets during datagen construction in 26.1.
+        // Probing Ingredient#isEmpty() here dereferences the tag before it is bound.
+        builder.define(character, input);
     }
 
     private void addIngredients(ShapedRecipeBuilder builder, char character, ItemLike input) {
@@ -438,19 +431,19 @@ public class CraftingRecipeMaker extends RecipeProvider {
      * @see CraftingRecipeMaker#build(RecipeOutput, RecipeCategory, Result, ItemLike, Ingredient...)
      */
     public void build(RecipeOutput con, RecipeCategory category, Result result, ItemLike item) {
-        this.build(con, category, result, item, EMPTY);
+        this.build(con, category, result, item, new Ingredient[0]);
     }
 
     public void build(RecipeOutput con, RecipeCategory category, Result result, ItemLike inputA, Ingredient... inputs) {
         String path = getPath(result.getObject());
         LOGGER.info("Item: {}, count: {}", path, result.getCount());
-        ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapeless(category, result.getObject(), result.getCount());
+        ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapeless(registries.lookupOrThrow(Registries.ITEM), category, result.getObject(), result.getCount());
         builder.requires(inputA);
         Arrays.stream(inputs).forEach(ingredient -> this.addIngredients(builder, ingredient));
         boolean hasGroup = result.getGroup().isPresent();
         if (hasGroup) builder.group(Utils.setLocation(result.getGroup().get()));
         builder.unlockedBy("has_req", has(inputA));
-        builder.save(con, setRL("crafting/shapeless/" + result.getPath()
+        builder.save(con, Utils.setLocation("crafting/shapeless/" + result.getPath()
                 .orElse("")
                 .trim() + (result.getPrefix() + path + result.getSuffix())));
     }
@@ -458,20 +451,19 @@ public class CraftingRecipeMaker extends RecipeProvider {
     public void build(RecipeOutput con, RecipeCategory category, Result result, ItemLike... item) {
         String path = getPath(result.getObject());
         LOGGER.info("Item: {}, count: {}", path, result.getCount());
-        ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapeless(category, result.getObject(), result.getCount());
+        ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapeless(registries.lookupOrThrow(Registries.ITEM), category, result.getObject(), result.getCount());
         Arrays.stream(item).forEach(ingredient -> this.addIngredients(builder, ingredient));
         boolean hasGroup = result.getGroup().isPresent();
         if (hasGroup) builder.group(Utils.setLocation(result.getGroup().get()));
         builder.unlockedBy("has_req", has(item[0]));
-        builder.save(con, setRL("crafting/shapeless/" + result.getPath()
+        builder.save(con, Utils.setLocation("crafting/shapeless/" + result.getPath()
                 .orElse("")
                 .trim() + (result.getPrefix() + path + result.getSuffix())));
     }
 
     private void addIngredients(ShapelessRecipeBuilder builder, Ingredient input) {
-        if (!input.isSimple()) {
-            builder.requires(input);
-        }
+        // Do not inspect tag-backed ingredients while recipes are being constructed.
+        builder.requires(input);
     }
 
     private void addIngredients(ShapelessRecipeBuilder builder, ItemLike input) {
@@ -479,8 +471,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
     }
 
     @Override
-    protected void buildRecipes(RecipeOutput output) {
-
+    protected void buildRecipes() {
     }
 
 }

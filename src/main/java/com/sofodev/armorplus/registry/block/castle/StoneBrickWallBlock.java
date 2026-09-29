@@ -15,7 +15,6 @@ public class StoneBrickWallBlock extends WallBlock {
     public static final BooleanProperty UP = BlockStateProperties.UP;
 
     public StoneBrickWallBlock(Block block) {
-        super(ofFullCopy(block).requiresCorrectToolForDrops());
-        this.registerDefaultState(this.stateDefinition.any().setValue(UP, TRUE).setValue(NORTH_WALL, WallSide.NONE).setValue(EAST_WALL, WallSide.NONE).setValue(SOUTH_WALL, WallSide.NONE).setValue(WEST_WALL, WallSide.NONE).setValue(WATERLOGGED, FALSE));
+        super(com.sofodev.armorplus.registry.RegistryContext.blockProperties(ofFullCopy(block).requiresCorrectToolForDrops()));
     }
 }

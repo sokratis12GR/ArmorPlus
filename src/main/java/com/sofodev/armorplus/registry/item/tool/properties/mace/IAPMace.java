@@ -1,14 +1,14 @@
 package com.sofodev.armorplus.registry.item.tool.properties.mace;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ToolMaterial;
 
 public interface IAPMace {
 
     /**
      * @return The IITemTier properties of the mace
      */
-    Tier get();
+    ToolMaterial get();
 
 
     /**

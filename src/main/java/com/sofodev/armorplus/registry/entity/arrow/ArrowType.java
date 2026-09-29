@@ -5,12 +5,13 @@ import com.sofodev.armorplus.utils.ToolTipUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.entity.projectile.Arrow;
+import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
+import net.minecraft.world.entity.projectile.arrow.Arrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 import static com.sofodev.armorplus.registry.entity.arrow.APArrowProperty.*;
 import static net.minecraft.ChatFormatting.*;
@@ -108,7 +109,7 @@ public class ArrowType {
         return new Arrow(world, shooter, stack, result);
     }
 
-    public void appendHoverText(List<Component> tooltip) {
+    public void appendHoverText(Consumer<Component> tooltip) {
         ToolTipUtils.appendArrowHoverText(tooltip, this.getAbilityDescription(), this.getDmg(), this.getFormatting());
     }
 }

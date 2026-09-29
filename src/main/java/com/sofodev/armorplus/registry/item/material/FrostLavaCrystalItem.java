@@ -8,6 +8,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 
 import java.util.List;
+import java.util.function.Consumer;
+import net.minecraft.world.item.component.TooltipDisplay;
 
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
 
@@ -17,12 +19,12 @@ import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
 public class FrostLavaCrystalItem extends APItem {
 
     public FrostLavaCrystalItem() {
-        super(new Properties().fireResistant());
+        super(com.sofodev.armorplus.registry.RegistryContext.itemProperties().fireResistant());
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> tooltip, TooltipFlag flagIn) {
-        tooltip.add(translate("tooltip.armorplus.frost_lava_crystal.lore").setStyle(Style.EMPTY.withItalic(true).withColor(TextColor.parseColor("#670067").getOrThrow())));
-        super.appendHoverText(stack, ctx, tooltip, flagIn);
+    public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag flagIn) {
+        tooltip.accept(translate("tooltip.armorplus.frost_lava_crystal.lore").setStyle(Style.EMPTY.withItalic(true).withColor(TextColor.parseColor("#670067").getOrThrow())));
+        super.appendHoverText(stack, ctx, display, tooltip, flagIn);
     }
 }

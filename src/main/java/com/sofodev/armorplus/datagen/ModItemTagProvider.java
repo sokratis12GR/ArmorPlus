@@ -5,12 +5,12 @@ import com.sofodev.armorplus.registry.item.armor.APArmorItem;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.data.tags.KeyTagProvider;
+import net.minecraft.data.tags.TagAppender;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -19,101 +19,60 @@ import java.util.concurrent.CompletableFuture;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 
-public class ModItemTagProvider extends ItemTagsProvider {
-    public ModItemTagProvider(
-            PackOutput output,
-            CompletableFuture<HolderLookup.Provider> lookupProvider,
-            CompletableFuture<TagLookup<Block>> blockTags,
-            ExistingFileHelper existingFileHelper
-    ) {
-        super(output, lookupProvider, blockTags, MODID, existingFileHelper);
+/**
+ * ArmorPlus item tags for Minecraft 26.1.x's KeyTagProvider API.
+ */
+public class ModItemTagProvider extends KeyTagProvider<Item> {
+    public ModItemTagProvider(PackOutput output,
+                              CompletableFuture<HolderLookup.Provider> lookupProvider,
+                              ExistingFileHelper existingFileHelper) {
+        super(output, Registries.ITEM, lookupProvider, MODID, existingFileHelper);
     }
 
     @Override
     protected void addTags(HolderLookup.Provider lookup) {
-        TagKey<Item> ARMORPLUS_SWORDS = modTag("swords");
-        TagKey<Item> ARMORPLUS_BATTLE_AXES = modTag("battle_axes");
-        TagKey<Item> ARMORPLUS_PICKAXES = modTag("pickaxes");
-        TagKey<Item> ARMORPLUS_BOWS = modTag("bows");
-        TagKey<Item> ARMORPLUS_MACES = modTag("maces");
+        TagKey<Item> swords = modTag("swords");
+        TagKey<Item> battleAxes = modTag("battle_axes");
+        TagKey<Item> pickaxes = modTag("pickaxes");
+        TagKey<Item> bows = modTag("bows");
+        TagKey<Item> maces = modTag("maces");
 
-        addAllItems(ARMORPLUS_SWORDS, ModItems.SWORDS);
-        addAllItems(ARMORPLUS_BATTLE_AXES, ModItems.BATTLE_AXES);
-        addAllItems(ARMORPLUS_PICKAXES, ModItems.PICKAXES);
-        addAllItems(ARMORPLUS_BOWS, ModItems.BOWS);
-        addAllItems(ARMORPLUS_MACES, ModItems.MACES);
+        addAllItems(swords, ModItems.SWORDS);
+        addAllItems(battleAxes, ModItems.BATTLE_AXES);
+        addAllItems(pickaxes, ModItems.PICKAXES);
+        addAllItems(bows, ModItems.BOWS);
+        addAllItems(maces, ModItems.MACES);
 
-        mirrorMinecraftTag("enchantable/weapon", ARMORPLUS_SWORDS, ARMORPLUS_BATTLE_AXES, ARMORPLUS_MACES);
-        mirrorMinecraftTag("enchantable/sword", ARMORPLUS_SWORDS);
-        mirrorMinecraftTag("enchantable/bow", ARMORPLUS_BOWS);
-        mirrorMinecraftTag("enchantable/mining", ARMORPLUS_PICKAXES, ARMORPLUS_BATTLE_AXES);
-        mirrorMinecraftTag("enchantable/mining_loot", ARMORPLUS_PICKAXES, ARMORPLUS_BATTLE_AXES);
-        mirrorMinecraftTag("enchantable/sharp_weapon", ARMORPLUS_SWORDS, ARMORPLUS_BATTLE_AXES);
+        addToMinecraftTag("enchantable/weapon", swords, battleAxes, maces);
+        addToMinecraftTag("enchantable/sword", swords);
+        addToMinecraftTag("enchantable/bow", bows);
+        addToMinecraftTag("enchantable/mining", pickaxes, battleAxes);
+        addToMinecraftTag("enchantable/mining_loot", pickaxes, battleAxes);
+        addToMinecraftTag("enchantable/sharp_weapon", swords, battleAxes);
 
+        TagKey<Item> helmets = modTag("helmets");
+        TagKey<Item> chestplates = modTag("chestplates");
+        TagKey<Item> leggings = modTag("leggings");
+        TagKey<Item> boots = modTag("boots");
 
-        TagKey<Item> ARMORPLUS_HELMETS = modTag("helmets");
-        TagKey<Item> ARMORPLUS_CHESTPLATES = modTag("chestplates");
-        TagKey<Item> ARMORPLUS_LEGGINGS = modTag("leggings");
-        TagKey<Item> ARMORPLUS_BOOTS = modTag("boots");
+        addAllItems(helmets, ModItems.HELMETS);
+        addAllItems(chestplates, ModItems.CHESTPLATES);
+        addAllItems(leggings, ModItems.LEGGINGS);
+        addAllItems(boots, ModItems.BOOTS);
 
-        addAllItems(ARMORPLUS_HELMETS, ModItems.HELMETS);
-        addAllItems(ARMORPLUS_CHESTPLATES, ModItems.CHESTPLATES);
-        addAllItems(ARMORPLUS_LEGGINGS, ModItems.LEGGINGS);
-        addAllItems(ARMORPLUS_BOOTS, ModItems.BOOTS);
+        addToMinecraftTag("enchantable/head_armor", helmets);
+        addToMinecraftTag("enchantable/chest_armor", chestplates);
+        addToMinecraftTag("enchantable/leg_armor", leggings);
+        addToMinecraftTag("enchantable/foot_armor", boots);
+        addToMinecraftTag("enchantable/armor", helmets, chestplates, leggings, boots);
+        addToMinecraftTag("enchantable/equippable", helmets, chestplates, leggings, boots);
+        addToMinecraftTag("trimmable_armor", helmets, chestplates, leggings, boots);
+        addToMinecraftTag("enchantable/durability", helmets, chestplates, leggings, boots,
+                swords, battleAxes, pickaxes, bows, maces);
 
-        mirrorMinecraftTag("enchantable/head_armor", ARMORPLUS_HELMETS);
-        mirrorMinecraftTag("enchantable/chest_armor", ARMORPLUS_CHESTPLATES);
-        mirrorMinecraftTag("enchantable/leg_armor", ARMORPLUS_LEGGINGS);
-        mirrorMinecraftTag("enchantable/foot_armor", ARMORPLUS_BOOTS);
-
-        mirrorMinecraftTag("enchantable/armor",
-                ARMORPLUS_HELMETS,
-                ARMORPLUS_CHESTPLATES,
-                ARMORPLUS_LEGGINGS,
-                ARMORPLUS_BOOTS);
-
-        mirrorMinecraftTag("enchantable/equippable",
-                ARMORPLUS_HELMETS,
-                ARMORPLUS_CHESTPLATES,
-                ARMORPLUS_LEGGINGS,
-                ARMORPLUS_BOOTS);
-
-        mirrorMinecraftTag("trimmable_armor",
-                ARMORPLUS_HELMETS,
-                ARMORPLUS_CHESTPLATES,
-                ARMORPLUS_LEGGINGS,
-                ARMORPLUS_BOOTS
-        );
-
-        mirrorMinecraftTag("enchantable/durability",
-                ARMORPLUS_HELMETS,
-                ARMORPLUS_CHESTPLATES,
-                ARMORPLUS_LEGGINGS,
-                ARMORPLUS_BOOTS,
-                ARMORPLUS_SWORDS,
-                ARMORPLUS_BATTLE_AXES,
-                ARMORPLUS_PICKAXES,
-                ARMORPLUS_BOWS,
-                ARMORPLUS_MACES);
-
-        mirrorMinecraftTag("enchantables",
-                "enchantable/weapon",
-                "enchantable/sword",
-                "enchantable/bow",
-                "enchantable/mining",
-                "enchantable/mining_loot",
-                "enchantable/sharp_weapon",
-                "enchantable/head_armor",
-                "enchantable/chest_armor",
-                "enchantable/leg_armor",
-                "enchantable/foot_armor",
-                "enchantable/armor",
-                "enchantable/durability"
-        );
-
-        TagKey<Item> ARMORPLUS_ARROWS = modTag("arrows");
-
-        addAllItems(ARMORPLUS_ARROWS, ModItems.ITEM_COAL_ARROW,
+        TagKey<Item> arrows = modTag("arrows");
+        addAllItems(arrows,
+                ModItems.ITEM_COAL_ARROW,
                 ModItems.ITEM_LAPIS_ARROW,
                 ModItems.ITEM_REDSTONE_ARROW,
                 ModItems.ITEM_EMERALD_ARROW,
@@ -121,68 +80,35 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 ModItems.ITEM_INFUSED_LAVA_ARROW,
                 ModItems.ITEM_GUARDIAN_ARROW,
                 ModItems.ITEM_SUPER_STAR_ARROW,
-                ModItems.ITEM_ENDER_DRAGON_ARROW
-        );
-        mirrorMinecraftTag("arrows", ARMORPLUS_ARROWS);
-
+                ModItems.ITEM_ENDER_DRAGON_ARROW);
+        addToMinecraftTag("arrows", arrows);
     }
 
     private TagKey<Item> modTag(String path) {
-        return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MODID, path));
-    }
-
-    private TagKey<Item> mirrorMinecraftTag(String path, TagKey<Item>... mirrors) {
-        TagKey<Item> tagKey = TagKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace(path));
-
-        if (mirrors != null) {
-            for (TagKey<Item> mirror : mirrors) {
-                tag(tagKey).addTag(mirror);
-            }
-        }
-
-        return tagKey;
-    }
-
-    private TagKey<Item> mirrorMinecraftTag(String path, String... mirrors) {
-        TagKey<Item> tagKey = TagKey.create(Registries.ITEM, ResourceLocation.withDefaultNamespace(path));
-
-        if (mirrors != null) {
-            for (String mirror : mirrors) {
-                ResourceLocation loc = mirror.contains(":")
-                        ? ResourceLocation.parse(mirror)
-                        : ResourceLocation.withDefaultNamespace(mirror);
-
-                tag(tagKey).addTag(TagKey.create(Registries.ITEM, loc));
-            }
-        }
-
-        return tagKey;
+        return TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(MODID, path));
     }
 
     @SafeVarargs
-    private void addAllItems(TagAppender<Item> tag, RegistryObject<? extends Item>... items) {
-        for (RegistryObject<? extends Item> obj : items) {
-            tag.add(ResourceKey.create(Registries.ITEM, obj.getId()));
-        }
-    }
-
-    private void addAllItems(TagAppender<Item> tag, Set<RegistryObject<? extends APArmorItem>> items) {
-        for (RegistryObject<? extends APArmorItem> obj : items) {
-            tag.add(ResourceKey.create(Registries.ITEM, obj.getId()));
+    private final void addToMinecraftTag(String path, TagKey<Item>... includedTags) {
+        TagAppender<ResourceKey<Item>, Item> appender = tag(TagKey.create(
+                Registries.ITEM, Identifier.withDefaultNamespace(path)));
+        for (TagKey<Item> included : includedTags) {
+            appender.addTag(included);
         }
     }
 
     @SafeVarargs
-    private void addAllItems(TagKey<Item> tagKey, RegistryObject<? extends Item>... items) {
+    private final void addAllItems(TagKey<Item> tagKey, RegistryObject<? extends Item>... items) {
+        TagAppender<ResourceKey<Item>, Item> appender = tag(tagKey);
         for (RegistryObject<? extends Item> obj : items) {
-            tag(tagKey).add(ResourceKey.create(Registries.ITEM, obj.getId()));
+            appender.add(ResourceKey.create(Registries.ITEM, obj.getId()));
         }
     }
 
     private void addAllItems(TagKey<Item> tagKey, Set<RegistryObject<? extends APArmorItem>> items) {
+        TagAppender<ResourceKey<Item>, Item> appender = tag(tagKey);
         for (RegistryObject<? extends APArmorItem> obj : items) {
-            tag(tagKey).add(ResourceKey.create(Registries.ITEM, obj.getId()));
+            appender.add(ResourceKey.create(Registries.ITEM, obj.getId()));
         }
     }
-
 }

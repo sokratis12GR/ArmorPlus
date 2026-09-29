@@ -34,7 +34,7 @@ public class ModEnchantments {
 
         register(context, SOUL_STEALER, Enchantment.enchantment(Enchantment.definition(
                         items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
-                        items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
+                        items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
                         5,
                         1,
                         Enchantment.dynamicCost(25, 25),
@@ -48,7 +48,7 @@ public class ModEnchantments {
         );
         register(context, LIFE_STEAL, Enchantment.enchantment(Enchantment.definition(
                         items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
-                        items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
+                        items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
                         5,
                         1,
                         Enchantment.dynamicCost(25, 25),
@@ -76,6 +76,6 @@ public class ModEnchantments {
     }
 
     public static void register(BootstrapContext<Enchantment> registry, ResourceKey<Enchantment> key, Enchantment.Builder builder) {
-        registry.register(key, builder.build(key.location()));
+        registry.register(key, builder.build(key.identifier()));
     }
 }

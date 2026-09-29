@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry;
 
+import net.minecraft.world.item.equipment.ArmorType;
+
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.registry.entity.arrow.ArrowType;
 import com.sofodev.armorplus.registry.item.APItemBase;
@@ -17,12 +19,9 @@ import com.sofodev.armorplus.registry.item.tool.*;
 import com.sofodev.armorplus.registry.item.tool.properties.mace.APMaceMaterial;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArrowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -37,16 +36,15 @@ import static com.sofodev.armorplus.ArmorPlus.*;
 import static com.sofodev.armorplus.registry.item.armor.APArmorMaterial.SLAYER;
 import static net.minecraft.ChatFormatting.*;
 
-@Mod.EventBusSubscriber(modid = ArmorPlus.MODID, bus = Bus.MOD)
 public class ModItems {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
 
     //Armors
-    public static final Set<RegistryObject<? extends APArmorItem>> HELMETS = registerArmorForSlot(ArmorItem.Type.HELMET);
-    public static final Set<RegistryObject<? extends APArmorItem>> CHESTPLATES = registerArmorForSlot(ArmorItem.Type.CHESTPLATE);
-    public static final Set<RegistryObject<? extends APArmorItem>> LEGGINGS = registerArmorForSlot(ArmorItem.Type.LEGGINGS);
-    public static final Set<RegistryObject<? extends APArmorItem>> BOOTS = registerArmorForSlot(ArmorItem.Type.BOOTS);
+    public static final Set<RegistryObject<? extends APArmorItem>> HELMETS = registerArmorForSlot(ArmorType.HELMET);
+    public static final Set<RegistryObject<? extends APArmorItem>> CHESTPLATES = registerArmorForSlot(ArmorType.CHESTPLATE);
+    public static final Set<RegistryObject<? extends APArmorItem>> LEGGINGS = registerArmorForSlot(ArmorType.LEGGINGS);
+    public static final Set<RegistryObject<? extends APArmorItem>> BOOTS = registerArmorForSlot(ArmorType.BOOTS);
 
     //ArmorBases (Soulless)
     public static final Set<RegistryObject<Item>> SUPER_STAR_BASES = registerArmorBases(APArmorMaterial.SUPER_STAR);
@@ -97,11 +95,11 @@ public class ModItems {
     public static final RegistryObject<Item> INFUSED_FROST_CRYSTAL = register("infused_frost_crystal", () -> new FrostCrystalItem(true));
     public static final RegistryObject<Item> INFUSED_FROST_LAVA_CRYSTAL = register("infused_frost_lava_crystal", FrostLavaCrystalItem::new);
     //Materials
-    public static final RegistryObject<Item> CHAINMAIL = register("chainmail", () -> new MaterialItem(GRAY, new Item.Properties()));
-    public static final RegistryObject<Item> GUARDIAN_SCALE = register("guardian_scale", () -> new MaterialItem(BLUE, new Item.Properties()));
-    public static final RegistryObject<Item> WITHER_BONE = register("wither_bone", () -> new MaterialItem(WHITE, new Item.Properties().fireResistant()));
-    public static final RegistryObject<Item> ENDER_DRAGON_SCALE = register("ender_dragon_scale", () -> new MaterialItem(DARK_PURPLE, new Item.Properties()));
-    public static final RegistryObject<Item> THE_ULTIMATE_MATERIAL = register("the_ultimate_material", () -> new MaterialItem(DARK_PURPLE, new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> CHAINMAIL = register("chainmail", () -> new MaterialItem(GRAY, RegistryContext.itemProperties()));
+    public static final RegistryObject<Item> GUARDIAN_SCALE = register("guardian_scale", () -> new MaterialItem(BLUE, RegistryContext.itemProperties()));
+    public static final RegistryObject<Item> WITHER_BONE = register("wither_bone", () -> new MaterialItem(WHITE, RegistryContext.itemProperties().fireResistant()));
+    public static final RegistryObject<Item> ENDER_DRAGON_SCALE = register("ender_dragon_scale", () -> new MaterialItem(DARK_PURPLE, RegistryContext.itemProperties()));
+    public static final RegistryObject<Item> THE_ULTIMATE_MATERIAL = register("the_ultimate_material", () -> new MaterialItem(DARK_PURPLE, RegistryContext.itemProperties().fireResistant()));
     //Boss Souls
     public static final RegistryObject<Item> WITHER_BOSS_SOUL = register("soul_wither_boss", () -> new SoulItem("wither"));
     public static final RegistryObject<Item> ELDER_GUARDIAN_SOUL = register("soul_elder_guardian", () -> new SoulItem("elder_guardian"));
@@ -113,16 +111,16 @@ public class ModItems {
     public static final RegistryObject<Item> BLAZE_SOUL = register("soul_blaze", () -> new SoulItem(false, "blaze"));
     public static final RegistryObject<Item> SLAYER_SOUL = register("soul_slayer", () -> new SoulItem(null));
     //Enhanced Materials
-    public static final RegistryObject<Item> ENHANCED_CHAINMAIL = register("enhanced_chainmail", () -> new MaterialItem(true, GRAY, new Item.Properties()));
-    public static final RegistryObject<Item> ENHANCED_IRON = register("enhanced_iron", () -> new MaterialItem(true, GRAY, new Item.Properties()));
-    public static final RegistryObject<Item> ENHANCED_GOLD = register("enhanced_gold", () -> new MaterialItem(true, GRAY, new Item.Properties()));
-    public static final RegistryObject<Item> ENHANCED_DIAMOND = register("enhanced_diamond", () -> new MaterialItem(true, GRAY, new Item.Properties()));
-    public static final RegistryObject<Item> ENHANCED_NETHERITE = register("enhanced_netherite", () -> new MaterialItem(true, GRAY, new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> ENHANCED_CHAINMAIL = register("enhanced_chainmail", () -> new MaterialItem(true, GRAY, RegistryContext.itemProperties()));
+    public static final RegistryObject<Item> ENHANCED_IRON = register("enhanced_iron", () -> new MaterialItem(true, GRAY, RegistryContext.itemProperties()));
+    public static final RegistryObject<Item> ENHANCED_GOLD = register("enhanced_gold", () -> new MaterialItem(true, GRAY, RegistryContext.itemProperties()));
+    public static final RegistryObject<Item> ENHANCED_DIAMOND = register("enhanced_diamond", () -> new MaterialItem(true, GRAY, RegistryContext.itemProperties()));
+    public static final RegistryObject<Item> ENHANCED_NETHERITE = register("enhanced_netherite", () -> new MaterialItem(true, GRAY, RegistryContext.itemProperties().fireResistant()));
     //Other
-    public static final RegistryObject<Item> OBSIDIAN_STICK = register("obsidian_stick", () -> new MaterialItem(false, DARK_PURPLE, new Item.Properties().fireResistant()));
-    public static final RegistryObject<Item> WOODEN_ROD = register("wooden_rod", () -> new MaterialItem(false, GRAY, new Item.Properties()));
-    public static final RegistryObject<Item> LAVA_SHARD = register("lava_shard", () -> new MaterialItem(false, GOLD, new Item.Properties()));
-    public static final RegistryObject<Item> FROST_SHARD = register("frost_shard", () -> new MaterialItem(false, AQUA, new Item.Properties()));
+    public static final RegistryObject<Item> OBSIDIAN_STICK = register("obsidian_stick", () -> new MaterialItem(false, DARK_PURPLE, RegistryContext.itemProperties().fireResistant()));
+    public static final RegistryObject<Item> WOODEN_ROD = register("wooden_rod", () -> new MaterialItem(false, GRAY, RegistryContext.itemProperties()));
+    public static final RegistryObject<Item> LAVA_SHARD = register("lava_shard", () -> new MaterialItem(false, GOLD, RegistryContext.itemProperties()));
+    public static final RegistryObject<Item> FROST_SHARD = register("frost_shard", () -> new MaterialItem(false, AQUA, RegistryContext.itemProperties()));
     public static final RegistryObject<Item> THANK_YOU = register("thank_you", ThankYouItem::new);
     //public static final RegistryObject<Item> TROPHY = ITEMS.register("trophy", () -> new TrophyItem(ModBlocks.TROPHY));
 
@@ -132,7 +130,7 @@ public class ModItems {
     }
 
     public static <ITEM extends Item> RegistryObject<ITEM> register(String name, DeferredRegister<Item> items, Supplier<ITEM> itemSupplier) {
-        return items.register(name, itemSupplier);
+        return items.register(name, () -> RegistryContext.withItemKey(items.key(name), itemSupplier));
     }
 
     public static <ITEM extends Item> RegistryObject<ITEM> register(String name, Supplier<ITEM> itemSupplier) {
@@ -148,9 +146,9 @@ public class ModItems {
      * @param slot the equipment slot we will be assigning the set to, which will help distinguishing different equipment from one another.
      * @return a full registered armor set list that contains a set of all available {@link APArmorMaterial#values()} materials for that equipment slot.
      */
-    public static Set<RegistryObject<? extends APArmorItem>> registerArmorForSlot(ArmorItem.Type slot) {
+    public static Set<RegistryObject<? extends APArmorItem>> registerArmorForSlot(ArmorType slot) {
         return Arrays.stream(APArmorMaterial.values())
-                .filter(type -> slot != ArmorItem.Type.BODY) // skip BODY
+                .filter(type -> slot != ArmorType.BODY) // skip BODY
                 .map(mat -> register(String.format("%s_%s", mat.getName(), slot.getName()), () -> new APArmorItem(mat, slot) {
                     @Override
                     public Component getName(ItemStack p_41458_) {
@@ -194,7 +192,7 @@ public class ModItems {
     public static void registerMaceForType(RegistryObject<Item>[] maces) {
         IntStream.range(0, AP_MACE_MAT_LENGTH).forEach(i -> {
             APMaceMaterial mat = APMaceMaterial.values()[i];
-            maces[i] = register(String.format("%s_mace", mat.getName()), () -> new APMaceItem(mat, new Item.Properties()));
+            maces[i] = register(String.format("%s_mace", mat.getName()), () -> new APMaceItem(mat, RegistryContext.itemProperties()));
         });
     }
 
@@ -211,8 +209,8 @@ public class ModItems {
      * @return a set of item registry objects that consists of "base" items for the specified armor material.
      */
     private static Set<RegistryObject<Item>> registerArmorBases(APArmorMaterial material) {
-        return Arrays.stream(ArmorItem.Type.values())
-                .filter(type -> type != ArmorItem.Type.BODY) // skip BODY
+        return Arrays.stream(ArmorType.values())
+                .filter(type -> type != ArmorType.BODY) // skip BODY
                 .map(slot -> register(
                         String.format("%s_%s_base", material.getName(), slot.getName()),
                         () -> (Item) new APItemBase())

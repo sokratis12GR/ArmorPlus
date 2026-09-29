@@ -3,18 +3,20 @@ package com.sofodev.armorplus.registry.item.arrow;
 import com.sofodev.armorplus.registry.entity.arrow.ArrowType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
+import java.util.function.Consumer;
+import net.minecraft.world.item.component.TooltipDisplay;
 
 public class APArrowItem extends ArrowItem {
 
     private final ArrowType type;
 
     public APArrowItem(ArrowType type) {
-        super(new Item.Properties().rarity(Rarity.EPIC));
+        super(com.sofodev.armorplus.registry.RegistryContext.itemProperties().rarity(Rarity.EPIC));
         this.type = type;
     }
 
@@ -30,7 +32,7 @@ public class APArrowItem extends ArrowItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> tooltip, TooltipFlag flag) {
+    public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag flag) {
         type.appendHoverText(tooltip);
     }
 

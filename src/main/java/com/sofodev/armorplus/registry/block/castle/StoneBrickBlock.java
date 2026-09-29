@@ -7,7 +7,7 @@ import static net.minecraft.world.level.block.Blocks.STONE;
 public class StoneBrickBlock extends APBlock {
 
     public StoneBrickBlock(BrickColor color) {
-        super(Properties.ofFullCopy(STONE)
-                .mapColor(color.get()).dynamicShape().requiresCorrectToolForDrops().strength(1.5F, 6.0F));
+        super(com.sofodev.armorplus.registry.RegistryContext.blockProperties(Properties.ofFullCopy(STONE)
+                .mapColor(color.get()).dynamicShape().requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
     }
 }

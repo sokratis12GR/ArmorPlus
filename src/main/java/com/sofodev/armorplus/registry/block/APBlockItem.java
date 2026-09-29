@@ -10,6 +10,6 @@ public class APBlockItem extends BlockItem {
     }
 
     public APBlockItem(Block blockIn) {
-        super(blockIn, new Properties());
+        super(blockIn, com.sofodev.armorplus.registry.RegistryContext.itemProperties().useBlockDescriptionPrefix());
     }
 }

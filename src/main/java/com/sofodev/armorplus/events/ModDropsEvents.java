@@ -2,7 +2,7 @@ package com.sofodev.armorplus.events;
 
 import com.sofodev.armorplus.ArmorPlus;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -10,12 +10,14 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.monster.*;
+import net.minecraft.world.entity.monster.skeleton.WitherSkeleton;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.SpawnData;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -116,16 +118,16 @@ public class ModDropsEvents {
         ItemStack trophy = new ItemStack(getAPItem("trophy"));
         CompoundTag tag = new CompoundTag();
         SpawnData trophyEntity = new SpawnData();
-        ResourceLocation key = ForgeRegistries.ENTITY_TYPES.getKey(type);
-        if (key == null) key = ResourceLocation.parse("minecraft:pig");
+        Identifier key = ForgeRegistries.ENTITY_TYPES.getKey(type);
+        if (key == null) key = Identifier.parse("minecraft:pig");
         trophyEntity.getEntityToSpawn().putString("id", key.toString());
         tag.put("DisplayEntity", trophyEntity.getEntityToSpawn().copy());
         tag.putFloat("EntityScale", scale);
 //        trophy.(tag);
-        entity.spawnAtLocation(trophy);
+        if (entity.level() instanceof ServerLevel server) entity.spawnAtLocation(server, trophy);
     }
 
     private static void dropItem(Entity entity, String item, int amount) {
-        entity.spawnAtLocation(new ItemStack(getAPItem(item), amount));
+        if (entity.level() instanceof ServerLevel server) entity.spawnAtLocation(server, new ItemStack(getAPItem(item), amount));
     }
 }

@@ -9,6 +9,7 @@ import com.sofodev.armorplus.registry.item.extra.IBuff;
 import com.sofodev.armorplus.registry.item.material.FrostCrystalItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
@@ -21,7 +22,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.entity.EntityStruckByLightningEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.Random;
@@ -42,7 +43,8 @@ public class ModGlobalEvents {
     private static final String ARMORPLUS_PREV_MAYFLY = "ArmorPlusPrevMayfly";
 
     private static boolean isFullArmorWithBuff(Player player, IBuff buff) {
-        for (ItemStack stack : player.getArmorSlots()) {
+        for (EquipmentSlot slot : new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET}) {
+            ItemStack stack = player.getItemBySlot(slot);
             if (stack.getItem() instanceof APArmorItem armor) {
                 IAPArmor mat = armor.getMat();
                 if (areExactMatch(mat, player) && mat.config().enableArmorEffects().get()) {
@@ -70,12 +72,12 @@ public class ModGlobalEvents {
     private static void revokeFlight(Player player) {
         if (player.isCreative() || player.isSpectator()) return;
 
-        boolean hadAPFlight = player.getPersistentData().getBoolean(ARMORPLUS_FLIGHT_TAG);
+        boolean hadAPFlight = player.getPersistentData().getBoolean(ARMORPLUS_FLIGHT_TAG).orElse(false);
         if (!hadAPFlight) return;
 
         player.getPersistentData().remove(ARMORPLUS_FLIGHT_TAG);
 
-        boolean prevMayfly = player.getPersistentData().getBoolean(ARMORPLUS_PREV_MAYFLY);
+        boolean prevMayfly = player.getPersistentData().getBoolean(ARMORPLUS_PREV_MAYFLY).orElse(false);
         player.getAbilities().mayfly = prevMayfly;
 
         if (player.getAbilities().flying) player.getAbilities().flying = false;
@@ -99,14 +101,14 @@ public class ModGlobalEvents {
     private static void checkAndApplyBuffs(Player player) {
         checkAndApplyFlight(player);
 
-        if (isFullArmorWithBuff(player, WATER_WEAKNESS) && player.isInWaterRainOrBubble()) {
+        if (isFullArmorWithBuff(player, WATER_WEAKNESS) && player.isInWater() || player.isInWaterOrRain()) {
             player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 200, 0, false, false, true));
         }
     }
 
     @SubscribeEvent
-    public static void onPlayerTickEvent(PlayerTickEvent e) {
-        Player player = e.player;
+    public static void onPlayerTickEvent(PlayerTickEvent.Post e) {
+        Player player = e.player();
         Level world = player.level();
         if (world.isClientSide()) return;
 
@@ -116,26 +118,8 @@ public class ModGlobalEvents {
         thunderingTicks++;
         if ((thunderingTicks + 1) % 20 != 0 || RAND.nextInt(100) + 1 != 100) return;
 
-        for (ItemStack item : player.getArmorSlots()) {
-            if (!(item.getItem() instanceof ArmorItem armor)) continue;
-//            if (!hasEnchant(item, "unknown")) continue;
-            if (armor.getEquipmentSlot() != EquipmentSlot.HEAD) continue;
+        // TODO 26.1: restore conductive vanilla-armor lightning behavior using equipment components.
 
-            ArmorMaterial material = armor.getMaterial().get();
-            if (material != ArmorMaterials.IRON.get() && material != ArmorMaterials.CHAIN.get() && material != ArmorMaterials.GOLD.get())
-                continue;
-
-            BlockPos pos = player.blockPosition();
-            if (!world.canSeeSky(pos)) continue;
-
-            LightningBolt bolt = EntityType.LIGHTNING_BOLT.create(world);
-            if (bolt != null) {
-                bolt.moveTo(atBottomCenterOf(pos));
-                bolt.setCause((ServerPlayer) player);
-                bolt.setDamage(0f);
-                world.addFreshEntity(bolt);
-            }
-        }
     }
 
     @SubscribeEvent
@@ -148,16 +132,16 @@ public class ModGlobalEvents {
 
     @SubscribeEvent
     public static void onStructByLightningEvent(EntityStruckByLightningEvent event) {
-        if (!event.getEntity().level().isClientSide && event.getEntity() instanceof ItemEntity entity) {
+        if (!event.getEntity().level().isClientSide() && event.getEntity() instanceof ItemEntity entity) {
             Item item = entity.getItem().getItem();
             if (item instanceof FrostCrystalItem) {
                 boolean infused = ((FrostCrystalItem) item).isInfused();
                 if (!infused) {
                     FrostCrystalItem infusedCrystal = (FrostCrystalItem) getAPItem("infused_frost_crystal");
-                    entity.spawnAtLocation(new ItemStack(infusedCrystal, entity.getItem().getCount()), 1f);
+                    if (entity.level() instanceof ServerLevel server) entity.spawnAtLocation(server, new ItemStack(infusedCrystal, entity.getItem().getCount()), 1f);
                     entity.getItem().setCount(0);
                     event.getLightning().setVisualOnly(true);
-                    event.setCanceled(true);
+
                 }
             }
         }

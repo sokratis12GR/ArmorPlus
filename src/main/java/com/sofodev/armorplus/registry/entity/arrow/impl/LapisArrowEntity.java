@@ -12,7 +12,7 @@ import static com.sofodev.armorplus.registry.entity.arrow.APArrowProperty.LAPIS_
 public class LapisArrowEntity extends APArrowEntity {
 
     public LapisArrowEntity(EntityType<? extends APArrowEntity> type, Level world) {
-        super(type, world);
+        super(type, world, LAPIS_ARROW_PROP);
     }
 
     public LapisArrowEntity(Level world) {

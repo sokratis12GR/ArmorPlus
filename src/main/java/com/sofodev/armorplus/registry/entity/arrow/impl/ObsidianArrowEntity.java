@@ -13,7 +13,7 @@ import static com.sofodev.armorplus.registry.entity.arrow.APArrowProperty.OBSIDI
 public class ObsidianArrowEntity extends APArrowEntity {
 
     public ObsidianArrowEntity(EntityType<? extends APArrowEntity> type, Level world) {
-        super(type, world);
+        super(type, world, OBSIDIAN_ARROW_PROP);
     }
 
     public ObsidianArrowEntity(Level world) {

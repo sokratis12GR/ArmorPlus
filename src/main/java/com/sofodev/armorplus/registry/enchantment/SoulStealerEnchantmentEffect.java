@@ -91,8 +91,8 @@ public record SoulStealerEnchantmentEffect() implements EnchantmentEntityEffect 
 //        ItemStack trophy = new ItemStack(getAPItem("trophy"));
 //        CompoundTag tag = new CompoundTag();
 //        SpawnData trophyEntity = new SpawnData();
-//        ResourceLocation key = ForgeRegistries.ENTITY_TYPES.getKey(type);
-//        if (key == null) key = ResourceLocation.parse("minecraft:pig");
+//        Identifier key = ForgeRegistries.ENTITY_TYPES.getKey(type);
+//        if (key == null) key = Identifier.parse("minecraft:pig");
 //        trophyEntity.getEntityToSpawn().putString("id", key.toString());
 //        tag.put("DisplayEntity", trophyEntity.getEntityToSpawn().copy());
 //        tag.putFloat("EntityScale", scale);

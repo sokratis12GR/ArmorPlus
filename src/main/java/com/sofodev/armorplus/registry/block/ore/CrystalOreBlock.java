@@ -10,10 +10,10 @@ public class CrystalOreBlock extends Block {
     private final Variant variant;
 
     public CrystalOreBlock(Variant variant) {
-        super(BlockBehaviour.Properties.ofFullCopy(STONE)
+        super(com.sofodev.armorplus.registry.RegistryContext.blockProperties(BlockBehaviour.Properties.ofFullCopy(STONE)
                 .strength(variant.getHardness(), variant.getResistance())
                 .requiresCorrectToolForDrops()
-                .lightLevel((light) -> variant.getLightValue()));
+                .lightLevel((light) -> variant.getLightValue())));
         this.variant = variant;
     }
 

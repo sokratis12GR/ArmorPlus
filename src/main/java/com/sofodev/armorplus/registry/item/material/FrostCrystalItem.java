@@ -9,6 +9,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 
 import java.util.List;
+import java.util.function.Consumer;
+import net.minecraft.world.item.component.TooltipDisplay;
 
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
 
@@ -20,18 +22,18 @@ public class FrostCrystalItem extends APItem {
     private final boolean isInfused;
 
     public FrostCrystalItem(boolean isInfused) {
-        super(new Item.Properties().fireResistant());
+        super(com.sofodev.armorplus.registry.RegistryContext.itemProperties().fireResistant());
         this.isInfused = isInfused;
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> tooltip, TooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag flagIn) {
         if (!isInfused) {
-            tooltip.add(translate("tooltip.armorplus.frost_crystal.how_to_infuse").setStyle(Style.EMPTY.withItalic(true).withColor(TextColor.parseColor("#670067").getOrThrow())));
+            tooltip.accept(translate("tooltip.armorplus.frost_crystal.how_to_infuse").setStyle(Style.EMPTY.withItalic(true).withColor(TextColor.parseColor("#670067").getOrThrow())));
         } else {
-            tooltip.add(translate("tooltip.armorplus.frost_crystal.lore").setStyle(Style.EMPTY.withItalic(true).withColor(TextColor.parseColor("#670067").getOrThrow())));
+            tooltip.accept(translate("tooltip.armorplus.frost_crystal.lore").setStyle(Style.EMPTY.withItalic(true).withColor(TextColor.parseColor("#670067").getOrThrow())));
         }
-        super.appendHoverText(stack, ctx, tooltip, flagIn);
+        super.appendHoverText(stack, ctx, display, tooltip, flagIn);
     }
 
     /**

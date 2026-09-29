@@ -13,8 +13,7 @@ public class APShovelItem extends ShovelItem implements Tool {
     private final IAPTool mat;
 
     public APShovelItem(IAPTool mat) {
-        super(mat.get(), new Properties().attributes(ShovelItem.createAttributes(mat.get(),
-                APToolType.SHOVEL.getDmg(), APToolType.SHOVEL.getAttackSpeed())));
+        super(mat.get(), (float) mat.get().attackDamageBonus() + APToolType.SHOVEL.getDmg(), APToolType.SHOVEL.getAttackSpeed(), com.sofodev.armorplus.registry.RegistryContext.itemProperties());
         this.mat = mat;
     }
     @Override

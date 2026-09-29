@@ -11,8 +11,8 @@ import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect;
 import net.minecraft.world.phys.Vec3;
 
 import static com.sofodev.armorplus.registry.enchantment.FuriousEnchantmentEffect.Levels.limit;
-import static net.minecraft.world.effect.MobEffects.DAMAGE_BOOST;
-import static net.minecraft.world.effect.MobEffects.MOVEMENT_SPEED;
+import static net.minecraft.world.effect.MobEffects.STRENGTH;
+import static net.minecraft.world.effect.MobEffects.SPEED;
 
 public record FuriousEnchantmentEffect() implements EnchantmentEntityEffect {
 
@@ -28,9 +28,9 @@ public record FuriousEnchantmentEffect() implements EnchantmentEntityEffect {
         if (user == null) {
             return;
         }
-        user.addEffect(new MobEffectInstance(DAMAGE_BOOST, Utils.convertToSeconds(lvl.strSecs), lvl.strLevel, false, false));
+        user.addEffect(new MobEffectInstance(STRENGTH, Utils.convertToSeconds(lvl.strSecs), lvl.strLevel, false, false));
         if (lvl.hasFastLegs) {
-            user.addEffect(new MobEffectInstance(MOVEMENT_SPEED, Utils.convertToSeconds(lvl.speedSecs), lvl.speedLevel, false, false));
+            user.addEffect(new MobEffectInstance(SPEED, Utils.convertToSeconds(lvl.speedSecs), lvl.speedLevel, false, false));
         }
     }
 

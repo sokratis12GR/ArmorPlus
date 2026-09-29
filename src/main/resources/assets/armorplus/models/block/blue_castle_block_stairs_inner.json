@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "armorplus:block/blue_castle_block",
-    "top": "armorplus:block/blue_castle_block",
-    "side": "armorplus:block/blue_castle_block"
-  }
-}

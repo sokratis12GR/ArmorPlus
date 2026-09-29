@@ -1,6 +1,6 @@
 package com.sofodev.armorplus.utils;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -15,13 +15,13 @@ public class DataUtils {
     }
 
     public static String getPath(ItemLike item) {
-        ResourceLocation rl = ForgeRegistries.ITEMS.getKey(item.asItem());
+        Identifier rl = ForgeRegistries.ITEMS.getKey(item.asItem());
 
         if (rl != null) return rl.getPath();
         else throw new NullPointerException("INVALID PATH FOR ITEM | The item is not registered yet!!!");
     }
 
-    public static Item quickModLookupItem(ResourceLocation loc) {
+    public static Item quickModLookupItem(Identifier loc) {
         return ForgeRegistries.ITEMS.getValue(setRL(loc.getPath().replace("_base", "")));
     }
 }

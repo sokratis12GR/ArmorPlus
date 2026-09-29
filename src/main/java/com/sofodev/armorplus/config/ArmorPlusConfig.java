@@ -1,6 +1,6 @@
 package com.sofodev.armorplus.config;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
@@ -38,20 +38,20 @@ public class ArmorPlusConfig {
                             "minecraft:sand", "minecraft:sandstone", "minecraft:wet_sponge", "minecraft:clay", "minecraft:stone_bricks", "minecraft:cobblestone", "minecraft:stone",
                             "minecraft:acacia_log", "minecraft:birch_log", "minecraft:dark_oak_log", "minecraft:jungle_log", "minecraft:oak_log", "minecraft:spruce_log",
                             "minecraft:netherrack", "minecraft:ancient_debris", "minecraft:stone_bricks", "armorplus:ore_lava_crystal", "armorplus:ore_frost_crystal"),
-                    s -> ResourceLocation.tryParse((String) s) != null));
+                    s -> Identifier.tryParse((String) s) != null));
     ;
     public static final ConfigValue<List<? extends String>> autoSmeltingOutput = (builder.comment("Infused Lava Tools: Smelting Recipe Output (Items)")
             .defineList("smeltingOutput", asList("minecraft:iron_ingot", "minecraft:gold_ingot", "minecraft:glass", "minecraft:smooth_sandstone", "minecraft:sponge",
                             "minecraft:terracotta", "minecraft:cracked_stone_bricks", "minecraft:stone", "minecraft:stone",
                             "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal",
                             "minecraft:nether_brick", "minecraft:netherite_scrap", "minecraft:cracked_stone_bricks", "armorplus:infused_lava_crystal", "armorplus:infused_frost_crystal"),
-                    s -> ResourceLocation.tryParse((String) s) != null));
+                    s -> Identifier.tryParse((String) s) != null));
     public static final ConfigValue<List<? extends String>> enchantsThatWontWorkWithSoulHarden = (builder.comment("Enchantment Configuration")
             .push("enchantments")
             .comment("is a list of registry names that will not work with the enchantment \"Soul Harden\"")
             .defineList("disallowWithSoulHardenList",
                     asList("minecraft:mending", "minecraft:unbreaking", "minecraft:vanishing_curse"),
-                    s -> ResourceLocation.tryParse((String) s) != null)
+                    s -> Identifier.tryParse((String) s) != null)
     );
     public static BossDropConfig witherBossDrops;
     public static BossDropConfig enderDragonDrops;

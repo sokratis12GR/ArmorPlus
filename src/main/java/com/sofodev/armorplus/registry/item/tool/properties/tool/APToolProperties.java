@@ -3,15 +3,17 @@ package com.sofodev.armorplus.registry.item.tool.properties.tool;
 import com.sofodev.armorplus.registry.item.armor.APRepair;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 
-import static com.sofodev.armorplus.utils.Utils.getRepairStacks;
 import static net.minecraft.world.item.Items.*;
 
-public enum APToolProperties implements Tier {
+public enum APToolProperties {
     COAL_PROP(BlockTags.INCORRECT_FOR_GOLD_TOOL, 60, 2.0f, 0f, 10, COAL),
     REDSTONE_PROP(BlockTags.INCORRECT_FOR_IRON_TOOL, 250, 6.0f, 1f, 60, REDSTONE),
     LAPIS_PROP(BlockTags.INCORRECT_FOR_IRON_TOOL, 250, 6.0f, 1f, 60, LAPIS_LAZULI),
@@ -53,36 +55,11 @@ public enum APToolProperties implements Tier {
 //        return this.harvestLevel;
 //    }
 
-    @Override
-    public int getUses() {
-        return this.maxUses;
+    public ToolMaterial material() {
+        TagKey<Item> repairTag = TagKey.create(BuiltInRegistries.ITEM.key(),
+                Identifier.fromNamespaceAndPath("armorplus", "repairs_" + name().toLowerCase()));
+        return new ToolMaterial(incorrectBlocksForDrops, maxUses, efficiency, attackDamage, enchantability, repairTag);
     }
-
-    @Override
-    public float getSpeed() {
-        return this.efficiency;
-    }
-
-    @Override
-    public float getAttackDamageBonus() {
-        return this.attackDamage;
-    }
-
-    @Override
-    public TagKey<Block> getIncorrectBlocksForDrops() {
-        return incorrectBlocksForDrops;
-    }
-
-    @Override
-    public int getEnchantmentValue() {
-        return this.enchantability;
-    }
-
-    @Override
-    public Ingredient getRepairIngredient() {
-        return Ingredient.of(getRepairStacks(repair).stream());
-    }
-
 
     @Override
     public String toString() {

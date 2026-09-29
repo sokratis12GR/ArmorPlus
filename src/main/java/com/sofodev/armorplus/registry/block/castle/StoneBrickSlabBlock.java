@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -36,7 +37,7 @@ public class StoneBrickSlabBlock extends Block implements SimpleWaterloggedBlock
     protected static final VoxelShape TOP_SHAPE = Block.box(0.0D, 8.0D, 0.0D, 16.0D, 16.0D, 16.0D);
 
     public StoneBrickSlabBlock(Block block) {
-        super(ofFullCopy(block).requiresCorrectToolForDrops());
+        super(com.sofodev.armorplus.registry.RegistryContext.blockProperties(ofFullCopy(block).requiresCorrectToolForDrops()));
         this.registerDefaultState(this.defaultBlockState().setValue(TYPE, SlabType.BOTTOM).setValue(WATERLOGGED, Boolean.valueOf(false)));
     }
 
@@ -110,7 +111,7 @@ public class StoneBrickSlabBlock extends Block implements SimpleWaterloggedBlock
     }
 
     @Override
-    public boolean canPlaceLiquid(@org.jetbrains.annotations.Nullable Player player, BlockGetter getter, BlockPos pos, BlockState state, Fluid fluid) {
+    public boolean canPlaceLiquid(@org.jetbrains.annotations.Nullable LivingEntity player, BlockGetter getter, BlockPos pos, BlockState state, Fluid fluid) {
         return state.getValue(TYPE) != SlabType.DOUBLE && SimpleWaterloggedBlock.super.canPlaceLiquid(player, getter, pos, state, fluid);
     }
 
@@ -121,14 +122,7 @@ public class StoneBrickSlabBlock extends Block implements SimpleWaterloggedBlock
      * returns its solidified counterpart.
      * Note that this method should ideally consider only the specific face passed in.
      */
-    @Override
-    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, LevelAccessor worldIn, BlockPos currentPos, BlockPos facingPos) {
-        if (stateIn.getValue(WATERLOGGED)) {
-            worldIn.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(worldIn));
-        }
-
-        return super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
-    }
+    
 
     @Override
     public boolean isPathfindable(BlockState state, PathComputationType type) {

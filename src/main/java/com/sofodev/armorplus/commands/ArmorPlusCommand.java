@@ -8,7 +8,7 @@ import net.minecraft.commands.Commands;
 public class ArmorPlusCommand {
 
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(Commands.literal("armorplus").requires(cs -> cs.hasPermission(0))
+        dispatcher.register(Commands.literal("armorplus")
                 .then(Commands.literal("discord").executes(ctx -> discord(ctx.getSource())))
                 .then(Commands.literal("info").executes(ctx -> info(ctx.getSource())))
                 .then(Commands.literal("nodecraft").executes(ctx -> nodecraft(ctx.getSource())))

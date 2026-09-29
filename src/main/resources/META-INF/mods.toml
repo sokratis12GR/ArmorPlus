@@ -6,7 +6,7 @@ issueTrackerURL = "https://github.com/sokratis12GR/ArmorPlus/issues" #optional
 modId = "${mod_id}" #mandatory
 version = "${mod_version}" #mandatory
 displayName = "${mod_name}" #mandatory
-updateJSONURL = "https://sokratis.space/armorplus/1.20/update.json" #optional
+updateJSONURL = "https://sokratis.space/armorplus/26.1/update.json" #optional
 displayURL = "https://www.curseforge.com/minecraft/mc-mods/armorplus" #optional
 logoFile = "headerimg.jpg"
 credits = "To everyone who helped with the translation of ArmorPlus: https://bit.ly/armorplus-credits" #optional
@@ -32,19 +32,6 @@ modId = "minecraft"
 mandatory = true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
 versionRange = "${minecraft_version_range}"
-ordering = "NONE"
-side = "BOTH"
-# ArmorPlus
-[[dependencies.${ mod_id }]]
-modId = "thedragonlib"
-mandatory = true
-versionRange = "[1.21-1.0.0,)"
-ordering = "AFTER"
-side = "BOTH"
-[[dependencies.${ mod_id }]]
-modId = "geckolib"
-mandatory = true
-versionRange = "[4.8,)"
 ordering = "NONE"
 side = "BOTH"
 # Features are specific properties of the game environment, that you may want to declare you require. This example declares

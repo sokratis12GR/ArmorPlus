@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "armorplus:block/red_castle_block",
-    "top": "armorplus:block/red_castle_block",
-    "side": "armorplus:block/red_castle_block"
-  }
-}

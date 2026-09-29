@@ -3,10 +3,12 @@ package com.sofodev.armorplus.registry;
 import com.sofodev.armorplus.registry.entity.arrow.APArrowEntity;
 import com.sofodev.armorplus.registry.entity.arrow.ArrowType;
 import com.sofodev.armorplus.registry.entity.arrow.impl.*;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -42,10 +44,6 @@ public class ModEntities {
     public static final RegistryObject<EntityType<APArrowEntity>> ENDER_DRAGON_ARROW = register("ender_dragon_arrow",
             () -> buildArrow(EnderDragonArrowEntity::new, ENDER_DRAGON));
 
-    /////////////////////
-    // UTILITY METHODS //
-
-    /// //////////////////
 
     public static <ENTITY extends Entity> RegistryObject<EntityType<ENTITY>> register(String name, Supplier<EntityType<ENTITY>> sup) {
         return ENTITY_TYPES.register(name, sup);
@@ -63,7 +61,7 @@ public class ModEntities {
     }
 
     private static <ENTITY extends Entity> EntityType<ENTITY> build(String id, EntityType.Builder<ENTITY> builder) {
-        ResourceLocation rl = setRL(id);
-        return builder.build(rl.toString());
+        Identifier rl = setRL(id);
+        return builder.build(ResourceKey.create(Registries.ENTITY_TYPE, rl));
     }
 }

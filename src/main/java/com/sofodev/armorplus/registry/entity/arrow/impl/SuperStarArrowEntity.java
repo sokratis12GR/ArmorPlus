@@ -13,7 +13,7 @@ import static com.sofodev.armorplus.registry.entity.arrow.APArrowProperty.SUPER_
 public class SuperStarArrowEntity extends APArrowEntity {
 
     public SuperStarArrowEntity(EntityType<? extends APArrowEntity> type, Level world) {
-        super(type, world);
+        super(type, world, SUPER_STAR_ARROW_PROP);
     }
 
     public SuperStarArrowEntity(Level world) {

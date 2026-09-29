@@ -7,7 +7,7 @@ import net.minecraft.server.level.ServerEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.network.packets.SpawnEntity;
@@ -66,13 +66,8 @@ public abstract class APArrowEntity extends AbstractArrow {
     }
 
     @Override
-    public double getBaseDamage() {
-        return super.getBaseDamage();
-    }
-
-    @Override
     public void setBaseDamage(double damageIn) {
-        super.setBaseDamage(this.prop.getDmg());
+        super.setBaseDamage(this.prop == null ? damageIn : this.prop.getDmg());
     }
 
     @Override
@@ -92,12 +87,12 @@ public abstract class APArrowEntity extends AbstractArrow {
 
     @Override
     protected ItemStack getPickupItem() {
-        return prop.getPickupItem();
+        return prop == null ? getDefaultPickupItem() : prop.getPickupItem();
     }
 
     @Override
     protected ItemStack getDefaultPickupItem() {
-        return prop.getPickupItem();
+        return prop == null ? new ItemStack(net.minecraft.world.item.Items.ARROW) : prop.getPickupItem();
     }
 
     @Override
@@ -113,7 +108,7 @@ public abstract class APArrowEntity extends AbstractArrow {
     @Override
     protected void doPostHurtEffects(LivingEntity target) {
         super.doPostHurtEffects(target);
-        if (!level().isClientSide) {
+        if (!level().isClientSide() && this.prop != null) {
             this.prop.hit(target);
         }
     }

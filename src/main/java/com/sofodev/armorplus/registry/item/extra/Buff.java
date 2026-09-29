@@ -37,7 +37,7 @@ public enum Buff implements IBuff {
     WITHER_IMMUNITY(true) {
         @Override
         public void onInventoryTick(ItemStack stack, Level world, Player player) {
-            if (!world.isClientSide) {
+            if (!world.isClientSide()) {
                 player.removeEffect(WITHER);
             }
         }
@@ -45,7 +45,7 @@ public enum Buff implements IBuff {
     WATER_WEAKNESS(true) {
         @Override
         public void onInventoryTick(ItemStack stack, Level world, Player player) {
-            if (!world.isClientSide && player.isUnderWater()) {
+            if (!world.isClientSide() && player.isUnderWater()) {
                 int supply = player.getAirSupply();
                 if (supply > 1) {
                     player.setAirSupply(supply / 2);
@@ -56,7 +56,7 @@ public enum Buff implements IBuff {
     FIRE_WEAKNESS(true) {
         @Override
         public void onInventoryTick(ItemStack stack, Level world, Player player) {
-            if (!world.isClientSide && player.isOnFire()) {
+            if (!world.isClientSide() && player.isOnFire()) {
                 player.setRemainingFireTicks(player.getRemainingFireTicks() + 5);
             }
         }
@@ -67,10 +67,10 @@ public enum Buff implements IBuff {
             if (!player.hasEffect(MobEffects.FIRE_RESISTANCE)) {
                 player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 60, 0, false, false));
             }
-            if (!player.hasEffect(MobEffects.DAMAGE_RESISTANCE)) {
-                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 60, 0, false, false));
+            if (!player.hasEffect(MobEffects.RESISTANCE)) {
+                player.addEffect(new MobEffectInstance(MobEffects.RESISTANCE, 60, 0, false, false));
             }
-            if (!world.isClientSide && player.getRemainingFireTicks() > 0) {
+            if (!world.isClientSide() && player.getRemainingFireTicks() > 0) {
                 player.clearFire();
             }
         }
@@ -78,7 +78,7 @@ public enum Buff implements IBuff {
     FIRE_EXTINGUISH(true) {
         @Override
         public void onInventoryTick(ItemStack stack, Level world, Player player) {
-            if (!world.isClientSide && player.getRemainingFireTicks() > 0) {
+            if (!world.isClientSide() && player.getRemainingFireTicks() > 0) {
                 player.clearFire();
             }
         }
@@ -110,7 +110,8 @@ public enum Buff implements IBuff {
 
     @Override
     public Holder<MobEffect> getEffect() {
-        return effect;
+        if (!isEffect) return null;
+        return MOB_EFFECTS.getHolder(mcLoc(this.name().toLowerCase(Locale.ENGLISH))).orElse(effect);
     }
 
     @Override

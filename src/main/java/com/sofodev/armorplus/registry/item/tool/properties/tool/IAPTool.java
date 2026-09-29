@@ -7,7 +7,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -19,7 +19,7 @@ public interface IAPTool {
     /**
      * @return The IITemTier properties of the tool
      */
-    Tier get();
+    ToolMaterial get();
 
     /**
      * A list of all the BuffInstances for the tool

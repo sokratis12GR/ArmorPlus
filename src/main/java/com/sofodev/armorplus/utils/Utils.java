@@ -4,11 +4,13 @@
 
 package com.sofodev.armorplus.utils;
 
+import net.minecraft.world.item.equipment.ArmorType;
+
 import com.sofodev.armorplus.registry.item.armor.APRepair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -123,7 +125,7 @@ public final class Utils {
     }
 
     public static Item getItemByName(String name) {
-        return ForgeRegistries.ITEMS.getValue(ResourceLocation.parse(name));
+        return ForgeRegistries.ITEMS.getValue(Identifier.parse(name));
     }
 
     public static Item getAPItem(String name) {
@@ -146,12 +148,12 @@ public final class Utils {
         return ForgeRegistries.BLOCKS.getValue(setRL(name));
     }
 
-    public static ResourceLocation setRL(String path) {
-        return ResourceLocation.fromNamespaceAndPath(MODID, path);
+    public static Identifier setRL(String path) {
+        return Identifier.fromNamespaceAndPath(MODID, path);
     }
 
-    public static ResourceLocation mcLoc(String path) {
-        return ResourceLocation.withDefaultNamespace(path);
+    public static Identifier mcLoc(String path) {
+        return Identifier.withDefaultNamespace(path);
     }
 
     public static String setLocation(String path) {
@@ -188,7 +190,7 @@ public final class Utils {
 
     public static ItemStack getTCIngot(int meta) {
         if (Loader.TCONSTRUCT.isLoaded()) {
-            Item ingot = ForgeRegistries.ITEMS.getValue(ResourceLocation.parse("tconstruct:ingots"));
+            Item ingot = ForgeRegistries.ITEMS.getValue(Identifier.parse("tconstruct:ingots"));
             if (ingot != null) {
                 return new ItemStack(ingot, 1);
             }
@@ -197,15 +199,15 @@ public final class Utils {
         return ItemStack.EMPTY;
     }
 
-//    public static String getNormalizedName(ArmorItem.Type slot) {
+//    public static String getNormalizedName(ArmorType slot) {
 //        switch (slot) {
-//            case ArmorItem.Type.HELMET:
+//            case ArmorType.HELMET:
 //                return "helmet";
-//            case ArmorItem.Type.LEGGINGS:
+//            case ArmorType.LEGGINGS:
 //                return "leggings";
-//            case ArmorItem.Type.CHESTPLATE:
+//            case ArmorType.CHESTPLATE:
 //                return "chestplate";
-//            case ArmorItem.Type.BOOTS:
+//            case ArmorType.BOOTS:
 //                return "boots";
 //        }
 //        return slot.getName();
@@ -246,7 +248,7 @@ public final class Utils {
 
     @Nullable
     public static ItemEntity spawnAtLocation(Player player, ItemStack stack, BlockPos pos) {
-        if (stack.isEmpty() || player.level().isClientSide) {
+        if (stack.isEmpty() || player.level().isClientSide()) {
             return null;
         }
         ItemEntity itementity = new ItemEntity(player.level(), pos.getX(), pos.getY(), pos.getZ(), stack);

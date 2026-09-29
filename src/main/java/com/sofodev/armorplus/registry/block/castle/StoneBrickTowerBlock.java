@@ -24,7 +24,7 @@ public class StoneBrickTowerBlock extends Block {
     protected static final VoxelShape VOXEL = Shapes.join(BASE, CORNERS, OR);
 
     public StoneBrickTowerBlock(Block block) {
-        super(ofFullCopy(block).requiresCorrectToolForDrops());
+        super(com.sofodev.armorplus.registry.RegistryContext.blockProperties(ofFullCopy(block).requiresCorrectToolForDrops()));
     }
 
     //@Override

@@ -7,6 +7,6 @@ import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.of
 public class CastleBlock extends Block {
 
     public CastleBlock(Block block) {
-        super(ofFullCopy(block).requiresCorrectToolForDrops());
+        super(com.sofodev.armorplus.registry.RegistryContext.blockProperties(ofFullCopy(block).requiresCorrectToolForDrops()));
     }
 }

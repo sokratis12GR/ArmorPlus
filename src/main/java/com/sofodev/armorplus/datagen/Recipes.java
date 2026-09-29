@@ -6,8 +6,7 @@ import com.sofodev.armorplus.datagen.recipe.Result;
 import com.sofodev.armorplus.registry.ModBlocks;
 import com.sofodev.armorplus.registry.ModItems;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.DataProvider;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
@@ -17,7 +16,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RepairItemRecipe;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -37,30 +35,42 @@ import static java.util.Arrays.asList;
 import static net.minecraft.world.item.Items.*;
 import static net.minecraftforge.common.Tags.Items.*;
 
-public class Recipes extends RecipeProvider implements DataProvider, IConditionBuilder {
+public class Recipes extends RecipeProvider {
 
     public static final List<TagKey<Item>> BRICK_COLORS = Stream.of(DYES_BLACK, DYES_BLUE, DYES_GREEN, DYES_PURPLE, DYES_RED, DYES_WHITE, DYES_YELLOW, DYES_ORANGE).collect(Collectors.toList());
     public static final List<ItemLike> MATERIALS_ORDERED = Stream.of(COAL, REDSTONE, LAPIS_LAZULI, EMERALD, Items.OBSIDIAN, INFUSED_LAVA_CRYSTAL.get(), GUARDIAN_SCALE.get(), WITHER_BONE.get(), ENDER_DRAGON_SCALE.get()).collect(Collectors.toList());
     public static final List<ItemLike> BLOCK_MATERIALS_ORDERED = Stream.of(COAL_BLOCK, REDSTONE_BLOCK, LAPIS_BLOCK, EMERALD_BLOCK, COMPRESSED_OBSIDIAN.get(), INFUSED_LAVA_CRYSTAL.get(), GUARDIAN_SCALE.get(), WITHER_BONE.get(), ENDER_DRAGON_SCALE.get()).collect(Collectors.toList());
     public static final List<ItemLike> LOW_TO_MID_TIER_MATERIAL_LIST = Stream.of(COAL_BLOCK, REDSTONE_BLOCK, LAPIS_BLOCK, EMERALD_BLOCK, COMPRESSED_OBSIDIAN.get()).collect(Collectors.toList());
-    private DataGenerator generator;
-    private final CompletableFuture<HolderLookup.Provider> provider;
 
-    public Recipes(DataGenerator generatorIn, CompletableFuture<HolderLookup.Provider> provider) {
-        super(generatorIn.getPackOutput(), provider);
-        generator = generatorIn;
-        this.provider = provider;
+    public Recipes(HolderLookup.Provider registries, RecipeOutput output) {
+        super(registries, output);
     }
 
     @Override
-    protected void buildRecipes(RecipeOutput con) {
-        SmithingRecipeMaker smither = new SmithingRecipeMaker(generator, provider);
-        smither.buildRecipes(con);
-        this.registerCraftingRecipes(con);
+    protected void buildRecipes() {
+        SmithingRecipeMaker smither = new SmithingRecipeMaker(registries, output);
+        smither.registerSmithingRecipes(output);
+        this.registerCraftingRecipes(output);
+    }
+
+    public static class Runner extends RecipeProvider.Runner {
+        public Runner(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+            super(output, lookupProvider);
+        }
+
+        @Override
+        protected RecipeProvider createRecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {
+            return new Recipes(registries, output);
+        }
+
+        @Override
+        public String getName() {
+            return "ArmorPlus Recipes";
+        }
     }
 
     private void registerCraftingRecipes(RecipeOutput con) {
-        CraftingRecipeMaker crafter = new CraftingRecipeMaker(generator, provider);
+        CraftingRecipeMaker crafter = new CraftingRecipeMaker(registries, output);
         //StoneBricks+CastleBlocks
         int l = AP_STONE_BRICKS_LENGTH;
         for (int i = 0; i < l; i++) {

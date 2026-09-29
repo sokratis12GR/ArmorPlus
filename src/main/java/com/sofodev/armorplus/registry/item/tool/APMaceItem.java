@@ -1,87 +1,42 @@
 package com.sofodev.armorplus.registry.item.tool;
 
 import com.sofodev.armorplus.registry.item.tool.properties.mace.IAPMace;
-import com.sofodev.armorplus.registry.item.tool.render.APMaceRenderer;
-import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
-import software.bernie.geckolib.animatable.GeoAnimatable;
-import software.bernie.geckolib.animatable.GeoItem;
-import software.bernie.geckolib.animatable.SingletonGeoAnimatable;
-import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.animation.*;
-import software.bernie.geckolib.constant.DataTickets;
-import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Random;
-import java.util.function.Consumer;
 import java.util.stream.IntStream;
 
 import static com.sofodev.armorplus.registry.item.tool.properties.mace.DestructionShape.PLUS;
 import static com.sofodev.armorplus.registry.item.tool.properties.mace.DestructionShape.SQUARE;
 import static net.minecraft.tags.BlockTags.WITHER_IMMUNE;
-import static software.bernie.geckolib.animation.PlayState.CONTINUE;
-import static software.bernie.geckolib.animation.PlayState.STOP;
 
-public class APMaceItem extends SwordItem implements GeoItem {
-    private static final RawAnimation ATTACK = RawAnimation.begin().thenPlay("animation.mace.attack");
-    private static final RawAnimation SWIPE_ATTACK = RawAnimation.begin().thenPlay("animation.mace.swipe_attack");
-    private static final RawAnimation SWING_ATTACK = RawAnimation.begin().thenPlay("animation.mace.swing_attack");
-    private static final RawAnimation CHARGE = RawAnimation.begin().thenPlay("animation.mace.charge");
-    private static final RawAnimation HOLD_CHARGE = RawAnimation.begin().thenPlay("animation.mace.hold_charge");
+public class APMaceItem extends Item {
 
     public final IAPMace mat;
-    public final String controllerName = "maceController";
-    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     Random random = new Random();
 
     public APMaceItem(IAPMace mat, Item.Properties props) {
-        super(mat.get(), props.attributes(SwordItem.createAttributes(mat.get(),
-                (int) (mat.get().getAttackDamageBonus() + mat.getType().getDmg()), mat.getType()
-                        .getAttackSpeed())));
+        super(props.sword(mat.get(), (float) mat.get().attackDamageBonus() + mat.getType().getDmg(), mat.getType().getAttackSpeed()));
         this.mat = mat;
 
-
-        SingletonGeoAnimatable.registerSyncedAnimatable(this);
-    }
-
-    @Override
-    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-        consumer.accept(new IClientItemExtensions() {
-            private APMaceRenderer renderer;
-
-            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                if (this.renderer == null) {
-                    this.renderer = new APMaceRenderer();
-                }
-
-                return this.renderer;
-            }
-        });
     }
 
     @Override
     public Component getName(ItemStack stack) {
         return super.getName(stack).copy().withStyle(mat.getColor());
-    }
-
-    @Override
-    public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair) {
-        return super.isValidRepairItem(toRepair, repair);
     }
 //
 //    @Override
@@ -89,7 +44,6 @@ public class APMaceItem extends SwordItem implements GeoItem {
 //        return super.shouldOverrideMultiplayerNbt();
 //    }
 
-    @Override
     public boolean canAttackBlock(BlockState state, Level worldIn, BlockPos pos, Player player) {
         return !player.isCreative();
     }
@@ -133,7 +87,7 @@ public class APMaceItem extends SwordItem implements GeoItem {
 //    }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+    public InteractionResult use(Level level, Player player, InteractionHand hand) {
         if (level instanceof ServerLevel) {
             ItemStack stack = player.getItemInHand(hand);
 //            CompoundTag nbt = ;
@@ -141,10 +95,10 @@ public class APMaceItem extends SwordItem implements GeoItem {
 //                triggerAnim(player, GeoItem.getOrAssignId(player.getItemInHand(hand), serverLevel), controllerName, "animation.mace.hold_charge");
 //            }
             if (stack.getDamageValue() >= stack.getMaxDamage() - 1) {
-                return InteractionResultHolder.fail(stack);
+                return InteractionResult.FAIL;
             } else {
                 player.startUsingItem(hand);
-                return InteractionResultHolder.consume(stack);
+                return InteractionResult.CONSUME;
             }
         }
         return super.use(level, player, hand);
@@ -178,8 +132,8 @@ public class APMaceItem extends SwordItem implements GeoItem {
 //    }
 
     @Override
-    public UseAnim getUseAnimation(ItemStack p_41452_) {
-        return UseAnim.NONE;
+    public ItemUseAnimation getUseAnimation(ItemStack p_41452_) {
+        return ItemUseAnimation.NONE;
     }
 
     private void executeDestruction(Player player, IAPMace mat, Level world, ItemStack stack, BlockPos destructionPos, Direction direction, boolean flag) {
@@ -188,7 +142,7 @@ public class APMaceItem extends SwordItem implements GeoItem {
         //Damages the item and executes the animation
 
         stack.hurtAndBreak(random.nextInt(damage) + (damage * damage), player, EquipmentSlot.MAINHAND);
-        player.getCooldowns().addCooldown(stack.getItem(), mat.cooldown() * 20);
+        player.getCooldowns().addCooldown(stack, mat.cooldown() * 20);
         player.awardStat(Stats.ITEM_USED.get(this));
     }
 
@@ -250,45 +204,4 @@ public class APMaceItem extends SwordItem implements GeoItem {
         return pos.relative(direction, offset + 1);
     }
 
-    @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add((new AnimationController(this, this.controllerName, 20, this::predicate)).triggerableAnim("swing_attack", SWING_ATTACK));
-    }
-
-    private <P extends Item & GeoAnimatable> PlayState predicate(AnimationState<P> event) {
-        ItemStack stack = event.getData(DataTickets.ITEMSTACK);
-        if (!stack.isEmpty()) {
-            return stack.isFramed() ? STOP : CONTINUE;
-        }
-        return STOP;
-    }
-
-    public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return this.cache;
-    }
-
-//    @Override
-//    public void onAnimationSync(int id, int state) {
-//        if (state == 0) {
-//            AnimationController<?> controller = GeckoLibUtil.getControllerForID(this.factory, id, this.controllerName);
-//            if (controller.getAnimationState() == AnimationState.Stopped) {
-//                controller.markNeedsReload();
-//                controller.setAnimation(new AnimationBuilder().addAnimation("animation.mace.charge", false)
-//                        .addAnimation("animation.mace.hold_charge", true));
-//            }
-//        }
-//        if (state == 1) {
-//            AnimationController<?> controller = GeckoLibUtil.getControllerForID(this.factory, id, this.controllerName);
-//            if (controller.getAnimationState() == AnimationState.Stopped) {
-//                controller.markNeedsReload();
-//                controller.setAnimation((new AnimationBuilder()).addAnimation("animation.mace.swing_attack", false));
-//            }
-//        }
-//
-//    }
-
-    @Override
-    public double getTick(Object o) {
-        return 0;
-    }
 }

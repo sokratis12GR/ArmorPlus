@@ -2,11 +2,10 @@ package com.sofodev.armorplus.registry;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackLinkedSet;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -22,7 +21,6 @@ import static com.sofodev.armorplus.registry.block.castle.BrickColor.values;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
 import static com.sofodev.armorplus.utils.Utils.getAPItemStack;
 
-@Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModCreativeTabs {
 
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
@@ -32,7 +30,7 @@ public class ModCreativeTabs {
             .title(Component.translatable("tabs.armorplus.core"))
             .withLabelColor(0xFFFFFF)
             .withSearchBar(40)
-            .backgroundTexture(ResourceLocation.fromNamespaceAndPath(MODID, "textures/gui/container/creative_inventory/tab_armorplus_small_search.png"))
+            .backgroundTexture(Identifier.fromNamespaceAndPath(MODID, "textures/gui/container/creative_inventory/tab_armorplus_small_search.png"))
             .displayItems((featureFlags, output) -> {
                 addEquipmentToOutput(output, "coal");
                 addEquipmentToOutput(output, "redstone");
@@ -49,7 +47,7 @@ public class ModCreativeTabs {
             .icon(() -> new ItemStack(getAPItem("cobalt_chestplate")))
             .title(Component.translatable("tabs.armorplus.extra"))
             .withLabelColor(0xFFFFFF)
-            .backgroundTexture(ResourceLocation.fromNamespaceAndPath(MODID, "textures/gui/container/creative_inventory/tab_armorplus_small_search.png"))
+            .backgroundTexture(Identifier.fromNamespaceAndPath(MODID, "textures/gui/container/creative_inventory/tab_armorplus_small_search.png"))
             .withSearchBar(40)
             .displayItems((featureFlags, output) -> {
                 addSetToOutput(output, "chainmail");
@@ -77,7 +75,7 @@ public class ModCreativeTabs {
     public static final RegistryObject<CreativeModeTab> AP_ITEM_GROUP = register("items", () -> CreativeModeTab.builder()
             .icon(() -> new ItemStack(ModItems.INFUSED_LAVA_CRYSTAL.get()))
             .title(Component.translatable("tabs.armorplus.items"))
-            .backgroundTexture(ResourceLocation.fromNamespaceAndPath(MODID, "textures/gui/container/creative_inventory/tab_armorplus.png"))
+            .backgroundTexture(Identifier.fromNamespaceAndPath(MODID, "textures/gui/container/creative_inventory/tab_armorplus.png"))
             .withSearchBar()
             .withLabelColor(0xFFFFFF)
             .displayItems((featureFlags, output) -> {
@@ -133,7 +131,7 @@ public class ModCreativeTabs {
     public static final RegistryObject<CreativeModeTab> AP_BLOCK_GROUP = register("blocks", () -> CreativeModeTab.builder()
             .icon(() -> new ItemStack(ModBlocks.INFUSED_LAVA_CRYSTAL.get()))
             .title(Component.translatable("tabs.armorplus.blocks"))
-            .backgroundTexture(ResourceLocation.fromNamespaceAndPath(MODID, "textures/gui/container/creative_inventory/tab_armorplus.png"))
+            .backgroundTexture(Identifier.fromNamespaceAndPath(MODID, "textures/gui/container/creative_inventory/tab_armorplus.png"))
             .withLabelColor(0xFFFFFF)
             .withSearchBar()
             .displayItems((featureFlags, output) -> {

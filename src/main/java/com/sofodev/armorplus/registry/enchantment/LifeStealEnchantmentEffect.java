@@ -4,10 +4,8 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.enchantment.EnchantedItemInUse;
 import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect;
 import net.minecraft.world.phys.Vec3;
@@ -31,15 +29,7 @@ public record LifeStealEnchantmentEffect() implements EnchantmentEntityEffect {
         ItemStack mainHand = enchantedItemInUse.owner().getMainHandItem();
         Item handItem = mainHand.getItem();
         if (mainHand.isEmpty()) return;
-        if (!isCorrectItem(handItem)) {
-            user.heal(lvl.healingFactor);
-        } else if (handItem instanceof DiggerItem) {
-            damageDealt = ((DiggerItem) handItem).getTier().getAttackDamageBonus();
-            user.heal(enchantmentLevel * softCap(damageDealt, 10, 1) / 4);
-        } else if (handItem instanceof SwordItem) {
-            damageDealt = ((SwordItem) handItem).getTier().getAttackDamageBonus();
-            user.heal(enchantmentLevel * softCap(damageDealt, 10, 1) / 4);
-        }
+        user.heal(lvl.healingFactor); // TODO 26.1: derive weapon damage from components
     }
 
     /**
@@ -54,9 +44,6 @@ public record LifeStealEnchantmentEffect() implements EnchantmentEntityEffect {
         return max + space * offset / (space + offset);
     }
 
-    private boolean isCorrectItem(Item item) {
-        return item instanceof SwordItem || item instanceof DiggerItem;
-    }
 
 
     @Override

@@ -30,8 +30,8 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.DynamicOps;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -67,9 +67,10 @@ public class ConfigHelper {
      * @return An instance of your config class
      */
     public static <T> T register(
+            final FMLJavaModLoadingContext context,
             final ModConfig.Type configType,
             final Function<ForgeConfigSpec.Builder, T> configFactory) {
-        return register(configType, configFactory, null);
+        return register(context, configType, configFactory, null);
     }
 
     /**
@@ -87,18 +88,18 @@ public class ConfigHelper {
      * @return An instance of your config class
      */
     public static <T> T register(
+            final FMLJavaModLoadingContext context,
             final ModConfig.Type configType,
             final Function<ForgeConfigSpec.Builder, T> configFactory,
             final @Nullable String configName) {
-        final ModLoadingContext modContext = ModLoadingContext.get();
         final org.apache.commons.lang3.tuple.Pair<T, ForgeConfigSpec> entry = new ForgeConfigSpec.Builder()
                 .configure(configFactory);
         final T config = entry.getLeft();
         final ForgeConfigSpec spec = entry.getRight();
         if (configName == null) {
-            modContext.registerConfig(configType, spec);
+            context.registerConfig(configType, spec);
         } else {
-            modContext.registerConfig(configType, spec, configName + ".toml");
+            context.registerConfig(configType, spec, configName + ".toml");
         }
 
         return config;

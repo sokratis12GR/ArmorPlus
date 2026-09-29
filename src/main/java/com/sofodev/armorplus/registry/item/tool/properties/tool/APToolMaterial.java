@@ -12,8 +12,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.Level;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.*;
@@ -30,32 +31,32 @@ import static net.minecraft.world.item.Items.SOUL_SAND;
 import static net.minecraft.world.level.block.Blocks.*;
 
 public enum APToolMaterial implements IAPTool {
-    COAL_MAT(COAL, COAL_PROP, () -> withBuffs(new BuffInstance(BLINDNESS, 0, 10))) {
+    COAL_MAT(COAL, COAL_PROP.material(), () -> withBuffs(new BuffInstance(BLINDNESS, 0, 10))) {
         @Override
         public MaterialConfig config() {
             return config.coalMaterial;
         }
-    }, REDSTONE_MAT(REDSTONE, REDSTONE_PROP, () -> withBuffs(new BuffInstance(MINING_FATIGUE, 1, 10))) {
+    }, REDSTONE_MAT(REDSTONE, REDSTONE_PROP.material(), () -> withBuffs(new BuffInstance(MINING_FATIGUE, 1, 10))) {
         @Override
         public MaterialConfig config() {
             return config.redstoneMaterial;
         }
-    }, LAPIS_MAT(LAPIS, LAPIS_PROP, () -> withBuffs(new BuffInstance(NAUSEA, 0, 10))) {
+    }, LAPIS_MAT(LAPIS, LAPIS_PROP.material(), () -> withBuffs(new BuffInstance(NAUSEA, 0, 10))) {
         @Override
         public MaterialConfig config() {
             return config.lapisMaterial;
         }
-    }, EMERALD_MAT(EMERALD, EMERALD_PROP, () -> withBuffs(new BuffInstance(SLOWNESS, 0, 20))) {
+    }, EMERALD_MAT(EMERALD, EMERALD_PROP.material(), () -> withBuffs(new BuffInstance(SLOWNESS, 0, 20))) {
         @Override
         public MaterialConfig config() {
             return config.emeraldMaterial;
         }
-    }, OBSIDIAN_MAT(OBSIDIAN, OBSIDIAN_PROP, () -> withBuffs(new BuffInstance(WEAKNESS, 2, 20))) {
+    }, OBSIDIAN_MAT(OBSIDIAN, OBSIDIAN_PROP.material(), () -> withBuffs(new BuffInstance(WEAKNESS, 2, 20))) {
         @Override
         public MaterialConfig config() {
             return config.obsidianMaterial;
         }
-    }, INFUSED_LAVA_MAT(INFUSED_LAVA, INFUSED_LAVA_PROP, () -> withBuffs(new BuffInstance(IGNITE))) {
+    }, INFUSED_LAVA_MAT(INFUSED_LAVA, INFUSED_LAVA_PROP.material(), () -> withBuffs(new BuffInstance(IGNITE))) {
         @Override
         public void onBlockMined(ItemStack stack, Level world, BlockState state, BlockPos pos, LivingEntity player) {
             if (player instanceof Player) {
@@ -72,7 +73,7 @@ public enum APToolMaterial implements IAPTool {
         public MaterialConfig config() {
             return config.infusedLavaMaterial;
         }
-    }, GUARDIAN_MAT(GUARDIAN, GUARDIAN_PROP, () -> withBuffs(new BuffInstance(WEAKNESS, 1, 4), new BuffInstance(NAUSEA, 1, 20))) {
+    }, GUARDIAN_MAT(GUARDIAN, GUARDIAN_PROP.material(), () -> withBuffs(new BuffInstance(WEAKNESS, 1, 4), new BuffInstance(NAUSEA, 1, 20))) {
         @Override
         public void onBlockMined(ItemStack stack, Level world, BlockState state, BlockPos pos, LivingEntity player) {
             //TODO: WIP (new guardian pickaxe effect)
@@ -82,14 +83,14 @@ public enum APToolMaterial implements IAPTool {
         public AdvancedMaterialConfig config() {
             return config.guardianMaterial;
         }
-    }, SUPER_STAR_MAT(SUPER_STAR, SUPER_STAR_PROP, () -> withBuffs(new BuffInstance(WITHER, 1, 4), new BuffInstance(GLOWING, 0, 20))) {
+    }, SUPER_STAR_MAT(SUPER_STAR, SUPER_STAR_PROP.material(), () -> withBuffs(new BuffInstance(WITHER, 1, 4), new BuffInstance(GLOWING, 0, 20))) {
         @Override
         public void onBlockMined(ItemStack stack, Level world, BlockState state, BlockPos pos, LivingEntity player) {
             if (state == STONE.defaultBlockState() && random.nextInt(3) == 1) {
-                player.spawnAtLocation(new ItemStack(NETHERRACK, 1), 0);
+                if (world instanceof ServerLevel server) player.spawnAtLocation(server, new ItemStack(NETHERRACK, 1));
             }
             if (state == SAND.defaultBlockState() && random.nextInt(3) == 1) {
-                player.spawnAtLocation(new ItemStack(SOUL_SAND, 1), 0);
+                if (world instanceof ServerLevel server) player.spawnAtLocation(server, new ItemStack(SOUL_SAND, 1));
             }
         }
 
@@ -97,11 +98,11 @@ public enum APToolMaterial implements IAPTool {
         public AdvancedMaterialConfig config() {
             return config.superStarMaterial;
         }
-    }, ENDER_DRAGON_MAT(ENDER_DRAGON, ENDER_DRAGON_PROP, () -> withBuffs(new BuffInstance(WITHER, 3, 4), new BuffInstance(SLOWNESS, 1, 20))) {
+    }, ENDER_DRAGON_MAT(ENDER_DRAGON, ENDER_DRAGON_PROP.material(), () -> withBuffs(new BuffInstance(WITHER, 3, 4), new BuffInstance(SLOWNESS, 1, 20))) {
         @Override
         public void onBlockMined(ItemStack stack, Level world, BlockState state, BlockPos pos, LivingEntity player) {
             if (state == END_STONE.defaultBlockState() && random.nextInt(3) == 1) {
-                player.spawnAtLocation(new ItemStack(Items.ENDER_PEARL, 1), 0);
+                if (world instanceof ServerLevel server) player.spawnAtLocation(server, new ItemStack(Items.ENDER_PEARL, 1));
             }
         }
 
@@ -109,17 +110,17 @@ public enum APToolMaterial implements IAPTool {
         public AdvancedMaterialConfig config() {
             return config.enderDragonMaterial;
         }
-    }, SLAYER_MAT(SLAYER, SLAYER_PROP, () -> withBuffs(new BuffInstance(WITHER, 3, 4), new BuffInstance(SLOWNESS, 1, 20), new BuffInstance(GLOWING, 0, 20), new BuffInstance(WEAKNESS, 1, 4), new BuffInstance(NAUSEA, 1, 20))) {
+    }, SLAYER_MAT(SLAYER, SLAYER_PROP.material(), () -> withBuffs(new BuffInstance(WITHER, 3, 4), new BuffInstance(SLOWNESS, 1, 20), new BuffInstance(GLOWING, 0, 20), new BuffInstance(WEAKNESS, 1, 4), new BuffInstance(NAUSEA, 1, 20))) {
         @Override
         public void onBlockMined(ItemStack stack, Level world, BlockState state, BlockPos pos, LivingEntity player) {
             if (state == END_STONE.defaultBlockState() && random.nextInt(3) == 1) {
-                player.spawnAtLocation(new ItemStack(Items.ENDER_PEARL, 1), 0);
+                if (world instanceof ServerLevel server) player.spawnAtLocation(server, new ItemStack(Items.ENDER_PEARL, 1));
             }
             if (state == STONE.defaultBlockState() && random.nextInt(3) == 1) {
-                player.spawnAtLocation(new ItemStack(NETHERRACK, 1), 0);
+                if (world instanceof ServerLevel server) player.spawnAtLocation(server, new ItemStack(NETHERRACK, 1));
             }
             if (state == SAND.defaultBlockState() && random.nextInt(3) == 1) {
-                player.spawnAtLocation(new ItemStack(SOUL_SAND, 1), 0);
+                if (world instanceof ServerLevel server) player.spawnAtLocation(server, new ItemStack(SOUL_SAND, 1));
             }
         }
 
@@ -130,20 +131,20 @@ public enum APToolMaterial implements IAPTool {
     };
 
     public final Random random = new Random();
-    private final Tier properties;
+    private final ToolMaterial properties;
     private final Supplier<List<BuffInstance>> buffs;
     private final ChatFormatting rarity;
     private final double bowDamageBonus;
 
-    APToolMaterial(APRarity rarity, Tier properties, Supplier<List<BuffInstance>> buffs) {
-        this(rarity.getColor(), properties, properties.getAttackDamageBonus(), buffs);
+    APToolMaterial(APRarity rarity, ToolMaterial properties, Supplier<List<BuffInstance>> buffs) {
+        this(rarity.getColor(), properties, properties.attackDamageBonus(), buffs);
     }
 
-    APToolMaterial(APRarity rarity, Tier properties) {
-        this(rarity.getColor(), properties, properties.getAttackDamageBonus(), Collections::emptyList);
+    APToolMaterial(APRarity rarity, ToolMaterial properties) {
+        this(rarity.getColor(), properties, properties.attackDamageBonus(), Collections::emptyList);
     }
 
-    APToolMaterial(ChatFormatting rarity, Tier properties, double bowDamageBonus, Supplier<List<BuffInstance>> buffs) {
+    APToolMaterial(ChatFormatting rarity, ToolMaterial properties, double bowDamageBonus, Supplier<List<BuffInstance>> buffs) {
         this.rarity = rarity;
         this.properties = properties;
         this.bowDamageBonus = bowDamageBonus;
@@ -155,7 +156,7 @@ public enum APToolMaterial implements IAPTool {
     }
 
     @Override
-    public Tier get() {
+    public ToolMaterial get() {
         return properties;
     }
 

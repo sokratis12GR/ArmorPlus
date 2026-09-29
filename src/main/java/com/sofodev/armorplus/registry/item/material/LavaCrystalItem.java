@@ -4,6 +4,7 @@ import com.sofodev.armorplus.registry.item.APItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
@@ -11,6 +12,8 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.crafting.RecipeType;
 
 import java.util.List;
+import java.util.function.Consumer;
+import net.minecraft.world.item.component.TooltipDisplay;
 
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
@@ -25,17 +28,17 @@ public class LavaCrystalItem extends APItem {
     private int[] burnTime = new int[]{20000, 22000};
 
     public LavaCrystalItem(boolean isInfused) {
-        super(new Properties().fireResistant());
+        super(com.sofodev.armorplus.registry.RegistryContext.itemProperties().fireResistant());
         this.isInfused = isInfused;
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> tooltip, TooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag flagIn) {
         if (!isInfused) {
-            tooltip.add(translate("tooltip.armorplus.lava_crystal.how_to_infuse").setStyle(Style.EMPTY.withItalic(true).withColor(TextColor.parseColor("#670067").getOrThrow())));
+            tooltip.accept(translate("tooltip.armorplus.lava_crystal.how_to_infuse").setStyle(Style.EMPTY.withItalic(true).withColor(TextColor.parseColor("#670067").getOrThrow())));
         } else
-            tooltip.add(translate("tooltip.armorplus.lava_crystal.lore").setStyle(Style.EMPTY.withItalic(true).withColor(TextColor.parseColor("#670067").getOrThrow())));
-        super.appendHoverText(stack, ctx, tooltip, flagIn);
+            tooltip.accept(translate("tooltip.armorplus.lava_crystal.lore").setStyle(Style.EMPTY.withItalic(true).withColor(TextColor.parseColor("#670067").getOrThrow())));
+        super.appendHoverText(stack, ctx, display, tooltip, flagIn);
     }
 
     /**
@@ -47,9 +50,9 @@ public class LavaCrystalItem extends APItem {
      */
     @Override
     public boolean onEntityItemUpdate(ItemStack stack, ItemEntity entity) {
-        boolean isInLava = entity.getCommandSenderWorld().getFluidState(entity.blockPosition()).is(FluidTags.LAVA);
+        boolean isInLava = entity.level().getFluidState(entity.blockPosition()).is(FluidTags.LAVA);
         if (!isInfused && isInLava) {
-            entity.spawnAtLocation(new ItemStack(getAPItem("infused_lava_crystal"), entity.getItem().getCount()));
+            if (entity.level() instanceof ServerLevel server) entity.spawnAtLocation(server, new ItemStack(getAPItem("infused_lava_crystal"), entity.getItem().getCount()));
             entity.getItem().setCount(0);
             return true;
         }

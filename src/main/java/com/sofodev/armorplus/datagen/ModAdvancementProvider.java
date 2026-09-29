@@ -1,38 +1,33 @@
 package com.sofodev.armorplus.datagen;
 
 import net.minecraft.advancements.*;
-import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.advancements.criterion.InventoryChangeTrigger;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.data.advancements.AdvancementSubProvider;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.common.data.ForgeAdvancementProvider;
 
-import java.util.Optional;
 import java.util.function.Consumer;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
 import static com.sofodev.armorplus.utils.Utils.getItemByName;
-import static net.minecraft.advancements.AdvancementRequirements.Strategy.AND;
-import static net.minecraft.advancements.AdvancementRequirements.Strategy.OR;
 
-public class ModAdvancementProvider implements ForgeAdvancementProvider.AdvancementGenerator {
+public class ModAdvancementProvider implements AdvancementSubProvider {
 
     @Override
-    public void generate(HolderLookup.Provider registries, Consumer<AdvancementHolder> saver, ExistingFileHelper existingFileHelper) {
+    public void generate(HolderLookup.Provider registries, Consumer<AdvancementHolder> saver) {
 
         AdvancementHolder root = createAdvancement(
                 "root",
                 null,
                 getAPItem("redstone_chestplate"),
-                "textures/item/compressed_obsidian.png",
+                "item/compressed_obsidian.png",
                 AdvancementType.TASK,
                 false,
                 false,
-                OR,
+                false,
                 "minecraft:crafting_table"
         );
         saver.accept(root);
@@ -45,7 +40,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.TASK,
                 true,
                 true,
-                AND,
+                true,
                 "armorplus:coal_helmet",
                 "armorplus:coal_chestplate",
                 "armorplus:coal_leggings",
@@ -61,7 +56,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.TASK,
                 true,
                 true,
-                AND,
+                true,
                 "armorplus:coal_sword", "armorplus:coal_battle_axe", "armorplus:coal_mace"
         );
         saver.accept(coalWeaponry);
@@ -74,7 +69,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.TASK,
                 true,
                 true,
-                AND,
+                true,
                 "armorplus:lapis_helmet", "armorplus:lapis_chestplate",
                 "armorplus:lapis_leggings", "armorplus:lapis_boots"
         );
@@ -88,7 +83,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.TASK,
                 true,
                 true,
-                AND,
+                true,
                 "armorplus:lapis_sword", "armorplus:lapis_battle_axe", "armorplus:lapis_mace"
         );
         saver.accept(lapisWeaponry);
@@ -102,7 +97,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.TASK,
                 true,
                 true,
-                AND,
+                true,
                 "armorplus:redstone_helmet", "armorplus:redstone_chestplate",
                 "armorplus:redstone_leggings", "armorplus:redstone_boots"
         );
@@ -116,7 +111,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.TASK,
                 true,
                 true,
-                AND,
+                true,
                 "armorplus:redstone_sword", "armorplus:redstone_battle_axe", "armorplus:redstone_mace"
         );
         saver.accept(redstoneWeaponry);
@@ -130,7 +125,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.TASK,
                 true,
                 true,
-                AND,
+                true,
                 "armorplus:emerald_helmet",
                 "armorplus:emerald_chestplate",
                 "armorplus:emerald_leggings",
@@ -146,7 +141,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.TASK,
                 true,
                 true,
-                AND,
+                true,
                 "armorplus:emerald_sword",
                 "armorplus:emerald_battle_axe",
                 "armorplus:emerald_mace"
@@ -163,7 +158,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.TASK,
                 true,
                 true,
-                AND,
+                true,
                 "armorplus:obsidian_helmet",
                 "armorplus:obsidian_chestplate",
                 "armorplus:obsidian_leggings",
@@ -179,7 +174,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.TASK,
                 true,
                 true,
-                AND,
+                true,
                 "armorplus:obsidian_sword",
                 "armorplus:obsidian_battle_axe",
                 "armorplus:obsidian_mace"
@@ -195,7 +190,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.GOAL,
                 true,
                 true,
-                OR,
+                false,
                 "armorplus:infused_lava_crystal"
         );
         saver.accept(lavaCrystal);
@@ -208,7 +203,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.TASK,
                 true,
                 true,
-                OR,
+                false,
                 "armorplus:soul_box"
         );
         saver.accept(soulBox);
@@ -221,7 +216,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.TASK,
                 true,
                 true,
-                AND,
+                true,
                 "armorplus:infused_lava_helmet", "armorplus:infused_lava_chestplate",
                 "armorplus:infused_lava_leggings", "armorplus:infused_lava_boots"
         );
@@ -235,7 +230,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.TASK,
                 true,
                 true,
-                AND,
+                true,
                 "armorplus:infused_lava_sword", "armorplus:infused_lava_battle_axe", "armorplus:infused_lava_mace"
         );
         saver.accept(lavaWeaponry);
@@ -248,8 +243,8 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.GOAL,
                 true,
                 true,
-                OR,
-                "armorplus:soul_guardian", "armorplus:soul_elder_guardian"
+                false,
+                "armorplus:soul_elder_guardian"
         );
         saver.accept(guardianSoulObtained);
 
@@ -261,8 +256,8 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.GOAL,
                 true,
                 true,
-                OR,
-                "armorplus:soul_wither_boss", "armorplus:soul_wither_skeleton"
+                false,
+                "armorplus:soul_wither_boss"
         );
         saver.accept(witherSoulObtained);
 
@@ -275,8 +270,8 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.GOAL,
                 true,
                 true,
-                OR,
-                "armorplus:soul_ender_dragon", "armorplus:soul_enderman"
+                false,
+                "armorplus:soul_ender_dragon"
         );
         saver.accept(dragonSoulObtained);
 
@@ -289,7 +284,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.CHALLENGE,
                 true,
                 true,
-                AND,
+                true,
                 "armorplus:guardian_helmet", "armorplus:guardian_chestplate",
                 "armorplus:guardian_leggings", "armorplus:guardian_boots"
         );
@@ -303,7 +298,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.CHALLENGE,
                 true,
                 true,
-                AND,
+                true,
                 "armorplus:guardian_sword", "armorplus:guardian_battle_axe", "armorplus:guardian_mace"
         );
         saver.accept(guardianWeaponry);
@@ -318,7 +313,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.CHALLENGE,
                 true,
                 true,
-                AND,
+                true,
                 "armorplus:super_star_helmet", "armorplus:super_star_chestplate",
                 "armorplus:super_star_leggings", "armorplus:super_star_boots"
         );
@@ -332,7 +327,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.CHALLENGE,
                 true,
                 true,
-                AND,
+                true,
                 "armorplus:super_star_sword", "armorplus:super_star_battle_axe", "armorplus:super_star_mace"
         );
         saver.accept(superWeaponry);
@@ -347,7 +342,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.CHALLENGE,
                 true,
                 true,
-                AND,
+                true,
                 "armorplus:ender_dragon_helmet", "armorplus:ender_dragon_chestplate",
                 "armorplus:ender_dragon_leggings", "armorplus:ender_dragon_boots"
         );
@@ -361,7 +356,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.CHALLENGE,
                 true,
                 true,
-                AND,
+                true,
                 "armorplus:ender_dragon_sword", "armorplus:ender_dragon_battle_axe", "armorplus:ender_dragon_mace"
         );
         saver.accept(enderWeaponry);
@@ -375,7 +370,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.GOAL,
                 true,
                 true,
-                OR,
+                false,
                 "armorplus:soul_slayer"
         );
         saver.accept(slayerSoulCrafted);
@@ -388,7 +383,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.CHALLENGE,
                 true,
                 true,
-                AND,
+                true,
                 "armorplus:slayer_helmet",
                 "armorplus:slayer_chestplate",
                 "armorplus:slayer_leggings",
@@ -404,7 +399,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.CHALLENGE,
                 true,
                 true,
-                AND,
+                true,
                 "armorplus:slayer_sword", "armorplus:slayer_battle_axe", "armorplus:slayer_mace"
         );
         saver.accept(slayerWeaponry);
@@ -419,7 +414,7 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
                 AdvancementType.TASK,
                 true,
                 false,
-                OR,
+                false,
                 "armorplus:redstone_chestplate"
         );
         saver.accept(thankYou);
@@ -433,84 +428,53 @@ public class ModAdvancementProvider implements ForgeAdvancementProvider.Advancem
             AdvancementType frame,
             boolean showToast,
             boolean announceToChat,
-            AdvancementRequirements.Strategy strategy,
+            boolean requireAll,
             String... criterionItems
     ) {
-
         String titleKey = "advancements.armorplus.story." + id + ".title";
         String descKey = "advancements.armorplus.story." + id + ".description";
-        DisplayInfo display = new DisplayInfo(
-                new ItemStack(iconItem),
-                Component.translatable(titleKey),
-                Component.translatable(descKey),
-                backgroundPath != null ? Optional.of(ResourceLocation.fromNamespaceAndPath(MODID, backgroundPath)) : Optional.empty(),
-                frame,
-                showToast,
-                announceToChat,
-                false
+
+        Identifier background = backgroundPath == null
+                ? null
+                : Identifier.fromNamespaceAndPath(
+                MODID,
+                backgroundPath.endsWith(".png")
+                        ? backgroundPath.substring(0, backgroundPath.length() - 4)
+                        : backgroundPath
         );
 
         int experience = 10;
+
         Advancement.Builder builder = Advancement.Builder.advancement()
-                .display(display)
+                .display(
+                        iconItem,
+                        Component.translatable(titleKey),
+                        Component.translatable(descKey),
+                        background,
+                        frame,
+                        showToast,
+                        announceToChat,
+                        false
+                )
                 .rewards(AdvancementRewards.Builder.experience(experience).build());
-        builder.requirements(strategy);
+
+        builder.requirements(requireAll
+                ? AdvancementRequirements.allOf(java.util.Arrays.asList(criterionItems))
+                : AdvancementRequirements.anyOf(java.util.Arrays.asList(criterionItems)));
 
         for (String item : criterionItems) {
-            builder.addCriterion(item, InventoryChangeTrigger.TriggerInstance.hasItems(getItemByName(item)));
+            builder.addCriterion(
+                    item,
+                    InventoryChangeTrigger.TriggerInstance.hasItems(getItemByName(item))
+            );
         }
 
         if (parent != null) {
             builder.parent(parent);
         }
 
-        return builder.build(ResourceLocation.fromNamespaceAndPath(MODID, "story/" + id));
+        return builder.build(
+                Identifier.fromNamespaceAndPath(MODID, "story/" + id)
+        );
     }
-//
-//    private AdvancementHolder createAdvancement(
-//            String id,
-//            AdvancementHolder parent,
-//            String titleKey,
-//            String descKey,
-//            ItemLike iconItem,
-//            String backgroundPath,
-//            AdvancementType frame,
-//            boolean showToast,
-//            boolean announceToChat,
-//            boolean hidden,
-//            String criterionName,
-//            List<String> criterionItems,
-//            int experienceReward
-//    ) {
-//        DisplayInfo display = new DisplayInfo(
-//                new ItemStack(iconItem),
-//                Component.translatable(titleKey),
-//                Component.translatable(descKey),
-//                backgroundPath != null ? Optional.of(ResourceLocation.fromNamespaceAndPath(MODID, backgroundPath)) : Optional.empty(),
-//                frame,
-//                showToast,
-//                announceToChat,
-//                hidden
-//        );
-//
-//        Advancement.Builder builder = Advancement.Builder.advancement()
-//                .display(display)
-//                .rewards(experienceReward > 0 ? AdvancementRewards.Builder.experience(experienceReward).build() : AdvancementRewards.EMPTY)
-//                .addCriterion(criterionName,
-//                        CriteriaTriggers.INVENTORY_CHANGED.createCriterion(
-//                                new InventoryChangeTrigger.TriggerInstance(
-//                                        Optional.empty(),
-//                                        InventoryChangeTrigger.TriggerInstance.Slots.ANY,
-//                                        criterionItems.stream().map(item -> ItemPredicate.Builder.item().of(iconItem).build()).toList()
-//                                )
-//                        )
-//                )
-//                .requirements(OR);
-//
-//        if (parent != null) {
-//            builder.parent(parent);
-//        }
-//
-//        return builder.build(ResourceLocation.fromNamespaceAndPath(MODID, "story/" + id));
-//    }
 }

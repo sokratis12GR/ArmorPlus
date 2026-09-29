@@ -29,7 +29,7 @@ import java.util.stream.IntStream;
 import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.ofFullCopy;
 
 public class StoneBrickStairsBlock extends Block implements SimpleWaterloggedBlock {
-    public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+    public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
     public static final EnumProperty<Half> HALF = BlockStateProperties.HALF;
     public static final EnumProperty<StairsShape> SHAPE = BlockStateProperties.STAIRS_SHAPE;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -52,7 +52,7 @@ public class StoneBrickStairsBlock extends Block implements SimpleWaterloggedBlo
     private final Supplier<BlockState> stateSupplier;
 
     public StoneBrickStairsBlock(Supplier<BlockState> state, Block block) {
-        super(ofFullCopy(block).requiresCorrectToolForDrops());
+        super(com.sofodev.armorplus.registry.RegistryContext.blockProperties(ofFullCopy(block).requiresCorrectToolForDrops()));
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(HALF, Half.BOTTOM).setValue(SHAPE, StairsShape.STRAIGHT).setValue(WATERLOGGED, Boolean.FALSE));
         this.modelBlock = Blocks.AIR; // These are unused, fields are redirected
         this.modelState = Blocks.AIR.defaultBlockState();
@@ -176,12 +176,7 @@ public class StoneBrickStairsBlock extends Block implements SimpleWaterloggedBlo
 //        }
 //    }
 
-    @Override
-    public void onRemove(BlockState state, Level worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (!state.is(newState.getBlock())) {
-            this.modelState.onRemove(worldIn, pos, newState, isMoving);
-        }
-    }
+    
 
     /**
      * Called when the given entity walks on this Block
@@ -221,10 +216,7 @@ public class StoneBrickStairsBlock extends Block implements SimpleWaterloggedBlo
     /**
      * Called when this Block is destroyed by an Explosion
      */
-    @Override
-    public void wasExploded(Level worldIn, BlockPos pos, Explosion explosionIn) {
-        this.modelBlock.wasExploded(worldIn, pos, explosionIn);
-    }
+    
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
@@ -241,16 +233,7 @@ public class StoneBrickStairsBlock extends Block implements SimpleWaterloggedBlo
      * returns its solidified counterpart.
      * Note that this method should ideally consider only the specific face passed in.
      */
-    @Override
-    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, LevelAccessor worldIn, BlockPos currentPos, BlockPos facingPos) {
-        if (stateIn.getValue(WATERLOGGED)) {
-            worldIn.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(worldIn));
-        }
-
-        return facing.getAxis().isHorizontal()
-                ? stateIn.setValue(SHAPE, getShapeProperty(stateIn, worldIn, currentPos))
-                : super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
-    }
+    
 
     @Override
     public BlockState rotate(BlockState state, Rotation rot) {

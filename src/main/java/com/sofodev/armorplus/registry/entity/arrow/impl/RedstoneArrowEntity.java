@@ -12,7 +12,7 @@ import static com.sofodev.armorplus.registry.entity.arrow.APArrowProperty.REDSTO
 public class RedstoneArrowEntity extends APArrowEntity {
 
     public RedstoneArrowEntity(EntityType<? extends APArrowEntity> type, Level world) {
-        super(type, world);
+        super(type, world, REDSTONE_ARROW_PROP);
     }
 
     public RedstoneArrowEntity(Level world) {

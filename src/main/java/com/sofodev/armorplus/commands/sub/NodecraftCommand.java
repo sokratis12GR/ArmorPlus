@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.commands.sub;
 
+import java.net.URI;
+
 import com.mojang.brigadier.Command;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
@@ -19,7 +21,7 @@ import static net.minecraft.network.chat.ClickEvent.Action.OPEN_URL;
 public class NodecraftCommand {
 
     public static int execute(CommandSourceStack sender) {
-        ClickEvent promoLink = new ClickEvent(OPEN_URL, "https://nodecraft.com/r/armorplus");
+        ClickEvent promoLink = new ClickEvent.OpenUrl(URI.create("https://nodecraft.com/r/armorplus"));
         Style linkStyle = Style.EMPTY.applyFormat(BLUE).withUnderlined(true).withClickEvent(promoLink);
         sendMessages(sender, translate(ChatFormatting.AQUA, "commands.armorplus.nodecraft.about.text"),
                 translate("commands.armorplus.nodecraft.promo.start.text")

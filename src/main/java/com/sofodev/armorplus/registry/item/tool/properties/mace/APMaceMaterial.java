@@ -2,7 +2,7 @@ package com.sofodev.armorplus.registry.item.tool.properties.mace;
 
 import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial;
 import net.minecraft.ChatFormatting;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ToolMaterial;
 
 import java.util.Locale;
 
@@ -25,7 +25,7 @@ public enum APMaceMaterial implements IAPMace {
     SLAYER_MACE(SLAYER_MAT, HEAVY, 20, 12, SQUARE),
     ;
 
-    private final Tier material;
+    private final ToolMaterial material;
     private final ChatFormatting rarity;
     private final APMaceType type;
     private final int cooldown;
@@ -52,7 +52,7 @@ public enum APMaceMaterial implements IAPMace {
     }
 
     @Override
-    public Tier get() {
+    public ToolMaterial get() {
         return this.material;
     }
 

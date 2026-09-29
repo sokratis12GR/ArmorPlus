@@ -12,7 +12,7 @@ import static com.sofodev.armorplus.registry.entity.arrow.APArrowProperty.GUARDI
 public class GuardianArrowEntity extends APArrowEntity {
 
     public GuardianArrowEntity(EntityType<? extends APArrowEntity> type, Level world) {
-        super(type, world);
+        super(type, world, GUARDIAN_ARROW_PROP);
     }
 
     public GuardianArrowEntity(Level world) {

@@ -4,6 +4,6 @@ import com.sofodev.armorplus.registry.item.APItem;
 
 public class ElementalItem extends APItem {
     public ElementalItem() {
-        super(new Properties());
+        super(com.sofodev.armorplus.registry.RegistryContext.itemProperties());
     }
 }
