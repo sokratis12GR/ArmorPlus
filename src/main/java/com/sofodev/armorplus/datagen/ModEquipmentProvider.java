@@ -14,35 +14,12 @@ import java.util.concurrent.CompletableFuture;
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 
 public final class ModEquipmentProvider implements DataProvider {
-    private static final List<String> EQUIPMENT = List.of(
-            "ardite",
-            "chicken",
-            "coal",
-            "cobalt",
-            "emerald",
-            "ender_dragon",
-            "frost",
-            "frost_lava",
-            "guardian",
-            "infused_lava",
-            "knight_slime",
-            "lapis",
-            "manyullyn",
-            "obsidian",
-            "pig_iron",
-            "redstone",
-            "slayer",
-            "slime",
-            "super_star"
-    );
+    private static final List<String> EQUIPMENT = List.of("ardite", "chicken", "coal", "cobalt", "emerald", "ender_dragon", "frost", "frost_lava", "guardian", "infused_lava", "knight_slime", "lapis", "manyullyn", "obsidian", "pig_iron", "redstone", "slayer", "slime", "super_star");
 
     private final Path equipmentRoot;
 
     public ModEquipmentProvider(PackOutput output) {
-        this.equipmentRoot = output.getOutputFolder()
-                .resolve("assets")
-                .resolve(MODID)
-                .resolve("equipment");
+        this.equipmentRoot = output.getOutputFolder().resolve("assets").resolve(MODID).resolve("equipment");
     }
 
     @Override
@@ -53,30 +30,16 @@ public final class ModEquipmentProvider implements DataProvider {
             JsonObject json = new JsonObject();
             JsonObject layers = new JsonObject();
 
-            layers.add(
-                    "humanoid",
-                    layer(MODID + ":" + equipment)
-            );
+            layers.add("humanoid", layer(MODID + ":" + equipment));
 
-            layers.add(
-                    "humanoid_leggings",
-                    layer(MODID + ":" + equipment)
-            );
+            layers.add("humanoid_leggings", layer(MODID + ":" + equipment));
 
             json.add("layers", layers);
 
-            writes.add(
-                    DataProvider.saveStable(
-                            cache,
-                            json,
-                            equipmentRoot.resolve(equipment + ".json")
-                    )
-            );
+            writes.add(DataProvider.saveStable(cache, json, equipmentRoot.resolve(equipment + ".json")));
         }
 
-        return CompletableFuture.allOf(
-                writes.toArray(CompletableFuture[]::new)
-        );
+        return CompletableFuture.allOf(writes.toArray(CompletableFuture[]::new));
     }
 
     private JsonArray layer(String texture) {
