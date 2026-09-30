@@ -14,7 +14,7 @@ base {
 }
 
 tasks.named('jar', Jar).configure {
-    archiveFileName = "${mod_name}-${minecraft_version}-${mod_version}-neo.jar"
+    archiveFileName = "${mod_id}-${minecraft_version}-${mod_version}-neo.jar"
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(25)
