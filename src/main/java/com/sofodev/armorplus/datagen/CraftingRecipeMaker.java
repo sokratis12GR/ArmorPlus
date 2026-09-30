@@ -4,6 +4,7 @@ import com.sofodev.armorplus.datagen.recipe.Grid;
 import com.sofodev.armorplus.datagen.recipe.GridInput;
 import com.sofodev.armorplus.datagen.recipe.Input;
 import com.sofodev.armorplus.datagen.recipe.Result;
+import com.sofodev.armorplus.datagen.server.Recipes;
 import com.sofodev.armorplus.utils.Utils;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;

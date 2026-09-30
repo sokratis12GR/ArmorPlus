@@ -3,88 +3,145 @@ plugins {
     id 'idea'
     id 'eclipse'
     id 'maven-publish'
+
     id 'net.minecraftforge.accesstransformers' version '2.0.0'
-    id 'net.minecraftforge.gradle' version '[7.0.17,8)'
+    id 'net.minecraftforge.gradle' version '7.0.40'
 }
 
 version = mod_version
 group = mod_group_id
 
 base {
-    archivesName = mod_id
+    archivesName = mod_name
+}
+
+tasks.named('jar', Jar).configure {
+    archiveFileName = "${mod_id}-${minecraft_version}-${mod_version}-forge.jar"
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
-sourceSets.main.resources {
-    srcDir 'src/generated/resources'
+
+repositories {
+    minecraft.mavenizer(it)
+
+    maven fg.forgeMaven
+    maven fg.minecraftLibsMaven
+
+    mavenCentral()
+
+    maven {
+        url = 'https://maven.minecraftforge.net/'
+    }
+
+    maven {
+        url = 'https://cursemaven.com/'
+
+        content {
+            includeGroup 'curse.maven'
+        }
+    }
 }
+
+
+dependencies {
+    implementation minecraft.dependency("net.minecraftforge:forge:${minecraft_version}-${forge_version}")
+
+    annotationProcessor 'net.minecraftforge:eventbus-validator:7.0.5'
+
+    implementation "curse.maven:thedragonlib-248055:9012319"
+}
+
+
+sourceSets.main.resources {
+    srcDir 'src/generated/client'
+    srcDir 'src/generated/server'
+}
+
 
 minecraft {
     accessTransformers.from file('src/main/resources/META-INF/accesstransformer.cfg')
 
     runs {
         configureEach {
-            workingDir = layout.projectDirectory.dir('run')
+            workingDir = project.file("run-${name}")
+
             systemProperty 'eventbus.api.strictRuntimeChecks', 'true'
             systemProperty 'forge.enabledGameTestNamespaces', mod_id
         }
 
-        register('client')
+        client {
+            workingDir = project.file('run')
+        }
 
-        register('server') {
+        server {
+            workingDir = project.file('run')
             args '--nogui'
         }
 
-        register('gameTestServer')
+        gameTestServer {
+            workingDir = project.file('run-gameTestServer')
+        }
 
-        register('data') {
-            workingDir = layout.projectDirectory.dir('run-data')
+        data {
+            workingDir = project.file('run-data')
+
             args '--mod', mod_id,
                     '--all',
-                    '--output', layout.projectDirectory.dir('src/generated/resources'),
-                    '--existing', layout.projectDirectory.dir('src/main/resources')
+                    '--output', file('build/generated-datagen').absolutePath,
+                    '--existing', file('src/main/resources').absolutePath
         }
     }
 }
 
-repositories {
-    minecraft.mavenizer(it)
-    maven fg.forgeMaven
-    maven fg.minecraftLibsMaven
-    mavenCentral()
 
-    maven {
-        url = "https://cursemaven.com"
-        content {
-            includeGroup "curse.maven"
-        }
+def datagenOutput = layout.buildDirectory.dir('generated-datagen')
+def generatedClient = layout.projectDirectory.dir('src/generated/client')
+def generatedServer = layout.projectDirectory.dir('src/generated/server')
+
+
+tasks.register('syncGeneratedClient', Sync) {
+    group = 'datagen'
+    description = 'Synchronizes generated client resources.'
+
+    from(datagenOutput) {
+        include 'assets/**'
     }
-}
-dependencies {
-    implementation minecraft.dependency(
-            "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    )
 
-    annotationProcessor 'net.minecraftforge:eventbus-validator:7.0.5'
-    implementation "curse.maven:thedragonlib-248055:9012319"
+    into generatedClient
 }
+
+
+tasks.register('syncGeneratedServer', Sync) {
+    group = 'datagen'
+    description = 'Synchronizes generated server resources.'
+
+    from(datagenOutput) {
+        include 'data/**'
+    }
+
+    into generatedServer
+}
+
+
+tasks.matching { it.name == 'runData' }.configureEach {
+    finalizedBy 'syncGeneratedClient', 'syncGeneratedServer'
+}
+
+def replaceProperties = [minecraft_version      : minecraft_version,
+                         minecraft_version_range: minecraft_version_range,
+                         forge_version          : forge_version,
+                         forge_version_range    : forge_version_range,
+                         loader_version_range   : loader_version_range,
+                         mod_id                 : mod_id,
+                         mod_name               : mod_name,
+                         mod_license            : mod_license,
+                         mod_version            : mod_version,
+                         mod_authors            : mod_authors,
+                         mod_description        : mod_description]
+
 
 tasks.named('processResources', ProcessResources).configure {
-    def replaceProperties = [
-            minecraft_version      : minecraft_version,
-            minecraft_version_range: minecraft_version_range,
-            forge_version          : forge_version,
-            forge_version_range    : forge_version_range,
-            loader_version_range   : loader_version_range,
-            mod_id                 : mod_id,
-            mod_name               : mod_name,
-            mod_license            : mod_license,
-            mod_version            : mod_version,
-            mod_authors            : mod_authors,
-            mod_description        : mod_description
-    ]
-
     inputs.properties replaceProperties
 
     filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
