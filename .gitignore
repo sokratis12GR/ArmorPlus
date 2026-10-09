@@ -25,5 +25,10 @@ run
 forge_README.txt
 forge*changelog.txt
 /run-data/
+/run-data/logs/
+/run-data/
+/textures-for-castle-stone-bricks/
+/run-data/config/
+/run-data/
 /textures-for-castle-stone-bricks/
 /run-data/config/
