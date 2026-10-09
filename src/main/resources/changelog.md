@@ -1,3 +1,7 @@
+# 26.1.2 - 22.0.3
+
+- Fixed Lava & Frost Crystal ores not generating.
+
 # 26.1.2 - 22.0.2
 
 - Remove "Water Weakness" from Infused Lava Armor.
