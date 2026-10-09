@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "armorplus:stone_brick_wall",
+  "key": {
+    "S": "armorplus:light_blue_castle_block"
+  },
+  "pattern": [
+    "   ",
+    "SSS",
+    "SSS"
+  ],
+  "result": {
+    "count": 6,
+    "id": "armorplus:light_blue_castle_block_wall"
+  }
+}

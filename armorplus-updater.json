@@ -1,10 +1,11 @@
 {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/armorplus",
     "promos": {
-        "26.1.2-latest": "26.1.2-22.0.0",
-        "26.1.2-recommended": "26.1.2-22.0.0"
+        "26.1.2-latest": "22.0.1",
+        "26.1.2-recommended": "22.0.1"
     },
     "26.1.2": {
-        "26.1.2-22.0.0": "- **26.1.2 Forge Release**\n- A couple QoL improvements\n- Updated the wiki link and commands\n- Updated Villager (Soul Exchanger) trades in this version\n  - Added a couple variations to the Master (Level 5) trade outcomes\n    - it can now generate minecraft and armorplus swords with random enchantments and soul stealer.\n- **Known Issue**: Maces do not have textures"
+        "22.0.0": "- **26.1.2 NeoForge Release**\n- A couple QoL improvements\n- Updated the wiki link and commands\n- Updated Villager (Soul Exchanger) trades in this version\n  - Added a couple variations to the Master (Level 5) trade outcomes\n    - it can now generate minecraft and armorplus swords with random enchantments and soul stealer.\n- **Known Issue**: Maces do not have textures",
+        "22.0.1": "- Remove \"Water Weakness\" from Infused Lava Armor.\n- Add 8 more color variations to the stone bricks, and castle bricks.\n- Make all castle block variations craftable, same recipe as colored stone bricks but with chiseled stone brick in center.\n- Add geckolib support back - maces have textures and animations once again."
     }
 }

@@ -1,3 +1,4 @@
+
 plugins {
     id 'java'
     id 'idea'
@@ -6,6 +7,7 @@ plugins {
 
     id 'net.minecraftforge.accesstransformers' version '2.0.0'
     id 'net.minecraftforge.gradle' version '7.0.40'
+    id 'net.darkhax.curseforgegradle' version '1.3.33'
 }
 
 version = mod_version
@@ -21,7 +23,6 @@ tasks.named('jar', Jar).configure {
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
-
 repositories {
     minecraft.mavenizer(it)
 
@@ -29,6 +30,10 @@ repositories {
     maven fg.minecraftLibsMaven
 
     mavenCentral()
+
+    maven {
+        url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/"
+    }
 
     maven {
         url = 'https://maven.minecraftforge.net/'
@@ -43,24 +48,26 @@ repositories {
     }
 }
 
-
 dependencies {
-    implementation minecraft.dependency("net.minecraftforge:forge:${minecraft_version}-${forge_version}")
+    implementation minecraft.dependency(
+            "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    )
 
     annotationProcessor 'net.minecraftforge:eventbus-validator:7.0.5'
 
     implementation "curse.maven:thedragonlib-248055:9012319"
+    implementation "com.geckolib:geckolib-forge-26.1.2:5.5.2"
 }
-
 
 sourceSets.main.resources {
     srcDir 'src/generated/client'
     srcDir 'src/generated/server'
 }
 
-
 minecraft {
-    accessTransformers.from file('src/main/resources/META-INF/accesstransformer.cfg')
+    accessTransformers.from file(
+            'src/main/resources/META-INF/accesstransformer.cfg'
+    )
 
     runs {
         configureEach {
@@ -94,11 +101,9 @@ minecraft {
     }
 }
 
-
 def datagenOutput = layout.buildDirectory.dir('generated-datagen')
 def generatedClient = layout.projectDirectory.dir('src/generated/client')
 def generatedServer = layout.projectDirectory.dir('src/generated/server')
-
 
 tasks.register('syncGeneratedClient', Sync) {
     group = 'datagen'
@@ -111,7 +116,6 @@ tasks.register('syncGeneratedClient', Sync) {
     into generatedClient
 }
 
-
 tasks.register('syncGeneratedServer', Sync) {
     group = 'datagen'
     description = 'Synchronizes generated server resources.'
@@ -123,23 +127,23 @@ tasks.register('syncGeneratedServer', Sync) {
     into generatedServer
 }
 
-
 tasks.matching { it.name == 'runData' }.configureEach {
     finalizedBy 'syncGeneratedClient', 'syncGeneratedServer'
 }
 
-def replaceProperties = [minecraft_version      : minecraft_version,
-                         minecraft_version_range: minecraft_version_range,
-                         forge_version          : forge_version,
-                         forge_version_range    : forge_version_range,
-                         loader_version_range   : loader_version_range,
-                         mod_id                 : mod_id,
-                         mod_name               : mod_name,
-                         mod_license            : mod_license,
-                         mod_version            : mod_version,
-                         mod_authors            : mod_authors,
-                         mod_description        : mod_description]
-
+def replaceProperties = [
+        minecraft_version      : minecraft_version,
+        minecraft_version_range: minecraft_version_range,
+        forge_version          : forge_version,
+        forge_version_range    : forge_version_range,
+        loader_version_range   : loader_version_range,
+        mod_id                 : mod_id,
+        mod_name               : mod_name,
+        mod_license            : mod_license,
+        mod_version            : mod_version,
+        mod_authors            : mod_authors,
+        mod_description        : mod_description
+]
 
 tasks.named('processResources', ProcessResources).configure {
     inputs.properties replaceProperties
@@ -164,5 +168,45 @@ publishing {
         maven {
             url = layout.buildDirectory.dir('repo')
         }
+    }
+}
+
+// ============================================================
+// CurseForge Publishing
+// ============================================================
+
+tasks.register(
+        'publishCurseForge',
+        net.darkhax.curseforgegradle.TaskPublishCurseForge
+) {
+    group = 'publishing'
+    description = "Publishes ${mod_name} for Forge to CurseForge"
+
+    apiToken = providers.gradleProperty('curseforge_api_token').orNull
+
+    def projectId = providers.gradleProperty('curseforge_project_id').orNull
+
+    if (projectId) {
+        def mainFile = upload(projectId, tasks.named('jar').get())
+
+        mainFile.displayName =
+                "${mod_name} ${mod_version} for Forge ${minecraft_version}"
+
+        mainFile.releaseType = 'release'
+
+        def changelogFile = file('src/main/resources/changelog.md')
+
+        mainFile.changelogType = 'markdown'
+
+        mainFile.changelog = changelogFile.exists()
+                ? changelogFile.getText('UTF-8')
+                : "${mod_name} ${mod_version} for Forge ${minecraft_version}"
+
+        mainFile.addGameVersion(minecraft_version.toString())
+
+        mainFile.addEnvironment('Client', 'Server')
+
+        mainFile.addRequirement('geckolib')
+        mainFile.addRequirement('thedragonlib')
     }
 }

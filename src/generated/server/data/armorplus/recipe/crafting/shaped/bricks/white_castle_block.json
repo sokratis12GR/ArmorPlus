@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "armorplus:colored_castle_blocks",
+  "key": {
+    "S": "#c:dyes/white",
+    "X": "minecraft:chiseled_stone_bricks"
+  },
+  "pattern": [
+    "SSS",
+    "SXS",
+    "SSS"
+  ],
+  "result": {
+    "count": 8,
+    "id": "armorplus:white_castle_block"
+  }
+}

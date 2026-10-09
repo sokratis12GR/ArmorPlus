@@ -1,6 +1,9 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "armorplus:item/redstone_mace"
+    "type": "minecraft:special",
+    "base": "armorplus:item/redstone_mace",
+    "model": {
+      "type": "geckolib:geckolib"
+    }
   }
 }

@@ -39,7 +39,7 @@ import static net.minecraftforge.common.Tags.Items.*;
 
 public class Recipes extends RecipeProvider {
 
-    public static final List<TagKey<Item>> BRICK_COLORS = Stream.of(DYES_BLACK, DYES_BLUE, DYES_GREEN, DYES_PURPLE, DYES_RED, DYES_WHITE, DYES_YELLOW, DYES_ORANGE).collect(Collectors.toList());
+    public static final List<TagKey<Item>> BRICK_COLORS = List.of(DYES_BLACK, DYES_BLUE, DYES_BROWN, DYES_CYAN, DYES_GRAY, DYES_GREEN, DYES_LIGHT_BLUE, DYES_LIGHT_GRAY, DYES_LIME, DYES_MAGENTA, DYES_ORANGE, DYES_PINK, DYES_PURPLE, DYES_RED, DYES_WHITE, DYES_YELLOW);
     public static final List<ItemLike> MATERIALS_ORDERED = Stream.of(COAL, REDSTONE, LAPIS_LAZULI, EMERALD, Items.OBSIDIAN, INFUSED_LAVA_CRYSTAL.get(), GUARDIAN_SCALE.get(), WITHER_BONE.get(), ENDER_DRAGON_SCALE.get()).collect(Collectors.toList());
     public static final List<ItemLike> BLOCK_MATERIALS_ORDERED = Stream.of(COAL_BLOCK, REDSTONE_BLOCK, LAPIS_BLOCK, EMERALD_BLOCK, COMPRESSED_OBSIDIAN.get(), INFUSED_LAVA_CRYSTAL.get(), GUARDIAN_SCALE.get(), WITHER_BONE.get(), ENDER_DRAGON_SCALE.get()).collect(Collectors.toList());
     public static final List<ItemLike> LOW_TO_MID_TIER_MATERIAL_LIST = Stream.of(COAL_BLOCK, REDSTONE_BLOCK, LAPIS_BLOCK, EMERALD_BLOCK, COMPRESSED_OBSIDIAN.get()).collect(Collectors.toList());
@@ -75,14 +75,14 @@ public class Recipes extends RecipeProvider {
         CraftingRecipeMaker crafter = new CraftingRecipeMaker(registries, output);
         //StoneBricks+CastleBlocks
         int l = AP_STONE_BRICKS_LENGTH;
+        if (l != BRICK_COLORS.size()) {
+            throw new IllegalStateException("Stone brick color count does not match registered block count");
+        }
         for (int i = 0; i < l; i++) {
             crafter.buildStoneBrick(con, CASTLE_BLOCKS[i], CASTLE_BLOCK_TOWERS[i], CASTLE_BLOCK_CORNERS[i], CASTLE_BLOCK_WALLS[i], CASTLE_BLOCK_STAIRS[i], CASTLE_BLOCK_SLABS[i]);
-        }
-        for (int i = 0; i < l; i++) {
             crafter.buildStoneBrick(con, STONE_BRICKS[i], STONE_BRICK_TOWERS[i], STONE_BRICK_CORNERS[i], STONE_BRICK_WALLS[i], ModBlocks.STONE_BRICK_STAIRS[i], STONE_BRICK_SLABS[i]);
-        }
-        for (int i = 0; i < l; i++) {
-            crafter.buildColoredBrick(con, STONE_BRICKS[i], BRICK_COLORS.get(i));
+            crafter.buildColoredBrick(con, STONE_BRICKS[i], BRICK_COLORS.get(i), Items.STONE_BRICKS, "colored_stone_bricks");
+            crafter.buildColoredBrick(con, CASTLE_BLOCKS[i], BRICK_COLORS.get(i), Items.CHISELED_STONE_BRICKS, "colored_castle_blocks");
         }
         //Bows
         for (int i = 0; i < AP_TOOL_MATERIAL_LENGTH - 5; i++) {

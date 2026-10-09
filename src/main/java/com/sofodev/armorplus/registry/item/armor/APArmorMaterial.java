@@ -70,8 +70,7 @@ public enum APArmorMaterial implements IAPArmor {
     },
     INFUSED_LAVA(INFUSED_LAVA_PROP, true, GOLD, () -> withBuffs(
             new BuffInstance(FIRE_RESISTANCE, 0),
-            new BuffInstance(FIRE_EXTINGUISH),
-            new BuffInstance(WATER_WEAKNESS)
+            new BuffInstance(FIRE_EXTINGUISH)
     )) {
         @Override
         public MaterialConfig config() {

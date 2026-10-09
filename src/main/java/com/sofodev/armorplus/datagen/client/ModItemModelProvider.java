@@ -86,7 +86,7 @@ public final class ModItemModelProvider implements DataProvider {
         }
 
         for (RegistryObject<Item> mace : MACES) {
-            writes.addAll(writeParentOnlyItem(cache, mace, MODID + ":item/mace.item"));
+            writes.addAll(writeGeckoLibMace(cache, mace));
         }
 
         for (RegistryObject<? extends com.sofodev.armorplus.registry.item.armor.APArmorItem> armor : allArmor()) {
@@ -328,6 +328,54 @@ public final class ModItemModelProvider implements DataProvider {
         model.addProperty("parent", parent);
 
         return writeModelAndClientItem(cache, path, model);
+    }
+
+    private java.util.List<CompletableFuture<?>> writeGeckoLibMace(CachedOutput cache, RegistryObject<Item> mace) {
+        String path = mace.getId().getPath();
+
+        JsonObject specialRenderer = new JsonObject();
+        specialRenderer.addProperty("type", "geckolib:geckolib");
+
+        JsonObject special = new JsonObject();
+        special.addProperty("type", "minecraft:special");
+        special.addProperty("base", MODID + ":item/" + path);
+        special.add("model", specialRenderer);
+
+        JsonObject clientItem = new JsonObject();
+        clientItem.add("model", special);
+
+        JsonObject baseModel = texturedModel("minecraft:item/handheld", MODID + ":item/" + path);
+        baseModel.add("display", maceDisplayTransforms());
+
+        return java.util.List.of(DataProvider.saveStable(cache, baseModel, modelsRoot.resolve(path + ".json")), DataProvider.saveStable(cache, clientItem, itemsRoot.resolve(path + ".json")));
+    }
+
+    private JsonObject maceDisplayTransforms() {
+        JsonObject display = new JsonObject();
+
+        // Third-person
+        display.add("thirdperson_righthand", transform(90, 0, 0, 0.5, 6.5, 0, 1, 1, 1));
+
+        display.add("thirdperson_lefthand", transform(90, 0, 0, -0.5, 6.5, 0, 1, 1, 1));
+
+        // First-person
+        display.add("firstperson_righthand", transform(45, 0, 0, -3, 1, 2, 0.5, 0.5, 0.5));
+
+        display.add("firstperson_lefthand", transform(45, 0, 0, -3, 1, 2, 0.5, 0.5, 0.5));
+
+        // Inventory / hotbar.
+        display.add("gui", transform(0, -90, 0, -0.5, -7.75, 0, 0.75, 0.75, 0.75));
+
+        // Dropped item.
+        display.add("ground", transform(0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5));
+
+        // Worn on the head.
+        display.add("head", transform(45, 0, 0, 0.5, 0, -8, 1, 1, 1));
+
+        // Item frame.
+        display.add("fixed", transform(0, 90, 0, 0.5, -10, 0, 1, 1, 1));
+
+        return display;
     }
 
     private java.util.List<CompletableFuture<?>> writeBlockItem(CachedOutput cache, RegistryObject<Block> block) {

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "armorplus:stone_brick_slab",
+  "key": {
+    "S": "armorplus:light_gray_stone_brick"
+  },
+  "pattern": [
+    "   ",
+    "SSS",
+    "   "
+  ],
+  "result": {
+    "count": 6,
+    "id": "armorplus:light_gray_stone_brick_slab"
+  }
+}
