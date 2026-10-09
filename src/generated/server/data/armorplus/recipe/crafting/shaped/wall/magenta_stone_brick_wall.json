@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "armorplus:stone_brick_wall",
+  "key": {
+    "S": "armorplus:magenta_stone_brick"
+  },
+  "pattern": [
+    "   ",
+    "SSS",
+    "SSS"
+  ],
+  "result": {
+    "count": 6,
+    "id": "armorplus:magenta_stone_brick_wall"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#c:is_cold/overworld",
+  "features": "armorplus:ore_frost_crystal_stone",
+  "step": "underground_ores"
+}

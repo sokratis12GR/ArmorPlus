@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "armorplus:stone_brick_corner",
+  "key": {
+    "S": "armorplus:lime_castle_block"
+  },
+  "pattern": [
+    "   ",
+    "S  ",
+    "SSS"
+  ],
+  "result": {
+    "count": 4,
+    "id": "armorplus:lime_castle_block_corner"
+  }
+}
