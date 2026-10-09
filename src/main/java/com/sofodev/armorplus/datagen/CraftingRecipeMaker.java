@@ -85,24 +85,21 @@ public class CraftingRecipeMaker extends RecipeProvider {
         String path = getPath(bow).replace("item_", "").replace("_bow", "").replace("_base", "");
         build(con, RecipeCategory.COMBAT, Result.build(bow.get(), path + "_bows", path), GridInput.build("SM ", "S M", "SM ", 'S', 'M'), Items.STRING, of(material));
 
-        build(con, RecipeCategory.COMBAT, Result.build(bow.get(), path + "_bows", path)
-                .setSuffix("_alt"), GridInput.build(" MS", "M S", " MS", 'S', 'M'), Items.STRING, of(material));
+        build(con, RecipeCategory.COMBAT, Result.build(bow.get(), path + "_bows", path).setSuffix("_alt"), GridInput.build(" MS", "M S", " MS", 'S', 'M'), Items.STRING, of(material));
     }
 
     public void buildBow(RecipeOutput con, DeferredHolder<Item, ? extends Item> bow, ItemLike core, ItemLike material) {
         String path = getPath(bow).replace("item_", "").replace("_bow", "").replace("_base", "");
         build(con, RecipeCategory.COMBAT, Result.build(bow.get(), path + "_bows", path), GridInput.build("SM ", "S C", "SM ", 'S', 'M', 'C'), Items.STRING, of(material), of(core));
 
-        build(con, RecipeCategory.COMBAT, Result.build(bow.get(), path + "_bows", path)
-                .setSuffix("_alt"), GridInput.build(" MS", "C S", " MS", 'S', 'M', 'C'), Items.STRING, of(material), of(core));
+        build(con, RecipeCategory.COMBAT, Result.build(bow.get(), path + "_bows", path).setSuffix("_alt"), GridInput.build(" MS", "C S", " MS", 'S', 'M', 'C'), Items.STRING, of(material), of(core));
     }
 
     public void buildBow(RecipeOutput con, DeferredHolder<Item, ? extends Item> bow, ItemLike material, ItemLike coreA, ItemLike coreB, ItemLike coreC) {
         String path = getPath(bow).replace("item_", "").replace("_bow", "").replace("_base", "");
         build(con, RecipeCategory.COMBAT, Result.build(bow.get(), path + "_bows", path), GridInput.build("SAM", "SBM", "SCM", 'S', 'M', 'A', 'B', 'C'), Items.STRING, of(material), of(coreA), of(coreB), of(coreC));
 
-        build(con, RecipeCategory.COMBAT, Result.build(bow.get(), path + "_bows", path)
-                .setSuffix("_alt"), GridInput.build("MAS", "MBS", "MCS", 'S', 'M', 'A', 'B', 'C'), Items.STRING, of(material), of(coreA), of(coreB), of(coreC));
+        build(con, RecipeCategory.COMBAT, Result.build(bow.get(), path + "_bows", path).setSuffix("_alt"), GridInput.build("MAS", "MBS", "MCS", 'S', 'M', 'A', 'B', 'C'), Items.STRING, of(material), of(coreA), of(coreB), of(coreC));
     }
 
 
@@ -117,9 +114,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
     }
 
     public void buildArmorSet(RecipeOutput con, ItemLike material, ItemLike head, ItemLike chest, ItemLike legs, ItemLike feet, String group, String path, String suffix) {
-        this.buildArmorSet(con, Result.build(head, group, path).setSuffix(suffix), Result.build(chest, group, path)
-                .setSuffix(suffix), Result.build(legs, group, path).setSuffix(suffix), Result.build(feet, group, path)
-                .setSuffix(suffix), material);
+        this.buildArmorSet(con, Result.build(head, group, path).setSuffix(suffix), Result.build(chest, group, path).setSuffix(suffix), Result.build(legs, group, path).setSuffix(suffix), Result.build(feet, group, path).setSuffix(suffix), material);
     }
 
     //START SINGLE-CORES
@@ -132,9 +127,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
     }
 
     public void buildArmorSet(RecipeOutput con, ItemLike material, ItemLike core, ItemLike head, ItemLike chest, ItemLike legs, ItemLike feet, String group, String path, String suffix) {
-        this.buildArmorSet(con, Result.build(head, group, path).setSuffix(suffix), Result.build(chest, group, path)
-                .setSuffix(suffix), Result.build(legs, group, path).setSuffix(suffix), Result.build(feet, group, path)
-                .setSuffix(suffix), material, core);
+        this.buildArmorSet(con, Result.build(head, group, path).setSuffix(suffix), Result.build(chest, group, path).setSuffix(suffix), Result.build(legs, group, path).setSuffix(suffix), Result.build(feet, group, path).setSuffix(suffix), material, core);
     }
     //END SINGLE-CORES
 
@@ -148,9 +141,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
     }
 
     public void buildArmorSet(RecipeOutput con, ItemLike material, ItemLike coreHA, ItemLike coreHB, ItemLike coreHC, ItemLike coreCA, ItemLike coreCB, ItemLike coreCC, ItemLike coreLA, ItemLike coreLB, ItemLike coreLC, ItemLike coreBA, ItemLike coreBB, ItemLike coreBC, ItemLike head, ItemLike chest, ItemLike legs, ItemLike feet, String group, String path, String suffix) {
-        this.buildArmorSet(con, Result.build(head, group, path).setSuffix(suffix), Result.build(chest, group, path)
-                .setSuffix(suffix), Result.build(legs, group, path).setSuffix(suffix), Result.build(feet, group, path)
-                .setSuffix(suffix), material, coreHA, coreHB, coreHC, coreCA, coreCB, coreCC, coreLA, coreLB, coreLC, coreBA, coreBB, coreBC);
+        this.buildArmorSet(con, Result.build(head, group, path).setSuffix(suffix), Result.build(chest, group, path).setSuffix(suffix), Result.build(legs, group, path).setSuffix(suffix), Result.build(feet, group, path).setSuffix(suffix), material, coreHA, coreHB, coreHC, coreCA, coreCB, coreCC, coreLA, coreLB, coreLC, coreBA, coreBB, coreBC);
     }
 
     //END - TRI-CORES
@@ -172,8 +163,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
     }
 
     public void buildOrderedArrow(RecipeOutput con, List<DeferredHolder<Item, ArrowItem>> arrows) {
-        IntStream.range(0, arrows.size())
-                .forEach(i -> buildArrow(con, arrows.get(i), Recipes.MATERIALS_ORDERED.get(i)));
+        IntStream.range(0, arrows.size()).forEach(i -> buildArrow(con, arrows.get(i), Recipes.MATERIALS_ORDERED.get(i)));
     }
 
     public void buildArrow(RecipeOutput con, DeferredHolder<Item, ArrowItem> arrow, ItemLike material) {
@@ -182,8 +172,8 @@ public class CraftingRecipeMaker extends RecipeProvider {
         this.buildFilling(con, Result.build(arrow.get(), 8, group, path), material, Items.ARROW);
     }
 
-    public void buildColoredBrick(RecipeOutput con, DeferredHolder<Block, Block> bricks, TagKey<Item> color) {
-        this.buildFilling(con, Result.build(bricks.get(), 8, "colored_stone_bricks", "bricks"), Items.STONE_BRICKS, Ingredient.of(registries.lookupOrThrow(Registries.ITEM).getOrThrow(color)));
+    public void buildColoredBrick(RecipeOutput con, DeferredHolder<Block, Block> bricks, TagKey<Item> color, ItemLike base, String group) {
+        this.buildFilling(con, Result.build(bricks.get(), 8, group, "bricks"), base, Ingredient.of(registries.lookupOrThrow(Registries.ITEM).getOrThrow(color)));
     }
 
     public void buildStoneBrick(RecipeOutput con, DeferredHolder<Block, Block> bricks, DeferredHolder<Block, Block> tower, DeferredHolder<Block, Block> corner, DeferredHolder<Block, Block> wall, DeferredHolder<Block, Block> stairs, DeferredHolder<Block, Block> slab) {
@@ -211,8 +201,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
 
     public void buildStorage(RecipeOutput con, ItemLike result, ItemLike item) {
         this.build(con, RecipeCategory.BUILDING_BLOCKS, Result.build(result, 1, "storage", "storage"), GridInput.buildBigSquare('X'), item);
-        this.build(con, RecipeCategory.BUILDING_BLOCKS, Result.build(item, 9, "storage", "storage")
-                .setSuffix("_to_item"), result);
+        this.build(con, RecipeCategory.BUILDING_BLOCKS, Result.build(item, 9, "storage", "storage").setSuffix("_to_item"), result);
     }
 
     public void buildFilling(RecipeOutput con, ItemLike result, ItemLike center, ItemLike filler) {
@@ -362,13 +351,10 @@ public class CraftingRecipeMaker extends RecipeProvider {
         builder.pattern(grid.getFirstRow());
         builder.pattern(grid.getSecondRow());
         builder.pattern(grid.getThirdRow());
-        IntStream.range(0, additional.length)
-                .forEach(i -> this.addIngredients(builder, input.getCharList().get(i + 1), additional[i]));
+        IntStream.range(0, additional.length).forEach(i -> this.addIngredients(builder, input.getCharList().get(i + 1), additional[i]));
         builder.group(Utils.setLocation(result.getGroup().orElse(path)));
         builder.unlockedBy("has_req", has(mainInput));
-        builder.save(consumer, Utils.setLocation("crafting/shaped/" + result.getPath()
-                .orElse("")
-                .trim() + (result.getPrefix() + path + result.getSuffix())));
+        builder.save(consumer, Utils.setLocation("crafting/shaped/" + result.getPath().orElse("").trim() + (result.getPrefix() + path + result.getSuffix())));
     }
 
     /**
@@ -396,14 +382,11 @@ public class CraftingRecipeMaker extends RecipeProvider {
         builder.pattern(grid.getFirstRow());
         builder.pattern(grid.getSecondRow());
         builder.pattern(grid.getThirdRow());
-        IntStream.range(0, inputs.length)
-                .forEach(i -> this.addIngredients(builder, input.getCharList().get(i), inputs[i]));
+        IntStream.range(0, inputs.length).forEach(i -> this.addIngredients(builder, input.getCharList().get(i), inputs[i]));
         boolean hasGroup = result.getGroup().isPresent();
         if (hasGroup) builder.group(Utils.setLocation(result.getGroup().get()));
         builder.unlockedBy("has_req", has(inputs[0]));
-        builder.save(consumer, Utils.setLocation("crafting/shaped/" + result.getPath()
-                .orElse("")
-                .trim() + (result.getPrefix() + path + result.getSuffix())));
+        builder.save(consumer, Utils.setLocation("crafting/shaped/" + result.getPath().orElse("").trim() + (result.getPrefix() + path + result.getSuffix())));
     }
 
     private void logGrid(Result result, String path, Grid grid) {
@@ -443,9 +426,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
         boolean hasGroup = result.getGroup().isPresent();
         if (hasGroup) builder.group(Utils.setLocation(result.getGroup().get()));
         builder.unlockedBy("has_req", has(inputA));
-        builder.save(con, Utils.setLocation("crafting/shapeless/" + result.getPath()
-                .orElse("")
-                .trim() + (result.getPrefix() + path + result.getSuffix())));
+        builder.save(con, Utils.setLocation("crafting/shapeless/" + result.getPath().orElse("").trim() + (result.getPrefix() + path + result.getSuffix())));
     }
 
     public void build(RecipeOutput con, RecipeCategory category, Result result, ItemLike... item) {
@@ -456,9 +437,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
         boolean hasGroup = result.getGroup().isPresent();
         if (hasGroup) builder.group(Utils.setLocation(result.getGroup().get()));
         builder.unlockedBy("has_req", has(item[0]));
-        builder.save(con, Utils.setLocation("crafting/shapeless/" + result.getPath()
-                .orElse("")
-                .trim() + (result.getPrefix() + path + result.getSuffix())));
+        builder.save(con, Utils.setLocation("crafting/shapeless/" + result.getPath().orElse("").trim() + (result.getPrefix() + path + result.getSuffix())));
     }
 
     private void addIngredients(ShapelessRecipeBuilder builder, Ingredient input) {

@@ -1,3 +1,9 @@
+# 26.1.2 - 22.0.2
+
+- Remove "Water Weakness" from Infused Lava Armor.
+- Add 8 more color variations to the stone bricks, and castle bricks.
+- Make all castle block variations craftable, same recipe as colored stone bricks but with chiseled stone brick in center. 
+
 # 26.1.2 - 22.0.1
 
 - Add geckolib support back - maces have textures and animations once again.

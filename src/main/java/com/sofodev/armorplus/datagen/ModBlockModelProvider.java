@@ -2,19 +2,23 @@ package com.sofodev.armorplus.datagen;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.sofodev.armorplus.registry.block.castle.BrickColor;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 
 public final class ModBlockModelProvider implements DataProvider {
-    private static final List<String> COLORS = List.of("black", "blue", "brown", "cyan", "gray", "green", "light_blue", "light_gray", "lime", "magenta", "orange", "pink", "purple", "red", "white", "yellow");
+    private static final List<String> COLORS = Arrays.stream(BrickColor.values())
+            .map(BrickColor::getName)
+            .toList();
 
     private final Path blockstateRoot;
     private final Path modelRoot;

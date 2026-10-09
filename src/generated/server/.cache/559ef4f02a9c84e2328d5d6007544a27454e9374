@@ -1,11 +1,11 @@
-// 26.1.2	2026-09-30T01:31:55.1572305	Tags for minecraft:item mod id armorplus
+// 26.1.2	2026-10-09T17:00:07.9277344	Tags for minecraft:item mod id armorplus
 f984da7ea4442e75c33d8ea2cece9784e9bec5e1 data/armorplus/tags/item/arrows.json
 ebbf6ad4c2d30b9bb88092e1b9f89dd44249e4b6 data/armorplus/tags/item/battle_axes.json
-2a23fee3525ab7c954b1e7edb66fbcbee7151aa5 data/armorplus/tags/item/boots.json
+c474d5d1d3815a4abd8643df63dcb06d8a4f3299 data/armorplus/tags/item/boots.json
 e94db2d88e659606b53ab486b9197ad00e4ee2f0 data/armorplus/tags/item/bows.json
-af5d9688f76fe6a44491e7ddae6e344bc41a8b19 data/armorplus/tags/item/chestplates.json
-20e2aa766013acb1c365e7b73611d201c25eb2aa data/armorplus/tags/item/helmets.json
-2405b6814ad05aa26c998524ba29e743d71522fd data/armorplus/tags/item/leggings.json
+edad92b7503dac014768be588fe78a63f7798147 data/armorplus/tags/item/chestplates.json
+218df63128afe1757094af2f2ff577801492bd94 data/armorplus/tags/item/helmets.json
+d22959fe46450f1baac732271eef4ce67c78b0cf data/armorplus/tags/item/leggings.json
 74e07acf503963869dea6399fc21bfe414024637 data/armorplus/tags/item/maces.json
 ff6bee91c87e4ad6c3e67b9874e1b261758c67cc data/armorplus/tags/item/pickaxes.json
 366cbfdb9a89cb123b6030036a7ecfe15bccc28e data/armorplus/tags/item/swords.json

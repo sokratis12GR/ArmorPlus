@@ -42,17 +42,6 @@ public enum Buff implements IBuff {
             }
         }
     },
-    WATER_WEAKNESS(true) {
-        @Override
-        public void onInventoryTick(ItemStack stack, Level world, Player player) {
-            if (!world.isClientSide() && player.isUnderWater()) {
-                int supply = player.getAirSupply();
-                if (supply > 1) {
-                    player.setAirSupply(supply / 2);
-                }
-            }
-        }
-    },
     FIRE_WEAKNESS(true) {
         @Override
         public void onInventoryTick(ItemStack stack, Level world, Player player) {
