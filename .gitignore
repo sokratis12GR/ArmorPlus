@@ -24,3 +24,6 @@ run
 # Files from Forge MDK
 forge_README.txt
 forge*changelog.txt
+/run-data/
+/textures-for-castle-stone-bricks/
+/run-data/config/
