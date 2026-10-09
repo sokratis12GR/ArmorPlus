@@ -1,3 +1,7 @@
+# 26.1.2 - 22.0.1
+
+- Add geckolib support back - maces have textures and animations once again.
+
 # 26.1.2 - 22.0.0
 
 - **26.1.2 NeoForge Release**

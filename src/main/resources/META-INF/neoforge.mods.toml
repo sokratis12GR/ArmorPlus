@@ -46,3 +46,9 @@ side = "BOTH"
 # stop your mod loading on the server for example.
 #[features.${mod_id}]
 #openGLVersion="[3.2,)"
+[[dependencies.${ mod_id }]]
+modId = "geckolib"
+mandatory = true
+versionRange = "[5.5.2,)"
+ordering = "AFTER"
+side = "BOTH"

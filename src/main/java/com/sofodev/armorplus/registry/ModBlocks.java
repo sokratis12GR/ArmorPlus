@@ -60,7 +60,7 @@ public class ModBlocks {
     public static final DeferredHolder<Block, Block> ORE_FROST_CRYSTAL_OBSIDIAN = registerBlockWithItem("ore_frost_crystal_obsidian", () -> new CrystalOreBlock(OBSIDIAN));
     public static final DeferredHolder<Block, Block> FROST_CRYSTAL = registerBlockWithItem("block_frost_crystal", APFrostBlock::new);
     public static final DeferredHolder<Block, Block> INFUSED_FROST_CRYSTAL = registerBlockWithItem("block_infused_frost_crystal", APFrostBlock::new);
-    public static final DeferredHolder<Block, Block> SNOW_BRICK = registerBlockWithItem("snow_brick", () -> new APBlock(Blocks.SNOW, 2.0f, 20f));
+    public static final DeferredHolder<Block, Block> SNOW_BRICK = registerBlockWithItem("snow_brick", () -> new APBlock(Blocks.STONE, 2.0f, 20f));
     public static final DeferredHolder<Block, Block> SNOW_BRICK_STAIRS = registerBlockWithItem("snow_brick_stairs", () -> new StoneBrickStairsBlock(() -> SNOW_BRICK.get()
             .defaultBlockState(), SNOW_BRICK.get()));
     public static final DeferredHolder<Block, Block> SNOW_BRICK_SLAB = registerBlockWithItem("snow_brick_slab", () -> new StoneBrickSlabBlock(SNOW_BRICK.get()));

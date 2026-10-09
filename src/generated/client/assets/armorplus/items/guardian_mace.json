@@ -1,6 +1,9 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "armorplus:item/guardian_mace"
+    "type": "minecraft:special",
+    "base": "armorplus:item/guardian_mace",
+    "model": {
+      "type": "geckolib:geckolib"
+    }
   }
 }

@@ -1,6 +1,9 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "armorplus:item/ender_dragon_mace"
+    "type": "minecraft:special",
+    "base": "armorplus:item/ender_dragon_mace",
+    "model": {
+      "type": "geckolib:geckolib"
+    }
   }
 }

@@ -9,6 +9,7 @@ import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -17,13 +18,26 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Random;
+import java.util.function.Consumer;
+import com.geckolib.animatable.GeoItem;
+import com.geckolib.animatable.client.GeoRenderProvider;
+import com.geckolib.animatable.instance.AnimatableInstanceCache;
+import com.geckolib.animatable.manager.AnimatableManager;
+import com.geckolib.animation.AnimationController;
+import com.geckolib.animation.object.PlayState;
+import com.geckolib.animation.RawAnimation;
+import com.geckolib.renderer.GeoItemRenderer;
+import com.geckolib.model.DefaultedItemGeoModel;
+import net.minecraft.core.registries.BuiltInRegistries;
+import com.geckolib.util.GeckoLibUtil;
 import java.util.stream.IntStream;
 
 import static com.sofodev.armorplus.registry.item.tool.properties.mace.DestructionShape.PLUS;
 import static com.sofodev.armorplus.registry.item.tool.properties.mace.DestructionShape.SQUARE;
 import static net.minecraft.tags.BlockTags.WITHER_IMMUNE;
 
-public class APMaceItem extends Item {
+public class APMaceItem extends Item implements GeoItem {
+    private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
 
     public final IAPMace mat;
     Random random = new Random();
@@ -31,6 +45,7 @@ public class APMaceItem extends Item {
     public APMaceItem(IAPMace mat, Item.Properties props) {
         super(props.sword(mat.get(), (float) mat.get().attackDamageBonus() + mat.getType().getDmg(), mat.getType().getAttackSpeed()));
         this.mat = mat;
+        GeoItem.registerSyncedAnimatable(this);
 
     }
 
@@ -38,102 +53,70 @@ public class APMaceItem extends Item {
     public Component getName(ItemStack stack) {
         return super.getName(stack).copy().withStyle(mat.getColor());
     }
-//
-//    @Override
-//    public boolean shouldOverrideMultiplayerNbt() {
-//        return super.shouldOverrideMultiplayerNbt();
-//    }
 
-    public boolean canAttackBlock(BlockState state, Level worldIn, BlockPos pos, Player player) {
-        return !player.isCreative();
+
+    @Override
+    public int getUseDuration(ItemStack stack, net.minecraft.world.entity.LivingEntity entity) {
+        return 72000;
     }
-//
-//    @Override
-//    public Rarity getRarity(ItemStack stack) {
-//        return mat.getRarity();
-//    }
-//
-//    @Override
-//    public int getUseDuration(ItemStack stack) {
-//        return (int) mat.getType().getChargeSpeed() * 2000;
-//    }
-
-//    @Override
-//    public void releaseUsing(ItemStack stack, Level level, LivingEntity living, int timeLeft) {
-//        if (living instanceof Player) {
-//            Player player = (Player) living;
-//            if (nbt != null && nbt.hasUUID("key")) {
-//                int chargeTime = this.getUseDuration(stack) - timeLeft;
-//                if (chargeTime >= mat.getType().getChargeSpeed()) {
-//                    if (level instanceof ServerLevel serverLevel) {
-//                        this.triggerAnim(player, GeoItem.getOrAssignId(player.getItemInHand(player.getUsedItemHand()), serverLevel), controllerName, "animation.mace.swing_attack");
-//                        //check if the offhand is empty
-//                        boolean isOffHandEmpty = player.getItemBySlot(EquipmentSlot.OFFHAND).isEmpty();
-//                        if (isOffHandEmpty) {
-//                            BlockPos destructionPos = new BlockPos((int) player.position().x, (int) player.position().y, (int) player.position().z);
-//                            Direction direction = player.getMotionDirection();
-//                            boolean isNorthOrSouth = direction == NORTH || direction == SOUTH;
-//                            boolean isWestOrEast = direction == EAST || direction == WEST;
-//                            if (isNorthOrSouth) {
-//                                this.executeDestruction(player, mat, level, stack, destructionPos, direction, true);
-//                            } else if (isWestOrEast) {
-//                                this.executeDestruction(player, mat, level, stack, destructionPos, direction, false);
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
 
     @Override
     public InteractionResult use(Level level, Player player, InteractionHand hand) {
-        if (level instanceof ServerLevel) {
-            ItemStack stack = player.getItemInHand(hand);
-//            CompoundTag nbt = ;
-//            if (nbt != null && nbt.hasUUID("key")) {
-//                triggerAnim(player, GeoItem.getOrAssignId(player.getItemInHand(hand), serverLevel), controllerName, "animation.mace.hold_charge");
-//            }
-            if (stack.getDamageValue() >= stack.getMaxDamage() - 1) {
-                return InteractionResult.FAIL;
-            } else {
-                player.startUsingItem(hand);
-                return InteractionResult.CONSUME;
-            }
-        }
-        return super.use(level, player, hand);
+        ItemStack stack = player.getItemInHand(hand);
+        if (stack.isDamaged() && stack.getDamageValue() >= stack.getMaxDamage() - 1)
+            return InteractionResult.FAIL;
+        player.startUsingItem(hand);
+        if (level instanceof ServerLevel serverLevel)
+            triggerAnim(player, GeoItem.getOrAssignId(stack, serverLevel), "mace", "charge");
+        return InteractionResult.CONSUME;
     }
 
-//    @Override
-//    public boolean onEntitySwing(ItemStack stack, LivingEntity entity) {
-//        Level level = entity.level();
-//        if (level instanceof ServerLevel serverLevel) {
-//            ItemStack itemStack = this.setTag(stack);
-//            CompoundTag nbt = stack.getTag();
-//            if (nbt != null && nbt.hasUUID("key")) {
-//                triggerAnim(entity, GeoItem.getOrAssignId(entity.getItemInHand(entity.getUsedItemHand()), serverLevel), controllerName, "animation.mace.swing_attack");
-//            }
-//        }
-//        return true;
-//    }
-//
-//    public ItemStack setTag(ItemStack stack) {
-//        CompoundTag tag = new CompoundTag();
-//        UUID randomUUID = UUID.randomUUID();
-//        if (tag == null) {
-//            tag.putUUID("key", randomUUID);
-//            (tag);
-//        }
-//        if (!tag.hasUUID("key")) {
-//            tag.putUUID("key", randomUUID);
-//        }
-//        stack.capabi`(tag);
-//        return stack;
-//    }
+    @Override
+    public boolean releaseUsing(ItemStack stack, Level level, net.minecraft.world.entity.LivingEntity living, int timeLeft) {
+        if (!(living instanceof Player player) || !(level instanceof ServerLevel serverLevel))
+            return false;
+        int chargedTicks = getUseDuration(stack, living) - timeLeft;
+        if (chargedTicks < mat.getType().getChargeSpeed())
+            return false;
+        triggerAnim(player, GeoItem.getOrAssignId(stack, serverLevel), "mace", "attack");
+        if (!player.getItemBySlot(EquipmentSlot.OFFHAND).isEmpty())
+            return true;
+        Direction direction = player.getDirection();
+        BlockPos origin = player.blockPosition();
+        if (direction == Direction.NORTH || direction == Direction.SOUTH)
+            executeDestruction(player, mat, level, stack, origin, direction, true);
+        else if (direction == Direction.EAST || direction == Direction.WEST)
+            executeDestruction(player, mat, level, stack, origin, direction, false);
+        return true;
+    }
 
     @Override
-    public ItemUseAnimation getUseAnimation(ItemStack p_41452_) {
+    public ItemUseAnimation getUseAnimation(ItemStack stack) {
         return ItemUseAnimation.NONE;
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<>("mace", 0, state -> PlayState.STOP)
+                .triggerableAnim("charge", RawAnimation.begin().thenPlay("animation.mace.hold_charge"))
+                .triggerableAnim("attack", RawAnimation.begin().thenPlay("animation.mace.swing_attack")));
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return this.geoCache;
+    }
+
+    @Override
+    public void createGeoRenderer(Consumer<GeoRenderProvider> consumer) {
+        consumer.accept(new GeoRenderProvider() {
+            private GeoItemRenderer<APMaceItem> renderer;
+            @Override
+            public GeoItemRenderer<?> getGeoItemRenderer() {
+                if (renderer == null) renderer = new GeoItemRenderer<>(new DefaultedItemGeoModel<>(BuiltInRegistries.ITEM.getKey(APMaceItem.this)));
+                return renderer;
+            }
+        });
     }
 
     private void executeDestruction(Player player, IAPMace mat, Level world, ItemStack stack, BlockPos destructionPos, Direction direction, boolean flag) {
