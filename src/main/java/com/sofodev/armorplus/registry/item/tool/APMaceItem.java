@@ -1,6 +1,8 @@
 package com.sofodev.armorplus.registry.item.tool;
 
+import com.sofodev.armorplus.registry.item.tool.properties.mace.APMaceMaterial;
 import com.sofodev.armorplus.registry.item.tool.properties.mace.IAPMace;
+import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial;
 import com.sofodev.armorplus.registry.item.tool.render.APMaceRenderer;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.BlockPos;
@@ -11,11 +13,9 @@ import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
@@ -27,12 +27,14 @@ import software.bernie.geckolib.animation.*;
 import software.bernie.geckolib.constant.DataTickets;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
+import java.util.List;
 import java.util.Random;
 import java.util.function.Consumer;
 import java.util.stream.IntStream;
 
 import static com.sofodev.armorplus.registry.item.tool.properties.mace.DestructionShape.PLUS;
 import static com.sofodev.armorplus.registry.item.tool.properties.mace.DestructionShape.SQUARE;
+import static com.sofodev.armorplus.utils.ToolTipUtils.*;
 import static net.minecraft.tags.BlockTags.WITHER_IMMUNE;
 import static software.bernie.geckolib.animation.PlayState.CONTINUE;
 import static software.bernie.geckolib.animation.PlayState.STOP;
@@ -50,29 +52,57 @@ public class APMaceItem extends SwordItem implements GeoItem {
     Random random = new Random();
 
     public APMaceItem(IAPMace mat, Item.Properties props) {
-        super(mat.get(), props.attributes(SwordItem.createAttributes(mat.get(),
-                (int) (mat.get().getAttackDamageBonus() + mat.getType().getDmg()), mat.getType()
-                        .getAttackSpeed())));
+        super(mat.get(), props.attributes(SwordItem.createAttributes(mat.get(), (int) (mat.get().getAttackDamageBonus() + mat.getType().getDmg()), mat.getType().getAttackSpeed())));
         this.mat = mat;
-
 
         SingletonGeoAnimatable.registerSyncedAnimatable(this);
     }
 
-//    @Override
-//    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-//        consumer.accept(new IClientItemExtensions() {
-//            private APMaceRenderer renderer;
-//
-//            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-//                if (this.renderer == null) {
-//                    this.renderer = new APMaceRenderer();
-//                }
-//
-//                return this.renderer;
-//            }
-//        });
-//    }
+    @Override
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+        consumer.accept(new IClientItemExtensions() {
+            private APMaceRenderer renderer;
+
+            @Override
+            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
+                if (this.renderer == null) {
+                    this.renderer = new APMaceRenderer();
+                }
+
+                return this.renderer;
+            }
+        });
+    }
+
+    @Override
+    public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        if (!target.level().isClientSide && mat instanceof APMaceMaterial maceMaterial) {
+
+            APToolMaterial toolMaterial = maceMaterial.getToolMaterial();
+
+            if (toolMaterial.config().enableWeaponEffects().get()) {
+                toolMaterial.getBuffInstances().get().forEach(instance -> instance.hitEntity(stack, target, attacker));
+            }
+        }
+
+        return super.hurtEnemy(stack, target, attacker);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> tooltip, TooltipFlag flag) {
+
+        if (mat instanceof APMaceMaterial maceMaterial) {
+            APToolMaterial toolMaterial = maceMaterial.getToolMaterial();
+
+            if (isSneakDown()) {
+                addBuffInformation(toolMaterial, tooltip, "on_hit", false, toolMaterial.config().enableWeaponEffects().get());
+            } else if (!toolMaterial.getBuffInstances().get().isEmpty()) {
+                showSneakInfo(tooltip, mat.getColor());
+            }
+        }
+
+        super.appendHoverText(stack, ctx, tooltip, flag);
+    }
 
     @Override
     public Component getName(ItemStack stack) {
@@ -134,20 +164,53 @@ public class APMaceItem extends SwordItem implements GeoItem {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        if (level instanceof ServerLevel) {
-            ItemStack stack = player.getItemInHand(hand);
-//            CompoundTag nbt = ;
-//            if (nbt != null && nbt.hasUUID("key")) {
-//                triggerAnim(player, GeoItem.getOrAssignId(player.getItemInHand(hand), serverLevel), controllerName, "animation.mace.hold_charge");
-//            }
-            if (stack.getDamageValue() >= stack.getMaxDamage() - 1) {
-                return InteractionResultHolder.fail(stack);
-            } else {
-                player.startUsingItem(hand);
-                return InteractionResultHolder.consume(stack);
-            }
+        ItemStack stack = player.getItemInHand(hand);
+
+        if (stack.isDamageableItem() && stack.getDamageValue() >= stack.getMaxDamage() - 1) {
+            return InteractionResultHolder.fail(stack);
         }
-        return super.use(level, player, hand);
+
+        player.startUsingItem(hand);
+
+        if (level instanceof ServerLevel serverLevel) {
+            triggerAnim(player, GeoItem.getOrAssignId(stack, serverLevel), controllerName, "charge");
+        }
+
+        return InteractionResultHolder.consume(stack);
+    }
+
+    @Override
+    public int getUseDuration(ItemStack stack, LivingEntity entity) {
+        return 72000;
+    }
+
+
+    @Override
+    public void releaseUsing(ItemStack stack, Level level, LivingEntity living, int timeLeft) {
+        if (!(living instanceof Player player) || !(level instanceof ServerLevel serverLevel)) {
+            return;
+        }
+
+        int chargedTicks = getUseDuration(stack, living) - timeLeft;
+
+        if (chargedTicks < mat.getType().getChargeSpeed()) {
+            return;
+        }
+
+        triggerAnim(player, GeoItem.getOrAssignId(stack, serverLevel), controllerName, "attack");
+
+        if (!player.getItemBySlot(EquipmentSlot.OFFHAND).isEmpty()) {
+            return;
+        }
+
+        Direction direction = player.getDirection();
+        BlockPos origin = player.blockPosition();
+
+        if (direction == Direction.NORTH || direction == Direction.SOUTH) {
+            executeDestruction(player, mat, level, stack, origin, direction, true);
+        } else {
+            executeDestruction(player, mat, level, stack, origin, direction, false);
+        }
     }
 
 //    @Override
@@ -252,7 +315,25 @@ public class APMaceItem extends SwordItem implements GeoItem {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add((new AnimationController(this, this.controllerName, 20, this::predicate)).triggerableAnim("swing_attack", SWING_ATTACK));
+        controllers.add(
+                new AnimationController<>(
+                        this,
+                        controllerName,
+                        0,
+                        state -> PlayState.STOP
+                )
+                        .triggerableAnim(
+                                "charge",
+                                RawAnimation.begin()
+                                        .thenPlay("animation.mace.charge")
+                                        .thenLoop("animation.mace.hold_charge")
+                        )
+                        .triggerableAnim(
+                                "attack",
+                                RawAnimation.begin()
+                                        .thenPlay("animation.mace.swing_attack")
+                        )
+        );
     }
 
     private <P extends Item & GeoAnimatable> PlayState predicate(AnimationState<P> event) {

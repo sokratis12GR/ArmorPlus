@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "armorplus:stone_brick_stairs",
+  "key": {
+    "S": {
+      "item": "armorplus:orange_castle_block"
+    }
+  },
+  "pattern": [
+    "S  ",
+    "SS ",
+    "SSS"
+  ],
+  "result": {
+    "count": 4,
+    "id": "armorplus:orange_castle_block_stairs"
+  }
+}

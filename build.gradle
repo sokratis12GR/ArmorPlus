@@ -2,58 +2,181 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'net.neoforged.moddev' version '2.0.146'
+    id 'net.darkhax.curseforgegradle' version '1.1.26'
     id 'idea'
 }
 
 version = mod_version
 group = mod_group_id
-base { archivesName = mod_id }
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
-sourceSets.main.resources { srcDir 'src/generated/resources' }
+base {
+    archivesName = mod_id
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+tasks.named('jar', Jar).configure {
+    archiveFileName = "${mod_id}-${minecraft_version}-${mod_version}-neo.jar"
+}
+
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
+}
 
 repositories {
-    maven { url = 'https://www.cursemaven.com'; content { includeGroup 'curse.maven' } }
-    maven { url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
+    maven {
+        url = 'https://www.cursemaven.com'
+        content {
+            includeGroup 'curse.maven'
+        }
+    }
+
+    maven {
+        url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+    }
 }
 
 neoForge {
     version = project.neo_version
+
     accessTransformers = project.files('src/main/resources/META-INF/armorplus_at.cfg')
+
     runs {
-        client { client() }
-        server { server(); programArgument '--nogui' }
+        client {
+            client()
+        }
+
+        server {
+            server()
+            programArgument '--nogui'
+        }
+
         data {
             data()
-            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').absolutePath, '--existing', file('src/main/resources/').absolutePath
+
+            programArguments.addAll('--mod', project.mod_id,
+                    '--all',
+                    '--output',
+                    file('src/generated/resources/').absolutePath,
+                    '--existing',
+                    file('src/main/resources/').absolutePath)
         }
-        configureEach { logLevel = org.slf4j.event.Level.DEBUG }
+
+        configureEach {
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
     }
-    mods { "${mod_id}" { sourceSet(sourceSets.main) } }
+
+    mods {
+        "${mod_id}" {
+            sourceSet(sourceSets.main)
+        }
+    }
 }
 
-configurations { runtimeClasspath.extendsFrom localRuntime }
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
+}
 
 dependencies {
     implementation "curse.maven:thedragonlib-248055:5505781"
+
     implementation 'software.bernie.geckolib:geckolib-neoforge-1.21.1:4.8.2'
+
     compileOnly "curse.maven:jei-238222:8857687"
 }
 
 tasks.named('processResources', ProcessResources).configure {
-    def replaceProperties = [
-        minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
-        neo_version: neo_version, neo_version_range: neo_version_range, loader_version_range: loader_version_range,
-        mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
-        mod_authors: mod_authors, mod_description: mod_description,
-    ]
+    def replaceProperties = [minecraft_version      : minecraft_version,
+                             minecraft_version_range: minecraft_version_range,
+
+                             neo_version            : neo_version,
+                             neo_version_range      : neo_version_range,
+                             loader_version_range   : loader_version_range,
+
+                             mod_id                 : mod_id,
+                             mod_name               : mod_name,
+                             mod_license            : mod_license,
+                             mod_version            : mod_version,
+                             mod_authors            : mod_authors,
+                             mod_description        : mod_description]
+
     inputs.properties replaceProperties
-    filesMatching(['META-INF/neoforge.mods.toml', 'pack.mcmeta']) { expand replaceProperties + [project: project] }
+
+    filesMatching(['META-INF/neoforge.mods.toml',
+                   'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
+    }
 }
 
-tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
 
 publishing {
-    publications { register('mavenJava', MavenPublication) { from components.java } }
-    repositories { maven { url "file://${project.projectDir}/mcmodsrepo" } }
+    publications {
+        register('mavenJava', MavenPublication) {
+            from components.java
+        }
+    }
+
+    repositories {
+        maven {
+            url = "file://${project.projectDir}/mcmodsrepo"
+        }
+    }
+}
+
+tasks.register('publishCurseForge',
+        net.darkhax.curseforgegradle.TaskPublishCurseForge) {
+    group = 'publishing'
+    description = "Publishes ${mod_name} ${mod_version} for NeoForge to CurseForge"
+
+    def token = providers.gradleProperty('curseforge_api_token')
+            .orElse(providers.environmentVariable('CURSEFORGE_API_TOKEN'))
+            .orNull
+
+    def projectId = providers.gradleProperty('curseforge_project_id')
+            .orNull
+
+    apiToken = token
+
+    // Validate credentials only when publishing is actually attempted.
+    doFirst {
+        if (!token) {
+            throw new GradleException('Missing curseforge_api_token or CURSEFORGE_API_TOKEN.')
+        }
+
+        if (!projectId) {
+            throw new GradleException('Missing curseforge_project_id.')
+        }
+    }
+
+    if (projectId) {
+        def mainFile = upload(projectId,
+                tasks.named('jar').get())
+
+        mainFile.displayName = "${mod_name} ${mod_version} for NeoForge ${minecraft_version}"
+
+        mainFile.releaseType = 'release'
+
+        def changelogFile = file('src/main/resources/changelog.md')
+
+        mainFile.changelogType = 'markdown'
+
+        mainFile.changelog = changelogFile.exists() ? changelogFile.getText('UTF-8') : "${mod_name} ${mod_version} for NeoForge ${minecraft_version}"
+
+        mainFile.addGameVersion(minecraft_version.toString())
+
+        mainFile.addModLoader('NeoForge')
+
+        mainFile.addEnvironment('Client', 'Server')
+
+        mainFile.addRequirement('geckolib')
+        mainFile.addRequirement('thedragonlib')
+    }
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "armorplus:block/ore_lava_crystal_obsidian"
+  }
+}

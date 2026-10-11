@@ -1,27 +1,28 @@
 package com.sofodev.armorplus.registry.item.tool;
 
-import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolType;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.IAPTool;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.Tool;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
 
 import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolType.PICKAXE;
-import static com.sofodev.armorplus.utils.ToolTipUtils.addBuffInformation;
+import static com.sofodev.armorplus.utils.ToolTipUtils.*;
 
 public class APPickaxeItem extends PickaxeItem implements Tool {
 
     private final IAPTool mat;
 
     public APPickaxeItem(IAPTool mat) {
-        super(mat.get(), new Item.Properties().attributes(PickaxeItem.createAttributes(mat.get(),
-                (int) (mat.get().getAttackDamageBonus() + PICKAXE.getDmg()), PICKAXE.getAttackSpeed())));
+        super(mat.get(), new Item.Properties().attributes(PickaxeItem.createAttributes(mat.get(), (int) (mat.get().getAttackDamageBonus() + PICKAXE.getDmg()), PICKAXE.getAttackSpeed())));
         this.mat = mat;
     }
 
@@ -29,9 +30,14 @@ public class APPickaxeItem extends PickaxeItem implements Tool {
     public Component getName(ItemStack stack) {
         return super.getName(stack).copy().withStyle(mat.getColor());
     }
+
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> tooltip, TooltipFlag flagIn) {
-        addBuffInformation(mat, tooltip, "on_hit", false, mat.config().enableWeaponEffects().get());
+        if (isSneakDown()) {
+            addBuffInformation(mat, tooltip, "on_hit", false, mat.config().enableWeaponEffects().get());
+        } else if (!mat.getBuffInstances().get().isEmpty()) {
+            showSneakInfo(tooltip, mat.getColor());
+        }
         super.appendHoverText(stack, ctx, tooltip, flagIn);
     }
 

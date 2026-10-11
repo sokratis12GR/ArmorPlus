@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:super_star_swords",
+  "key": {
+    "C": {
+      "item": "minecraft:nether_star"
+    },
+    "M": {
+      "item": "armorplus:wither_bone"
+    },
+    "S": {
+      "item": "armorplus:obsidian_stick"
+    }
+  },
+  "pattern": [
+    "M  ",
+    "C  ",
+    "S  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:super_star_sword_base"
+  }
+}

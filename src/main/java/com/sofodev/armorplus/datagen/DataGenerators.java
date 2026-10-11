@@ -58,9 +58,15 @@ public class DataGenerators {
         ModPOITagProvider poiTags = new ModPOITagProvider(packOutput, provider, existingFileHelper);
         generator.addProvider(event.includeServer(), poiTags);
 
-        generator.addProvider(event.includeServer(), new AdvancementProvider(packOutput, provider, existingFileHelper, List.of()));
+        generator.addProvider(event.includeServer(), new AdvancementProvider(packOutput, provider, existingFileHelper, List.of(new ModAdvancementProvider())));
 
         generator.addProvider(event.includeClient(), new ModItemModelProvider(packOutput, existingFileHelper));
+
+        generator.addProvider(event.includeClient(), new ModEquipmentProvider(packOutput));
+
+        generator.addProvider(event.includeClient(), new ModBlockModelProvider(packOutput));
+
+        generator.addProvider(event.includeServer(), new ModBiomeModifierProvider(packOutput));
 
     }
 }

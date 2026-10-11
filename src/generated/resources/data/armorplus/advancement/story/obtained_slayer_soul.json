@@ -1,0 +1,37 @@
+{
+  "parent": "armorplus:story/obtained_ender_dragon_soul",
+  "criteria": {
+    "armorplus:soul_slayer": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:soul_slayer"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.obtained_slayer_soul.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "armorplus:soul_slayer"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.obtained_slayer_soul.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:soul_slayer"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

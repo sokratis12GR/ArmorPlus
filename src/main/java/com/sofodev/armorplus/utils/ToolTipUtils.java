@@ -34,7 +34,7 @@ public class ToolTipUtils {
      */
     public static void appendArrowHoverText(List<Component> tooltip, Component effect, double damage, ChatFormatting formatting) {
         KeyMapping keyBindSneak = Minecraft.getInstance().options.keyShift;
-        if (Screen.hasShiftDown()) {
+        if (isSneakDown()) {
             tooltip.add(translate("tooltip.armorplus.arrow.ability_desc", effect));
             tooltip.add(translate("tooltip.armorplus.arrow.ability", damage));
         } else {
@@ -78,4 +78,25 @@ public class ToolTipUtils {
         return Component.translatable(key, args);
     }
 
+
+    /**
+     * Returns true while the player is holding Shift in a GUI tooltip.
+     */
+    public static boolean isSneakDown() {
+        return Screen.hasShiftDown();
+    }
+
+    /**
+     * Adds the standard ArmorPlus "Press Shift for more info" line.
+     */
+    public static void showSneakInfo(List<Component> tooltip, ChatFormatting formatting) {
+        showInfo(tooltip, Minecraft.getInstance().options.keyShift, formatting);
+    }
+
+    /**
+     * Adds bow bonus damage information.
+     */
+    public static void addBowDamageInformation(List<Component> tooltip, double damage) {
+        tooltip.add(translate(DARK_GREEN, "tooltip.armorplus.bow.damage", damage));
+    }
 }

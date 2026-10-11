@@ -1,6 +1,5 @@
 package com.sofodev.armorplus.registry.item.tool;
 
-import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolType;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.IAPTool;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.Tool;
 import net.minecraft.network.chat.Component;
@@ -13,7 +12,7 @@ import net.minecraft.world.item.TooltipFlag;
 import java.util.List;
 
 import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolType.BATTLE_AXE;
-import static com.sofodev.armorplus.utils.ToolTipUtils.addBuffInformation;
+import static com.sofodev.armorplus.utils.ToolTipUtils.*;
 
 public class APBattleAxeItem extends AxeItem implements Tool {
 
@@ -35,7 +34,11 @@ public class APBattleAxeItem extends AxeItem implements Tool {
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> tooltip, TooltipFlag flagIn) {
-        addBuffInformation(mat, tooltip, "on_hit", false, mat.config().enableWeaponEffects().get());
+        if (isSneakDown()) {
+            addBuffInformation(mat, tooltip, "on_hit", false, mat.config().enableWeaponEffects().get());
+        } else if (!mat.getBuffInstances().get().isEmpty()) {
+            showSneakInfo(tooltip, mat.getColor());
+        }
         super.appendHoverText(stack, ctx, tooltip, flagIn);
     }
 

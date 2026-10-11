@@ -25,7 +25,7 @@ public enum APMaceMaterial implements IAPMace {
     SLAYER_MACE(SLAYER_MAT, HEAVY, 20, 12, SQUARE),
     ;
 
-    private final Tier material;
+    private final APToolMaterial material;
     private final ChatFormatting rarity;
     private final APMaceType type;
     private final int cooldown;
@@ -42,7 +42,7 @@ public enum APMaceMaterial implements IAPMace {
     }
 
     APMaceMaterial(APToolMaterial material, APMaceType type, int cooldown, int range, boolean hasAOE, DestructionShape shape) {
-        this.material = material.get();
+        this.material = material;
         this.rarity = material.getColor();
         this.type = type;
         this.cooldown = cooldown;
@@ -53,6 +53,10 @@ public enum APMaceMaterial implements IAPMace {
 
     @Override
     public Tier get() {
+        return this.material.get();
+    }
+
+    public APToolMaterial getToolMaterial() {
         return this.material;
     }
 

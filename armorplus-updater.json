@@ -1,10 +1,12 @@
 {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/armorplus",
-    "promos": {
-        "1.19.2-latest": "1.19.2-19.0.0-beta",
-        "1.19.2-recommended": "1.19.2-19.0.0-beta"
-    },
-    "1.19.2": {
-        "1.19.2-19.0.0-beta": "Ported to 1.19.2\n\n- World Gen of ores is disabled at this given moment.\n- Removed all biomes from previous versions.\n- Expect further releases to require new chunks to function properly"
-    }
+  "homepage": "https://www.curseforge.com/minecraft/mc-mods/armorplus",
+  "promos": {
+    "1.21.1-latest": "21.1.0",
+    "1.21.1-recommended": "21.1.0"
+  },
+  "1.21.1": {
+    "21.0.0": "Ported to 1.21 (NeoForge)",
+    "1.21.1-21.0.1-neo": "Ported to 1.21 (Forge) with various improvements, recommended to switch",
+    "21.1.0": "- Fixed Maces not having textures\n- Added damage bonuses to arrows fired by armorplus bows.\n- Removed \"Water Weakness\" from Infused Lava Armor.\n- Made all tooltips with buffs be collapsed by default, then expanded with \"Shift\" key.\n- Added 8 more colored bricks or castle blocks.\n- Made smithing recipes require infused lava crystals.\n- Added proper world generation for neoforge\n- Maces now have on-hit effects like the other weapons from their type."
+  }
 }

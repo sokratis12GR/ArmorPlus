@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:redstone",
+  "key": {
+    "S": {
+      "item": "minecraft:redstone_block"
+    }
+  },
+  "pattern": [
+    "   ",
+    "S S",
+    "S S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:redstone_boots"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "armorplus:colored_stone_bricks",
+  "key": {
+    "S": {
+      "tag": "c:dyes/green"
+    },
+    "X": {
+      "item": "minecraft:stone_bricks"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "SXS",
+    "SSS"
+  ],
+  "result": {
+    "count": 8,
+    "id": "armorplus:green_stone_brick"
+  }
+}

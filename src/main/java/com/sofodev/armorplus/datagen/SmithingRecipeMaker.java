@@ -67,11 +67,11 @@ public class SmithingRecipeMaker extends RecipeProvider {
 
     public void buildSmithing(RecipeOutput consumer, ItemLike base, ItemLike addition, RecipeCategory category, ItemLike result) {
         String path = getPath(base);
-        SmithingTransformRecipeBuilder.smithing(Ingredient.EMPTY, //template
-                Ingredient.of(base),//Base
-                Ingredient.of(addition), //Addition
-                category, result.asItem() // Result
-        ).unlocks("has_req", has(addition)).save(consumer, setRL("smithing/" + path));
+
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(INFUSED_LAVA_CRYSTAL.get()), // Template
+                Ingredient.of(base),                      // Base
+                Ingredient.of(addition),                  // Addition
+                category, result.asItem()).unlocks("has_req", has(INFUSED_LAVA_CRYSTAL.get())).save(consumer, setRL("smithing/" + path));
     }
 
     @Override

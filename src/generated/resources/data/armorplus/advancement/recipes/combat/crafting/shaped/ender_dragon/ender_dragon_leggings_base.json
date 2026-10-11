@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_req": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:ender_dragon_scale"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "armorplus:crafting/shaped/ender_dragon/ender_dragon_leggings_base"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_req"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "armorplus:crafting/shaped/ender_dragon/ender_dragon_leggings_base"
+    ]
+  }
+}

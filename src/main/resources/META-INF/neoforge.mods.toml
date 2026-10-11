@@ -1,0 +1,43 @@
+modLoader = "javafml"
+loaderVersion = "${loader_version_range}"
+license = "${mod_license}"
+issueTrackerURL = "https://github.com/sokratis12GR/ArmorPlus/issues"
+
+[[mods]]
+modId = "${mod_id}"
+version = "${mod_version}"
+displayName = "${mod_name}"
+updateJSONURL = "https://sokratis.space/armorplus/1.21-neo/update.json"
+displayURL = "https://www.curseforge.com/minecraft/mc-mods/armorplus"
+logoFile = "headerimg.jpg"
+credits = "To everyone who helped with the translation of ArmorPlus: https://bit.ly/armorplus-credits"
+authors = "${mod_authors}"
+description = '''${mod_description}'''
+
+[[dependencies.${ mod_id }]]
+modId = "neoforge"
+type = "required"
+versionRange = "${neo_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${ mod_id }]]
+modId = "minecraft"
+type = "required"
+versionRange = "${minecraft_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${ mod_id }]]
+modId = "thedragonlib"
+type = "required"
+versionRange = "[1.0.0,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.${ mod_id }]]
+modId = "geckolib"
+type = "required"
+versionRange = "[4.8,)"
+ordering = "NONE"
+side = "BOTH"

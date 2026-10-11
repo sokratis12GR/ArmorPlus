@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "armorplus:stone_brick_slab",
+  "key": {
+    "S": {
+      "item": "armorplus:green_castle_block"
+    }
+  },
+  "pattern": [
+    "   ",
+    "SSS",
+    "   "
+  ],
+  "result": {
+    "count": 6,
+    "id": "armorplus:green_castle_block_slab"
+  }
+}

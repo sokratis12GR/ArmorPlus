@@ -9,8 +9,6 @@ import com.sofodev.armorplus.registry.item.extra.IBuff;
 import com.sofodev.armorplus.registry.item.material.FrostCrystalItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LightningBolt;
@@ -18,17 +16,15 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.event.entity.EntityStruckByLightningEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 import java.util.Random;
 
 import static com.sofodev.armorplus.registry.item.extra.Buff.FLIGHT;
-import static com.sofodev.armorplus.registry.item.extra.Buff.WATER_WEAKNESS;
 import static com.sofodev.armorplus.utils.ItemArmorUtility.areExactMatch;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
 import static net.minecraft.world.phys.Vec3.atBottomCenterOf;
@@ -100,9 +96,6 @@ public class ModGlobalEvents {
     private static void checkAndApplyBuffs(Player player) {
         checkAndApplyFlight(player);
 
-        if (isFullArmorWithBuff(player, WATER_WEAKNESS) && player.isInWaterRainOrBubble()) {
-            player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 200, 0, false, false, true));
-        }
     }
 
     @SubscribeEvent

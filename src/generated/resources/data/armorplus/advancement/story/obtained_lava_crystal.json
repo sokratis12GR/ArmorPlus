@@ -1,0 +1,37 @@
+{
+  "parent": "armorplus:story/root",
+  "criteria": {
+    "armorplus:infused_lava_crystal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:infused_lava_crystal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.obtained_lava_crystal.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "armorplus:infused_lava_crystal"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.obtained_lava_crystal.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:infused_lava_crystal"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}
