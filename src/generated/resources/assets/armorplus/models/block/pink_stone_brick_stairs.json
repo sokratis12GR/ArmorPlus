@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "armorplus:block/pink_stone_brick",
+    "side": "armorplus:block/pink_stone_brick",
+    "top": "armorplus:block/pink_stone_brick"
+  }
+}

@@ -55,6 +55,18 @@ public class ToolTipUtils {
         }
     }
 
+
+
+    /** Whether Shift is held while displaying a tooltip. */
+    public static boolean isSneakDown() {
+        return Screen.hasShiftDown();
+    }
+
+    /** Show the existing ArmorPlus Shift hint using the player's current key binding. */
+    public static void showSneakInfo(List<Component> tooltip, ChatFormatting formatting) {
+        showInfo(tooltip, Minecraft.getInstance().options.keyShift, formatting);
+    }
+
     /**
      * Adds bow bonus damage information.
      */

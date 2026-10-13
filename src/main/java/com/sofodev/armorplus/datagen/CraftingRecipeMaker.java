@@ -189,8 +189,8 @@ public class CraftingRecipeMaker extends RecipeProvider {
         this.buildFilling(con, Result.build(arrow.get(), 8, group, path), material, Items.ARROW);
     }
 
-    public void buildColoredBrick(RecipeOutput con, RegistryObject<Block> bricks, TagKey<Item> color) {
-        this.buildFilling(con, Result.build(bricks.get(), 8, "colored_stone_bricks", "bricks"), Items.STONE_BRICKS, of(color));
+    public void buildColoredBrick(RecipeOutput con, RegistryObject<Block> bricks, TagKey<Item> color, ItemLike baseBlock, String group) {
+        this.buildFilling(con, Result.build(bricks.get(), 8, group, "bricks"), baseBlock, of(color));
     }
 
     public void buildStoneBrick(RecipeOutput con, RegistryObject<Block> bricks, RegistryObject<Block> tower, RegistryObject<Block> corner, RegistryObject<Block> wall, RegistryObject<Block> stairs, RegistryObject<Block> slab) {

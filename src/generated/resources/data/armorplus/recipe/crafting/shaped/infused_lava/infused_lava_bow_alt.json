@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:infused_lava_bows",
+  "key": {
+    "M": {
+      "item": "armorplus:infused_lava_crystal"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    " MS",
+    "M S",
+    " MS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:infused_lava_bow"
+  }
+}

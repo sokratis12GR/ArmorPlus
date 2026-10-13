@@ -61,6 +61,9 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(), new ForgeAdvancementProvider(packOutput, provider, existingFileHelper, List.of(new ModAdvancementProvider())));
 
         generator.addProvider(event.includeClient(), new ModItemModelProvider(packOutput, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ModEquipmentProvider(packOutput));
+        generator.addProvider(event.includeClient(), new ModBlockModelProvider(packOutput));
+        generator.addProvider(event.includeServer(), new ModBiomeModifierProvider(packOutput));
 
     }
 }

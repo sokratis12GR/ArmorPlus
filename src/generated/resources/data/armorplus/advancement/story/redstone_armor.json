@@ -1,0 +1,75 @@
+{
+  "parent": "armorplus:story/root",
+  "criteria": {
+    "armorplus:redstone_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:redstone_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:redstone_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:redstone_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:redstone_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:redstone_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:redstone_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:redstone_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.redstone_armor.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "armorplus:redstone_chestplate"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.redstone_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:redstone_helmet"
+    ],
+    [
+      "armorplus:redstone_chestplate"
+    ],
+    [
+      "armorplus:redstone_leggings"
+    ],
+    [
+      "armorplus:redstone_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "armorplus:stone_brick_tower",
+  "key": {
+    "S": {
+      "item": "armorplus:white_castle_block"
+    }
+  },
+  "pattern": [
+    "S S",
+    "SSS",
+    "SSS"
+  ],
+  "result": {
+    "count": 8,
+    "id": "armorplus:white_castle_block_tower"
+  }
+}

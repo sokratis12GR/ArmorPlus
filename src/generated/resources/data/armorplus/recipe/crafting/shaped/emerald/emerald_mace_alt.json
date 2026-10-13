@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:maces",
+  "key": {
+    "D": {
+      "item": "minecraft:emerald_block"
+    },
+    "S": {
+      "item": "armorplus:wooden_rod"
+    }
+  },
+  "pattern": [
+    "DD ",
+    "DS ",
+    "  S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:emerald_mace"
+  }
+}

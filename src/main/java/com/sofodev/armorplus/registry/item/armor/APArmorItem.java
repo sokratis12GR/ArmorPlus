@@ -12,7 +12,7 @@ import java.util.List;
 
 import static com.sofodev.armorplus.utils.ItemArmorUtility.areExactMatch;
 import static com.sofodev.armorplus.utils.RomanNumeralUtil.generate;
-import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
+import static com.sofodev.armorplus.utils.ToolTipUtils.*;
 import static net.minecraft.ChatFormatting.*;
 
 public class APArmorItem extends ArmorItem {
@@ -55,22 +55,35 @@ public class APArmorItem extends ArmorItem {
         }
     }
 
-    @Override
-    public void appendHoverText(ItemStack stack, TooltipContext level, List<Component> tooltip, TooltipFlag flag) {
-        List<BuffInstance> buffs = mat.getBuffInstances().get();
-        if (!buffs.isEmpty()) {
-            tooltip.add(translate(YELLOW, "tooltip.armorplus.condition", mat.config().enableArmorEffects().get() ? "" : "(DISABLED)"));
-            tooltip.add(translate(GOLD, "tooltip.armorplus.condition.full_set"));
-            tooltip.add(translate(GREEN, "tooltip.armorplus.provides"));
 
-            for (BuffInstance buff : buffs) {
-                if (buff.getBuff() == Buff.NONE) continue;
-                int lvl = buff.getAmplifier() + 1;
-                String roman = lvl > 0 ? " " + generate(lvl) : "";
-                tooltip.add(translate(DARK_AQUA, "tooltip.armorplus.buff", buff.getTranslatedName(), roman));
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+        List<BuffInstance> buffs = mat.getBuffInstances() != null ? mat.getBuffInstances().get() : List.of();
+
+        if (!buffs.isEmpty()) {
+            if (isSneakDown()) {
+                tooltip.add(translate(YELLOW, "tooltip.armorplus.condition", mat.config().enableArmorEffects().get() ? "" : "(DISABLED)"));
+
+                tooltip.add(translate(GOLD, "tooltip.armorplus.condition.full_set"));
+
+                tooltip.add(translate(GREEN, "tooltip.armorplus.provides"));
+
+                for (BuffInstance buff : buffs) {
+                    if (buff.getBuff() == Buff.NONE) {
+                        continue;
+                    }
+
+                    int lvl = buff.getAmplifier() + 1;
+                    String roman = lvl > 0 ? " " + generate(lvl) : "";
+
+                    tooltip.add(translate(DARK_AQUA, "tooltip.armorplus.buff", buff.getTranslatedName(), roman));
+                }
+            } else {
+                showSneakInfo(tooltip, mat.getFormatting());
             }
         }
-        super.appendHoverText(stack, level, tooltip, flag);
+
+        super.appendHoverText(stack, context, tooltip, flag);
     }
 
     @Override

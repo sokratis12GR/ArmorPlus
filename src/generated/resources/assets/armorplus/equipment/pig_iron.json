@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "armorplus:pig_iron"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "armorplus:pig_iron"
+      }
+    ]
+  }
+}

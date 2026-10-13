@@ -1,0 +1,75 @@
+{
+  "parent": "armorplus:story/root",
+  "criteria": {
+    "armorplus:emerald_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:emerald_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:emerald_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:emerald_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:emerald_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:emerald_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:emerald_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:emerald_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.emerald_armor.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "armorplus:emerald_chestplate"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.emerald_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:emerald_helmet"
+    ],
+    [
+      "armorplus:emerald_chestplate"
+    ],
+    [
+      "armorplus:emerald_leggings"
+    ],
+    [
+      "armorplus:emerald_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

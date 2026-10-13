@@ -1,0 +1,6 @@
+{
+  "parent": "armorplus:item/handheld_sword",
+  "textures": {
+    "layer0": "armorplus:item/super_star_sword"
+  }
+}

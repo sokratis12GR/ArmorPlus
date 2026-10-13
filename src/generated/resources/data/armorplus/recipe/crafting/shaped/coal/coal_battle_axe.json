@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:coal_battle_axes",
+  "key": {
+    "M": {
+      "item": "minecraft:coal_block"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "M M",
+    "MSM",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:coal_battle_axe"
+  }
+}

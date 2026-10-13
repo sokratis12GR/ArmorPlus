@@ -1,6 +1,0 @@
-{
-  "parent": "block/wall_inventory",
-  "textures": {
-    "wall": "armorplus:block/green_stone_brick"
-  }
-}

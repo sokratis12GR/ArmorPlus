@@ -1,0 +1,62 @@
+{
+  "parent": "armorplus:story/lapis_armor",
+  "criteria": {
+    "armorplus:lapis_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:lapis_battle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:lapis_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:lapis_mace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:lapis_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:lapis_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.lapis_weaponry.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "armorplus:lapis_sword"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.lapis_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:lapis_sword"
+    ],
+    [
+      "armorplus:lapis_battle_axe"
+    ],
+    [
+      "armorplus:lapis_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}
