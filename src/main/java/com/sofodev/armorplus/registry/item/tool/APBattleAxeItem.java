@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.item.tool;
 
+import com.sofodev.armorplus.config.AvailabilityConfig;
+import net.minecraft.world.flag.FeatureFlagSet;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolType;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.IAPTool;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.Tool;
@@ -51,5 +53,10 @@ public class APBattleAxeItem extends AxeItem implements Tool {
     @Override
     public Component getName(ItemStack stack) {
         return super.getName(stack).copy().withStyle(mat.getColor());
+    }
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.itemEnabled(this);
     }
 }

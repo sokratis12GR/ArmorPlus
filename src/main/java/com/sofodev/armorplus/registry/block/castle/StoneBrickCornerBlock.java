@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.block.castle;
 
+import com.sofodev.armorplus.config.AvailabilityConfig;
+import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -89,4 +91,9 @@ public class StoneBrickCornerBlock extends Block implements SimpleWaterloggedBlo
     }
 
 
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.blockEnabled(this);
+    }
 }

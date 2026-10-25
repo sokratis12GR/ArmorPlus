@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.item.armor;
 
+import com.sofodev.armorplus.config.AvailabilityConfig;
+import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.equipment.ArmorType;
 
 import com.sofodev.armorplus.registry.item.extra.Buff;
@@ -82,4 +84,9 @@ public class APArmorItem extends Item {
 
     public IAPArmor getMat() { return mat; }
 
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.itemEnabled(this);
+    }
 }

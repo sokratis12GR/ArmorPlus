@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.block.castle;
 
+import com.sofodev.armorplus.config.AvailabilityConfig;
+import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -216,5 +218,10 @@ public class StoneBrickStairsBlock extends Block implements SimpleWaterloggedBlo
 
     private BlockState getModelState() {
         return stateSupplier.get();
+    }
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.blockEnabled(this);
     }
 }

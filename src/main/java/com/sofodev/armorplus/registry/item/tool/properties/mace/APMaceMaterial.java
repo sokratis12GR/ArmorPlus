@@ -26,6 +26,7 @@ public enum APMaceMaterial implements IAPMace {
     ;
 
     private final ToolMaterial material;
+    private final APToolMaterial toolMaterial;
     private final ChatFormatting rarity;
     private final APMaceType type;
     private final int cooldown;
@@ -43,12 +44,17 @@ public enum APMaceMaterial implements IAPMace {
 
     APMaceMaterial(APToolMaterial material, APMaceType type, int cooldown, int range, boolean hasAOE, DestructionShape shape) {
         this.material = material.get();
+        this.toolMaterial = material;
         this.rarity = material.getColor();
         this.type = type;
         this.cooldown = cooldown;
         this.range = range;
         this.hasAOEDestruction = hasAOE;
         this.shape = shape;
+    }
+
+    public APToolMaterial getToolMaterial() {
+        return this.toolMaterial;
     }
 
     @Override

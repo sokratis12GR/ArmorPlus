@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.item.tool;
 
+import com.sofodev.armorplus.config.AvailabilityConfig;
+import net.minecraft.world.flag.FeatureFlagSet;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.IAPTool;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
@@ -47,5 +49,10 @@ public class APBowItem extends BowItem {
     @Override
     public Component getName(ItemStack stack) {
         return super.getName(stack).copy().withStyle(tool.getColor());
+    }
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.itemEnabled(this);
     }
 }

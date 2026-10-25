@@ -1,6 +1,8 @@
 package com.sofodev.armorplus.registry.item.tool;
 
+import com.sofodev.armorplus.registry.item.tool.properties.mace.APMaceMaterial;
 import com.sofodev.armorplus.registry.item.tool.properties.mace.IAPMace;
+import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -14,6 +16,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUseAnimation;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -35,6 +39,9 @@ import java.util.stream.IntStream;
 import static com.sofodev.armorplus.registry.item.tool.properties.mace.DestructionShape.PLUS;
 import static com.sofodev.armorplus.registry.item.tool.properties.mace.DestructionShape.SQUARE;
 import static net.minecraft.tags.BlockTags.WITHER_IMMUNE;
+import static com.sofodev.armorplus.utils.ToolTipUtils.addBuffInformation;
+import static com.sofodev.armorplus.utils.ToolTipUtils.isSneakDown;
+import static com.sofodev.armorplus.utils.ToolTipUtils.showSneakInfo;
 
 public class APMaceItem extends Item implements GeoItem {
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
@@ -52,6 +59,36 @@ public class APMaceItem extends Item implements GeoItem {
     @Override
     public Component getName(ItemStack stack) {
         return super.getName(stack).copy().withStyle(mat.getColor());
+    }
+
+    @Override
+    public void hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        if (!target.level().isClientSide() && mat instanceof APMaceMaterial maceMaterial) {
+            APToolMaterial toolMaterial = maceMaterial.getToolMaterial();
+
+            if (toolMaterial.config().enableWeaponEffects().get()) {
+                toolMaterial.getBuffInstances().get().forEach(instance -> instance.hitEntity(stack, target, attacker));
+            }
+        }
+
+        super.hurtEnemy(stack, target, attacker);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, Item.TooltipContext ctx, TooltipDisplay display,
+                                Consumer<Component> tooltip, TooltipFlag flagIn) {
+        if (mat instanceof APMaceMaterial maceMaterial) {
+            APToolMaterial toolMaterial = maceMaterial.getToolMaterial();
+
+            if (isSneakDown()) {
+                addBuffInformation(toolMaterial, tooltip, "on_hit", false,
+                        toolMaterial.config().enableWeaponEffects().get());
+            } else if (!toolMaterial.getBuffInstances().get().isEmpty()) {
+                showSneakInfo(tooltip, mat.getColor());
+            }
+        }
+
+        super.appendHoverText(stack, ctx, display, tooltip, flagIn);
     }
 
 

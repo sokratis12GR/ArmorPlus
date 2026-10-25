@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.item.tool;
 
+import com.sofodev.armorplus.config.AvailabilityConfig;
+import net.minecraft.world.flag.FeatureFlagSet;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolType;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.IAPTool;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.Tool;
@@ -59,5 +61,10 @@ public class APPickaxeItem extends Item implements Tool {
     @Override
     public IAPTool getMat() {
         return this.mat;
+    }
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.itemEnabled(this);
     }
 }

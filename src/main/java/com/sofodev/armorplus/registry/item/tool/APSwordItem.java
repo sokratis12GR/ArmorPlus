@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.item.tool;
 
+import com.sofodev.armorplus.config.AvailabilityConfig;
+import net.minecraft.world.flag.FeatureFlagSet;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.IAPTool;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.Tool;
 import net.minecraft.network.chat.Component;
@@ -48,5 +50,10 @@ public class APSwordItem extends Item implements Tool {
 
     public IAPTool getMat() {
         return this.mat;
+    }
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.itemEnabled(this);
     }
 }

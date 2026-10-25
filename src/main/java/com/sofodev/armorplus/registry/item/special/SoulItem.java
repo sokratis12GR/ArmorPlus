@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.item.special;
 
+import com.sofodev.armorplus.config.AvailabilityConfig;
+import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.Entity;
@@ -60,5 +62,10 @@ public class SoulItem extends Item {
     @Override
     public boolean isFoil(ItemStack stack) {
         return isBoss;
+    }
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.itemEnabled(this);
     }
 }

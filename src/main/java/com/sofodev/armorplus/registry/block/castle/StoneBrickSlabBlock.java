@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.block.castle;
 
+import com.sofodev.armorplus.config.AvailabilityConfig;
+import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.FluidTags;
@@ -127,5 +129,10 @@ public class StoneBrickSlabBlock extends Block implements SimpleWaterloggedBlock
     @Override
     public boolean isPathfindable(BlockState state, PathComputationType type) {
         return Objects.requireNonNull(type) == PathComputationType.WATER && state.getFluidState().is(FluidTags.WATER);
+    }
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.blockEnabled(this);
     }
 }
