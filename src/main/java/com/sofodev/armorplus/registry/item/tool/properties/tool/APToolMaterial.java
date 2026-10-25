@@ -19,7 +19,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.util.*;
 import java.util.function.Supplier;
 
-import static com.sofodev.armorplus.ArmorPlus.SMELTING_MAP;
 import static com.sofodev.armorplus.ArmorPlus.config;
 import static com.sofodev.armorplus.registry.item.APRarity.*;
 import static com.sofodev.armorplus.registry.item.APRarity.OBSIDIAN;
@@ -33,44 +32,32 @@ public enum APToolMaterial implements IAPTool {
     COAL_MAT(COAL, COAL_PROP, () -> withBuffs(new BuffInstance(BLINDNESS, 0, 10))) {
         @Override
         public MaterialConfig config() {
-            return config.coalMaterial;
+            return ArmorPlusConfig.coalMaterial;
         }
     }, REDSTONE_MAT(REDSTONE, REDSTONE_PROP, () -> withBuffs(new BuffInstance(MINING_FATIGUE, 1, 10))) {
         @Override
         public MaterialConfig config() {
-            return config.redstoneMaterial;
+            return ArmorPlusConfig.redstoneMaterial;
         }
     }, LAPIS_MAT(LAPIS, LAPIS_PROP, () -> withBuffs(new BuffInstance(NAUSEA, 0, 10))) {
         @Override
         public MaterialConfig config() {
-            return config.lapisMaterial;
+            return ArmorPlusConfig.lapisMaterial;
         }
     }, EMERALD_MAT(EMERALD, EMERALD_PROP, () -> withBuffs(new BuffInstance(SLOWNESS, 0, 20))) {
         @Override
         public MaterialConfig config() {
-            return config.emeraldMaterial;
+            return ArmorPlusConfig.emeraldMaterial;
         }
     }, OBSIDIAN_MAT(OBSIDIAN, OBSIDIAN_PROP, () -> withBuffs(new BuffInstance(WEAKNESS, 2, 20))) {
         @Override
         public MaterialConfig config() {
-            return config.obsidianMaterial;
+            return ArmorPlusConfig.obsidianMaterial;
         }
     }, INFUSED_LAVA_MAT(INFUSED_LAVA, INFUSED_LAVA_PROP, () -> withBuffs(new BuffInstance(IGNITE))) {
         @Override
-        public void onBlockMined(ItemStack stack, Level world, BlockState state, BlockPos pos, LivingEntity player) {
-            if (player instanceof Player) {
-                SMELTING_MAP.forEach((block, item) -> {
-                    if (block == state.getBlock()) {
-                        world.destroyBlock(pos, false, player);
-                        Utils.spawnAtLocation((Player) player, new ItemStack(item), pos);
-                    }
-                });
-            }
-        }
-
-        @Override
         public MaterialConfig config() {
-            return config.infusedLavaMaterial;
+            return ArmorPlusConfig.infusedLavaMaterial;
         }
     }, GUARDIAN_MAT(GUARDIAN, GUARDIAN_PROP, () -> withBuffs(new BuffInstance(WEAKNESS, 1, 4), new BuffInstance(NAUSEA, 1, 20))) {
         @Override
@@ -80,7 +67,7 @@ public enum APToolMaterial implements IAPTool {
 
         @Override
         public AdvancedMaterialConfig config() {
-            return config.guardianMaterial;
+            return ArmorPlusConfig.guardianMaterial;
         }
     }, SUPER_STAR_MAT(SUPER_STAR, SUPER_STAR_PROP, () -> withBuffs(new BuffInstance(WITHER, 1, 4), new BuffInstance(GLOWING, 0, 20))) {
         @Override
@@ -95,7 +82,7 @@ public enum APToolMaterial implements IAPTool {
 
         @Override
         public AdvancedMaterialConfig config() {
-            return config.superStarMaterial;
+            return ArmorPlusConfig.superStarMaterial;
         }
     }, ENDER_DRAGON_MAT(ENDER_DRAGON, ENDER_DRAGON_PROP, () -> withBuffs(new BuffInstance(WITHER, 3, 4), new BuffInstance(SLOWNESS, 1, 20))) {
         @Override
@@ -107,7 +94,7 @@ public enum APToolMaterial implements IAPTool {
 
         @Override
         public AdvancedMaterialConfig config() {
-            return config.enderDragonMaterial;
+            return ArmorPlusConfig.enderDragonMaterial;
         }
     }, SLAYER_MAT(SLAYER, SLAYER_PROP, () -> withBuffs(new BuffInstance(WITHER, 3, 4), new BuffInstance(SLOWNESS, 1, 20), new BuffInstance(GLOWING, 0, 20), new BuffInstance(WEAKNESS, 1, 4), new BuffInstance(NAUSEA, 1, 20))) {
         @Override
@@ -125,7 +112,7 @@ public enum APToolMaterial implements IAPTool {
 
         @Override
         public ArmorPlusConfig.IMaterialConfig config() {
-            return config.slayerMaterial;
+            return ArmorPlusConfig.slayerMaterial;
         }
     };
 

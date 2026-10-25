@@ -22,7 +22,7 @@ public class LavaCrystalItem extends APItem {
 
     private final boolean isInfused;
 
-    private int[] burnTime = new int[]{20000, 22000};
+    private final int[] burnTime = new int[]{20000, 22000};
 
     public LavaCrystalItem(boolean isInfused) {
         super(new Properties().fireResistant());

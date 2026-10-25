@@ -49,6 +49,6 @@ public interface IAPArmor {
     Supplier<List<BuffInstance>> getBuffInstances();
 
     default ArmorPlusConfig.IMaterialConfig config() {
-        return ArmorPlus.config.enhancedMaterial;
+        return ArmorPlusConfig.enhancedMaterial;
     }
 }

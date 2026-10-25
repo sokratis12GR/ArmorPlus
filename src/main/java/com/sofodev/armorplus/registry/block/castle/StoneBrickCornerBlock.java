@@ -1,7 +1,9 @@
 package com.sofodev.armorplus.registry.block.castle;
 
+import com.sofodev.armorplus.config.AvailabilityConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
@@ -22,18 +24,20 @@ import static net.minecraft.world.phys.shapes.BooleanOp.OR;
 import static net.minecraft.world.phys.shapes.Shapes.join;
 
 public class StoneBrickCornerBlock extends Block implements SimpleWaterloggedBlock {
-
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-
     public static final VoxelShape NW_C = join(box(0, 8, 0, 8, 16, 8), box(0, 0, 0, 16, 8, 16), OR);
     public static final VoxelShape NE_C = join(box(8, 8, 0, 16, 16, 8), box(0, 0, 0, 16, 8, 16), OR);
     public static final VoxelShape SW_C = join(box(0, 8, 8, 8, 16, 16), box(0, 0, 0, 16, 8, 16), OR);
     public static final VoxelShape SE_C = join(box(8, 8, 8, 16, 16, 16), box(0, 0, 0, 16, 8, 16), OR);
-
     public StoneBrickCornerBlock(Block block) {
         super(ofFullCopy(block).requiresCorrectToolForDrops());
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false));
+    }
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.blockEnabled(this);
     }
 
     @Override

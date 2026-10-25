@@ -28,6 +28,24 @@ public enum Element {
         this.weakerAgainst = weakerAgainst;
     }
 
+    /**
+     * This acts as the type effectiveness controller
+     * - Table with visual values of this method: https://docs.google.com/spreadsheets/d/1a__dl4u62pJ8CBIh10gy_58_1yk9_WxIv5v5JPkInGc/edit?usp=sharing
+     *
+     * @param attacking The attacking element (affinity)
+     * @param defending The defending element (affinity)
+     * @return an effectiveness value based on if the attacking element is stronger, weaker, neutral or immune to the defending element.
+     */
+    public static double getEffectiveness(Element attacking, Element defending) {
+        if (attacking.getStrongerAgainst().equals(defending.getName())) {
+            return 1.4;
+        } else if (attacking.getWeakerAgainst().equals(defending.getName())) {
+            return 0.6;
+        } else if (attacking.equals(defending))
+            return 0;
+        return 1;
+    }
+
     public String getName() {
         return name().toLowerCase(Locale.ENGLISH);
     }
@@ -46,24 +64,6 @@ public enum Element {
         } else if (this.getWeakerAgainst().equals(defending.getName())) {
             return 0.6;
         } else if (this.equals(defending))
-            return 0;
-        return 1;
-    }
-
-    /**
-     * This acts as the type effectiveness controller
-     * - Table with visual values of this method: https://docs.google.com/spreadsheets/d/1a__dl4u62pJ8CBIh10gy_58_1yk9_WxIv5v5JPkInGc/edit?usp=sharing
-     *
-     * @param attacking The attacking element (affinity)
-     * @param defending The defending element (affinity)
-     * @return an effectiveness value based on if the attacking element is stronger, weaker, neutral or immune to the defending element.
-     */
-    public static double getEffectiveness(Element attacking, Element defending) {
-        if (attacking.getStrongerAgainst().equals(defending.getName())) {
-            return 1.4;
-        } else if (attacking.getWeakerAgainst().equals(defending.getName())) {
-            return 0.6;
-        } else if (attacking.equals(defending))
             return 0;
         return 1;
     }

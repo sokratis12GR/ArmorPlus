@@ -12,8 +12,9 @@ import static java.util.Arrays.asList;
 
 public class ArmorPlusConfig {
 
-    private static final ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
-
+    //Advancements
+    public static BooleanValue enableThankYouAdvancement;
+    public static ConfigValue<List<? extends String>> enchantsThatWontWorkWithSoulHarden;
     public static MaterialConfig coalMaterial;
     public static MaterialConfig lapisMaterial;
     public static MaterialConfig redstoneMaterial;
@@ -29,30 +30,6 @@ public class ArmorPlusConfig {
     public static AdvancedMaterialConfig enderDragonMaterial;
     public static AdvancedMaterialConfig slayerMaterial;
     public static MaterialConfig enhancedMaterial;
-    //Advancements
-    public static final BooleanValue enableThankYouAdvancement = (builder.comment("Configure advancements")
-            .push("advancements").comment("Enable/Disable the Thank You 6M advancement")
-            .define("enableThankYou6M", true));
-    public static final ConfigValue<List<? extends String>> autoSmeltingInput = (builder.comment("Infused Lava Tools: Smelting Recipe Input (Blocks)")
-            .defineList("smeltingInput", asList("minecraft:iron_ore", "minecraft:gold_ore",
-                            "minecraft:sand", "minecraft:sandstone", "minecraft:wet_sponge", "minecraft:clay", "minecraft:stone_bricks", "minecraft:cobblestone", "minecraft:stone",
-                            "minecraft:acacia_log", "minecraft:birch_log", "minecraft:dark_oak_log", "minecraft:jungle_log", "minecraft:oak_log", "minecraft:spruce_log",
-                            "minecraft:netherrack", "minecraft:ancient_debris", "minecraft:stone_bricks", "armorplus:ore_lava_crystal", "armorplus:ore_frost_crystal"),
-                    s -> ResourceLocation.tryParse((String) s) != null));
-    ;
-    public static final ConfigValue<List<? extends String>> autoSmeltingOutput = (builder.comment("Infused Lava Tools: Smelting Recipe Output (Items)")
-            .defineList("smeltingOutput", asList("minecraft:iron_ingot", "minecraft:gold_ingot", "minecraft:glass", "minecraft:smooth_sandstone", "minecraft:sponge",
-                            "minecraft:terracotta", "minecraft:cracked_stone_bricks", "minecraft:stone", "minecraft:stone",
-                            "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal",
-                            "minecraft:nether_brick", "minecraft:netherite_scrap", "minecraft:cracked_stone_bricks", "armorplus:infused_lava_crystal", "armorplus:infused_frost_crystal"),
-                    s -> ResourceLocation.tryParse((String) s) != null));
-    public static final ConfigValue<List<? extends String>> enchantsThatWontWorkWithSoulHarden = (builder.comment("Enchantment Configuration")
-            .push("enchantments")
-            .comment("is a list of registry names that will not work with the enchantment \"Soul Harden\"")
-            .defineList("disallowWithSoulHardenList",
-                    asList("minecraft:mending", "minecraft:unbreaking", "minecraft:vanishing_curse"),
-                    s -> ResourceLocation.tryParse((String) s) != null)
-    );
     public static BossDropConfig witherBossDrops;
     public static BossDropConfig enderDragonDrops;
     public static BossDropConfig elderGuardianDrops;
@@ -62,8 +39,48 @@ public class ArmorPlusConfig {
     public static DropConfig blazeDrops;
 
 
+    // COMMON config: availability must be known on both logical sides when feature sets are queried.
+    // IDs are resource locations, e.g. armorplus:coal_sword or armorplus:ore_lava_crystal.
+    public static BooleanValue enableAutoSmelting;
+    public static ConfigValue<List<? extends String>> autoSmeltingInput;
+    public static ConfigValue<List<? extends String>> autoSmeltingOutput;
+    public static ConfigValue<List<? extends String>> hiddenItems;
+    public static ConfigValue<List<? extends String>> hiddenBlocks;
+
     public static ArmorPlusConfig create(ForgeConfigSpec.Builder builder) {
+        builder.comment("Infused Lava tool auto-smelting").push("autoSmelting");
+        enableAutoSmelting = builder.comment("Enable automatic smelting of configured mined blocks").define("enabled", true);
+        autoSmeltingInput = (builder.comment("Infused Lava Tools: Smelting Recipe Input (Blocks)")
+            .defineList("smeltingInput", asList("minecraft:iron_ore", "minecraft:gold_ore",
+                            "minecraft:sand", "minecraft:sandstone", "minecraft:wet_sponge", "minecraft:clay", "minecraft:stone_bricks", "minecraft:cobblestone", "minecraft:stone",
+                            "minecraft:acacia_log", "minecraft:birch_log", "minecraft:dark_oak_log", "minecraft:jungle_log", "minecraft:oak_log", "minecraft:spruce_log",
+                            "minecraft:netherrack", "minecraft:ancient_debris", "minecraft:stone_bricks", "armorplus:ore_lava_crystal", "armorplus:ore_frost_crystal"),
+                    s -> ResourceLocation.tryParse((String) s) != null));
+        autoSmeltingOutput = (builder.comment("Infused Lava Tools: Smelting Recipe Output (Items)")
+            .defineList("smeltingOutput", asList("minecraft:iron_ingot", "minecraft:gold_ingot", "minecraft:glass", "minecraft:smooth_sandstone", "minecraft:sponge",
+                            "minecraft:terracotta", "minecraft:cracked_stone_bricks", "minecraft:stone", "minecraft:stone",
+                            "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal",
+                            "minecraft:nether_brick", "minecraft:netherite_scrap", "minecraft:cracked_stone_bricks", "armorplus:infused_lava_crystal", "armorplus:infused_frost_crystal"),
+                    s -> ResourceLocation.tryParse((String) s) != null));
+        builder.pop();
+        builder.comment("Feature-flag-independent availability (requires restart)").push("availability");
+        hiddenItems = builder.comment("Item IDs disabled in commands, recipes' feature checks and creative visibility. Block items follow hiddenBlocks too.")
+                .defineList("hiddenItems", List.of(), v -> v instanceof String id && ResourceLocation.tryParse(id) != null);
+        hiddenBlocks = builder.comment("Block IDs disabled in /setblock and item visibility where applicable.")
+                .defineList("hiddenBlocks", List.of(), v -> v instanceof String id && ResourceLocation.tryParse(id) != null);
+        builder.pop();
+        enchantsThatWontWorkWithSoulHarden = (builder.comment("Enchantment Configuration")
+            .push("enchantments")
+            .comment("is a list of registry names that will not work with the enchantment \"Soul Harden\"")
+            .defineList("disallowWithSoulHardenList",
+                    asList("minecraft:mending", "minecraft:unbreaking", "minecraft:vanishing_curse"),
+                    s -> ResourceLocation.tryParse((String) s) != null)
+    );
+        builder.pop();
         //Advancements
+        builder.push("advancements");
+        enableThankYouAdvancement = builder.comment("Enable/Disable the Thank You 6M advancement").define("enableThankYou6M", true);
+        builder.pop();
         builder.comment("Configure Items")
                 .push("items");
         coalMaterial = MaterialConfig.create("coal", builder);
@@ -107,7 +124,14 @@ public class ArmorPlusConfig {
         return new ArmorPlusConfig();
     }
 
-    public record MaterialConfig(ConfigValue<Boolean> enableArmorEffects, ConfigValue<Boolean> enableWeaponEffects) implements IMaterialConfig {
+    public interface IMaterialConfig {
+        ConfigValue<Boolean> enableArmorEffects();
+
+        ConfigValue<Boolean> enableWeaponEffects();
+    }
+
+    public record MaterialConfig(ConfigValue<Boolean> enableArmorEffects,
+                                 ConfigValue<Boolean> enableWeaponEffects) implements IMaterialConfig {
 
         public static MaterialConfig create(String name, ForgeConfigSpec.Builder builder) {
             builder.comment(name + " equipment Configuration")
@@ -240,12 +264,6 @@ public class ArmorPlusConfig {
 
     }
 
-    public interface IMaterialConfig {
-        ConfigValue<Boolean> enableArmorEffects();
-
-        ConfigValue<Boolean> enableWeaponEffects();
-    }
-
     public record DropConfig(ConfigValue<Boolean> enableRegularDrops, ConfigValue<Boolean> enableSoulDrops) {
 
         public static DropConfig create(String name, ForgeConfigSpec.Builder builder) {
@@ -271,7 +289,6 @@ public class ArmorPlusConfig {
                     .push(name);
             ConfigValue<Boolean> enableTrophyDrops = (builder.comment(MODNAME + "'s " + name + " trophy drops: enable/disable  (CURRENTLY DISABLED BY THE MOD)")
                     .define("enableTrophyDrops", false));
-            ;
             ConfigValue<Boolean> enableRegularDrops = (builder.comment(MODNAME + "'s " + name + " regular drops: enable/disable")
                     .define("enableBossRegularDrops", true));
             ConfigValue<Boolean> enableSoulDrops = (builder.comment(MODNAME + "'s " + name + " soul drops: enable/disable")

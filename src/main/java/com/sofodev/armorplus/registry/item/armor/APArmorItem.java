@@ -1,10 +1,12 @@
 package com.sofodev.armorplus.registry.item.armor;
 
+import com.sofodev.armorplus.config.AvailabilityConfig;
 import com.sofodev.armorplus.registry.item.extra.Buff;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 
@@ -19,6 +21,7 @@ public class APArmorItem extends ArmorItem {
 
     private final IAPArmor mat;
 
+
     public APArmorItem(IAPArmor mat, ArmorItem.Type slot) {
         super(mat.get().get(),
                 slot,
@@ -31,6 +34,11 @@ public class APArmorItem extends ArmorItem {
         Item.Properties props = mat.getProperties().stacksTo(1);
         props.durability(mat.getDurability(slot));
         return mat.isImmuneToFire() ? props.fireResistant() : props;
+    }
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.itemEnabled(this);
     }
 
     @Override

@@ -48,10 +48,10 @@ import java.util.stream.Stream;
  * Helpers for creating configs and defining complex objects in configs
  */
 public class ConfigHelper {
+    static final Logger LOGGER = LogManager.getLogger();
+
     private ConfigHelper() {
     } // utility class
-
-    static final Logger LOGGER = LogManager.getLogger();
 
     /**
      * Register a config using a default config filename for your mod.
@@ -133,7 +133,7 @@ public class ConfigHelper {
         final Codec<T> codec;
         private @Nonnull Object cachedObject;
         private @Nonnull T parsedObject;
-        private @Nonnull T defaultObject;
+        private final @Nonnull T defaultObject;
 
         private ConfigObject(ConfigValue<Object> value, Codec<T> codec, T defaultObject, Object encodedDefaultObject) {
             this.value = value;
@@ -316,10 +316,9 @@ public class ConfigHelper {
 
         @Override
         public DataResult<Stream<Pair<Object, Object>>> getMapValues(Object input) {
-            if (!(input instanceof Config)) {
+            if (!(input instanceof Config config)) {
                 return DataResult.error(() -> "Not a Config: " + input);
             }
-            final Config config = (Config) input;
             return DataResult.success(config.entrySet().stream().map(entry -> Pair.of(entry.getKey(), entry.getValue())));
         }
 

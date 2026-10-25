@@ -44,7 +44,7 @@ public class ModBlocks {
     public static final RegistryObject<Block>[] CASTLE_BLOCK_WALLS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
     public static final RegistryObject<Block>[] CASTLE_BLOCK_STAIRS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
     public static final RegistryObject<Block>[] CASTLE_BLOCK_SLABS = new RegistryObject[AP_STONE_BRICKS_LENGTH];
-    public static final RegistryObject<Block> COMPRESSED_OBSIDIAN = registerBlockWithItem("compressed_obsidian", () -> new Block(ofFullCopy(Blocks.OBSIDIAN)));
+    public static final RegistryObject<Block> COMPRESSED_OBSIDIAN = registerBlockWithItem("compressed_obsidian", () -> new APBlock(ofFullCopy(Blocks.OBSIDIAN)));
     public static final RegistryObject<Block> ORE_LAVA_CRYSTAL = registerBlockWithItem("ore_lava_crystal", () -> new CrystalOreBlock(ORIGINAL));
     public static final RegistryObject<Block> ORE_LAVA_CRYSTAL_STONE = registerBlockWithItem("ore_lava_crystal_stone", () -> new CrystalOreBlock(STONE));
     public static final RegistryObject<Block> ORE_LAVA_CRYSTAL_OBSIDIAN = registerBlockWithItem("ore_lava_crystal_obsidian", () -> new CrystalOreBlock(OBSIDIAN));

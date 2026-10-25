@@ -33,10 +33,10 @@ import static net.minecraft.world.phys.Vec3.atBottomCenterOf;
 public class ModGlobalEvents {
 
     public static final Random RAND = new Random();
-    public static int waterTicks = 0;
-    public static int thunderingTicks = 0;
     private static final String ARMORPLUS_FLIGHT_TAG = "ArmorPlusFlight";
     private static final String ARMORPLUS_PREV_MAYFLY = "ArmorPlusPrevMayfly";
+    public static int waterTicks = 0;
+    public static int thunderingTicks = 0;
 
     private static boolean isFullArmorWithBuff(Player player, IBuff buff) {
         for (ItemStack stack : player.getArmorSlots()) {

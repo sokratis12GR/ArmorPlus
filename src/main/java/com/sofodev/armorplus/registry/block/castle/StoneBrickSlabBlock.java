@@ -1,9 +1,11 @@
 package com.sofodev.armorplus.registry.block.castle;
 
+import com.sofodev.armorplus.config.AvailabilityConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -34,10 +36,14 @@ public class StoneBrickSlabBlock extends Block implements SimpleWaterloggedBlock
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     protected static final VoxelShape BOTTOM_SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D);
     protected static final VoxelShape TOP_SHAPE = Block.box(0.0D, 8.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-
     public StoneBrickSlabBlock(Block block) {
         super(ofFullCopy(block).requiresCorrectToolForDrops());
         this.registerDefaultState(this.defaultBlockState().setValue(TYPE, SlabType.BOTTOM).setValue(WATERLOGGED, Boolean.valueOf(false)));
+    }
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.blockEnabled(this);
     }
 
     @Override

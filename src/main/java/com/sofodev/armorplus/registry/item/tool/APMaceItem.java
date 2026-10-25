@@ -1,5 +1,6 @@
 package com.sofodev.armorplus.registry.item.tool;
 
+import com.sofodev.armorplus.config.AvailabilityConfig;
 import com.sofodev.armorplus.registry.item.tool.properties.mace.APMaceMaterial;
 import com.sofodev.armorplus.registry.item.tool.properties.mace.IAPMace;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial;
@@ -15,6 +16,7 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -45,17 +47,20 @@ public class APMaceItem extends SwordItem implements GeoItem {
     private static final RawAnimation SWING_ATTACK = RawAnimation.begin().thenPlay("animation.mace.swing_attack");
     private static final RawAnimation CHARGE = RawAnimation.begin().thenPlay("animation.mace.charge");
     private static final RawAnimation HOLD_CHARGE = RawAnimation.begin().thenPlay("animation.mace.hold_charge");
-
     public final IAPMace mat;
     public final String controllerName = "maceController";
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     Random random = new Random();
-
     public APMaceItem(IAPMace mat, Item.Properties props) {
         super(mat.get(), props.attributes(SwordItem.createAttributes(mat.get(), (int) (mat.get().getAttackDamageBonus() + mat.getType().getDmg()), mat.getType().getAttackSpeed())));
         this.mat = mat;
 
         SingletonGeoAnimatable.registerSyncedAnimatable(this);
+    }
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.itemEnabled(this);
     }
 
     @Override
@@ -206,11 +211,7 @@ public class APMaceItem extends SwordItem implements GeoItem {
         Direction direction = player.getDirection();
         BlockPos origin = player.blockPosition();
 
-        if (direction == Direction.NORTH || direction == Direction.SOUTH) {
-            executeDestruction(player, mat, level, stack, origin, direction, true);
-        } else {
-            executeDestruction(player, mat, level, stack, origin, direction, false);
-        }
+        executeDestruction(player, mat, level, stack, origin, direction, direction == Direction.NORTH || direction == Direction.SOUTH);
     }
 
 //    @Override

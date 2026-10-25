@@ -1,9 +1,11 @@
 package com.sofodev.armorplus.registry.item.special;
 
+import com.sofodev.armorplus.config.AvailabilityConfig;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
@@ -17,10 +19,8 @@ import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
 import static net.minecraft.ChatFormatting.DARK_PURPLE;
 
 public class SoulItem extends Item {
-
     private final boolean isBoss;
     private final String entity;
-
     public SoulItem(String entity) {
         super(new Properties().rarity(Rarity.EPIC).fireResistant().stacksTo(16));
         this.entity = entity;
@@ -31,6 +31,11 @@ public class SoulItem extends Item {
         super(new Properties().rarity(Rarity.RARE).fireResistant().stacksTo(32));
         this.entity = entity;
         this.isBoss = isBoss;
+    }
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.itemEnabled(this);
     }
 
     @Override

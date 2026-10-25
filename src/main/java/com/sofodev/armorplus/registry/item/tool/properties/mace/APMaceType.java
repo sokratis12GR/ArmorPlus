@@ -16,6 +16,10 @@ public enum APMaceType {
         this.chargeSpeed = chargeSpeed;
     }
 
+    public static float getMaceSweepingRatio(APMaceType mat) {
+        return mat == APMaceType.LIGHT ? 1 : mat == APMaceType.NORMAL ? 3 : mat == APMaceType.HEAVY ? 5 : 1;
+    }
+
     public float getDmg() {
         return dmg;
     }
@@ -26,10 +30,6 @@ public enum APMaceType {
 
     public float getChargeSpeed() {
         return chargeSpeed;
-    }
-
-    public static float getMaceSweepingRatio(APMaceType mat) {
-        return mat == APMaceType.LIGHT ? 1 : mat == APMaceType.NORMAL ? 3 : mat == APMaceType.HEAVY ? 5 : 1;
     }
 
     @Override

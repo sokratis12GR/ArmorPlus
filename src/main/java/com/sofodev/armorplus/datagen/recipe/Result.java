@@ -47,36 +47,6 @@ public class Result {
         return new Result(object).setGroup(group).setPath(path);
     }
 
-    public Result setPath(String path) {
-        this.path = path;
-        return this;
-    }
-
-    public Result setGroup(String group) {
-        this.group = group;
-        return this;
-    }
-
-    public Result setObject(ItemLike object) {
-        this.object = object;
-        return this;
-    }
-
-    public Result setCount(int count) {
-        this.count = count;
-        return this;
-    }
-
-    public Result setPrefix(String prefix) {
-        this.prefix = prefix;
-        return this;
-    }
-
-    public Result setSuffix(String suffix) {
-        this.suffix = suffix;
-        return this;
-    }
-
     public Optional<String> getPath() {
         if (path == null || path.equals("/")) return Optional.empty();
         if (path.contains("/")) {
@@ -86,23 +56,53 @@ public class Result {
         return Optional.of(path + "/");
     }
 
+    public Result setPath(String path) {
+        this.path = path;
+        return this;
+    }
+
     public Optional<String> getGroup() {
         return Optional.ofNullable(group);
+    }
+
+    public Result setGroup(String group) {
+        this.group = group;
+        return this;
     }
 
     public int getCount() {
         return count;
     }
 
+    public Result setCount(int count) {
+        this.count = count;
+        return this;
+    }
+
     public ItemLike getObject() {
         return object;
+    }
+
+    public Result setObject(ItemLike object) {
+        this.object = object;
+        return this;
     }
 
     public String getPrefix() {
         return prefix;
     }
 
+    public Result setPrefix(String prefix) {
+        this.prefix = prefix;
+        return this;
+    }
+
     public String getSuffix() {
         return suffix;
+    }
+
+    public Result setSuffix(String suffix) {
+        this.suffix = suffix;
+        return this;
     }
 }

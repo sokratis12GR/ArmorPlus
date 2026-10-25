@@ -3,11 +3,13 @@ package com.sofodev.armorplus.datagen;
 import com.sofodev.armorplus.registry.ModBlocks;
 import com.sofodev.armorplus.registry.ModItems;
 import com.sofodev.armorplus.registry.item.armor.APArmorItem;
+import com.sofodev.armorplus.registry.item.tool.APMaceItem;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.armortrim.TrimMaterial;
@@ -26,7 +28,7 @@ import static com.sofodev.armorplus.ArmorPlus.MODID;
 
 public class ModItemModelProvider extends ItemModelProvider {
 
-    private static LinkedHashMap<ResourceKey<TrimMaterial>, Float> trimMaterials = new LinkedHashMap<>();
+    private static final LinkedHashMap<ResourceKey<TrimMaterial>, Float> trimMaterials = new LinkedHashMap<>();
 
     static {
         trimMaterials.put(TrimMaterials.QUARTZ, 0.1F);
@@ -67,10 +69,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         for (var item : ModItems.ITEMS.getEntries()) {
             Item actual = item.get();
             String name = item.getId().getPath();
-            if (actual instanceof net.minecraft.world.item.BlockItem) continue;
+            if (actual instanceof BlockItem) continue;
             if (actual instanceof APArmorItem) {
                 continue;
-            } else if (actual instanceof com.sofodev.armorplus.registry.item.tool.APMaceItem) {
+            } else if (actual instanceof APMaceItem) {
                 generateGeckoLibMace(name);
                 continue;
             } else if (name.endsWith("_bow")) {

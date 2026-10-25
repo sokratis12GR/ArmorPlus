@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.registry.item.tool.properties.tool;
 
 import com.sofodev.armorplus.ArmorPlus;
+import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.config.ArmorPlusConfig.IMaterialConfig;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import net.minecraft.ChatFormatting;
@@ -61,6 +62,6 @@ public interface IAPTool {
     }
 
     default IMaterialConfig config() {
-        return ArmorPlus.config.enhancedMaterial;
+        return ArmorPlusConfig.enhancedMaterial;
     }
 }

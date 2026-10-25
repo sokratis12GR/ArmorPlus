@@ -1,12 +1,16 @@
 package com.sofodev.armorplus.registry.item.tool;
 
-import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolType;
+import com.sofodev.armorplus.config.AvailabilityConfig;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.IAPTool;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.Tool;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.*;
+import net.minecraft.world.flag.FeatureFlagSet;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -16,8 +20,8 @@ import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolTyp
 import static com.sofodev.armorplus.utils.ToolTipUtils.*;
 
 public class APPickaxeItem extends PickaxeItem implements Tool {
-
     private final IAPTool mat;
+
 
     public APPickaxeItem(IAPTool mat) {
         super(mat.get(), new Item.Properties().attributes(PickaxeItem.createAttributes(mat.get(),
@@ -26,9 +30,15 @@ public class APPickaxeItem extends PickaxeItem implements Tool {
     }
 
     @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.itemEnabled(this);
+    }
+
+    @Override
     public Component getName(ItemStack stack) {
         return super.getName(stack).copy().withStyle(mat.getColor());
     }
+
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> tooltip, TooltipFlag flagIn) {
         if (isSneakDown()) {

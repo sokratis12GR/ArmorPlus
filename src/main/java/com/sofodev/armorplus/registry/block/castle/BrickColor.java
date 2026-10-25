@@ -1,4 +1,3 @@
-
 package com.sofodev.armorplus.registry.block.castle;
 
 import net.minecraft.world.level.material.MapColor;

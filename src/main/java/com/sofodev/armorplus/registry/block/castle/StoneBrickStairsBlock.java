@@ -1,10 +1,12 @@
 package com.sofodev.armorplus.registry.block.castle;
 
+import com.sofodev.armorplus.config.AvailabilityConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Explosion;
@@ -50,7 +52,6 @@ public class StoneBrickStairsBlock extends Block implements SimpleWaterloggedBlo
     private final BlockState modelState;
     // Forge Start
     private final Supplier<BlockState> stateSupplier;
-
     public StoneBrickStairsBlock(Supplier<BlockState> state, Block block) {
         super(ofFullCopy(block).requiresCorrectToolForDrops());
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(HALF, Half.BOTTOM).setValue(SHAPE, StairsShape.STRAIGHT).setValue(WATERLOGGED, Boolean.FALSE));
@@ -126,6 +127,11 @@ public class StoneBrickStairsBlock extends Block implements SimpleWaterloggedBlo
 
     public static boolean isBlockStairs(BlockState state) {
         return state.getBlock() instanceof StoneBrickStairsBlock;
+    }
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.blockEnabled(this);
     }
 
     @Override

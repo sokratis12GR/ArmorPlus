@@ -124,36 +124,81 @@ public class Input {
         return a;
     }
 
+    public Input setA(char a) {
+        this.a = a;
+        return this;
+    }
+
     public char getB() {
         return b;
+    }
+
+    public Input setB(char b) {
+        this.b = b;
+        return this;
     }
 
     public char getC() {
         return c;
     }
 
+    public Input setC(char c) {
+        this.c = c;
+        return this;
+    }
+
     public char getD() {
         return d;
+    }
+
+    public Input setD(char d) {
+        this.d = d;
+        return this;
     }
 
     public char getE() {
         return e;
     }
 
+    public Input setE(char e) {
+        this.e = e;
+        return this;
+    }
+
     public char getF() {
         return f;
+    }
+
+    public Input setF(char f) {
+        this.f = f;
+        return this;
     }
 
     public char getG() {
         return g;
     }
 
+    public Input setG(char g) {
+        this.g = g;
+        return this;
+    }
+
     public char getH() {
         return h;
     }
 
+    public Input setH(char h) {
+        this.h = h;
+        return this;
+    }
+
     public char getI() {
         return i;
+    }
+
+    public Input setI(char i) {
+        this.i = i;
+        return this;
     }
 
     public List<Character> getCharList() {
@@ -162,51 +207,6 @@ public class Input {
 
     public Input setParamCount(int paramCount) {
         this.paramCount = paramCount;
-        return this;
-    }
-
-    public Input setA(char a) {
-        this.a = a;
-        return this;
-    }
-
-    public Input setB(char b) {
-        this.b = b;
-        return this;
-    }
-
-    public Input setC(char c) {
-        this.c = c;
-        return this;
-    }
-
-    public Input setD(char d) {
-        this.d = d;
-        return this;
-    }
-
-    public Input setE(char e) {
-        this.e = e;
-        return this;
-    }
-
-    public Input setF(char f) {
-        this.f = f;
-        return this;
-    }
-
-    public Input setG(char g) {
-        this.g = g;
-        return this;
-    }
-
-    public Input setH(char h) {
-        this.h = h;
-        return this;
-    }
-
-    public Input setI(char i) {
-        this.i = i;
         return this;
     }
 }

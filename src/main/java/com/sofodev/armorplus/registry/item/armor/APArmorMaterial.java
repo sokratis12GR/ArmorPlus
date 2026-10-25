@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.registry.item.armor;
 
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
@@ -13,7 +14,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.function.Supplier;
 
-import static com.sofodev.armorplus.ArmorPlus.config;
 import static com.sofodev.armorplus.config.ArmorPlusConfig.*;
 import static com.sofodev.armorplus.registry.ModArmorMaterials.getHolder;
 import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.*;
@@ -25,34 +25,27 @@ public enum APArmorMaterial implements IAPArmor {
     COAL(COAL_PROP, GRAY, () -> withBuffs(new BuffInstance(NIGHT_VISION, 0))) {
         @Override
         public MaterialConfig config() {
-            return config.coalMaterial;
+            return coalMaterial;
         }
-    },
-    REDSTONE(REDSTONE_PROP, DARK_RED, () -> withBuffs(new BuffInstance(HASTE, 1))) {
+    }, REDSTONE(REDSTONE_PROP, DARK_RED, () -> withBuffs(new BuffInstance(HASTE, 1))) {
         @Override
         public MaterialConfig config() {
-            return config.redstoneMaterial;
+            return redstoneMaterial;
         }
-    },
-    LAPIS(LAPIS_PROP, DARK_BLUE, () -> withBuffs(new BuffInstance(WATER_BREATHING, 0))) {
+    }, LAPIS(LAPIS_PROP, DARK_BLUE, () -> withBuffs(new BuffInstance(WATER_BREATHING, 0))) {
         @Override
         public MaterialConfig config() {
-            return config.lapisMaterial;
+            return lapisMaterial;
         }
-    },
-    CHICKEN(CHICKEN_PROP, WHITE, () -> withBuffs(new BuffInstance(SPEED, 3))) {
+    }, CHICKEN(CHICKEN_PROP, WHITE, () -> withBuffs(new BuffInstance(SPEED, 3))) {
         @Override
         public MaterialConfig config() {
-            return config.chickenMaterial;
+            return chickenMaterial;
         }
-    },
-    SLIME(SLIME_PROP, GREEN, () -> withBuffs(
-            new BuffInstance(JUMP_BOOST, 3),
-            new BuffInstance(SLOW_FALLING, 1)
-    )) {
+    }, SLIME(SLIME_PROP, GREEN, () -> withBuffs(new BuffInstance(JUMP_BOOST, 3), new BuffInstance(SLOW_FALLING, 1))) {
         @Override
         public MaterialConfig config() {
-            return config.slimeMaterial;
+            return slimeMaterial;
         }
     },
 
@@ -60,95 +53,78 @@ public enum APArmorMaterial implements IAPArmor {
     EMERALD(EMERALD_PROP, DARK_GREEN, () -> withBuffs(new BuffInstance(SPEED, 1))) {
         @Override
         public MaterialConfig config() {
-            return config.emeraldMaterial;
+            return emeraldMaterial;
         }
-    },
-    OBSIDIAN(OBSIDIAN_PROP, true, DARK_GRAY, () -> withBuffs(new BuffInstance(RESISTANCE, 1))) {
+    }, OBSIDIAN(OBSIDIAN_PROP, true, DARK_GRAY, () -> withBuffs(new BuffInstance(RESISTANCE, 1))) {
         @Override
         public MaterialConfig config() {
-            return config.obsidianMaterial;
+            return obsidianMaterial;
         }
-    },
-    INFUSED_LAVA(INFUSED_LAVA_PROP, true, GOLD, () -> withBuffs(
-            new BuffInstance(FIRE_RESISTANCE, 0),
-            new BuffInstance(FIRE_EXTINGUISH)
-    )) {
+    }, INFUSED_LAVA(INFUSED_LAVA_PROP, true, GOLD, () -> withBuffs(new BuffInstance(FIRE_RESISTANCE, 0), new BuffInstance(FIRE_EXTINGUISH))) {
         @Override
         public MaterialConfig config() {
-            return config.infusedLavaMaterial;
+            return infusedLavaMaterial;
         }
     },
 
     /*Tier 3*/
-    GUARDIAN(GUARDIAN_PROP, true, BLUE, fromConfig(() -> config.guardianMaterial)) {
+    GUARDIAN(GUARDIAN_PROP, true, BLUE, fromConfig(() -> guardianMaterial)) {
         @Override
         public AdvancedMaterialConfig config() {
-            return config.guardianMaterial;
+            return guardianMaterial;
         }
-    },
-    SUPER_STAR(SUPER_STAR_PROP, true, WHITE, fromConfig(() -> config.superStarMaterial)) {
+    }, SUPER_STAR(SUPER_STAR_PROP, true, WHITE, fromConfig(() -> superStarMaterial)) {
         @Override
         public AdvancedMaterialConfig config() {
-            return config.superStarMaterial;
+            return superStarMaterial;
         }
-    },
-    ENDER_DRAGON(ENDER_DRAGON_PROP, true, DARK_PURPLE, fromConfig(() -> config.enderDragonMaterial)) {
+    }, ENDER_DRAGON(ENDER_DRAGON_PROP, true, DARK_PURPLE, fromConfig(() -> enderDragonMaterial)) {
         @Override
         public AdvancedMaterialConfig config() {
-            return config.enderDragonMaterial;
+            return enderDragonMaterial;
         }
     },
 
     /*Tier TConstruct*/
-    ARDITE(ARDITE_PROP, RED),
-    COBALT(COBALT_PROP, BLUE),
-    KNIGHT_SLIME(KNIGHT_SLIME_PROP, LIGHT_PURPLE),
-    PIG_IRON(PIG_IRON_PROP, LIGHT_PURPLE),
-    MANYULLYN(MANYULLYN_PROP, DARK_PURPLE),
+    ARDITE(ARDITE_PROP, RED), COBALT(COBALT_PROP, BLUE), KNIGHT_SLIME(KNIGHT_SLIME_PROP, LIGHT_PURPLE), PIG_IRON(PIG_IRON_PROP, LIGHT_PURPLE), MANYULLYN(MANYULLYN_PROP, DARK_PURPLE),
 
     /*Tier Slayer*/
-    SLAYER(SLAYER_PROP, true, DARK_PURPLE, fromConfig(() -> config.slayerMaterial)) {
+    SLAYER(SLAYER_PROP, true, DARK_PURPLE, fromConfig(() -> slayerMaterial)) {
         @Override
         public AdvancedMaterialConfig config() {
-            return config.slayerMaterial;
+            return slayerMaterial;
         }
     },
 
     /*Enhanced Vanilla Armor*/
-    CHAINMAIL(ENHANCED_CHAINMAIL_PROP, GRAY),
-    GOLDEN(ENHANCED_GOLD_PROP, GRAY),
-    IRON(ENHANCED_IRON_PROP, GRAY),
-    DIAMOND(ENHANCED_DIAMOND_PROP, GRAY),
-    NETHERITE(ENHANCED_NETHERITE_PROP, true, GRAY, Collections::emptyList),
-    FROST(FROST_PROP, false, BLUE, () -> withBuffs(new BuffInstance(FIRE_WEAKNESS))) {
+    CHAINMAIL(ENHANCED_CHAINMAIL_PROP, GRAY), GOLDEN(ENHANCED_GOLD_PROP, GRAY), IRON(ENHANCED_IRON_PROP, GRAY), DIAMOND(ENHANCED_DIAMOND_PROP, GRAY), NETHERITE(ENHANCED_NETHERITE_PROP, true, GRAY, Collections::emptyList), FROST(FROST_PROP, false, BLUE, () -> withBuffs(new BuffInstance(FIRE_WEAKNESS))) {
         @Override
         public MaterialConfig config() {
-            return config.frostMaterial;
+            return frostMaterial;
         }
-    },
-    FROST_LAVA(FROST_LAVA_PROP, true, YELLOW, () -> withBuffs(new BuffInstance(NATURAL_IMMUNITY))) {
+    }, FROST_LAVA(FROST_LAVA_PROP, true, YELLOW, () -> withBuffs(new BuffInstance(NATURAL_IMMUNITY))) {
         @Override
         public MaterialConfig config() {
-            return config.frostLavaMaterial;
+            return frostLavaMaterial;
         }
     };
 
     private final Supplier<Holder<ArmorMaterial>> armor;
     private final boolean isImmuneToFire;
     private final Supplier<List<BuffInstance>> buffs;
-    private final net.minecraft.ChatFormatting formatting;
+    private final ChatFormatting formatting;
     private final int durability;
 
 
-    APArmorMaterial(APArmorProperties armor, net.minecraft.ChatFormatting formatting) {
+    APArmorMaterial(APArmorProperties armor, ChatFormatting formatting) {
         this(armor, false, formatting, Collections::emptyList);
     }
 
-    APArmorMaterial(APArmorProperties armor, net.minecraft.ChatFormatting formatting, Supplier<List<BuffInstance>> buffs) {
+    APArmorMaterial(APArmorProperties armor, ChatFormatting formatting, Supplier<List<BuffInstance>> buffs) {
         this(armor, false, formatting, buffs);
     }
 
-    APArmorMaterial(APArmorProperties armor, boolean isImmuneToFire, net.minecraft.ChatFormatting formatting, Supplier<List<BuffInstance>> buffs) {
+    APArmorMaterial(APArmorProperties armor, boolean isImmuneToFire, ChatFormatting formatting, Supplier<List<BuffInstance>> buffs) {
         this.durability = armor.getDurability();
         this.armor = getHolder(armor);
         this.isImmuneToFire = isImmuneToFire;
@@ -156,43 +132,24 @@ public enum APArmorMaterial implements IAPArmor {
         this.formatting = formatting;
     }
 
-    /**
-     * durability for each piece
-     */
-    public int getDurability(ArmorItem.Type type) {
-        return MAX_DAMAGE_ARRAY[type.getSlot().getIndex()] * durability;
-    }
-
     private static Supplier<List<BuffInstance>> fromConfig(Supplier<AdvancedMaterialConfig> configSupplier) {
         return () -> {
             AdvancedMaterialConfig config = configSupplier.get();
             if (config == null) return List.of();
 
-            return Arrays.asList(
-                    new BuffInstance(config.enableNightVision().get(), NIGHT_VISION, config.amplifierNightVision().get()),
-                    new BuffInstance(config.enableWaterBreathing().get(), WATER_BREATHING, config.amplifierWaterBreathing().get()),
-                    new BuffInstance(config.enableStrength().get(), STRENGTH, config.amplifierStrength().get()),
-                    new BuffInstance(config.enableSpeed().get(), SPEED, config.amplifierSpeed().get()),
-                    new BuffInstance(config.enableHaste().get(), HASTE, config.amplifierHaste().get()),
-                    new BuffInstance(config.enableJumpBoost().get(), JUMP_BOOST, config.amplifierJumpBoost().get()),
-                    new BuffInstance(config.enableRegeneration().get(), REGENERATION, config.amplifierRegeneration().get(), 200),
-                    new BuffInstance(config.enableResistance().get(), RESISTANCE, config.amplifierResistance().get()),
-                    new BuffInstance(config.enableFireResistance().get(), FIRE_RESISTANCE, config.amplifierFireResistance().get()),
-                    new BuffInstance(config.enableSaturation().get(), SATURATION, config.amplifierSaturation().get()),
-                    new BuffInstance(config.enableInvisibility().get(), INVISIBILITY, config.amplifierInvisibility().get()),
-                    new BuffInstance(config.enableHealthBoost().get(), HEALTH_BOOST, config.amplifierHealthBoost().get(), 200),
-                    new BuffInstance(config.enableAbsorption().get(), ABSORPTION, config.amplifierAbsorption().get(), 200),
-                    new BuffInstance(config.enableSlowFalling().get(), SLOW_FALLING, config.amplifierSlowFalling().get()),
-                    new BuffInstance(config.enableFlight().get(), FLIGHT),
-                    new BuffInstance(config.enableWitherImmunity().get(), WITHER_IMMUNITY),
-                    new BuffInstance(config.enableNaturalImmunity().get(), NATURAL_IMMUNITY),
-                    new BuffInstance(config.enableFireExtinguish().get(), FIRE_EXTINGUISH)
-            );
+            return Arrays.asList(new BuffInstance(config.enableNightVision().get(), NIGHT_VISION, config.amplifierNightVision().get()), new BuffInstance(config.enableWaterBreathing().get(), WATER_BREATHING, config.amplifierWaterBreathing().get()), new BuffInstance(config.enableStrength().get(), STRENGTH, config.amplifierStrength().get()), new BuffInstance(config.enableSpeed().get(), SPEED, config.amplifierSpeed().get()), new BuffInstance(config.enableHaste().get(), HASTE, config.amplifierHaste().get()), new BuffInstance(config.enableJumpBoost().get(), JUMP_BOOST, config.amplifierJumpBoost().get()), new BuffInstance(config.enableRegeneration().get(), REGENERATION, config.amplifierRegeneration().get(), 200), new BuffInstance(config.enableResistance().get(), RESISTANCE, config.amplifierResistance().get()), new BuffInstance(config.enableFireResistance().get(), FIRE_RESISTANCE, config.amplifierFireResistance().get()), new BuffInstance(config.enableSaturation().get(), SATURATION, config.amplifierSaturation().get()), new BuffInstance(config.enableInvisibility().get(), INVISIBILITY, config.amplifierInvisibility().get()), new BuffInstance(config.enableHealthBoost().get(), HEALTH_BOOST, config.amplifierHealthBoost().get(), 200), new BuffInstance(config.enableAbsorption().get(), ABSORPTION, config.amplifierAbsorption().get(), 200), new BuffInstance(config.enableSlowFalling().get(), SLOW_FALLING, config.amplifierSlowFalling().get()), new BuffInstance(config.enableFlight().get(), FLIGHT), new BuffInstance(config.enableWitherImmunity().get(), WITHER_IMMUNITY), new BuffInstance(config.enableNaturalImmunity().get(), NATURAL_IMMUNITY), new BuffInstance(config.enableFireExtinguish().get(), FIRE_EXTINGUISH));
         };
     }
 
     private static List<BuffInstance> withBuffs(BuffInstance... buffs) {
         return Arrays.asList(buffs);
+    }
+
+    /**
+     * durability for each piece
+     */
+    public int getDurability(ArmorItem.Type type) {
+        return MAX_DAMAGE_ARRAY[type.getSlot().getIndex()] * durability;
     }
 
     @Override
@@ -216,7 +173,7 @@ public enum APArmorMaterial implements IAPArmor {
     }
 
     @Override
-    public net.minecraft.ChatFormatting getFormatting() {
+    public ChatFormatting getFormatting() {
         return this.formatting;
     }
 

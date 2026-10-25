@@ -47,7 +47,7 @@ public enum APArmorProperties {
     /**
      * Holds the 'base' maxDamage that each armorType have.
      */
-    protected static final int[] MAX_DAMAGE_ARRAY = new int[]{13, 15, 16, 11};
+    static final int[] MAX_DAMAGE_ARRAY = new int[]{13, 15, 16, 11};
     private final String name;
     private final int durability;
     private final float toughness;

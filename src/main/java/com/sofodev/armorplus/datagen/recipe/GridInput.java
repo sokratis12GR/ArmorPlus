@@ -52,15 +52,6 @@ public class GridInput {
         return new GridInput(Grid.buildFull(full), Input.build(chars));
     }
 
-    public Grid getGrid() {
-        return grid;
-    }
-
-    public Input getSimpleInput() {
-        return input;
-    }
-
-
     /**
      * Creates the following shaped <b>3x3</b> template:
      *
@@ -208,6 +199,14 @@ public class GridInput {
 
     public static String replace(String txt, char replacement) {
         return txt.replace('X', replacement);
+    }
+
+    public Grid getGrid() {
+        return grid;
+    }
+
+    public Input getSimpleInput() {
+        return input;
     }
 
 }

@@ -1,21 +1,28 @@
 package com.sofodev.armorplus.registry.item.arrow;
 
+import com.sofodev.armorplus.config.AvailabilityConfig;
 import com.sofodev.armorplus.registry.entity.arrow.ArrowType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
 
 public class APArrowItem extends ArrowItem {
-
     private final ArrowType type;
+
 
     public APArrowItem(ArrowType type) {
         super(new Item.Properties().rarity(Rarity.EPIC));
         this.type = type;
+    }
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.itemEnabled(this);
     }
 
 //

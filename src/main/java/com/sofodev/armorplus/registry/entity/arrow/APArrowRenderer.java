@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @OnlyIn(Dist.CLIENT)
 public class APArrowRenderer<T extends APArrowEntity> extends ArrowRenderer<T> {
 
-    private ResourceLocation res;
+    private final ResourceLocation res;
 
     public APArrowRenderer(EntityRendererProvider.Context ctx, String name) {
         super(ctx);

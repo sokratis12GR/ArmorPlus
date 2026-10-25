@@ -22,8 +22,8 @@ import static com.sofodev.armorplus.utils.Utils.setRL;
 import static net.minecraft.world.item.Items.*;
 
 public class SmithingRecipeMaker extends RecipeProvider {
-    private DataGenerator generator;
     private final CompletableFuture<HolderLookup.Provider> provider;
+    private final DataGenerator generator;
 
     public SmithingRecipeMaker(DataGenerator generatorIn, CompletableFuture<HolderLookup.Provider> provider) {
         super(generatorIn.getPackOutput(), provider);
