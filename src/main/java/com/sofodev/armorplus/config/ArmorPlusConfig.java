@@ -12,8 +12,6 @@ import static java.util.Arrays.asList;
 
 public class ArmorPlusConfig {
 
-    private static final ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
-
     public static MaterialConfig coalMaterial;
     public static MaterialConfig lapisMaterial;
     public static MaterialConfig redstoneMaterial;
@@ -29,39 +27,13 @@ public class ArmorPlusConfig {
     public static AdvancedMaterialConfig enderDragonMaterial;
     public static AdvancedMaterialConfig slayerMaterial;
     public static MaterialConfig enhancedMaterial;
-    public static final BooleanValue enableAutoSmelting = (builder.comment("Infused Lava tool auto-smelting")
-            .push("autoSmelting").comment("Enable automatic smelting of configured mined blocks")
-            .define("enabled", true));
-    public static final ConfigValue<List<? extends String>> autoSmeltingInput = (builder.comment("Infused Lava Tools: Smelting Recipe Input (Blocks)")
-            .defineList("smeltingInput", asList("minecraft:iron_ore", "minecraft:gold_ore",
-                            "minecraft:sand", "minecraft:sandstone", "minecraft:wet_sponge", "minecraft:clay", "minecraft:stone_bricks", "minecraft:cobblestone", "minecraft:stone",
-                            "minecraft:acacia_log", "minecraft:birch_log", "minecraft:dark_oak_log", "minecraft:jungle_log", "minecraft:oak_log", "minecraft:spruce_log",
-                            "minecraft:netherrack", "minecraft:ancient_debris", "minecraft:stone_bricks", "armorplus:ore_lava_crystal", "armorplus:ore_frost_crystal"),
-                    s -> Identifier.tryParse((String) s) != null));
-    public static final ConfigValue<List<? extends String>> autoSmeltingOutput = (builder.comment("Infused Lava Tools: Smelting Recipe Output (Items)")
-            .defineList("smeltingOutput", asList("minecraft:iron_ingot", "minecraft:gold_ingot", "minecraft:glass", "minecraft:smooth_sandstone", "minecraft:sponge",
-                            "minecraft:terracotta", "minecraft:cracked_stone_bricks", "minecraft:stone", "minecraft:stone",
-                            "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal",
-                            "minecraft:nether_brick", "minecraft:netherite_scrap", "minecraft:cracked_stone_bricks", "armorplus:infused_lava_crystal", "armorplus:infused_frost_crystal"),
-                    s -> Identifier.tryParse((String) s) != null));
-    public static final ConfigValue<List<? extends String>> hiddenItems = (builder.pop()
-            .comment("Feature-flag-independent availability (requires restart)")
-            .push("availability")
-            .comment("Item IDs disabled in commands, recipes' feature checks and creative visibility. Block items follow hiddenBlocks too.")
-            .defineList("hiddenItems", List.<String>of(), s -> Identifier.tryParse((String) s) != null));
-    public static final ConfigValue<List<? extends String>> hiddenBlocks = (builder.comment("Block IDs disabled in /setblock and item visibility where applicable.")
-            .defineList("hiddenBlocks", List.<String>of(), s -> Identifier.tryParse((String) s) != null));
-    public static final ConfigValue<List<? extends String>> enchantsThatWontWorkWithSoulHarden = (builder.pop().comment("Enchantment Configuration")
-            .push("enchantments")
-            .comment("is a list of registry names that will not work with the enchantment \"Soul Harden\"")
-            .defineList("disallowWithSoulHardenList",
-                    asList("minecraft:mending", "minecraft:unbreaking", "minecraft:vanishing_curse"),
-                    s -> Identifier.tryParse((String) s) != null)
-    );
-    //Advancements
-    public static final BooleanValue enableThankYouAdvancement = (builder.pop().comment("Configure advancements")
-            .push("advancements").comment("Enable/Disable the Thank You 6M advancement")
-            .define("enableThankYou6M", true));
+    public static BooleanValue enableAutoSmelting;
+    public static ConfigValue<List<? extends String>> autoSmeltingInput;
+    public static ConfigValue<List<? extends String>> autoSmeltingOutput;
+    public static ConfigValue<List<? extends String>> hiddenItems;
+    public static ConfigValue<List<? extends String>> hiddenBlocks;
+    public static ConfigValue<List<? extends String>> enchantsThatWontWorkWithSoulHarden;
+    public static BooleanValue enableThankYouAdvancement;
     public static BossDropConfig witherBossDrops;
     public static BossDropConfig enderDragonDrops;
     public static BossDropConfig elderGuardianDrops;
@@ -72,7 +44,41 @@ public class ArmorPlusConfig {
 
 
     public static ArmorPlusConfig create(ModConfigSpec.Builder builder) {
-//        builder.pop();
+        enableAutoSmelting = (builder.comment("Infused Lava tool auto-smelting")
+                .push("autoSmelting").comment("Enable automatic smelting of configured mined blocks")
+                .define("enabled", true));
+        autoSmeltingInput = (builder.comment("Infused Lava Tools: Smelting Recipe Input (Blocks)")
+                .defineList("smeltingInput", asList("minecraft:iron_ore", "minecraft:gold_ore",
+                                "minecraft:sand", "minecraft:sandstone", "minecraft:wet_sponge", "minecraft:clay", "minecraft:stone_bricks", "minecraft:cobblestone", "minecraft:stone",
+                                "minecraft:acacia_log", "minecraft:birch_log", "minecraft:dark_oak_log", "minecraft:jungle_log", "minecraft:oak_log", "minecraft:spruce_log",
+                                "minecraft:netherrack", "minecraft:ancient_debris", "minecraft:stone_bricks", "armorplus:ore_lava_crystal", "armorplus:ore_frost_crystal"),
+                        s -> Identifier.tryParse((String) s) != null));
+        autoSmeltingOutput = (builder.comment("Infused Lava Tools: Smelting Recipe Output (Items)")
+                .defineList("smeltingOutput", asList("minecraft:iron_ingot", "minecraft:gold_ingot", "minecraft:glass", "minecraft:smooth_sandstone", "minecraft:sponge",
+                                "minecraft:terracotta", "minecraft:cracked_stone_bricks", "minecraft:stone", "minecraft:stone",
+                                "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal",
+                                "minecraft:nether_brick", "minecraft:netherite_scrap", "minecraft:cracked_stone_bricks", "armorplus:infused_lava_crystal", "armorplus:infused_frost_crystal"),
+                        s -> Identifier.tryParse((String) s) != null));
+        hiddenItems = (builder.pop()
+                .comment("Feature-flag-independent availability (requires restart)")
+                .push("availability")
+                .comment("Item IDs disabled in commands, recipes' feature checks and creative visibility. Block items follow hiddenBlocks too.")
+                .defineList("hiddenItems", List.<String>of(), s -> Identifier.tryParse((String) s) != null));
+        hiddenBlocks = (builder.comment("Block IDs disabled in /setblock and item visibility where applicable.")
+                .defineList("hiddenBlocks", List.<String>of(), s -> Identifier.tryParse((String) s) != null));
+        enchantsThatWontWorkWithSoulHarden = (builder.pop().comment("Enchantment Configuration")
+                .push("enchantments")
+                .comment("is a list of registry names that will not work with the enchantment \"Soul Harden\"")
+                .defineList("disallowWithSoulHardenList",
+                        asList("minecraft:mending", "minecraft:unbreaking", "minecraft:vanishing_curse"),
+                        s -> Identifier.tryParse((String) s) != null)
+        );
+        //Advancements
+        enableThankYouAdvancement = (builder.pop().comment("Configure advancements")
+                .push("advancements").comment("Enable/Disable the Thank You 6M advancement")
+                .define("enableThankYou6M", true));
+        builder.pop();
+
         builder.comment("Configure Items")
                 .push("items");
         coalMaterial = MaterialConfig.create("coal", builder);
