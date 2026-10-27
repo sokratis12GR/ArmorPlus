@@ -1,3 +1,11 @@
+# 26.1.2 - 22.0.4
+
+- Added an in-game Configuration screen (accessible from the Mods list).
+- Ported the Auto-Smelting and item/block Availability (`hiddenItems`/`hiddenBlocks`) config options from the Forge version.
+- Fixed advanced material armor/weapon effect toggles (Guardian, Super Star, Ender Dragon, Slayer) incorrectly sharing a single on/off switch instead of having their own.
+- Fixed a config section nesting bug that caused config options to end up misplaced.
+- Added missing translations for all configuration entries.
+
 # 26.1.2 - 22.0.3
 
 - Fixed Lava & Frost Crystal ores not generating.
