@@ -2,6 +2,7 @@
 
 - Added an in-game Configuration screen (accessible from the Mods list).
 - Ported the Auto-Smelting and item/block Availability (`hiddenItems`/`hiddenBlocks`) config options from the Forge version.
+- Hidden Items/Hidden Blocks can now be picked from a searchable list of ArmorPlus items/blocks, grouped by category, in the Configuration screen.
 - Fixed advanced material armor/weapon effect toggles (Guardian, Super Star, Ender Dragon, Slayer) incorrectly sharing a single on/off switch instead of having their own.
 - Fixed a config section nesting bug that caused config options to end up misplaced.
 - Added missing translations for all configuration entries.

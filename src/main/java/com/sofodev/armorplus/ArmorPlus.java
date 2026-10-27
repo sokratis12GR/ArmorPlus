@@ -1,5 +1,6 @@
 package com.sofodev.armorplus;
 
+import com.sofodev.armorplus.client.config.APConfigSectionScreen;
 import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.config.ConfigHelper;
 import com.sofodev.armorplus.datagen.DataGenerators;
@@ -68,7 +69,8 @@ public class ArmorPlus {
         //Order of registration per https://gist.github.com/pupnewfster/ea38cf3744f23d6b65d67e6f279d5942
 
         if (FMLEnvironment.getDist().isClient()) {
-            container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+            container.registerExtensionPoint(IConfigScreenFactory.class,
+                    (mod, parent) -> new ConfigurationScreen(mod, parent, APConfigSectionScreen::new));
         }
 
 
