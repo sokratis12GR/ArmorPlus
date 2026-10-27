@@ -1,3 +1,10 @@
+# 26.1.2 - 22.0.5
+
+- Auto-Smelting recipes are now a single `smeltingRecipes` list of `block|result` entries (e.g. `minecraft:sand|minecraft:glass`), replacing the separate `smeltingInput`/`smeltingOutput` lists. Recipes can be added in the Configuration screen by picking the block(s) and then the result from any mod.
+- Soul Harden's disallowed enchantments can be picked from a list of enchantments (while in a world).
+- All config lists now have both an "Add from List..." picker and a manual add button, and can be emptied.
+
+
 # 26.1.2 - 22.0.4
 
 - Added an in-game Configuration screen (accessible from the Mods list).

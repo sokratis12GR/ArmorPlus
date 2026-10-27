@@ -47,17 +47,19 @@ public class APConfigSectionScreen extends ConfigurationScreen.ConfigurationSect
 
     @Override
     protected <T> @Nullable Element createList(String key, ListValueSpec spec, ModConfigSpec.ConfigValue<List<T>> list) {
-        RegistryPickerScreen.Kind kind = switch (key) {
-            case "hiddenItems" -> RegistryPickerScreen.Kind.ITEMS;
-            case "hiddenBlocks" -> RegistryPickerScreen.Kind.BLOCKS;
+        EntryPicker picker = switch (key) {
+            case "hiddenItems" -> EntryPicker.of(RegistryPickerScreen.Kind.ITEMS);
+            case "hiddenBlocks" -> EntryPicker.of(RegistryPickerScreen.Kind.BLOCKS);
+            case "disallowWithSoulHardenList" -> EntryPicker.of(RegistryPickerScreen.Kind.ENCHANTMENTS);
+            case "smeltingRecipes" -> EntryPicker.smeltingRecipe();
             default -> null;
         };
-        if (kind == null) return super.createList(key, spec, list);
+        if (picker == null) return super.createList(key, spec, list);
         return new Element(Component.translatable(SECTION, getTranslationComponent(key)), getTooltipComponent(key, null),
                 sectionButton(key, button -> minecraft.setScreen(sectionCache.computeIfAbsent(key,
                         k -> new PickerListScreen<>(Context.list(context, this), key,
                                 Component.translatable(CRUMB, getTitle(), ConfigurationScreen.CRUMB_SEPARATOR, getTranslationComponent(key)),
-                                spec, list, kind)))),
+                                spec, list, picker)))),
                 false);
     }
 }

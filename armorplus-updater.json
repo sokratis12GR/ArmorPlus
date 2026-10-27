@@ -1,12 +1,15 @@
 {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/armorplus",
-    "promos": {
-        "26.1.2-latest": "22.0.2",
-        "26.1.2-recommended": "22.0.2"
-    },
-    "26.1.2": {
-        "26.1.2-22.0.0": "- **26.1.2 NeoForge Release**\n- A couple QoL improvements\n- Updated the wiki link and commands\n- Updated Villager (Soul Exchanger) trades in this version\n  - Added a couple variations to the Master (Level 5) trade outcomes\n    - it can now generate minecraft and armorplus swords with random enchantments and soul stealer.\n- **Known Issue**: Maces do not have textures",
-        "22.0.1": "- Add geckolib support back - maces have textures and animations once again.",
-        "22.0.2": "- Remove \"Water Weakness\" from Infused Lava Armor.\n- Add 8 more color variations to the stone bricks, and castle bricks.\n- Make all castle block variations craftable, same recipe as colored stone bricks but with chiseled stone brick in center. "
-    }
+  "homepage": "https://www.curseforge.com/minecraft/mc-mods/armorplus",
+  "promos": {
+    "26.1.2-latest": "22.0.5",
+    "26.1.2-recommended": "22.0.5"
+  },
+  "26.1.2": {
+    "26.1.2-22.0.0": "- **26.1.2 NeoForge Release**\n- A couple QoL improvements\n- Updated the wiki link and commands\n- Updated Villager (Soul Exchanger) trades in this version\n  - Added a couple variations to the Master (Level 5) trade outcomes\n    - it can now generate minecraft and armorplus swords with random enchantments and soul stealer.\n- **Known Issue**: Maces do not have textures",
+    "22.0.1": "- Add geckolib support back - maces have textures and animations once again.",
+    "22.0.2": "- Remove \"Water Weakness\" from Infused Lava Armor.\n- Add 8 more color variations to the stone bricks, and castle bricks.\n- Make all castle block variations craftable, same recipe as colored stone bricks but with chiseled stone brick in center.",
+    "22.0.3": "- Fixed Lava & Frost Crystal ores not generating.",
+    "22.0.4": "- Added an in-game Configuration screen (accessible from the Mods list).\n- Ported the Auto-Smelting and item/block Availability (`hiddenItems`/`hiddenBlocks`) config options from the Forge version.\n- Hidden Items/Hidden Blocks can now be picked from a searchable list of ArmorPlus items/blocks, grouped by category, in the Configuration screen.\n- Fixed advanced material armor/weapon effect toggles (Guardian, Super Star, Ender Dragon, Slayer) incorrectly sharing a single on/off switch instead of having their own.\n- Fixed a config section nesting bug that caused config options to end up misplaced.\n- Added missing translations for all configuration entries.\n",
+    "22.0.5": "- Auto-Smelting recipes are now a single `smeltingRecipes` list of `block|result` entries (e.g. `minecraft:sand|minecraft:glass`), replacing the separate `smeltingInput`/`smeltingOutput` lists. Recipes can be added in the Configuration screen by picking the block(s) and then the result from any mod.\n- Soul Harden's disallowed enchantments can be picked from a list of enchantments (while in a world).\n- All config lists now have both an \"Add from List...\" picker and a manual add button, and can be emptied.\n"
+  }
 }

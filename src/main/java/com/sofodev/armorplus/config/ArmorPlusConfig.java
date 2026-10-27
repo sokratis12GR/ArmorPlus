@@ -28,8 +28,7 @@ public class ArmorPlusConfig {
     public static AdvancedMaterialConfig slayerMaterial;
     public static MaterialConfig enhancedMaterial;
     public static BooleanValue enableAutoSmelting;
-    public static ConfigValue<List<? extends String>> autoSmeltingInput;
-    public static ConfigValue<List<? extends String>> autoSmeltingOutput;
+    public static ConfigValue<List<? extends String>> autoSmeltingRecipes;
     public static ConfigValue<List<? extends String>> hiddenItems;
     public static ConfigValue<List<? extends String>> hiddenBlocks;
     public static ConfigValue<List<? extends String>> enchantsThatWontWorkWithSoulHarden;
@@ -43,35 +42,58 @@ public class ArmorPlusConfig {
     public static DropConfig blazeDrops;
 
 
+    public static boolean isIdentifier(Object value) {
+        return value instanceof String s && Identifier.tryParse(s) != null;
+    }
+
+    /**
+     * A smelting recipe is a "block|result" pair of identifiers, e.g. "minecraft:sand|minecraft:glass".
+     */
+    public static boolean isSmeltingRecipe(Object value) {
+        if (!(value instanceof String s)) return false;
+        String[] parts = s.split("\\|", -1);
+        return parts.length == 2 && isIdentifier(parts[0].trim()) && isIdentifier(parts[1].trim());
+    }
+
     public static ArmorPlusConfig create(ModConfigSpec.Builder builder) {
         enableAutoSmelting = (builder.comment("Infused Lava tool auto-smelting")
                 .push("autoSmelting").comment("Enable automatic smelting of configured mined blocks")
                 .define("enabled", true));
-        autoSmeltingInput = (builder.comment("Infused Lava Tools: Smelting Recipe Input (Blocks)")
-                .defineList("smeltingInput", asList("minecraft:iron_ore", "minecraft:gold_ore",
-                                "minecraft:sand", "minecraft:sandstone", "minecraft:wet_sponge", "minecraft:clay", "minecraft:stone_bricks", "minecraft:cobblestone", "minecraft:stone",
-                                "minecraft:acacia_log", "minecraft:birch_log", "minecraft:dark_oak_log", "minecraft:jungle_log", "minecraft:oak_log", "minecraft:spruce_log",
-                                "minecraft:netherrack", "minecraft:ancient_debris", "minecraft:stone_bricks", "armorplus:ore_lava_crystal", "armorplus:ore_frost_crystal"),
-                        s -> Identifier.tryParse((String) s) != null));
-        autoSmeltingOutput = (builder.comment("Infused Lava Tools: Smelting Recipe Output (Items)")
-                .defineList("smeltingOutput", asList("minecraft:iron_ingot", "minecraft:gold_ingot", "minecraft:glass", "minecraft:smooth_sandstone", "minecraft:sponge",
-                                "minecraft:terracotta", "minecraft:cracked_stone_bricks", "minecraft:stone", "minecraft:stone",
-                                "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal",
-                                "minecraft:nether_brick", "minecraft:netherite_scrap", "minecraft:cracked_stone_bricks", "armorplus:infused_lava_crystal", "armorplus:infused_frost_crystal"),
-                        s -> Identifier.tryParse((String) s) != null));
+        autoSmeltingRecipes = (builder.comment("Infused Lava Tools: Smelting Recipes, formatted as \"block|result\" (e.g. \"minecraft:sand|minecraft:glass\")")
+                .defineListAllowEmpty("smeltingRecipes", asList(
+                                "minecraft:iron_ore|minecraft:iron_ingot",
+                                "minecraft:gold_ore|minecraft:gold_ingot",
+                                "minecraft:sand|minecraft:glass",
+                                "minecraft:sandstone|minecraft:smooth_sandstone",
+                                "minecraft:wet_sponge|minecraft:sponge",
+                                "minecraft:clay|minecraft:terracotta",
+                                "minecraft:stone_bricks|minecraft:cracked_stone_bricks",
+                                "minecraft:cobblestone|minecraft:stone",
+                                "minecraft:stone|minecraft:stone",
+                                "minecraft:acacia_log|minecraft:charcoal",
+                                "minecraft:birch_log|minecraft:charcoal",
+                                "minecraft:dark_oak_log|minecraft:charcoal",
+                                "minecraft:jungle_log|minecraft:charcoal",
+                                "minecraft:oak_log|minecraft:charcoal",
+                                "minecraft:spruce_log|minecraft:charcoal",
+                                "minecraft:netherrack|minecraft:nether_brick",
+                                "minecraft:ancient_debris|minecraft:netherite_scrap",
+                                "armorplus:ore_lava_crystal|armorplus:infused_lava_crystal",
+                                "armorplus:ore_frost_crystal|armorplus:infused_frost_crystal"),
+                        () -> "modid:block|modid:item", ArmorPlusConfig::isSmeltingRecipe));
         hiddenItems = (builder.pop()
                 .comment("Feature-flag-independent availability (requires restart)")
                 .push("availability")
                 .comment("Item IDs disabled in commands, recipes' feature checks and creative visibility. Block items follow hiddenBlocks too.")
-                .defineList("hiddenItems", List.<String>of(), s -> Identifier.tryParse((String) s) != null));
+                .defineListAllowEmpty("hiddenItems", List.<String>of(), () -> "armorplus:item_id", ArmorPlusConfig::isIdentifier));
         hiddenBlocks = (builder.comment("Block IDs disabled in /setblock and item visibility where applicable.")
-                .defineList("hiddenBlocks", List.<String>of(), s -> Identifier.tryParse((String) s) != null));
+                .defineListAllowEmpty("hiddenBlocks", List.<String>of(), () -> "armorplus:block_id", ArmorPlusConfig::isIdentifier));
         enchantsThatWontWorkWithSoulHarden = (builder.pop().comment("Enchantment Configuration")
                 .push("enchantments")
                 .comment("is a list of registry names that will not work with the enchantment \"Soul Harden\"")
-                .defineList("disallowWithSoulHardenList",
+                .defineListAllowEmpty("disallowWithSoulHardenList",
                         asList("minecraft:mending", "minecraft:unbreaking", "minecraft:vanishing_curse"),
-                        s -> Identifier.tryParse((String) s) != null)
+                        () -> "modid:enchantment", ArmorPlusConfig::isIdentifier)
         );
         //Advancements
         enableThankYouAdvancement = (builder.pop().comment("Configure advancements")

@@ -20,20 +20,27 @@ import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.ObjectSelectionList;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.input.MouseButtonEvent;
+import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.fml.ModList;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -47,42 +54,63 @@ public class RegistryPickerScreen extends Screen {
     private static final int COLOR_SELECTED_BG = 0x4055FF55;
 
     public enum Kind {
-        ITEMS, BLOCKS
+        /** ArmorPlus items, grouped by item type. */
+        ITEMS("items"),
+        /** ArmorPlus blocks, grouped by block type. */
+        BLOCKS("blocks"),
+        /** Blocks from every mod, grouped by mod. */
+        ALL_BLOCKS("all_blocks"),
+        /** Items from every mod, grouped by mod. */
+        ALL_ITEMS("all_items"),
+        /** Enchantments from the current world, grouped by mod. */
+        ENCHANTMENTS("enchantments");
+
+        private final String titleKey;
+
+        Kind(String titleKey) {
+            this.titleKey = "armorplus.configuration.picker.title." + titleKey;
+        }
+
+        /** Enchantments are a datapack registry, so they can only be listed while in a world. */
+        public boolean isAvailable() {
+            return this != ENCHANTMENTS || Minecraft.getInstance().level != null;
+        }
     }
 
     private record Candidate(String id, ItemStack icon, Component name, Object entry) {
     }
 
-    private record Category(String key, Predicate<Candidate> test) {
-        Component label() {
-            return Component.translatable("armorplus.configuration.picker.category." + key);
+    private record Category(Component label, Predicate<Candidate> test) {
+        static Category of(String key, Predicate<Candidate> test) {
+            return new Category(Component.translatable("armorplus.configuration.picker.category." + key), test);
         }
     }
 
-    private static final Category ALL = new Category("all", c -> true);
+    private static final Category ALL = Category.of("all", c -> true);
 
     private static final List<Category> ITEM_CATEGORIES = List.of(ALL,
-            new Category("armor", c -> c.entry() instanceof APArmorItem),
-            new Category("weapons", c -> c.entry() instanceof APSwordItem || c.entry() instanceof APBattleAxeItem
+            Category.of("armor", c -> c.entry() instanceof APArmorItem),
+            Category.of("weapons", c -> c.entry() instanceof APSwordItem || c.entry() instanceof APBattleAxeItem
                     || c.entry() instanceof APPickaxeItem || c.entry() instanceof APShovelItem
                     || c.entry() instanceof APBowItem || c.entry() instanceof APMaceItem),
-            new Category("arrows", c -> c.entry() instanceof APArrowItem),
-            new Category("souls", c -> c.entry() instanceof SoulItem),
-            new Category("bases", c -> c.id().endsWith("_base")),
-            new Category("materials", c -> !(c.entry() instanceof APArmorItem || c.entry() instanceof APSwordItem
+            Category.of("arrows", c -> c.entry() instanceof APArrowItem),
+            Category.of("souls", c -> c.entry() instanceof SoulItem),
+            Category.of("bases", c -> c.id().endsWith("_base")),
+            Category.of("materials", c -> !(c.entry() instanceof APArmorItem || c.entry() instanceof APSwordItem
                     || c.entry() instanceof APBattleAxeItem || c.entry() instanceof APPickaxeItem
                     || c.entry() instanceof APShovelItem || c.entry() instanceof APBowItem || c.entry() instanceof APMaceItem
                     || c.entry() instanceof APArrowItem || c.entry() instanceof SoulItem || c.id().endsWith("_base"))));
 
     private static final List<Category> BLOCK_CATEGORIES = List.of(ALL,
-            new Category("ores", c -> c.entry() instanceof CrystalOreBlock || c.entry() instanceof APLavaBlock || c.entry() instanceof APFrostBlock),
-            new Category("stone_bricks", c -> c.id().contains("_stone_brick")),
-            new Category("castle_blocks", c -> c.id().contains("_castle_block")),
-            new Category("other_blocks", c -> !(c.entry() instanceof CrystalOreBlock || c.entry() instanceof APLavaBlock
+            Category.of("ores", c -> c.entry() instanceof CrystalOreBlock || c.entry() instanceof APLavaBlock || c.entry() instanceof APFrostBlock),
+            Category.of("stone_bricks", c -> c.id().contains("_stone_brick")),
+            Category.of("castle_blocks", c -> c.id().contains("_castle_block")),
+            Category.of("other_blocks", c -> !(c.entry() instanceof CrystalOreBlock || c.entry() instanceof APLavaBlock
                     || c.entry() instanceof APFrostBlock || c.id().contains("_stone_brick") || c.id().contains("_castle_block"))));
 
     private final Screen parent;
     private final Set<String> existing;
+    private final boolean single;
     private final Consumer<List<String>> onConfirm;
     private final List<Candidate> candidates;
     private final List<Category> categories;
@@ -93,20 +121,44 @@ public class RegistryPickerScreen extends Screen {
     private Button confirmButton;
 
     public RegistryPickerScreen(Screen parent, Kind kind, Set<String> existing, Consumer<List<String>> onConfirm) {
-        super(Component.translatable(kind == Kind.ITEMS ? "armorplus.configuration.picker.title.items" : "armorplus.configuration.picker.title.blocks"));
-        this.parent = parent;
-        this.existing = existing;
-        this.onConfirm = onConfirm;
-        this.categories = kind == Kind.ITEMS ? ITEM_CATEGORIES : BLOCK_CATEGORIES;
-        this.candidates = kind == Kind.ITEMS ? collectItems() : collectBlocks();
+        this(parent, kind, existing, false, onConfirm);
     }
 
-    private static List<Candidate> collectItems() {
+    /**
+     * @param existing  ids that are already in the list; shown but not selectable
+     * @param single    whether only one entry may be selected at a time
+     * @param onConfirm receives the selected ids, called after returning to {@code parent}
+     */
+    public RegistryPickerScreen(Screen parent, Kind kind, Set<String> existing, boolean single, Consumer<List<String>> onConfirm) {
+        super(Component.translatable(kind.titleKey));
+        this.parent = parent;
+        this.existing = existing;
+        this.single = single;
+        this.onConfirm = onConfirm;
+        this.candidates = switch (kind) {
+            case ITEMS -> collectItems(true);
+            case BLOCKS -> collectBlocks(true);
+            case ALL_ITEMS -> collectItems(false);
+            case ALL_BLOCKS -> collectBlocks(false);
+            case ENCHANTMENTS -> collectEnchantments();
+        };
+        this.categories = switch (kind) {
+            case ITEMS -> ITEM_CATEGORIES;
+            case BLOCKS -> BLOCK_CATEGORIES;
+            default -> namespaceCategories(candidates);
+        };
+    }
+
+    private static List<Candidate> collectItems(boolean armorPlusOnly) {
         List<Candidate> result = new ArrayList<>();
         for (Item item : BuiltInRegistries.ITEM) {
             Identifier id = BuiltInRegistries.ITEM.getKey(item);
-            // block items are governed by hiddenBlocks
-            if (!id.getNamespace().equals(MODID) || item instanceof BlockItem) continue;
+            if (armorPlusOnly) {
+                // block items are governed by hiddenBlocks
+                if (!id.getNamespace().equals(MODID) || item instanceof BlockItem) continue;
+            } else if (item == Items.AIR) {
+                continue;
+            }
             result.add(new Candidate(id.toString(), icon(item), Component.translatable(item.getDescriptionId()), item));
         }
         return result;
@@ -116,14 +168,45 @@ public class RegistryPickerScreen extends Screen {
         return item.builtInRegistryHolder().areComponentsBound() ? new ItemStack(item) : ItemStack.EMPTY;
     }
 
-    private static List<Candidate> collectBlocks() {
+    private static List<Candidate> collectBlocks(boolean armorPlusOnly) {
         List<Candidate> result = new ArrayList<>();
         for (Block block : BuiltInRegistries.BLOCK) {
             Identifier id = BuiltInRegistries.BLOCK.getKey(block);
-            if (!id.getNamespace().equals(MODID)) continue;
+            if (armorPlusOnly ? !id.getNamespace().equals(MODID) : block.defaultBlockState().isAir()) continue;
             result.add(new Candidate(id.toString(), icon(block.asItem()), block.getName(), block));
         }
         return result;
+    }
+
+    private static List<Candidate> collectEnchantments() {
+        List<Candidate> result = new ArrayList<>();
+        Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft.level == null) return result;
+        Registry<Enchantment> registry = minecraft.level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
+        ItemStack book = icon(Items.ENCHANTED_BOOK);
+        registry.listElements().forEach(holder -> result.add(new Candidate(holder.key().identifier().toString(), book,
+                holder.value().description(), holder.value())));
+        result.sort(Comparator.comparing(Candidate::id));
+        return result;
+    }
+
+    private static List<Category> namespaceCategories(List<Candidate> candidates) {
+        List<Category> result = new ArrayList<>();
+        result.add(ALL);
+        Set<String> namespaces = new TreeSet<>();
+        candidates.forEach(c -> namespaces.add(namespace(c.id())));
+        for (String namespace : namespaces) {
+            Component label = Component.literal(ModList.get().getModContainerById(namespace)
+                    .map(container -> container.getModInfo().getDisplayName())
+                    .orElse(namespace));
+            result.add(new Category(label, c -> namespace(c.id()).equals(namespace)));
+        }
+        return result;
+    }
+
+    private static String namespace(String id) {
+        int colon = id.indexOf(':');
+        return colon < 0 ? Identifier.DEFAULT_NAMESPACE : id.substring(0, colon);
     }
 
     @Override
@@ -144,8 +227,9 @@ public class RegistryPickerScreen extends Screen {
             refresh();
         });
         pickerList = addRenderableWidget(new PickerList(minecraft, width, height - 50 - 36, 50));
-        addRenderableWidget(Button.builder(Component.translatable("armorplus.configuration.picker.select_shown"), button -> toggleShown())
+        Button toggleShown = addRenderableWidget(Button.builder(Component.translatable("armorplus.configuration.picker.select_shown"), button -> toggleShown())
                 .bounds(cx - 155, height - 28, 100, 20).build());
+        toggleShown.active = !single;
         confirmButton = addRenderableWidget(Button.builder(confirmLabel(), button -> confirm())
                 .bounds(cx - 50, height - 28, 100, 20).build());
         addRenderableWidget(Button.builder(CommonComponents.GUI_CANCEL, button -> onClose())
@@ -179,12 +263,15 @@ public class RegistryPickerScreen extends Screen {
 
     private void toggle(Candidate candidate) {
         if (existing.contains(candidate.id())) return;
-        if (!selected.remove(candidate.id())) selected.add(candidate.id());
+        if (!selected.remove(candidate.id())) {
+            if (single) selected.clear();
+            selected.add(candidate.id());
+        }
         updateConfirm();
     }
 
     private Component confirmLabel() {
-        return Component.translatable("armorplus.configuration.picker.add", selected.size());
+        return single ? CommonComponents.GUI_DONE : Component.translatable("armorplus.configuration.picker.add", selected.size());
     }
 
     private void updateConfirm() {
@@ -193,8 +280,10 @@ public class RegistryPickerScreen extends Screen {
     }
 
     private void confirm() {
-        onConfirm.accept(new ArrayList<>(selected));
+        List<String> result = new ArrayList<>(selected);
+        // return first so the callback can open a follow-up screen
         onClose();
+        onConfirm.accept(result);
     }
 
     @Override

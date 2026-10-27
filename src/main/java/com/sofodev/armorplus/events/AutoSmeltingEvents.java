@@ -19,7 +19,7 @@ import net.neoforged.neoforge.event.level.block.BreakBlockEvent;
 
 import java.util.List;
 
-/** Applies the COMMON config's parallel block/item lists to Infused Lava tools. */
+/** Applies the COMMON config's "block|result" smelting recipes to Infused Lava tools. */
 @EventBusSubscriber(modid = ArmorPlus.MODID)
 public final class AutoSmeltingEvents {
     private AutoSmeltingEvents() {
@@ -45,14 +45,10 @@ public final class AutoSmeltingEvents {
         // Do not replace blocks with block entities (inventories, machines, etc.).
         if (level.getBlockEntity(event.getPos()) != null) return;
 
-        List<? extends String> inputs = ArmorPlusConfig.autoSmeltingInput.get();
-        List<? extends String> outputs = ArmorPlusConfig.autoSmeltingOutput.get();
         Identifier blockId = BuiltInRegistries.BLOCK.getKey(event.getState().getBlock());
         if (blockId == null) return;
-        int index = inputs.indexOf(blockId.toString());
-        if (index < 0 || index >= outputs.size()) return;
 
-        Identifier outputId = Identifier.tryParse(outputs.get(index));
+        Identifier outputId = findResult(blockId, ArmorPlusConfig.autoSmeltingRecipes.get());
         if (outputId == null || !BuiltInRegistries.ITEM.containsKey(outputId)) return;
         Item result = BuiltInRegistries.ITEM.getValue(outputId);
         if (result == null) return;
@@ -64,5 +60,16 @@ public final class AutoSmeltingEvents {
         level.addFreshEntity(new ItemEntity(level, event.getPos().getX() + 0.5,
                 event.getPos().getY() + 0.5, event.getPos().getZ() + 0.5, output));
         tool.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+    }
+
+    /** Returns the result of the first "block|result" recipe matching the block, or null. */
+    private static Identifier findResult(Identifier blockId, List<? extends String> recipes) {
+        for (String recipe : recipes) {
+            String[] parts = recipe.split("\\|", -1);
+            if (parts.length != 2) continue;
+            Identifier input = Identifier.tryParse(parts[0].trim());
+            if (blockId.equals(input)) return Identifier.tryParse(parts[1].trim());
+        }
+        return null;
     }
 }
