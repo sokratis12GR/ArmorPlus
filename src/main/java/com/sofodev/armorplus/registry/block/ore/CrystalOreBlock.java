@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.block.ore;
 
+import com.sofodev.armorplus.config.AvailabilityConfig;
+import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
@@ -19,5 +21,10 @@ public class CrystalOreBlock extends Block {
 
     public Variant getVariant() {
         return variant;
+    }
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.blockEnabled(this);
     }
 }

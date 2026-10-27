@@ -2,6 +2,7 @@ package com.sofodev.armorplus.registry.item.armor;
 
 import net.minecraft.world.item.equipment.ArmorType;
 
+import com.sofodev.armorplus.config.AvailabilityConfig;
 import com.sofodev.armorplus.registry.item.extra.Buff;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import net.minecraft.network.chat.Component;
@@ -11,6 +12,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.flag.FeatureFlagSet;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -81,5 +83,10 @@ public class APArmorItem extends Item {
     }
 
     public IAPArmor getMat() { return mat; }
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.itemEnabled(this);
+    }
 
 }

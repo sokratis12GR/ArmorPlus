@@ -29,30 +29,39 @@ public class ArmorPlusConfig {
     public static AdvancedMaterialConfig enderDragonMaterial;
     public static AdvancedMaterialConfig slayerMaterial;
     public static MaterialConfig enhancedMaterial;
-    //Advancements
-    public static final BooleanValue enableThankYouAdvancement = (builder.comment("Configure advancements")
-            .push("advancements").comment("Enable/Disable the Thank You 6M advancement")
-            .define("enableThankYou6M", true));
+    public static final BooleanValue enableAutoSmelting = (builder.comment("Infused Lava tool auto-smelting")
+            .push("autoSmelting").comment("Enable automatic smelting of configured mined blocks")
+            .define("enabled", true));
     public static final ConfigValue<List<? extends String>> autoSmeltingInput = (builder.comment("Infused Lava Tools: Smelting Recipe Input (Blocks)")
             .defineList("smeltingInput", asList("minecraft:iron_ore", "minecraft:gold_ore",
                             "minecraft:sand", "minecraft:sandstone", "minecraft:wet_sponge", "minecraft:clay", "minecraft:stone_bricks", "minecraft:cobblestone", "minecraft:stone",
                             "minecraft:acacia_log", "minecraft:birch_log", "minecraft:dark_oak_log", "minecraft:jungle_log", "minecraft:oak_log", "minecraft:spruce_log",
                             "minecraft:netherrack", "minecraft:ancient_debris", "minecraft:stone_bricks", "armorplus:ore_lava_crystal", "armorplus:ore_frost_crystal"),
                     s -> Identifier.tryParse((String) s) != null));
-    ;
     public static final ConfigValue<List<? extends String>> autoSmeltingOutput = (builder.comment("Infused Lava Tools: Smelting Recipe Output (Items)")
             .defineList("smeltingOutput", asList("minecraft:iron_ingot", "minecraft:gold_ingot", "minecraft:glass", "minecraft:smooth_sandstone", "minecraft:sponge",
                             "minecraft:terracotta", "minecraft:cracked_stone_bricks", "minecraft:stone", "minecraft:stone",
                             "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal", "minecraft:charcoal",
                             "minecraft:nether_brick", "minecraft:netherite_scrap", "minecraft:cracked_stone_bricks", "armorplus:infused_lava_crystal", "armorplus:infused_frost_crystal"),
                     s -> Identifier.tryParse((String) s) != null));
-    public static final ConfigValue<List<? extends String>> enchantsThatWontWorkWithSoulHarden = (builder.comment("Enchantment Configuration")
+    public static final ConfigValue<List<? extends String>> hiddenItems = (builder.pop()
+            .comment("Feature-flag-independent availability (requires restart)")
+            .push("availability")
+            .comment("Item IDs disabled in commands, recipes' feature checks and creative visibility. Block items follow hiddenBlocks too.")
+            .defineList("hiddenItems", List.<String>of(), s -> Identifier.tryParse((String) s) != null));
+    public static final ConfigValue<List<? extends String>> hiddenBlocks = (builder.comment("Block IDs disabled in /setblock and item visibility where applicable.")
+            .defineList("hiddenBlocks", List.<String>of(), s -> Identifier.tryParse((String) s) != null));
+    public static final ConfigValue<List<? extends String>> enchantsThatWontWorkWithSoulHarden = (builder.pop().comment("Enchantment Configuration")
             .push("enchantments")
             .comment("is a list of registry names that will not work with the enchantment \"Soul Harden\"")
             .defineList("disallowWithSoulHardenList",
                     asList("minecraft:mending", "minecraft:unbreaking", "minecraft:vanishing_curse"),
                     s -> Identifier.tryParse((String) s) != null)
     );
+    //Advancements
+    public static final BooleanValue enableThankYouAdvancement = (builder.pop().comment("Configure advancements")
+            .push("advancements").comment("Enable/Disable the Thank You 6M advancement")
+            .define("enableThankYou6M", true));
     public static BossDropConfig witherBossDrops;
     public static BossDropConfig enderDragonDrops;
     public static BossDropConfig elderGuardianDrops;
@@ -63,7 +72,7 @@ public class ArmorPlusConfig {
 
 
     public static ArmorPlusConfig create(ModConfigSpec.Builder builder) {
-        //Advancements
+//        builder.pop();
         builder.comment("Configure Items")
                 .push("items");
         coalMaterial = MaterialConfig.create("coal", builder);
@@ -160,67 +169,68 @@ public class ArmorPlusConfig {
                                                     boolean enableSaturation, int amplifierSaturation, boolean enableInvisibility, int amplifierInvisibility, boolean enableHealthBoost, int amplifierHealthBoost,
                                                     boolean enableAbsorption, int amplifierAbsorption, boolean enableSlowFalling, int amplifierSlowFalling,
                                                     boolean enableFlight, boolean enableWitherImmunity, boolean enableNaturalImmunity, boolean enableFireExtinguish) {
+            builder.comment(name + " extended equipment Configuration").push(name);
             ConfigValue<Boolean> enableArmorEffects = (builder.comment(name + " armor: enable/disable full set effects")
                     .define("enableArmorEffects", true));
             ConfigValue<Boolean> enableWeaponEffects = (builder.comment(name + " weapons: enable/disable on hit effects")
                     .define("enableWeaponEffects", true));
-            builder.comment(name + " extended equipment Configuration").push(name).push("effects");
+            builder.push("effects");
             ConfigValue<Boolean> enableNIGHT_VISION = (builder.comment(name + " armor: enable/disable night vision")
                     .define("enableNIGHT_VISION", enableNightVision));
             ConfigValue<Integer> amplierNIGHT_VISION = (builder.comment(name + " armor: night vision amplifier")
-                    .defineInRange("amplifierNIGHT_VISION", amplifierNightVision, 0, Integer.MAX_VALUE));
+                    .defineInRange("amplifierNIGHT_VISION", amplifierNightVision, 0, 255));
             ConfigValue<Boolean> enableWATER_BREATHING = (builder.comment(name + " armor: enable/disable water breathing")
                     .define("enableWATER_BREATHING", enableWaterBreathing));
             ConfigValue<Integer> amplierWATER_BREATHING = (builder.comment(name + " armor: water breathing amplifier")
-                    .defineInRange("amplifierWATER_BREATHING", amplifierWaterBreathing, 0, Integer.MAX_VALUE));
+                    .defineInRange("amplifierWATER_BREATHING", amplifierWaterBreathing, 0, 255));
             ConfigValue<Boolean> enableSTRENGTH = (builder.comment(name + " armor: enable/disable strength")
                     .define("enableSTRENGTH", enableStrength));
             ConfigValue<Integer> amplierSTRENGTH = (builder.comment(name + " armor: strength amplifier")
-                    .defineInRange("amplifierSTRENGTH", amplifierStrength, 0, Integer.MAX_VALUE));
+                    .defineInRange("amplifierSTRENGTH", amplifierStrength, 0, 255));
             ConfigValue<Boolean> enableSPEED = (builder.comment(name + " armor: enable/disable speed")
                     .define("enableSPEED", enableSpeed));
             ConfigValue<Integer> amplierSPEED = (builder.comment(name + " armor: speed amplifier")
-                    .defineInRange("amplifierSPEED", amplifierSpeed, 0, Integer.MAX_VALUE));
+                    .defineInRange("amplifierSPEED", amplifierSpeed, 0, 255));
             ConfigValue<Boolean> enableHASTE = (builder.comment(name + " armor: enable/disable haste")
                     .define("enableHASTE", enableHaste));
             ConfigValue<Integer> amplierHASTE = (builder.comment(name + " armor: haste amplifier")
-                    .defineInRange("amplifierHASTE", amplifierHaste, 0, Integer.MAX_VALUE));
+                    .defineInRange("amplifierHASTE", amplifierHaste, 0, 255));
             ConfigValue<Boolean> enableJUMP_BOOST = (builder.comment(name + " armor: enable/disable jump boost")
                     .define("enableJUMP_BOOST", enableJumpBoost));
             ConfigValue<Integer> amplierJUMP_BOOST = (builder.comment(name + " armor: jump boost amplifier")
-                    .defineInRange("amplifierJUMP_BOOST", amplifierJumpBoost, 0, Integer.MAX_VALUE));
+                    .defineInRange("amplifierJUMP_BOOST", amplifierJumpBoost, 0, 255));
             ConfigValue<Boolean> enableREGENERATION = (builder.comment(name + " armor: enable/disable regeneration")
                     .define("enableREGENERATION", enableRegeneration));
             ConfigValue<Integer> amplierREGENERATION = (builder.comment(name + " armor: regeneration amplifier")
-                    .defineInRange("amplifierREGENERATION", amplifierRegeneration, 0, Integer.MAX_VALUE));
+                    .defineInRange("amplifierREGENERATION", amplifierRegeneration, 0, 255));
             ConfigValue<Boolean> enableRESISTANCE = (builder.comment(name + " armor: enable/disable resistance")
                     .define("enableRESISTANCE", enableResistance));
             ConfigValue<Integer> amplierRESISTANCE = (builder.comment(name + " armor: resistance amplifier")
-                    .defineInRange("amplifierRESISTANCE", amplifierResistance, 0, Integer.MAX_VALUE));
+                    .defineInRange("amplifierRESISTANCE", amplifierResistance, 0, 255));
             ConfigValue<Boolean> enableFIRE_RESISTANCE = (builder.comment(name + " armor: enable/disable fire resistance")
                     .define("enableFIRE_RESISTANCE", enableFireResistance));
             ConfigValue<Integer> amplierFIRE_RESISTANCE = (builder.comment(name + " armor: fire resistance amplifier")
-                    .defineInRange("amplifierFIRE_RESISTANCE", amplifierFireResistance, 0, Integer.MAX_VALUE));
+                    .defineInRange("amplifierFIRE_RESISTANCE", amplifierFireResistance, 0, 255));
             ConfigValue<Boolean> enableSATURATION = (builder.comment(name + " armor: enable/disable saturation")
                     .define("enableSATURATION", enableSaturation));
             ConfigValue<Integer> amplierSATURATION = (builder.comment(name + " armor: saturation amplifier")
-                    .defineInRange("amplifierSATURATION", amplifierSaturation, 0, Integer.MAX_VALUE));
+                    .defineInRange("amplifierSATURATION", amplifierSaturation, 0, 255));
             ConfigValue<Boolean> enableINVISIBILITY = (builder.comment(name + " armor: enable/disable invisibility")
                     .define("enableINVISIBILITY", enableInvisibility));
             ConfigValue<Integer> amplierINVISIBILITY = (builder.comment(name + " armor: invisibility amplifier")
-                    .defineInRange("amplifierINVISIBILITY", amplifierInvisibility, 0, Integer.MAX_VALUE));
+                    .defineInRange("amplifierINVISIBILITY", amplifierInvisibility, 0, 255));
             ConfigValue<Boolean> enableHEALTH_BOOST = (builder.comment(name + " armor: enable/disable health boost")
                     .define("enableHEALTH_BOOST", enableHealthBoost));
             ConfigValue<Integer> amplierHEALTH_BOOST = (builder.comment(name + " armor: health boost amplifier")
-                    .defineInRange("amplifierHEALTH_BOOST", amplifierHealthBoost, 0, Integer.MAX_VALUE));
+                    .defineInRange("amplifierHEALTH_BOOST", amplifierHealthBoost, 0, 255));
             ConfigValue<Boolean> enableABSORPTION = (builder.comment(name + " armor: enable/disable absorption")
                     .define("enableABSORPTION", enableAbsorption));
             ConfigValue<Integer> amplierABSORPTION = (builder.comment(name + " armor: absorption amplifier")
-                    .defineInRange("amplifierABSORPTION", amplifierAbsorption, 0, Integer.MAX_VALUE));
+                    .defineInRange("amplifierABSORPTION", amplifierAbsorption, 0, 255));
             ConfigValue<Boolean> enableSLOW_FALLING = (builder.comment(name + " armor: enable/disable slow falling")
                     .define("enableSLOW_FALLING", enableSlowFalling));
             ConfigValue<Integer> amplierSLOW_FALLING = (builder.comment(name + " armor: slow falling amplifier")
-                    .defineInRange("amplifierSLOW_FALLING", amplifierSlowFalling, 0, Integer.MAX_VALUE));
+                    .defineInRange("amplifierSLOW_FALLING", amplifierSlowFalling, 0, 255));
             ConfigValue<Boolean> enableFLIGHT = (builder.comment(name + " armor: enable/disable flight")
                     .define("enableFLIGHT", enableFlight));
             ConfigValue<Boolean> enableWITHER_IMMUNITY = (builder.comment(name + " armor: enable/disable wither immunity")
