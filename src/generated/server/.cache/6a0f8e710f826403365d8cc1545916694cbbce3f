@@ -1,4 +1,4 @@
-// 26.1.2	2026-10-28T13:44:47.0490643	ArmorPlus Recipes
+// 26.1.2	2026-10-28T23:27:48.9324425	ArmorPlus Recipes
 d60dfffa714d77419ac6faabe1911b6b49a26c60 data/armorplus/advancement/recipes/building_blocks/crafting/shaped/corner/black_castle_block_corner.json
 912759c1f1f6ec6ead5ce60706b97dfb9633e856 data/armorplus/advancement/recipes/building_blocks/crafting/shaped/corner/black_stone_brick_corner.json
 54c0e31e303faecd08410390dfb9aaae8d88b4d4 data/armorplus/advancement/recipes/building_blocks/crafting/shaped/corner/blue_castle_block_corner.json
@@ -586,6 +586,7 @@ d2e39b8e2a5a8f57abdb494f98f23d5848229e6f data/armorplus/advancement/recipes/misc
 9dc3ff502d1f691ece32b7ef8ca92da1d33efa23 data/armorplus/advancement/recipes/misc/crafting/shaped/emerald/emerald_arrow.json
 d7b39ec5bb1a91caab49631215ebf86d60492d93 data/armorplus/advancement/recipes/misc/crafting/shaped/ender_dragon/ender_dragon_arrow.json
 bfadc2ab5efa0a57dbbf8ed3ba04fdcd3c41e580 data/armorplus/advancement/recipes/misc/crafting/shaped/enhanced/enhanced_chainmail.json
+72ed02b7d35879d4f1e8b0478d6e08dcd632031e data/armorplus/advancement/recipes/misc/crafting/shaped/enhanced/enhanced_copper.json
 eceeee0f898d6b188242ef3b3406bf3d0bab55db data/armorplus/advancement/recipes/misc/crafting/shaped/enhanced/enhanced_diamond.json
 93ac1e518c9f4a4f7a89b76d7dfef6388c2375d5 data/armorplus/advancement/recipes/misc/crafting/shaped/enhanced/enhanced_gold.json
 ed46184e833a8b923ec5189186c0ae6f8478bee9 data/armorplus/advancement/recipes/misc/crafting/shaped/enhanced/enhanced_iron.json
@@ -874,6 +875,7 @@ a41147d34b8c7b5fef93c7263995b2f1e0ac2a3d data/armorplus/recipe/crafting/shaped/e
 92a8c90e778398e5d7994749db1af2248a3732b0 data/armorplus/recipe/crafting/shaped/enhanced/diamond_helmet_alt.json
 79844a7720eb6744a6dfcf625d6a547d2811dde9 data/armorplus/recipe/crafting/shaped/enhanced/diamond_leggings.json
 9bf94434061c10472e4866ecfd3cc89500f27fbd data/armorplus/recipe/crafting/shaped/enhanced/enhanced_chainmail.json
+e4d88133db1eab9736a575ce6c6e78b902a2d3a3 data/armorplus/recipe/crafting/shaped/enhanced/enhanced_copper.json
 7e88f1d7577623ebab5fa4827c8496aed21a1496 data/armorplus/recipe/crafting/shaped/enhanced/enhanced_diamond.json
 6158f7ac45572d7dd367ffcd55cd16f5544f5ed3 data/armorplus/recipe/crafting/shaped/enhanced/enhanced_gold.json
 0a3fa43f0ba5a8315aece251901e8454d68658a3 data/armorplus/recipe/crafting/shaped/enhanced/enhanced_iron.json

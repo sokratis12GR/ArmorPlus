@@ -170,6 +170,7 @@ public class Recipes extends RecipeProvider {
 
         //Vanilla Material + Glowstone = Enchaned: Material
         crafter.buildEnhanced(con, ENHANCED_CHAINMAIL, CHAINMAIL.get());
+        crafter.buildEnhanced(con, ENHANCED_COPPER, COPPER_INGOT);
         crafter.buildEnhanced(con, ENHANCED_IRON, IRON_INGOT);
         crafter.buildEnhanced(con, ENHANCED_GOLD, GOLD_INGOT);
         crafter.buildEnhanced(con, ENHANCED_DIAMOND, DIAMOND);

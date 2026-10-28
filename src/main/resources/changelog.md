@@ -1,4 +1,4 @@
-# 26.1.2 - 22.1.0
+# 26.1.2 - 22.1.1
 
 ### New Materials
 - Added Pig Iron Ingots, Cobalt Ingots, Ardite Ingots, Knight Slime Crystals and Manyullyn Ingots (inspired by Tinkers' Construct), each with its own texture.
@@ -48,3 +48,6 @@
 - Enhanced materials are no longer listed twice in the creative tabs.
 - Materials, crystals, shards and souls now have informative tooltips: a short flavor line, plus brief, labeled details (Source, Craft, Drop, Smith, Use) with the key items highlighted (hold Shift for details). Drop chances shown there follow your config.
 - Soul tooltips no longer create a temporary entity every frame just to display the mob's name.
+
+### 22.1.1 BUG FIX: 
+- Enhanced Copper Ingot not having a recipe. 
