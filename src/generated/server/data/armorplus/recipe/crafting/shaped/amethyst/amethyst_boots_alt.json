@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:amethyst",
+  "key": {
+    "S": "minecraft:amethyst_block"
+  },
+  "pattern": [
+    "   ",
+    "S S",
+    "S S"
+  ],
+  "result": {
+    "id": "armorplus:amethyst_boots"
+  }
+}

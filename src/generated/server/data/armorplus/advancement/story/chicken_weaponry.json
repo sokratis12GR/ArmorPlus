@@ -1,0 +1,61 @@
+{
+  "parent": "armorplus:story/chicken_armor",
+  "criteria": {
+    "armorplus:chicken_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:chicken_battle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:chicken_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:chicken_mace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:chicken_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:chicken_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.chicken_weaponry.description"
+    },
+    "icon": {
+      "id": "armorplus:chicken_sword"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.chicken_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:chicken_sword"
+    ],
+    [
+      "armorplus:chicken_battle_axe"
+    ],
+    [
+      "armorplus:chicken_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:knight_slime",
+  "key": {
+    "S": "armorplus:knight_slime_crystal"
+  },
+  "pattern": [
+    "S S",
+    "SSS",
+    "SSS"
+  ],
+  "result": {
+    "id": "armorplus:knight_slime_chestplate"
+  }
+}

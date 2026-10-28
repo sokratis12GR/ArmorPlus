@@ -1,0 +1,9 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "armorplus:item/amethyst_mace",
+    "model": {
+      "type": "geckolib:geckolib"
+    }
+  }
+}

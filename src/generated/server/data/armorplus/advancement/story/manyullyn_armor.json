@@ -1,0 +1,74 @@
+{
+  "parent": "armorplus:story/root",
+  "criteria": {
+    "armorplus:manyullyn_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:manyullyn_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:manyullyn_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:manyullyn_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:manyullyn_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:manyullyn_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:manyullyn_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:manyullyn_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.manyullyn_armor.description"
+    },
+    "icon": {
+      "id": "armorplus:manyullyn_chestplate"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.manyullyn_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:manyullyn_helmet"
+    ],
+    [
+      "armorplus:manyullyn_chestplate"
+    ],
+    [
+      "armorplus:manyullyn_leggings"
+    ],
+    [
+      "armorplus:manyullyn_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

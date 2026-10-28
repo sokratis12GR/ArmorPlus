@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:chicken_bows",
+  "key": {
+    "M": "minecraft:feather",
+    "S": "minecraft:string"
+  },
+  "pattern": [
+    "SM ",
+    "S M",
+    "SM "
+  ],
+  "result": {
+    "id": "armorplus:chicken_bow"
+  }
+}

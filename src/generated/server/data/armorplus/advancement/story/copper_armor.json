@@ -1,0 +1,74 @@
+{
+  "parent": "armorplus:story/root",
+  "criteria": {
+    "armorplus:copper_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:copper_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:copper_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:copper_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:copper_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:copper_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:copper_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:copper_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.copper_armor.description"
+    },
+    "icon": {
+      "id": "armorplus:copper_chestplate"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.copper_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:copper_helmet"
+    ],
+    [
+      "armorplus:copper_chestplate"
+    ],
+    [
+      "armorplus:copper_leggings"
+    ],
+    [
+      "armorplus:copper_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

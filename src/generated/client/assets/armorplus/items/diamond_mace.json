@@ -1,0 +1,9 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "armorplus:item/diamond_mace",
+    "model": {
+      "type": "geckolib:geckolib"
+    }
+  }
+}

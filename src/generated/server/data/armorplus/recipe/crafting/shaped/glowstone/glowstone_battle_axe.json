@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:glowstone_battle_axes",
+  "key": {
+    "M": "minecraft:honeycomb_block",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "M M",
+    "MSM",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:glowstone_battle_axe"
+  }
+}

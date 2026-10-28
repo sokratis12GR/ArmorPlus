@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:netherite_bows",
+  "key": {
+    "M": "armorplus:enhanced_netherite",
+    "S": "minecraft:string"
+  },
+  "pattern": [
+    " MS",
+    "M S",
+    " MS"
+  ],
+  "result": {
+    "id": "armorplus:netherite_bow"
+  }
+}

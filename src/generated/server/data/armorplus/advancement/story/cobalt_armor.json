@@ -1,0 +1,74 @@
+{
+  "parent": "armorplus:story/root",
+  "criteria": {
+    "armorplus:cobalt_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:cobalt_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:cobalt_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:cobalt_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:cobalt_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:cobalt_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:cobalt_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:cobalt_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.cobalt_armor.description"
+    },
+    "icon": {
+      "id": "armorplus:cobalt_chestplate"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.cobalt_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:cobalt_helmet"
+    ],
+    [
+      "armorplus:cobalt_chestplate"
+    ],
+    [
+      "armorplus:cobalt_leggings"
+    ],
+    [
+      "armorplus:cobalt_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

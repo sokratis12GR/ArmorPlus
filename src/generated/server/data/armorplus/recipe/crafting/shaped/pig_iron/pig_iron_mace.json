@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:maces",
+  "key": {
+    "D": "armorplus:pig_iron_ingot",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    " DD",
+    " SD",
+    "S  "
+  ],
+  "result": {
+    "id": "armorplus:pig_iron_mace"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:golden_pickaxes",
+  "key": {
+    "M": "armorplus:enhanced_gold",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "MMM",
+    " S ",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:golden_pickaxe"
+  }
+}

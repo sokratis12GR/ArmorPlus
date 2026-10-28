@@ -1,0 +1,61 @@
+{
+  "parent": "armorplus:story/diamond_armor",
+  "criteria": {
+    "armorplus:diamond_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:diamond_battle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:diamond_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:diamond_mace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:diamond_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:diamond_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.diamond_weaponry.description"
+    },
+    "icon": {
+      "id": "armorplus:diamond_sword"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.diamond_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:diamond_sword"
+    ],
+    [
+      "armorplus:diamond_battle_axe"
+    ],
+    [
+      "armorplus:diamond_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:slayer_battle_axes",
+  "key": {
+    "M": "minecraft:amethyst_block",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "M M",
+    "MSM",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:slayer_battle_axe"
+  }
+}

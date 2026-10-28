@@ -1,0 +1,9 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "armorplus:item/ardite_mace",
+    "model": {
+      "type": "geckolib:geckolib"
+    }
+  }
+}

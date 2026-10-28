@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:cobalt_pickaxes",
+  "key": {
+    "M": "armorplus:cobalt_ingot",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "MMM",
+    " S ",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:cobalt_pickaxe"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "parent": "armorplus:story/cobalt_armor",
+  "criteria": {
+    "armorplus:cobalt_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:cobalt_battle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:cobalt_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:cobalt_mace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:cobalt_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:cobalt_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.cobalt_weaponry.description"
+    },
+    "icon": {
+      "id": "armorplus:cobalt_sword"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.cobalt_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:cobalt_sword"
+    ],
+    [
+      "armorplus:cobalt_battle_axe"
+    ],
+    [
+      "armorplus:cobalt_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,74 @@
+{
+  "parent": "armorplus:story/root",
+  "criteria": {
+    "armorplus:quartz_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:quartz_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:quartz_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:quartz_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:quartz_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:quartz_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:quartz_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:quartz_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.quartz_armor.description"
+    },
+    "icon": {
+      "id": "armorplus:quartz_chestplate"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.quartz_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:quartz_helmet"
+    ],
+    [
+      "armorplus:quartz_chestplate"
+    ],
+    [
+      "armorplus:quartz_leggings"
+    ],
+    [
+      "armorplus:quartz_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

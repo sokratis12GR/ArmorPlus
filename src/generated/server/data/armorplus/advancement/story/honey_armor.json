@@ -1,0 +1,74 @@
+{
+  "parent": "armorplus:story/root",
+  "criteria": {
+    "armorplus:honey_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:honey_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:honey_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:honey_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:honey_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:honey_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:honey_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:honey_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.honey_armor.description"
+    },
+    "icon": {
+      "id": "armorplus:honey_chestplate"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.honey_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:honey_helmet"
+    ],
+    [
+      "armorplus:honey_chestplate"
+    ],
+    [
+      "armorplus:honey_leggings"
+    ],
+    [
+      "armorplus:honey_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

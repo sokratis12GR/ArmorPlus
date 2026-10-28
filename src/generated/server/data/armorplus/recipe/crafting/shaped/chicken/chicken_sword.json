@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:chicken_swords",
+  "key": {
+    "M": "minecraft:feather",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "M  ",
+    "M  ",
+    "S  "
+  ],
+  "result": {
+    "id": "armorplus:chicken_sword"
+  }
+}

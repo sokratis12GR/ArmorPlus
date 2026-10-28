@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "armorplus:warden_heart",
+  "base": "armorplus:warden_boots_base",
+  "result": {
+    "id": "armorplus:warden_boots"
+  },
+  "template": "armorplus:infused_lava_crystal"
+}

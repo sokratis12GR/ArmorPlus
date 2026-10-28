@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:golden_swords",
+  "key": {
+    "M": "armorplus:enhanced_gold",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "M  ",
+    "M  ",
+    "S  "
+  ],
+  "result": {
+    "id": "armorplus:golden_sword"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:warden",
+  "key": {
+    "C": "minecraft:sculk_catalyst",
+    "S": "minecraft:echo_shard"
+  },
+  "pattern": [
+    "SCS",
+    "S S",
+    "   "
+  ],
+  "result": {
+    "id": "armorplus:warden_helmet_base"
+  }
+}

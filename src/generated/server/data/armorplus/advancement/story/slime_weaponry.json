@@ -1,0 +1,61 @@
+{
+  "parent": "armorplus:story/slime_armor",
+  "criteria": {
+    "armorplus:slime_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:slime_battle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:slime_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:slime_mace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:slime_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:slime_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.slime_weaponry.description"
+    },
+    "icon": {
+      "id": "armorplus:slime_sword"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.slime_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:slime_sword"
+    ],
+    [
+      "armorplus:slime_battle_axe"
+    ],
+    [
+      "armorplus:slime_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

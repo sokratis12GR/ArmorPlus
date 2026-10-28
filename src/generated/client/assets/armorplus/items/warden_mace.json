@@ -1,0 +1,9 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "armorplus:item/warden_mace",
+    "model": {
+      "type": "geckolib:geckolib"
+    }
+  }
+}

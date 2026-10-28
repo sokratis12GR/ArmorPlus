@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:knight_slime_bows",
+  "key": {
+    "M": "armorplus:knight_slime_crystal",
+    "S": "minecraft:string"
+  },
+  "pattern": [
+    "SM ",
+    "S M",
+    "SM "
+  ],
+  "result": {
+    "id": "armorplus:knight_slime_bow"
+  }
+}

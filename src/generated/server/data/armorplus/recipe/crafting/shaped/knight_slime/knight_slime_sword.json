@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:knight_slime_swords",
+  "key": {
+    "M": "armorplus:knight_slime_crystal",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "M  ",
+    "M  ",
+    "S  "
+  ],
+  "result": {
+    "id": "armorplus:knight_slime_sword"
+  }
+}

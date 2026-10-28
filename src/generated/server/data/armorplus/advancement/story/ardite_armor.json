@@ -1,0 +1,74 @@
+{
+  "parent": "armorplus:story/root",
+  "criteria": {
+    "armorplus:ardite_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:ardite_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:ardite_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:ardite_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:ardite_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:ardite_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:ardite_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:ardite_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.ardite_armor.description"
+    },
+    "icon": {
+      "id": "armorplus:ardite_chestplate"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.ardite_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:ardite_helmet"
+    ],
+    [
+      "armorplus:ardite_chestplate"
+    ],
+    [
+      "armorplus:ardite_leggings"
+    ],
+    [
+      "armorplus:ardite_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:chainmail_pickaxes",
+  "key": {
+    "M": "armorplus:enhanced_chainmail",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "MMM",
+    " S ",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:chainmail_pickaxe"
+  }
+}

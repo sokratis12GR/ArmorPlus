@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:manyullyn_pickaxes",
+  "key": {
+    "M": "armorplus:manyullyn_ingot",
+    "S": "armorplus:obsidian_stick"
+  },
+  "pattern": [
+    "MMM",
+    " S ",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:manyullyn_pickaxe"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "parent": "armorplus:story/netherite_armor",
+  "criteria": {
+    "armorplus:netherite_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:netherite_battle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:netherite_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:netherite_mace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:netherite_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:netherite_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.netherite_weaponry.description"
+    },
+    "icon": {
+      "id": "armorplus:netherite_sword"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.netherite_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:netherite_sword"
+    ],
+    [
+      "armorplus:netherite_battle_axe"
+    ],
+    [
+      "armorplus:netherite_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:quartz_pickaxes",
+  "key": {
+    "M": "minecraft:glowstone",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "MMM",
+    " S ",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:quartz_pickaxe"
+  }
+}

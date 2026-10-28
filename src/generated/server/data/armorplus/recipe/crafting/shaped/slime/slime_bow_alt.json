@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:slime_bows",
+  "key": {
+    "M": "minecraft:slime_block",
+    "S": "minecraft:string"
+  },
+  "pattern": [
+    " MS",
+    "M S",
+    " MS"
+  ],
+  "result": {
+    "id": "armorplus:slime_bow"
+  }
+}

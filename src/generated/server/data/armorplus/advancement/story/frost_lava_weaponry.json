@@ -1,0 +1,61 @@
+{
+  "parent": "armorplus:story/frost_lava_armor",
+  "criteria": {
+    "armorplus:frost_lava_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:frost_lava_battle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:frost_lava_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:frost_lava_mace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:frost_lava_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:frost_lava_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.frost_lava_weaponry.description"
+    },
+    "icon": {
+      "id": "armorplus:frost_lava_sword"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.frost_lava_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:frost_lava_sword"
+    ],
+    [
+      "armorplus:frost_lava_battle_axe"
+    ],
+    [
+      "armorplus:frost_lava_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

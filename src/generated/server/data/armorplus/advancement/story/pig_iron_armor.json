@@ -1,0 +1,74 @@
+{
+  "parent": "armorplus:story/root",
+  "criteria": {
+    "armorplus:pig_iron_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:pig_iron_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:pig_iron_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:pig_iron_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:pig_iron_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:pig_iron_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:pig_iron_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:pig_iron_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.pig_iron_armor.description"
+    },
+    "icon": {
+      "id": "armorplus:pig_iron_chestplate"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.pig_iron_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:pig_iron_helmet"
+    ],
+    [
+      "armorplus:pig_iron_chestplate"
+    ],
+    [
+      "armorplus:pig_iron_leggings"
+    ],
+    [
+      "armorplus:pig_iron_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

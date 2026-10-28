@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:glowstone_bows",
+  "key": {
+    "M": "minecraft:honeycomb_block",
+    "S": "minecraft:string"
+  },
+  "pattern": [
+    "SM ",
+    "S M",
+    "SM "
+  ],
+  "result": {
+    "id": "armorplus:glowstone_bow"
+  }
+}

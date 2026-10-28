@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:maces",
+  "key": {
+    "E": "minecraft:echo_shard",
+    "H": "armorplus:warden_heart",
+    "S": "armorplus:obsidian_stick"
+  },
+  "pattern": [
+    "HE ",
+    "ES ",
+    "  S"
+  ],
+  "result": {
+    "id": "armorplus:warden_mace"
+  }
+}

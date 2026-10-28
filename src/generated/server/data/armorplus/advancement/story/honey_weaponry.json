@@ -1,0 +1,61 @@
+{
+  "parent": "armorplus:story/honey_armor",
+  "criteria": {
+    "armorplus:honey_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:honey_battle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:honey_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:honey_mace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:honey_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:honey_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.honey_weaponry.description"
+    },
+    "icon": {
+      "id": "armorplus:honey_sword"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.honey_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:honey_sword"
+    ],
+    [
+      "armorplus:honey_battle_axe"
+    ],
+    [
+      "armorplus:honey_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,61 @@
+{
+  "parent": "armorplus:story/copper_armor",
+  "criteria": {
+    "armorplus:copper_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:copper_battle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:copper_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:copper_mace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:copper_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:copper_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.copper_weaponry.description"
+    },
+    "icon": {
+      "id": "armorplus:copper_sword"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.copper_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:copper_sword"
+    ],
+    [
+      "armorplus:copper_battle_axe"
+    ],
+    [
+      "armorplus:copper_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

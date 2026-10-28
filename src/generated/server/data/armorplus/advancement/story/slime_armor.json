@@ -1,0 +1,74 @@
+{
+  "parent": "armorplus:story/root",
+  "criteria": {
+    "armorplus:slime_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:slime_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:slime_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:slime_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:slime_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:slime_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:slime_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:slime_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.slime_armor.description"
+    },
+    "icon": {
+      "id": "armorplus:slime_chestplate"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.slime_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:slime_helmet"
+    ],
+    [
+      "armorplus:slime_chestplate"
+    ],
+    [
+      "armorplus:slime_leggings"
+    ],
+    [
+      "armorplus:slime_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

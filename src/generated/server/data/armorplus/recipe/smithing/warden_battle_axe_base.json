@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "armorplus:warden_heart",
+  "base": "armorplus:warden_battle_axe_base",
+  "result": {
+    "id": "armorplus:warden_battle_axe"
+  },
+  "template": "armorplus:infused_lava_crystal"
+}

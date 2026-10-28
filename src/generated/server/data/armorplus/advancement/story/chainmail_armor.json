@@ -1,0 +1,74 @@
+{
+  "parent": "armorplus:story/root",
+  "criteria": {
+    "armorplus:chainmail_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:chainmail_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:chainmail_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:chainmail_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:chainmail_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:chainmail_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:chainmail_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:chainmail_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.chainmail_armor.description"
+    },
+    "icon": {
+      "id": "armorplus:chainmail_chestplate"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.chainmail_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:chainmail_helmet"
+    ],
+    [
+      "armorplus:chainmail_chestplate"
+    ],
+    [
+      "armorplus:chainmail_leggings"
+    ],
+    [
+      "armorplus:chainmail_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

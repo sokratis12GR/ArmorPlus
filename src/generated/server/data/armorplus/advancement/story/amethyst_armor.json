@@ -1,0 +1,74 @@
+{
+  "parent": "armorplus:story/root",
+  "criteria": {
+    "armorplus:amethyst_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:amethyst_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:amethyst_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:amethyst_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:amethyst_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:amethyst_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:amethyst_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:amethyst_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.amethyst_armor.description"
+    },
+    "icon": {
+      "id": "armorplus:amethyst_chestplate"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.amethyst_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:amethyst_helmet"
+    ],
+    [
+      "armorplus:amethyst_chestplate"
+    ],
+    [
+      "armorplus:amethyst_leggings"
+    ],
+    [
+      "armorplus:amethyst_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

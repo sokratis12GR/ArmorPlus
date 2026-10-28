@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:ardite",
+  "key": {
+    "S": "armorplus:ardite_ingot"
+  },
+  "pattern": [
+    "S S",
+    "SSS",
+    "SSS"
+  ],
+  "result": {
+    "id": "armorplus:ardite_chestplate"
+  }
+}

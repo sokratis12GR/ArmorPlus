@@ -1,0 +1,61 @@
+{
+  "parent": "armorplus:story/manyullyn_armor",
+  "criteria": {
+    "armorplus:manyullyn_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:manyullyn_battle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:manyullyn_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:manyullyn_mace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:manyullyn_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:manyullyn_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.manyullyn_weaponry.description"
+    },
+    "icon": {
+      "id": "armorplus:manyullyn_sword"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.manyullyn_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:manyullyn_sword"
+    ],
+    [
+      "armorplus:manyullyn_battle_axe"
+    ],
+    [
+      "armorplus:manyullyn_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

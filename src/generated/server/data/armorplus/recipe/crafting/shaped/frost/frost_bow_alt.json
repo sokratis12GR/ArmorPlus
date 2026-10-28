@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:frost_bows",
+  "key": {
+    "M": "armorplus:infused_frost_crystal",
+    "S": "minecraft:string"
+  },
+  "pattern": [
+    " MS",
+    "M S",
+    " MS"
+  ],
+  "result": {
+    "id": "armorplus:frost_bow"
+  }
+}

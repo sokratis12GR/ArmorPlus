@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:amethyst_battle_axes",
+  "key": {
+    "M": "minecraft:quartz_block",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "M M",
+    "MSM",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:amethyst_battle_axe"
+  }
+}

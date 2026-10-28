@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:maces",
+  "key": {
+    "D": "armorplus:enhanced_diamond",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "DD ",
+    "DS ",
+    "  S"
+  ],
+  "result": {
+    "id": "armorplus:diamond_mace"
+  }
+}

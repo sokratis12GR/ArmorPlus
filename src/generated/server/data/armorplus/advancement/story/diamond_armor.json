@@ -1,0 +1,74 @@
+{
+  "parent": "armorplus:story/root",
+  "criteria": {
+    "armorplus:diamond_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:diamond_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:diamond_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:diamond_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:diamond_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:diamond_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:diamond_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:diamond_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.diamond_armor.description"
+    },
+    "icon": {
+      "id": "armorplus:diamond_chestplate"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.diamond_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:diamond_helmet"
+    ],
+    [
+      "armorplus:diamond_chestplate"
+    ],
+    [
+      "armorplus:diamond_leggings"
+    ],
+    [
+      "armorplus:diamond_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

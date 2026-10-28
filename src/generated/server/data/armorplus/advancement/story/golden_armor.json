@@ -1,0 +1,74 @@
+{
+  "parent": "armorplus:story/root",
+  "criteria": {
+    "armorplus:golden_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:golden_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:golden_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:golden_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:golden_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:golden_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:golden_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:golden_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.golden_armor.description"
+    },
+    "icon": {
+      "id": "armorplus:golden_chestplate"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.golden_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:golden_helmet"
+    ],
+    [
+      "armorplus:golden_chestplate"
+    ],
+    [
+      "armorplus:golden_leggings"
+    ],
+    [
+      "armorplus:golden_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

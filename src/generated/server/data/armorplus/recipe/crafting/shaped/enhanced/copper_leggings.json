@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:ap_en_copper",
+  "key": {
+    "S": "armorplus:enhanced_copper"
+  },
+  "pattern": [
+    "SSS",
+    "S S",
+    "S S"
+  ],
+  "result": {
+    "id": "armorplus:copper_leggings"
+  }
+}

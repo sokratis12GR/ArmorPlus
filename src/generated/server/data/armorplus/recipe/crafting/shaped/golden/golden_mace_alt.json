@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:maces",
+  "key": {
+    "D": "armorplus:enhanced_gold",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "DD ",
+    "DS ",
+    "  S"
+  ],
+  "result": {
+    "id": "armorplus:golden_mace"
+  }
+}

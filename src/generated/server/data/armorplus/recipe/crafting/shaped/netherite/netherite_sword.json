@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:netherite_swords",
+  "key": {
+    "M": "armorplus:enhanced_netherite",
+    "S": "armorplus:obsidian_stick"
+  },
+  "pattern": [
+    "M  ",
+    "M  ",
+    "S  "
+  ],
+  "result": {
+    "id": "armorplus:netherite_sword"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:pig_iron_swords",
+  "key": {
+    "M": "armorplus:pig_iron_ingot",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "M  ",
+    "M  ",
+    "S  "
+  ],
+  "result": {
+    "id": "armorplus:pig_iron_sword"
+  }
+}

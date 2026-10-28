@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:maces",
+  "key": {
+    "D": "armorplus:ardite_ingot",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    " DD",
+    " SD",
+    "S  "
+  ],
+  "result": {
+    "id": "armorplus:ardite_mace"
+  }
+}

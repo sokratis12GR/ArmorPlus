@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:honey",
+  "key": {
+    "S": "minecraft:honeycomb_block"
+  },
+  "pattern": [
+    "S S",
+    "S S",
+    "   "
+  ],
+  "result": {
+    "id": "armorplus:honey_boots"
+  }
+}

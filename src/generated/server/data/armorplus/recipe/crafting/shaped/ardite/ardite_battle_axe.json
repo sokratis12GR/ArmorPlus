@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:ardite_battle_axes",
+  "key": {
+    "M": "armorplus:ardite_ingot",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "M M",
+    "MSM",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:ardite_battle_axe"
+  }
+}

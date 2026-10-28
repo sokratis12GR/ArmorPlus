@@ -1,0 +1,61 @@
+{
+  "parent": "armorplus:story/pig_iron_armor",
+  "criteria": {
+    "armorplus:pig_iron_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:pig_iron_battle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:pig_iron_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:pig_iron_mace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:pig_iron_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:pig_iron_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.pig_iron_weaponry.description"
+    },
+    "icon": {
+      "id": "armorplus:pig_iron_sword"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.pig_iron_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:pig_iron_sword"
+    ],
+    [
+      "armorplus:pig_iron_battle_axe"
+    ],
+    [
+      "armorplus:pig_iron_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,74 @@
+{
+  "parent": "armorplus:story/root",
+  "criteria": {
+    "armorplus:frost_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:frost_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:frost_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:frost_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:frost_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:frost_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:frost_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:frost_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.frost_armor.description"
+    },
+    "icon": {
+      "id": "armorplus:frost_chestplate"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.frost_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:frost_helmet"
+    ],
+    [
+      "armorplus:frost_chestplate"
+    ],
+    [
+      "armorplus:frost_leggings"
+    ],
+    [
+      "armorplus:frost_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

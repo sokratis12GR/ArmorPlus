@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:knight_slime_pickaxes",
+  "key": {
+    "M": "armorplus:knight_slime_crystal",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "MMM",
+    " S ",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:knight_slime_pickaxe"
+  }
+}

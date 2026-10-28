@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "armorplus:ap_tc_mats",
+  "key": {
+    "F": "minecraft:rotten_flesh",
+    "I": "minecraft:iron_ingot"
+  },
+  "pattern": [
+    "III",
+    "IFI",
+    "III"
+  ],
+  "result": {
+    "id": "armorplus:pig_iron_ingot"
+  }
+}

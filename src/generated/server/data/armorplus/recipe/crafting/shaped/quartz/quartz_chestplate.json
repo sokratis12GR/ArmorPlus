@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:quartz",
+  "key": {
+    "S": "minecraft:quartz_block"
+  },
+  "pattern": [
+    "S S",
+    "SSS",
+    "SSS"
+  ],
+  "result": {
+    "id": "armorplus:quartz_chestplate"
+  }
+}

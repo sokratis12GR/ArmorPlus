@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:warden_pickaxes",
+  "key": {
+    "C": "minecraft:sculk_catalyst",
+    "M": "minecraft:echo_shard",
+    "S": "armorplus:obsidian_stick"
+  },
+  "pattern": [
+    "MMM",
+    " C ",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:warden_pickaxe_base"
+  }
+}

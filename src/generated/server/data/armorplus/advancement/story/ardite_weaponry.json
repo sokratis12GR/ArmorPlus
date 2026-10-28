@@ -1,0 +1,61 @@
+{
+  "parent": "armorplus:story/ardite_armor",
+  "criteria": {
+    "armorplus:ardite_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:ardite_battle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:ardite_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:ardite_mace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:ardite_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:ardite_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.ardite_weaponry.description"
+    },
+    "icon": {
+      "id": "armorplus:ardite_sword"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.ardite_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:ardite_sword"
+    ],
+    [
+      "armorplus:ardite_battle_axe"
+    ],
+    [
+      "armorplus:ardite_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

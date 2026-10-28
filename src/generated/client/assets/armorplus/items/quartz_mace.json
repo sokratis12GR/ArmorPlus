@@ -1,0 +1,9 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "armorplus:item/quartz_mace",
+    "model": {
+      "type": "geckolib:geckolib"
+    }
+  }
+}

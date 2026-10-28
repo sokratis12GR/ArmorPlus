@@ -1,0 +1,61 @@
+{
+  "parent": "armorplus:story/iron_armor",
+  "criteria": {
+    "armorplus:iron_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:iron_battle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:iron_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:iron_mace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:iron_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:iron_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.iron_weaponry.description"
+    },
+    "icon": {
+      "id": "armorplus:iron_sword"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.iron_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:iron_sword"
+    ],
+    [
+      "armorplus:iron_battle_axe"
+    ],
+    [
+      "armorplus:iron_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

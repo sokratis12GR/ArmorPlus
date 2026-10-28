@@ -1,0 +1,74 @@
+{
+  "parent": "armorplus:story/root",
+  "criteria": {
+    "armorplus:glowstone_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:glowstone_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:glowstone_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:glowstone_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:glowstone_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:glowstone_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:glowstone_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:glowstone_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.glowstone_armor.description"
+    },
+    "icon": {
+      "id": "armorplus:glowstone_chestplate"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.glowstone_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:glowstone_helmet"
+    ],
+    [
+      "armorplus:glowstone_chestplate"
+    ],
+    [
+      "armorplus:glowstone_leggings"
+    ],
+    [
+      "armorplus:glowstone_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,61 @@
+{
+  "parent": "armorplus:story/amethyst_armor",
+  "criteria": {
+    "armorplus:amethyst_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:amethyst_battle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:amethyst_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:amethyst_mace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:amethyst_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:amethyst_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.amethyst_weaponry.description"
+    },
+    "icon": {
+      "id": "armorplus:amethyst_sword"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.amethyst_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:amethyst_sword"
+    ],
+    [
+      "armorplus:amethyst_battle_axe"
+    ],
+    [
+      "armorplus:amethyst_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

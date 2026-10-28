@@ -1,0 +1,61 @@
+{
+  "parent": "armorplus:story/chainmail_armor",
+  "criteria": {
+    "armorplus:chainmail_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:chainmail_battle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:chainmail_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:chainmail_mace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:chainmail_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:chainmail_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.chainmail_weaponry.description"
+    },
+    "icon": {
+      "id": "armorplus:chainmail_sword"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.chainmail_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:chainmail_sword"
+    ],
+    [
+      "armorplus:chainmail_battle_axe"
+    ],
+    [
+      "armorplus:chainmail_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

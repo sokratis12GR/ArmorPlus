@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "armorplus:amethyst"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "armorplus:amethyst"
+      }
+    ]
+  }
+}

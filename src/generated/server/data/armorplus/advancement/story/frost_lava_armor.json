@@ -1,0 +1,74 @@
+{
+  "parent": "armorplus:story/root",
+  "criteria": {
+    "armorplus:frost_lava_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:frost_lava_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:frost_lava_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:frost_lava_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:frost_lava_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:frost_lava_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:frost_lava_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:frost_lava_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.frost_lava_armor.description"
+    },
+    "icon": {
+      "id": "armorplus:frost_lava_chestplate"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.frost_lava_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:frost_lava_helmet"
+    ],
+    [
+      "armorplus:frost_lava_chestplate"
+    ],
+    [
+      "armorplus:frost_lava_leggings"
+    ],
+    [
+      "armorplus:frost_lava_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

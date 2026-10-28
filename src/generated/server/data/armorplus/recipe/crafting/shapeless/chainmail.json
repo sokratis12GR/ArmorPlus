@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "armorplus:materials",
+  "ingredients": [
+    "minecraft:iron_ingot",
+    "minecraft:iron_nugget",
+    "minecraft:iron_nugget",
+    "minecraft:iron_nugget"
+  ],
+  "result": {
+    "count": 4,
+    "id": "armorplus:chainmail"
+  }
+}

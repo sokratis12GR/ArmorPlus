@@ -1,0 +1,74 @@
+{
+  "parent": "armorplus:story/root",
+  "criteria": {
+    "armorplus:netherite_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:netherite_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:netherite_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:netherite_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:netherite_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:netherite_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:netherite_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:netherite_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.netherite_armor.description"
+    },
+    "icon": {
+      "id": "armorplus:netherite_chestplate"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.netherite_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:netherite_helmet"
+    ],
+    [
+      "armorplus:netherite_chestplate"
+    ],
+    [
+      "armorplus:netherite_leggings"
+    ],
+    [
+      "armorplus:netherite_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

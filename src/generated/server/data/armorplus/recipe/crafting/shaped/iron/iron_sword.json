@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:iron_swords",
+  "key": {
+    "M": "armorplus:enhanced_iron",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "M  ",
+    "M  ",
+    "S  "
+  ],
+  "result": {
+    "id": "armorplus:iron_sword"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "parent": "armorplus:story/quartz_armor",
+  "criteria": {
+    "armorplus:quartz_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:quartz_battle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:quartz_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:quartz_mace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:quartz_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:quartz_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.quartz_weaponry.description"
+    },
+    "icon": {
+      "id": "armorplus:quartz_sword"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.quartz_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:quartz_sword"
+    ],
+    [
+      "armorplus:quartz_battle_axe"
+    ],
+    [
+      "armorplus:quartz_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

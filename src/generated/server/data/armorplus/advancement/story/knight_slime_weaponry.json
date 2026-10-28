@@ -1,0 +1,61 @@
+{
+  "parent": "armorplus:story/knight_slime_armor",
+  "criteria": {
+    "armorplus:knight_slime_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:knight_slime_battle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:knight_slime_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:knight_slime_mace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:knight_slime_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:knight_slime_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.knight_slime_weaponry.description"
+    },
+    "icon": {
+      "id": "armorplus:knight_slime_sword"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.knight_slime_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:knight_slime_sword"
+    ],
+    [
+      "armorplus:knight_slime_battle_axe"
+    ],
+    [
+      "armorplus:knight_slime_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

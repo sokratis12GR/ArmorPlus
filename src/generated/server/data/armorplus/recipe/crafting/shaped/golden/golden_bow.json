@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:golden_bows",
+  "key": {
+    "M": "armorplus:enhanced_gold",
+    "S": "minecraft:string"
+  },
+  "pattern": [
+    "SM ",
+    "S M",
+    "SM "
+  ],
+  "result": {
+    "id": "armorplus:golden_bow"
+  }
+}

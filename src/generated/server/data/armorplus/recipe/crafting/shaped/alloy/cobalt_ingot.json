@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "armorplus:ap_tc_mats",
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "L": "minecraft:lapis_block"
+  },
+  "pattern": [
+    "III",
+    "ILI",
+    "III"
+  ],
+  "result": {
+    "id": "armorplus:cobalt_ingot"
+  }
+}

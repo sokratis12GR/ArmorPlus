@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:pig_iron",
+  "key": {
+    "S": "armorplus:pig_iron_ingot"
+  },
+  "pattern": [
+    "   ",
+    "S S",
+    "S S"
+  ],
+  "result": {
+    "id": "armorplus:pig_iron_boots"
+  }
+}

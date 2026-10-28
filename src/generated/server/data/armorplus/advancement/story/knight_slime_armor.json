@@ -1,0 +1,74 @@
+{
+  "parent": "armorplus:story/root",
+  "criteria": {
+    "armorplus:knight_slime_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:knight_slime_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:knight_slime_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:knight_slime_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:knight_slime_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:knight_slime_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:knight_slime_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:knight_slime_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.knight_slime_armor.description"
+    },
+    "icon": {
+      "id": "armorplus:knight_slime_chestplate"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.knight_slime_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:knight_slime_helmet"
+    ],
+    [
+      "armorplus:knight_slime_chestplate"
+    ],
+    [
+      "armorplus:knight_slime_leggings"
+    ],
+    [
+      "armorplus:knight_slime_boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

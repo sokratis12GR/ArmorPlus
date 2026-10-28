@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:cobalt_bows",
+  "key": {
+    "M": "armorplus:cobalt_ingot",
+    "S": "minecraft:string"
+  },
+  "pattern": [
+    " MS",
+    "M S",
+    " MS"
+  ],
+  "result": {
+    "id": "armorplus:cobalt_bow"
+  }
+}

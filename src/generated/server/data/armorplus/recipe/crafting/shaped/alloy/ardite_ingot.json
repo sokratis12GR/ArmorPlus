@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "armorplus:ap_tc_mats",
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "M": "minecraft:magma_block"
+  },
+  "pattern": [
+    "III",
+    "IMI",
+    "III"
+  ],
+  "result": {
+    "id": "armorplus:ardite_ingot"
+  }
+}

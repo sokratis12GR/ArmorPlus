@@ -1,0 +1,61 @@
+{
+  "parent": "armorplus:story/frost_armor",
+  "criteria": {
+    "armorplus:frost_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:frost_battle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:frost_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:frost_mace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:frost_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:frost_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.frost_weaponry.description"
+    },
+    "icon": {
+      "id": "armorplus:frost_sword"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.frost_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:frost_sword"
+    ],
+    [
+      "armorplus:frost_battle_axe"
+    ],
+    [
+      "armorplus:frost_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

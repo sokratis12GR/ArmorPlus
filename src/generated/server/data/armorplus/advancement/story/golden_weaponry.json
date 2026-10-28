@@ -1,0 +1,61 @@
+{
+  "parent": "armorplus:story/golden_armor",
+  "criteria": {
+    "armorplus:golden_battle_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:golden_battle_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:golden_mace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:golden_mace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "armorplus:golden_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "armorplus:golden_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.armorplus.story.golden_weaponry.description"
+    },
+    "icon": {
+      "id": "armorplus:golden_sword"
+    },
+    "title": {
+      "translate": "advancements.armorplus.story.golden_weaponry.title"
+    }
+  },
+  "requirements": [
+    [
+      "armorplus:golden_sword"
+    ],
+    [
+      "armorplus:golden_battle_axe"
+    ],
+    [
+      "armorplus:golden_mace"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  },
+  "sends_telemetry_event": true
+}

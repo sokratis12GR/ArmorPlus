@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:maces",
+  "key": {
+    "D": "armorplus:enhanced_chainmail",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    " DD",
+    " SD",
+    "S  "
+  ],
+  "result": {
+    "id": "armorplus:chainmail_mace"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:pig_iron_pickaxes",
+  "key": {
+    "M": "armorplus:pig_iron_ingot",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "MMM",
+    " S ",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:pig_iron_pickaxe"
+  }
+}

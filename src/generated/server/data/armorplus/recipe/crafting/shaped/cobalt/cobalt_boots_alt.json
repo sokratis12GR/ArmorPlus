@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:cobalt",
+  "key": {
+    "S": "armorplus:cobalt_ingot"
+  },
+  "pattern": [
+    "   ",
+    "S S",
+    "S S"
+  ],
+  "result": {
+    "id": "armorplus:cobalt_boots"
+  }
+}
