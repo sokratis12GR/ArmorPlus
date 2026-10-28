@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:stick"
+            "items": "minecraft:string"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "armorplus:crafting/shaped/slayer/slayer_pickaxe"
+        "recipe": "armorplus:crafting/shaped/honey/honey_bow_alt"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "armorplus:crafting/shaped/slayer/slayer_pickaxe"
+      "armorplus:crafting/shaped/honey/honey_bow_alt"
     ]
   }
 }

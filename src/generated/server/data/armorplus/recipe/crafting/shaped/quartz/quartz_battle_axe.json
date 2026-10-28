@@ -3,7 +3,7 @@
   "category": "equipment",
   "group": "armorplus:quartz_battle_axes",
   "key": {
-    "M": "minecraft:glowstone",
+    "M": "minecraft:quartz_block",
     "S": "minecraft:stick"
   },
   "pattern": [

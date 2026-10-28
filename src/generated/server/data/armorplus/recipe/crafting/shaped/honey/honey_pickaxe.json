@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
-  "group": "armorplus:slayer_pickaxes",
+  "group": "armorplus:honey_pickaxes",
   "key": {
-    "M": "minecraft:amethyst_block",
+    "M": "minecraft:honeycomb_block",
     "S": "minecraft:stick"
   },
   "pattern": [
@@ -12,6 +12,6 @@
     " S "
   ],
   "result": {
-    "id": "armorplus:slayer_pickaxe"
+    "id": "armorplus:honey_pickaxe"
   }
 }

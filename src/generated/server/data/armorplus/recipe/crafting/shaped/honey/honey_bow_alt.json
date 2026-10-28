@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
-  "group": "armorplus:slayer_bows",
+  "group": "armorplus:honey_bows",
   "key": {
-    "M": "minecraft:amethyst_block",
+    "M": "minecraft:honeycomb_block",
     "S": "minecraft:string"
   },
   "pattern": [
@@ -12,6 +12,6 @@
     " MS"
   ],
   "result": {
-    "id": "armorplus:slayer_bow"
+    "id": "armorplus:honey_bow"
   }
 }

@@ -3,7 +3,7 @@
   "category": "equipment",
   "group": "armorplus:glowstone_battle_axes",
   "key": {
-    "M": "minecraft:honeycomb_block",
+    "M": "minecraft:glowstone",
     "S": "minecraft:stick"
   },
   "pattern": [

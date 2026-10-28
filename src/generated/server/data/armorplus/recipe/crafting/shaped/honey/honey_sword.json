@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
-  "group": "armorplus:slayer_swords",
+  "group": "armorplus:honey_swords",
   "key": {
-    "M": "minecraft:amethyst_block",
+    "M": "minecraft:honeycomb_block",
     "S": "minecraft:stick"
   },
   "pattern": [
@@ -12,6 +12,6 @@
     "S  "
   ],
   "result": {
-    "id": "armorplus:slayer_sword"
+    "id": "armorplus:honey_sword"
   }
 }

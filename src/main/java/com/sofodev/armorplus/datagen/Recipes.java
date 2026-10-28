@@ -5,6 +5,8 @@ import com.sofodev.armorplus.datagen.recipe.GridInput;
 import com.sofodev.armorplus.datagen.recipe.Result;
 import com.sofodev.armorplus.registry.ModBlocks;
 import com.sofodev.armorplus.registry.ModItems;
+import com.sofodev.armorplus.registry.item.tool.properties.mace.APMaceMaterial;
+import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -18,7 +20,9 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RepairItemRecipe;
 import net.minecraft.world.level.ItemLike;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -88,18 +92,12 @@ public class Recipes extends RecipeProvider {
             // Colored castle blocks
             crafter.buildColoredBrick(con, CASTLE_BLOCKS[i], BRICK_COLORS.get(i), Items.CHISELED_STONE_BRICKS, "colored_castle_blocks");
         }
-        //Bows
-        for (int i = 0; i < LOW_TO_MID_TIER_MATERIAL_LIST.size(); i++) {
-            crafter.buildSword(con, SWORDS[i], LOW_TO_MID_TIER_MATERIAL_LIST.get(i), STICK);
-            crafter.buildBattleAxe(con, BATTLE_AXES[i], LOW_TO_MID_TIER_MATERIAL_LIST.get(i), STICK);
-            crafter.buildPickaxe(con, PICKAXES[i], LOW_TO_MID_TIER_MATERIAL_LIST.get(i), STICK);
-            crafter.buildBow(con, BOWS[i], LOW_TO_MID_TIER_MATERIAL_LIST.get(i));
+        //Weapons are always looked up by material (never by a hard-coded index)
+        List<APToolMaterial> lowToMidTools = List.of(APToolMaterial.COAL_MAT, APToolMaterial.REDSTONE_MAT, APToolMaterial.LAPIS_MAT, APToolMaterial.EMERALD_MAT, APToolMaterial.OBSIDIAN_MAT);
+        for (int i = 0; i < lowToMidTools.size(); i++) {
+            buildToolSet(crafter, con, lowToMidTools.get(i), LOW_TO_MID_TIER_MATERIAL_LIST.get(i), STICK);
         }
-        int lava = LOW_TO_MID_TIER_MATERIAL_LIST.size();
-        crafter.buildSword(con, SWORDS[lava], INFUSED_LAVA_CRYSTAL.get(), OBSIDIAN_STICK.get());
-        crafter.buildBattleAxe(con, BATTLE_AXES[lava], INFUSED_LAVA_CRYSTAL.get(), OBSIDIAN_STICK.get());
-        crafter.buildPickaxe(con, PICKAXES[lava], INFUSED_LAVA_CRYSTAL.get(), OBSIDIAN_STICK.get());
-        crafter.buildBow(con, BOWS[lava], INFUSED_LAVA_CRYSTAL.get());
+        buildToolSet(crafter, con, APToolMaterial.INFUSED_LAVA_MAT, INFUSED_LAVA_CRYSTAL.get(), OBSIDIAN_STICK.get());
 
         crafter.buildSword(con, GUARDIAN_SWORD_BASE, GUARDIAN_SCALE.get(), PRISMARINE, OBSIDIAN_STICK.get());
         crafter.buildSword(con, SUPER_STAR_SWORD_BASE, WITHER_BONE.get(), NETHER_STAR, OBSIDIAN_STICK.get());
@@ -121,40 +119,33 @@ public class Recipes extends RecipeProvider {
         crafter.buildBow(con, WARDEN_BOW_BASE, SCULK_CATALYST, ECHO_SHARD);
 
         //Amethyst/Quartz/Glowstone/Honey (low tier, base-block + stick like coal/redstone/lapis)
-        crafter.buildSword(con, SWORDS[10], AMETHYST_BLOCK, STICK);
-        crafter.buildBattleAxe(con, BATTLE_AXES[10], AMETHYST_BLOCK, STICK);
-        crafter.buildPickaxe(con, PICKAXES[10], AMETHYST_BLOCK, STICK);
-        crafter.buildBow(con, BOWS[10], AMETHYST_BLOCK);
+        buildToolSet(crafter, con, APToolMaterial.AMETHYST_MAT, AMETHYST_BLOCK, STICK);
+        buildToolSet(crafter, con, APToolMaterial.QUARTZ_MAT, QUARTZ_BLOCK, STICK);
+        buildToolSet(crafter, con, APToolMaterial.GLOWSTONE_MAT, GLOWSTONE, STICK);
+        buildToolSet(crafter, con, APToolMaterial.HONEY_MAT, HONEYCOMB_BLOCK, STICK);
 
-        crafter.buildSword(con, SWORDS[11], QUARTZ_BLOCK, STICK);
-        crafter.buildBattleAxe(con, BATTLE_AXES[11], QUARTZ_BLOCK, STICK);
-        crafter.buildPickaxe(con, PICKAXES[11], QUARTZ_BLOCK, STICK);
-        crafter.buildBow(con, BOWS[11], QUARTZ_BLOCK);
-
-        crafter.buildSword(con, SWORDS[12], GLOWSTONE, STICK);
-        crafter.buildBattleAxe(con, BATTLE_AXES[12], GLOWSTONE, STICK);
-        crafter.buildPickaxe(con, PICKAXES[12], GLOWSTONE, STICK);
-        crafter.buildBow(con, BOWS[12], GLOWSTONE);
-
-        crafter.buildSword(con, SWORDS[13], HONEYCOMB_BLOCK, STICK);
-        crafter.buildBattleAxe(con, BATTLE_AXES[13], HONEYCOMB_BLOCK, STICK);
-        crafter.buildPickaxe(con, PICKAXES[13], HONEYCOMB_BLOCK, STICK);
-        crafter.buildBow(con, BOWS[13], HONEYCOMB_BLOCK);
-        //Weapons for the remaining armor materials (parity with the armor sets). The index is the APToolMaterial/APMaceMaterial ordinal.
-        List<ItemLike> parityMaterials = List.of(FEATHER, SLIME_BLOCK, ARDITE_INGOT.get(), COBALT_INGOT.get(), KNIGHT_SLIME_CRYSTAL.get(), PIG_IRON_INGOT.get(), MANYULLYN_INGOT.get(), INFUSED_FROST_CRYSTAL.get(), INFUSED_FROST_LAVA_CRYSTAL.get(), ENHANCED_CHAINMAIL.get(), ENHANCED_GOLD.get(), ENHANCED_COPPER.get(), ENHANCED_IRON.get(), ENHANCED_DIAMOND.get(), ENHANCED_NETHERITE.get());
-        IntStream.range(0, parityMaterials.size()).forEach(j -> {
-            int i = 15 + j;
-            ItemLike material = parityMaterials.get(j);
-            //Manyullyn, the frost crystals and Enhanced Netherite are top tier and use the obsidian stick
-            ItemLike stick = j == 6 || j == 7 || j == 8 || j == 14 ? OBSIDIAN_STICK.get() : STICK;
-            crafter.buildSword(con, SWORDS[i], material, stick);
-            crafter.buildBattleAxe(con, BATTLE_AXES[i], material, stick);
-            crafter.buildPickaxe(con, PICKAXES[i], material, stick);
-            crafter.buildBow(con, BOWS[i], material);
-            Item mace = MACES[i].get();
-            String path = getPath(mace).replace("item_", "").replace("_mace", "");
-            crafter.build(con, RecipeCategory.COMBAT, Result.build(mace, "maces", path), GridInput.build(" DD", " SD", "S  ", 'S', 'D'), stick, material);
-            crafter.build(con, RecipeCategory.COMBAT, Result.build(mace, "maces", path).setSuffix("_alt"), GridInput.build("DD ", "DS ", "  S", 'S', 'D'), stick, material);
+        //Weapons for the remaining armor materials (parity with the armor sets). Top tier ones use the obsidian stick.
+        Map<APToolMaterial, ItemLike> parityMaterials = new LinkedHashMap<>();
+        parityMaterials.put(APToolMaterial.CHICKEN_MAT, FEATHER);
+        parityMaterials.put(APToolMaterial.SLIME_MAT, SLIME_BLOCK);
+        parityMaterials.put(APToolMaterial.ARDITE_MAT, ARDITE_INGOT.get());
+        parityMaterials.put(APToolMaterial.COBALT_MAT, COBALT_INGOT.get());
+        parityMaterials.put(APToolMaterial.KNIGHT_SLIME_MAT, KNIGHT_SLIME_CRYSTAL.get());
+        parityMaterials.put(APToolMaterial.PIG_IRON_MAT, PIG_IRON_INGOT.get());
+        parityMaterials.put(APToolMaterial.MANYULLYN_MAT, MANYULLYN_INGOT.get());
+        parityMaterials.put(APToolMaterial.FROST_MAT, INFUSED_FROST_CRYSTAL.get());
+        parityMaterials.put(APToolMaterial.FROST_LAVA_MAT, INFUSED_FROST_LAVA_CRYSTAL.get());
+        parityMaterials.put(APToolMaterial.CHAINMAIL_MAT, ENHANCED_CHAINMAIL.get());
+        parityMaterials.put(APToolMaterial.GOLDEN_MAT, ENHANCED_GOLD.get());
+        parityMaterials.put(APToolMaterial.COPPER_MAT, ENHANCED_COPPER.get());
+        parityMaterials.put(APToolMaterial.IRON_MAT, ENHANCED_IRON.get());
+        parityMaterials.put(APToolMaterial.DIAMOND_MAT, ENHANCED_DIAMOND.get());
+        parityMaterials.put(APToolMaterial.NETHERITE_MAT, ENHANCED_NETHERITE.get());
+        List<APToolMaterial> obsidianStickParity = List.of(APToolMaterial.MANYULLYN_MAT, APToolMaterial.FROST_MAT, APToolMaterial.FROST_LAVA_MAT, APToolMaterial.NETHERITE_MAT);
+        parityMaterials.forEach((mat, material) -> {
+            ItemLike stick = obsidianStickParity.contains(mat) ? OBSIDIAN_STICK.get() : STICK;
+            buildToolSet(crafter, con, mat, material, stick);
+            buildMace(crafter, con, mat, stick, material);
         });
         //Arrows
         crafter.buildOrderedArrow(con, asList(ITEM_COAL_ARROW, ITEM_REDSTONE_ARROW, ITEM_LAPIS_ARROW, ITEM_EMERALD_ARROW, ITEM_OBSIDIAN_ARROW, ITEM_INFUSED_LAVA_ARROW, ITEM_GUARDIAN_ARROW, ITEM_SUPER_STAR_ARROW, ITEM_ENDER_DRAGON_ARROW));
@@ -221,34 +212,20 @@ public class Recipes extends RecipeProvider {
         crafter.buildArmorSet(con, "pig_iron", PIG_IRON_INGOT.get(), "");
         crafter.buildArmorSet(con, "knight_slime", KNIGHT_SLIME_CRYSTAL.get(), "");
         crafter.buildArmorSet(con, "manyullyn", MANYULLYN_INGOT.get(), "");
-        int bound = BLOCK_MATERIALS_ORDERED.size();
-        IntStream.range(0, bound).forEach(i -> {
-            Item mace = MACES[i].get();
-            String path = getPath(mace).replace("item_", "").replace("_mace", "");
-            ItemLike material = BLOCK_MATERIALS_ORDERED.get(i);
-            crafter.build(con, RecipeCategory.COMBAT, Result.build(mace, "maces", path), GridInput.build(" DD", " SD", "S  ", 'S', 'D'), i > 4 ? OBSIDIAN_STICK.get() : WOODEN_ROD.get(), material);
-            crafter.build(con, RecipeCategory.COMBAT, Result.build(mace, "maces", path).setSuffix("_alt"), GridInput.build("DD ", "DS ", "  S", 'S', 'D'), i > 4 ? OBSIDIAN_STICK.get() : WOODEN_ROD.get(), material);
-        });
-        //Warden mace (index 9): a single Warden Heart, like every other Warden weapon
-        Item wardenMace = MACES[9].get();
+        List<APToolMaterial> blockMaceMaterials = List.of(APToolMaterial.COAL_MAT, APToolMaterial.REDSTONE_MAT, APToolMaterial.LAPIS_MAT, APToolMaterial.EMERALD_MAT, APToolMaterial.OBSIDIAN_MAT, APToolMaterial.INFUSED_LAVA_MAT, APToolMaterial.GUARDIAN_MAT, APToolMaterial.SUPER_STAR_MAT, APToolMaterial.ENDER_DRAGON_MAT);
+        IntStream.range(0, blockMaceMaterials.size()).forEach(i -> buildMace(crafter, con, blockMaceMaterials.get(i), i > 4 ? OBSIDIAN_STICK.get() : WOODEN_ROD.get(), BLOCK_MATERIALS_ORDERED.get(i)));
+        //Warden mace: a single Warden Heart, like every other Warden weapon
+        Item wardenMace = maceOf(APToolMaterial.WARDEN_MAT);
         String wardenMacePath = getPath(wardenMace).replace("item_", "").replace("_mace", "");
         crafter.build(con, RecipeCategory.COMBAT, Result.build(wardenMace, "maces", wardenMacePath), GridInput.build(" EH", " SE", "S  ", 'S', 'E', 'H'), OBSIDIAN_STICK.get(), ECHO_SHARD, WARDEN_HEART.get());
         crafter.build(con, RecipeCategory.COMBAT, Result.build(wardenMace, "maces", wardenMacePath).setSuffix("_alt"), GridInput.build("HE ", "ES ", "  S", 'S', 'E', 'H'), OBSIDIAN_STICK.get(), ECHO_SHARD, WARDEN_HEART.get());
-        //Slayer mace (index 10)
-        Item slayerMace = MACES[10].get();
-        String slayerMacePath = getPath(slayerMace).replace("item_", "").replace("_mace", "");
-        crafter.build(con, RecipeCategory.COMBAT, Result.build(slayerMace, "maces", slayerMacePath), GridInput.build(" DD", " SD", "S  ", 'S', 'D'), OBSIDIAN_STICK.get(), THE_ULTIMATE_MATERIAL.get());
-        crafter.build(con, RecipeCategory.COMBAT, Result.build(slayerMace, "maces", slayerMacePath).setSuffix("_alt"), GridInput.build("DD ", "DS ", "  S", 'S', 'D'), OBSIDIAN_STICK.get(), THE_ULTIMATE_MATERIAL.get());
+        //Slayer mace
+        buildMace(crafter, con, APToolMaterial.SLAYER_MAT, OBSIDIAN_STICK.get(), THE_ULTIMATE_MATERIAL.get());
         //Amethyst/Quartz/Glowstone/Honey maces (low tier, wooden rod)
-        List<ItemLike> newLowTierMaceMaterials = List.of(AMETHYST_BLOCK, QUARTZ_BLOCK, GLOWSTONE, HONEYCOMB_BLOCK);
-        IntStream.range(0, newLowTierMaceMaterials.size()).forEach(j -> {
-            int i = 11 + j;
-            Item mace = MACES[i].get();
-            String path = getPath(mace).replace("item_", "").replace("_mace", "");
-            ItemLike material = newLowTierMaceMaterials.get(j);
-            crafter.build(con, RecipeCategory.COMBAT, Result.build(mace, "maces", path), GridInput.build(" DD", " SD", "S  ", 'S', 'D'), WOODEN_ROD.get(), material);
-            crafter.build(con, RecipeCategory.COMBAT, Result.build(mace, "maces", path).setSuffix("_alt"), GridInput.build("DD ", "DS ", "  S", 'S', 'D'), WOODEN_ROD.get(), material);
-        });
+        buildMace(crafter, con, APToolMaterial.AMETHYST_MAT, WOODEN_ROD.get(), AMETHYST_BLOCK);
+        buildMace(crafter, con, APToolMaterial.QUARTZ_MAT, WOODEN_ROD.get(), QUARTZ_BLOCK);
+        buildMace(crafter, con, APToolMaterial.GLOWSTONE_MAT, WOODEN_ROD.get(), GLOWSTONE);
+        buildMace(crafter, con, APToolMaterial.HONEY_MAT, WOODEN_ROD.get(), HONEYCOMB_BLOCK);
         //Storage Blocks
         crafter.buildStorage(con, COMPRESSED_LAVA_CRYSTAL.get(), ModBlocks.LAVA_CRYSTAL.get());
         crafter.buildStorage(con, ModBlocks.LAVA_CRYSTAL.get(), ModItems.LAVA_CRYSTAL.get());
@@ -282,6 +259,25 @@ public class Recipes extends RecipeProvider {
         SpecialRecipeBuilder.special(RepairItemRecipe::new).save(con, "repair_item");
 
 
+    }
+
+    private static Item maceOf(APToolMaterial mat) {
+        return MACES[APMaceMaterial.valueOf(mat.name().replace("_MAT", "_MACE")).ordinal()].get();
+    }
+
+    private static void buildToolSet(CraftingRecipeMaker crafter, RecipeOutput con, APToolMaterial mat, ItemLike material, ItemLike stick) {
+        int i = mat.ordinal();
+        crafter.buildSword(con, SWORDS[i], material, stick);
+        crafter.buildBattleAxe(con, BATTLE_AXES[i], material, stick);
+        crafter.buildPickaxe(con, PICKAXES[i], material, stick);
+        crafter.buildBow(con, BOWS[i], material);
+    }
+
+    private static void buildMace(CraftingRecipeMaker crafter, RecipeOutput con, APToolMaterial mat, ItemLike stick, ItemLike material) {
+        Item mace = maceOf(mat);
+        String path = getPath(mace).replace("item_", "").replace("_mace", "");
+        crafter.build(con, RecipeCategory.COMBAT, Result.build(mace, "maces", path), GridInput.build(" DD", " SD", "S  ", 'S', 'D'), stick, material);
+        crafter.build(con, RecipeCategory.COMBAT, Result.build(mace, "maces", path).setSuffix("_alt"), GridInput.build("DD ", "DS ", "  S", 'S', 'D'), stick, material);
     }
 
 

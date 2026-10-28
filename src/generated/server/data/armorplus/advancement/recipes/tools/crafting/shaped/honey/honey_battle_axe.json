@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "armorplus:crafting/shaped/slayer/slayer_battle_axe"
+        "recipe": "armorplus:crafting/shaped/honey/honey_battle_axe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "armorplus:crafting/shaped/slayer/slayer_battle_axe"
+      "armorplus:crafting/shaped/honey/honey_battle_axe"
     ]
   }
 }

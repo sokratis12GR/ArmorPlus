@@ -3,7 +3,7 @@
   "category": "equipment",
   "group": "armorplus:amethyst_bows",
   "key": {
-    "M": "minecraft:quartz_block",
+    "M": "minecraft:amethyst_block",
     "S": "minecraft:string"
   },
   "pattern": [

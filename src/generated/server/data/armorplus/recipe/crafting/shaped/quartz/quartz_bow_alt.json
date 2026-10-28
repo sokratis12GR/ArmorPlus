@@ -3,7 +3,7 @@
   "category": "equipment",
   "group": "armorplus:quartz_bows",
   "key": {
-    "M": "minecraft:glowstone",
+    "M": "minecraft:quartz_block",
     "S": "minecraft:string"
   },
   "pattern": [

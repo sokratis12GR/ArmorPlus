@@ -3,7 +3,7 @@
   "category": "equipment",
   "group": "armorplus:glowstone_pickaxes",
   "key": {
-    "M": "minecraft:honeycomb_block",
+    "M": "minecraft:glowstone",
     "S": "minecraft:stick"
   },
   "pattern": [
