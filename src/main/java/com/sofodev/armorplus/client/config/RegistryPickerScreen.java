@@ -4,6 +4,8 @@ import com.sofodev.armorplus.registry.block.APFrostBlock;
 import com.sofodev.armorplus.registry.block.APLavaBlock;
 import com.sofodev.armorplus.registry.block.ore.CrystalOreBlock;
 import com.sofodev.armorplus.registry.item.armor.APArmorItem;
+import com.sofodev.armorplus.registry.item.extra.Buff;
+import com.sofodev.armorplus.registry.item.extra.DeBuff;
 import com.sofodev.armorplus.registry.item.arrow.APArrowItem;
 import com.sofodev.armorplus.registry.item.special.SoulItem;
 import com.sofodev.armorplus.registry.item.tool.APBattleAxeItem;
@@ -26,6 +28,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -63,7 +66,9 @@ public class RegistryPickerScreen extends Screen {
         /** Items from every mod, grouped by mod. */
         ALL_ITEMS("all_items"),
         /** Enchantments from the current world, grouped by mod. */
-        ENCHANTMENTS("enchantments");
+        ENCHANTMENTS("enchantments"),
+        /** Mob effects from every mod plus the ArmorPlus abilities, grouped by mod. */
+        EFFECTS("effects");
 
         private final String titleKey;
 
@@ -141,6 +146,7 @@ public class RegistryPickerScreen extends Screen {
             case ALL_ITEMS -> collectItems(false);
             case ALL_BLOCKS -> collectBlocks(false);
             case ENCHANTMENTS -> collectEnchantments();
+            case EFFECTS -> collectEffects();
         };
         this.categories = switch (kind) {
             case ITEMS -> ITEM_CATEGORIES;
@@ -186,6 +192,24 @@ public class RegistryPickerScreen extends Screen {
         ItemStack book = icon(Items.ENCHANTED_BOOK);
         registry.listElements().forEach(holder -> result.add(new Candidate(holder.key().identifier().toString(), book,
                 holder.value().description(), holder.value())));
+        result.sort(Comparator.comparing(Candidate::id));
+        return result;
+    }
+
+    private static List<Candidate> collectEffects() {
+        List<Candidate> result = new ArrayList<>();
+        ItemStack potion = icon(Items.POTION);
+        for (MobEffect effect : BuiltInRegistries.MOB_EFFECT) {
+            Identifier id = BuiltInRegistries.MOB_EFFECT.getKey(effect);
+            result.add(new Candidate(id.toString(), potion, Component.translatable(effect.getDescriptionId()), effect));
+        }
+        ItemStack star = icon(Items.NETHER_STAR);
+        Set<String> abilities = new TreeSet<>();
+        for (Buff buff : Buff.values()) if (buff != Buff.NONE && !buff.isEffect()) abilities.add(buff.name().toLowerCase(Locale.ENGLISH));
+        for (DeBuff buff : DeBuff.values()) if (buff != DeBuff.NONE && !buff.isEffect()) abilities.add(buff.name().toLowerCase(Locale.ENGLISH));
+        for (String ability : abilities) {
+            result.add(new Candidate(MODID + ":" + ability, star, Component.translatable("armorplus.buff." + ability), ability));
+        }
         result.sort(Comparator.comparing(Candidate::id));
         return result;
     }

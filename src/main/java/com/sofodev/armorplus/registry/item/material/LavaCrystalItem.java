@@ -2,8 +2,6 @@ package com.sofodev.armorplus.registry.item.material;
 
 import com.sofodev.armorplus.registry.item.APItem;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TextColor;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -16,7 +14,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import net.minecraft.world.item.component.TooltipDisplay;
 
-import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
+import static com.sofodev.armorplus.utils.ToolTipUtils.addItemLore;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
 
 /**
@@ -35,10 +33,7 @@ public class LavaCrystalItem extends APItem {
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag flagIn) {
-        if (!isInfused) {
-            tooltip.accept(translate("tooltip.armorplus.lava_crystal.how_to_infuse").setStyle(Style.EMPTY.withItalic(true).withColor(TextColor.parseColor("#670067").getOrThrow())));
-        } else
-            tooltip.accept(translate("tooltip.armorplus.lava_crystal.lore").setStyle(Style.EMPTY.withItalic(true).withColor(TextColor.parseColor("#670067").getOrThrow())));
+        addItemLore(tooltip, this);
         super.appendHoverText(stack, ctx, display, tooltip, flagIn);
     }
 

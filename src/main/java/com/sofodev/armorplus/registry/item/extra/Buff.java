@@ -32,8 +32,10 @@ public enum Buff implements IBuff {
     HEALTH_BOOST,
     ABSORPTION,
     SLOW_FALLING,
+    GLOWING,
     /*Mechanical*/
     FLIGHT(true),
+    ILLUMINATE(true),
     WITHER_IMMUNITY(true) {
         @Override
         public void onInventoryTick(ItemStack stack, Level world, Player player) {
@@ -71,7 +73,33 @@ public enum Buff implements IBuff {
                 player.clearFire();
             }
         }
-    };
+    },
+    DARKNESS_IMMUNITY(true) {
+        @Override
+        public void onInventoryTick(ItemStack stack, Level world, Player player) {
+            if (!world.isClientSide()) {
+                player.removeEffect(MobEffects.DARKNESS);
+            }
+        }
+    },
+    MINING_FATIGUE_IMMUNITY(true) {
+        @Override
+        public void onInventoryTick(ItemStack stack, Level world, Player player) {
+            if (!world.isClientSide()) {
+                player.removeEffect(MobEffects.MINING_FATIGUE);
+            }
+        }
+    },
+    POWDERED_SNOW_IMMUNITY(true) {
+        @Override
+        public void onInventoryTick(ItemStack stack, Level world, Player player) {
+            if (!world.isClientSide() && player.getTicksFrozen() > 0) {
+                player.setTicksFrozen(0);
+            }
+        }
+    },
+    SCULK_IMMUNITY(true),
+    WARDEN_PACIFY(true);
 
 
     private final boolean isEffect;

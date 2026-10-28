@@ -52,6 +52,7 @@ public class ModItems {
     public static final Set<DeferredHolder<Item, Item>> SUPER_STAR_BASES = registerArmorBases(APArmorMaterial.SUPER_STAR);
     public static final Set<DeferredHolder<Item, Item>> GUARDIAN_BASES = registerArmorBases(APArmorMaterial.GUARDIAN);
     public static final Set<DeferredHolder<Item, Item>> ENDER_DRAGON_BASES = registerArmorBases(APArmorMaterial.ENDER_DRAGON);
+    public static final Set<DeferredHolder<Item, Item>> WARDEN_BASES = registerArmorBases(APArmorMaterial.WARDEN);
     public static final Set<DeferredHolder<Item, Item>> SLAYER_BASES = registerArmorBases(SLAYER);
     //ToolBases (Soulless)
     public static final DeferredHolder<Item, Item> GUARDIAN_SWORD_BASE = registerBase(APToolMaterial.GUARDIAN_MAT, "sword");
@@ -66,6 +67,10 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> ENDER_DRAGON_BATTLE_AXE_BASE = registerBase(APToolMaterial.ENDER_DRAGON_MAT, "battle_axe");
     public static final DeferredHolder<Item, Item> ENDER_DRAGON_PICKAXE_BASE = registerBase(APToolMaterial.ENDER_DRAGON_MAT, "pickaxe");
     public static final DeferredHolder<Item, Item> ENDER_DRAGON_BOW_BASE = registerBase(APToolMaterial.ENDER_DRAGON_MAT, "bow");
+    public static final DeferredHolder<Item, Item> WARDEN_SWORD_BASE = registerBase(APToolMaterial.WARDEN_MAT, "sword");
+    public static final DeferredHolder<Item, Item> WARDEN_BATTLE_AXE_BASE = registerBase(APToolMaterial.WARDEN_MAT, "battle_axe");
+    public static final DeferredHolder<Item, Item> WARDEN_PICKAXE_BASE = registerBase(APToolMaterial.WARDEN_MAT, "pickaxe");
+    public static final DeferredHolder<Item, Item> WARDEN_BOW_BASE = registerBase(APToolMaterial.WARDEN_MAT, "bow");
     //Slayer
     public static final DeferredHolder<Item, Item> SLAYER_SWORD_BASE = registerBase(APToolMaterial.SLAYER_MAT, "sword");
     public static final DeferredHolder<Item, Item> SLAYER_BATTLE_AXE_BASE = registerBase(APToolMaterial.SLAYER_MAT, "battle_axe");
@@ -90,6 +95,11 @@ public class ModItems {
     public static final DeferredHolder<Item, ArrowItem> ITEM_GUARDIAN_ARROW = registerArrow(ArrowType.GUARDIAN);
     public static final DeferredHolder<Item, ArrowItem> ITEM_SUPER_STAR_ARROW = registerArrow(ArrowType.SUPER_STAR);
     public static final DeferredHolder<Item, ArrowItem> ITEM_ENDER_DRAGON_ARROW = registerArrow(ArrowType.ENDER_DRAGON);
+    public static final DeferredHolder<Item, ArrowItem> ITEM_WARDEN_ARROW = registerArrow(ArrowType.WARDEN);
+    public static final DeferredHolder<Item, ArrowItem> ITEM_AMETHYST_ARROW = registerArrow(ArrowType.AMETHYST);
+    public static final DeferredHolder<Item, ArrowItem> ITEM_QUARTZ_ARROW = registerArrow(ArrowType.QUARTZ);
+    public static final DeferredHolder<Item, ArrowItem> ITEM_GLOWSTONE_ARROW = registerArrow(ArrowType.GLOWSTONE);
+    public static final DeferredHolder<Item, ArrowItem> ITEM_HONEY_ARROW = registerArrow(ArrowType.HONEY);
     //Crystals
     public static final DeferredHolder<Item, Item> LAVA_CRYSTAL = register("lava_crystal", () -> new LavaCrystalItem(false));
     public static final DeferredHolder<Item, Item> INFUSED_LAVA_CRYSTAL = register("infused_lava_crystal", () -> new LavaCrystalItem(true));
@@ -101,6 +111,7 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> GUARDIAN_SCALE = register("guardian_scale", () -> new MaterialItem(BLUE, RegistryContext.itemProperties()));
     public static final DeferredHolder<Item, Item> WITHER_BONE = register("wither_bone", () -> new MaterialItem(WHITE, RegistryContext.itemProperties().fireResistant()));
     public static final DeferredHolder<Item, Item> ENDER_DRAGON_SCALE = register("ender_dragon_scale", () -> new MaterialItem(DARK_PURPLE, RegistryContext.itemProperties()));
+    public static final DeferredHolder<Item, Item> WARDEN_HEART = register("warden_heart", () -> new MaterialItem(DARK_AQUA, RegistryContext.itemProperties()));
     public static final DeferredHolder<Item, Item> THE_ULTIMATE_MATERIAL = register("the_ultimate_material", () -> new MaterialItem(DARK_PURPLE, RegistryContext.itemProperties().fireResistant()));
     //Boss Souls
     public static final DeferredHolder<Item, Item> WITHER_BOSS_SOUL = register("soul_wither_boss", () -> new SoulItem("wither"));
@@ -115,9 +126,16 @@ public class ModItems {
     //Enhanced Materials
     public static final DeferredHolder<Item, Item> ENHANCED_CHAINMAIL = register("enhanced_chainmail", () -> new MaterialItem(true, GRAY, RegistryContext.itemProperties()));
     public static final DeferredHolder<Item, Item> ENHANCED_IRON = register("enhanced_iron", () -> new MaterialItem(true, GRAY, RegistryContext.itemProperties()));
+    public static final DeferredHolder<Item, Item> ENHANCED_COPPER = register("enhanced_copper", () -> new MaterialItem(true, GRAY, RegistryContext.itemProperties()));
     public static final DeferredHolder<Item, Item> ENHANCED_GOLD = register("enhanced_gold", () -> new MaterialItem(true, GRAY, RegistryContext.itemProperties()));
     public static final DeferredHolder<Item, Item> ENHANCED_DIAMOND = register("enhanced_diamond", () -> new MaterialItem(true, GRAY, RegistryContext.itemProperties()));
     public static final DeferredHolder<Item, Item> ENHANCED_NETHERITE = register("enhanced_netherite", () -> new MaterialItem(true, GRAY, RegistryContext.itemProperties().fireResistant()));
+    //Tinkers' Construct-inspired alloy ingots
+    public static final DeferredHolder<Item, Item> PIG_IRON_INGOT = register("pig_iron_ingot", () -> new MaterialItem(LIGHT_PURPLE, RegistryContext.itemProperties()));
+    public static final DeferredHolder<Item, Item> COBALT_INGOT = register("cobalt_ingot", () -> new MaterialItem(BLUE, RegistryContext.itemProperties()));
+    public static final DeferredHolder<Item, Item> ARDITE_INGOT = register("ardite_ingot", () -> new MaterialItem(RED, RegistryContext.itemProperties()));
+    public static final DeferredHolder<Item, Item> KNIGHT_SLIME_CRYSTAL = register("knight_slime_crystal", () -> new MaterialItem(LIGHT_PURPLE, RegistryContext.itemProperties()));
+    public static final DeferredHolder<Item, Item> MANYULLYN_INGOT = register("manyullyn_ingot", () -> new MaterialItem(DARK_PURPLE, RegistryContext.itemProperties()));
     //Other
     public static final DeferredHolder<Item, Item> OBSIDIAN_STICK = register("obsidian_stick", () -> new MaterialItem(false, DARK_PURPLE, RegistryContext.itemProperties().fireResistant()));
     public static final DeferredHolder<Item, Item> WOODEN_ROD = register("wooden_rod", () -> new MaterialItem(false, GRAY, RegistryContext.itemProperties()));

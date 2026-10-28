@@ -1,14 +1,14 @@
-// 26.1.2	2026-10-09T17:54:10.7879476	Tags for minecraft:item mod id armorplus
-f984da7ea4442e75c33d8ea2cece9784e9bec5e1 data/armorplus/tags/item/arrows.json
-ebbf6ad4c2d30b9bb88092e1b9f89dd44249e4b6 data/armorplus/tags/item/battle_axes.json
-be9f38dcbee1040e9eb28fa0be734823d4d0394a data/armorplus/tags/item/boots.json
-e94db2d88e659606b53ab486b9197ad00e4ee2f0 data/armorplus/tags/item/bows.json
-88b3d1aa251ad9fc11886aa7ebb54ee48478cbdc data/armorplus/tags/item/chestplates.json
-3112a088660cde0bf56fd5e9994ac2f106d299f5 data/armorplus/tags/item/helmets.json
-ad10959ecf6ecb2e7eb9eee21e7a5c7eae3d431a data/armorplus/tags/item/leggings.json
-74e07acf503963869dea6399fc21bfe414024637 data/armorplus/tags/item/maces.json
-ff6bee91c87e4ad6c3e67b9874e1b261758c67cc data/armorplus/tags/item/pickaxes.json
-366cbfdb9a89cb123b6030036a7ecfe15bccc28e data/armorplus/tags/item/swords.json
+// 26.1.2	2026-10-28T13:45:45.090497	Tags for minecraft:item mod id armorplus
+a6025e138c0301127a371dc9d40ebaa911394a3f data/armorplus/tags/item/arrows.json
+edcff26ae6b6f636ea33e60d77d870b72e0a82a8 data/armorplus/tags/item/battle_axes.json
+a44b210b9177aeaf0c24e336b6996cc66e6c1d41 data/armorplus/tags/item/boots.json
+87e8480341c8a6622fbc0302ddad4336928d3a35 data/armorplus/tags/item/bows.json
+daa4cabd719c0d01f8cf09f400a413dae3554f31 data/armorplus/tags/item/chestplates.json
+bba9b37f7fb4544169815cc8948491da7ac6747d data/armorplus/tags/item/helmets.json
+3d2c9a2d13d5813213bf97926646c12b11d3085d data/armorplus/tags/item/leggings.json
+02a22bdfd30c5e8932624444da193498d44cdeae data/armorplus/tags/item/maces.json
+bbdb960b8d90b754e825afb6289716ab3bdeea40 data/armorplus/tags/item/pickaxes.json
+9621378676520c87aff6d903ad3c0d80a4676d63 data/armorplus/tags/item/swords.json
 b0a990f07bb6d395fe4695ef61421dd122cc5532 data/minecraft/tags/item/arrows.json
 41c878cfb126cf8d05e354f48b75272b2f881133 data/minecraft/tags/item/enchantable/armor.json
 d839be275094c3850dc0c7a5d89752f97a9a7f70 data/minecraft/tags/item/enchantable/bow.json

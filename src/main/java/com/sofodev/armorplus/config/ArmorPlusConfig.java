@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.config;
 
+import com.sofodev.armorplus.registry.item.extra.BuffInstance;
+import com.sofodev.armorplus.registry.item.extra.BuffParser;
 import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.common.ModConfigSpec.BooleanValue;
@@ -22,17 +24,35 @@ public class ArmorPlusConfig {
     public static MaterialConfig infusedLavaMaterial;
     public static MaterialConfig frostMaterial;
     public static MaterialConfig frostLavaMaterial;
-    public static AdvancedMaterialConfig guardianMaterial;
-    public static AdvancedMaterialConfig superStarMaterial;
-    public static AdvancedMaterialConfig enderDragonMaterial;
-    public static AdvancedMaterialConfig slayerMaterial;
+    public static MaterialConfig guardianMaterial;
+    public static MaterialConfig superStarMaterial;
+    public static MaterialConfig enderDragonMaterial;
+    public static MaterialConfig wardenMaterial;
+    public static MaterialConfig slayerMaterial;
+    public static MaterialConfig arditeMaterial;
+    public static MaterialConfig cobaltMaterial;
+    public static MaterialConfig knightSlimeMaterial;
+    public static MaterialConfig pigIronMaterial;
+    public static MaterialConfig manyullynMaterial;
     public static MaterialConfig enhancedMaterial;
+    public static MaterialConfig enhancedChainmailMaterial;
+    public static MaterialConfig enhancedGoldenMaterial;
+    public static MaterialConfig enhancedCopperMaterial;
+    public static MaterialConfig enhancedIronMaterial;
+    public static MaterialConfig enhancedDiamondMaterial;
+    public static MaterialConfig enhancedNetheriteMaterial;
+    public static MaterialConfig amethystMaterial;
+    public static MaterialConfig quartzMaterial;
+    public static MaterialConfig glowstoneMaterial;
+    public static MaterialConfig honeyMaterial;
     public static BooleanValue enableAutoSmelting;
     public static ConfigValue<List<? extends String>> autoSmeltingRecipes;
     public static ConfigValue<List<? extends String>> hiddenItems;
     public static ConfigValue<List<? extends String>> hiddenBlocks;
     public static ConfigValue<List<? extends String>> enchantsThatWontWorkWithSoulHarden;
     public static BooleanValue enableThankYouAdvancement;
+    public static BooleanValue enableLoreFlavor;
+    public static BooleanValue enableLoreInfo;
     public static BossDropConfig witherBossDrops;
     public static BossDropConfig enderDragonDrops;
     public static BossDropConfig elderGuardianDrops;
@@ -40,6 +60,7 @@ public class ArmorPlusConfig {
     public static DropConfig guardianDrops;
     public static DropConfig endermanDrops;
     public static DropConfig blazeDrops;
+    public static DropConfig wardenDrops;
 
 
     public static boolean isIdentifier(Object value) {
@@ -99,183 +120,172 @@ public class ArmorPlusConfig {
         enableThankYouAdvancement = (builder.pop().comment("Configure advancements")
                 .push("advancements").comment("Enable/Disable the Thank You 6M advancement")
                 .define("enableThankYou6M", true));
+        enableLoreFlavor = (builder.pop().comment("Configure item tooltips (client side)")
+                .push("tooltips").comment("Show the flavor (lore) line on items and materials")
+                .define("enableFlavorText", true));
+        enableLoreInfo = (builder.comment("Show the detailed info lines (sources, usage, ...) on items and materials. When disabled, the \"Press Shift\" hint is hidden too")
+                .define("enableInfoText", true));
         builder.pop();
 
         builder.comment("Configure Items")
                 .push("items");
-        coalMaterial = MaterialConfig.create("coal", builder);
-        lapisMaterial = MaterialConfig.create("lapis", builder);
-        redstoneMaterial = MaterialConfig.create("redstone", builder);
-        chickenMaterial = MaterialConfig.create("chicken", builder);
-        slimeMaterial = MaterialConfig.create("slime", builder);
-        emeraldMaterial = MaterialConfig.create("emerald", builder);
-        obsidianMaterial = MaterialConfig.create("obsidian", builder);
-        infusedLavaMaterial = MaterialConfig.create("infused_lava", builder);
-        frostMaterial = MaterialConfig.create("frost", builder);
-        frostLavaMaterial = MaterialConfig.create("frost_lava", builder);
-        guardianMaterial = AdvancedMaterialConfig.create("guardian", builder, true, 0, true, 0, false, 0,
-                false, 0, false, 0, true, 1, false, 0, false, 0,
-                false, 0, false, 0, false, 0, false, 0, false, 0,
-                false, 0, false, false, false, true);
-        superStarMaterial = AdvancedMaterialConfig.create("super_star", builder, false, 0, false, 0, false, 0,
-                false, 0, false, 0, false, 0, true, 0, false, 0,
-                true, 0, false, 0, false, 0, false, 0, true, 0,
-                false, 0, false, true, false, true);
-        enderDragonMaterial = AdvancedMaterialConfig.create("ender_dragon", builder, false, 0, false, 0, false, 0,
-                false, 0, false, 0, false, 0, false, 0, false, 0,
-                true, 0, false, 0, false, 0, false, 0, false, 0,
-                true, 0, true, true, false, true);
-        slayerMaterial = AdvancedMaterialConfig.create("slayer", builder, false, 0, true, 0, false, 0,
-                false, 0, false, 0, true, 1, true, 0, false, 0,
-                true, 0, false, 0, false, 0, false, 0, true, 0,
-                true, 0, true, true, true, true);
-        enhancedMaterial = MaterialConfig.create("enhanced", builder);
+        // Buff entries use the "id|level" format (optionally "id|level|seconds"), see BuffParser
+        coalMaterial = MaterialConfig.create("coal", builder,
+                List.of("minecraft:night_vision|1"),
+                List.of("minecraft:blindness|1|10"));
+        lapisMaterial = MaterialConfig.create("lapis", builder,
+                List.of("minecraft:water_breathing|1"),
+                List.of("minecraft:nausea|1|10"));
+        redstoneMaterial = MaterialConfig.create("redstone", builder,
+                List.of("minecraft:haste|2"),
+                List.of("minecraft:mining_fatigue|2|10"));
+        chickenMaterial = MaterialConfig.create("chicken", builder,
+                List.of("minecraft:speed|4"),
+                List.of("minecraft:levitation|1|2"));
+        slimeMaterial = MaterialConfig.create("slime", builder,
+                List.of("minecraft:jump_boost|4", "minecraft:slow_falling|2"),
+                List.of("minecraft:slowness|2|5"));
+        emeraldMaterial = MaterialConfig.create("emerald", builder,
+                List.of("minecraft:speed|2"),
+                List.of("minecraft:slowness|1|20"));
+        obsidianMaterial = MaterialConfig.create("obsidian", builder,
+                List.of("minecraft:resistance|2"),
+                List.of("minecraft:weakness|3|20"));
+        infusedLavaMaterial = MaterialConfig.create("infused_lava", builder,
+                List.of("minecraft:fire_resistance|1", "armorplus:fire_extinguish"),
+                List.of("armorplus:ignite"));
+        frostMaterial = MaterialConfig.create("frost", builder,
+                List.of("armorplus:fire_weakness", "armorplus:powdered_snow_immunity"),
+                List.of("minecraft:slowness|3|5", "minecraft:mining_fatigue|1|5"));
+        frostLavaMaterial = MaterialConfig.create("frost_lava", builder,
+                List.of("armorplus:natural_immunity", "armorplus:powdered_snow_immunity"),
+                List.of("minecraft:slowness|2|5", "armorplus:ignite"));
+        guardianMaterial = MaterialConfig.create("guardian", builder,
+                List.of("minecraft:night_vision|1", "conduit_power|2", "dolphins_grace|3",
+                        "armorplus:fire_extinguish", "armorplus:mining_fatigue_immunity"),
+                List.of("minecraft:weakness|2|4", "minecraft:nausea|2|20"));
+        superStarMaterial = MaterialConfig.create("super_star", builder,
+                List.of("minecraft:regeneration|1|200", "minecraft:fire_resistance|1", "minecraft:absorption|1|200",
+                        "armorplus:wither_immunity", "armorplus:fire_extinguish"),
+                List.of("minecraft:wither|2|4", "minecraft:glowing|1|20"));
+        enderDragonMaterial = MaterialConfig.create("ender_dragon", builder,
+                List.of("minecraft:fire_resistance|1", "minecraft:slow_falling|1", "armorplus:flight",
+                        "armorplus:wither_immunity", "armorplus:fire_extinguish"),
+                List.of("minecraft:wither|4|4", "minecraft:slowness|2|20"));
+        wardenMaterial = MaterialConfig.create("warden", builder,
+                List.of("minecraft:night_vision|1", "minecraft:slow_falling|1", "armorplus:sculk_immunity",
+                        "armorplus:warden_pacify", "armorplus:darkness_immunity"),
+                List.of("minecraft:darkness|1|20", "minecraft:nausea|2|20"));
+        slayerMaterial = MaterialConfig.create("slayer", builder,
+                List.of("minecraft:night_vision|1", "minecraft:water_breathing|1", "minecraft:jump_boost|2",
+                        "minecraft:regeneration|1|200", "minecraft:fire_resistance|1", "minecraft:absorption|1|200",
+                        "minecraft:slow_falling|1", "armorplus:flight", "armorplus:wither_immunity",
+                        "armorplus:natural_immunity", "armorplus:fire_extinguish", "conduit_power|2", "dolphins_grace|3",
+                        "armorplus:sculk_immunity", "armorplus:warden_pacify", "armorplus:darkness_immunity",
+                        "armorplus:mining_fatigue_immunity"),
+                List.of("minecraft:wither|4|4", "minecraft:slowness|2|20", "minecraft:glowing|1|20",
+                        "minecraft:weakness|2|4", "minecraft:nausea|2|20", "minecraft:darkness|1|20"));
+        arditeMaterial = MaterialConfig.create("ardite", builder,
+                List.of("minecraft:fire_resistance|1"),
+                List.of("armorplus:ignite"));
+        cobaltMaterial = MaterialConfig.create("cobalt", builder,
+                List.of("minecraft:haste|1"),
+                List.of("minecraft:weakness|1|5"));
+        knightSlimeMaterial = MaterialConfig.create("knight_slime", builder,
+                List.of("minecraft:resistance|1", "minecraft:jump_boost|1"),
+                List.of("minecraft:slowness|1|5", "minecraft:glowing|1|10"));
+        pigIronMaterial = MaterialConfig.create("pig_iron", builder,
+                List.of("minecraft:saturation|1"),
+                List.of("minecraft:hunger|2|10"));
+        manyullynMaterial = MaterialConfig.create("manyullyn", builder,
+                List.of("minecraft:strength|1", "minecraft:fire_resistance|1"),
+                List.of("minecraft:wither|1|4", "armorplus:ignite"));
+        // Fallback for equipment without a config of its own; the enhanced vanilla sets below each have theirs
+        enhancedMaterial = MaterialConfig.create("enhanced", builder, List.of(), null);
+        enhancedChainmailMaterial = MaterialConfig.create("enhanced_chainmail", builder,
+                List.of("minecraft:speed|1"),
+                List.of("minecraft:slowness|1|3"));
+        enhancedGoldenMaterial = MaterialConfig.create("enhanced_golden", builder,
+                List.of("minecraft:absorption|1", "minecraft:luck|1"),
+                List.of("minecraft:glowing|1|10", "minecraft:weakness|1|4"));
+        enhancedCopperMaterial = MaterialConfig.create("enhanced_copper", builder,
+                List.of("minecraft:haste|1"),
+                List.of("minecraft:mining_fatigue|1|5"));
+        enhancedIronMaterial = MaterialConfig.create("enhanced_iron", builder,
+                List.of("minecraft:resistance|1"),
+                List.of("minecraft:slowness|1|4"));
+        enhancedDiamondMaterial = MaterialConfig.create("enhanced_diamond", builder,
+                List.of("minecraft:strength|1"),
+                List.of("minecraft:weakness|2|6"));
+        enhancedNetheriteMaterial = MaterialConfig.create("enhanced_netherite", builder,
+                List.of("minecraft:resistance|1", "minecraft:fire_resistance|1"),
+                List.of("minecraft:wither|1|4"));
+        amethystMaterial = MaterialConfig.create("amethyst", builder,
+                List.of("minecraft:regeneration|1", "armorplus:illuminate"),
+                List.of("minecraft:glowing|1|20"));
+        quartzMaterial = MaterialConfig.create("quartz", builder,
+                List.of("minecraft:absorption|1"),
+                List.of("minecraft:blindness|1|20"));
+        glowstoneMaterial = MaterialConfig.create("glowstone", builder,
+                List.of("minecraft:night_vision|1", "armorplus:illuminate"),
+                List.of("minecraft:nausea|1|10"));
+        honeyMaterial = MaterialConfig.create("honey", builder,
+                List.of("minecraft:saturation|1"),
+                List.of("minecraft:slowness|1|10"));
         builder.pop();
         builder.comment("Mob Drops Configuration").push("drops");
         witherBossDrops = BossDropConfig.create("wither_boss", builder);
         enderDragonDrops = BossDropConfig.create("ender_dragon", builder);
         elderGuardianDrops = BossDropConfig.create("elder_guardian", builder);
-        witherSkeletonDrops = DropConfig.create("wither_skeleton", builder);
-        guardianDrops = DropConfig.create("guardian", builder);
-        endermanDrops = DropConfig.create("enderman", builder);
-        blazeDrops = DropConfig.create("blaze", builder);
+        witherSkeletonDrops = DropConfig.create("wither_skeleton", builder, 0, 3, 0.25);
+        guardianDrops = DropConfig.create("guardian", builder, 0, 3, 0.25);
+        endermanDrops = DropConfig.create("enderman", builder, 0, -1, 0.25);
+        blazeDrops = DropConfig.create("blaze", builder, 0, -1, 0.25);
+        wardenDrops = DropConfig.create("warden", builder, 1, 1, -1);
         builder.pop();
 
         return new ArmorPlusConfig();
     }
 
-    public record MaterialConfig(ConfigValue<Boolean> enableArmorEffects, ConfigValue<Boolean> enableWeaponEffects) implements IMaterialConfig {
+    /**
+     * Per-material configuration.
+     * <ul>
+     *     <li>{@code armorBuffs}: full set effects, as "id|level" entries (e.g. "minecraft:haste|1", "armorplus:flight")</li>
+     *     <li>{@code weaponBuffs}: on-hit effects, as "id|level|seconds" entries; {@code null} for materials without weapons</li>
+     *     <li>{@code disabledBuffs}: ids of buffs from either list to switch off without removing them</li>
+     * </ul>
+     */
+    public record MaterialConfig(String name, ConfigValue<Boolean> enableArmorEffects,
+                                 ConfigValue<Boolean> enableWeaponEffects,
+                                 ConfigValue<List<? extends String>> armorBuffs,
+                                 ConfigValue<List<? extends String>> weaponBuffs,
+                                 ConfigValue<List<? extends String>> disabledBuffs) implements IMaterialConfig {
 
-        public static MaterialConfig create(String name, ModConfigSpec.Builder builder) {
+        public static MaterialConfig create(String name, ModConfigSpec.Builder builder, List<String> armorBuffs, List<String> weaponBuffs) {
             builder.comment(name + " equipment Configuration")
                     .push(name);
             ConfigValue<Boolean> enableArmorEffects = (builder.comment(name + " armor: enable/disable full set effects")
                     .define("enableArmorEffects", true));
             ConfigValue<Boolean> enableWeaponEffects = (builder.comment(name + " weapons: enable/disable on hit effects")
                     .define("enableWeaponEffects", true));
+            ConfigValue<List<? extends String>> armorBuffsValue = (builder.comment(name + " armor: full set effects, formatted as \"modid:effect|level\" (e.g. \"minecraft:haste|1\"), optionally \"|seconds\" for the duration. ArmorPlus abilities: armorplus:flight, armorplus:illuminate, armorplus:wither_immunity, armorplus:fire_weakness, armorplus:natural_immunity, armorplus:fire_extinguish, armorplus:darkness_immunity, armorplus:mining_fatigue_immunity, armorplus:powdered_snow_immunity, armorplus:sculk_immunity, armorplus:warden_pacify")
+                    .defineListAllowEmpty("armorBuffs", armorBuffs, () -> BuffParser.FORMAT, BuffParser::isValid));
+            ConfigValue<List<? extends String>> weaponBuffsValue = weaponBuffs == null ? null : (builder.comment(name + " weapons: effects applied to hit targets, formatted as \"modid:effect|level|seconds\" (e.g. \"minecraft:wither|2|4\"). ArmorPlus abilities: armorplus:ignite")
+                    .defineListAllowEmpty("weaponBuffs", weaponBuffs, () -> BuffParser.FORMAT, BuffParser::isValid));
+            ConfigValue<List<? extends String>> disabledBuffs = (builder.comment(name + ": ids of individual buffs to disable (e.g. \"minecraft:night_vision\") while keeping them in the lists above")
+                    .defineListAllowEmpty("disabledBuffs", List.<String>of(), () -> "modid:effect", ArmorPlusConfig::isIdentifier));
             builder.pop();
 
-            return new MaterialConfig(enableArmorEffects, enableWeaponEffects);
+            return new MaterialConfig(name, enableArmorEffects, enableWeaponEffects, armorBuffsValue, weaponBuffsValue, disabledBuffs);
         }
 
-    }
-
-    public record AdvancedMaterialConfig(String name, ConfigValue<Boolean> enableArmorEffects,
-                                         ConfigValue<Boolean> enableWeaponEffects,
-                                         ConfigValue<Boolean> enableNightVision,
-                                         ConfigValue<Integer> amplifierNightVision,
-                                         ConfigValue<Boolean> enableWaterBreathing,
-                                         ConfigValue<Integer> amplifierWaterBreathing,
-                                         ConfigValue<Boolean> enableStrength, ConfigValue<Integer> amplifierStrength,
-                                         ConfigValue<Boolean> enableSpeed, ConfigValue<Integer> amplifierSpeed,
-                                         ConfigValue<Boolean> enableHaste, ConfigValue<Integer> amplifierHaste,
-                                         ConfigValue<Boolean> enableJumpBoost, ConfigValue<Integer> amplifierJumpBoost,
-                                         ConfigValue<Boolean> enableRegeneration,
-                                         ConfigValue<Integer> amplifierRegeneration,
-                                         ConfigValue<Boolean> enableResistance,
-                                         ConfigValue<Integer> amplifierResistance,
-                                         ConfigValue<Boolean> enableFireResistance,
-                                         ConfigValue<Integer> amplifierFireResistance,
-                                         ConfigValue<Boolean> enableSaturation,
-                                         ConfigValue<Integer> amplifierSaturation,
-                                         ConfigValue<Boolean> enableInvisibility,
-                                         ConfigValue<Integer> amplifierInvisibility,
-                                         ConfigValue<Boolean> enableHealthBoost,
-                                         ConfigValue<Integer> amplifierHealthBoost,
-                                         ConfigValue<Boolean> enableAbsorption,
-                                         ConfigValue<Integer> amplifierAbsorption,
-                                         ConfigValue<Boolean> enableSlowFalling,
-                                         ConfigValue<Integer> amplifierSlowFalling,
-                                         ConfigValue<Boolean> enableFlight, ConfigValue<Boolean> enableWitherImmunity,
-                                         ConfigValue<Boolean> enableNaturalImmunity,
-                                         ConfigValue<Boolean> enableFireExtinguish) implements IMaterialConfig {
-
-        public static AdvancedMaterialConfig create(String name, ModConfigSpec.Builder builder,
-                                                    boolean enableNightVision, int amplifierNightVision, boolean enableWaterBreathing, int amplifierWaterBreathing, boolean enableStrength, int amplifierStrength,
-                                                    boolean enableSpeed, int amplifierSpeed, boolean enableHaste, int amplifierHaste, boolean enableJumpBoost, int amplifierJumpBoost,
-                                                    boolean enableRegeneration, int amplifierRegeneration, boolean enableResistance, int amplifierResistance, boolean enableFireResistance, int amplifierFireResistance,
-                                                    boolean enableSaturation, int amplifierSaturation, boolean enableInvisibility, int amplifierInvisibility, boolean enableHealthBoost, int amplifierHealthBoost,
-                                                    boolean enableAbsorption, int amplifierAbsorption, boolean enableSlowFalling, int amplifierSlowFalling,
-                                                    boolean enableFlight, boolean enableWitherImmunity, boolean enableNaturalImmunity, boolean enableFireExtinguish) {
-            builder.comment(name + " extended equipment Configuration").push(name);
-            ConfigValue<Boolean> enableArmorEffects = (builder.comment(name + " armor: enable/disable full set effects")
-                    .define("enableArmorEffects", true));
-            ConfigValue<Boolean> enableWeaponEffects = (builder.comment(name + " weapons: enable/disable on hit effects")
-                    .define("enableWeaponEffects", true));
-            builder.push("effects");
-            ConfigValue<Boolean> enableNIGHT_VISION = (builder.comment(name + " armor: enable/disable night vision")
-                    .define("enableNIGHT_VISION", enableNightVision));
-            ConfigValue<Integer> amplierNIGHT_VISION = (builder.comment(name + " armor: night vision amplifier")
-                    .defineInRange("amplifierNIGHT_VISION", amplifierNightVision, 0, 255));
-            ConfigValue<Boolean> enableWATER_BREATHING = (builder.comment(name + " armor: enable/disable water breathing")
-                    .define("enableWATER_BREATHING", enableWaterBreathing));
-            ConfigValue<Integer> amplierWATER_BREATHING = (builder.comment(name + " armor: water breathing amplifier")
-                    .defineInRange("amplifierWATER_BREATHING", amplifierWaterBreathing, 0, 255));
-            ConfigValue<Boolean> enableSTRENGTH = (builder.comment(name + " armor: enable/disable strength")
-                    .define("enableSTRENGTH", enableStrength));
-            ConfigValue<Integer> amplierSTRENGTH = (builder.comment(name + " armor: strength amplifier")
-                    .defineInRange("amplifierSTRENGTH", amplifierStrength, 0, 255));
-            ConfigValue<Boolean> enableSPEED = (builder.comment(name + " armor: enable/disable speed")
-                    .define("enableSPEED", enableSpeed));
-            ConfigValue<Integer> amplierSPEED = (builder.comment(name + " armor: speed amplifier")
-                    .defineInRange("amplifierSPEED", amplifierSpeed, 0, 255));
-            ConfigValue<Boolean> enableHASTE = (builder.comment(name + " armor: enable/disable haste")
-                    .define("enableHASTE", enableHaste));
-            ConfigValue<Integer> amplierHASTE = (builder.comment(name + " armor: haste amplifier")
-                    .defineInRange("amplifierHASTE", amplifierHaste, 0, 255));
-            ConfigValue<Boolean> enableJUMP_BOOST = (builder.comment(name + " armor: enable/disable jump boost")
-                    .define("enableJUMP_BOOST", enableJumpBoost));
-            ConfigValue<Integer> amplierJUMP_BOOST = (builder.comment(name + " armor: jump boost amplifier")
-                    .defineInRange("amplifierJUMP_BOOST", amplifierJumpBoost, 0, 255));
-            ConfigValue<Boolean> enableREGENERATION = (builder.comment(name + " armor: enable/disable regeneration")
-                    .define("enableREGENERATION", enableRegeneration));
-            ConfigValue<Integer> amplierREGENERATION = (builder.comment(name + " armor: regeneration amplifier")
-                    .defineInRange("amplifierREGENERATION", amplifierRegeneration, 0, 255));
-            ConfigValue<Boolean> enableRESISTANCE = (builder.comment(name + " armor: enable/disable resistance")
-                    .define("enableRESISTANCE", enableResistance));
-            ConfigValue<Integer> amplierRESISTANCE = (builder.comment(name + " armor: resistance amplifier")
-                    .defineInRange("amplifierRESISTANCE", amplifierResistance, 0, 255));
-            ConfigValue<Boolean> enableFIRE_RESISTANCE = (builder.comment(name + " armor: enable/disable fire resistance")
-                    .define("enableFIRE_RESISTANCE", enableFireResistance));
-            ConfigValue<Integer> amplierFIRE_RESISTANCE = (builder.comment(name + " armor: fire resistance amplifier")
-                    .defineInRange("amplifierFIRE_RESISTANCE", amplifierFireResistance, 0, 255));
-            ConfigValue<Boolean> enableSATURATION = (builder.comment(name + " armor: enable/disable saturation")
-                    .define("enableSATURATION", enableSaturation));
-            ConfigValue<Integer> amplierSATURATION = (builder.comment(name + " armor: saturation amplifier")
-                    .defineInRange("amplifierSATURATION", amplifierSaturation, 0, 255));
-            ConfigValue<Boolean> enableINVISIBILITY = (builder.comment(name + " armor: enable/disable invisibility")
-                    .define("enableINVISIBILITY", enableInvisibility));
-            ConfigValue<Integer> amplierINVISIBILITY = (builder.comment(name + " armor: invisibility amplifier")
-                    .defineInRange("amplifierINVISIBILITY", amplifierInvisibility, 0, 255));
-            ConfigValue<Boolean> enableHEALTH_BOOST = (builder.comment(name + " armor: enable/disable health boost")
-                    .define("enableHEALTH_BOOST", enableHealthBoost));
-            ConfigValue<Integer> amplierHEALTH_BOOST = (builder.comment(name + " armor: health boost amplifier")
-                    .defineInRange("amplifierHEALTH_BOOST", amplifierHealthBoost, 0, 255));
-            ConfigValue<Boolean> enableABSORPTION = (builder.comment(name + " armor: enable/disable absorption")
-                    .define("enableABSORPTION", enableAbsorption));
-            ConfigValue<Integer> amplierABSORPTION = (builder.comment(name + " armor: absorption amplifier")
-                    .defineInRange("amplifierABSORPTION", amplifierAbsorption, 0, 255));
-            ConfigValue<Boolean> enableSLOW_FALLING = (builder.comment(name + " armor: enable/disable slow falling")
-                    .define("enableSLOW_FALLING", enableSlowFalling));
-            ConfigValue<Integer> amplierSLOW_FALLING = (builder.comment(name + " armor: slow falling amplifier")
-                    .defineInRange("amplifierSLOW_FALLING", amplifierSlowFalling, 0, 255));
-            ConfigValue<Boolean> enableFLIGHT = (builder.comment(name + " armor: enable/disable flight")
-                    .define("enableFLIGHT", enableFlight));
-            ConfigValue<Boolean> enableWITHER_IMMUNITY = (builder.comment(name + " armor: enable/disable wither immunity")
-                    .define("enableWITHER_IMMUNITY", enableWitherImmunity));
-            ConfigValue<Boolean> enableNATURAL_IMMUNITY = (builder.comment(name + " armor: enable/disable natural immunity")
-                    .define("enableNATURAL_IMMUNITY", enableNaturalImmunity));
-            ConfigValue<Boolean> enableFIRE_EXTINGUISH = (builder.comment(name + " armor: enable/disable fire extinguish")
-                    .define("enableFIRE_EXTINGUISH", enableFireExtinguish));
-            builder.pop().pop();
-
-            return new AdvancedMaterialConfig(name, enableArmorEffects, enableWeaponEffects,
-                    enableNIGHT_VISION, amplierNIGHT_VISION, enableWATER_BREATHING, amplierWATER_BREATHING, enableSTRENGTH, amplierSTRENGTH, enableSPEED, amplierSPEED,
-                    enableHASTE, amplierHASTE, enableJUMP_BOOST, amplierJUMP_BOOST, enableREGENERATION, amplierREGENERATION, enableRESISTANCE, amplierRESISTANCE,
-                    enableFIRE_RESISTANCE, amplierFIRE_RESISTANCE, enableSATURATION, amplierSATURATION, enableINVISIBILITY, amplierINVISIBILITY, enableHEALTH_BOOST, amplierHEALTH_BOOST,
-                    enableABSORPTION, amplierABSORPTION, enableSLOW_FALLING, amplierSLOW_FALLING, enableFLIGHT, enableWITHER_IMMUNITY, enableNATURAL_IMMUNITY, enableFIRE_EXTINGUISH);
+        public List<BuffInstance> armorBuffInstances() {
+            return BuffParser.armor(armorBuffs.get(), disabledBuffs.get());
         }
 
+        public List<BuffInstance> weaponBuffInstances() {
+            return weaponBuffs == null ? List.of() : BuffParser.weapon(weaponBuffs.get(), disabledBuffs.get());
+        }
     }
 
     public interface IMaterialConfig {
@@ -284,24 +294,56 @@ public class ArmorPlusConfig {
         ConfigValue<Boolean> enableWeaponEffects();
     }
 
-    public record DropConfig(ConfigValue<Boolean> enableRegularDrops, ConfigValue<Boolean> enableSoulDrops) {
+    /**
+     * Regular (material) and soul drops of a regular mob.
+     * <ul>
+     *     <li>{@code regularDropChance}: chance (0-1) that the material drops at all; the amount is then random between {@code regularDropMin} and {@code regularDropMax}</li>
+     *     <li>{@code soulDropChance}: chance (0-1) that a Soul Stealer kill drops the mob's soul</li>
+     * </ul>
+     * The chance/amount options only exist for the drops the mob actually has.
+     */
+    public record DropConfig(ConfigValue<Boolean> enableRegularDrops, ConfigValue<Boolean> enableSoulDrops,
+                             ConfigValue<Double> regularDropChance, ConfigValue<Integer> regularDropMin,
+                             ConfigValue<Integer> regularDropMax, ConfigValue<Double> soulDropChance) {
 
-        public static DropConfig create(String name, ModConfigSpec.Builder builder) {
+        /**
+         * @param regularMax default maximum material amount, or -1 if the mob has no regular drop
+         * @param soulChance default soul chance, or -1 if the mob has no soul drop
+         */
+        public static DropConfig create(String name, ModConfigSpec.Builder builder, int regularMin, int regularMax, double soulChance) {
             builder.comment(name + " drop configuration")
                     .push(name);
             ConfigValue<Boolean> enableRegularDrops = (builder.comment(MODNAME + "'s " + name + " regular drops: enable/disable")
                     .define("enableRegularDrops", true));
             ConfigValue<Boolean> enableSoulDrops = (builder.comment(MODNAME + "'s " + name + " soul drops: enable/disable")
                     .define("enableSoulDrops", true));
+            ConfigValue<Double> regularChance = null;
+            ConfigValue<Integer> min = null, max = null;
+            if (regularMax >= 0) {
+                regularChance = builder.comment(name + " regular drops: chance (0.0 - 1.0) that the material drops on death")
+                        .defineInRange("regularDropChance", 1.0, 0.0, 1.0);
+                min = builder.comment(name + " regular drops: minimum amount")
+                        .defineInRange("regularDropMin", regularMin, 0, 64);
+                max = builder.comment(name + " regular drops: maximum amount")
+                        .defineInRange("regularDropMax", regularMax, 0, 64);
+            }
+            ConfigValue<Double> soul = null;
+            if (soulChance >= 0) {
+                soul = builder.comment(name + " soul drops: chance (0.0 - 1.0) that a kill with a Soul Stealer weapon drops the soul")
+                        .defineInRange("soulDropChance", soulChance, 0.0, 1.0);
+            }
             builder.pop();
 
-            return new DropConfig(enableRegularDrops, enableSoulDrops);
+            return new DropConfig(enableRegularDrops, enableSoulDrops, regularChance, min, max, soul);
         }
 
     }
 
+    /** Same as {@link DropConfig} for bosses, which additionally have trophy drops. */
     public record BossDropConfig(ConfigValue<Boolean> enableTrophyDrops, ConfigValue<Boolean> enableRegularDrops,
-                                 ConfigValue<Boolean> enableSoulDrops) {
+                                 ConfigValue<Boolean> enableSoulDrops, ConfigValue<Double> regularDropChance,
+                                 ConfigValue<Integer> regularDropMin, ConfigValue<Integer> regularDropMax,
+                                 ConfigValue<Double> soulDropChance) {
 
 
         public static BossDropConfig create(String name, ModConfigSpec.Builder builder) {
@@ -309,14 +351,21 @@ public class ArmorPlusConfig {
                     .push(name);
             ConfigValue<Boolean> enableTrophyDrops = (builder.comment(MODNAME + "'s " + name + " trophy drops: enable/disable  (CURRENTLY DISABLED BY THE MOD)")
                     .define("enableTrophyDrops", false));
-            ;
             ConfigValue<Boolean> enableRegularDrops = (builder.comment(MODNAME + "'s " + name + " regular drops: enable/disable")
                     .define("enableBossRegularDrops", true));
             ConfigValue<Boolean> enableSoulDrops = (builder.comment(MODNAME + "'s " + name + " soul drops: enable/disable")
                     .define("enableBossSoulDrops", true));
+            ConfigValue<Double> regularChance = builder.comment(name + " regular drops: chance (0.0 - 1.0) that the material drops on death")
+                    .defineInRange("regularDropChance", 1.0, 0.0, 1.0);
+            ConfigValue<Integer> min = builder.comment(name + " regular drops: minimum amount")
+                    .defineInRange("regularDropMin", 4, 0, 64);
+            ConfigValue<Integer> max = builder.comment(name + " regular drops: maximum amount")
+                    .defineInRange("regularDropMax", 6, 0, 64);
+            ConfigValue<Double> soul = builder.comment(name + " soul drops: chance (0.0 - 1.0) that a kill with a Soul Stealer weapon drops the boss soul")
+                    .defineInRange("soulDropChance", 1.0, 0.0, 1.0);
             builder.pop();
 
-            return new BossDropConfig(enableTrophyDrops, enableRegularDrops, enableSoulDrops);
+            return new BossDropConfig(enableTrophyDrops, enableRegularDrops, enableSoulDrops, regularChance, min, max, soul);
         }
 
     }

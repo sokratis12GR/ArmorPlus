@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.item.armor;
 
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.equipment.ArmorType;
 
 import com.sofodev.armorplus.ArmorPlus;
@@ -35,20 +37,26 @@ public enum APArmorProperties {
     GUARDIAN_PROP(80, new int[]{4, 7, 8, 3}, 30, ARMOR_EQUIP_NETHERITE, 2.0f, "guardian_scale"),
     SUPER_STAR_PROP(80, new int[]{4, 7, 8, 3}, 30, ARMOR_EQUIP_NETHERITE, 2.0f, "wither_bone"),
     ENDER_DRAGON_PROP(80, new int[]{4, 7, 8, 3}, 30, ARMOR_EQUIP_NETHERITE, 2.0f, "ender_dragon_scale"),
-    ARDITE_PROP(55, new int[]{2, 3, 4, 2}, 16, ARMOR_EQUIP_IRON, 1.0f, AIR),
-    COBALT_PROP(44, new int[]{2, 3, 4, 2}, 16, ARMOR_EQUIP_IRON, 1.0f, AIR),
-    KNIGHT_SLIME_PROP(33, new int[]{2, 3, 4, 3}, 16, ARMOR_EQUIP_IRON, 1.0f, AIR),
-    PIG_IRON_PROP(33, new int[]{2, 3, 4, 3}, 16, ARMOR_EQUIP_IRON, 1.0f, AIR),
-    MANYULLYN_PROP(66, new int[]{3, 5, 5, 3}, 30, ARMOR_EQUIP_NETHERITE, 2.0f, AIR),
+    WARDEN_PROP(80, new int[]{4, 7, 8, 3}, 30, ARMOR_EQUIP_NETHERITE, 2.0f, "warden_heart"),
+    ARDITE_PROP(55, new int[]{2, 3, 4, 2}, 16, ARMOR_EQUIP_IRON, 1.0f, "ardite_ingot"),
+    COBALT_PROP(44, new int[]{2, 3, 4, 2}, 16, ARMOR_EQUIP_IRON, 1.0f, "cobalt_ingot"),
+    KNIGHT_SLIME_PROP(33, new int[]{2, 3, 4, 3}, 16, ARMOR_EQUIP_IRON, 1.0f, "knight_slime_crystal"),
+    PIG_IRON_PROP(33, new int[]{2, 3, 4, 3}, 16, ARMOR_EQUIP_IRON, 1.0f, "pig_iron_ingot"),
+    MANYULLYN_PROP(66, new int[]{3, 5, 5, 3}, 30, ARMOR_EQUIP_NETHERITE, 2.0f, "manyullyn_ingot"),
     SLAYER_PROP(169, new int[]{4, 8, 9, 4}, 60, ARMOR_EQUIP_NETHERITE, 5.0f, "the_ultimate_material"),
     /*Enhanced Vanilla Armor*/
     ENHANCED_CHAINMAIL_PROP(false, 20, new int[]{2, 5, 6, 3}, 15, ARMOR_EQUIP_CHAIN, 1.0f, "chainmail"),
     ENHANCED_GOLD_PROP(false, 10, new int[]{2, 4, 5, 2}, 30, ARMOR_EQUIP_GOLD, 1.0f, GOLD_INGOT),
+    ENHANCED_COPPER_PROP(false, 20, new int[]{1, 3, 4, 2}, 15, ARMOR_EQUIP_COPPER, 2.0f, COPPER_INGOT),
     ENHANCED_IRON_PROP(false, 20, new int[]{2, 5, 6, 2}, 15, ARMOR_EQUIP_IRON, 2.0f, IRON_INGOT),
     ENHANCED_DIAMOND_PROP(false, 35, new int[]{3, 6, 7, 3}, 20, ARMOR_EQUIP_DIAMOND, 3.0f, DIAMOND),
     ENHANCED_NETHERITE_PROP(false, 47, new int[]{3, 6, 8, 3}, 25, ARMOR_EQUIP_NETHERITE, 4.0F, NETHERITE_INGOT),
     FROST_PROP(55, new int[]{3, 6, 8, 3}, 16, ARMOR_EQUIP_DIAMOND, 1.0f, "infused_frost_crystal"),
-    FROST_LAVA_PROP(70, new int[]{4, 7, 8, 3}, 32, ARMOR_EQUIP_NETHERITE, 2.0f, AIR);
+    FROST_LAVA_PROP(70, new int[]{4, 7, 8, 3}, 32, ARMOR_EQUIP_NETHERITE, 2.0f, AIR),
+    AMETHYST_PROP(11, new int[]{1, 2, 3, 2}, 8, ARMOR_EQUIP_IRON, AMETHYST_SHARD, AMETHYST_BLOCK),
+    QUARTZ_PROP(11, new int[]{1, 2, 3, 2}, 8, ARMOR_EQUIP_IRON, QUARTZ, QUARTZ_BLOCK),
+    GLOWSTONE_PROP(1, new int[]{1, 1, 2, 1}, 8, ARMOR_EQUIP_LEATHER, GLOWSTONE_DUST, GLOWSTONE),
+    HONEY_PROP(1, new int[]{1, 1, 2, 1}, 8, ARMOR_EQUIP_LEATHER, HONEYCOMB, HONEYCOMB_BLOCK);
     /**
      * Holds the 'base' maxDamage that each armorType have.
      */

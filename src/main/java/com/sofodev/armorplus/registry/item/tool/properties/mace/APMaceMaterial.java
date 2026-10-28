@@ -22,10 +22,31 @@ public enum APMaceMaterial implements IAPMace {
     GUARDIAN_MACE(GUARDIAN_MAT, HEAVY, 15, 9, PLUS),
     SUPER_STAR_MACE(SUPER_STAR_MAT, HEAVY, 15, 9, PLUS),
     ENDER_DRAGON_MACE(ENDER_DRAGON_MAT, HEAVY, 17, 10, SQUARE),
+    WARDEN_MACE(WARDEN_MAT, HEAVY, 17, 10, SQUARE),
     SLAYER_MACE(SLAYER_MAT, HEAVY, 20, 12, SQUARE),
+    AMETHYST_MACE(AMETHYST_MAT, LIGHT, 5, 2),
+    QUARTZ_MACE(QUARTZ_MAT, LIGHT, 5, 2),
+    GLOWSTONE_MACE(GLOWSTONE_MAT, LIGHT, 5, 1),
+    HONEY_MACE(HONEY_MAT, LIGHT, 5, 1),
+    CHICKEN_MACE(CHICKEN_MAT, LIGHT, 5, 1),
+    SLIME_MACE(SLIME_MAT, LIGHT, 5, 2),
+    ARDITE_MACE(ARDITE_MAT, NORMAL, 12, 5, PLUS),
+    COBALT_MACE(COBALT_MAT, NORMAL, 10, 4, PLUS),
+    KNIGHT_SLIME_MACE(KNIGHT_SLIME_MAT, NORMAL, 10, 3, PLUS),
+    PIG_IRON_MACE(PIG_IRON_MAT, NORMAL, 10, 3, PLUS),
+    MANYULLYN_MACE(MANYULLYN_MAT, HEAVY, 15, 8, PLUS),
+    FROST_MACE(FROST_MAT, NORMAL, 10, 5, PLUS),
+    FROST_LAVA_MACE(FROST_LAVA_MAT, HEAVY, 17, 9, SQUARE),
+    CHAINMAIL_MACE(CHAINMAIL_MAT, LIGHT, 5, 2),
+    GOLDEN_MACE(GOLDEN_MAT, LIGHT, 5, 2),
+    COPPER_MACE(COPPER_MAT, LIGHT, 5, 2),
+    IRON_MACE(IRON_MAT, LIGHT, 5, 2),
+    DIAMOND_MACE(DIAMOND_MAT, NORMAL, 10, 4, PLUS),
+    NETHERITE_MACE(NETHERITE_MAT, HEAVY, 15, 8, PLUS),
     ;
 
     private final ToolMaterial material;
+    private final APToolMaterial toolMaterial;
     private final ChatFormatting rarity;
     private final APMaceType type;
     private final int cooldown;
@@ -43,12 +64,17 @@ public enum APMaceMaterial implements IAPMace {
 
     APMaceMaterial(APToolMaterial material, APMaceType type, int cooldown, int range, boolean hasAOE, DestructionShape shape) {
         this.material = material.get();
+        this.toolMaterial = material;
         this.rarity = material.getColor();
         this.type = type;
         this.cooldown = cooldown;
         this.range = range;
         this.hasAOEDestruction = hasAOE;
         this.shape = shape;
+    }
+
+    public APToolMaterial getToolMaterial() {
+        return this.toolMaterial;
     }
 
     @Override

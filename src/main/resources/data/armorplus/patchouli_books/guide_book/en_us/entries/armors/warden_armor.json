@@ -1,0 +1,28 @@
+{
+  "name": "Warden Armor",
+  "icon": "armorplus:warden_chestplate",
+  "category": "armorplus:armor_category",
+  "secret": false,
+  "read_by_default": false,
+  "pages": [
+    {
+      "type": "entity",
+      "name": "Warden Armor",
+      "entity": "minecraft:armor_stand{Invisible:1, ArmorItems:[{id:'armorplus:warden_boots',Count:1},{id:'armorplus:warden_leggings',Count:1},{id:'armorplus:warden_chestplate',Count:1},{id:'armorplus:warden_helmet',Count:1}]}",
+      "rotate": true,
+      "text": "The armor provides the wearer with $(l)Night Vision$(), $(l)Slow Falling$(), immunity to sculk sensors/shriekers/catalysts and pacifies Wardens upon wearing the full set."
+    },
+    {
+      "type": "smithing",
+      "title": "Smithing Recipes",
+      "recipe": "armorplus:smithing/warden_helmet_base",
+      "recipe2": "armorplus:smithing/warden_chestplate_base"
+    },
+    {
+      "type": "smithing",
+      "title": "Smithing Recipes",
+      "recipe": "armorplus:smithing/warden_leggings_base",
+      "recipe2": "armorplus:smithing/warden_boots_base"
+    }
+  ]
+}

@@ -3,21 +3,17 @@ package com.sofodev.armorplus.registry.item.special;
 import com.sofodev.armorplus.config.AvailabilityConfig;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.level.Level;
 import net.minecraft.core.registries.BuiltInRegistries;
 
-import java.util.List;
 import java.util.function.Consumer;
 import net.minecraft.world.item.component.TooltipDisplay;
 
+import static com.sofodev.armorplus.utils.ToolTipUtils.addItemLore;
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
 import static net.minecraft.ChatFormatting.DARK_PURPLE;
 
@@ -40,21 +36,13 @@ public class SoulItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag flagIn) {
-        Level level = ctx.level();
-        if (level != null && level.isClientSide()) {
-            if (entity != null && !entity.isEmpty()) {
-                EntityType<?> value = BuiltInRegistries.ENTITY_TYPE.getValue(Identifier.parse(entity));
-                if (value != null) {
-                    Entity entity = value.create(level, EntitySpawnReason.SPAWN_ITEM_USE);
-                    if (entity != null) {
-                        tooltip.accept(translate(DARK_PURPLE, "tooltip.armorplus.soul", entity.getName()));
-                    }
-                    if (isBoss) {
-                        tooltip.accept(translate(DARK_PURPLE, "tooltip.armorplus.boss_soul"));
-                    }
-                }
-            }
+        if (entity != null && !entity.isEmpty()) {
+            BuiltInRegistries.ENTITY_TYPE.getOptional(Identifier.parse(entity)).ifPresent(type -> {
+                tooltip.accept(translate(DARK_PURPLE, "tooltip.armorplus.soul", type.getDescription()));
+                if (isBoss) tooltip.accept(translate(DARK_PURPLE, "tooltip.armorplus.boss_soul"));
+            });
         }
+        addItemLore(tooltip, this);
         super.appendHoverText(stack, ctx, display, tooltip, flagIn);
     }
 

@@ -1,0 +1,15 @@
+{
+  "name": "Warden Heart",
+  "icon": "armorplus:warden_heart",
+  "category": "armorplus:material_category",
+  "secret": false,
+  "read_by_default": false,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "armorplus:warden_heart",
+      "link_recipe": true,
+      "text": "This heart can be harvested from a slain $(l)Warden$().$(br)It is used to craft the $(l:bases/warden_base)warden base$() items, and to upgrade them into full armor."
+    }
+  ]
+}

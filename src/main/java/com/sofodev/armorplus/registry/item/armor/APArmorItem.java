@@ -5,7 +5,9 @@ import net.minecraft.world.item.equipment.ArmorType;
 import com.sofodev.armorplus.config.AvailabilityConfig;
 import com.sofodev.armorplus.registry.item.extra.Buff;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
+import com.sofodev.armorplus.registry.item.extra.DeBuff;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -19,7 +21,6 @@ import java.util.function.Consumer;
 import net.minecraft.world.item.component.TooltipDisplay;
 
 import static com.sofodev.armorplus.utils.ItemArmorUtility.areExactMatch;
-import static com.sofodev.armorplus.utils.RomanNumeralUtil.generate;
 import static com.sofodev.armorplus.utils.ToolTipUtils.*;
 import static net.minecraft.ChatFormatting.*;
 
@@ -46,12 +47,18 @@ public class APArmorItem extends Item {
         if (buffs.isEmpty()) return;
 
         for (BuffInstance instance : buffs) {
-            if (!(instance.getBuff() instanceof Buff) || !instance.isEnabled()) continue;
+            if (instance.getBuff() == Buff.NONE || instance.getBuff() instanceof DeBuff || !instance.isEnabled()) continue;
 
             if (instance.getBuff().requiresFullSet() && !areExactMatch(mat, player)) continue;
 
             if (instance.getBuff().isEffect()) {
-                if (!player.hasEffect(instance.getEffect().getEffect())) {
+                var effectHolder = instance.getBuff().getEffect();
+                if (effectHolder == null) continue;
+                var existing = player.getEffect(effectHolder);
+                // night vision starts flashing below 11 seconds, so keep it topped up
+                boolean needsRefresh = existing == null
+                        || (effectHolder.value() == MobEffects.NIGHT_VISION.value() && existing.getDuration() <= 220);
+                if (needsRefresh) {
                     instance.onInventoryTick(stack, level, player);
                 }
             } else {
@@ -69,12 +76,7 @@ public class APArmorItem extends Item {
                 tooltip.accept(translate(GOLD, "tooltip.armorplus.condition.full_set"));
                 tooltip.accept(translate(GREEN, "tooltip.armorplus.provides"));
 
-                for (BuffInstance buff : buffs) {
-                    if (buff.getBuff() == Buff.NONE) continue;
-                    int lvl = buff.getAmplifier() + 1;
-                    String roman = lvl > 0 ? " " + generate(lvl) : "";
-                    tooltip.accept(translate(DARK_AQUA, "tooltip.armorplus.buff", buff.getTranslatedName(), roman));
-                }
+                addBuffLines(tooltip, buffs);
             } else {
                 showSneakInfo(tooltip, mat.getFormatting());
             }

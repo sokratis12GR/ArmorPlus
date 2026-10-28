@@ -1,0 +1,28 @@
+{
+  "name": "Warden Bases",
+  "icon": "armorplus:warden_chestplate_base",
+  "category": "armorplus:base_category",
+  "secret": false,
+  "read_by_default": false,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "armorplus:warden_helmet_base,armorplus:warden_chestplate_base,armorplus:warden_leggings_base,armorplus:warden_boots_base",
+      "title": "Info",
+      "link_recipe": true,
+      "text": "These are the base items of the $(l:armors/warden_armor)warden armor$() pieces, in order to obtain the actual armor piece you must combine them with a $(l:materials/warden_heart)Warden Heart$() in the $(l)Smithing Table$()."
+    },
+    {
+      "type": "crafting",
+      "title": "Crafting Recipes",
+      "recipe": "armorplus:crafting/shaped/warden/warden_helmet_base",
+      "recipe2": "armorplus:crafting/shaped/warden/warden_chestplate_base"
+    },
+    {
+      "type": "crafting",
+      "title": "Crafting Recipes",
+      "recipe": "armorplus:crafting/shaped/warden/warden_leggings_base",
+      "recipe2": "armorplus:crafting/shaped/warden/warden_boots_base"
+    }
+  ]
+}

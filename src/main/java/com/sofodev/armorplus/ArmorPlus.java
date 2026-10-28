@@ -1,6 +1,6 @@
 package com.sofodev.armorplus;
 
-import com.sofodev.armorplus.client.config.APConfigSectionScreen;
+import com.sofodev.armorplus.client.config.ConfigScreenRegistration;
 import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.config.ConfigHelper;
 import com.sofodev.armorplus.datagen.DataGenerators;
@@ -15,8 +15,6 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.loading.FMLEnvironment;
-import net.neoforged.neoforge.client.gui.ConfigurationScreen;
-import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -69,8 +67,7 @@ public class ArmorPlus {
         //Order of registration per https://gist.github.com/pupnewfster/ea38cf3744f23d6b65d67e6f279d5942
 
         if (FMLEnvironment.getDist().isClient()) {
-            container.registerExtensionPoint(IConfigScreenFactory.class,
-                    (mod, parent) -> new ConfigurationScreen(mod, parent, APConfigSectionScreen::new));
+            ConfigScreenRegistration.register(container);
         }
 
 

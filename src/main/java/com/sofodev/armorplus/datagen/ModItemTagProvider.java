@@ -78,7 +78,12 @@ public class ModItemTagProvider extends KeyTagProvider<Item> {
                 ModItems.ITEM_INFUSED_LAVA_ARROW,
                 ModItems.ITEM_GUARDIAN_ARROW,
                 ModItems.ITEM_SUPER_STAR_ARROW,
-                ModItems.ITEM_ENDER_DRAGON_ARROW);
+                ModItems.ITEM_ENDER_DRAGON_ARROW,
+                ModItems.ITEM_WARDEN_ARROW,
+                ModItems.ITEM_AMETHYST_ARROW,
+                ModItems.ITEM_QUARTZ_ARROW,
+                ModItems.ITEM_GLOWSTONE_ARROW,
+                ModItems.ITEM_HONEY_ARROW);
         addToMinecraftTag("arrows", arrows);
     }
 

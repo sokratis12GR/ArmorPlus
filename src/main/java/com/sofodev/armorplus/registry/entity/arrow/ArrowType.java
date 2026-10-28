@@ -72,6 +72,36 @@ public class ArrowType {
             return new EnderDragonArrowEntity(shooter, world);
         }
     };
+    public static final ArrowType WARDEN = new ArrowType(WARDEN_ARROW_PROP, "warden", 10.5, DARK_AQUA) {
+        @Override
+        public AbstractArrow createArrow(Level world, ItemStack stack, LivingEntity shooter, ItemStack result) {
+            return new WardenArrowEntity(shooter, world);
+        }
+    };
+    public static final ArrowType AMETHYST = new ArrowType(AMETHYST_ARROW_PROP, "amethyst", 3.5, LIGHT_PURPLE) {
+        @Override
+        public APArrowEntity createArrow(Level world, ItemStack stack, LivingEntity shooter, ItemStack result) {
+            return new AmethystArrowEntity(shooter, world);
+        }
+    };
+    public static final ArrowType QUARTZ = new ArrowType(QUARTZ_ARROW_PROP, "quartz", 3.5, WHITE) {
+        @Override
+        public APArrowEntity createArrow(Level world, ItemStack stack, LivingEntity shooter, ItemStack result) {
+            return new QuartzArrowEntity(shooter, world);
+        }
+    };
+    public static final ArrowType GLOWSTONE = new ArrowType(GLOWSTONE_ARROW_PROP, "glowstone", 3.0, YELLOW) {
+        @Override
+        public APArrowEntity createArrow(Level world, ItemStack stack, LivingEntity shooter, ItemStack result) {
+            return new GlowstoneArrowEntity(shooter, world);
+        }
+    };
+    public static final ArrowType HONEY = new ArrowType(HONEY_ARROW_PROP, "honey", 3.0, GOLD) {
+        @Override
+        public APArrowEntity createArrow(Level world, ItemStack stack, LivingEntity shooter, ItemStack result) {
+            return new HoneyArrowEntity(shooter, world);
+        }
+    };
 
     private final ArrowProperty property;
     private final String name;

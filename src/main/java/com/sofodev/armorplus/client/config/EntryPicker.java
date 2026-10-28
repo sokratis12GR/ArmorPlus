@@ -1,5 +1,6 @@
 package com.sofodev.armorplus.client.config;
 
+import com.sofodev.armorplus.registry.item.extra.BuffParser;
 import net.minecraft.client.gui.screens.Screen;
 
 import java.util.HashSet;
@@ -7,6 +8,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.function.Consumer;
+
+import static com.sofodev.armorplus.ArmorPlus.MODID;
 
 /**
  * Opens a picker screen which produces new entries for a config list.
@@ -36,6 +39,27 @@ public interface EntryPicker {
                 Set<String> existing = new HashSet<>();
                 current.forEach(entry -> existing.add(Objects.toString(entry)));
                 parent.getMinecraft().setScreen(new RegistryPickerScreen(parent, kind, existing, add));
+            }
+        };
+    }
+
+    /**
+     * Picks effects/abilities, producing buff entries: effects get {@code levelSuffix} appended (e.g. "minecraft:haste" + "|1"),
+     * ArmorPlus abilities are added as-is. An empty suffix produces plain ids (used by "disabledBuffs").
+     */
+    static EntryPicker buffs(String levelSuffix) {
+        return new EntryPicker() {
+            @Override
+            public boolean isAvailable() {
+                return true;
+            }
+
+            @Override
+            public void open(Screen parent, List<?> current, Consumer<List<String>> add) {
+                Set<String> existing = new HashSet<>();
+                current.forEach(entry -> existing.add(BuffParser.idOf(entry)));
+                parent.getMinecraft().setScreen(new RegistryPickerScreen(parent, RegistryPickerScreen.Kind.EFFECTS, existing,
+                        ids -> add.accept(ids.stream().map(id -> id.startsWith(MODID + ":") ? id : id + levelSuffix).toList())));
             }
         };
     }

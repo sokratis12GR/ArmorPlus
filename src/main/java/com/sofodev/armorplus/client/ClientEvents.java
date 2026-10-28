@@ -6,6 +6,8 @@ import com.sofodev.armorplus.registry.ModEntities;
 import net.minecraft.resources.Identifier;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterClientTooltipComponentFactoriesEvent;
+import net.neoforged.neoforge.client.event.RenderTooltipEvent;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -27,6 +29,17 @@ public final class ClientEvents {
         event.registerEntityRenderer(ModEntities.GUARDIAN_ARROW.get(), context -> new APArrowRenderer(context, texture("guardian_arrow")));
         event.registerEntityRenderer(ModEntities.SUPER_STAR_ARROW.get(), context -> new APArrowRenderer(context, texture("super_star_arrow")));
         event.registerEntityRenderer(ModEntities.ENDER_DRAGON_ARROW.get(), context -> new APArrowRenderer(context, texture("ender_dragon_arrow")));
+        event.registerEntityRenderer(ModEntities.WARDEN_ARROW.get(), context -> new APArrowRenderer(context, texture("warden_arrow")));
+    }
+
+    @SubscribeEvent
+    public static void registerTooltipComponents(RegisterClientTooltipComponentFactoriesEvent event) {
+        event.register(BuffGridTooltip.class, grid -> grid);
+    }
+
+    @SubscribeEvent
+    public static void gatherTooltipComponents(RenderTooltipEvent.GatherComponents event) {
+        BuffGridTooltip.collapse(event.getTooltipElements(), event.getScreenWidth());
     }
 
     private static Identifier texture(String name) {

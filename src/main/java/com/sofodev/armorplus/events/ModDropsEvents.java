@@ -11,6 +11,7 @@ import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.entity.monster.skeleton.WitherSkeleton;
+import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -24,6 +25,8 @@ import net.minecraft.core.registries.BuiltInRegistries;
 
 import java.util.Map;
 import java.util.function.Supplier;
+
+import com.sofodev.armorplus.config.ArmorPlusConfig;
 
 import static com.sofodev.armorplus.ArmorPlus.config;
 import static com.sofodev.armorplus.events.ModGlobalEvents.RAND;
@@ -51,41 +54,16 @@ public class ModDropsEvents {
             }
         }
 
-        record MobDropConfig(Supplier<Boolean> trophyEnabled, Supplier<Boolean> regularEnabled,
-                             Supplier<Boolean> soulEnabled, String regularItem, int regularAmountMin,
-                             int regularAmountMax, String soulItem, float trophyScale) {
-        }
-
         // Map the mob class to the configuration
         Map<Class<? extends LivingEntity>, MobDropConfig> dropMap = Map.of(
-                WitherBoss.class, new MobDropConfig(() -> config.witherBossDrops.enableTrophyDrops().get(),
-                        () -> config.witherBossDrops.enableRegularDrops().get(),
-                        () -> config.witherBossDrops.enableSoulDrops().get(),
-                        "wither_bone", 4, 6, "soul_wither_boss", 0.2f),
-                EnderDragon.class, new MobDropConfig(() -> config.enderDragonDrops.enableTrophyDrops().get(),
-                        () -> config.enderDragonDrops.enableRegularDrops().get(),
-                        () -> config.enderDragonDrops.enableSoulDrops().get(),
-                        "ender_dragon_scale", 4, 6, "soul_ender_dragon", 0.1f),
-                ElderGuardian.class, new MobDropConfig(() -> config.elderGuardianDrops.enableTrophyDrops().get(),
-                        () -> config.elderGuardianDrops.enableRegularDrops().get(),
-                        () -> config.elderGuardianDrops.enableSoulDrops().get(),
-                        "guardian_scale", 4, 6, "soul_elder_guardian", 0.2f),
-                WitherSkeleton.class, new MobDropConfig(() -> false,
-                        () -> config.witherSkeletonDrops.enableRegularDrops().get(),
-                        () -> config.witherSkeletonDrops.enableSoulDrops().get(),
-                        "wither_bone", 0, 3, "soul_wither_skeleton", 0f),
-                Guardian.class, new MobDropConfig(() -> false,
-                        () -> config.guardianDrops.enableRegularDrops().get(),
-                        () -> config.guardianDrops.enableSoulDrops().get(),
-                        "guardian_scale", 0, 3, "soul_guardian", 0f),
-                EnderMan.class, new MobDropConfig(() -> false,
-                        () -> false,
-                        () -> config.endermanDrops.enableSoulDrops().get(),
-                        null, 0, 0, "soul_enderman", 0f),
-                Blaze.class, new MobDropConfig(() -> false,
-                        () -> false,
-                        () -> config.blazeDrops.enableSoulDrops().get(),
-                        null, 0, 0, "soul_blaze", 0f)
+                WitherBoss.class, MobDropConfig.boss(config.witherBossDrops, "wither_bone", "soul_wither_boss", 0.2f),
+                EnderDragon.class, MobDropConfig.boss(config.enderDragonDrops, "ender_dragon_scale", "soul_ender_dragon", 0.1f),
+                ElderGuardian.class, MobDropConfig.boss(config.elderGuardianDrops, "guardian_scale", "soul_elder_guardian", 0.2f),
+                WitherSkeleton.class, MobDropConfig.mob(config.witherSkeletonDrops, "wither_bone", "soul_wither_skeleton"),
+                Guardian.class, MobDropConfig.mob(config.guardianDrops, "guardian_scale", "soul_guardian"),
+                EnderMan.class, MobDropConfig.mob(config.endermanDrops, null, "soul_enderman"),
+                Blaze.class, MobDropConfig.mob(config.blazeDrops, null, "soul_blaze"),
+                Warden.class, MobDropConfig.mob(config.wardenDrops, "warden_heart", null)
         );
 
 
@@ -101,19 +79,40 @@ public class ModDropsEvents {
         if (hasSoulStealer && cfg.trophyEnabled.get()) dropTrophyItem(entity, entity.getType(), cfg.trophyScale);
 
         // Regular drops
-        if (hasSoulStealer && cfg.regularEnabled.get() && cfg.regularItem != null) {
-            int amount = RAND.nextInt(cfg.regularAmountMax - cfg.regularAmountMin + 1) + cfg.regularAmountMin;
-            dropItem(entity, cfg.regularItem, amount);
+        if (cfg.regularEnabled.get() && cfg.regularItem != null && RAND.nextDouble() < cfg.regularChance.get()) {
+            int min = cfg.regularMin.get();
+            int amount = min + RAND.nextInt(Math.max(cfg.regularMax.get(), min) - min + 1);
+            if (amount > 0) dropItem(entity, cfg.regularItem, amount);
         }
 
         // Soul drops
-        if (hasSoulStealer && cfg.soulEnabled.get() && cfg.soulItem != null) {
-            boolean drop = !(entity instanceof WitherSkeleton || entity instanceof Guardian
-                    || entity instanceof EnderMan || entity instanceof Blaze) || RAND.nextInt(4) == 0;
-            if (drop) dropItem(entity, cfg.soulItem, 1);
+        if (hasSoulStealer && cfg.soulEnabled.get() && cfg.soulItem != null && RAND.nextDouble() < cfg.soulChance.get()) {
+            dropItem(entity, cfg.soulItem, 1);
         }
     }
 
+    /** The config values (resolved lazily, as they can change at runtime) that decide what a mob drops. */
+    private record MobDropConfig(Supplier<Boolean> trophyEnabled, Supplier<Boolean> regularEnabled,
+                                 Supplier<Boolean> soulEnabled, String regularItem, Supplier<Integer> regularMin,
+                                 Supplier<Integer> regularMax, Supplier<Double> regularChance,
+                                 Supplier<Double> soulChance, String soulItem, float trophyScale) {
+
+        static MobDropConfig boss(ArmorPlusConfig.BossDropConfig c, String regularItem, String soulItem, float trophyScale) {
+            return new MobDropConfig(c.enableTrophyDrops()::get, c.enableRegularDrops()::get, c.enableSoulDrops()::get,
+                    regularItem, c.regularDropMin()::get, c.regularDropMax()::get, c.regularDropChance()::get,
+                    c.soulDropChance()::get, soulItem, trophyScale);
+        }
+
+        static MobDropConfig mob(ArmorPlusConfig.DropConfig c, String regularItem, String soulItem) {
+            return new MobDropConfig(() -> false,
+                    regularItem == null ? () -> false : c.enableRegularDrops()::get,
+                    soulItem == null ? () -> false : c.enableSoulDrops()::get,
+                    regularItem, regularItem == null ? () -> 0 : c.regularDropMin()::get,
+                    regularItem == null ? () -> 0 : c.regularDropMax()::get,
+                    regularItem == null ? () -> 0.0 : c.regularDropChance()::get,
+                    soulItem == null ? () -> 0.0 : c.soulDropChance()::get, soulItem, 0f);
+        }
+    }
 
     private static void dropTrophyItem(LivingEntity entity, EntityType<?> type, float scale) {
         ItemStack trophy = new ItemStack(getAPItem("trophy"));

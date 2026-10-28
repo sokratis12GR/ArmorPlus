@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.client.config;
 
 import com.electronwill.nightconfig.core.UnmodifiableConfig;
+import com.sofodev.armorplus.registry.item.extra.BuffParser;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.Screen;
@@ -52,6 +53,9 @@ public class APConfigSectionScreen extends ConfigurationScreen.ConfigurationSect
             case "hiddenBlocks" -> EntryPicker.of(RegistryPickerScreen.Kind.BLOCKS);
             case "disallowWithSoulHardenList" -> EntryPicker.of(RegistryPickerScreen.Kind.ENCHANTMENTS);
             case "smeltingRecipes" -> EntryPicker.smeltingRecipe();
+            case "armorBuffs" -> EntryPicker.buffs("|1");
+            case "weaponBuffs" -> EntryPicker.buffs("|1|" + BuffParser.DEFAULT_WEAPON_SECONDS);
+            case "disabledBuffs" -> EntryPicker.buffs("");
             default -> null;
         };
         if (picker == null) return super.createList(key, spec, list);

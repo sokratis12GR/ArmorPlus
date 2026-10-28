@@ -81,11 +81,13 @@ public class SmithingRecipeMaker extends RecipeProvider {
         smither.buildBaseToFullSmithing(con, SUPER_STAR_BASES, WITHER_BOSS_SOUL.get());
         smither.buildBaseToFullSmithing(con, GUARDIAN_BASES, ELDER_GUARDIAN_SOUL.get());
         smither.buildBaseToFullSmithing(con, ENDER_DRAGON_BASES, ENDER_DRAGON_SOUL.get());
+        smither.buildBaseToFullSmithing(con, WARDEN_BASES, WARDEN_HEART.get());
         smither.buildBaseToFullSmithing(con, SLAYER_BASES, SLAYER_SOUL.get());
 
         smither.buildBaseToFullSmithing(con, WITHER_BOSS_SOUL.get(), SUPER_STAR_SWORD_BASE, SUPER_STAR_BATTLE_AXE_BASE, SUPER_STAR_PICKAXE_BASE, SUPER_STAR_BOW_BASE);
         smither.buildBaseToFullSmithing(con, ELDER_GUARDIAN_SOUL.get(), GUARDIAN_SWORD_BASE, GUARDIAN_BATTLE_AXE_BASE, GUARDIAN_PICKAXE_BASE, GUARDIAN_BOW_BASE);
         smither.buildBaseToFullSmithing(con, ENDER_DRAGON_SOUL.get(), ENDER_DRAGON_SWORD_BASE, ENDER_DRAGON_BATTLE_AXE_BASE, ENDER_DRAGON_PICKAXE_BASE, ENDER_DRAGON_BOW_BASE);
+        smither.buildBaseToFullSmithing(con, WARDEN_HEART.get(), WARDEN_SWORD_BASE, WARDEN_BATTLE_AXE_BASE, WARDEN_PICKAXE_BASE, WARDEN_BOW_BASE);
         smither.buildBaseToFullSmithing(con, SLAYER_SOUL.get(), SLAYER_SWORD_BASE, SLAYER_BATTLE_AXE_BASE, SLAYER_PICKAXE_BASE, SLAYER_BOW_BASE);
 
         smither.buildVanillaToEnhancedSmithing(con, NETHERITE_HELMET, ENHANCED_NETHERITE);

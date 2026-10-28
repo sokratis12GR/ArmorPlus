@@ -28,58 +28,74 @@ public class ModCreativeTabs {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> AP_CORE_GROUP = register("core", () -> CreativeModeTab.builder()
             .icon(() -> new ItemStack(getAPItem("infused_lava_chestplate")))
             .title(Component.translatable("tabs.armorplus.core"))
-            .withLabelColor(0xFFFFFF)
+            .withLabelColor(0xFFAA00)
             .withSearchBar(40)
             .backgroundTexture(Identifier.fromNamespaceAndPath(MODID, "textures/gui/container/creative_inventory/tab_armorplus_small_search.png"))
             .displayItems((featureFlags, output) -> {
                 addEquipmentToOutput(output, "coal");
                 addEquipmentToOutput(output, "redstone");
+                addEquipmentToOutput(output, "amethyst");
+                addEquipmentToOutput(output, "quartz");
+                addEquipmentToOutput(output, "glowstone");
+                addEquipmentToOutput(output, "honey");
                 addEquipmentToOutput(output, "lapis");
                 addEquipmentToOutput(output, "emerald");
                 addEquipmentToOutput(output, "obsidian");
                 addEquipmentToOutput(output, "infused_lava");
+                addEquipmentToOutput(output, "warden");
                 addEquipmentToOutput(output, "guardian");
                 addEquipmentToOutput(output, "super_star");
                 addEquipmentToOutput(output, "ender_dragon");
                 addEquipmentToOutput(output, "slayer");
+
             }).build());
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> AP_EXTRA_GROUP = register("extra", () -> CreativeModeTab.builder()
             .icon(() -> new ItemStack(getAPItem("cobalt_chestplate")))
             .title(Component.translatable("tabs.armorplus.extra"))
-            .withLabelColor(0xFFFFFF)
+            .withLabelColor(0x55FFFF)
             .backgroundTexture(Identifier.fromNamespaceAndPath(MODID, "textures/gui/container/creative_inventory/tab_armorplus_small_search.png"))
             .withSearchBar(40)
             .displayItems((featureFlags, output) -> {
-                addSetToOutput(output, "chainmail");
-                output.accept(ENHANCED_CHAINMAIL.get());
-                addSetToOutput(output, "chicken");
-                addSetToOutput(output, "golden");
-                output.accept(ENHANCED_GOLD.get());
-                addSetToOutput(output, "slime");
-                addSetToOutput(output, "iron");
-                output.accept(ENHANCED_IRON.get());
-                addSetToOutput(output, "ardite");
-                addSetToOutput(output, "diamond");
-                output.accept(ENHANCED_DIAMOND.get());
-                addSetToOutput(output, "cobalt");
-                addSetToOutput(output, "netherite");
-                output.accept(ENHANCED_NETHERITE.get());
-                addSetToOutput(output, "knight_slime");
-                addSetToOutput(output, "frost");
-                output.accept(FROST_SHARD.get());
-                addSetToOutput(output, "pig_iron");
-                addSetToOutput(output, "frost_lava");
-                output.accept(LAVA_SHARD.get());
-                addSetToOutput(output, "manyullyn");
+                addEquipmentToOutput(output, "chainmail");
+                addEquipmentToOutput(output, "copper");
+                addEquipmentToOutput(output, "iron");
+                addEquipmentToOutput(output, "golden");
+                addEquipmentToOutput(output, "diamond");
+                addEquipmentToOutput(output, "netherite");
+                addEquipmentToOutput(output, "chicken");
+                addEquipmentToOutput(output, "slime");
+                addEquipmentToOutput(output, "frost");
+                addEquipmentToOutput(output, "frost_lava");
+                addEquipmentToOutput(output, "ardite");
+                addEquipmentToOutput(output, "cobalt");
+                addEquipmentToOutput(output, "knight_slime");
+                addEquipmentToOutput(output, "pig_iron");
+                addEquipmentToOutput(output, "manyullyn");
             }).build());
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> AP_ITEM_GROUP = register("items", () -> CreativeModeTab.builder()
             .icon(() -> new ItemStack(ModItems.INFUSED_LAVA_CRYSTAL.get()))
             .title(Component.translatable("tabs.armorplus.items"))
             .backgroundTexture(Identifier.fromNamespaceAndPath(MODID, "textures/gui/container/creative_inventory/tab_armorplus.png"))
             .withSearchBar()
-            .withLabelColor(0xFFFFFF)
+            .withLabelColor(0xFF55FF)
             .displayItems((featureFlags, output) -> {
+                //bases
+                output.accept(ModItems.WARDEN_HEART.get());
+                addBasesToOutput(output, "warden");
+                output.accept(ModItems.ELDER_GUARDIAN_SOUL.get());
+                addBasesToOutput(output, "guardian");
+                output.accept(ModItems.WITHER_BOSS_SOUL.get());
+                addBasesToOutput(output, "super_star");
+                output.accept(ModItems.ENDER_DRAGON_SOUL.get());
+                addBasesToOutput(output, "ender_dragon");
+                output.accept(ModItems.SLAYER_SOUL.get());
+                addBasesToOutput(output, "slayer");
                 //materials
+                output.accept(ModItems.CHAINMAIL.get());
+                output.accept(ModItems.OBSIDIAN_STICK.get());
+                output.accept(ModItems.WOODEN_ROD.get());
+                output.accept(FROST_SHARD.get());
+                output.accept(LAVA_SHARD.get());
                 output.accept(ModItems.LAVA_CRYSTAL.get());
                 output.accept(ModItems.INFUSED_LAVA_CRYSTAL.get());
                 output.accept(ModItems.FROST_CRYSTAL.get());
@@ -89,7 +105,24 @@ public class ModCreativeTabs {
                 output.accept(ModItems.WITHER_BONE.get());
                 output.accept(ModItems.ENDER_DRAGON_SCALE.get());
                 output.accept(ModItems.THE_ULTIMATE_MATERIAL.get());
-                //arrows
+                output.accept(ModItems.PIG_IRON_INGOT.get());
+                output.accept(ModItems.COBALT_INGOT.get());
+                output.accept(ModItems.ARDITE_INGOT.get());
+                output.accept(ModItems.KNIGHT_SLIME_CRYSTAL.get());
+                output.accept(ModItems.MANYULLYN_INGOT.get());
+                //enhanced
+                output.accept(ENHANCED_CHAINMAIL.get());
+                output.accept(ENHANCED_GOLD.get());
+                output.accept(ENHANCED_COPPER.get());
+                output.accept(ENHANCED_IRON.get());
+                output.accept(ENHANCED_DIAMOND.get());
+                output.accept(ENHANCED_NETHERITE.get());
+                //advanced materials
+                output.accept(ModItems.WITHER_SKELETON_SOUL.get());
+                output.accept(ModItems.GUARDIAN_SOUL.get());
+                output.accept(ModItems.ENDERMAN_SOUL.get());
+                output.accept(ModItems.BLAZE_SOUL.get());
+                //ammunition
                 output.accept(ModItems.ITEM_COAL_ARROW.get());
                 output.accept(ModItems.ITEM_REDSTONE_ARROW.get());
                 output.accept(ModItems.ITEM_LAPIS_ARROW.get());
@@ -99,40 +132,19 @@ public class ModCreativeTabs {
                 output.accept(ModItems.ITEM_GUARDIAN_ARROW.get());
                 output.accept(ModItems.ITEM_SUPER_STAR_ARROW.get());
                 output.accept(ModItems.ITEM_ENDER_DRAGON_ARROW.get());
-                //bases
-                output.accept(ModItems.ELDER_GUARDIAN_SOUL.get());
-                addBasesToOutput(output, "guardian");
-                output.accept(ModItems.WITHER_BOSS_SOUL.get());
-                addBasesToOutput(output, "super_star");
-                output.accept(ModItems.ENDER_DRAGON_SOUL.get());
-                addBasesToOutput(output, "ender_dragon");
-                output.accept(ModItems.SLAYER_SOUL.get());
-                addBasesToOutput(output, "slayer");
-                //advanced materials
-                output.accept(ModItems.WITHER_SKELETON_SOUL.get());
-                output.accept(ModItems.GUARDIAN_SOUL.get());
-                output.accept(ModItems.ENDERMAN_SOUL.get());
-                output.accept(ModItems.BLAZE_SOUL.get());
-                //enhanced materials
-                output.accept(ModItems.ENHANCED_CHAINMAIL.get());
-                output.accept(ModItems.ENHANCED_IRON.get());
-                output.accept(ModItems.ENHANCED_GOLD.get());
-                output.accept(ModItems.ENHANCED_DIAMOND.get());
-                output.accept(ModItems.ENHANCED_NETHERITE.get());
+                output.accept(ModItems.ITEM_WARDEN_ARROW.get());
+                output.accept(ModItems.ITEM_AMETHYST_ARROW.get());
+                output.accept(ModItems.ITEM_QUARTZ_ARROW.get());
+                output.accept(ModItems.ITEM_GLOWSTONE_ARROW.get());
+                output.accept(ModItems.ITEM_HONEY_ARROW.get());
                 //misc
-                output.accept(ModItems.CHAINMAIL.get());
-                output.accept(ModItems.OBSIDIAN_STICK.get());
-                output.accept(ModItems.WOODEN_ROD.get());
-                output.accept(ModItems.LAVA_SHARD.get());
-                output.accept(ModItems.FROST_SHARD.get());
                 output.accept(ModItems.THANK_YOU.get());
-
             }).build());
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> AP_BLOCK_GROUP = register("blocks", () -> CreativeModeTab.builder()
             .icon(() -> new ItemStack(ModBlocks.INFUSED_LAVA_CRYSTAL.get()))
             .title(Component.translatable("tabs.armorplus.blocks"))
             .backgroundTexture(Identifier.fromNamespaceAndPath(MODID, "textures/gui/container/creative_inventory/tab_armorplus.png"))
-            .withLabelColor(0xFFFFFF)
+            .withLabelColor(0x55FF55)
             .withSearchBar()
             .displayItems((featureFlags, output) -> {
                 output.accept(ORE_LAVA_CRYSTAL_STONE.get());

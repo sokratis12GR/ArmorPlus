@@ -4,6 +4,9 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.ModConfigSpec;
+
+import java.util.List;
 
 /**
  * Configurable availability, independent of vanilla feature flags.
@@ -17,13 +20,24 @@ public final class AvailabilityConfig {
         Identifier id = BuiltInRegistries.ITEM.getKey(item);
         if (id == null) return true;
         String key = id.toString();
-        return (ArmorPlusConfig.hiddenItems == null || !ArmorPlusConfig.hiddenItems.get().contains(key))
-                && (ArmorPlusConfig.hiddenBlocks == null || !ArmorPlusConfig.hiddenBlocks.get().contains(key));
+        return !hiddenContains(ArmorPlusConfig.hiddenItems, key) && !hiddenContains(ArmorPlusConfig.hiddenBlocks, key);
     }
 
     public static boolean blockEnabled(Block block) {
-        if (ArmorPlusConfig.hiddenBlocks == null) return true;
         Identifier id = BuiltInRegistries.BLOCK.getKey(block);
-        return id == null || !ArmorPlusConfig.hiddenBlocks.get().contains(id.toString());
+        return id == null || !hiddenContains(ArmorPlusConfig.hiddenBlocks, id.toString());
+    }
+
+    /**
+     * Datagen (e.g. loot tables) runs block/item availability checks before the server config is loaded,
+     * so {@code ConfigValue#get()} throws IllegalStateException there; treat that as "not hidden".
+     */
+    private static boolean hiddenContains(ModConfigSpec.ConfigValue<List<? extends String>> config, String key) {
+        if (config == null) return false;
+        try {
+            return config.get().contains(key);
+        } catch (IllegalStateException e) {
+            return false;
+        }
     }
 }

@@ -5,7 +5,8 @@
   "ingredients": [
     "armorplus:soul_elder_guardian",
     "armorplus:soul_wither_boss",
-    "armorplus:soul_ender_dragon"
+    "armorplus:soul_ender_dragon",
+    "armorplus:warden_heart"
   ],
   "result": {
     "id": "armorplus:soul_slayer"

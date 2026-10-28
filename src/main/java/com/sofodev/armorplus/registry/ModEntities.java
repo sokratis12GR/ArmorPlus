@@ -43,6 +43,16 @@ public class ModEntities {
             () -> buildArrow(SuperStarArrowEntity::new, SUPER_STAR));
     public static final DeferredHolder<EntityType<?>, EntityType<APArrowEntity>> ENDER_DRAGON_ARROW = register("ender_dragon_arrow",
             () -> buildArrow(EnderDragonArrowEntity::new, ENDER_DRAGON));
+    public static final DeferredHolder<EntityType<?>, EntityType<APArrowEntity>> WARDEN_ARROW = register("warden_arrow",
+            () -> buildArrow(WardenArrowEntity::new, WARDEN));
+    public static final DeferredHolder<EntityType<?>, EntityType<APArrowEntity>> AMETHYST_ARROW = register("amethyst_arrow",
+            () -> buildArrow(AmethystArrowEntity::new, AMETHYST));
+    public static final DeferredHolder<EntityType<?>, EntityType<APArrowEntity>> QUARTZ_ARROW = register("quartz_arrow",
+            () -> buildArrow(QuartzArrowEntity::new, QUARTZ));
+    public static final DeferredHolder<EntityType<?>, EntityType<APArrowEntity>> GLOWSTONE_ARROW = register("glowstone_arrow",
+            () -> buildArrow(GlowstoneArrowEntity::new, GLOWSTONE));
+    public static final DeferredHolder<EntityType<?>, EntityType<APArrowEntity>> HONEY_ARROW = register("honey_arrow",
+            () -> buildArrow(HoneyArrowEntity::new, HONEY));
 
 
     public static <ENTITY extends Entity> DeferredHolder<EntityType<?>, EntityType<ENTITY>> register(String name, Supplier<EntityType<ENTITY>> sup) {

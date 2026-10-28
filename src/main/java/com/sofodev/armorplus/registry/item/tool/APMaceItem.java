@@ -1,9 +1,22 @@
 package com.sofodev.armorplus.registry.item.tool;
 
+import com.geckolib.animatable.GeoItem;
+import com.geckolib.animatable.client.GeoRenderProvider;
+import com.geckolib.animatable.instance.AnimatableInstanceCache;
+import com.geckolib.animatable.manager.AnimatableManager;
+import com.geckolib.animation.AnimationController;
+import com.geckolib.animation.RawAnimation;
+import com.geckolib.animation.object.PlayState;
+import com.geckolib.model.DefaultedItemGeoModel;
+import com.geckolib.renderer.GeoItemRenderer;
+import com.geckolib.util.GeckoLibUtil;
 import com.sofodev.armorplus.config.AvailabilityConfig;
+import com.sofodev.armorplus.registry.item.tool.properties.mace.APMaceMaterial;
 import com.sofodev.armorplus.registry.item.tool.properties.mace.IAPMace;
+import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
@@ -16,26 +29,17 @@ import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUseAnimation;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Random;
 import java.util.function.Consumer;
-import com.geckolib.animatable.GeoItem;
-import com.geckolib.animatable.client.GeoRenderProvider;
-import com.geckolib.animatable.instance.AnimatableInstanceCache;
-import com.geckolib.animatable.manager.AnimatableManager;
-import com.geckolib.animation.AnimationController;
-import com.geckolib.animation.object.PlayState;
-import com.geckolib.animation.RawAnimation;
-import com.geckolib.renderer.GeoItemRenderer;
-import com.geckolib.model.DefaultedItemGeoModel;
-import net.minecraft.core.registries.BuiltInRegistries;
-import com.geckolib.util.GeckoLibUtil;
 import java.util.stream.IntStream;
 
 import static com.sofodev.armorplus.registry.item.tool.properties.mace.DestructionShape.PLUS;
 import static com.sofodev.armorplus.registry.item.tool.properties.mace.DestructionShape.SQUARE;
+import static com.sofodev.armorplus.utils.ToolTipUtils.*;
 import static net.minecraft.tags.BlockTags.WITHER_IMMUNE;
 
 public class APMaceItem extends Item implements GeoItem {
@@ -55,6 +59,31 @@ public class APMaceItem extends Item implements GeoItem {
     public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
         return AvailabilityConfig.itemEnabled(this);
     }
+
+    @Override
+    public void hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        if (!target.level().isClientSide() && mat instanceof APMaceMaterial maceMaterial) {
+            APToolMaterial toolMaterial = maceMaterial.getToolMaterial();
+            if (toolMaterial.config().enableWeaponEffects().get()) {
+                toolMaterial.getBuffInstances().get().forEach(instance -> instance.hitEntity(stack, target, attacker));
+            }
+        }
+        super.hurtEnemy(stack, target, attacker);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, Item.TooltipContext ctx, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag flagIn) {
+        if (mat instanceof APMaceMaterial maceMaterial) {
+            APToolMaterial toolMaterial = maceMaterial.getToolMaterial();
+            if (isSneakDown()) {
+                addBuffInformation(toolMaterial, tooltip, "on_hit", false, toolMaterial.config().enableWeaponEffects().get());
+            } else if (!toolMaterial.getBuffInstances().get().isEmpty()) {
+                showSneakInfo(tooltip, mat.getColor());
+            }
+        }
+        super.appendHoverText(stack, ctx, display, tooltip, flagIn);
+    }
+
 
     @Override
     public Component getName(ItemStack stack) {
@@ -118,9 +147,11 @@ public class APMaceItem extends Item implements GeoItem {
     public void createGeoRenderer(Consumer<GeoRenderProvider> consumer) {
         consumer.accept(new GeoRenderProvider() {
             private GeoItemRenderer<APMaceItem> renderer;
+
             @Override
             public GeoItemRenderer<?> getGeoItemRenderer() {
-                if (renderer == null) renderer = new GeoItemRenderer<>(new DefaultedItemGeoModel<>(BuiltInRegistries.ITEM.getKey(APMaceItem.this)));
+                if (renderer == null)
+                    renderer = new GeoItemRenderer<>(new DefaultedItemGeoModel<>(BuiltInRegistries.ITEM.getKey(APMaceItem.this)));
                 return renderer;
             }
         });

@@ -24,4 +24,9 @@ public class APArrowProperty {
     public static final ArrowProperty GUARDIAN_ARROW_PROP = ArrowProperty.create("guardian", 10.5, FALLING_WATER, create(NAUSEA, 2));
     public static final ArrowProperty SUPER_STAR_ARROW_PROP = ArrowProperty.create("super_star", 10.5, CRIT, create(WITHER, 2));
     public static final ArrowProperty ENDER_DRAGON_ARROW_PROP = ArrowProperty.create("ender_dragon", 10.5, PowerParticleOption.create(DRAGON_BREATH, 1.0F), create(WITHER, 4));
+    public static final ArrowProperty WARDEN_ARROW_PROP = ArrowProperty.create("warden", 10.5, SONIC_BOOM, create(DARKNESS, 1));
+    public static final ArrowProperty AMETHYST_ARROW_PROP = ArrowProperty.create("amethyst", 3.5, WITCH, create(GLOWING));
+    public static final ArrowProperty QUARTZ_ARROW_PROP = ArrowProperty.create("quartz", 3.5, END_ROD, create(BLINDNESS));
+    public static final ArrowProperty GLOWSTONE_ARROW_PROP = ArrowProperty.create("glowstone", 3.0, GLOW, create(NAUSEA));
+    public static final ArrowProperty HONEY_ARROW_PROP = ArrowProperty.create("honey", 3.0, DRIPPING_HONEY, create(SLOWNESS));
 }

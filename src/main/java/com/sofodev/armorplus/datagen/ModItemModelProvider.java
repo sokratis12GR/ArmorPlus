@@ -43,13 +43,17 @@ public final class ModItemModelProvider implements DataProvider {
 
         add(flatItems, THANK_YOU);
 
-        add(flatItems, CHAINMAIL, ENHANCED_CHAINMAIL, ENHANCED_IRON, ENHANCED_GOLD, ENHANCED_DIAMOND, ENHANCED_NETHERITE);
+        add(flatItems, CHAINMAIL, ENHANCED_CHAINMAIL, ENHANCED_COPPER, ENHANCED_IRON, ENHANCED_GOLD, ENHANCED_DIAMOND, ENHANCED_NETHERITE);
+
+        add(flatItems, PIG_IRON_INGOT, COBALT_INGOT, ARDITE_INGOT, KNIGHT_SLIME_CRYSTAL, MANYULLYN_INGOT);
 
         add(flatItems, GUARDIAN_SOUL, ELDER_GUARDIAN_SOUL, GUARDIAN_SCALE, GUARDIAN_BOW_BASE, GUARDIAN_SWORD_BASE, GUARDIAN_PICKAXE_BASE, GUARDIAN_BATTLE_AXE_BASE);
 
         add(flatItems, WITHER_BOSS_SOUL, WITHER_SKELETON_SOUL, WITHER_BONE, SUPER_STAR_BOW_BASE, SUPER_STAR_SWORD_BASE, SUPER_STAR_PICKAXE_BASE, SUPER_STAR_BATTLE_AXE_BASE);
 
         add(flatItems, ENDER_DRAGON_SOUL, ENDERMAN_SOUL, ENDER_DRAGON_SCALE, ENDER_DRAGON_BOW_BASE, ENDER_DRAGON_SWORD_BASE, ENDER_DRAGON_PICKAXE_BASE, ENDER_DRAGON_BATTLE_AXE_BASE);
+
+        add(flatItems, WARDEN_HEART, WARDEN_BOW_BASE, WARDEN_SWORD_BASE, WARDEN_PICKAXE_BASE, WARDEN_BATTLE_AXE_BASE);
 
         add(flatItems, LAVA_SHARD, LAVA_CRYSTAL, INFUSED_LAVA_CRYSTAL);
 
@@ -61,7 +65,7 @@ public final class ModItemModelProvider implements DataProvider {
 
         add(flatItems, BLAZE_SOUL, OBSIDIAN_STICK, WOODEN_ROD);
 
-        add(flatItems, ITEM_COAL_ARROW, ITEM_LAPIS_ARROW, ITEM_REDSTONE_ARROW, ITEM_EMERALD_ARROW, ITEM_OBSIDIAN_ARROW, ITEM_INFUSED_LAVA_ARROW, ITEM_GUARDIAN_ARROW, ITEM_SUPER_STAR_ARROW, ITEM_ENDER_DRAGON_ARROW);
+        add(flatItems, ITEM_COAL_ARROW, ITEM_LAPIS_ARROW, ITEM_REDSTONE_ARROW, ITEM_EMERALD_ARROW, ITEM_OBSIDIAN_ARROW, ITEM_INFUSED_LAVA_ARROW, ITEM_GUARDIAN_ARROW, ITEM_SUPER_STAR_ARROW, ITEM_ENDER_DRAGON_ARROW, ITEM_WARDEN_ARROW, ITEM_AMETHYST_ARROW, ITEM_QUARTZ_ARROW, ITEM_GLOWSTONE_ARROW, ITEM_HONEY_ARROW);
 
         java.util.Collections.addAll(flatItems, PICKAXES);
 
@@ -70,6 +74,8 @@ public final class ModItemModelProvider implements DataProvider {
         flatItems.addAll(SUPER_STAR_BASES);
 
         flatItems.addAll(ENDER_DRAGON_BASES);
+
+        flatItems.addAll(WARDEN_BASES);
 
         flatItems.addAll(SLAYER_BASES);
 
@@ -123,6 +129,10 @@ public final class ModItemModelProvider implements DataProvider {
     private String materialTexture(DeferredHolder<Item, ? extends Item> item) {
         if (item == CHAINMAIL || item == ENHANCED_CHAINMAIL) {
             return MODID + ":item/chainmail";
+        }
+
+        if (item == ENHANCED_COPPER) {
+            return "minecraft:item/copper_ingot";
         }
 
         if (item == ENHANCED_IRON) {
@@ -205,7 +215,7 @@ public final class ModItemModelProvider implements DataProvider {
     }
 
     private String armorBaseTexture(String path) {
-        if (path.startsWith("chainmail_") || path.startsWith("golden_") || path.startsWith("iron_") || path.startsWith("diamond_") || path.startsWith("netherite_")) {
+        if (path.startsWith("chainmail_") || path.startsWith("golden_") || path.startsWith("copper_") || path.startsWith("iron_") || path.startsWith("diamond_") || path.startsWith("netherite_")) {
             return "minecraft:item/" + path;
         }
 

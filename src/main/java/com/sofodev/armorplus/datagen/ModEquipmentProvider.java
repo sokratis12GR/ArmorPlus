@@ -14,7 +14,7 @@ import java.util.concurrent.CompletableFuture;
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 
 public final class ModEquipmentProvider implements DataProvider {
-    private static final List<String> EQUIPMENT = List.of("ardite", "chicken", "coal", "cobalt", "emerald", "ender_dragon", "frost", "frost_lava", "guardian", "infused_lava", "knight_slime", "lapis", "manyullyn", "obsidian", "pig_iron", "redstone", "slayer", "slime", "super_star");
+    private static final List<String> EQUIPMENT = List.of("amethyst", "ardite", "chicken", "coal", "cobalt", "emerald", "ender_dragon", "frost", "frost_lava", "glowstone", "guardian", "honey", "infused_lava", "knight_slime", "lapis", "manyullyn", "obsidian", "pig_iron", "quartz", "redstone", "slayer", "slime", "super_star", "warden");
 
     private final Path equipmentRoot;
 

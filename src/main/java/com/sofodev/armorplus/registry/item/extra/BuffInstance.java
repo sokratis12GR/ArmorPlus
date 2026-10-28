@@ -159,6 +159,7 @@ public class BuffInstance {
     }
 
     public MutableComponent getTranslatedName() {
+        if (this.buff instanceof EffectBuff effectBuff) return effectBuff.getDisplayName().withStyle(DARK_AQUA);
         String name = this.buff.name().toLowerCase(Locale.ENGLISH);
         return this.buff.isEffect() ? translate(DARK_AQUA, "armorplus.effect." + name) : translate(DARK_AQUA, "armorplus.buff." + name);
     }
