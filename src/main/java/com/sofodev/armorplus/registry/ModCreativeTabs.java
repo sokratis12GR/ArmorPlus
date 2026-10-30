@@ -25,53 +25,29 @@ public class ModCreativeTabs {
 
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
+    private static final String[] CORE_MATERIALS = {
+            "coal", "redstone", "amethyst", "quartz", "glowstone", "honey", "lapis", "emerald",
+            "obsidian", "infused_lava", "warden", "guardian", "super_star", "ender_dragon", "slayer"
+    };
+    private static final String[] EXTRA_MATERIALS = {
+            "chainmail", "copper", "iron", "golden", "diamond", "netherite", "chicken", "slime",
+            "frost", "frost_lava", "ardite", "cobalt", "knight_slime", "pig_iron", "manyullyn"
+    };
+
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> AP_CORE_GROUP = register("core", () -> CreativeModeTab.builder()
             .icon(() -> new ItemStack(getAPItem("infused_lava_chestplate")))
             .title(Component.translatable("tabs.armorplus.core"))
             .withLabelColor(0xFFAA00)
             .withSearchBar(40)
             .backgroundTexture(Identifier.fromNamespaceAndPath(MODID, "textures/gui/container/creative_inventory/tab_armorplus_small_search.png"))
-            .displayItems((featureFlags, output) -> {
-                addEquipmentToOutput(output, "coal");
-                addEquipmentToOutput(output, "redstone");
-                addEquipmentToOutput(output, "amethyst");
-                addEquipmentToOutput(output, "quartz");
-                addEquipmentToOutput(output, "glowstone");
-                addEquipmentToOutput(output, "honey");
-                addEquipmentToOutput(output, "lapis");
-                addEquipmentToOutput(output, "emerald");
-                addEquipmentToOutput(output, "obsidian");
-                addEquipmentToOutput(output, "infused_lava");
-                addEquipmentToOutput(output, "warden");
-                addEquipmentToOutput(output, "guardian");
-                addEquipmentToOutput(output, "super_star");
-                addEquipmentToOutput(output, "ender_dragon");
-                addEquipmentToOutput(output, "slayer");
-
-            }).build());
+            .displayItems((featureFlags, output) -> addMaterialsToOutput(output, CORE_MATERIALS)).build());
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> AP_EXTRA_GROUP = register("extra", () -> CreativeModeTab.builder()
             .icon(() -> new ItemStack(getAPItem("cobalt_chestplate")))
             .title(Component.translatable("tabs.armorplus.extra"))
             .withLabelColor(0x55FFFF)
             .backgroundTexture(Identifier.fromNamespaceAndPath(MODID, "textures/gui/container/creative_inventory/tab_armorplus_small_search.png"))
             .withSearchBar(40)
-            .displayItems((featureFlags, output) -> {
-                addEquipmentToOutput(output, "chainmail");
-                addEquipmentToOutput(output, "copper");
-                addEquipmentToOutput(output, "iron");
-                addEquipmentToOutput(output, "golden");
-                addEquipmentToOutput(output, "diamond");
-                addEquipmentToOutput(output, "netherite");
-                addEquipmentToOutput(output, "chicken");
-                addEquipmentToOutput(output, "slime");
-                addEquipmentToOutput(output, "frost");
-                addEquipmentToOutput(output, "frost_lava");
-                addEquipmentToOutput(output, "ardite");
-                addEquipmentToOutput(output, "cobalt");
-                addEquipmentToOutput(output, "knight_slime");
-                addEquipmentToOutput(output, "pig_iron");
-                addEquipmentToOutput(output, "manyullyn");
-            }).build());
+            .displayItems((featureFlags, output) -> addMaterialsToOutput(output, EXTRA_MATERIALS)).build());
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> AP_ITEM_GROUP = register("items", () -> CreativeModeTab.builder()
             .icon(() -> new ItemStack(ModItems.INFUSED_LAVA_CRYSTAL.get()))
             .title(Component.translatable("tabs.armorplus.items"))
@@ -79,17 +55,22 @@ public class ModCreativeTabs {
             .withSearchBar()
             .withLabelColor(0xFF55FF)
             .displayItems((featureFlags, output) -> {
-                //bases
-                output.accept(ModItems.WARDEN_HEART.get());
+                //bases (9 per material = one row each)
                 addBasesToOutput(output, "warden");
-                output.accept(ModItems.ELDER_GUARDIAN_SOUL.get());
                 addBasesToOutput(output, "guardian");
-                output.accept(ModItems.WITHER_BOSS_SOUL.get());
                 addBasesToOutput(output, "super_star");
-                output.accept(ModItems.ENDER_DRAGON_SOUL.get());
                 addBasesToOutput(output, "ender_dragon");
-                output.accept(ModItems.SLAYER_SOUL.get());
                 addBasesToOutput(output, "slayer");
+                //souls (one row)
+                output.accept(ModItems.WARDEN_HEART.get());
+                output.accept(ModItems.ELDER_GUARDIAN_SOUL.get());
+                output.accept(ModItems.WITHER_BOSS_SOUL.get());
+                output.accept(ModItems.ENDER_DRAGON_SOUL.get());
+                output.accept(ModItems.SLAYER_SOUL.get());
+                output.accept(ModItems.WITHER_SKELETON_SOUL.get());
+                output.accept(ModItems.GUARDIAN_SOUL.get());
+                output.accept(ModItems.ENDERMAN_SOUL.get());
+                output.accept(ModItems.BLAZE_SOUL.get());
                 //materials
                 output.accept(ModItems.CHAINMAIL.get());
                 output.accept(ModItems.OBSIDIAN_STICK.get());
@@ -117,11 +98,6 @@ public class ModCreativeTabs {
                 output.accept(ENHANCED_IRON.get());
                 output.accept(ENHANCED_DIAMOND.get());
                 output.accept(ENHANCED_NETHERITE.get());
-                //advanced materials
-                output.accept(ModItems.WITHER_SKELETON_SOUL.get());
-                output.accept(ModItems.GUARDIAN_SOUL.get());
-                output.accept(ModItems.ENDERMAN_SOUL.get());
-                output.accept(ModItems.BLAZE_SOUL.get());
                 //ammunition
                 output.accept(ModItems.ITEM_COAL_ARROW.get());
                 output.accept(ModItems.ITEM_REDSTONE_ARROW.get());
@@ -201,24 +177,31 @@ public class ModCreativeTabs {
         output.acceptAll(set);
     }
 
-    private static void addEquipmentToOutput(CreativeModeTab.Output output, String material) {
-        Set<ItemStack> set = ItemStackLinkedSet.createTypeAndComponentsSet();
-        addSetToOutput(output, material);
-        set.add(getAPItemStack(material + "_sword"));
-        set.add(getAPItemStack(material + "_battle_axe"));
-        set.add(getAPItemStack(material + "_pickaxe"));
-        set.add(getAPItemStack(material + "_shovel"));
-        set.add(getAPItemStack(material + "_mace"));
-        set.add(getAPItemStack(material + "_bow"));
-        output.acceptAll(set);
+    /**
+     * The creative grid is 9 slots wide: each material gets exactly one row
+     * (helmet, chestplate, leggings, boots, sword, battle axe, pickaxe, shovel, mace),
+     * followed by a trailing section holding every material's bow.
+     */
+    private static void addMaterialsToOutput(CreativeModeTab.Output output, String[] materials) {
+        for (String material : materials) {
+            addEquipmentToOutput(output, material);
+        }
+        for (String material : materials) {
+            output.accept(getAPItemStack(material + "_bow"));
+        }
     }
 
-    private static void addSetToOutput(CreativeModeTab.Output output, String material) {
+    private static void addEquipmentToOutput(CreativeModeTab.Output output, String material) {
         Set<ItemStack> set = ItemStackLinkedSet.createTypeAndComponentsSet();
         set.add(getAPItemStack(material + "_helmet"));
         set.add(getAPItemStack(material + "_chestplate"));
         set.add(getAPItemStack(material + "_leggings"));
         set.add(getAPItemStack(material + "_boots"));
+        set.add(getAPItemStack(material + "_sword"));
+        set.add(getAPItemStack(material + "_battle_axe"));
+        set.add(getAPItemStack(material + "_pickaxe"));
+        set.add(getAPItemStack(material + "_shovel"));
+        set.add(getAPItemStack(material + "_mace"));
         output.acceptAll(set);
     }
 
