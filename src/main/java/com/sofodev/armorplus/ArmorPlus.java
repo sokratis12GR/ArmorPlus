@@ -1,9 +1,10 @@
 package com.sofodev.armorplus;
 
-import com.sofodev.armorplus.client.config.ConfigScreenRegistration;
+import com.sofodev.armorplus.client.config.APConfigSectionScreen;
 import com.sofodev.armorplus.config.ArmorPlusConfig;
-import com.sofodev.armorplus.config.ConfigHelper;
 import com.sofodev.armorplus.datagen.DataGenerators;
+import com.sofodev.thedragonlib.client.config.ConfigScreenHelper;
+import com.sofodev.thedragonlib.config.ConfigHelper;
 import com.sofodev.armorplus.registry.ModEnchantmentEffects;
 import com.sofodev.armorplus.registry.block.castle.BrickColor;
 import com.sofodev.armorplus.registry.item.tool.properties.mace.APMaceMaterial;
@@ -62,12 +63,12 @@ public class ArmorPlus {
                 DataGenerators::gatherServerData
         );
 
-        ArmorPlus.config = ConfigHelper.register(
-                container, ModConfig.Type.COMMON, ArmorPlusConfig::create);
+        ArmorPlus.config = ConfigHelper.buildAndRegister(
+                container, ModConfig.Type.COMMON, ArmorPlusConfig::create).values();
         //Order of registration per https://gist.github.com/pupnewfster/ea38cf3744f23d6b65d67e6f279d5942
 
         if (FMLEnvironment.getDist().isClient()) {
-            ConfigScreenRegistration.register(container);
+            ConfigScreenHelper.registerSectionScreen(container, APConfigSectionScreen::new);
         }
 
 

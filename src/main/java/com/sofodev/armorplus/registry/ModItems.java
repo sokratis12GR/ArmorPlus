@@ -58,23 +58,28 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> GUARDIAN_SWORD_BASE = registerBase(APToolMaterial.GUARDIAN_MAT, "sword");
     public static final DeferredHolder<Item, Item> GUARDIAN_BATTLE_AXE_BASE = registerBase(APToolMaterial.GUARDIAN_MAT, "battle_axe");
     public static final DeferredHolder<Item, Item> GUARDIAN_PICKAXE_BASE = registerBase(APToolMaterial.GUARDIAN_MAT, "pickaxe");
+    public static final DeferredHolder<Item, Item> GUARDIAN_SHOVEL_BASE = registerBase(APToolMaterial.GUARDIAN_MAT, "shovel");
     public static final DeferredHolder<Item, Item> GUARDIAN_BOW_BASE = registerBase(APToolMaterial.GUARDIAN_MAT, "bow");
     public static final DeferredHolder<Item, Item> SUPER_STAR_SWORD_BASE = registerBase(APToolMaterial.SUPER_STAR_MAT, "sword");
     public static final DeferredHolder<Item, Item> SUPER_STAR_BATTLE_AXE_BASE = registerBase(APToolMaterial.SUPER_STAR_MAT, "battle_axe");
     public static final DeferredHolder<Item, Item> SUPER_STAR_PICKAXE_BASE = registerBase(APToolMaterial.SUPER_STAR_MAT, "pickaxe");
+    public static final DeferredHolder<Item, Item> SUPER_STAR_SHOVEL_BASE = registerBase(APToolMaterial.SUPER_STAR_MAT, "shovel");
     public static final DeferredHolder<Item, Item> SUPER_STAR_BOW_BASE = registerBase(APToolMaterial.SUPER_STAR_MAT, "bow");
     public static final DeferredHolder<Item, Item> ENDER_DRAGON_SWORD_BASE = registerBase(APToolMaterial.ENDER_DRAGON_MAT, "sword");
     public static final DeferredHolder<Item, Item> ENDER_DRAGON_BATTLE_AXE_BASE = registerBase(APToolMaterial.ENDER_DRAGON_MAT, "battle_axe");
     public static final DeferredHolder<Item, Item> ENDER_DRAGON_PICKAXE_BASE = registerBase(APToolMaterial.ENDER_DRAGON_MAT, "pickaxe");
+    public static final DeferredHolder<Item, Item> ENDER_DRAGON_SHOVEL_BASE = registerBase(APToolMaterial.ENDER_DRAGON_MAT, "shovel");
     public static final DeferredHolder<Item, Item> ENDER_DRAGON_BOW_BASE = registerBase(APToolMaterial.ENDER_DRAGON_MAT, "bow");
     public static final DeferredHolder<Item, Item> WARDEN_SWORD_BASE = registerBase(APToolMaterial.WARDEN_MAT, "sword");
     public static final DeferredHolder<Item, Item> WARDEN_BATTLE_AXE_BASE = registerBase(APToolMaterial.WARDEN_MAT, "battle_axe");
     public static final DeferredHolder<Item, Item> WARDEN_PICKAXE_BASE = registerBase(APToolMaterial.WARDEN_MAT, "pickaxe");
+    public static final DeferredHolder<Item, Item> WARDEN_SHOVEL_BASE = registerBase(APToolMaterial.WARDEN_MAT, "shovel");
     public static final DeferredHolder<Item, Item> WARDEN_BOW_BASE = registerBase(APToolMaterial.WARDEN_MAT, "bow");
     //Slayer
     public static final DeferredHolder<Item, Item> SLAYER_SWORD_BASE = registerBase(APToolMaterial.SLAYER_MAT, "sword");
     public static final DeferredHolder<Item, Item> SLAYER_BATTLE_AXE_BASE = registerBase(APToolMaterial.SLAYER_MAT, "battle_axe");
     public static final DeferredHolder<Item, Item> SLAYER_PICKAXE_BASE = registerBase(APToolMaterial.SLAYER_MAT, "pickaxe");
+    public static final DeferredHolder<Item, Item> SLAYER_SHOVEL_BASE = registerBase(APToolMaterial.SLAYER_MAT, "shovel");
     public static final DeferredHolder<Item, Item> SLAYER_BOW_BASE = registerBase(APToolMaterial.SLAYER_MAT, "bow");
 
     //Tools & Weapons
@@ -145,7 +150,7 @@ public class ModItems {
     //public static final DeferredHolder<Item, Item> TROPHY = ITEMS.register("trophy", () -> new TrophyItem(ModBlocks.TROPHY));
 
     static {
-        registerToolForType(SWORDS, BATTLE_AXES, PICKAXES, BOWS);
+        registerToolForType(SWORDS, BATTLE_AXES, PICKAXES, SHOVELS, BOWS);
         registerMaceForType(MACES);
     }
 
@@ -183,14 +188,16 @@ public class ModItems {
      * @param swords   - Sword objects to be registered
      * @param axes     - Battle Axe objects to be registered
      * @param pickaxes - Pickaxe objects to be registered
+     * @param shovels  - Shovel objects to be registered
      * @param bows     - Bow objects to be registered
      */
-    public static void registerToolForType(DeferredHolder<Item, Item>[] swords, DeferredHolder<Item, Item>[] axes, DeferredHolder<Item, Item>[] pickaxes, DeferredHolder<Item, Item>[] bows) {
+    public static void registerToolForType(DeferredHolder<Item, Item>[] swords, DeferredHolder<Item, Item>[] axes, DeferredHolder<Item, Item>[] pickaxes, DeferredHolder<Item, Item>[] shovels, DeferredHolder<Item, Item>[] bows) {
         IntStream.range(0, AP_TOOL_MATERIAL_LENGTH).forEach(i -> {
             APToolMaterial mat = APToolMaterial.values()[i];
             swords[i] = register(String.format("%s_sword", mat.getName()), () -> new APSwordItem(mat));
             axes[i] = register(String.format("%s_battle_axe", mat.getName()), () -> new APBattleAxeItem(mat));
             pickaxes[i] = register(String.format("%s_pickaxe", mat.getName()), () -> new APPickaxeItem(mat));
+            shovels[i] = register(String.format("%s_shovel", mat.getName()), () -> new APShovelItem(mat));
             bows[i] = register(String.format("%s_bow", mat.getName()), () -> new APBowItem(mat));
         });
     }

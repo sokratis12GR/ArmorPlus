@@ -1,25 +1,26 @@
-// 26.1.2	2026-10-28T23:58:37.6755649	Tags for minecraft:item mod id armorplus
+// 26.1.2	2026-10-29T23:43:49.0729097	Tags for minecraft:item mod id armorplus
 a6025e138c0301127a371dc9d40ebaa911394a3f data/armorplus/tags/item/arrows.json
 edcff26ae6b6f636ea33e60d77d870b72e0a82a8 data/armorplus/tags/item/battle_axes.json
-3e13526c264631eefd3ee01faa2f0ff1381aeb85 data/armorplus/tags/item/boots.json
+e89f5c6d3b622db43860d837927ba00bdc235086 data/armorplus/tags/item/boots.json
 87e8480341c8a6622fbc0302ddad4336928d3a35 data/armorplus/tags/item/bows.json
-29e0a72cc1835c2c1ee2dadbc6ee432bd32fe4c1 data/armorplus/tags/item/chestplates.json
-bb47d26798bec636a4a88a581e1df250e511c28b data/armorplus/tags/item/helmets.json
-cf9b701f5389eb7486722c6d687b29535d3b1415 data/armorplus/tags/item/leggings.json
+060f10466e3fa2db97a00796020e01ac66f0946c data/armorplus/tags/item/chestplates.json
+5fc35013b214f20e550b53332e101d94d236154a data/armorplus/tags/item/helmets.json
+d687da412f83fe7a05f6409af18dd7415a66640f data/armorplus/tags/item/leggings.json
 02a22bdfd30c5e8932624444da193498d44cdeae data/armorplus/tags/item/maces.json
 bbdb960b8d90b754e825afb6289716ab3bdeea40 data/armorplus/tags/item/pickaxes.json
+d32b93d4e6c1f81d9978525555b14ef892ce042d data/armorplus/tags/item/shovels.json
 9621378676520c87aff6d903ad3c0d80a4676d63 data/armorplus/tags/item/swords.json
 b0a990f07bb6d395fe4695ef61421dd122cc5532 data/minecraft/tags/item/arrows.json
 41c878cfb126cf8d05e354f48b75272b2f881133 data/minecraft/tags/item/enchantable/armor.json
 d839be275094c3850dc0c7a5d89752f97a9a7f70 data/minecraft/tags/item/enchantable/bow.json
 da78438224d6e3a350a854e32d1eeb6c470f4a7a data/minecraft/tags/item/enchantable/chest_armor.json
-31be4dc393042904949b18fd9f5d4c3f5528374d data/minecraft/tags/item/enchantable/durability.json
+186a33d8a5b81b98bc4ef3c022a997d2c1e82cd6 data/minecraft/tags/item/enchantable/durability.json
 41c878cfb126cf8d05e354f48b75272b2f881133 data/minecraft/tags/item/enchantable/equippable.json
 3f83e95c574f087c068c7b1425549540d4294e13 data/minecraft/tags/item/enchantable/foot_armor.json
 83c6f9fa29d7911c08e6d7c81ec697855c9fcb01 data/minecraft/tags/item/enchantable/head_armor.json
 cc491b798089060ffd0587b646aad8b8ff54165c data/minecraft/tags/item/enchantable/leg_armor.json
-bc0563e09cb5495dca73d8f4f93782808a814829 data/minecraft/tags/item/enchantable/mining.json
-bc0563e09cb5495dca73d8f4f93782808a814829 data/minecraft/tags/item/enchantable/mining_loot.json
+f3ad086025542a458dad184732c8b59db2f67a33 data/minecraft/tags/item/enchantable/mining.json
+f3ad086025542a458dad184732c8b59db2f67a33 data/minecraft/tags/item/enchantable/mining_loot.json
 bcf58c1d87b833c97e27fe7a7a5888f05f237173 data/minecraft/tags/item/enchantable/sharp_weapon.json
 6bad7cf150d5324434f118452a95843f1bda1e7c data/minecraft/tags/item/enchantable/sword.json
 e185204f397d19a4e28fd96fcd195cbc715dad8c data/minecraft/tags/item/enchantable/weapon.json

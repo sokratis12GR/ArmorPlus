@@ -24,7 +24,7 @@ import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.sofodev.armorplus.utils.RomanNumeralUtil.generate;
+import static com.sofodev.thedragonlib.util.RomanNumeralUtil.generate;
 import static net.minecraft.ChatFormatting.*;
 
 public class ToolTipUtils {

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:lapis_shovels",
+  "key": {
+    "M": "minecraft:lapis_block",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    " M ",
+    " S ",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:lapis_shovel"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:slime_shovels",
+  "key": {
+    "M": "minecraft:slime_block",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    " M ",
+    " S ",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:slime_shovel"
+  }
+}

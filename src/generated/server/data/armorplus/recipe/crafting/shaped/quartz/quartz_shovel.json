@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:quartz_shovels",
+  "key": {
+    "M": "minecraft:quartz_block",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    " M ",
+    " S ",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:quartz_shovel"
+  }
+}

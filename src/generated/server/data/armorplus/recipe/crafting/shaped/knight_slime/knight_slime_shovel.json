@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:knight_slime_shovels",
+  "key": {
+    "M": "armorplus:knight_slime_crystal",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    " M ",
+    " S ",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:knight_slime_shovel"
+  }
+}

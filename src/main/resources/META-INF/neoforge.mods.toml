@@ -8,7 +8,7 @@ version = "${mod_version}" #mandatory
 displayName = "${mod_name}" #mandatory
 updateJSONURL = "https://sokratis.space/armorplus/26.1-neo/update.json" #optional
 displayURL = "https://www.curseforge.com/minecraft/mc-mods/armorplus" #optional
-logoFile = "headerimg.jpg"
+logoFile = "headerimg.png"
 credits = "To everyone who helped with the translation of ArmorPlus: https://bit.ly/armorplus-credits" #optional
 authors = "${mod_authors}" #optional
 description = '''${mod_description}'''
@@ -38,7 +38,7 @@ side = "BOTH"
 [[dependencies.${ mod_id }]]
 modId = "thedragonlib"
 mandatory = true
-versionRange = "[1.0.0,)"
+versionRange = "[1.2.1,)"
 ordering = "BEFORE"
 side = "BOTH"
 # Features are specific properties of the game environment, that you may want to declare you require. This example declares

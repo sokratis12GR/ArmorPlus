@@ -32,20 +32,22 @@ public class ModItemTagProvider extends KeyTagProvider<Item> {
         TagKey<Item> swords = modTag("swords");
         TagKey<Item> battleAxes = modTag("battle_axes");
         TagKey<Item> pickaxes = modTag("pickaxes");
+        TagKey<Item> shovels = modTag("shovels");
         TagKey<Item> bows = modTag("bows");
         TagKey<Item> maces = modTag("maces");
 
         addAllItems(swords, ModItems.SWORDS);
         addAllItems(battleAxes, ModItems.BATTLE_AXES);
         addAllItems(pickaxes, ModItems.PICKAXES);
+        addAllItems(shovels, ModItems.SHOVELS);
         addAllItems(bows, ModItems.BOWS);
         addAllItems(maces, ModItems.MACES);
 
         addToMinecraftTag("enchantable/weapon", swords, battleAxes, maces);
         addToMinecraftTag("enchantable/sword", swords);
         addToMinecraftTag("enchantable/bow", bows);
-        addToMinecraftTag("enchantable/mining", pickaxes, battleAxes);
-        addToMinecraftTag("enchantable/mining_loot", pickaxes, battleAxes);
+        addToMinecraftTag("enchantable/mining", pickaxes, shovels, battleAxes);
+        addToMinecraftTag("enchantable/mining_loot", pickaxes, shovels, battleAxes);
         addToMinecraftTag("enchantable/sharp_weapon", swords, battleAxes);
 
         TagKey<Item> helmets = modTag("helmets");
@@ -66,7 +68,7 @@ public class ModItemTagProvider extends KeyTagProvider<Item> {
         addToMinecraftTag("enchantable/equippable", helmets, chestplates, leggings, boots);
         addToMinecraftTag("trimmable_armor", helmets, chestplates, leggings, boots);
         addToMinecraftTag("enchantable/durability", helmets, chestplates, leggings, boots,
-                swords, battleAxes, pickaxes, bows, maces);
+                swords, battleAxes, pickaxes, shovels, bows, maces);
 
         TagKey<Item> arrows = modTag("arrows");
         addAllItems(arrows,

@@ -108,14 +108,18 @@ public class Recipes extends RecipeProvider {
         crafter.buildPickaxe(con, GUARDIAN_PICKAXE_BASE, GUARDIAN_SCALE.get(), PRISMARINE, OBSIDIAN_STICK.get());
         crafter.buildPickaxe(con, SUPER_STAR_PICKAXE_BASE, WITHER_BONE.get(), NETHER_STAR, OBSIDIAN_STICK.get());
         crafter.buildPickaxe(con, ENDER_DRAGON_PICKAXE_BASE, ENDER_DRAGON_SCALE.get(), DRAGON_BREATH, OBSIDIAN_STICK.get());
+        crafter.buildShovel(con, GUARDIAN_SHOVEL_BASE, GUARDIAN_SCALE.get(), PRISMARINE, OBSIDIAN_STICK.get());
         crafter.buildBow(con, GUARDIAN_BOW_BASE, PRISMARINE, GUARDIAN_SCALE.get());
+        crafter.buildShovel(con, SUPER_STAR_SHOVEL_BASE, WITHER_BONE.get(), NETHER_STAR, OBSIDIAN_STICK.get());
         crafter.buildBow(con, SUPER_STAR_BOW_BASE, NETHER_STAR, WITHER_BONE.get());
+        crafter.buildShovel(con, ENDER_DRAGON_SHOVEL_BASE, ENDER_DRAGON_SCALE.get(), DRAGON_BREATH, OBSIDIAN_STICK.get());
         crafter.buildBow(con, ENDER_DRAGON_BOW_BASE, DRAGON_BREATH, ENDER_DRAGON_SCALE.get());
 
         //Warden bases contain no hearts: the smithing upgrade adds exactly 1 Warden Heart per weapon
         crafter.buildSword(con, WARDEN_SWORD_BASE, ECHO_SHARD, SCULK_CATALYST, OBSIDIAN_STICK.get());
         crafter.buildBattleAxe(con, WARDEN_BATTLE_AXE_BASE, ECHO_SHARD, SCULK_CATALYST, OBSIDIAN_STICK.get());
         crafter.buildPickaxe(con, WARDEN_PICKAXE_BASE, ECHO_SHARD, SCULK_CATALYST, OBSIDIAN_STICK.get());
+        crafter.buildShovel(con, WARDEN_SHOVEL_BASE, ECHO_SHARD, SCULK_CATALYST, OBSIDIAN_STICK.get());
         crafter.buildBow(con, WARDEN_BOW_BASE, SCULK_CATALYST, ECHO_SHARD);
 
         //Amethyst/Quartz/Glowstone/Honey (low tier, base-block + stick like coal/redstone/lapis)
@@ -245,6 +249,7 @@ public class Recipes extends RecipeProvider {
         crafter.buildSword(con, SLAYER_SWORD_BASE, THE_ULTIMATE_MATERIAL.get(), SUPER_STAR_SWORD_BASE.get(), ENDER_DRAGON_SWORD_BASE.get(), GUARDIAN_SWORD_BASE.get(), OBSIDIAN_STICK.get());
         crafter.buildBattleAxe(con, SLAYER_BATTLE_AXE_BASE, THE_ULTIMATE_MATERIAL.get(), SUPER_STAR_BATTLE_AXE_BASE.get(), ENDER_DRAGON_BATTLE_AXE_BASE.get(), GUARDIAN_BATTLE_AXE_BASE.get(), OBSIDIAN_STICK.get());
         crafter.buildPickaxe(con, SLAYER_PICKAXE_BASE, THE_ULTIMATE_MATERIAL.get(), SUPER_STAR_PICKAXE_BASE.get(), ENDER_DRAGON_PICKAXE_BASE.get(), GUARDIAN_PICKAXE_BASE.get(), OBSIDIAN_STICK.get());
+        crafter.buildShovel(con, SLAYER_SHOVEL_BASE, THE_ULTIMATE_MATERIAL.get(), SUPER_STAR_SHOVEL_BASE.get(), ENDER_DRAGON_SHOVEL_BASE.get(), GUARDIAN_SHOVEL_BASE.get(), OBSIDIAN_STICK.get());
         crafter.buildBow(con, SLAYER_BOW_BASE, THE_ULTIMATE_MATERIAL.get(), SUPER_STAR_BOW_BASE.get(), ENDER_DRAGON_BOW_BASE.get(), GUARDIAN_BOW_BASE.get());
 
         crafter.build(con, RecipeCategory.MISC, Result.build(SLAYER_SOUL.get(), 1).setGroup("slayer").setSuffix(""), ELDER_GUARDIAN_SOUL.get(), WITHER_BOSS_SOUL.get(), ENDER_DRAGON_SOUL.get(), WARDEN_HEART.get());
@@ -270,6 +275,7 @@ public class Recipes extends RecipeProvider {
         crafter.buildSword(con, SWORDS[i], material, stick);
         crafter.buildBattleAxe(con, BATTLE_AXES[i], material, stick);
         crafter.buildPickaxe(con, PICKAXES[i], material, stick);
+        crafter.buildShovel(con, SHOVELS[i], material, stick);
         crafter.buildBow(con, BOWS[i], material);
     }
 

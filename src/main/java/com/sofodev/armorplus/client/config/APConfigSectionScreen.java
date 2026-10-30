@@ -2,6 +2,8 @@ package com.sofodev.armorplus.client.config;
 
 import com.electronwill.nightconfig.core.UnmodifiableConfig;
 import com.sofodev.armorplus.registry.item.extra.BuffParser;
+import com.sofodev.thedragonlib.client.config.EntryPicker;
+import com.sofodev.thedragonlib.client.config.PickerListScreen;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.Screen;
@@ -49,13 +51,13 @@ public class APConfigSectionScreen extends ConfigurationScreen.ConfigurationSect
     @Override
     protected <T> @Nullable Element createList(String key, ListValueSpec spec, ModConfigSpec.ConfigValue<List<T>> list) {
         EntryPicker picker = switch (key) {
-            case "hiddenItems" -> EntryPicker.of(RegistryPickerScreen.Kind.ITEMS);
-            case "hiddenBlocks" -> EntryPicker.of(RegistryPickerScreen.Kind.BLOCKS);
-            case "disallowWithSoulHardenList" -> EntryPicker.of(RegistryPickerScreen.Kind.ENCHANTMENTS);
-            case "smeltingRecipes" -> EntryPicker.smeltingRecipe();
-            case "armorBuffs" -> EntryPicker.buffs("|1");
-            case "weaponBuffs" -> EntryPicker.buffs("|1|" + BuffParser.DEFAULT_WEAPON_SECONDS);
-            case "disabledBuffs" -> EntryPicker.buffs("");
+            case "hiddenItems" -> APEntryPickers.of(RegistryPickerScreen.Kind.ITEMS);
+            case "hiddenBlocks" -> APEntryPickers.of(RegistryPickerScreen.Kind.BLOCKS);
+            case "disallowWithSoulHardenList" -> APEntryPickers.of(RegistryPickerScreen.Kind.ENCHANTMENTS);
+            case "smeltingRecipes" -> APEntryPickers.smeltingRecipe();
+            case "armorBuffs" -> APEntryPickers.buffs("|1");
+            case "weaponBuffs" -> APEntryPickers.buffs("|1|" + BuffParser.DEFAULT_WEAPON_SECONDS);
+            case "disabledBuffs" -> APEntryPickers.buffs("");
             default -> null;
         };
         if (picker == null) return super.createList(key, spec, list);
@@ -63,7 +65,10 @@ public class APConfigSectionScreen extends ConfigurationScreen.ConfigurationSect
                 sectionButton(key, button -> minecraft.setScreen(sectionCache.computeIfAbsent(key,
                         k -> new PickerListScreen<>(Context.list(context, this), key,
                                 Component.translatable(CRUMB, getTitle(), ConfigurationScreen.CRUMB_SEPARATOR, getTranslationComponent(key)),
-                                spec, list, picker)))),
+                                spec, list, picker,
+                                Component.translatable("armorplus.configuration.picker.open"),
+                                Component.translatable("armorplus.configuration.picker.unavailable"),
+                                Component.translatable("armorplus.configuration.picker.manual"))))),
                 false);
     }
 }

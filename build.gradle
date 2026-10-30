@@ -74,7 +74,7 @@ repositories {
 }
 
 dependencies {
-    implementation "curse.maven:thedragonlib-248055:9013506"
+    implementation "curse.maven:thedragonlib-248055:9369985"
     implementation "com.geckolib:geckolib-neoforge-26.1.2:5.5.2"
 }
 

@@ -81,6 +81,21 @@ public class CraftingRecipeMaker extends RecipeProvider {
         build(con, RecipeCategory.TOOLS, Result.build(battleAxe.get(), path + "_pickaxes", path), GridInput.build("AMC", " B ", " S ", 'S', 'M', 'A', 'B', 'C'), handle, of(material), of(coreA), of(coreB), of(coreC));
     }
 
+    public void buildShovel(RecipeOutput con, DeferredHolder<Item, ? extends Item> shovel, ItemLike material, ItemLike handle) {
+        String path = getPath(shovel).replace("item_", "").replace("_shovel", "").replace("_base", "");
+        build(con, RecipeCategory.TOOLS, Result.build(shovel.get(), path + "_shovels", path), GridInput.build(" M ", " S ", " S ", 'S', 'M'), handle, of(material));
+    }
+
+    public void buildShovel(RecipeOutput con, DeferredHolder<Item, ? extends Item> shovel, ItemLike material, ItemLike core, ItemLike handle) {
+        String path = getPath(shovel).replace("item_", "").replace("_shovel", "").replace("_base", "");
+        build(con, RecipeCategory.TOOLS, Result.build(shovel.get(), path + "_shovels", path), GridInput.build(" M ", " C ", " S ", 'S', 'M', 'C'), handle, of(material), of(core));
+    }
+
+    public void buildShovel(RecipeOutput con, DeferredHolder<Item, ? extends Item> shovel, ItemLike material, ItemLike coreA, ItemLike coreB, ItemLike coreC, ItemLike handle) {
+        String path = getPath(shovel).replace("item_", "").replace("_shovel", "").replace("_base", "");
+        build(con, RecipeCategory.TOOLS, Result.build(shovel.get(), path + "_shovels", path), GridInput.build(" M ", "ABC", " S ", 'S', 'M', 'A', 'B', 'C'), handle, of(material), of(coreA), of(coreB), of(coreC));
+    }
+
     public void buildBow(RecipeOutput con, DeferredHolder<Item, ? extends Item> bow, ItemLike material) {
         String path = getPath(bow).replace("item_", "").replace("_bow", "").replace("_base", "");
         build(con, RecipeCategory.COMBAT, Result.build(bow.get(), path + "_bows", path), GridInput.build("SM ", "S M", "SM ", 'S', 'M'), Items.STRING, of(material));

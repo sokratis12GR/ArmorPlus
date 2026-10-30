@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:warden_shovels",
+  "key": {
+    "C": "minecraft:sculk_catalyst",
+    "M": "minecraft:echo_shard",
+    "S": "armorplus:obsidian_stick"
+  },
+  "pattern": [
+    " M ",
+    " C ",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:warden_shovel_base"
+  }
+}

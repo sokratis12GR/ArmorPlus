@@ -195,6 +195,7 @@ public class ModCreativeTabs {
         set.add(getAPItemStack(material + "_sword_base"));
         set.add(getAPItemStack(material + "_battle_axe_base"));
         set.add(getAPItemStack(material + "_pickaxe_base"));
+        set.add(getAPItemStack(material + "_shovel_base"));
         set.add(getAPItemStack(material + "_bow_base"));
 
         output.acceptAll(set);
@@ -206,6 +207,7 @@ public class ModCreativeTabs {
         set.add(getAPItemStack(material + "_sword"));
         set.add(getAPItemStack(material + "_battle_axe"));
         set.add(getAPItemStack(material + "_pickaxe"));
+        set.add(getAPItemStack(material + "_shovel"));
         set.add(getAPItemStack(material + "_mace"));
         set.add(getAPItemStack(material + "_bow"));
         output.acceptAll(set);

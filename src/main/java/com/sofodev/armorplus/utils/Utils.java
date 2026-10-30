@@ -7,8 +7,8 @@ package com.sofodev.armorplus.utils;
 import net.minecraft.world.item.equipment.ArmorType;
 
 import com.sofodev.armorplus.registry.item.armor.APRepair;
+import com.sofodev.thedragonlib.util.ModCompat;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -26,7 +26,6 @@ import javax.annotation.Nullable;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
@@ -81,40 +80,6 @@ public final class Utils {
         return format("%s.%s", MODID, name);
     }
 
-    public static NonNullList<ItemStack> getItemStacks(Item... items) {
-        NonNullList<ItemStack> list = NonNullList.create();
-        if (items != null) Arrays.stream(items).map(Utils::getItemStack).forEachOrdered(list::add);
-        return list;
-    }
-
-    public static NonNullList<ItemStack> getItemStacks(ItemStack... items) {
-        NonNullList<ItemStack> list = NonNullList.create();
-        list.addAll(Arrays.asList(items));
-        return list;
-    }
-
-    public static ItemStack getItemStack(Object type, int amount) {
-        if (type instanceof String) {
-            return new ItemStack(Objects.requireNonNull(getItemByName((String) type)), amount);
-        } else if (type instanceof Block) {
-            return new ItemStack((Block) type, amount);
-        } else {
-            return type instanceof Item ? new ItemStack((Item) type, amount) : ItemStack.EMPTY;
-        }
-    }
-
-    public static ItemStack getItemStack(Object type) {
-        if (type instanceof String) {
-            return getItemStack(getItemByName((String) type), 0);
-        } else if (type instanceof Block) {
-            return getItemStack(type, 0);
-        } else if (type instanceof Item) {
-            return getItemStack(type, 0);
-        } else {
-            return type instanceof ItemStack ? (ItemStack) type : ItemStack.EMPTY;
-        }
-    }
-
     public static String getUnlocalizedNames(ItemStack stack, String key, String... names) {
         for (int i = 0; i < names.length; i++) {
             if (stack.getDamageValue() == i) {
@@ -160,36 +125,8 @@ public final class Utils {
         return format("%s:%s", MODID, path);
     }
 
-    public static boolean isNotEmpty(ItemStack stack) {
-        return !stack.isEmpty();
-    }
-
-    public static boolean isEmpty(ItemStack stack) {
-        return stack.isEmpty();
-    }
-
-    public static boolean isNotNull(Object object) {
-        return object != null;
-    }
-
-    public static boolean areNotNull(Object object1, Object object2) {
-        return object1 != null && object2 != null;
-    }
-
-    public static boolean isNotNullNorEmpty(String object) {
-        return isNotNull(object) && !Objects.equals(object, "");
-    }
-
-    public static boolean isNull(Object object) {
-        return object == null;
-    }
-
-    public static boolean isNullOrEmpty(String object) {
-        return isNull(object) || Objects.equals(object, "");
-    }
-
     public static ItemStack getTCIngot(int meta) {
-        if (Loader.TCONSTRUCT.isLoaded()) {
+        if (ModCompat.isLoaded("tconstruct")) {
             Item ingot = BuiltInRegistries.ITEM.getValue(Identifier.parse("tconstruct:ingots"));
             if (ingot != null) {
                 return new ItemStack(ingot, 1);

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:slayer_shovels",
+  "key": {
+    "A": "armorplus:super_star_shovel_base",
+    "B": "armorplus:ender_dragon_shovel_base",
+    "C": "armorplus:guardian_shovel_base",
+    "M": "armorplus:the_ultimate_material",
+    "S": "armorplus:obsidian_stick"
+  },
+  "pattern": [
+    " M ",
+    "ABC",
+    " S "
+  ],
+  "result": {
+    "id": "armorplus:slayer_shovel_base"
+  }
+}
