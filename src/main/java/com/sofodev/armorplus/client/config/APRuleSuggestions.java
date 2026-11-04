@@ -34,11 +34,10 @@ final class APRuleSuggestions extends RegistrySuggestionSource {
     static final String EFFECT_BY_KIND = "effect_by_kind";
     /** Pieces or a piece count, the "@..." suffix of an armor buff. */
     static final String REQUIREMENT = "requirement";
-    /** Pieces only. */
-    static final String SLOTS = "slots";
     static final String LOOT_TABLE = "loot_table";
 
-    private static final List<String> SLOT_OPTIONS = List.of("head", "chest", "legs", "feet", "head,chest", "legs,feet", "head,chest,legs,feet");
+    private static final List<String> SLOT_OPTIONS = List.of("head", "chest", "legs", "feet", "head,chest", "legs,feet", "head,chest,legs,feet",
+            "head,chest:1", "legs,feet:1", "chest,legs,feet:2", "head,chest,legs:2");
     private static final List<String> COUNT_OPTIONS = List.of("1", "2", "3", "4");
 
     private final Map<@Nullable Use, List<Option>> effects = new HashMap<>();
@@ -92,12 +91,20 @@ final class APRuleSuggestions extends RegistrySuggestionSource {
         return ids.stream().map(id -> new Option(id, pieceName(id))).toList();
     }
 
-    /** E.g. "Leggings + Boots" or "Any 2 of the set" */
-    private static String pieceName(String value) {
+    /** E.g. "Leggings + Boots", "Any 2 of: Chestplate + Leggings + Boots" or "Any 2 of the set" */
+    static String pieceName(String value) {
         if (!value.isEmpty() && Character.isDigit(value.charAt(0))) {
             return Component.translatable(APRuleTypes.UI_PREFIX + "pieces.count", value).getString();
         }
-        return Arrays.stream(value.split(",", -1))
+        int split = value.indexOf(SetRequirement.COUNT_SEPARATOR);
+        if (split >= 0) {
+            return Component.translatable(APRuleTypes.UI_PREFIX + "pieces.some", value.substring(split + 1), slotNames(value.substring(0, split))).getString();
+        }
+        return slotNames(value);
+    }
+
+    private static String slotNames(String slots) {
+        return Arrays.stream(slots.split(",", -1))
                 .map(slot -> Component.translatable(APRuleTypes.UI_PREFIX + "slot." + slot.trim().toLowerCase(Locale.ROOT)).getString())
                 .collect(Collectors.joining(" + "));
     }
@@ -111,7 +118,6 @@ final class APRuleSuggestions extends RegistrySuggestionSource {
                 options.addAll(pieces(COUNT_OPTIONS));
                 yield options;
             }
-            case SLOTS -> pieces(SLOT_OPTIONS);
             case LOOT_TABLE -> BuiltInLootTables.all().stream().map(key -> key.identifier().toString()).sorted()
                     .map(id -> new Option(id, id)).toList();
             default -> List.of();
@@ -123,7 +129,6 @@ final class APRuleSuggestions extends RegistrySuggestionSource {
         if (isEffectSource(field)) return isEffect(id, use(field, values));
         return switch (field.source()) {
             case REQUIREMENT -> SetRequirement.isValid(id);
-            case SLOTS -> ArmorPlusConfig.isEffectSlot("minecraft:none|" + id);
             // Not every loot table is known here (datapacks only load with a world), so any id goes.
             case LOOT_TABLE -> ArmorPlusConfig.isIdentifier(id);
             default -> false;
@@ -137,7 +142,7 @@ final class APRuleSuggestions extends RegistrySuggestionSource {
             return effectNames.getOrDefault(normalize(id), id);
         }
         return switch (field.source()) {
-            case REQUIREMENT, SLOTS -> pieceName(id);
+            case REQUIREMENT -> pieceName(id);
             default -> id;
         };
     }

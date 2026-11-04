@@ -1,12 +1,13 @@
 package com.sofodev.armorplus.registry.item.extra;
 
 import com.sofodev.armorplus.config.ArmorPlusConfig;
+import com.sofodev.armorplus.registry.item.armor.SetRequirement;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.EquipmentSlot;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Collection;
-import java.util.EnumSet;
 import java.util.Set;
 
 import static com.sofodev.thedragonlib.util.RomanNumeralUtil.generate;
@@ -34,19 +35,22 @@ public final class BuffNames {
         return showsLevel(buff) ? " " + generate(buff.getAmplifier() + 1) : "";
     }
 
+    /** @return the default pieces of the effect ("effectSlots" config), or null if it isn't listed */
+    public static @Nullable SetRequirement effectRequirement(String buffId) {
+        for (String entry : ArmorPlusConfig.effectSlots.get()) {
+            String[] parts = entry.split("\\|", -1);
+            if (BuffParser.idOf(parts[0]).equals(buffId)) return SetRequirement.parse(parts[1]);
+        }
+        return null;
+    }
+
     /**
-     * @return the armor pieces the effect belongs to ("effectSlots" config), in slot order, or an empty set if it uses the
+     * @return the armor pieces the effect belongs to ("effectSlots" config), in slot order, or an empty set if it uses a
      * piece count instead (sets) / fits into any piece (runes)
      */
     public static Set<EquipmentSlot> effectSlots(String buffId) {
-        for (String entry : ArmorPlusConfig.effectSlots.get()) {
-            String[] parts = entry.split("\\|", -1);
-            if (!BuffParser.idOf(parts[0]).equals(buffId)) continue;
-            Set<EquipmentSlot> slots = EnumSet.noneOf(EquipmentSlot.class);
-            for (String slot : parts[1].split(",", -1)) slots.add(EquipmentSlot.byName(slot.trim()));
-            return slots;
-        }
-        return Set.of();
+        SetRequirement requirement = effectRequirement(buffId);
+        return requirement == null ? Set.of() : requirement.slots();
     }
 
     /** @return the translation key of an armor slot, e.g. "armorplus.slot.head" */

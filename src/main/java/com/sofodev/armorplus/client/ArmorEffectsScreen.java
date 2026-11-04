@@ -148,17 +148,26 @@ public class ArmorEffectsScreen extends EffectsScreen {
         MutableComponent tooltip = Component.empty().append(ToolTipUtils.buffName(entry.buff(), false)).append("\n");
         if (entry.source().equals(ArmorEffects.RUNE_SOURCE)) {
             tooltip.append(Component.translatable("screen.armorplus.armor_effects.from_rune"));
-        } else if (!entry.slots().isEmpty()) {
-            tooltip.append(Component.translatable("screen.armorplus.armor_effects.from_piece", BuffNames.slotNames(entry.slots())));
-        } else {
+        } else if (entry.slots().isEmpty()) {
             tooltip.append(Component.translatable("screen.armorplus.armor_effects.from_set", entry.worn(), entry.required()));
+        } else if (needsSomeSlots(entry)) {
+            tooltip.append(Component.translatable("screen.armorplus.armor_effects.from_some_pieces", entry.required(), BuffNames.slotNames(entry.slots())));
+        } else {
+            tooltip.append(Component.translatable("screen.armorplus.armor_effects.from_piece", BuffNames.slotNames(entry.slots())));
         }
         if (!entry.available()) {
-            tooltip.append("\n").append((!entry.slots().isEmpty()
-                    ? Component.translatable("screen.armorplus.armor_effects.needs_piece", BuffNames.slotNames(entry.slots()))
-                    : Component.translatable("screen.armorplus.armor_effects.needs_pieces", entry.required() - entry.worn()))
-                    .withStyle(ChatFormatting.RED));
+            int missing = entry.required() - entry.worn();
+            MutableComponent needs;
+            if (entry.slots().isEmpty()) needs = Component.translatable("screen.armorplus.armor_effects.needs_pieces", missing);
+            else if (needsSomeSlots(entry)) needs = Component.translatable("screen.armorplus.armor_effects.needs_some_pieces", missing, BuffNames.slotNames(entry.slots()));
+            else needs = Component.translatable("screen.armorplus.armor_effects.needs_piece", BuffNames.slotNames(entry.slots()));
+            tooltip.append("\n").append(needs.withStyle(ChatFormatting.RED));
         }
         return tooltip;
+    }
+
+    /** @return true if the effect only needs some of its pieces, e.g. "@chest,legs,feet:2" */
+    private static boolean needsSomeSlots(Entry entry) {
+        return entry.required() < entry.slots().size();
     }
 }

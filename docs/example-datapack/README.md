@@ -10,7 +10,7 @@ Runes live at `data/<namespace>/armorplus/rune/<name>.json`.
 | `effect` | yes | A mob effect id (`minecraft:haste`) or an ArmorPlus ability (`armorplus:fire_extinguish`, `armorplus:ignite`, `armorplus:auto_smelt`, ...), including abilities other mods register (see [API.md](../API.md)) |
 | `level` | no | Effect level (1 = I). Leave it out for abilities |
 | `seconds` | no | Duration of on-hit mob effects. Abilities ignore it |
-| `slots` | no | Armor runes only: the pieces it fits into (`head`, `chest`, `legs`, `feet`). Default: the effect's `effectSlots` config |
+| `slots` | no | Armor runes only: the pieces it fits into (`head`, `chest`, `legs`, `feet`), without counts like `:2`. Default: the effect's `effectSlots` config |
 | `socket_cost` | no | Experience levels to socket it (1-39) |
 | `extraction` | no | `cost`, `catalyst` (`{ "item", "count" }`) and `extractable` when the Rune Altar extracts this rune |
 | `loot` | no | `[{ "table", "chance" }]`: rolled on its own. Without it, the rune joins the `runeLootSources` pool |
@@ -19,8 +19,8 @@ The `runeOverrides` config always takes precedence over `socket_cost` and `extra
 
 ## Files
 
-- `water_breathing_helmet.json`: armor, helmets only, with a custom socket cost. Can't be extracted from equipment such as Slayer armor.
-- `fire_resistance_armor.json`: armor, fits chestplates or leggings, found in Nether fortresses and bastions.
+- `haste_helmet.json`: armor, helmets only, with a custom socket cost. Can't be extracted from equipment such as Redstone armor.
+- `resistance_ii_armor.json`: armor, fits chestplates or leggings, found in Nether fortresses and bastions.
 - `fire_extinguish_armor.json`: armor ability with custom socket and extraction costs plus a catalyst.
 - `slowness_weapon.json`: on-hit Slowness II for 4 s, common in igloos.
 - `ignite_weapon.json`: on-hit ability (sets the target on fire for a random 3-8 s).
@@ -31,6 +31,6 @@ The `runeOverrides` config always takes precedence over `socket_cost` and `extra
 
 ## Notes
 
-- A file with the same namespace and path as a built-in rune (`data/armorplus/armorplus/rune/...`) replaces it.
-- Costs and extraction rules belong to the rune's kind, effect and level, so `haste_iii_tool`'s `socket_cost` doesn't affect the built-in Haste II, which uses the default cost. Two files with the same kind, effect and level both appear as runes, but only the first one's costs count (a warning is logged).
+- ArmorPlus has its own rune files in [`src/main/resources/data/armorplus/armorplus/rune/`](../../src/main/resources/data/armorplus/armorplus/rune/). A file with the same namespace and path as one of them (`data/armorplus/armorplus/rune/<name>.json`) replaces it, which is how to change a built-in rune's costs.
+- Costs and extraction rules belong to the rune's kind, effect and level, so `haste_iii_tool`'s `socket_cost` doesn't affect the built-in Haste II, which uses the default cost. Two files with the same kind, effect and level both appear as runes, but only the first one's costs count (a warning is logged). This also applies to a file in another namespace that matches a built-in rune, so check the built-in list first.
 - `extraction` applies when the Rune Altar would make exactly this rune, i.e. after its level reduction (`extractionLevelReduction`): `"level": 1` matches a level II effect extracted from equipment. Tool runes are never extracted, so `extraction` has no effect on them.

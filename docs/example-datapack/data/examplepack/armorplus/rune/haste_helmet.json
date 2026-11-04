@@ -1,6 +1,6 @@
 {
   "kind": "armor",
-  "effect": "minecraft:water_breathing",
+  "effect": "minecraft:haste",
   "level": 1,
   "slots": ["head"],
   "socket_cost": 8,

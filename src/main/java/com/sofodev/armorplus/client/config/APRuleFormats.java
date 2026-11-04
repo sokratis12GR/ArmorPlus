@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.client.config;
 
 import com.sofodev.armorplus.config.ArmorPlusConfig;
+import com.sofodev.armorplus.registry.item.armor.SetRequirement;
 import com.sofodev.armorplus.registry.item.extra.BuffParser;
 import com.sofodev.armorplus.registry.rune.RuneOverrides;
 import com.sofodev.thedragonlib.client.config.RuleFormat;
@@ -29,6 +30,8 @@ final class APRuleFormats {
     static final RuleFormat RUNE_OVERRIDE = new RuneOverrideFormat();
     /** {@code "kind|id|level|seconds"} */
     static final RuleFormat WORLD_RUNE = new WorldRuneFormat();
+    /** {@code "id|slots"}, {@code "id|slots:count"} or {@code "id|count"} */
+    static final RuleFormat EFFECT_SLOT = new EffectSlotFormat();
 
     private APRuleFormats() {
     }
@@ -196,6 +199,84 @@ final class APRuleFormats {
             if (values[5].equals("false")) parts.add(Component.translatable(ctx.uiKey("describe.notExtractable")).getString());
             if (values[6].equals("true")) parts.add(Component.translatable(ctx.uiKey("describe.disabled")).getString());
             return Component.literal(String.join(SEPARATOR, parts));
+        }
+    }
+
+    /** Fields: effect, piece count, then one toggle per slot, named after the slot. */
+    private static final class EffectSlotFormat implements RuleFormat {
+        private static final int COUNT = 1;
+        private static final int FIRST_SLOT = 2;
+
+        private static boolean isSlot(String name, RuleType type) {
+            for (int i = FIRST_SLOT; i < type.fields().size(); i++) {
+                if (type.fields().get(i).name().equals(name)) return true;
+            }
+            return false;
+        }
+
+        /** @return the slots and the count as separate comma separated values, e.g. "legs,feet,1" for "legs,feet:1" */
+        private static String[] pieceValues(String pieces) {
+            return pieces.replace(SetRequirement.COUNT_SEPARATOR, ',').split(",", -1);
+        }
+
+        /** E.g. "legs,feet", "legs,feet:1" or "2". While editing it can be empty or need too many slots, which {@link #validate} explains. */
+        private static String pieces(String[] values, RuleType type) {
+            List<String> slots = new ArrayList<>();
+            for (int i = FIRST_SLOT; i < values.length; i++) {
+                if (values[i].equals("true")) slots.add(type.fields().get(i).name());
+            }
+            if (slots.isEmpty()) return values[COUNT];
+            String names = String.join(",", slots);
+            return values[COUNT].isEmpty() ? names : names + SetRequirement.COUNT_SEPARATOR + values[COUNT];
+        }
+
+        @Override
+        public boolean matches(String line, RuleType type) {
+            String[] parts = line.split("\\|", -1);
+            if (parts.length != 2) return false;
+            if (parts[1].isBlank()) return true;
+            int counts = 0;
+            for (String piece : pieceValues(parts[1])) {
+                if (type.fields().get(COUNT).choices().contains(piece.trim())) counts++;
+                else if (!isSlot(piece.trim(), type)) return false;
+            }
+            return counts <= 1;
+        }
+
+        @Override
+        public String[] split(String line, RuleType type) {
+            String[] values = new String[type.fields().size()];
+            String[] parts = line.split("\\|", -1);
+            values[0] = part(parts, 0);
+            values[COUNT] = "";
+            for (int i = FIRST_SLOT; i < values.length; i++) values[i] = "false";
+            for (String piece : pieceValues(part(parts, 1))) {
+                String name = piece.trim();
+                if (type.fields().get(COUNT).choices().contains(name)) values[COUNT] = name;
+                for (int i = FIRST_SLOT; i < values.length; i++) {
+                    if (type.fields().get(i).name().equals(name)) values[i] = "true";
+                }
+            }
+            return values;
+        }
+
+        @Override
+        public String join(String[] values, RuleType type) {
+            return values[0] + "|" + pieces(values, type);
+        }
+
+        @Override
+        public @Nullable String validate(String[] values, RuleType type, RuleListContext ctx) {
+            String pieces = pieces(values, type);
+            if (pieces.isEmpty()) return ctx.uiKey("error.noPieces");
+            if (!SetRequirement.isValid(pieces)) return ctx.uiKey("error.countTooHigh");
+            return ArmorPlusConfig.isEffectSlot(join(values, type)) ? null : ctx.uiKey("error.invalidEntry");
+        }
+
+        @Override
+        public Component describe(String[] values, RuleType type, RuleListContext ctx) {
+            return Component.translatable(ctx.uiKey("describe." + type.key()), ctx.suggestions().displayName(type.fields().get(0), values[0]),
+                    APRuleSuggestions.pieceName(pieces(values, type)));
         }
     }
 

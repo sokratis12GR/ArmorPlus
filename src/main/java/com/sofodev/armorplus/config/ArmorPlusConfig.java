@@ -1,5 +1,6 @@
 package com.sofodev.armorplus.config;
 
+import com.sofodev.armorplus.registry.item.armor.SetRequirement;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import com.sofodev.armorplus.registry.item.extra.BuffParser;
 import com.sofodev.armorplus.registry.rune.RuneOverrides;
@@ -40,6 +41,8 @@ public class ArmorPlusConfig {
     /* ---------------------------------------- armorplus-effects.toml ---------------------------------------- */
     public static ConfigValue<Integer> defaultSetPieces;
     public static BooleanValue allowEffectToggles;
+    public static ConfigValue<Integer> instantEffectCooldown;
+    public static ConfigValue<Double> heldInstantEffectStrength;
     public static ConfigValue<List<? extends String>> effectSlots;
     public static ConfigValue<List<? extends String>> singleLevelEffects;
     public static MaterialConfig coalMaterial;
@@ -126,15 +129,11 @@ public class ArmorPlusConfig {
         return parts.length == 2 && isIdentifier(parts[0].trim()) && isIdentifier(parts[1].trim());
     }
 
-    /** An "id|slots" pair with comma separated slots head, chest, legs and feet, e.g. "minecraft:conduit_power|legs,feet". */
+    /** An "id|pieces" pair with comma separated slots head, chest, legs and feet (optionally how many of them) or a piece count, e.g. "minecraft:conduit_power|legs,feet", "minecraft:speed|chest,legs,feet:2" or "minecraft:speed|2". */
     public static boolean isEffectSlot(Object value) {
         if (!(value instanceof String s)) return false;
         String[] parts = s.split("\\|", -1);
-        if (parts.length != 2 || !isIdentifier(parts[0].trim())) return false;
-        for (String slot : parts[1].split(",", -1)) {
-            if (!List.of("head", "chest", "legs", "feet").contains(slot.trim())) return false;
-        }
-        return true;
+        return parts.length == 2 && isIdentifier(parts[0].trim()) && SetRequirement.isValid(parts[1]);
     }
 
     /** Socket count weights, one non-negative weight per socket count (index 0 = no sockets). */
@@ -230,46 +229,50 @@ public class ArmorPlusConfig {
                         "Any vanilla or modded effect works, as do the ArmorPlus abilities: armorplus:flight, armorplus:illuminate, armorplus:wither_immunity, armorplus:fire_weakness, armorplus:natural_immunity,",
                         "armorplus:fire_extinguish, armorplus:darkness_immunity, armorplus:mining_fatigue_immunity, armorplus:powdered_snow_immunity, armorplus:sculk_immunity, armorplus:warden_pacify (armor) and armorplus:ignite (weapons).",
                         "Start an entry with \"!\" to switch it off without removing it, e.g. \"!minecraft:haste|2\".",
-                        "Armor entries can end with the pieces of the set they need: \"@head\" (or chest, legs, feet), \"@legs,feet\" (all of these pieces) or \"@2\" (any 2 pieces), e.g. \"minecraft:night_vision|1@head\".",
+                        "Armor entries can end with the pieces of the set they need: \"@head\" (or chest, legs, feet), \"@legs,feet\" (all of these pieces), \"@chest,legs,feet:2\" (any 2 of these pieces) or \"@2\" (any 2 pieces), e.g. \"minecraft:night_vision|1@head\".",
                         "Entries without it use their \"effectSlots\" default, otherwise \"defaultSetPieces\".",
                         "",
                         "Number of worn pieces of a set its effects need (4 = full set), unless the entry says otherwise or the effect is listed in \"effectSlots\"")
                 .defineInRange("defaultSetPieces", 4, 1, 4);
-        allowEffectToggles = builder.comment("Let players switch individual set and rune effects on/off for themselves, per set (Armor Effects key, G by default), and tool rune effects (Tool Effects key, H by default)")
+        allowEffectToggles = builder.comment("Let players switch individual set and rune effects on/off for themselves, per set (Armor Effects key, G by default), tool rune effects (Tool Effects key, H by default) and weapon effects (Weapon Effects key, J by default)")
                 .define("allowEffectToggles", true);
-        effectSlots = builder.comment("Effects that belong to specific armor pieces, formatted as \"id|slots\" with comma separated slots head, chest, legs and feet (e.g. \"minecraft:night_vision|head\" or \"minecraft:conduit_power|legs,feet\"). "
-                        + "This is the default of every set: set effects then need all of these pieces of the set (instead of a piece count) and are only listed on them, runes of the effect only fit into these pieces. "
+        instantEffectCooldown = builder.comment("Seconds before a worn or held instant effect (Instant Health, Saturation, ...) can fire again for a player, shared by all gear. Instant Health and Saturation wait until they'd help, and they don't start the cooldown until then. 0 = once a second. On-hit effects of weapons aren't affected")
+                .defineInRange("instantEffectCooldown", 5, 0, 3600);
+        heldInstantEffectStrength = builder.comment("Strength of instant effects from held tools, compared to worn armor (0.5 = half). Instant Health heals this fraction of the normal amount, effects without a strength like Saturation aren't affected")
+                .defineInRange("heldInstantEffectStrength", 0.5, 0.0, 1.0);
+        effectSlots = builder.comment("The default pieces an effect needs, for every set, formatted as \"id|pieces\": comma separated slots head, chest, legs and feet (all of them needed, e.g. \"minecraft:night_vision|head\" or \"minecraft:conduit_power|legs,feet\"; \":count\" needs only that many of them, e.g. \"minecraft:speed|chest,legs,feet:2\") or a piece count (any of that many pieces, e.g. \"minecraft:speed|2\"). "
+                        + "Set effects with slots are only listed on those pieces and runes of the effect only fit into them; a piece count without slots only applies to sets, runes of the effect fit into any piece. "
                         + "A set can use other pieces for an effect by ending its entry with them, e.g. \"minecraft:night_vision|1@chest\" or \"minecraft:night_vision|1@4\"")
                 .defineListAllowEmpty("effectSlots", List.of(
                         "minecraft:night_vision|head",
                         "minecraft:water_breathing|head",
-                        "minecraft:saturation|head",
-                        "armorplus:illuminate|head",
+                        "minecraft:saturation|head,chest,legs,feet:2",
+                        "armorplus:illuminate|head,chest,legs,feet:2",
                         "armorplus:darkness_immunity|head",
                         "minecraft:haste|chest",
-                        "minecraft:resistance|chest",
-                        "minecraft:fire_resistance|chest",
-                        "minecraft:regeneration|chest",
-                        "minecraft:absorption|chest",
-                        "minecraft:strength|chest",
+                        "minecraft:resistance|head,chest,legs,feet:2",
+                        "minecraft:fire_resistance|head,chest,legs,feet:2",
+                        "minecraft:regeneration|head,chest,legs,feet:2",
+                        "minecraft:absorption|head,chest,legs,feet:2",
+                        "minecraft:strength|head,chest,legs,feet:2",
                         "minecraft:luck|legs",
-                        "armorplus:fire_extinguish|legs",
-                        "armorplus:mining_fatigue_immunity|legs",
-                        "minecraft:speed|feet",
-                        "minecraft:jump_boost|feet",
-                        "minecraft:slow_falling|feet",
-                        "minecraft:hero_of_the_village|head,chest",
-                        "minecraft:conduit_power|legs,feet",
-                        "minecraft:dolphins_grace|legs,feet",
-                        "minecraft:health_boost|head,chest,legs,feet",
-                        "minecraft:invisibility|head,chest,legs,feet",
+                        "armorplus:fire_extinguish|head,chest,legs,feet:2",
+                        "armorplus:mining_fatigue_immunity|chest,legs:2",
+                        "minecraft:speed|legs,feet:1",
+                        "minecraft:jump_boost|legs,feet:1",
+                        "minecraft:slow_falling|legs,feet:1",
+                        "minecraft:hero_of_the_village|head,chest:1",
+                        "minecraft:conduit_power|legs,feet:1",
+                        "minecraft:dolphins_grace|legs,feet:1",
+                        "minecraft:health_boost|head,chest,legs,feet:2",
+                        "minecraft:invisibility|head,chest,legs,feet:2",
                         "armorplus:flight|head,chest,legs,feet",
                         "armorplus:wither_immunity|head,chest,legs,feet",
                         "armorplus:natural_immunity|head,chest,legs,feet",
                         "armorplus:powdered_snow_immunity|head,chest,legs,feet",
                         "armorplus:sculk_immunity|head,chest,legs,feet",
                         "armorplus:warden_pacify|head,chest,legs,feet",
-                        "armorplus:fire_weakness|head,chest,legs,feet"),
+                        "armorplus:fire_weakness|head,chest,legs,feet:1"),
                         () -> "modid:effect|head", ArmorPlusConfig::isEffectSlot);
         singleLevelEffects = builder.comment("Effects whose level makes no difference, so tooltips never show a level for them (levels I are never shown)")
                 .defineListAllowEmpty("singleLevelEffects", List.of("minecraft:night_vision", "minecraft:fire_resistance", "minecraft:water_breathing",
@@ -306,7 +309,7 @@ public class ArmorPlusConfig {
                 List.of("armorplus:natural_immunity", "armorplus:powdered_snow_immunity"),
                 List.of("minecraft:slowness|2|5", "armorplus:ignite"));
         guardianMaterial = MaterialConfig.create("guardian", builder,
-                List.of("minecraft:night_vision|1", "conduit_power|2", "dolphins_grace|3",
+                List.of("minecraft:night_vision|1", "minecraft:conduit_power|2", "minecraft:dolphins_grace|3",
                         "armorplus:fire_extinguish", "armorplus:mining_fatigue_immunity"),
                 List.of("minecraft:weakness|2|4", "minecraft:nausea|2|20"));
         superStarMaterial = MaterialConfig.create("super_star", builder,
@@ -325,7 +328,7 @@ public class ArmorPlusConfig {
                 List.of("minecraft:night_vision|1", "minecraft:water_breathing|1", "minecraft:jump_boost|2",
                         "minecraft:regeneration|1|200", "minecraft:fire_resistance|1", "minecraft:absorption|1|200",
                         "minecraft:slow_falling|1", "armorplus:flight", "armorplus:wither_immunity",
-                        "armorplus:natural_immunity", "armorplus:fire_extinguish", "conduit_power|2", "dolphins_grace|3",
+                        "armorplus:natural_immunity", "armorplus:fire_extinguish", "minecraft:conduit_power|2", "minecraft:dolphins_grace|3",
                         "armorplus:sculk_immunity", "armorplus:warden_pacify", "armorplus:darkness_immunity",
                         "armorplus:mining_fatigue_immunity"),
                 List.of("minecraft:wither|4|4", "minecraft:slowness|2|20", "minecraft:glowing|1|20",
@@ -421,7 +424,7 @@ public class ArmorPlusConfig {
                 .define("randomSockets", true);
         socketXpCost = builder.comment("Experience levels it costs to socket a rune (see \"runeOverrides\" for specific buffs)")
                 .defineInRange("socketXpCost", 3, 1, 39);
-        enableSocketPunch = builder.comment("Enable the Socket Punch, which adds one socket (up to the maximum) to equipment in an Anvil")
+        enableSocketPunch = builder.comment("Enable the Socket Punch, which adds one socket (up to the maximum) to equipment in an Anvil. Needs \"randomSockets\" (without it every piece already has the maximum)")
                 .define("enableSocketPunch", true);
         socketPunchXpCost = builder.comment("Experience levels it costs to add a socket with a Socket Punch")
                 .defineInRange("socketPunchXpCost", 10, 1, 39);
@@ -469,7 +472,24 @@ public class ArmorPlusConfig {
                                 "minecraft:chests/bastion_treasure|0.10",
                                 "minecraft:chests/woodland_mansion|0.10",
                                 "minecraft:chests/stronghold_library|0.08",
-                                "minecraft:chests/buried_treasure|0.05"),
+                                "minecraft:chests/buried_treasure|0.05",
+                                "minecraft:chests/desert_pyramid|0.10",
+                                "minecraft:chests/jungle_temple|0.10",
+                                "minecraft:chests/nether_bridge|0.10",
+                                "minecraft:chests/simple_dungeon|0.08",
+                                "minecraft:chests/abandoned_mineshaft|0.08",
+                                "minecraft:chests/pillager_outpost|0.08",
+                                "minecraft:chests/trial_chambers/reward|0.08",
+                                "minecraft:chests/stronghold_corridor|0.06",
+                                "minecraft:chests/stronghold_crossing|0.06",
+                                "minecraft:chests/shipwreck_treasure|0.06",
+                                "minecraft:chests/underwater_ruin_big|0.06",
+                                "minecraft:chests/igloo_chest|0.06",
+                                "minecraft:chests/ruined_portal|0.05",
+                                "minecraft:chests/bastion_other|0.05",
+                                "minecraft:chests/village/village_armorer|0.04",
+                                "minecraft:chests/village/village_weaponsmith|0.04",
+                                "minecraft:chests/village/village_toolsmith|0.04"),
                         () -> "modid:loot_table|chance", ArmorPlusConfig::isLootSource);
         builder.pop();
         return null;

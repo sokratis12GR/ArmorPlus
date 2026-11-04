@@ -59,7 +59,8 @@ public class APArmorItem extends Item {
                 Player player = clientPlayer();
                 String source = mat.config() instanceof MaterialConfig cfg ? cfg.name() : "";
                 addBuffLines(tooltip, buffs, buff -> ArmorEffects.progress(player, mat, buff),
-                        buff -> enabled && (player == null || !ArmorEffects.isDisabled(player, ArmorEffects.toggleKey(source, BuffParser.idOf(buff.getBuff())))));
+                        buff -> enabled && (player == null || !ArmorEffects.isDisabled(player, ArmorEffects.toggleKey(source, BuffParser.idOf(buff.getBuff())))),
+                        buff -> instantCooldown(buff, false));
             } else {
                 showSneakInfo(tooltip, mat.getFormatting());
             }

@@ -24,6 +24,9 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.RandomSource;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -416,6 +419,41 @@ public final class Runes {
         return List.copyOf(runes.values());
     }
 
+    /**
+     * @return a level I rune of every vanilla effect: beneficial effects as armor and tool runes, harmful ones and Glowing as
+     * weapon runes (armor and tool runes would give them to their user), the other neutral ones (omens) as armor runes
+     */
+    public static List<RuneData> vanillaEffectRunes() {
+        List<RuneData> runes = new ArrayList<>();
+        BuiltInRegistries.MOB_EFFECT.listElements().forEach(effect -> {
+            Identifier id = effect.key().identifier();
+            if (!id.getNamespace().equals(Identifier.DEFAULT_NAMESPACE)) return;
+            String entry = id + "|1";
+            MobEffect value = effect.value();
+            if (value.getCategory() == MobEffectCategory.HARMFUL || value == MobEffects.GLOWING.value()) {
+                runes.add(new RuneData(RuneKind.WEAPON, entry));
+            } else {
+                runes.add(new RuneData(RuneKind.ARMOR, entry));
+                if (value.isBeneficial()) runes.add(new RuneData(RuneKind.TOOL, entry));
+            }
+        });
+        runes.removeIf(rune -> resolve(rune) == null);
+        return runes;
+    }
+
+    /**
+     * @return the runes of the creative tab: {@link #allObtainableRunes()} and {@link #vanillaEffectRunes()}, once per buff
+     * and kind at the highest level, grouped by kind and sorted by buff id within each
+     */
+    public static List<RuneData> creativeRunes() {
+        Map<String, RuneData> runes = new LinkedHashMap<>();
+        allObtainableRunes().forEach(rune -> addStrongest(runes, rune));
+        vanillaEffectRunes().forEach(rune -> addStrongest(runes, rune));
+        return runes.values().stream()
+                .sorted(Comparator.comparing(RuneData::kind).thenComparing(RuneData::buffId))
+                .toList();
+    }
+
     private static void addStrongest(Map<String, RuneData> runes, RuneData rune) {
         runes.merge(rune.kind().getSerializedName() + "|" + rune.buffId(), rune,
                 (existing, added) -> parseLevel(added.entry()) > parseLevel(existing.entry()) ? added : existing);
@@ -435,11 +473,11 @@ public final class Runes {
 
     /**
      * @return the entry with its level lowered by "extractionLevelReduction" (never below I). Slot requirements ("@head")
-     * are kept, so the rune fits the same pieces; piece counts ("@2") only matter for sets and are dropped
+     * are kept, so the rune fits the same pieces; piece counts ("@2", ":2") only matter for sets and are dropped
      */
     public static String extractedEntry(String entry) {
         SetRequirement requirement = BuffParser.requirementOf(entry);
-        String suffix = requirement != null && requirement.slotBound() ? BuffParser.REQUIREMENT_SEPARATOR + requirement.toString() : "";
+        String suffix = requirement != null && requirement.slotBound() ? BuffParser.REQUIREMENT_SEPARATOR + requirement.slotNames() : "";
         String[] parts = BuffParser.withoutRequirement(entry).split("\\|", -1);
         if (parts.length >= 2) {
             parts[1] = String.valueOf(Math.max(1, parseLevel(entry) - ArmorPlusConfig.extractionLevelReduction.get()));

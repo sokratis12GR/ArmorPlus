@@ -58,6 +58,7 @@ public record RuneDefinition(RuneKind kind, Identifier effect, Optional<Integer>
     }
 
     private static final Codec<String> SLOT_CODEC = Codec.STRING.validate(slot -> SetRequirement.isValid(slot) && !Character.isDigit(slot.charAt(0))
+            && slot.indexOf(SetRequirement.COUNT_SEPARATOR) < 0
             ? DataResult.success(slot)
             : DataResult.error(() -> "Unknown armor slot " + slot + ", expected head, chest, legs or feet"));
 

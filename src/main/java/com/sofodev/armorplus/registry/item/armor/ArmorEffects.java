@@ -48,7 +48,7 @@ public final class ArmorEffects {
      *
      * @param source   the set's config name or {@link #RUNE_SOURCE}
      * @param required worn pieces the effect needs, {@code worn} how many count (slot bound effects: of their pieces, runes: 1 of 1)
-     * @param slots    the pieces a slot bound effect needs (all of them), empty if it uses the piece count
+     * @param slots    the pieces that count for a slot bound effect ({@code required} of them are needed), empty if all pieces do
      * @param disabled switched off by the player for this source
      */
     public record Entry(BuffInstance buff, String id, String source, int required, int worn, Set<EquipmentSlot> slots,
@@ -157,8 +157,8 @@ public final class ArmorEffects {
      */
     public static SetRequirement requirement(BuffInstance buff) {
         if (buff.getRequirement() != null) return buff.getRequirement();
-        Set<EquipmentSlot> slots = BuffNames.effectSlots(BuffParser.idOf(buff.getBuff()));
-        return slots.isEmpty() ? SetRequirement.pieces(ArmorPlusConfig.defaultSetPieces.get()) : SetRequirement.slots(slots);
+        SetRequirement requirement = BuffNames.effectRequirement(BuffParser.idOf(buff.getBuff()));
+        return requirement != null ? requirement : SetRequirement.pieces(ArmorPlusConfig.defaultSetPieces.get());
     }
 
     /**

@@ -82,7 +82,7 @@ public class RuneItem extends Item {
                     case WEAPON -> "tooltip.armorplus.applies";
                     case TOOL -> "tooltip.armorplus.while_held";
                 }));
-                addBuffLines(tooltip, List.of(buff), kind == RuneKind.WEAPON ? ToolTipUtils::durationPrefix : b -> null);
+                addBuffLines(tooltip, List.of(buff), kind == RuneKind.WEAPON ? ToolTipUtils::durationPrefix : b -> null, b -> true, ToolTipUtils.runeSuffix(kind));
                 tooltip.accept(translate(GRAY, "tooltip.armorplus.rune.socket_hint"));
             } else {
                 tooltip.accept(translate(DARK_GRAY, "tooltip.armorplus.rune.inactive", rune.buffId()));

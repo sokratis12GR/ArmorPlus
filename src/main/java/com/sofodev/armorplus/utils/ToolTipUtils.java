@@ -7,13 +7,16 @@ import com.sofodev.armorplus.registry.item.extra.Buff;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import com.sofodev.armorplus.registry.item.extra.BuffNames;
 import com.sofodev.armorplus.registry.item.extra.BuffParser;
+import com.sofodev.armorplus.registry.item.extra.DeBuff;
 import com.sofodev.armorplus.registry.item.tool.WeaponEffects;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.IAPTool;
+import com.sofodev.armorplus.registry.rune.RuneKind;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import org.jspecify.annotations.Nullable;
@@ -98,6 +101,24 @@ public class ToolTipUtils {
     }
 
     /**
+     * @param held whether the effect comes from a held tool instead of worn armor
+     * @return "(5s cd)" for instant effects, "(5s cd, weaker)" if they're also weaker when held, null for anything else
+     */
+    public static @Nullable Component instantCooldown(BuffInstance buff, boolean held) {
+        if (!buff.getBuff().isEffect() || buff.getBuff() instanceof DeBuff) return null;
+        var effect = buff.getBuff().getEffect();
+        if (effect == null || !effect.value().isInstantenous()) return null;
+        int seconds = Math.max(1, ArmorPlusConfig.instantEffectCooldown.get());
+        boolean weaker = held && effect.value() == MobEffects.INSTANT_HEALTH.value() && ArmorPlusConfig.heldInstantEffectStrength.get() < 1.0;
+        return translate(GRAY, weaker ? "tooltip.armorplus.instant_cooldown.weaker" : "tooltip.armorplus.instant_cooldown", seconds);
+    }
+
+    /** @return the suffix of a rune's buff line: weapon runes fire on hit, so only armor and tool runes have a cooldown */
+    public static Function<BuffInstance, Component> runeSuffix(RuneKind kind) {
+        return buff -> kind == RuneKind.WEAPON ? null : instantCooldown(buff, kind == RuneKind.TOOL);
+    }
+
+    /**
      * @param shortName use the short name ({@code armorplus.buff.short.<namespace>.<path>}) if there is one
      * @return the buff's name with its level, if it's shown (see {@link BuffNames#showsLevel(BuffInstance)})
      */
@@ -131,6 +152,11 @@ public class ToolTipUtils {
 
     /** Like {@link #addBuffLines(Consumer, List, Function)}, graying out each line whose {@code isEnabled} is false. */
     public static void addBuffLines(Consumer<Component> tooltip, List<BuffInstance> buffs, Function<BuffInstance, Component> prefix, Function<BuffInstance, Boolean> isEnabled) {
+        addBuffLines(tooltip, buffs, prefix, isEnabled, buff -> null);
+    }
+
+    /** Like {@link #addBuffLines(Consumer, List, Function, Function)}, with an optional suffix per buff (null for none), e.g. "(5s cd)". */
+    public static void addBuffLines(Consumer<Component> tooltip, List<BuffInstance> buffs, Function<BuffInstance, Component> prefix, Function<BuffInstance, Boolean> isEnabled, Function<BuffInstance, Component> suffix) {
         for (BuffInstance buff : buffs) {
             if (buff.getBuff() == Buff.NONE) continue;
             boolean enabled = isEnabled.apply(buff);
@@ -139,6 +165,8 @@ public class ToolTipUtils {
             if (start != null) line.append(enabled ? start : start.copy().withStyle(GRAY)).append(" ");
             MutableComponent name = buffName(buff, true);
             line.append(enabled ? name : name.withStyle(GRAY));
+            Component end = suffix.apply(buff);
+            if (end != null) line.append(" ").append(end);
             tooltip.accept(line.withStyle(style -> style.withColor(enabled ? DARK_AQUA : GRAY).withInsertion(BuffGridTooltip.BUFF_LINE)));
         }
     }

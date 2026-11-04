@@ -22,7 +22,8 @@ import java.util.Set;
  * or as the {@code effect} of a datapack rune. Register it in {@link RuneEffectTypes#REGISTRY_KEY}
  * ({@code armorplus:rune_effect_type}) with a {@code DeferredRegister}.
  * <p>
- * The hooks run on the server only, for the players that have the ability and did not switch it off:
+ * The hooks run on the server only, for the players that have the ability and did not switch it off
+ * ({@link #onHit} also runs for mobs attacking with a weapon that has the ability, so its attacker may not be a player):
  * <ul>
  *     <li>armor ({@link BuffParser.Use#ARMOR}): {@link #onWornTick} once a second, {@link #onDamageTaken}</li>
  *     <li>tools ({@link BuffParser.Use#TOOL}): {@link #onHeldTick} once a second, {@link #onBlockBreak}, {@link #onHit}</li>

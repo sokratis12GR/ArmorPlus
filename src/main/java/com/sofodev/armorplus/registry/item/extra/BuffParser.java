@@ -29,8 +29,8 @@ import static com.sofodev.armorplus.ArmorPlus.MODID;
  * The level starts at 1 (level 1 = amplifier 0). Levels are ignored by abilities.
  * <p>
  * Armor entries can end with a {@link SetRequirement}, the pieces of the set the effect needs:
- * {@code "minecraft:night_vision|1@head"}, {@code "minecraft:conduit_power|2@legs,feet"} or {@code "minecraft:haste|2@2"}
- * (any 2 pieces).
+ * {@code "minecraft:night_vision|1@head"}, {@code "minecraft:conduit_power|2@legs,feet"},
+ * {@code "minecraft:speed|1@chest,legs,feet:2"} (any 2 of these pieces) or {@code "minecraft:haste|2@2"} (any 2 pieces).
  */
 public final class BuffParser {
 

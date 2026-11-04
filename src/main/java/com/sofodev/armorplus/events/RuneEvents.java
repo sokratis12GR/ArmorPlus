@@ -20,10 +20,12 @@ import com.sofodev.armorplus.registry.rune.Runes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.food.FoodData;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -37,7 +39,10 @@ import net.neoforged.neoforge.event.level.block.BreakBlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.jspecify.annotations.Nullable;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
 
 /**
  * Socketing (Anvil), removal (Grindstone) and the effects of socketed runes.
@@ -50,6 +55,9 @@ public class RuneEvents {
     private static final int ARMOR_EFFECT_INTERVAL_TICKS = 20;
 
     private static final int SOCKET_ROLL_INTERVAL_TICKS = 20;
+
+    /** The game time each instant effect of a player can fire again, shared by all worn and held gear. */
+    private static final Map<Player, Map<MobEffect, Long>> INSTANT_READY_TIMES = new WeakHashMap<>();
 
     /** Cached buffs depend on the config (enabled runes, disabled buffs, ...). */
     @SubscribeEvent
@@ -166,6 +174,10 @@ public class RuneEvents {
         } else if (buff.isEffect()) {
             var effect = buff.getEffect();
             if (effect == null) return;
+            if (effect.value().isInstantenous()) {
+                applyInstant(player, level, effect.value(), instance.getAmplifier(), held);
+                return;
+            }
             var existing = player.getEffect(effect);
             // also upgrade weaker effects (e.g. from a potion), night vision flashes below 11 seconds
             boolean needsRefresh = existing == null || existing.getAmplifier() < instance.getAmplifier()
@@ -174,6 +186,29 @@ public class RuneEvents {
         } else {
             instance.onInventoryTick(ItemStack.EMPTY, level, player);
         }
+    }
+
+    /**
+     * Fires an instant effect directly: added as a regular effect, it would fire on every tick of its duration. The cooldown
+     * only starts once it fired, so it's ready as soon as the player needs it.
+     */
+    private static void applyInstant(Player player, ServerLevel level, MobEffect effect, int amplifier, boolean held) {
+        if (!wouldHelp(player, effect)) return;
+        Map<MobEffect, Long> readyTimes = INSTANT_READY_TIMES.computeIfAbsent(player, p -> new HashMap<>());
+        long now = level.getGameTime();
+        if (now < readyTimes.getOrDefault(effect, 0L)) return;
+        readyTimes.put(effect, now + ArmorPlusConfig.instantEffectCooldown.get() * 20L);
+        effect.applyInstantenousEffect(level, null, null, player, amplifier, held ? ArmorPlusConfig.heldInstantEffectStrength.get() : 1.0);
+    }
+
+    /** @return false if the effect would be wasted on the player right now: Instant Health at full health, Saturation when full */
+    private static boolean wouldHelp(Player player, MobEffect effect) {
+        if (effect == MobEffects.INSTANT_HEALTH.value()) return player.getHealth() < player.getMaxHealth();
+        if (effect == MobEffects.SATURATION.value()) {
+            FoodData food = player.getFoodData();
+            return food.needsFood() || food.getSaturationLevel() < food.getFoodLevel();
+        }
+        return true;
     }
 
     /**

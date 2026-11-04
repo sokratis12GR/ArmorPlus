@@ -62,7 +62,7 @@ public final class RuneTooltipEvents {
                     BuffInstance buff = Runes.resolve(rune);
                     if (buff != null) {
                         addBuffLines(lines::add, List.of(buff), rune.kind() == RuneKind.WEAPON ? ToolTipUtils::durationPrefix : b -> null,
-                                b -> player == null || !isRuneDisabled(player, rune.kind(), BuffParser.idOf(b.getBuff())));
+                                b -> player == null || !isRuneDisabled(player, rune.kind(), BuffParser.idOf(b.getBuff())), runeSuffix(rune.kind()));
                     } else {
                         lines.add(translate(DARK_GRAY, "tooltip.armorplus.rune.socket_inactive", rune.buffId()));
                     }

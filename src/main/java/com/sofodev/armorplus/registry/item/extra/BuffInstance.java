@@ -5,6 +5,8 @@ import com.sofodev.armorplus.registry.ModPotions;
 import com.sofodev.armorplus.registry.item.armor.SetRequirement;
 import org.jspecify.annotations.Nullable;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -124,8 +126,21 @@ public class BuffInstance {
         if (buff.isEffect()) {
             var holder = buff.getEffect();
             if (holder == null) return;
-            target.addEffect(new MobEffectInstance(holder, durationTicks, amplifier, false, false));
+            if (holder.value().isInstantenous()) {
+                applyInstantOnHit(holder.value(), target, attacker);
+            } else {
+                target.addEffect(new MobEffectInstance(holder, durationTicks, amplifier, false, false));
+            }
         }
+    }
+
+    /** Applies the effect once per hit. The hit's own invulnerability frames would block its damage, so they are lifted for it. */
+    private void applyInstantOnHit(MobEffect effect, LivingEntity target, LivingEntity attacker) {
+        if (!(target.level() instanceof ServerLevel level)) return;
+        int invulnerableTime = target.invulnerableTime;
+        target.invulnerableTime = 0;
+        effect.applyInstantenousEffect(level, attacker, attacker, target, amplifier, 1.0);
+        target.invulnerableTime = Math.max(target.invulnerableTime, invulnerableTime);
     }
 
     /**

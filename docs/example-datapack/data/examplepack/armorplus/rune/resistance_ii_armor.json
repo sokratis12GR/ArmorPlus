@@ -1,7 +1,7 @@
 {
   "kind": "armor",
-  "effect": "minecraft:fire_resistance",
-  "level": 1,
+  "effect": "minecraft:resistance",
+  "level": 2,
   "slots": ["chest", "legs"],
   "loot": [
     { "table": "minecraft:chests/nether_bridge", "chance": 0.2 },

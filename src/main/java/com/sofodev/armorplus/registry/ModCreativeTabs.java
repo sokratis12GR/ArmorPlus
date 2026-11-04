@@ -119,7 +119,7 @@ public class ModCreativeTabs {
                 //misc
                 output.accept(ModItems.THANK_YOU.get());
             }).build());
-    /** The rune tools and every rune that can currently be obtained (depends on the config, see Runes#allObtainableRunes). */
+    /** The rune tools, every rune that can currently be obtained and a rune of every vanilla effect, see Runes#creativeRunes. */
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> AP_RUNES_GROUP = register("runes", () -> CreativeModeTab.builder()
             .icon(() -> new ItemStack(ModItems.ARMOR_RUNE.get()))
             .title(Component.translatable("tabs.armorplus.runes"))
@@ -132,7 +132,7 @@ public class ModCreativeTabs {
                 output.accept(ModItems.SOCKET_PUNCH.get());
                 // the tab can be built before the synced datapack runes were loaded
                 RuneDefinitions.update(parameters.holders());
-                Runes.allObtainableRunes().forEach(rune -> output.accept(RuneItem.create(rune.kind(), rune.entry())));
+                Runes.creativeRunes().forEach(rune -> output.accept(RuneItem.create(rune.kind(), rune.entry())));
             }).build());
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> AP_BLOCK_GROUP = register("blocks", () -> CreativeModeTab.builder()
             .icon(() -> new ItemStack(ModBlocks.INFUSED_LAVA_CRYSTAL.get()))
