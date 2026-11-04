@@ -14,7 +14,19 @@ public class ArmorPlusCommand {
                 .then(Commands.literal("nodecraft").executes(ctx -> nodecraft(ctx.getSource())))
                 .then(Commands.literal("wiki").executes(ctx -> wiki(ctx.getSource())))
                 .then(Commands.literal("support").executes(ctx -> support(ctx.getSource())))
+                .then(Commands.literal("help").executes(ctx -> help(ctx.getSource())))
+                .then(Commands.literal("status").executes(ctx -> status(ctx.getSource())))
+                .then(EffectsCommand.node())
+                .then(RuneCommand.node())
         );
+    }
+
+    private static int help(CommandSourceStack source) {
+        return HelpCommand.execute(source);
+    }
+
+    private static int status(CommandSourceStack source) {
+        return StatusCommand.execute(source);
     }
 
     private static int discord(CommandSourceStack source) {

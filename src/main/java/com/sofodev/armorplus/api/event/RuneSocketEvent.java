@@ -10,6 +10,8 @@ import org.jspecify.annotations.Nullable;
 /**
  * Fired on {@code NeoForge.EVENT_BUS} when a rune that fits is put into an anvil next to equipment, on both sides (like
  * {@code AnvilUpdateEvent}). Canceling it gives no anvil output; {@link #setCost(int)} changes the experience level cost.
+ * <p>
+ * Also fired on the server by {@code /armorplus rune socket}. Canceling it stops the command, which never charges the cost.
  */
 public class RuneSocketEvent extends Event implements ICancellableEvent {
 

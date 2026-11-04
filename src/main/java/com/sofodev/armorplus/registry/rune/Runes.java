@@ -302,6 +302,15 @@ public final class Runes {
         return result;
     }
 
+    /** @return a copy of the equipment without the runes of the buff, or without any runes if the buff is null */
+    public static ItemStack withoutRunes(ItemStack gear, @Nullable String buffId) {
+        ItemStack result = gear.copyWithCount(1);
+        List<RuneData> kept = buffId == null ? List.of() : sockets(gear).stream().filter(rune -> !rune.buffId().equals(buffId)).toList();
+        if (kept.isEmpty()) result.remove(ModDataComponents.SOCKETS.get());
+        else result.set(ModDataComponents.SOCKETS.get(), new Sockets(kept));
+        return result;
+    }
+
     /* ---------------------------------------- Buffs ---------------------------------------- */
 
     /**

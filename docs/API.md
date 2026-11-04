@@ -129,7 +129,7 @@ All events are in `com.sofodev.armorplus.api.event`, are cancelable and fire on 
 
 | Event | Side | Canceling | Can change |
 |---|---|---|---|
-| `RuneSocketEvent` | Both | No anvil output | `setCost` (experience levels) |
+| `RuneSocketEvent` | Both | No anvil output, or `/armorplus rune socket` fails | `setCost` (experience levels, the command ignores it) |
 | `RuneExtractEvent` | Both | No Rune Altar result for that option | `setCost`, `setCatalyst` (`ItemStack.EMPTY` = none) |
 | `RuneApplyEvent` | Server | Skips this application of a socketed rune | Nothing |
 | `SetEffectApplyEvent` | Server | Skips this application of a set effect or a weapon material effect | Nothing |

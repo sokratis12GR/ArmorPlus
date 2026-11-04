@@ -61,6 +61,16 @@
 - Server owners can disable switching with `allowEffectToggles`.
 - Set effects are now recalculated once a second instead of every tick, reducing ArmorPlus's per-player overhead.
 
+### Commands
+- **`/armorplus help`** lists the commands you can use, and **`/armorplus status`** shows which of the main features are switched on.
+- **`/armorplus effects [player]`** lists a player's armor, tool and weapon effects, including switched off ones; **`/armorplus effects reset [player]`** switches them all back on. Using these on other players needs OP.
+- **`/armorplus rune info`** shows the details of the held rune or equipment, and **`/armorplus rune list [armor|weapon|tool]`** lists the available runes.
+- **OP only:**
+  - **`/armorplus rune give <players> <armor|weapon|tool> <effect> [level]`** gives players a rune.
+  - **`/armorplus rune socket <armor|weapon|tool> <effect> [level]`** sockets a rune into the held equipment for free. The usual socketing rules still apply, and other mods can stop it through `RuneSocketEvent`.
+  - **`/armorplus rune unsocket [effect]`** removes one or all runes from the held equipment and destroys them.
+  - **`/armorplus rune sockets <count>`** sets the held equipment's socket count (needs `randomSockets`).
+
 ## Configs
 - **⚠ Breaking: the config is split into several shorter files.** Options that moved or were renamed are reset to their defaults, so re-apply any customizations after updating. You can delete the old `armorplus-common.toml` to start clean.
   - `armorplus-common.toml`: auto-smelting, availability, enchantments and advancements only.
