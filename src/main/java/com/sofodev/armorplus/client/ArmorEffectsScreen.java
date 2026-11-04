@@ -11,8 +11,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.neoforged.neoforge.client.network.ClientPacketDistributor;
@@ -27,17 +25,9 @@ import java.util.Map;
  * effects can be switched on/off for that set (sent to the server, see {@link ToggleEffectPayload}); effects that need
  * more worn pieces are shown greyed out.
  */
-public class ArmorEffectsScreen extends Screen {
+public class ArmorEffectsScreen extends EffectsScreen {
 
-    private static final int COLUMNS = 2;
-    private static final int ROWS = 9;
-    private static final int PER_PAGE = COLUMNS * ROWS;
-    private static final int BUTTON_WIDTH = 150;
-    private static final int BUTTON_HEIGHT = 20;
-    private static final int GAP = 4;
-    private static final int TOP = 44;
-
-    /** One page per source and up to {@link #PER_PAGE} effects (a source with more effects gets several pages). */
+    /** One page per source and as many effects as fit (a source with more effects gets several pages). */
     private record Page(String source, List<Entry> entries) {
     }
 
@@ -47,16 +37,17 @@ public class ArmorEffectsScreen extends Screen {
     private int page;
 
     public ArmorEffectsScreen() {
-        super(Component.translatable("screen.armorplus.armor_effects"));
+        super(Tab.ARMOR);
     }
 
     @Override
     protected void init() {
+        super.init();
         // the client keeps its own cache of the worn runes, which isn't invalidated by server events
         ArmorEffects.invalidate(this.minecraft.player);
         List<Entry> entries = ArmorEffects.entries(this.minecraft.player);
         this.shownState = state(entries);
-        this.pages = paginate(entries);
+        this.pages = paginate(entries, COLUMNS * rows());
         this.page = Math.clamp(this.page, 0, Math.max(0, this.pages.size() - 1));
 
         boolean toggles = ArmorPlusConfig.allowEffectToggles.get();
@@ -74,24 +65,23 @@ public class ArmorEffectsScreen extends Screen {
             this.addRenderableWidget(button);
         }
 
-        int bottom = TOP + ROWS * (BUTTON_HEIGHT + GAP) + 6;
+        int bottom = bottom();
         if (this.pages.size() > 1) {
             this.addRenderableWidget(Button.builder(Component.literal("<"), b -> changePage(-1))
                     .bounds(this.width / 2 - 100 - 24, bottom, 20, BUTTON_HEIGHT).build()).active = this.page > 0;
             this.addRenderableWidget(Button.builder(Component.literal(">"), b -> changePage(1))
                     .bounds(this.width / 2 + 104, bottom, 20, BUTTON_HEIGHT).build()).active = this.page < this.pages.size() - 1;
         }
-        this.addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, b -> this.onClose())
-                .bounds(this.width / 2 - 100, bottom, 200, BUTTON_HEIGHT).build());
+        addDoneButton();
     }
 
-    private static List<Page> paginate(List<Entry> entries) {
+    private static List<Page> paginate(List<Entry> entries, int perPage) {
         Map<String, List<Entry>> bySource = new LinkedHashMap<>();
         for (Entry entry : entries) bySource.computeIfAbsent(entry.source(), s -> new ArrayList<>()).add(entry);
         List<Page> pages = new ArrayList<>();
         bySource.forEach((source, list) -> {
-            for (int start = 0; start < list.size(); start += PER_PAGE) {
-                pages.add(new Page(source, List.copyOf(list.subList(start, Math.min(list.size(), start + PER_PAGE)))));
+            for (int start = 0; start < list.size(); start += perPage) {
+                pages.add(new Page(source, List.copyOf(list.subList(start, Math.min(list.size(), start + perPage)))));
             }
         });
         return pages;
@@ -120,7 +110,6 @@ public class ArmorEffectsScreen extends Screen {
     @Override
     public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
         super.extractRenderState(graphics, mouseX, mouseY, a);
-        graphics.centeredText(this.font, this.title, this.width / 2, 12, 0xFFFFFFFF);
         if (!this.pages.isEmpty()) {
             Component pageTitle = sourceName(this.pages.get(this.page).source()).copy().withStyle(ChatFormatting.GOLD);
             if (this.pages.size() > 1) pageTitle = pageTitle.copy().append(Component.literal("  " + (this.page + 1) + "/" + this.pages.size()).withStyle(ChatFormatting.GRAY));
@@ -171,10 +160,5 @@ public class ArmorEffectsScreen extends Screen {
                     .withStyle(ChatFormatting.RED));
         }
         return tooltip;
-    }
-
-    @Override
-    public boolean isPauseScreen() {
-        return false;
     }
 }

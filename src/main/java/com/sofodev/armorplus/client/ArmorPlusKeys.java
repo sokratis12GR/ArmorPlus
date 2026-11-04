@@ -37,14 +37,15 @@ public final class ArmorPlusKeys {
     @SubscribeEvent
     public static void onClientTick(ClientTickEvent.Post event) {
         Minecraft minecraft = Minecraft.getInstance();
-        while (ARMOR_EFFECTS.consumeClick()) {
-            if (minecraft.player != null && minecraft.screen == null) minecraft.setScreen(new ArmorEffectsScreen());
-        }
-        while (TOOL_EFFECTS.consumeClick()) {
-            if (minecraft.player != null && minecraft.screen == null) minecraft.setScreen(new ToolEffectsScreen());
-        }
-        while (WEAPON_EFFECTS.consumeClick()) {
-            if (minecraft.player != null && minecraft.screen == null) minecraft.setScreen(new WeaponEffectsScreen());
-        }
+        while (ARMOR_EFFECTS.consumeClick()) open(minecraft, EffectsScreen.Tab.ARMOR);
+        while (TOOL_EFFECTS.consumeClick()) open(minecraft, EffectsScreen.Tab.TOOL);
+        while (WEAPON_EFFECTS.consumeClick()) open(minecraft, EffectsScreen.Tab.WEAPON);
+    }
+
+    /** Opens the tab's menu, or tells the player on the action bar why it has nothing to show, so the key doesn't seem broken. */
+    private static void open(Minecraft minecraft, EffectsScreen.Tab tab) {
+        if (minecraft.player == null || minecraft.screen != null) return;
+        if (tab.hasEffects(minecraft.player)) minecraft.setScreen(tab.createScreen());
+        else minecraft.gui.setOverlayMessage(tab.noneMessage(), false);
     }
 }

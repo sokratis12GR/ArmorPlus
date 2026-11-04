@@ -10,8 +10,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.ItemStack;
@@ -24,31 +22,25 @@ import java.util.List;
  * on/off (sent to the server, see {@link ToggleWeaponEffectPayload}); a switched off effect stays off for every weapon.
  * Separate from the {@link ArmorEffectsScreen} and {@link ToolEffectsScreen}.
  */
-public class WeaponEffectsScreen extends Screen {
-
-    private static final int COLUMNS = 2;
-    private static final int ROWS = 9;
-    private static final int BUTTON_WIDTH = 150;
-    private static final int BUTTON_HEIGHT = 20;
-    private static final int GAP = 4;
-    private static final int TOP = 44;
+public class WeaponEffectsScreen extends EffectsScreen {
 
     /** Ids and states shown, to rebuild the buttons when the toggles (synced) or the held weapon change. */
     private List<String> shownState = List.of();
 
     public WeaponEffectsScreen() {
-        super(Component.translatable("screen.armorplus.weapon_effects"));
+        super(Tab.WEAPON);
     }
 
     @Override
     protected void init() {
+        super.init();
         List<Entry> entries = WeaponEffects.entries(this.minecraft.player);
         this.shownState = state(entries);
 
         boolean toggles = ArmorPlusConfig.allowEffectToggles.get();
         int left = this.width / 2 - (COLUMNS * BUTTON_WIDTH + (COLUMNS - 1) * GAP) / 2;
         // a weapon has a few material effects and a handful of runes at most, one page is plenty
-        List<Entry> shown = entries.subList(0, Math.min(entries.size(), COLUMNS * ROWS));
+        List<Entry> shown = entries.subList(0, Math.min(entries.size(), COLUMNS * rows()));
         for (int i = 0; i < shown.size(); i++) {
             Entry entry = shown.get(i);
             int x = left + (i % COLUMNS) * (BUTTON_WIDTH + GAP);
@@ -61,9 +53,7 @@ public class WeaponEffectsScreen extends Screen {
             this.addRenderableWidget(button);
         }
 
-        int bottom = TOP + ROWS * (BUTTON_HEIGHT + GAP) + 6;
-        this.addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, b -> this.onClose())
-                .bounds(this.width / 2 - 100, bottom, 200, BUTTON_HEIGHT).build());
+        addDoneButton();
     }
 
     @Override
@@ -81,7 +71,6 @@ public class WeaponEffectsScreen extends Screen {
     @Override
     public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
         super.extractRenderState(graphics, mouseX, mouseY, a);
-        graphics.centeredText(this.font, this.title, this.width / 2, 12, 0xFFFFFFFF);
         ItemStack weapon = this.minecraft.player.getMainHandItem();
         if (!weapon.isEmpty()) {
             graphics.centeredText(this.font, weapon.getHoverName().copy().withStyle(ChatFormatting.GOLD), this.width / 2, 23, 0xFFFFFFFF);
@@ -99,10 +88,5 @@ public class WeaponEffectsScreen extends Screen {
         return label.append(": ").append(entry.disabled()
                 ? Component.translatable("options.off").withStyle(ChatFormatting.RED)
                 : Component.translatable("options.on").withStyle(ChatFormatting.GREEN));
-    }
-
-    @Override
-    public boolean isPauseScreen() {
-        return false;
     }
 }
