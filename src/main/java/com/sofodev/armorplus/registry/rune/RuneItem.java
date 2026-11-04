@@ -21,6 +21,8 @@ import java.util.Set;
 import java.util.function.Consumer;
 
 import static com.sofodev.armorplus.utils.ToolTipUtils.addBuffLines;
+import static com.sofodev.armorplus.utils.ToolTipUtils.isSneakDown;
+import static com.sofodev.armorplus.utils.ToolTipUtils.showSneakInfo;
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
 import static net.minecraft.ChatFormatting.*;
 
@@ -77,13 +79,17 @@ public class RuneItem extends Item {
                     : translate(GOLD, "tooltip.armorplus.rune.kind." + kind.getSerializedName()));
             BuffInstance buff = Runes.resolve(rune);
             if (buff != null) {
-                tooltip.accept(translate(GREEN, switch (kind) {
-                    case ARMOR -> "tooltip.armorplus.provides";
-                    case WEAPON -> "tooltip.armorplus.applies";
-                    case TOOL -> "tooltip.armorplus.while_held";
-                }));
-                addBuffLines(tooltip, List.of(buff), kind == RuneKind.WEAPON ? ToolTipUtils::durationPrefix : b -> null, b -> true, ToolTipUtils.runeSuffix(kind));
-                tooltip.accept(translate(GRAY, "tooltip.armorplus.rune.socket_hint"));
+                if (isSneakDown()) {
+                    tooltip.accept(translate(GREEN, switch (kind) {
+                        case ARMOR -> "tooltip.armorplus.provides";
+                        case WEAPON -> "tooltip.armorplus.applies";
+                        case TOOL -> "tooltip.armorplus.while_held";
+                    }));
+                    addBuffLines(tooltip, List.of(buff), kind == RuneKind.WEAPON ? ToolTipUtils::durationPrefix : b -> null, b -> true, ToolTipUtils.runeSuffix(kind));
+                    tooltip.accept(translate(GRAY, "tooltip.armorplus.rune.socket_hint"));
+                } else {
+                    showSneakInfo(tooltip, GOLD);
+                }
             } else {
                 tooltip.accept(translate(DARK_GRAY, "tooltip.armorplus.rune.inactive", rune.buffId()));
             }
