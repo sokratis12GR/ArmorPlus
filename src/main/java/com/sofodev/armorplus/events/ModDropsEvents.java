@@ -56,14 +56,14 @@ public class ModDropsEvents {
 
         // Map the mob class to the configuration
         Map<Class<? extends LivingEntity>, MobDropConfig> dropMap = Map.of(
-                WitherBoss.class, MobDropConfig.boss(config.witherBossDrops, "wither_bone", "soul_wither_boss", 0.2f),
-                EnderDragon.class, MobDropConfig.boss(config.enderDragonDrops, "ender_dragon_scale", "soul_ender_dragon", 0.1f),
-                ElderGuardian.class, MobDropConfig.boss(config.elderGuardianDrops, "guardian_scale", "soul_elder_guardian", 0.2f),
-                WitherSkeleton.class, MobDropConfig.mob(config.witherSkeletonDrops, "wither_bone", "soul_wither_skeleton"),
-                Guardian.class, MobDropConfig.mob(config.guardianDrops, "guardian_scale", "soul_guardian"),
-                EnderMan.class, MobDropConfig.mob(config.endermanDrops, null, "soul_enderman"),
-                Blaze.class, MobDropConfig.mob(config.blazeDrops, null, "soul_blaze"),
-                Warden.class, MobDropConfig.mob(config.wardenDrops, "warden_heart", null)
+                WitherBoss.class, MobDropConfig.of(config.witherBossDrops, "wither_bone", "soul_wither_boss"),
+                EnderDragon.class, MobDropConfig.of(config.enderDragonDrops, "ender_dragon_scale", "soul_ender_dragon"),
+                ElderGuardian.class, MobDropConfig.of(config.elderGuardianDrops, "guardian_scale", "soul_elder_guardian"),
+                WitherSkeleton.class, MobDropConfig.of(config.witherSkeletonDrops, "wither_bone", "soul_wither_skeleton"),
+                Guardian.class, MobDropConfig.of(config.guardianDrops, "guardian_scale", "soul_guardian"),
+                EnderMan.class, MobDropConfig.of(config.endermanDrops, null, "soul_enderman"),
+                Blaze.class, MobDropConfig.of(config.blazeDrops, null, "soul_blaze"),
+                Warden.class, MobDropConfig.of(config.wardenDrops, "warden_heart", null)
         );
 
 
@@ -75,56 +75,31 @@ public class ModDropsEvents {
 
         if (cfg == null) return;
 
-        // Trophy
-        if (hasSoulStealer && cfg.trophyEnabled.get()) dropTrophyItem(entity, entity.getType(), cfg.trophyScale);
-
-        // Regular drops
-        if (cfg.regularEnabled.get() && cfg.regularItem != null && RAND.nextDouble() < cfg.regularChance.get()) {
+        // Regular drops (a chance of 0 disables them)
+        if (cfg.regularItem != null && RAND.nextDouble() < cfg.regularChance.get()) {
             int min = cfg.regularMin.get();
             int amount = min + RAND.nextInt(Math.max(cfg.regularMax.get(), min) - min + 1);
             if (amount > 0) dropItem(entity, cfg.regularItem, amount);
         }
 
         // Soul drops
-        if (hasSoulStealer && cfg.soulEnabled.get() && cfg.soulItem != null && RAND.nextDouble() < cfg.soulChance.get()) {
+        if (hasSoulStealer && cfg.soulItem != null && RAND.nextDouble() < cfg.soulChance.get()) {
             dropItem(entity, cfg.soulItem, 1);
         }
     }
 
     /** The config values (resolved lazily, as they can change at runtime) that decide what a mob drops. */
-    private record MobDropConfig(Supplier<Boolean> trophyEnabled, Supplier<Boolean> regularEnabled,
-                                 Supplier<Boolean> soulEnabled, String regularItem, Supplier<Integer> regularMin,
-                                 Supplier<Integer> regularMax, Supplier<Double> regularChance,
-                                 Supplier<Double> soulChance, String soulItem, float trophyScale) {
+    private record MobDropConfig(String regularItem, Supplier<Integer> regularMin, Supplier<Integer> regularMax,
+                                 Supplier<Double> regularChance, Supplier<Double> soulChance, String soulItem) {
 
-        static MobDropConfig boss(ArmorPlusConfig.BossDropConfig c, String regularItem, String soulItem, float trophyScale) {
-            return new MobDropConfig(c.enableTrophyDrops()::get, c.enableRegularDrops()::get, c.enableSoulDrops()::get,
-                    regularItem, c.regularDropMin()::get, c.regularDropMax()::get, c.regularDropChance()::get,
-                    c.soulDropChance()::get, soulItem, trophyScale);
-        }
-
-        static MobDropConfig mob(ArmorPlusConfig.DropConfig c, String regularItem, String soulItem) {
-            return new MobDropConfig(() -> false,
-                    regularItem == null ? () -> false : c.enableRegularDrops()::get,
-                    soulItem == null ? () -> false : c.enableSoulDrops()::get,
-                    regularItem, regularItem == null ? () -> 0 : c.regularDropMin()::get,
+        /** @param regularItem the material, or null if the mob has none (same for {@code soulItem}) */
+        static MobDropConfig of(ArmorPlusConfig.DropConfig c, String regularItem, String soulItem) {
+            return new MobDropConfig(regularItem,
+                    regularItem == null ? () -> 0 : c.regularDropMin()::get,
                     regularItem == null ? () -> 0 : c.regularDropMax()::get,
                     regularItem == null ? () -> 0.0 : c.regularDropChance()::get,
-                    soulItem == null ? () -> 0.0 : c.soulDropChance()::get, soulItem, 0f);
+                    soulItem == null ? () -> 0.0 : c.soulDropChance()::get, soulItem);
         }
-    }
-
-    private static void dropTrophyItem(LivingEntity entity, EntityType<?> type, float scale) {
-        ItemStack trophy = new ItemStack(getAPItem("trophy"));
-        CompoundTag tag = new CompoundTag();
-        SpawnData trophyEntity = new SpawnData();
-        Identifier key = BuiltInRegistries.ENTITY_TYPE.getKey(type);
-        if (key == null) key = Identifier.parse("minecraft:pig");
-        trophyEntity.getEntityToSpawn().putString("id", key.toString());
-        tag.put("DisplayEntity", trophyEntity.getEntityToSpawn().copy());
-        tag.putFloat("EntityScale", scale);
-//        trophy.(tag);
-        if (entity.level() instanceof ServerLevel server) entity.spawnAtLocation(server, trophy);
     }
 
     private static void dropItem(Entity entity, String item, int amount) {

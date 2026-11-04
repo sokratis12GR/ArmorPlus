@@ -2,9 +2,11 @@ package com.sofodev.armorplus.registry.item.armor;
 
 import net.minecraft.world.item.equipment.ArmorType;
 
+import com.sofodev.armorplus.config.ArmorPlusConfig.MaterialConfig;
 import com.sofodev.armorplus.config.AvailabilityConfig;
 import com.sofodev.armorplus.registry.item.extra.Buff;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
+import com.sofodev.armorplus.registry.item.extra.BuffParser;
 import com.sofodev.armorplus.registry.item.extra.DeBuff;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffects;
@@ -27,10 +29,12 @@ import static net.minecraft.ChatFormatting.*;
 public class APArmorItem extends Item {
 
     private final IAPArmor mat;
+    private final EquipmentSlot slot;
 
     public APArmorItem(IAPArmor mat, ArmorType slot) {
         super(buildProperties(mat, slot));
         this.mat = mat;
+        this.slot = slot.getSlot();
     }
 
     private static Item.Properties buildProperties(IAPArmor mat, ArmorType slot) {
@@ -39,44 +43,23 @@ public class APArmorItem extends Item {
         return mat.isImmuneToFire() ? props.fireResistant() : props;
     }
 
-    @Override
-    public void inventoryTick(ItemStack stack, ServerLevel level, Entity owner, EquipmentSlot slot) {
-        if (!(owner instanceof Player player) || !mat.config().enableArmorEffects().get()) return;
-
-        List<BuffInstance> buffs = mat.getBuffInstances() != null ? mat.getBuffInstances().get() : List.of();
-        if (buffs.isEmpty()) return;
-
-        for (BuffInstance instance : buffs) {
-            if (instance.getBuff() == Buff.NONE || instance.getBuff() instanceof DeBuff || !instance.isEnabled()) continue;
-
-            if (instance.getBuff().requiresFullSet() && !areExactMatch(mat, player)) continue;
-
-            if (instance.getBuff().isEffect()) {
-                var effectHolder = instance.getBuff().getEffect();
-                if (effectHolder == null) continue;
-                var existing = player.getEffect(effectHolder);
-                // night vision starts flashing below 11 seconds, so keep it topped up
-                boolean needsRefresh = existing == null
-                        || (effectHolder.value() == MobEffects.NIGHT_VISION.value() && existing.getDuration() <= 220);
-                if (needsRefresh) {
-                    instance.onInventoryTick(stack, level, player);
-                }
-            } else {
-                instance.onInventoryTick(stack, level, player);
-            }
-        }
-    }
+    // Set effects are applied once a second for all worn pieces together, see ArmorEffects and RuneEvents#onPlayerTick
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext level, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag flag) {
-        List<BuffInstance> buffs = mat.getBuffInstances().get();
+        // effects bound to another armor piece ("effectSlots") are listed on that piece only
+        List<BuffInstance> buffs = mat.getBuffInstances().get().stream().filter(buff -> ArmorEffects.shownOn(buff, slot)).toList();
         if (!buffs.isEmpty()) {
             if (isSneakDown()) {
-                tooltip.accept(translate(YELLOW, "tooltip.armorplus.condition", mat.config().enableArmorEffects().get() ? "" : "(DISABLED)"));
-                tooltip.accept(translate(GOLD, "tooltip.armorplus.condition.full_set"));
-                tooltip.accept(translate(GREEN, "tooltip.armorplus.provides"));
+                boolean enabled = mat.config().enableArmorEffects().get();
+                tooltip.accept(effectsHeader("set_effects", enabled));
 
-                addBuffLines(tooltip, buffs);
+                // "[3/4]": worn pieces of this set out of the ones the effect needs, "[0/1]": needs this piece worn.
+                // Tooltips are rebuilt every frame, so this follows equipping, unequipping and breaking pieces
+                Player player = clientPlayer();
+                String source = mat.config() instanceof MaterialConfig cfg ? cfg.name() : "";
+                addBuffLines(tooltip, buffs, buff -> ArmorEffects.progress(player, mat, buff),
+                        buff -> enabled && (player == null || !ArmorEffects.isDisabled(player, ArmorEffects.toggleKey(source, BuffParser.idOf(buff.getBuff())))));
             } else {
                 showSneakInfo(tooltip, mat.getFormatting());
             }

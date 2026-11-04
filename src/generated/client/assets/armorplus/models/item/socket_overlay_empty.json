@@ -1,0 +1,32 @@
+{
+  "elements": [
+    {
+      "faces": {
+        "south": {
+          "texture": "#overlay",
+          "uv": [
+            0,
+            0,
+            6,
+            6
+          ]
+        }
+      },
+      "from": [
+        0,
+        10,
+        8.6
+      ],
+      "to": [
+        6,
+        16,
+        8.6
+      ]
+    }
+  ],
+  "gui_light": "front",
+  "textures": {
+    "overlay": "armorplus:item/socket_empty",
+    "particle": "armorplus:item/socket_empty"
+  }
+}

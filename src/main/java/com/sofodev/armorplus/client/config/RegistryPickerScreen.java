@@ -1,11 +1,11 @@
 package com.sofodev.armorplus.client.config;
 
+import com.sofodev.armorplus.api.RuneEffectType;
 import com.sofodev.armorplus.registry.block.APFrostBlock;
 import com.sofodev.armorplus.registry.block.APLavaBlock;
 import com.sofodev.armorplus.registry.block.ore.CrystalOreBlock;
 import com.sofodev.armorplus.registry.item.armor.APArmorItem;
-import com.sofodev.armorplus.registry.item.extra.Buff;
-import com.sofodev.armorplus.registry.item.extra.DeBuff;
+import com.sofodev.armorplus.registry.item.extra.BuffParser.Use;
 import com.sofodev.armorplus.registry.item.arrow.APArrowItem;
 import com.sofodev.armorplus.registry.item.special.SoulItem;
 import com.sofodev.armorplus.registry.item.tool.APBattleAxeItem;
@@ -14,6 +14,7 @@ import com.sofodev.armorplus.registry.item.tool.APMaceItem;
 import com.sofodev.armorplus.registry.item.tool.APPickaxeItem;
 import com.sofodev.armorplus.registry.item.tool.APShovelItem;
 import com.sofodev.armorplus.registry.item.tool.APSwordItem;
+import com.sofodev.armorplus.registry.rune.RuneEffectTypes;
 import com.sofodev.thedragonlib.client.config.EntryPickerScreen;
 import com.sofodev.thedragonlib.client.config.EntryPickerScreen.Candidate;
 import com.sofodev.thedragonlib.client.config.EntryPickerScreen.Category;
@@ -29,14 +30,15 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.fml.ModList;
+import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 
@@ -119,7 +121,7 @@ public final class RegistryPickerScreen {
             case ALL_ITEMS -> collectItems(false);
             case ALL_BLOCKS -> collectBlocks(false);
             case ENCHANTMENTS -> collectEnchantments();
-            case EFFECTS -> collectEffects();
+            case EFFECTS -> collectEffects(null);
         };
         List<Category> categories = switch (kind) {
             case ITEMS -> ITEM_CATEGORIES;
@@ -161,22 +163,60 @@ public final class RegistryPickerScreen {
         return RegistryCandidates.of(RegistryCandidates.Source.ENCHANTMENT);
     }
 
-    private static List<Candidate> collectEffects() {
+    /**
+     * Mob effects from every mod plus the abilities of the {@link RuneEffectTypes} registry, also those of other mods.
+     *
+     * @param use what the entry is used for, abilities only work for theirs; null for all of them
+     */
+    static List<Candidate> collectEffects(@Nullable Use use) {
         List<Candidate> result = new ArrayList<>();
         ItemStack potion = icon(Items.POTION);
         for (MobEffect effect : BuiltInRegistries.MOB_EFFECT) {
             Identifier id = BuiltInRegistries.MOB_EFFECT.getKey(effect);
+            // The "armorplus" namespace of buff entries is for abilities, so its own mob effects can't be named there.
+            if (use != null && id.getNamespace().equals(MODID)) continue;
             result.add(new Candidate(id.toString(), potion, Component.translatable(effect.getDescriptionId()), effect));
         }
         ItemStack star = icon(Items.NETHER_STAR);
-        Set<String> abilities = new TreeSet<>();
-        for (Buff buff : Buff.values()) if (buff != Buff.NONE && !buff.isEffect()) abilities.add(buff.name().toLowerCase(Locale.ENGLISH));
-        for (DeBuff buff : DeBuff.values()) if (buff != DeBuff.NONE && !buff.isEffect()) abilities.add(buff.name().toLowerCase(Locale.ENGLISH));
-        for (String ability : abilities) {
-            result.add(new Candidate(MODID + ":" + ability, star, Component.translatable("armorplus.buff." + ability), ability));
+        for (RuneEffectType ability : RuneEffectTypes.REGISTRY) {
+            if (use != null && !ability.uses().contains(use)) continue;
+            Identifier id = RuneEffectTypes.REGISTRY.getKey(ability);
+            Component name = ability instanceof RuneEffectTypes.Builtin
+                    ? Component.translatable("armorplus.buff." + id.getPath())
+                    : ability.getDisplayName();
+            result.add(new Candidate(id.toString(), star, name, ability));
         }
         result.sort(Comparator.comparing(Candidate::id));
         return result;
+    }
+
+    /**
+     * Picks effects and abilities for an entry of the given use.
+     *
+     * @see #open
+     */
+    public static void openEffects(Screen parent, @Nullable Use use, Set<String> existing, Consumer<List<String>> onConfirm) {
+        List<Candidate> candidates = collectEffects(use);
+        parent.getMinecraft().setScreen(new EntryPickerScreen(Component.translatable(Kind.EFFECTS.titleKey), parent, candidates,
+                namespaceCategories(candidates), existing, false, LABELS, onConfirm));
+    }
+
+    /**
+     * Finds one of the subsections of a config screen.
+     *
+     * @param onPick receives the key of the section, called after returning to {@code parent}
+     */
+    static void openSection(Screen parent, List<Candidate> sections, Consumer<String> onPick) {
+        parent.getMinecraft().setScreen(new EntryPickerScreen(Component.translatable(APRuleTypes.UI_PREFIX + "find.title"), parent, sections,
+                List.of(ALL), Set.of(), true, LABELS, picked -> onPick.accept(picked.getFirst())));
+    }
+
+    /** The chestplate, sword or spawn egg a config section is named after, if there is one. */
+    static ItemStack sectionIcon(String key) {
+        return Stream.of(Identifier.fromNamespaceAndPath(MODID, key + "_chestplate"), Identifier.fromNamespaceAndPath(MODID, key + "_sword"),
+                        Identifier.withDefaultNamespace(key + "_spawn_egg"))
+                .flatMap(id -> BuiltInRegistries.ITEM.getOptional(id).stream())
+                .findFirst().map(RegistryPickerScreen::icon).orElse(ItemStack.EMPTY);
     }
 
     private static List<Category> namespaceCategories(List<Candidate> candidates) {

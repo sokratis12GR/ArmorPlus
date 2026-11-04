@@ -5,6 +5,8 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.equipment.ArmorType;
 
 import com.sofodev.armorplus.ArmorPlus;
+import com.sofodev.armorplus.config.ArmorPlusStatsConfig;
+import com.sofodev.armorplus.config.ArmorPlusStatsConfig.ArmorStats;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
@@ -105,13 +107,16 @@ public enum APArmorProperties {
         this.repair = repair;
     }
 
+    /**
+     * Builds the material from the configured stats (see {@link ArmorPlusStatsConfig}), so it must not be called before
+     * the STARTUP config is registered.
+     */
     public ArmorMaterial toMaterial() {
+        ArmorStats stats = ArmorPlusStatsConfig.armor(this);
         EnumMap<ArmorType, Integer> defenseMap = new EnumMap<>(ArmorType.class);
-        defenseMap.put(ArmorType.HELMET, damageReduction[0]);
-        defenseMap.put(ArmorType.CHESTPLATE, damageReduction[1]);
-        defenseMap.put(ArmorType.LEGGINGS, damageReduction[2]);
-        defenseMap.put(ArmorType.BOOTS, damageReduction[3]);
-        defenseMap.put(ArmorType.BODY, damageReduction[1]);
+        for (ArmorType type : ArmorType.values()) {
+            defenseMap.put(type, stats.defense(type));
+        }
 
         String namespace = special ? ArmorPlus.MODID : "minecraft";
         TagKey<Item> repairTag = TagKey.create(BuiltInRegistries.ITEM.key(),
@@ -119,12 +124,24 @@ public enum APArmorProperties {
         ResourceKey<EquipmentAsset> assetKey = ResourceKey.create(EquipmentAssets.ROOT_ID,
                 Identifier.fromNamespaceAndPath(namespace, name));
 
-        return new ArmorMaterial(durability, defenseMap, enchantability, soundEvent, toughness,
-                this == ENHANCED_NETHERITE_PROP ? 0.1f : 0.0f, repairTag, assetKey);
+        return new ArmorMaterial(stats.durabilityMultiplier(), defenseMap, stats.enchantability(), soundEvent,
+                stats.toughness(), stats.knockbackResistance(), repairTag, assetKey);
     }
 
+    /** The configured durability multiplier. */
     public int getDurability() {
-        return durability;
+        return ArmorPlusStatsConfig.armor(this).durabilityMultiplier();
+    }
+
+    /** The hardcoded stats, used as the config defaults. */
+    public ArmorStats defaultStats() {
+        return new ArmorStats(durability, damageReduction.clone(), toughness,
+                this == ENHANCED_NETHERITE_PROP ? 0.1f : 0.0f, enchantability);
+    }
+
+    /** Section name in the stats config, matching the names of the main config (e.g. "enhanced_golden"). */
+    public String configName() {
+        return name().toLowerCase(Locale.ENGLISH).replace("_prop", "").replace("enhanced_gold", "enhanced_golden");
     }
 
 

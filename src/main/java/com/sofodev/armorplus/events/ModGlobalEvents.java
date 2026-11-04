@@ -7,6 +7,8 @@ import com.sofodev.armorplus.registry.item.armor.IAPArmor;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import com.sofodev.armorplus.registry.item.extra.IBuff;
 import com.sofodev.armorplus.registry.item.material.FrostCrystalItem;
+import com.sofodev.armorplus.registry.item.armor.ArmorEffects;
+import com.sofodev.armorplus.registry.item.tool.ToolEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -28,10 +30,14 @@ import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 import java.util.UUID;
+import java.util.WeakHashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static com.sofodev.armorplus.registry.item.extra.Buff.FLIGHT;
@@ -50,8 +56,11 @@ public class ModGlobalEvents {
     public static int thunderingTicks = 0;
     private static final String ARMORPLUS_FLIGHT_TAG = "ArmorPlusFlight";
     private static final String ARMORPLUS_PREV_MAYFLY = "ArmorPlusPrevMayfly";
-    private static final int ILLUMINATION_INTERVAL_TICKS = 10;
-    private static final int WARDEN_PACIFY_INTERVAL_TICKS = 5;
+    /** Fallback interval of the flight check, equipment changes apply it right away (see onEquipmentChange). */
+    private static final int FLIGHT_INTERVAL_TICKS = 20;
+    private static final int ILLUMINATION_INTERVAL_TICKS = 20;
+    /** Wardens are also stopped right away by the target change and damage events, this only calms down angry ones. */
+    private static final int WARDEN_PACIFY_INTERVAL_TICKS = 20;
     private static final double WARDEN_PACIFY_RADIUS = 32.0;
 
     private record LitSpot(ServerLevel level, BlockPos pos) {
@@ -59,19 +68,13 @@ public class ModGlobalEvents {
 
     private static final Map<UUID, LitSpot> ILLUMINATED_SPOTS = new ConcurrentHashMap<>();
 
+    /**
+     * @return true if the player gets the buff from their worn ArmorPlus set (enough pieces) or from a socketed armor rune,
+     * and hasn't switched it off. Checked very often (every vanilla game event for sculk immunity, ...), so this is a
+     * cached lookup, see {@link ArmorEffects}.
+     */
     private static boolean isFullArmorWithBuff(Player player, IBuff buff) {
-        for (EquipmentSlot slot : new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET}) {
-            ItemStack stack = player.getItemBySlot(slot);
-            if (stack.getItem() instanceof APArmorItem armor) {
-                IAPArmor mat = armor.getMat();
-                if (areExactMatch(mat, player) && mat.config().enableArmorEffects().get()) {
-                    return mat.getBuffInstances().get().stream()
-                            .map(BuffInstance::getBuff)
-                            .anyMatch(b -> b.equals(buff));
-                }
-            }
-        }
-        return false;
+        return ArmorEffects.has(player, buff);
     }
 
     private static void grantFlight(Player player) {
@@ -146,7 +149,8 @@ public class ModGlobalEvents {
         ILLUMINATED_SPOTS.put(playerId, new LitSpot(level, desired));
     }
 
-    private static void checkAndApplyBuffs(Player player) {
+    /** Applies flight and illumination right away, e.g. after an equipment change or an effect toggle. */
+    public static void checkAndApplyBuffs(Player player) {
         checkAndApplyFlight(player);
 
         if (player.level() instanceof ServerLevel level) {
@@ -175,7 +179,9 @@ public class ModGlobalEvents {
         Level world = player.level();
         if (world.isClientSide()) return;
 
-        checkAndApplyFlight(player);
+        if (player.tickCount % FLIGHT_INTERVAL_TICKS == 0) {
+            checkAndApplyFlight(player);
+        }
         if (world instanceof ServerLevel level && player.tickCount % ILLUMINATION_INTERVAL_TICKS == 0) {
             checkAndApplyIllumination(player, level);
         }
@@ -194,6 +200,8 @@ public class ModGlobalEvents {
     @SubscribeEvent
     public static void onEquipmentChange(LivingEquipmentChangeEvent e) {
         if (e.getEntity() instanceof Player player && !player.level().isClientSide()) {
+            ArmorEffects.invalidate(player);
+            ToolEffects.invalidate(player);
             checkAndApplyBuffs(player);
         }
     }
@@ -201,6 +209,8 @@ public class ModGlobalEvents {
     @SubscribeEvent
     public static void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent e) {
         clearIllumination(e.getEntity().getUUID());
+        ArmorEffects.invalidate(e.getEntity());
+        ToolEffects.invalidate(e.getEntity());
     }
 
 

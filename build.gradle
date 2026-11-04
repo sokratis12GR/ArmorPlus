@@ -73,8 +73,20 @@ repositories {
     maven { url = 'https://cursemaven.com'; content { includeGroup 'curse.maven' } }
 }
 
+// Dependencies that are only present in the dev runs, not required by (or published with) the mod
+configurations {
+    localRuntime
+    runtimeClasspath.extendsFrom localRuntime
+}
+
 dependencies {
-    implementation "curse.maven:thedragonlib-248055:9369985"
+
+//    implementation files("../TheDragonLib/build/libs/thedragonlib-26.1.2-1.3.0-neo.jar")
+     implementation "curse.maven:thedragonlib-248055:9429255"
+
+    compileOnly "curse.maven:jei-238222:9384706"
+    localRuntime "curse.maven:jei-238222:9384706"
+
     implementation "com.geckolib:geckolib-neoforge-26.1.2:5.5.2"
 }
 

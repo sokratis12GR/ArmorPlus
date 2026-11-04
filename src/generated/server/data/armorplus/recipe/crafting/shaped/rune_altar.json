@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "armorplus:runes",
+  "key": {
+    "A": "minecraft:amethyst_shard",
+    "D": "minecraft:diamond",
+    "O": "minecraft:obsidian",
+    "R": "armorplus:blank_rune"
+  },
+  "pattern": [
+    "ARA",
+    "DOD",
+    "OOO"
+  ],
+  "result": {
+    "id": "armorplus:rune_altar"
+  }
+}

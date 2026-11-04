@@ -1,6 +1,9 @@
 package com.sofodev.armorplus.registry.item.extra;
 
+import com.sofodev.armorplus.api.RuneEffectType;
 import com.sofodev.armorplus.registry.ModPotions;
+import com.sofodev.armorplus.registry.item.armor.SetRequirement;
+import org.jspecify.annotations.Nullable;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -24,6 +27,8 @@ public class BuffInstance {
     private IBuff buff;
     private int amplifier;
     private boolean enabled;
+    /** The pieces of the set the effect needs ("@..." in the entry), null for the default, see {@link SetRequirement} */
+    private @Nullable SetRequirement requirement;
 
     public BuffInstance(boolean enabled, IBuff buff, int amplifier) {
         this(enabled ? buff : NONE, amplifier, 20, true);
@@ -140,6 +145,11 @@ public class BuffInstance {
         return this;
     }
 
+    /** @return the effect duration in ticks (on-hit effects of weapons use it as is) */
+    public int getDurationTicks() {
+        return durationTicks;
+    }
+
     public int getAmplifier() {
         return amplifier;
     }
@@ -158,8 +168,18 @@ public class BuffInstance {
         return this;
     }
 
+    public @Nullable SetRequirement getRequirement() {
+        return this.requirement;
+    }
+
+    public BuffInstance setRequirement(@Nullable SetRequirement requirement) {
+        this.requirement = requirement;
+        return this;
+    }
+
     public MutableComponent getTranslatedName() {
         if (this.buff instanceof EffectBuff effectBuff) return effectBuff.getDisplayName().withStyle(DARK_AQUA);
+        if (this.buff instanceof RuneEffectType type) return type.getDisplayName().withStyle(DARK_AQUA);
         String name = this.buff.name().toLowerCase(Locale.ENGLISH);
         return this.buff.isEffect() ? translate(DARK_AQUA, "armorplus.effect." + name) : translate(DARK_AQUA, "armorplus.buff." + name);
     }

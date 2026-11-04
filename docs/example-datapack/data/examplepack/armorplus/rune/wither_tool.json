@@ -1,0 +1,6 @@
+{
+  "kind": "tool",
+  "effect": "minecraft:wither",
+  "level": 1,
+  "seconds": 6
+}

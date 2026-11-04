@@ -1,16 +1,17 @@
 package com.sofodev.armorplus.client.config;
 
 import com.sofodev.armorplus.registry.item.extra.BuffParser;
+import com.sofodev.armorplus.registry.rune.RuneEffectTypes;
 import com.sofodev.thedragonlib.client.config.EntryPicker;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.resources.Identifier;
+import org.jspecify.annotations.Nullable;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.function.Consumer;
-
-import static com.sofodev.armorplus.ArmorPlus.MODID;
 
 /**
  * ArmorPlus-specific {@link EntryPicker} factories, backed by {@link RegistryPickerScreen}.
@@ -39,9 +40,11 @@ public final class APEntryPickers {
 
     /**
      * Picks effects/abilities, producing buff entries: effects get {@code levelSuffix} appended (e.g. "minecraft:haste" + "|1"),
-     * ArmorPlus abilities are added as-is. An empty suffix produces plain ids (used by "disabledBuffs").
+     * abilities are added as-is. An empty suffix produces plain ids (used by "singleLevelEffects").
+     *
+     * @param use what the entries are used for, which decides the abilities offered; null for all of them
      */
-    public static EntryPicker buffs(String levelSuffix) {
+    public static EntryPicker buffs(String levelSuffix, BuffParser.@Nullable Use use) {
         return new EntryPicker() {
             @Override
             public boolean isAvailable() {
@@ -52,8 +55,8 @@ public final class APEntryPickers {
             public void open(Screen parent, List<?> current, Consumer<List<String>> add) {
                 Set<String> existing = new HashSet<>();
                 current.forEach(entry -> existing.add(BuffParser.idOf(entry)));
-                RegistryPickerScreen.open(parent, RegistryPickerScreen.Kind.EFFECTS, existing, false,
-                        ids -> add.accept(ids.stream().map(id -> id.startsWith(MODID + ":") ? id : id + levelSuffix).toList()));
+                RegistryPickerScreen.openEffects(parent, use, existing,
+                        ids -> add.accept(ids.stream().map(id -> RuneEffectTypes.get(Identifier.parse(id)) != null ? id : id + levelSuffix).toList()));
             }
         };
     }

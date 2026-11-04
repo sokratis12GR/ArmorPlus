@@ -20,6 +20,8 @@ import com.sofodev.armorplus.registry.item.special.ThankYouItem;
 import com.sofodev.armorplus.registry.item.tool.*;
 import com.sofodev.armorplus.registry.item.tool.properties.mace.APMaceMaterial;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial;
+import com.sofodev.armorplus.registry.rune.RuneItem;
+import com.sofodev.armorplus.registry.rune.RuneKind;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ArrowItem;
 import net.minecraft.world.item.Item;
@@ -147,6 +149,12 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> LAVA_SHARD = register("lava_shard", () -> new MaterialItem(false, GOLD, RegistryContext.itemProperties()));
     public static final DeferredHolder<Item, Item> FROST_SHARD = register("frost_shard", () -> new MaterialItem(false, AQUA, RegistryContext.itemProperties()));
     public static final DeferredHolder<Item, Item> THANK_YOU = register("thank_you", ThankYouItem::new);
+    //Runes
+    public static final DeferredHolder<Item, Item> BLANK_RUNE = register("blank_rune", () -> new MaterialItem(false, LIGHT_PURPLE, RegistryContext.itemProperties()));
+    public static final DeferredHolder<Item, RuneItem> ARMOR_RUNE = register("armor_rune", () -> new RuneItem(RuneKind.ARMOR));
+    public static final DeferredHolder<Item, RuneItem> WEAPON_RUNE = register("weapon_rune", () -> new RuneItem(RuneKind.WEAPON));
+    public static final DeferredHolder<Item, RuneItem> TOOL_RUNE = register("tool_rune", () -> new RuneItem(RuneKind.TOOL));
+    public static final DeferredHolder<Item, Item> SOCKET_PUNCH = register("socket_punch", () -> new MaterialItem(false, LIGHT_PURPLE, RegistryContext.itemProperties()));
     //public static final DeferredHolder<Item, Item> TROPHY = ITEMS.register("trophy", () -> new TrophyItem(ModBlocks.TROPHY));
 
     static {

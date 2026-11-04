@@ -8,6 +8,7 @@ import com.sofodev.armorplus.registry.block.APFrostBlock;
 import com.sofodev.armorplus.registry.block.APLavaBlock;
 import com.sofodev.armorplus.registry.block.castle.*;
 import com.sofodev.armorplus.registry.block.ore.CrystalOreBlock;
+import com.sofodev.armorplus.registry.block.special.RuneAltarBlock;
 import com.sofodev.armorplus.registry.block.special.SoulBox;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -66,6 +67,7 @@ public class ModBlocks {
     public static final DeferredHolder<Block, Block> SNOW_BRICK_SLAB = registerBlockWithItem("snow_brick_slab", () -> new StoneBrickSlabBlock(SNOW_BRICK.get()));
     public static final DeferredHolder<Block, Block> PETRIFIED_SOULS = registerBlockWithItem("petrified_souls", () -> new APBlock(ofFullCopy(Blocks.TERRACOTTA)));
     public static final DeferredHolder<Block, Block> SOUL_BOX = registerBlockWithItem("soul_box", SoulBox::new);
+    public static final DeferredHolder<Block, Block> RUNE_ALTAR = registerBlockWithItem("rune_altar", RuneAltarBlock::new);
     //    public static final DeferredHolder<?, BlockEntityType<TrophyTile>> TROPHY_TYPE = TILE_ENTITIES.register("trophy", () -> build(BlockEntityType.Builder.of(TrophyTile::new, TROPHY.get())));
 
     static {

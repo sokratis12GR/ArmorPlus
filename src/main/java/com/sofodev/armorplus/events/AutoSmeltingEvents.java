@@ -2,6 +2,8 @@ package com.sofodev.armorplus.events;
 
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.config.ArmorPlusConfig;
+import com.sofodev.armorplus.registry.item.extra.ToolBuff;
+import com.sofodev.armorplus.registry.item.tool.ToolEffects;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.Tool;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -19,7 +21,7 @@ import net.neoforged.neoforge.event.level.block.BreakBlockEvent;
 
 import java.util.List;
 
-/** Applies the COMMON config's "block|result" smelting recipes to Infused Lava tools. */
+/** Applies the COMMON config's "block|result" smelting recipes to Infused Lava tools and Auto-Smelt tool runes. */
 @EventBusSubscriber(modid = ArmorPlus.MODID)
 public final class AutoSmeltingEvents {
     private AutoSmeltingEvents() {
@@ -33,10 +35,7 @@ public final class AutoSmeltingEvents {
         if (player == null || player.isCreative() || player.isSpectator()) return;
 
         ItemStack tool = player.getMainHandItem();
-        if (!(tool.getItem() instanceof Tool apTool)
-                || apTool.getMat() != APToolMaterial.INFUSED_LAVA_MAT
-                || !apTool.getMat().config().enableWeaponEffects().get()
-                || !tool.isCorrectToolForDrops(event.getState())) return;
+        if (!hasAutoSmelt(player, tool) || !tool.isCorrectToolForDrops(event.getState())) return;
 
         // Silk Touch should preserve the original block instead of smelting it.
         if (tool.getEnchantments().entrySet().stream().anyMatch(entry ->
@@ -60,6 +59,16 @@ public final class AutoSmeltingEvents {
         level.addFreshEntity(new ItemEntity(level, event.getPos().getX() + 0.5,
                 event.getPos().getY() + 0.5, event.getPos().getZ() + 0.5, output));
         tool.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+    }
+
+    /**
+     * @return true for Infused Lava tools (with their effects enabled), and for any tool with an Auto-Smelt tool rune
+     * (armorplus:auto_smelt) that the player hasn't switched off
+     */
+    private static boolean hasAutoSmelt(Player player, ItemStack tool) {
+        if (tool.getItem() instanceof Tool apTool && apTool.getMat() == APToolMaterial.INFUSED_LAVA_MAT
+                && apTool.getMat().config().enableWeaponEffects().get()) return true;
+        return ToolEffects.has(player, ToolBuff.AUTO_SMELT);
     }
 
     /** Returns the result of the first "block|result" recipe matching the block, or null. */

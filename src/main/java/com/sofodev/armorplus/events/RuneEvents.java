@@ -1,0 +1,224 @@
+package com.sofodev.armorplus.events;
+
+import com.sofodev.armorplus.ArmorPlus;
+import com.sofodev.armorplus.api.RuneEffectType;
+import com.sofodev.armorplus.api.event.EffectApplyEvent;
+import com.sofodev.armorplus.api.event.RuneApplyEvent;
+import com.sofodev.armorplus.api.event.RuneSocketEvent;
+import com.sofodev.armorplus.api.event.SetEffectApplyEvent;
+import com.sofodev.armorplus.config.ArmorPlusConfig;
+import com.sofodev.armorplus.registry.ModDataComponents;
+import com.sofodev.armorplus.registry.ModItems;
+import com.sofodev.armorplus.registry.item.armor.ArmorEffects;
+import com.sofodev.armorplus.registry.item.extra.BuffInstance;
+import com.sofodev.armorplus.registry.item.extra.IBuff;
+import com.sofodev.armorplus.registry.item.tool.ToolEffects;
+import com.sofodev.armorplus.registry.item.tool.WeaponEffects;
+import com.sofodev.armorplus.registry.rune.RuneData;
+import com.sofodev.armorplus.registry.rune.RuneItem;
+import com.sofodev.armorplus.registry.rune.Runes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.config.ModConfigEvent;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.AnvilUpdateEvent;
+import net.neoforged.neoforge.event.GrindstoneEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.level.block.BreakBlockEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import org.jspecify.annotations.Nullable;
+
+import java.util.List;
+
+/**
+ * Socketing (Anvil), removal (Grindstone) and the effects of socketed runes.
+ * Event based abilities (flight, illumination, sculk immunity, ...) check the socketed runes in {@link ModGlobalEvents}.
+ */
+@EventBusSubscriber(modid = ArmorPlus.MODID)
+public class RuneEvents {
+
+    /** Effects are applied for 20 seconds and refreshed when they run low, so once a second is plenty. */
+    private static final int ARMOR_EFFECT_INTERVAL_TICKS = 20;
+
+    private static final int SOCKET_ROLL_INTERVAL_TICKS = 20;
+
+    /** Cached buffs depend on the config (enabled runes, disabled buffs, ...). */
+    @SubscribeEvent
+    public static void onConfigReload(ModConfigEvent.Reloading event) {
+        if (event.getConfig().getModId().equals(ArmorPlus.MODID)) {
+            ArmorEffects.clearCaches();
+            ToolEffects.clearCaches();
+        }
+    }
+
+    @SubscribeEvent
+    public static void onAnvilUpdate(AnvilUpdateEvent event) {
+        ItemStack gear = event.getLeft();
+        ItemStack right = event.getRight();
+        if (gear.isEmpty()) return;
+
+        if (right.is(ModItems.SOCKET_PUNCH.get())) {
+            if (!Runes.canAddSocket(gear)) return;
+            event.setOutput(Runes.withExtraSocket(gear));
+            event.setXpCost(ArmorPlusConfig.socketPunchXpCost.get());
+            event.setMaterialCost(1);
+            return;
+        }
+
+        RuneData rune = Runes.runeData(right);
+        if (rune == null || Runes.canSocket(gear, rune) != Runes.SocketResult.OK) return;
+
+        RuneSocketEvent socketEvent = NeoForge.EVENT_BUS.post(new RuneSocketEvent(event.getPlayer(), gear, rune, Runes.socketCost(rune)));
+        if (socketEvent.isCanceled()) return;
+
+        event.setOutput(Runes.withRune(gear, rune));
+        event.setXpCost(socketEvent.getCost());
+        event.setMaterialCost(1);
+    }
+
+    /** Equipment rolls its sockets when it's crafted... */
+    @SubscribeEvent
+    public static void onItemCrafted(PlayerEvent.ItemCraftedEvent event) {
+        if (!event.getEntity().level().isClientSide()) {
+            Runes.rollSockets(event.getCrafting(), event.getEntity().getRandom());
+        }
+    }
+
+    /** ...or, if it came from anywhere else (loot, mobs, trades, older worlds), once it's in a player's inventory. */
+    private static void rollInventorySockets(Player player) {
+        Inventory inventory = player.getInventory();
+        for (int slot = 0; slot < inventory.getContainerSize(); slot++) {
+            if (Runes.rollSockets(inventory.getItem(slot), player.getRandom())) inventory.setChanged();
+        }
+    }
+
+    /** @return the single input of the grindstone if it has runes socketed, otherwise null */
+    private static @Nullable ItemStack socketedInput(GrindstoneEvent event) {
+        ItemStack top = event.getTopItem();
+        ItemStack bottom = event.getBottomItem();
+        ItemStack gear = bottom.isEmpty() ? top : top.isEmpty() ? bottom : ItemStack.EMPTY;
+        return gear.isEmpty() || Runes.sockets(gear).isEmpty() ? null : gear;
+    }
+
+    /** Grinding equipment with runes removes the runes first; its enchantments stay until it's ground again. */
+    @SubscribeEvent
+    public static void onGrindstonePlace(GrindstoneEvent.OnPlaceItem event) {
+        ItemStack gear = socketedInput(event);
+        if (gear == null) return;
+
+        ItemStack result = gear.copy();
+        result.remove(ModDataComponents.SOCKETS.get());
+        event.setOutput(result);
+        event.setXp(0);
+    }
+
+    @SubscribeEvent
+    public static void onGrindstoneTake(GrindstoneEvent.OnTakeItem event) {
+        ItemStack gear = socketedInput(event);
+        Player player = event.getPlayer();
+        if (gear == null || player.level().isClientSide() || !ArmorPlusConfig.returnRunesOnRemoval.get()) return;
+
+        for (RuneData rune : Runes.sockets(gear)) {
+            player.getInventory().placeItemBackInInventory(RuneItem.create(rune.kind(), rune.entry()));
+        }
+    }
+
+    /**
+     * Applies the armor effects of the worn sets and socketed runes (see {@link ArmorEffects}) and the tool effects of the
+     * held tool (see {@link ToolEffects}) once a second: piece requirements and the player's own toggles are already taken
+     * into account there.
+     */
+    @SubscribeEvent
+    public static void onPlayerTick(PlayerTickEvent.Post event) {
+        Player player = event.getEntity();
+        if (!(player.level() instanceof ServerLevel level)) return;
+        if (player.tickCount % SOCKET_ROLL_INTERVAL_TICKS == 0) rollInventorySockets(player);
+        if (player.tickCount % ARMOR_EFFECT_INTERVAL_TICKS != 0) return;
+
+        for (ArmorEffects.Entry entry : ArmorEffects.activeEntries(player)) {
+            EffectApplyEvent applyEvent = ArmorEffects.RUNE_SOURCE.equals(entry.source())
+                    ? new RuneApplyEvent(player, entry.buff(), EffectApplyEvent.Context.WORN, ItemStack.EMPTY, null)
+                    : new SetEffectApplyEvent(player, entry.buff(), EffectApplyEvent.Context.WORN, ItemStack.EMPTY, null, entry.source());
+            if (!NeoForge.EVENT_BUS.post(applyEvent).isCanceled()) apply(player, level, entry.buff(), false);
+        }
+        ItemStack tool = player.getMainHandItem();
+        for (BuffInstance instance : ToolEffects.held(player)) {
+            if (!NeoForge.EVENT_BUS.post(new RuneApplyEvent(player, instance, EffectApplyEvent.Context.HELD, tool, null)).isCanceled()) {
+                apply(player, level, instance, true);
+            }
+        }
+    }
+
+    private static void apply(Player player, ServerLevel level, BuffInstance instance, boolean held) {
+        IBuff buff = instance.getBuff();
+        if (buff instanceof RuneEffectType type) {
+            if (held) type.onHeldTick(player, player.getMainHandItem());
+            else type.onWornTick(player);
+        } else if (buff.isEffect()) {
+            var effect = buff.getEffect();
+            if (effect == null) return;
+            var existing = player.getEffect(effect);
+            // also upgrade weaker effects (e.g. from a potion), night vision flashes below 11 seconds
+            boolean needsRefresh = existing == null || existing.getAmplifier() < instance.getAmplifier()
+                    || (effect.value() == MobEffects.NIGHT_VISION.value() && existing.getDuration() <= 220);
+            if (needsRefresh) instance.onInventoryTick(ItemStack.EMPTY, level, player);
+        } else {
+            instance.onInventoryTick(ItemStack.EMPTY, level, player);
+        }
+    }
+
+    /**
+     * Applies the socketed weapon runes and the on-hit debuffs of tool runes of the attacker's main hand on melee hits,
+     * without the ones a player switched off.
+     */
+    @SubscribeEvent
+    public static void onLivingDamage(LivingDamageEvent.Post event) {
+        LivingEntity target = event.getEntity();
+        DamageSource source = event.getSource();
+        if (target.level().isClientSide() || !isMeleeAttack(source)) return;
+        if (!(source.getEntity() instanceof LivingEntity attacker) || source.getDirectEntity() != attacker) return;
+
+        ItemStack weapon = attacker.getMainHandItem();
+        WeaponEffects.hitRunes(weapon, target, attacker);
+        if (attacker instanceof Player player) {
+            for (BuffInstance instance : ToolEffects.onHit(player)) {
+                RuneApplyEvent applyEvent = new RuneApplyEvent(player, instance, EffectApplyEvent.Context.HIT, weapon, target);
+                if (!NeoForge.EVENT_BUS.post(applyEvent).isCanceled()) instance.hitEntity(weapon, target, attacker);
+            }
+        }
+    }
+
+    /** {@link RuneEffectType#onBlockBreak} of the held tool's abilities. */
+    @SubscribeEvent
+    public static void onBlockBreak(BreakBlockEvent event) {
+        Player player = event.getPlayer();
+        if (player == null || player.level().isClientSide()) return;
+        for (BuffInstance instance : ToolEffects.held(player)) {
+            if (instance.getBuff() instanceof RuneEffectType type) type.onBlockBreak(player, player.getMainHandItem(), event);
+        }
+    }
+
+    /** {@link RuneEffectType#onDamageTaken} of the worn armor's abilities. */
+    @SubscribeEvent
+    public static void onDamageTaken(LivingDamageEvent.Pre event) {
+        if (!(event.getEntity() instanceof Player player) || player.level().isClientSide()) return;
+        for (BuffInstance instance : ArmorEffects.active(player)) {
+            if (instance.getBuff() instanceof RuneEffectType type) type.onDamageTaken(player, event);
+        }
+    }
+
+    /** Excludes thorns, explosions etc. Projectiles are excluded by the direct entity check. */
+    private static boolean isMeleeAttack(DamageSource source) {
+        return source.is(DamageTypes.PLAYER_ATTACK) || source.is(DamageTypes.MOB_ATTACK)
+                || source.is(DamageTypes.MOB_ATTACK_NO_AGGRO) || source.is(DamageTypes.MACE_SMASH);
+    }
+}

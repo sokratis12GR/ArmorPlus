@@ -79,6 +79,28 @@ public final class ModBlockModelProvider implements DataProvider {
         simpleCube(writes, cache, "petrified_souls");
 
         soulBox(writes, cache);
+
+        cubeBottomTop(writes, cache, "rune_altar");
+    }
+
+    private void cubeBottomTop(List<CompletableFuture<?>> writes, CachedOutput cache, String name) {
+        JsonObject model = new JsonObject();
+
+        model.addProperty("parent", "minecraft:block/cube_bottom_top");
+
+        JsonObject textures = new JsonObject();
+
+        textures.addProperty("top", MODID + ":block/" + name + "_top");
+
+        textures.addProperty("side", MODID + ":block/" + name + "_side");
+
+        textures.addProperty("bottom", MODID + ":block/" + name + "_bottom");
+
+        model.add("textures", textures);
+
+        saveModel(writes, cache, name, model);
+
+        simpleBlockstate(writes, cache, name, MODID + ":block/" + name);
     }
 
     private void generateSnowBrick(List<CompletableFuture<?>> writes, CachedOutput cache) {

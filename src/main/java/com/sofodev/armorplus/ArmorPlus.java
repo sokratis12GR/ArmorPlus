@@ -2,11 +2,17 @@ package com.sofodev.armorplus;
 
 import com.sofodev.armorplus.client.config.APConfigSectionScreen;
 import com.sofodev.armorplus.config.ArmorPlusConfig;
+import com.sofodev.armorplus.config.ArmorPlusStatsConfig;
 import com.sofodev.armorplus.datagen.DataGenerators;
 import com.sofodev.thedragonlib.client.config.ConfigScreenHelper;
 import com.sofodev.thedragonlib.config.ConfigHelper;
+import com.sofodev.armorplus.registry.ModAttachments;
+import com.sofodev.armorplus.registry.ModDataComponents;
 import com.sofodev.armorplus.registry.ModEnchantmentEffects;
+import com.sofodev.armorplus.registry.ModLootModifiers;
+import com.sofodev.armorplus.registry.ModMenus;
 import com.sofodev.armorplus.registry.block.castle.BrickColor;
+import com.sofodev.armorplus.registry.rune.RuneEffectTypes;
 import com.sofodev.armorplus.registry.item.tool.properties.mace.APMaceMaterial;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolProperties;
 import net.minecraft.world.level.ItemLike;
@@ -65,6 +71,13 @@ public class ArmorPlus {
 
         ArmorPlus.config = ConfigHelper.buildAndRegister(
                 container, ModConfig.Type.COMMON, ArmorPlusConfig::create).values();
+        // One file per topic, so each stays short (see ArmorPlusConfig)
+        ConfigHelper.buildAndRegister(container, ModConfig.Type.COMMON, ArmorPlusConfig.EFFECTS_FILE, ArmorPlusConfig::createEffects);
+        ConfigHelper.buildAndRegister(container, ModConfig.Type.COMMON, ArmorPlusConfig.DROPS_FILE, ArmorPlusConfig::createDrops);
+        ConfigHelper.buildAndRegister(container, ModConfig.Type.COMMON, ArmorPlusConfig.RUNES_FILE, ArmorPlusConfig::createRunes);
+        ConfigHelper.buildAndRegister(container, ModConfig.Type.CLIENT, ArmorPlusConfig::createClient);
+        // Equipment stats are baked into the items, so they load (STARTUP) before anything registers
+        ArmorPlusStatsConfig.register(container);
         //Order of registration per https://gist.github.com/pupnewfster/ea38cf3744f23d6b65d67e6f279d5942
 
         if (FMLEnvironment.getDist().isClient()) {
@@ -76,8 +89,13 @@ public class ArmorPlus {
         ENTITY_TYPES.register(modBus);
         POI_TYPES.register(modBus);
         PROFESSIONS.register(modBus);
+        ModDataComponents.DATA_COMPONENTS.register(modBus);
+        ModAttachments.ATTACHMENT_TYPES.register(modBus);
         ITEMS.register(modBus);
         CREATIVE_MODE_TABS.register(modBus);
+        ModMenus.MENUS.register(modBus);
+        ModLootModifiers.LOOT_MODIFIERS.register(modBus);
+        RuneEffectTypes.register(modBus);
 
         TILE_ENTITIES.register(modBus);
         EFFECTS.register(modBus);

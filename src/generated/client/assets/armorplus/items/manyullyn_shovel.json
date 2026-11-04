@@ -1,6 +1,73 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "armorplus:item/manyullyn_shovel"
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:select",
+          "cases": [
+            {
+              "model": {
+                "type": "minecraft:composite",
+                "models": [
+                  {
+                    "type": "minecraft:model",
+                    "model": "armorplus:item/manyullyn_shovel"
+                  },
+                  {
+                    "type": "minecraft:model",
+                    "model": "armorplus:item/socket_overlay_empty"
+                  }
+                ]
+              },
+              "when": "empty"
+            },
+            {
+              "model": {
+                "type": "minecraft:composite",
+                "models": [
+                  {
+                    "type": "minecraft:model",
+                    "model": "armorplus:item/manyullyn_shovel"
+                  },
+                  {
+                    "type": "minecraft:model",
+                    "model": "armorplus:item/socket_overlay_partial"
+                  }
+                ]
+              },
+              "when": "partial"
+            },
+            {
+              "model": {
+                "type": "minecraft:composite",
+                "models": [
+                  {
+                    "type": "minecraft:model",
+                    "model": "armorplus:item/manyullyn_shovel"
+                  },
+                  {
+                    "type": "minecraft:model",
+                    "model": "armorplus:item/socket_overlay_full"
+                  }
+                ]
+              },
+              "when": "full"
+            }
+          ],
+          "fallback": {
+            "type": "minecraft:model",
+            "model": "armorplus:item/manyullyn_shovel"
+          },
+          "property": "armorplus:socket_state"
+        },
+        "when": "gui"
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "armorplus:item/manyullyn_shovel"
+    },
+    "property": "minecraft:display_context"
   }
 }

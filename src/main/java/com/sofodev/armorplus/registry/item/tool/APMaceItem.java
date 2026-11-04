@@ -65,7 +65,7 @@ public class APMaceItem extends Item implements GeoItem {
         if (!target.level().isClientSide() && mat instanceof APMaceMaterial maceMaterial) {
             APToolMaterial toolMaterial = maceMaterial.getToolMaterial();
             if (toolMaterial.config().enableWeaponEffects().get()) {
-                toolMaterial.getBuffInstances().get().forEach(instance -> instance.hitEntity(stack, target, attacker));
+                WeaponEffects.hit(stack, toolMaterial, target, attacker);
             }
         }
         super.hurtEnemy(stack, target, attacker);

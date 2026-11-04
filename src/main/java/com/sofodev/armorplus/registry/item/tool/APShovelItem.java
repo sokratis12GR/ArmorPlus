@@ -55,7 +55,7 @@ public class APShovelItem extends ShovelItem implements Tool {
     @Override
     public void hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (!target.level().isClientSide() && mat.config().enableWeaponEffects().get()) {
-            mat.getBuffInstances().get().forEach(instance -> instance.hitEntity(stack, target, attacker));
+            WeaponEffects.hit(stack, mat, target, attacker);
         }
         super.hurtEnemy(stack, target, attacker);
     }

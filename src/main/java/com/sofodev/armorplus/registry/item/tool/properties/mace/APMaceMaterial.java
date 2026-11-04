@@ -45,7 +45,6 @@ public enum APMaceMaterial implements IAPMace {
     NETHERITE_MACE(NETHERITE_MAT, HEAVY, 15, 8, PLUS),
     ;
 
-    private final ToolMaterial material;
     private final APToolMaterial toolMaterial;
     private final ChatFormatting rarity;
     private final APMaceType type;
@@ -63,7 +62,6 @@ public enum APMaceMaterial implements IAPMace {
     }
 
     APMaceMaterial(APToolMaterial material, APMaceType type, int cooldown, int range, boolean hasAOE, DestructionShape shape) {
-        this.material = material.get();
         this.toolMaterial = material;
         this.rarity = material.getColor();
         this.type = type;
@@ -79,7 +77,7 @@ public enum APMaceMaterial implements IAPMace {
 
     @Override
     public ToolMaterial get() {
-        return this.material;
+        return this.toolMaterial.get();
     }
 
     @Override
@@ -119,7 +117,7 @@ public enum APMaceMaterial implements IAPMace {
     @Override
     public String toString() {
         return "APMaceMaterial{" +
-                "material=" + material +
+                "material=" + toolMaterial +
                 ", rarity=" + rarity +
                 ", type=" + type +
                 ", cooldown=" + cooldown +

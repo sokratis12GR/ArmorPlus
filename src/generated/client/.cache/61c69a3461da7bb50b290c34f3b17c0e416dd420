@@ -1,4 +1,4 @@
-// 26.1.2	2026-09-30T01:36:32.7499904	ArmorPlus Block Models and Blockstates
+// 26.1.2	2026-11-03T12:25:29.2720749	ArmorPlus Block Models and Blockstates
 1eac57b2ef15633093cd45137b755e9254e0c7a8 assets/armorplus/blockstates/black_castle_block.json
 44e50c96d74e6ab84a1285d14718b8e668c660a9 assets/armorplus/blockstates/black_castle_block_corner.json
 2209b7cbce739badd486f32b9bb0adad86cfc8c0 assets/armorplus/blockstates/black_castle_block_slab.json
@@ -182,6 +182,7 @@ d32fcdfd2134a1c8c1e17febbe8728a0332bf8a5 assets/armorplus/blockstates/red_stone_
 38ac6d239fef52560100a245d3f10ab316832560 assets/armorplus/blockstates/red_stone_brick_stairs.json
 3369aa57011a3d5f8f7ca342cbd15743af5ddc21 assets/armorplus/blockstates/red_stone_brick_tower.json
 723493a9cab3ce54092214cf77a62debcf9cebc0 assets/armorplus/blockstates/red_stone_brick_wall.json
+0edb6ce0d788887da5190234f3f2f4b306d2dac8 assets/armorplus/blockstates/rune_altar.json
 32510350d40c86d479f2d2f95cd4e058e2ba6a66 assets/armorplus/blockstates/snow_brick.json
 f81a229e997eec242a953380602d6b35d9b8482e assets/armorplus/blockstates/snow_brick_slab.json
 c7be0d6912edfea7443d233486f75e3523a999e3 assets/armorplus/blockstates/snow_brick_stairs.json
@@ -561,6 +562,7 @@ ecd134f9f6d3bdbee1a5763d7c7be02bacdb5203 assets/armorplus/models/block/red_stone
 95b3ee400c74cab3f6c1f78c78f03f423e5dd87a assets/armorplus/models/block/red_stone_brick_wall_post.json
 134d24a7b61b34f691120eacea6dcde736e0cc0a assets/armorplus/models/block/red_stone_brick_wall_side.json
 ce5c10dea9cdd27f8f27479c3ee75ad175d3598a assets/armorplus/models/block/red_stone_brick_wall_side_tall.json
+5dbb223a3031c0c4218781029b389f644fdca36a assets/armorplus/models/block/rune_altar.json
 47d4d26e765ba4cf34c4608286bf9d28fbf4e2e9 assets/armorplus/models/block/snow_brick.json
 6c934dae163e6470462e2dd9fa4b828d6a12e93e assets/armorplus/models/block/snow_brick_slab.json
 81887f4cad5f4d51324c3ca40aa250323f88f7f0 assets/armorplus/models/block/snow_brick_slab_top.json

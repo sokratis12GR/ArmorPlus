@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "armorplus:runes",
+  "key": {
+    "A": "minecraft:amethyst_shard",
+    "D": "minecraft:diamond",
+    "S": "armorplus:obsidian_stick"
+  },
+  "pattern": [
+    "  D",
+    " A ",
+    "S  "
+  ],
+  "result": {
+    "id": "armorplus:socket_punch"
+  }
+}

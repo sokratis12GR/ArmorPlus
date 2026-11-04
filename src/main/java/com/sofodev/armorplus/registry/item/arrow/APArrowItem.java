@@ -36,6 +36,7 @@ public class APArrowItem extends ArrowItem {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag flag) {
         type.appendHoverText(tooltip);
+        super.appendHoverText(stack, ctx, display, tooltip, flag);
     }
 
     @Override

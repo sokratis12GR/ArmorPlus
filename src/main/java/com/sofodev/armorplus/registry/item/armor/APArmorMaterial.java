@@ -67,12 +67,13 @@ public enum APArmorMaterial implements IAPArmor {
     GLOWSTONE(GLOWSTONE_PROP, YELLOW, () -> config.glowstoneMaterial),
     HONEY(HONEY_PROP, GOLD, () -> config.honeyMaterial);
 
-    private final ArmorMaterial armor;
+    private final APArmorProperties properties;
     private final boolean isImmuneToFire;
     private final Supplier<MaterialConfig> materialConfig;
     private final Supplier<List<BuffInstance>> buffs;
     private final net.minecraft.ChatFormatting formatting;
-    private final int durability;
+    /** Built on first use (item registration), once the stats config has loaded. */
+    private ArmorMaterial armor;
 
 
     APArmorMaterial(APArmorProperties armor, net.minecraft.ChatFormatting formatting, Supplier<MaterialConfig> materialConfig) {
@@ -80,8 +81,7 @@ public enum APArmorMaterial implements IAPArmor {
     }
 
     APArmorMaterial(APArmorProperties armor, boolean isImmuneToFire, net.minecraft.ChatFormatting formatting, Supplier<MaterialConfig> materialConfig) {
-        this.durability = armor.getDurability();
-        this.armor = armor.toMaterial();
+        this.properties = armor;
         this.isImmuneToFire = isImmuneToFire;
         this.materialConfig = materialConfig;
         this.buffs = () -> {
@@ -95,7 +95,7 @@ public enum APArmorMaterial implements IAPArmor {
      * durability for each piece
      */
     public int getDurability(ArmorType type) {
-        return MAX_DAMAGE_ARRAY[type.getSlot().getIndex()] * durability;
+        return MAX_DAMAGE_ARRAY[type.getSlot().getIndex()] * properties.getDurability();
     }
 
     /**
@@ -112,6 +112,7 @@ public enum APArmorMaterial implements IAPArmor {
 
     @Override
     public ArmorMaterial get() {
+        if (this.armor == null) this.armor = this.properties.toMaterial();
         return this.armor;
     }
 

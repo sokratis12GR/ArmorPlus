@@ -1,0 +1,10 @@
+{
+  "kind": "armor",
+  "effect": "minecraft:invisibility",
+  "level": 1,
+  "slots": ["chest"],
+  "socket_cost": 35,
+  "loot": [
+    { "table": "minecraft:chests/woodland_mansion", "chance": 0.05 }
+  ]
+}

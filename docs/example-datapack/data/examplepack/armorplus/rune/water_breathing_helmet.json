@@ -1,0 +1,8 @@
+{
+  "kind": "armor",
+  "effect": "minecraft:water_breathing",
+  "level": 1,
+  "slots": ["head"],
+  "socket_cost": 8,
+  "extraction": { "extractable": false }
+}

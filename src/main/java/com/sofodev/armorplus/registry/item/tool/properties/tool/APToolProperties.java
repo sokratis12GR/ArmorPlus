@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.item.tool.properties.tool;
 
+import com.sofodev.armorplus.config.ArmorPlusStatsConfig;
+import com.sofodev.armorplus.config.ArmorPlusStatsConfig.ToolStats;
 import com.sofodev.armorplus.registry.item.armor.APRepair;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
@@ -10,6 +12,8 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+
+import java.util.Locale;
 
 import static net.minecraft.world.item.Items.*;
 
@@ -75,10 +79,30 @@ public enum APToolProperties {
 //        return this.harvestLevel;
 //    }
 
+    /**
+     * Builds the material from the configured stats (see {@link ArmorPlusStatsConfig}), so it must not be called before
+     * the STARTUP config is registered.
+     */
     public ToolMaterial material() {
+        ToolStats stats = ArmorPlusStatsConfig.tool(this);
         TagKey<Item> repairTag = TagKey.create(BuiltInRegistries.ITEM.key(),
                 Identifier.fromNamespaceAndPath("armorplus", "repairs_" + name().toLowerCase()));
-        return new ToolMaterial(incorrectBlocksForDrops, maxUses, efficiency, attackDamage, enchantability, repairTag);
+        return new ToolMaterial(incorrectBlocksForDrops, stats.durability(), stats.miningSpeed(), stats.attackDamage(),
+                stats.enchantability(), repairTag);
+    }
+
+    /** The hardcoded stats, used as the config defaults. */
+    public ToolStats defaultStats() {
+        return new ToolStats(maxUses, efficiency, attackDamage, enchantability);
+    }
+
+    /** Section name in the stats config, matching the names of the main config (e.g. "enhanced_golden"). */
+    public String configName() {
+        String name = name().toLowerCase(Locale.ENGLISH).replace("_prop", "");
+        return switch (this) {
+            case CHAINMAIL_PROP, GOLDEN_PROP, COPPER_PROP, IRON_PROP, DIAMOND_PROP, NETHERITE_PROP -> "enhanced_" + name;
+            default -> name;
+        };
     }
 
     @Override

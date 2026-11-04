@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "armorplus:block/rune_altar_bottom",
+    "side": "armorplus:block/rune_altar_side",
+    "top": "armorplus:block/rune_altar_top"
+  }
+}

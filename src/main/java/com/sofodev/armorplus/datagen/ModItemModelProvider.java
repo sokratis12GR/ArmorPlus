@@ -37,6 +37,13 @@ public final class ModItemModelProvider implements DataProvider {
 
         Set<DeferredHolder<Item, ? extends Item>> flatItems = new LinkedHashSet<>();
 
+        collectSocketable();
+        for (String state : SOCKET_STATES) {
+            writes.add(DataProvider.saveStable(cache, socketOverlayModel(state), modelsRoot.resolve("socket_overlay_" + state + ".json")));
+        }
+
+        add(flatItems, BLANK_RUNE, ARMOR_RUNE, WEAPON_RUNE, TOOL_RUNE, SOCKET_PUNCH);
+
         writes.add(DataProvider.saveStable(cache, handheldSword(), modelsRoot.resolve("handheld_sword.json")));
 
         writes.add(DataProvider.saveStable(cache, handheldBattleAxe(), modelsRoot.resolve("handheld_battle_axe.json")));
@@ -115,6 +122,103 @@ public final class ModItemModelProvider implements DataProvider {
     }
 
     private static final String[] TRIM_MATERIALS = {"quartz", "iron", "netherite", "redstone", "copper", "gold", "emerald", "diamond", "lapis", "amethyst"};
+
+    /** Values of the "armorplus:socket_state" item model property that show an overlay, see SocketStateProperty. */
+    private static final String[] SOCKET_STATES = {"empty", "partial", "full"};
+
+    /** Paths of the equipment that can hold runes, their client items get the socket overlay. */
+    private final Set<String> socketable = new java.util.HashSet<>();
+
+    private void collectSocketable() {
+        for (DeferredHolder<Item, ? extends Item> armor : allArmor()) socketable.add(armor.getId().getPath());
+        for (DeferredHolder<Item, Item>[] tools : java.util.List.of(SWORDS, BATTLE_AXES, PICKAXES, SHOVELS, MACES)) {
+            for (DeferredHolder<Item, Item> tool : tools) socketable.add(tool.getId().getPath());
+        }
+    }
+
+    /**
+     * The socket symbol, a flat quad in the top left corner just in front of the item (generated item models span z 7.5 - 8.5).
+     */
+    private JsonObject socketOverlayModel(String state) {
+        String texture = MODID + ":item/socket_" + state;
+
+        JsonObject textures = new JsonObject();
+        textures.addProperty("overlay", texture);
+        textures.addProperty("particle", texture);
+
+        JsonObject face = new JsonObject();
+        JsonArray uv = new JsonArray();
+        uv.add(0);
+        uv.add(0);
+        uv.add(6);
+        uv.add(6);
+        face.add("uv", uv);
+        face.addProperty("texture", "#overlay");
+        JsonObject faces = new JsonObject();
+        faces.add("south", face);
+
+        JsonArray from = new JsonArray();
+        from.add(0);
+        from.add(10);
+        from.add(8.6);
+        JsonArray to = new JsonArray();
+        to.add(6);
+        to.add(16);
+        to.add(8.6);
+        JsonObject element = new JsonObject();
+        element.add("from", from);
+        element.add("to", to);
+        element.add("faces", faces);
+        JsonArray elements = new JsonArray();
+        elements.add(element);
+
+        JsonObject model = new JsonObject();
+        model.addProperty("gui_light", "front");
+        model.add("textures", textures);
+        model.add("elements", elements);
+        return model;
+    }
+
+    /**
+     * Wraps the client item model of socketable equipment: in GUIs the "armorplus:socket_state" property layers the matching
+     * socket overlay on top of the item, everywhere else (and for state "none") the item renders as before.
+     */
+    private JsonObject withSocketOverlay(String path, JsonObject model) {
+        if (!socketable.contains(path)) return model;
+
+        JsonArray stateCases = new JsonArray();
+        for (String state : SOCKET_STATES) {
+            JsonArray models = new JsonArray();
+            models.add(model.deepCopy());
+            models.add(modelRef("socket_overlay_" + state));
+
+            JsonObject composite = new JsonObject();
+            composite.addProperty("type", "minecraft:composite");
+            composite.add("models", models);
+
+            JsonObject entry = new JsonObject();
+            entry.addProperty("when", state);
+            entry.add("model", composite);
+            stateCases.add(entry);
+        }
+
+        JsonObject guiCase = new JsonObject();
+        guiCase.addProperty("when", "gui");
+        guiCase.add("model", select(MODID + ":socket_state", stateCases, model));
+        JsonArray contextCases = new JsonArray();
+        contextCases.add(guiCase);
+
+        return select("minecraft:display_context", contextCases, model);
+    }
+
+    private JsonObject select(String property, JsonArray cases, JsonObject fallback) {
+        JsonObject select = new JsonObject();
+        select.addProperty("type", "minecraft:select");
+        select.addProperty("property", property);
+        select.add("cases", cases);
+        select.add("fallback", fallback.deepCopy());
+        return select;
+    }
 
     private Set<DeferredHolder<Item, ? extends com.sofodev.armorplus.registry.item.armor.APArmorItem>> allArmor() {
         Set<DeferredHolder<Item, ? extends com.sofodev.armorplus.registry.item.armor.APArmorItem>> result = new LinkedHashSet<>();
@@ -211,7 +315,7 @@ public final class ModItemModelProvider implements DataProvider {
 
         JsonObject clientItem = new JsonObject();
 
-        clientItem.add("model", select);
+        clientItem.add("model", withSocketOverlay(path, select));
 
         writes.add(DataProvider.saveStable(cache, clientItem, itemsRoot.resolve(path + ".json")));
 
@@ -356,7 +460,7 @@ public final class ModItemModelProvider implements DataProvider {
         special.add("model", specialRenderer);
 
         JsonObject clientItem = new JsonObject();
-        clientItem.add("model", special);
+        clientItem.add("model", withSocketOverlay(path, special));
 
         JsonObject baseModel = texturedModel("minecraft:item/handheld", MODID + ":item/" + path);
         baseModel.add("display", maceDisplayTransforms());
@@ -411,7 +515,7 @@ public final class ModItemModelProvider implements DataProvider {
 
         JsonObject clientItem = new JsonObject();
 
-        clientItem.add("model", modelRef);
+        clientItem.add("model", withSocketOverlay(path, modelRef));
 
         return java.util.List.of(DataProvider.saveStable(cache, model, modelsRoot.resolve(path + ".json")), DataProvider.saveStable(cache, clientItem, itemsRoot.resolve(path + ".json")));
     }

@@ -1,0 +1,9 @@
+{
+  "kind": "tool",
+  "effect": "minecraft:haste",
+  "level": 3,
+  "socket_cost": 30,
+  "loot": [
+    { "table": "minecraft:chests/ancient_city", "chance": 0.05 }
+  ]
+}

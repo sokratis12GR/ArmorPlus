@@ -1,5 +1,8 @@
 package com.sofodev.armorplus.registry;
 
+import com.sofodev.armorplus.registry.rune.RuneDefinitions;
+import com.sofodev.armorplus.registry.rune.RuneItem;
+import com.sofodev.armorplus.registry.rune.Runes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -116,6 +119,21 @@ public class ModCreativeTabs {
                 //misc
                 output.accept(ModItems.THANK_YOU.get());
             }).build());
+    /** The rune tools and every rune that can currently be obtained (depends on the config, see Runes#allObtainableRunes). */
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> AP_RUNES_GROUP = register("runes", () -> CreativeModeTab.builder()
+            .icon(() -> new ItemStack(ModItems.ARMOR_RUNE.get()))
+            .title(Component.translatable("tabs.armorplus.runes"))
+            .backgroundTexture(Identifier.fromNamespaceAndPath(MODID, "textures/gui/container/creative_inventory/tab_armorplus.png"))
+            .withLabelColor(0xC070FF)
+            .withSearchBar()
+            .displayItems((parameters, output) -> {
+                output.accept(RUNE_ALTAR.get());
+                output.accept(ModItems.BLANK_RUNE.get());
+                output.accept(ModItems.SOCKET_PUNCH.get());
+                // the tab can be built before the synced datapack runes were loaded
+                RuneDefinitions.update(parameters.holders());
+                Runes.allObtainableRunes().forEach(rune -> output.accept(RuneItem.create(rune.kind(), rune.entry())));
+            }).build());
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> AP_BLOCK_GROUP = register("blocks", () -> CreativeModeTab.builder()
             .icon(() -> new ItemStack(ModBlocks.INFUSED_LAVA_CRYSTAL.get()))
             .title(Component.translatable("tabs.armorplus.blocks"))
@@ -142,6 +160,7 @@ public class ModCreativeTabs {
                 output.accept(SNOW_BRICK_SLAB.get());
                 output.accept(PETRIFIED_SOULS.get());
                 output.accept(SOUL_BOX.get());
+                output.accept(RUNE_ALTAR.get());
 
                 IntStream.range(0, AP_STONE_BRICKS_LENGTH).forEach(index -> {
                     String color = values()[index].getName();

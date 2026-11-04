@@ -2,6 +2,7 @@ package com.sofodev.armorplus.config;
 
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import com.sofodev.armorplus.registry.item.extra.BuffParser;
+import com.sofodev.armorplus.registry.rune.RuneOverrides;
 import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.common.ModConfigSpec.BooleanValue;
@@ -9,11 +10,38 @@ import net.neoforged.neoforge.common.ModConfigSpec.ConfigValue;
 
 import java.util.List;
 
-import static com.sofodev.armorplus.ArmorPlus.MODNAME;
 import static java.util.Arrays.asList;
 
+/**
+ * All ArmorPlus config values (except the equipment stats, see {@link ArmorPlusStatsConfig}), split over several files so
+ * each stays short:
+ * <ul>
+ *     <li>{@code armorplus-common.toml} ({@link #create}): auto-smelting, availability, enchantments, advancements</li>
+ *     <li>{@value #EFFECTS_FILE} ({@link #createEffects}): set effect rules and each material's armor and weapon effects</li>
+ *     <li>{@value #DROPS_FILE} ({@link #createDrops}): mob and boss drops</li>
+ *     <li>{@value #RUNES_FILE} ({@link #createRunes}): runes, sockets and extraction</li>
+ *     <li>{@code armorplus-client.toml} ({@link #createClient}): tooltips and overlays (client side)</li>
+ * </ul>
+ */
 public class ArmorPlusConfig {
 
+    public static final String EFFECTS_FILE = "armorplus-effects.toml";
+    public static final String DROPS_FILE = "armorplus-drops.toml";
+    public static final String RUNES_FILE = "armorplus-runes.toml";
+
+    /* ---------------------------------------- armorplus-common.toml ---------------------------------------- */
+    public static BooleanValue enableAutoSmelting;
+    public static ConfigValue<List<? extends String>> autoSmeltingRecipes;
+    public static ConfigValue<List<? extends String>> hiddenItems;
+    public static ConfigValue<List<? extends String>> hiddenBlocks;
+    public static ConfigValue<List<? extends String>> enchantsThatWontWorkWithSoulHarden;
+    public static BooleanValue enableThankYouAdvancement;
+
+    /* ---------------------------------------- armorplus-effects.toml ---------------------------------------- */
+    public static ConfigValue<Integer> defaultSetPieces;
+    public static BooleanValue allowEffectToggles;
+    public static ConfigValue<List<? extends String>> effectSlots;
+    public static ConfigValue<List<? extends String>> singleLevelEffects;
     public static MaterialConfig coalMaterial;
     public static MaterialConfig lapisMaterial;
     public static MaterialConfig redstoneMaterial;
@@ -45,22 +73,44 @@ public class ArmorPlusConfig {
     public static MaterialConfig quartzMaterial;
     public static MaterialConfig glowstoneMaterial;
     public static MaterialConfig honeyMaterial;
-    public static BooleanValue enableAutoSmelting;
-    public static ConfigValue<List<? extends String>> autoSmeltingRecipes;
-    public static ConfigValue<List<? extends String>> hiddenItems;
-    public static ConfigValue<List<? extends String>> hiddenBlocks;
-    public static ConfigValue<List<? extends String>> enchantsThatWontWorkWithSoulHarden;
-    public static BooleanValue enableThankYouAdvancement;
-    public static BooleanValue enableLoreFlavor;
-    public static BooleanValue enableLoreInfo;
-    public static BossDropConfig witherBossDrops;
-    public static BossDropConfig enderDragonDrops;
-    public static BossDropConfig elderGuardianDrops;
+
+    /* ---------------------------------------- armorplus-drops.toml ---------------------------------------- */
+    public static DropConfig witherBossDrops;
+    public static DropConfig enderDragonDrops;
+    public static DropConfig elderGuardianDrops;
     public static DropConfig witherSkeletonDrops;
     public static DropConfig guardianDrops;
     public static DropConfig endermanDrops;
     public static DropConfig blazeDrops;
     public static DropConfig wardenDrops;
+
+    /* ---------------------------------------- armorplus-runes.toml ---------------------------------------- */
+    public static BooleanValue enableRunes;
+    public static BooleanValue allowNonArmorPlusGear;
+    public static BooleanValue returnRunesOnRemoval;
+    public static ConfigValue<List<? extends String>> runeOverrides;
+    public static BooleanValue randomSockets;
+    public static ConfigValue<Integer> socketXpCost;
+    public static BooleanValue enableSocketPunch;
+    public static ConfigValue<Integer> socketPunchXpCost;
+    public static ConfigValue<Integer> maxArmorSockets;
+    public static ConfigValue<List<? extends Integer>> armorSocketWeights;
+    public static ConfigValue<Integer> maxWeaponSockets;
+    public static ConfigValue<List<? extends Integer>> weaponSocketWeights;
+    public static ConfigValue<Integer> maxToolSockets;
+    public static ConfigValue<List<? extends Integer>> toolSocketWeights;
+    public static ConfigValue<Integer> extractionBaseCost;
+    public static ConfigValue<Integer> extractionCostPerLevel;
+    public static ConfigValue<Integer> extractionLevelReduction;
+    public static BooleanValue destroySourceOnExtract;
+    public static ConfigValue<Double> extractionDurabilityCost;
+    public static ConfigValue<List<? extends String>> worldRunes;
+    public static ConfigValue<List<? extends String>> runeLootSources;
+
+    /* ---------------------------------------- armorplus-client.toml ---------------------------------------- */
+    public static BooleanValue enableLoreFlavor;
+    public static BooleanValue enableLoreInfo;
+    public static BooleanValue showSocketOverlay;
 
 
     public static boolean isIdentifier(Object value) {
@@ -76,6 +126,45 @@ public class ArmorPlusConfig {
         return parts.length == 2 && isIdentifier(parts[0].trim()) && isIdentifier(parts[1].trim());
     }
 
+    /** An "id|slots" pair with comma separated slots head, chest, legs and feet, e.g. "minecraft:conduit_power|legs,feet". */
+    public static boolean isEffectSlot(Object value) {
+        if (!(value instanceof String s)) return false;
+        String[] parts = s.split("\\|", -1);
+        if (parts.length != 2 || !isIdentifier(parts[0].trim())) return false;
+        for (String slot : parts[1].split(",", -1)) {
+            if (!List.of("head", "chest", "legs", "feet").contains(slot.trim())) return false;
+        }
+        return true;
+    }
+
+    /** Socket count weights, one non-negative weight per socket count (index 0 = no sockets). */
+    public static boolean isWeight(Object value) {
+        return value instanceof Integer i && i >= 0;
+    }
+
+    /** A "kind|buff entry" pair, e.g. "armor|minecraft:luck|1", "weapon|minecraft:poison|1|5" or "tool|minecraft:haste|2". */
+    public static boolean isWorldRune(Object value) {
+        if (!(value instanceof String s)) return false;
+        int split = s.indexOf('|');
+        if (split < 0) return false;
+        String kind = s.substring(0, split).trim();
+        return (kind.equals("armor") || kind.equals("weapon") || kind.equals("tool")) && BuffParser.isValid(s.substring(split + 1));
+    }
+
+    /** A "loot_table|chance" pair, e.g. "minecraft:chests/ancient_city|0.15". */
+    public static boolean isLootSource(Object value) {
+        if (!(value instanceof String s)) return false;
+        String[] parts = s.split("\\|", -1);
+        if (parts.length != 2 || !isIdentifier(parts[0].trim())) return false;
+        try {
+            double chance = Double.parseDouble(parts[1].trim());
+            return chance >= 0.0 && chance <= 1.0;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    /** armorplus-common.toml: the general options. */
     public static ArmorPlusConfig create(ModConfigSpec.Builder builder) {
         enableAutoSmelting = (builder.comment("Infused Lava tool auto-smelting")
                 .push("autoSmelting").comment("Enable automatic smelting of configured mined blocks")
@@ -116,20 +205,76 @@ public class ArmorPlusConfig {
                         asList("minecraft:mending", "minecraft:unbreaking", "minecraft:vanishing_curse"),
                         () -> "modid:enchantment", ArmorPlusConfig::isIdentifier)
         );
-        //Advancements
         enableThankYouAdvancement = (builder.pop().comment("Configure advancements")
                 .push("advancements").comment("Enable/Disable the Thank You 6M advancement")
                 .define("enableThankYou6M", true));
-        enableLoreFlavor = (builder.pop().comment("Configure item tooltips (client side)")
-                .push("tooltips").comment("Show the flavor (lore) line on items and materials")
-                .define("enableFlavorText", true));
-        enableLoreInfo = (builder.comment("Show the detailed info lines (sources, usage, ...) on items and materials. When disabled, the \"Press Shift\" hint is hidden too")
-                .define("enableInfoText", true));
         builder.pop();
+        return new ArmorPlusConfig();
+    }
 
-        builder.comment("Configure Items")
-                .push("items");
-        // Buff entries use the "id|level" format (optionally "id|level|seconds"), see BuffParser
+    /** armorplus-client.toml: tooltips and overlays. */
+    public static Void createClient(ModConfigSpec.Builder builder) {
+        enableLoreFlavor = builder.comment("Show the flavor (lore) line on items and materials")
+                .define("enableFlavorText", true);
+        enableLoreInfo = builder.comment("Show the detailed info lines (sources, usage, ...) on items and materials. When disabled, the \"Press Shift\" hint is hidden too")
+                .define("enableInfoText", true);
+        showSocketOverlay = builder.comment("Show the socket symbol on equipment in inventories, including vanilla and other mods' equipment")
+                .define("showSocketOverlay", true);
+        return null;
+    }
+
+    /** armorplus-effects.toml: the set effect rules, then one section per material. */
+    public static Void createEffects(ModConfigSpec.Builder builder) {
+        defaultSetPieces = builder.comment(
+                        "Effect entries (armorBuffs, weaponBuffs) are formatted as \"modid:effect|level\", optionally \"|seconds\" for the duration, e.g. \"minecraft:haste|2\" or \"minecraft:wither|2|4\".",
+                        "Any vanilla or modded effect works, as do the ArmorPlus abilities: armorplus:flight, armorplus:illuminate, armorplus:wither_immunity, armorplus:fire_weakness, armorplus:natural_immunity,",
+                        "armorplus:fire_extinguish, armorplus:darkness_immunity, armorplus:mining_fatigue_immunity, armorplus:powdered_snow_immunity, armorplus:sculk_immunity, armorplus:warden_pacify (armor) and armorplus:ignite (weapons).",
+                        "Start an entry with \"!\" to switch it off without removing it, e.g. \"!minecraft:haste|2\".",
+                        "Armor entries can end with the pieces of the set they need: \"@head\" (or chest, legs, feet), \"@legs,feet\" (all of these pieces) or \"@2\" (any 2 pieces), e.g. \"minecraft:night_vision|1@head\".",
+                        "Entries without it use their \"effectSlots\" default, otherwise \"defaultSetPieces\".",
+                        "",
+                        "Number of worn pieces of a set its effects need (4 = full set), unless the entry says otherwise or the effect is listed in \"effectSlots\"")
+                .defineInRange("defaultSetPieces", 4, 1, 4);
+        allowEffectToggles = builder.comment("Let players switch individual set and rune effects on/off for themselves, per set (Armor Effects key, G by default), and tool rune effects (Tool Effects key, H by default)")
+                .define("allowEffectToggles", true);
+        effectSlots = builder.comment("Effects that belong to specific armor pieces, formatted as \"id|slots\" with comma separated slots head, chest, legs and feet (e.g. \"minecraft:night_vision|head\" or \"minecraft:conduit_power|legs,feet\"). "
+                        + "This is the default of every set: set effects then need all of these pieces of the set (instead of a piece count) and are only listed on them, runes of the effect only fit into these pieces. "
+                        + "A set can use other pieces for an effect by ending its entry with them, e.g. \"minecraft:night_vision|1@chest\" or \"minecraft:night_vision|1@4\"")
+                .defineListAllowEmpty("effectSlots", List.of(
+                        "minecraft:night_vision|head",
+                        "minecraft:water_breathing|head",
+                        "minecraft:saturation|head",
+                        "armorplus:illuminate|head",
+                        "armorplus:darkness_immunity|head",
+                        "minecraft:haste|chest",
+                        "minecraft:resistance|chest",
+                        "minecraft:fire_resistance|chest",
+                        "minecraft:regeneration|chest",
+                        "minecraft:absorption|chest",
+                        "minecraft:strength|chest",
+                        "minecraft:luck|legs",
+                        "armorplus:fire_extinguish|legs",
+                        "armorplus:mining_fatigue_immunity|legs",
+                        "minecraft:speed|feet",
+                        "minecraft:jump_boost|feet",
+                        "minecraft:slow_falling|feet",
+                        "minecraft:hero_of_the_village|head,chest",
+                        "minecraft:conduit_power|legs,feet",
+                        "minecraft:dolphins_grace|legs,feet",
+                        "minecraft:health_boost|head,chest,legs,feet",
+                        "minecraft:invisibility|head,chest,legs,feet",
+                        "armorplus:flight|head,chest,legs,feet",
+                        "armorplus:wither_immunity|head,chest,legs,feet",
+                        "armorplus:natural_immunity|head,chest,legs,feet",
+                        "armorplus:powdered_snow_immunity|head,chest,legs,feet",
+                        "armorplus:sculk_immunity|head,chest,legs,feet",
+                        "armorplus:warden_pacify|head,chest,legs,feet",
+                        "armorplus:fire_weakness|head,chest,legs,feet"),
+                        () -> "modid:effect|head", ArmorPlusConfig::isEffectSlot);
+        singleLevelEffects = builder.comment("Effects whose level makes no difference, so tooltips never show a level for them (levels I are never shown)")
+                .defineListAllowEmpty("singleLevelEffects", List.of("minecraft:night_vision", "minecraft:fire_resistance", "minecraft:water_breathing",
+                        "minecraft:invisibility", "minecraft:slow_falling", "minecraft:glowing", "minecraft:dolphins_grace"), () -> "modid:effect", ArmorPlusConfig::isIdentifier);
+
         coalMaterial = MaterialConfig.create("coal", builder,
                 List.of("minecraft:night_vision|1"),
                 List.of("minecraft:blindness|1|10"));
@@ -232,59 +377,139 @@ public class ArmorPlusConfig {
         honeyMaterial = MaterialConfig.create("honey", builder,
                 List.of("minecraft:saturation|1"),
                 List.of("minecraft:slowness|1|10"));
-        builder.pop();
-        builder.comment("Mob Drops Configuration").push("drops");
-        witherBossDrops = BossDropConfig.create("wither_boss", builder);
-        enderDragonDrops = BossDropConfig.create("ender_dragon", builder);
-        elderGuardianDrops = BossDropConfig.create("elder_guardian", builder);
+        return null;
+    }
+
+    /** armorplus-drops.toml: one section per mob. */
+    public static Void createDrops(ModConfigSpec.Builder builder) {
+        witherBossDrops = DropConfig.create("wither_boss", builder, 4, 6, 1.0);
+        enderDragonDrops = DropConfig.create("ender_dragon", builder, 4, 6, 1.0);
+        elderGuardianDrops = DropConfig.create("elder_guardian", builder, 4, 6, 1.0);
         witherSkeletonDrops = DropConfig.create("wither_skeleton", builder, 0, 3, 0.25);
         guardianDrops = DropConfig.create("guardian", builder, 0, 3, 0.25);
         endermanDrops = DropConfig.create("enderman", builder, 0, -1, 0.25);
         blazeDrops = DropConfig.create("blaze", builder, 0, -1, 0.25);
         wardenDrops = DropConfig.create("warden", builder, 1, 1, -1);
+        return null;
+    }
+
+    /** armorplus-runes.toml: extracting buffs from ArmorPlus equipment into runes (Rune Altar) and socketing them (Anvil). */
+    public static Void createRunes(ModConfigSpec.Builder builder) {
+        enableRunes = builder.comment("Enable/disable the rune system. When disabled, socketed runes stop working but are kept on the items")
+                .define("enableRunes", true);
+        allowNonArmorPlusGear = builder.comment("Allow socketing runes into armor, weapons and tools from vanilla and other mods")
+                .define("allowNonArmorPlusGear", true);
+        returnRunesOnRemoval = builder.comment("Return the runes when removing them in a Grindstone (otherwise they are destroyed)")
+                .define("returnRunesOnRemoval", false);
+        runeOverrides = builder.comment("Rules for runes of specific buffs, one entry per buff, formatted as \"id|key=value|key=value...\" with the keys:",
+                        "  socket=levels       experience levels to socket the rune instead of \"socketXpCost\" (1 - 39, the Anvil's limit)",
+                        "  extract=levels      fixed experience levels to extract it instead of the base and per level cost",
+                        "  catalyst=item*count item the Rune Altar consumes in addition to extract it (\"*count\" is optional)",
+                        "  extractable=false   the buff can't be extracted",
+                        "  disabled=true       runes of the buff are inactive (existing runes are kept but do nothing)",
+                        "e.g. \"armorplus:flight|socket=25|extract=30|catalyst=minecraft:nether_star*1\"")
+                .defineListAllowEmpty("runeOverrides", List.of(
+                                "armorplus:flight|socket=25|extract=30|catalyst=minecraft:nether_star",
+                                "armorplus:warden_pacify|socket=15|extract=20|catalyst=minecraft:nether_star",
+                                "armorplus:natural_immunity|socket=10|extract=15",
+                                "armorplus:wither_immunity|catalyst=minecraft:nether_star",
+                                "minecraft:conduit_power|catalyst=minecraft:nether_star"),
+                        () -> "modid:effect|socket=10", RuneOverrides::isValid);
+
+        builder.comment("Socketing runes in an Anvil, removing them in a Grindstone").push("sockets");
+        randomSockets = builder.comment("Roll a random number of sockets for each piece of equipment when it's crafted (or first picked up), using the weights of each kind. When disabled every piece has the maximum number of sockets")
+                .define("randomSockets", true);
+        socketXpCost = builder.comment("Experience levels it costs to socket a rune (see \"runeOverrides\" for specific buffs)")
+                .defineInRange("socketXpCost", 3, 1, 39);
+        enableSocketPunch = builder.comment("Enable the Socket Punch, which adds one socket (up to the maximum) to equipment in an Anvil")
+                .define("enableSocketPunch", true);
+        socketPunchXpCost = builder.comment("Experience levels it costs to add a socket with a Socket Punch")
+                .defineInRange("socketPunchXpCost", 10, 1, 39);
+        builder.comment("Armor sockets").push("armorSockets");
+        maxArmorSockets = builder.comment("Maximum number of rune sockets on an armor piece (0 disables armor runes)")
+                .defineInRange("maxSockets", 2, 0, 8);
+        armorSocketWeights = builder.comment("Weight of each socket count, starting at 0 sockets (e.g. [50, 40, 10] = 50% none, 40% one, 10% two). Counts above maxSockets are capped")
+                .defineListAllowEmpty("weights", List.of(50, 40, 10), () -> 0, ArmorPlusConfig::isWeight);
+        builder.pop();
+        builder.comment("Weapon sockets").push("weaponSockets");
+        maxWeaponSockets = builder.comment("Maximum number of rune sockets on a weapon (0 disables weapon runes)")
+                .defineInRange("maxSockets", 2, 0, 8);
+        weaponSocketWeights = builder.comment("Weight of each socket count, starting at 0 sockets. Counts above maxSockets are capped")
+                .defineListAllowEmpty("weights", List.of(50, 40, 10), () -> 0, ArmorPlusConfig::isWeight);
+        builder.pop();
+        builder.comment("Tool sockets: pickaxes, shovels, hoes, ... (#minecraft:enchantable/mining, except axes, which count as weapons). Tool runes work while the tool is held").push("toolSockets");
+        maxToolSockets = builder.comment("Maximum number of rune sockets on a tool (0 disables tool runes)")
+                .defineInRange("maxSockets", 2, 0, 8);
+        toolSocketWeights = builder.comment("Weight of each socket count, starting at 0 sockets. Counts above maxSockets are capped")
+                .defineListAllowEmpty("weights", List.of(50, 40, 10), () -> 0, ArmorPlusConfig::isWeight);
+        builder.pop();
         builder.pop();
 
-        return new ArmorPlusConfig();
+        builder.comment("Extracting runes in the Rune Altar").push("extraction");
+        extractionBaseCost = builder.comment("Base experience level cost to extract a rune (see \"runeOverrides\" for specific buffs)")
+                .defineInRange("extractionBaseCost", 5, 0, 1000);
+        extractionCostPerLevel = builder.comment("Additional experience levels per level of the extracted buff (abilities count as level 1)")
+                .defineInRange("extractionCostPerLevel", 3, 0, 1000);
+        extractionLevelReduction = builder.comment("Levels lost when extracting a buff (e.g. Haste II becomes a Haste I rune). The level never goes below I")
+                .defineInRange("extractionLevelReduction", 1, 0, 255);
+        destroySourceOnExtract = builder.comment("Destroy the equipment the rune is extracted from. When disabled it loses durability instead (see extractionDurabilityCost)")
+                .define("destroySourceOnExtract", true);
+        extractionDurabilityCost = builder.comment("Fraction (0.0 - 1.0) of the max durability lost when the equipment is not destroyed")
+                .defineInRange("extractionDurabilityCost", 0.5, 0.0, 1.0);
+        builder.pop();
+
+        builder.comment("Runes found in the world").push("world");
+        worldRunes = builder.comment("Extra runes that can be found in loot, formatted as \"armor|modid:effect|level\", \"weapon|modid:effect|level|seconds\" or \"tool|modid:effect|level\" (while held). These are added to the datapack runes (data/<namespace>/armorplus/rune/*.json), which include the built-in ones")
+                .defineListAllowEmpty("worldRunes", List.of(),
+                        () -> "armor|modid:effect|level", ArmorPlusConfig::isWorldRune);
+        runeLootSources = builder.comment("Loot tables that can contain a world rune, formatted as \"loot_table|chance\" (chance 0.0 - 1.0)")
+                .defineListAllowEmpty("runeLootSources", List.of(
+                                "minecraft:chests/ancient_city|0.15",
+                                "minecraft:chests/end_city_treasure|0.10",
+                                "minecraft:chests/bastion_treasure|0.10",
+                                "minecraft:chests/woodland_mansion|0.10",
+                                "minecraft:chests/stronghold_library|0.08",
+                                "minecraft:chests/buried_treasure|0.05"),
+                        () -> "modid:loot_table|chance", ArmorPlusConfig::isLootSource);
+        builder.pop();
+        return null;
     }
 
     /**
      * Per-material configuration.
      * <ul>
-     *     <li>{@code armorBuffs}: full set effects, as "id|level" entries (e.g. "minecraft:haste|1", "armorplus:flight")</li>
+     *     <li>{@code armorBuffs}: set effects, as "id|level" entries with an optional requirement (e.g. "minecraft:haste|1",
+     *     "minecraft:night_vision|1@head", "armorplus:flight"), see {@link com.sofodev.armorplus.registry.item.armor.SetRequirement}</li>
      *     <li>{@code weaponBuffs}: on-hit effects, as "id|level|seconds" entries; {@code null} for materials without weapons</li>
-     *     <li>{@code disabledBuffs}: ids of buffs from either list to switch off without removing them</li>
      * </ul>
+     * Entries starting with "!" are switched off, see {@link BuffParser#isDisabled(Object)}.
      */
     public record MaterialConfig(String name, ConfigValue<Boolean> enableArmorEffects,
                                  ConfigValue<Boolean> enableWeaponEffects,
                                  ConfigValue<List<? extends String>> armorBuffs,
-                                 ConfigValue<List<? extends String>> weaponBuffs,
-                                 ConfigValue<List<? extends String>> disabledBuffs) implements IMaterialConfig {
+                                 ConfigValue<List<? extends String>> weaponBuffs) implements IMaterialConfig {
 
         public static MaterialConfig create(String name, ModConfigSpec.Builder builder, List<String> armorBuffs, List<String> weaponBuffs) {
-            builder.comment(name + " equipment Configuration")
-                    .push(name);
-            ConfigValue<Boolean> enableArmorEffects = (builder.comment(name + " armor: enable/disable full set effects")
+            builder.comment(name + " equipment").push(name);
+            ConfigValue<Boolean> enableArmorEffects = (builder.comment("Enable/disable the set effects of the armor")
                     .define("enableArmorEffects", true));
-            ConfigValue<Boolean> enableWeaponEffects = (builder.comment(name + " weapons: enable/disable on hit effects")
+            ConfigValue<Boolean> enableWeaponEffects = (builder.comment("Enable/disable the on hit effects of the weapons and tools")
                     .define("enableWeaponEffects", true));
-            ConfigValue<List<? extends String>> armorBuffsValue = (builder.comment(name + " armor: full set effects, formatted as \"modid:effect|level\" (e.g. \"minecraft:haste|1\"), optionally \"|seconds\" for the duration. ArmorPlus abilities: armorplus:flight, armorplus:illuminate, armorplus:wither_immunity, armorplus:fire_weakness, armorplus:natural_immunity, armorplus:fire_extinguish, armorplus:darkness_immunity, armorplus:mining_fatigue_immunity, armorplus:powdered_snow_immunity, armorplus:sculk_immunity, armorplus:warden_pacify")
+            ConfigValue<List<? extends String>> armorBuffsValue = (builder.comment("Armor set effects, e.g. \"minecraft:haste|1\", \"minecraft:night_vision|1@head\" or \"!minecraft:haste|1\" (off), see the top of this file")
                     .defineListAllowEmpty("armorBuffs", armorBuffs, () -> BuffParser.FORMAT, BuffParser::isValid));
-            ConfigValue<List<? extends String>> weaponBuffsValue = weaponBuffs == null ? null : (builder.comment(name + " weapons: effects applied to hit targets, formatted as \"modid:effect|level|seconds\" (e.g. \"minecraft:wither|2|4\"). ArmorPlus abilities: armorplus:ignite")
+            ConfigValue<List<? extends String>> weaponBuffsValue = weaponBuffs == null ? null : (builder.comment("Effects applied to hit targets, e.g. \"minecraft:wither|2|4\" (level 2 for 4 seconds), see the top of this file")
                     .defineListAllowEmpty("weaponBuffs", weaponBuffs, () -> BuffParser.FORMAT, BuffParser::isValid));
-            ConfigValue<List<? extends String>> disabledBuffs = (builder.comment(name + ": ids of individual buffs to disable (e.g. \"minecraft:night_vision\") while keeping them in the lists above")
-                    .defineListAllowEmpty("disabledBuffs", List.<String>of(), () -> "modid:effect", ArmorPlusConfig::isIdentifier));
             builder.pop();
 
-            return new MaterialConfig(name, enableArmorEffects, enableWeaponEffects, armorBuffsValue, weaponBuffsValue, disabledBuffs);
+            return new MaterialConfig(name, enableArmorEffects, enableWeaponEffects, armorBuffsValue, weaponBuffsValue);
         }
 
         public List<BuffInstance> armorBuffInstances() {
-            return BuffParser.armor(armorBuffs.get(), disabledBuffs.get());
+            return BuffParser.armor(armorBuffs.get());
         }
 
         public List<BuffInstance> weaponBuffInstances() {
-            return weaponBuffs == null ? List.of() : BuffParser.weapon(weaponBuffs.get(), disabledBuffs.get());
+            return weaponBuffs == null ? List.of() : BuffParser.weapon(weaponBuffs.get());
         }
     }
 
@@ -295,15 +520,14 @@ public class ArmorPlusConfig {
     }
 
     /**
-     * Regular (material) and soul drops of a regular mob.
+     * Regular (material) and soul drops of a mob or boss. A chance of 0 disables the drop.
      * <ul>
      *     <li>{@code regularDropChance}: chance (0-1) that the material drops at all; the amount is then random between {@code regularDropMin} and {@code regularDropMax}</li>
      *     <li>{@code soulDropChance}: chance (0-1) that a Soul Stealer kill drops the mob's soul</li>
      * </ul>
-     * The chance/amount options only exist for the drops the mob actually has.
+     * The options only exist for the drops the mob actually has (the others are null).
      */
-    public record DropConfig(ConfigValue<Boolean> enableRegularDrops, ConfigValue<Boolean> enableSoulDrops,
-                             ConfigValue<Double> regularDropChance, ConfigValue<Integer> regularDropMin,
+    public record DropConfig(ConfigValue<Double> regularDropChance, ConfigValue<Integer> regularDropMin,
                              ConfigValue<Integer> regularDropMax, ConfigValue<Double> soulDropChance) {
 
         /**
@@ -311,62 +535,25 @@ public class ArmorPlusConfig {
          * @param soulChance default soul chance, or -1 if the mob has no soul drop
          */
         public static DropConfig create(String name, ModConfigSpec.Builder builder, int regularMin, int regularMax, double soulChance) {
-            builder.comment(name + " drop configuration")
-                    .push(name);
-            ConfigValue<Boolean> enableRegularDrops = (builder.comment(MODNAME + "'s " + name + " regular drops: enable/disable")
-                    .define("enableRegularDrops", true));
-            ConfigValue<Boolean> enableSoulDrops = (builder.comment(MODNAME + "'s " + name + " soul drops: enable/disable")
-                    .define("enableSoulDrops", true));
+            builder.comment(name + " drops").push(name);
             ConfigValue<Double> regularChance = null;
             ConfigValue<Integer> min = null, max = null;
             if (regularMax >= 0) {
-                regularChance = builder.comment(name + " regular drops: chance (0.0 - 1.0) that the material drops on death")
+                regularChance = builder.comment("Chance (0.0 - 1.0) that the material drops on death, 0 disables it")
                         .defineInRange("regularDropChance", 1.0, 0.0, 1.0);
-                min = builder.comment(name + " regular drops: minimum amount")
+                min = builder.comment("Minimum material amount")
                         .defineInRange("regularDropMin", regularMin, 0, 64);
-                max = builder.comment(name + " regular drops: maximum amount")
+                max = builder.comment("Maximum material amount")
                         .defineInRange("regularDropMax", regularMax, 0, 64);
             }
             ConfigValue<Double> soul = null;
             if (soulChance >= 0) {
-                soul = builder.comment(name + " soul drops: chance (0.0 - 1.0) that a kill with a Soul Stealer weapon drops the soul")
+                soul = builder.comment("Chance (0.0 - 1.0) that a kill with a Soul Stealer weapon drops the soul, 0 disables it")
                         .defineInRange("soulDropChance", soulChance, 0.0, 1.0);
             }
             builder.pop();
 
-            return new DropConfig(enableRegularDrops, enableSoulDrops, regularChance, min, max, soul);
+            return new DropConfig(regularChance, min, max, soul);
         }
-
-    }
-
-    /** Same as {@link DropConfig} for bosses, which additionally have trophy drops. */
-    public record BossDropConfig(ConfigValue<Boolean> enableTrophyDrops, ConfigValue<Boolean> enableRegularDrops,
-                                 ConfigValue<Boolean> enableSoulDrops, ConfigValue<Double> regularDropChance,
-                                 ConfigValue<Integer> regularDropMin, ConfigValue<Integer> regularDropMax,
-                                 ConfigValue<Double> soulDropChance) {
-
-
-        public static BossDropConfig create(String name, ModConfigSpec.Builder builder) {
-            builder.comment(name + " drop configuration")
-                    .push(name);
-            ConfigValue<Boolean> enableTrophyDrops = (builder.comment(MODNAME + "'s " + name + " trophy drops: enable/disable  (CURRENTLY DISABLED BY THE MOD)")
-                    .define("enableTrophyDrops", false));
-            ConfigValue<Boolean> enableRegularDrops = (builder.comment(MODNAME + "'s " + name + " regular drops: enable/disable")
-                    .define("enableBossRegularDrops", true));
-            ConfigValue<Boolean> enableSoulDrops = (builder.comment(MODNAME + "'s " + name + " soul drops: enable/disable")
-                    .define("enableBossSoulDrops", true));
-            ConfigValue<Double> regularChance = builder.comment(name + " regular drops: chance (0.0 - 1.0) that the material drops on death")
-                    .defineInRange("regularDropChance", 1.0, 0.0, 1.0);
-            ConfigValue<Integer> min = builder.comment(name + " regular drops: minimum amount")
-                    .defineInRange("regularDropMin", 4, 0, 64);
-            ConfigValue<Integer> max = builder.comment(name + " regular drops: maximum amount")
-                    .defineInRange("regularDropMax", 6, 0, 64);
-            ConfigValue<Double> soul = builder.comment(name + " soul drops: chance (0.0 - 1.0) that a kill with a Soul Stealer weapon drops the boss soul")
-                    .defineInRange("soulDropChance", 1.0, 0.0, 1.0);
-            builder.pop();
-
-            return new BossDropConfig(enableTrophyDrops, enableRegularDrops, enableSoulDrops, regularChance, min, max, soul);
-        }
-
     }
 }

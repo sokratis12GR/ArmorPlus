@@ -1,0 +1,9 @@
+{
+  "kind": "weapon",
+  "effect": "minecraft:slowness",
+  "level": 2,
+  "seconds": 4,
+  "loot": [
+    { "table": "minecraft:chests/igloo_chest", "chance": 0.5 }
+  ]
+}

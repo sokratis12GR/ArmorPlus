@@ -1,0 +1,9 @@
+{
+  "kind": "armor",
+  "effect": "armorplus:fire_extinguish",
+  "socket_cost": 20,
+  "extraction": {
+    "cost": 25,
+    "catalyst": { "item": "minecraft:blaze_rod", "count": 4 }
+  }
+}

@@ -5,13 +5,18 @@ import com.sofodev.armorplus.client.BuffGridTooltip;
 import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.registry.item.extra.Buff;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
+import com.sofodev.armorplus.registry.item.extra.BuffNames;
+import com.sofodev.armorplus.registry.item.extra.BuffParser;
+import com.sofodev.armorplus.registry.item.tool.WeaponEffects;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.IAPTool;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import org.jspecify.annotations.Nullable;
 import com.mojang.blaze3d.platform.InputConstants;
 import org.lwjgl.glfw.GLFW;
 import net.minecraft.network.chat.Component;
@@ -21,6 +26,7 @@ import net.minecraft.network.chat.TextColor;
 
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -58,6 +64,11 @@ public class ToolTipUtils {
         return (InputConstants.isKeyDown(Minecraft.getInstance().getWindow(), GLFW.GLFW_KEY_LEFT_SHIFT) || InputConstants.isKeyDown(Minecraft.getInstance().getWindow(), GLFW.GLFW_KEY_RIGHT_SHIFT));
     }
 
+    /** @return the local player whose equipment tooltips compare against, or null (e.g. on the title screen) */
+    public static @Nullable Player clientPlayer() {
+        return Minecraft.getInstance().player;
+    }
+
     /** Adds the standard ArmorPlus "Press Shift for more info" line. */
     public static void showSneakInfo(Consumer<Component> tooltip, ChatFormatting formatting) {
         showInfo(tooltip, Minecraft.getInstance().options.keyShift, formatting);
@@ -65,26 +76,70 @@ public class ToolTipUtils {
 
     public static void addBuffInformation(IAPTool tool, Consumer<Component> tooltip, String condition, boolean applyToSelf, boolean enabled) {
         if (!tool.getBuffInstances().get().isEmpty()) {
-            tooltip.accept(translate(YELLOW, "tooltip.armorplus.condition", enabled ? "" : "(DISABLED)"));
-            tooltip.accept(translate(GOLD, "tooltip.armorplus.condition." + condition));
-            tooltip.accept(translate(GREEN, "tooltip.armorplus." + (applyToSelf ? "provides" : "applies")));
-            addBuffLines(tooltip, tool.getBuffInstances().get());
+            tooltip.accept(effectsHeader(condition, enabled));
+            Player player = clientPlayer();
+            addBuffLines(tooltip, tool.getBuffInstances().get(), ToolTipUtils::durationPrefix,
+                    buff -> enabled && (player == null || !WeaponEffects.isDisabled(player, BuffParser.idOf(buff.getBuff()))));
         }
+    }
+
+    /** @return the single header line above a buff list, e.g. "Set Effects:" or "On Hit: (Disabled)" */
+    public static MutableComponent effectsHeader(String condition, boolean enabled) {
+        MutableComponent header = translate(YELLOW, "tooltip.armorplus.header." + condition);
+        return enabled ? header : header.append(translate(RED, "tooltip.armorplus.header.disabled"));
     }
 
     private static final String INDENT = "   ";
 
+    /** @return "[4s]" for on-hit effects, null for abilities */
+    public static Component durationPrefix(BuffInstance buff) {
+        if (!buff.getBuff().isEffect()) return null;
+        return Component.literal("[" + Math.max(1, buff.getDurationTicks() / 20) + "s]").withStyle(GRAY);
+    }
+
     /**
-     * Adds one line per buff ("Name Level"). The lines are marked so that long lists get laid out as a grid when the
+     * @param shortName use the short name ({@code armorplus.buff.short.<namespace>.<path>}) if there is one
+     * @return the buff's name with its level, if it's shown (see {@link BuffNames#showsLevel(BuffInstance)})
+     */
+    public static MutableComponent buffName(BuffInstance buff, boolean shortName) {
+        MutableComponent name = null;
+        if (shortName) {
+            String key = "armorplus.buff.short." + BuffParser.idOf(buff.getBuff()).replace(':', '.');
+            if (I18n.exists(key)) name = Component.translatable(key).withStyle(DARK_AQUA);
+        }
+        if (name == null) name = buff.getTranslatedName().copy();
+        return name.append(BuffNames.levelSuffix(buff));
+    }
+
+    /**
+     * Adds one line per buff ("Short Name Level"). The lines are marked so that long lists get laid out as a grid when the
      * tooltip is rendered (see {@link BuffGridTooltip}).
      */
     public static void addBuffLines(Consumer<Component> tooltip, List<BuffInstance> buffs) {
+        addBuffLines(tooltip, buffs, buff -> null);
+    }
+
+    /** Like {@link #addBuffLines(Consumer, List)}, with an optional prefix per buff (null for none), e.g. "[1/4]". */
+    public static void addBuffLines(Consumer<Component> tooltip, List<BuffInstance> buffs, Function<BuffInstance, Component> prefix) {
+        addBuffLines(tooltip, buffs, prefix, true);
+    }
+
+    /** Like {@link #addBuffLines(Consumer, List, Function)}, graying out every line when {@code enabled} is false. */
+    public static void addBuffLines(Consumer<Component> tooltip, List<BuffInstance> buffs, Function<BuffInstance, Component> prefix, boolean enabled) {
+        addBuffLines(tooltip, buffs, prefix, buff -> enabled);
+    }
+
+    /** Like {@link #addBuffLines(Consumer, List, Function)}, graying out each line whose {@code isEnabled} is false. */
+    public static void addBuffLines(Consumer<Component> tooltip, List<BuffInstance> buffs, Function<BuffInstance, Component> prefix, Function<BuffInstance, Boolean> isEnabled) {
         for (BuffInstance buff : buffs) {
             if (buff.getBuff() == Buff.NONE) continue;
-            int lvl = buff.getAmplifier() + 1;
-            String roman = lvl > 0 ? " " + generate(lvl) : "";
-            tooltip.accept(Component.literal(INDENT).append(buff.getTranslatedName()).append(roman)
-                    .withStyle(style -> style.withColor(DARK_AQUA).withInsertion(BuffGridTooltip.BUFF_LINE)));
+            boolean enabled = isEnabled.apply(buff);
+            MutableComponent line = Component.literal(INDENT);
+            Component start = prefix.apply(buff);
+            if (start != null) line.append(enabled ? start : start.copy().withStyle(GRAY)).append(" ");
+            MutableComponent name = buffName(buff, true);
+            line.append(enabled ? name : name.withStyle(GRAY));
+            tooltip.accept(line.withStyle(style -> style.withColor(enabled ? DARK_AQUA : GRAY).withInsertion(BuffGridTooltip.BUFF_LINE)));
         }
     }
 

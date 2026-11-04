@@ -255,6 +255,10 @@ public class Recipes extends RecipeProvider {
         crafter.build(con, RecipeCategory.MISC, Result.build(SLAYER_SOUL.get(), 1).setGroup("slayer").setSuffix(""), ELDER_GUARDIAN_SOUL.get(), WITHER_BOSS_SOUL.get(), ENDER_DRAGON_SOUL.get(), WARDEN_HEART.get());
         //Other
         crafter.build(con, RecipeCategory.BUILDING_BLOCKS, Result.build(SOUL_BOX.get()).setGroup("villager").setSuffix(""), GridInput.build("ASA", "SGS", "ASA", 'A', 'S', 'G'), Items.STONE, SOUL_SAND, GLOWSTONE);
+        //Runes
+        crafter.build(con, RecipeCategory.MISC, Result.build(BLANK_RUNE.get(), 2).setGroup("runes").setSuffix(""), GridInput.build("SAS", "ALA", "SAS", 'S', 'A', 'L'), Items.SMOOTH_STONE, AMETHYST_SHARD, LAPIS_LAZULI);
+        crafter.build(con, RecipeCategory.MISC, Result.build(SOCKET_PUNCH.get()).setGroup("runes").setSuffix(""), GridInput.build("  D", " A ", "S  ", 'D', 'A', 'S'), DIAMOND, AMETHYST_SHARD, OBSIDIAN_STICK.get());
+        crafter.build(con, RecipeCategory.MISC, Result.build(RUNE_ALTAR.get()).setGroup("runes").setSuffix(""), GridInput.build("ARA", "DOD", "OOO", 'A', 'R', 'D', 'O'), AMETHYST_SHARD, BLANK_RUNE.get(), DIAMOND, Items.OBSIDIAN);
         crafter.build(con, RecipeCategory.MISC, Result.build(OBSIDIAN_STICK.get(), 4).setGroup("materials").setSuffix(""), GridInput.build(Grid.build("X", "X", " "), 'X'), Items.OBSIDIAN);
         crafter.build(con, RecipeCategory.MISC, Result.build(WOODEN_ROD.get(), 2).setGroup("materials").setSuffix(""), STICK, STICK, STICK, STICK);
         crafter.build(con, RecipeCategory.BUILDING_BLOCKS, Result.build(SNOW_BRICK.get(), 4).setGroup("snow_brick").setSuffix(""), GridInput.buildSmallSquare('X'), SNOW_BLOCK);
