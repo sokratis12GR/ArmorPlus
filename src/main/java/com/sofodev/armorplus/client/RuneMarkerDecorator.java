@@ -31,8 +31,10 @@ public final class RuneMarkerDecorator implements IItemDecorator {
     private static final int GLYPH_CELL_WIDTH = 5;
     private static final int NARROW_GLYPH_WIDTH = 3;
     private static final int GLYPH_HEIGHT = 7;
-    /** Tints for levels 1 to 5, the last one is for anything above */
-    private static final int[] LEVEL_COLORS = {0xFFFFFFFF, 0xFF55FF55, 0xFF55FFFF, 0xFFFF77FF, 0xFFFFC030, 0xFFFF5050};
+    /** Tints for levels 1 to 4 of each marker, going from dark to light. The last one is also for anything above */
+    private static final int[] EFFECT_COLORS = {0xFF2FA82F, 0xFF4FCB4F, 0xFF7FE57F, 0xFFB8F7B8};
+    private static final int[] INSTANT_COLORS = {0xFFC9981A, 0xFFE6BC2E, 0xFFFFD94F, 0xFFFFF2A0};
+    private static final int[] ABILITY_COLORS = {0xFFC93A8E, 0xFFE85CAE, 0xFFFF8FCF, 0xFFFFC4E6};
     private static final Identifier LEVEL_GLYPHS = Identifier.fromNamespaceAndPath(MODID, "textures/item/rune_level_glyphs.png");
     private static final Identifier EFFECT = texture("effect");
     private static final Identifier INSTANT = texture("instant");
@@ -51,18 +53,18 @@ public final class RuneMarkerDecorator implements IItemDecorator {
         BuffInstance buff = rune == null ? null : Runes.parse(rune);
         if (buff == null) return false;
         graphics.blit(RenderPipelines.GUI_TEXTURED, marker(buff.getBuff()), x, y, 0.0F, 0.0F, SIZE, SIZE, 16, 16);
-        if (BuffNames.hasLevels(buff.getBuff())) drawLevel(graphics, Math.max(1, buff.getAmplifier() + 1), x, y);
+        if (BuffNames.hasLevels(buff.getBuff())) drawLevel(graphics, levelColors(buff.getBuff()), Math.max(1, buff.getAmplifier() + 1), x, y);
         return true;
     }
 
     /**
-     * Draws the level, tinted by its value, right aligned in the top right corner of the slot.
+     * Draws the level, tinted by its marker and value, right aligned in the top right corner of the slot.
      * Uses a Roman numeral, or digits when the numeral wouldn't fit next to the marker.
      */
-    private static void drawLevel(GuiGraphicsExtractor graphics, int level, int x, int y) {
+    private static void drawLevel(GuiGraphicsExtractor graphics, int[] colors, int level, int x, int y) {
         String numeral = RomanNumeralUtil.generate(level);
         String text = width(numeral) <= MAX_LEVEL_WIDTH ? numeral : String.valueOf(level);
-        int color = LEVEL_COLORS[Math.min(level, LEVEL_COLORS.length) - 1];
+        int color = colors[Math.min(level, colors.length) - 1];
         int glyphX = x + SLOT_SIZE - width(text);
         for (char c : text.toCharArray()) {
             graphics.blit(RenderPipelines.GUI_TEXTURED, LEVEL_GLYPHS, glyphX, y, GLYPHS.indexOf(c) * GLYPH_CELL_WIDTH, 0.0F, glyphWidth(c), GLYPH_HEIGHT, GLYPHS.length() * GLYPH_CELL_WIDTH, GLYPH_HEIGHT, color);
@@ -87,5 +89,10 @@ public final class RuneMarkerDecorator implements IItemDecorator {
     private static Identifier marker(IBuff buff) {
         if (!buff.isEffect()) return ABILITY;
         return buff.getEffect().value().isInstantenous() ? INSTANT : EFFECT;
+    }
+
+    private static int[] levelColors(IBuff buff) {
+        if (!buff.isEffect()) return ABILITY_COLORS;
+        return buff.getEffect().value().isInstantenous() ? INSTANT_COLORS : EFFECT_COLORS;
     }
 }

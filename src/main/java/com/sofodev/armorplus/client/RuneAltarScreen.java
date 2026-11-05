@@ -191,7 +191,7 @@ public class RuneAltarScreen extends AbstractContainerScreen<RuneAltarMenu> {
             lines.add(Component.translatable("container.armorplus.rune_altar.durability_cost", durability, durabilityPercent(durability)).withStyle(ChatFormatting.GOLD));
         }
         if (this.menu.getOptions().get(index).socketed()) {
-            lines.add(Component.translatable("container.armorplus.rune_altar.remove_rune").withStyle(ChatFormatting.GRAY));
+            lines.add(Component.translatable("container.armorplus.rune_altar.durability_free").withStyle(ChatFormatting.GOLD));
         } else if (!this.menu.hasBlankRune()) {
             lines.add(Component.translatable("container.armorplus.rune_altar.needs_blank_rune").withStyle(ChatFormatting.GRAY));
         }

@@ -23,6 +23,7 @@ import java.util.Set;
 import java.util.function.Consumer;
 
 import static com.sofodev.armorplus.utils.ToolTipUtils.addBuffLines;
+import static com.sofodev.armorplus.utils.ToolTipUtils.addLoreLine;
 import static com.sofodev.armorplus.utils.ToolTipUtils.isSneakDown;
 import static com.sofodev.armorplus.utils.ToolTipUtils.showSneakInfo;
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
@@ -94,8 +95,8 @@ public class RuneItem extends Item {
                     }));
                     addBuffLines(tooltip, List.of(buff), kind == RuneKind.WEAPON || kind == RuneKind.RANGED ? ToolTipUtils::durationPrefix : b -> null, b -> true, ToolTipUtils.runeSuffix(kind));
                     ToolTipUtils.addDetailsHint(tooltip, List.of(buff), GOLD);
-                    tooltip.accept(translate(GRAY, "tooltip.armorplus.rune.socket_hint"));
-                    if (Runes.canUpgrade(rune)) tooltip.accept(translate(GRAY, "tooltip.armorplus.rune.upgrade_hint"));
+                    addLoreLine(tooltip, "tooltip.armorplus.rune.socket_hint");
+                    if (Runes.canUpgrade(rune)) addLoreLine(tooltip, "tooltip.armorplus.rune.upgrade_hint");
                 } else {
                     showSneakInfo(tooltip, GOLD);
                 }

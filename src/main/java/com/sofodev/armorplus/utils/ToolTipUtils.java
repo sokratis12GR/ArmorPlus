@@ -277,6 +277,11 @@ public class ToolTipUtils {
         for (int i = 1; I18n.exists(base + ".info." + i); i++) tooltip.accept(loreLine(I18n.get(base + ".info." + i, args)));
     }
 
+    /** Adds one lang line styled like the detail lines of {@link #addItemLore}. */
+    public static void addLoreLine(Consumer<Component> tooltip, String key) {
+        tooltip.accept(loreLine(I18n.get(key)));
+    }
+
     private static final Pattern LORE_LABEL = Pattern.compile("^([A-Z][A-Za-z ]{1,9}):\\s*");
     private static final Pattern LORE_KEYWORD = Pattern.compile("\\{([^}]*)}");
     private static final Style LORE_LABEL_STYLE = Style.EMPTY.withBold(true).withColor(ChatFormatting.GOLD);
