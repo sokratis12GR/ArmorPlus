@@ -1,0 +1,129 @@
+name: Bug report
+description: Report a crash or something in ArmorPlus that isn't working correctly
+title: "[Bug] "
+labels: ["to-review"]
+assignees: ["sokratis12GR"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this! For general help and questions, please use the [ArmorPlus Discord](https://discord.gg/JCWbJvA) instead.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched the [existing issues](https://github.com/sokratis12GR/ArmorPlus/issues?q=is%3Aissue) and this hasn't been reported yet.
+          required: true
+        - label: I tested this on the [latest ArmorPlus version](https://www.curseforge.com/minecraft/mc-mods/armorplus/files) for my Minecraft version.
+          required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: The exact steps needed to make the bug happen.
+      placeholder: |
+        1. Equip the full Coal Armor set
+        2. Enter a dark area
+        3. See that the effect isn't applied
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What happened instead.
+    validations:
+      required: true
+  - type: input
+    id: minecraft-version
+    attributes:
+      label: Minecraft version
+      description: The exact version. Please don't write "latest".
+      placeholder: e.g. 26.1.2
+    validations:
+      required: true
+  - type: input
+    id: neoforge-version
+    attributes:
+      label: NeoForge version
+      description: The exact version. Please don't write "latest".
+      placeholder: e.g. 26.1.2.126
+    validations:
+      required: true
+  - type: input
+    id: armorplus-version
+    attributes:
+      label: ArmorPlus version
+      description: The exact version. Please don't write "latest".
+      placeholder: e.g. 23.0.0
+    validations:
+      required: true
+  - type: input
+    id: thedragonlib-version
+    attributes:
+      label: TheDragonLib version
+      description: The exact version. Please don't write "latest".
+      placeholder: e.g. 1.4.0
+    validations:
+      required: true
+  - type: input
+    id: geckolib-version
+    attributes:
+      label: GeckoLib version
+      description: The exact version. Please don't write "latest".
+      placeholder: e.g. 5.5.2
+    validations:
+      required: true
+  - type: input
+    id: jei-version
+    attributes:
+      label: Just Enough Items (JEI) version
+      description: If installed.
+  - type: dropdown
+    id: side
+    attributes:
+      label: Affected side
+      description: Where does the bug happen?
+      options:
+        - Client
+        - Server
+        - Both
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Crash report or log
+      description: Paste the crash report or `logs/latest.log`, or link to a pastebin or gist if it's long.
+      render: text
+  - type: textarea
+    id: mods
+    attributes:
+      label: Other mods
+      description: Any other installed mods, especially if the bug might involve them.
+  - type: textarea
+    id: config
+    attributes:
+      label: Config files
+      description: Any relevant files from `config/armorplus/`, if you changed them.
+  - type: textarea
+    id: context
+    attributes:
+      label: Screenshots and additional context
+      description: Add screenshots or anything else that helps explain the problem.
