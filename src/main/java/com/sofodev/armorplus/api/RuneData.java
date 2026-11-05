@@ -1,8 +1,9 @@
-package com.sofodev.armorplus.registry.rune;
+package com.sofodev.armorplus.api;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.sofodev.armorplus.registry.item.extra.BuffParser;
+import com.sofodev.armorplus.registry.rune.Runes;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -25,7 +26,7 @@ public record RuneData(RuneKind kind, String entry) {
             ByteBufCodecs.STRING_UTF8, RuneData::entry,
             RuneData::new);
 
-    /** @return the buff id, e.g. "minecraft:haste" for "minecraft:haste|2" */
+    /** {@return the buff id, e.g. "minecraft:haste" for "minecraft:haste|2"} */
     public String buffId() {
         return BuffParser.idOf(entry);
     }

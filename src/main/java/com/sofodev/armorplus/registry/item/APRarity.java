@@ -2,7 +2,22 @@ package com.sofodev.armorplus.registry.item;
 
 import net.minecraft.ChatFormatting;
 
-import static net.minecraft.ChatFormatting.*;
+import static net.minecraft.ChatFormatting.AQUA;
+import static net.minecraft.ChatFormatting.BLUE;
+import static net.minecraft.ChatFormatting.DARK_AQUA;
+import static net.minecraft.ChatFormatting.DARK_BLUE;
+import static net.minecraft.ChatFormatting.DARK_GRAY;
+import static net.minecraft.ChatFormatting.DARK_GREEN;
+import static net.minecraft.ChatFormatting.DARK_PURPLE;
+import static net.minecraft.ChatFormatting.DARK_RED;
+import static net.minecraft.ChatFormatting.GOLD;
+import static net.minecraft.ChatFormatting.GRAY;
+import static net.minecraft.ChatFormatting.GREEN;
+import static net.minecraft.ChatFormatting.LIGHT_PURPLE;
+import static net.minecraft.ChatFormatting.RED;
+import static net.minecraft.ChatFormatting.RESET;
+import static net.minecraft.ChatFormatting.WHITE;
+import static net.minecraft.ChatFormatting.YELLOW;
 
 public enum APRarity {
     NONE(RESET),

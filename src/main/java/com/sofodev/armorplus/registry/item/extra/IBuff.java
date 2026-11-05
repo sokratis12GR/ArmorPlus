@@ -39,4 +39,9 @@ public interface IBuff {
         return true;
     }
 
+    /** @return true for abilities whose level makes a difference; mob effects use "singleLevelEffects" instead */
+    default boolean isLeveled() {
+        return false;
+    }
+
 }

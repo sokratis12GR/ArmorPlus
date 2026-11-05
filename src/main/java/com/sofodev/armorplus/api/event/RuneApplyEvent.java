@@ -7,8 +7,8 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * Fired before the effect of a socketed rune is applied: armor runes ({@link Context#WORN}), tool runes
- * ({@link Context#HELD}, and {@link Context#HIT} for their on-hit debuffs) and weapon runes ({@link Context#HIT}).
- * Cancelable. Set effects fire {@link SetEffectApplyEvent} instead.
+ * ({@link Context#HELD}, and {@link Context#HIT} for their on-hit debuffs), weapon runes ({@link Context#HIT}) and the
+ * on-hit effects of ranged runes ({@link Context#HIT}, not their built-in abilities). Cancelable. Set effects fire {@link SetEffectApplyEvent} instead.
  */
 public class RuneApplyEvent extends EffectApplyEvent {
 

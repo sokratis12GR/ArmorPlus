@@ -7,7 +7,7 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * Fired before an effect of an ArmorPlus material is applied: armor set effects ({@link Context#WORN}) and the on-hit
- * effects of ArmorPlus weapons and tools ({@link Context#HIT}). Cancelable. Socketed runes fire {@link RuneApplyEvent}
+ * effects of ArmorPlus weapons, tools and the arrows of ArmorPlus bows ({@link Context#HIT}). Cancelable. Socketed runes fire {@link RuneApplyEvent}
  * instead.
  */
 public class SetEffectApplyEvent extends EffectApplyEvent {
@@ -20,7 +20,7 @@ public class SetEffectApplyEvent extends EffectApplyEvent {
         this.material = material;
     }
 
-    /** @return the material's config name, e.g. "coal" or "enhanced_iron" */
+    /** {@return the material's config name, e.g. "coal" or "enhanced_iron"} */
     public String getMaterial() {
         return material;
     }

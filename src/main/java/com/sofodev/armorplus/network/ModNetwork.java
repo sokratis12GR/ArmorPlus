@@ -8,7 +8,7 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 @EventBusSubscriber(modid = ArmorPlus.MODID)
 public final class ModNetwork {
 
-    private static final String PROTOCOL_VERSION = "1";
+    private static final String PROTOCOL_VERSION = "4";
 
     private ModNetwork() {
     }
@@ -17,7 +17,6 @@ public final class ModNetwork {
     public static void register(RegisterPayloadHandlersEvent event) {
         event.registrar(PROTOCOL_VERSION)
                 .playToServer(ToggleEffectPayload.TYPE, ToggleEffectPayload.STREAM_CODEC, ToggleEffectPayload::handle)
-                .playToServer(ToggleToolEffectPayload.TYPE, ToggleToolEffectPayload.STREAM_CODEC, ToggleToolEffectPayload::handle)
-                .playToServer(ToggleWeaponEffectPayload.TYPE, ToggleWeaponEffectPayload.STREAM_CODEC, ToggleWeaponEffectPayload::handle);
+                .playToServer(FillAltarPayload.TYPE, FillAltarPayload.STREAM_CODEC, FillAltarPayload::handle);
     }
 }

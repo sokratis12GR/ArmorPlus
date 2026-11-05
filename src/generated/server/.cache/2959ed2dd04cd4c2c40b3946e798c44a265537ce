@@ -1,10 +1,11 @@
-// 26.1.2	2026-11-03T12:25:29.4264271	Tags for minecraft:block mod id armorplus
+// 26.1.2	2026-11-05T13:32:42.3476761	Tags for minecraft:block mod id armorplus
 6dfde5e17543e836b0cf520d654396507f82718b data/armorplus/tags/block/ores.json
 4a275fecfa217667c3174f04e5a4bc0815739f46 data/armorplus/tags/block/ores/frost_crystal.json
 67752a6dc4ea13072f9b5f5798c3c3014edc78b4 data/armorplus/tags/block/ores/lava_crystal.json
+3b5b90f3a0229d7ba1005e5d3dd03bbf6559579f data/armorplus/tags/block/ritual_pedestals.json
 a10373fcf0776554a36e4efb5387e15ba8dcda99 data/armorplus/tags/block/walls.json
-150be7988235d20f693aaa2c3c12846a4b9e30d6 data/minecraft/tags/block/mineable/pickaxe.json
+348847bfe6b7d4f445efd81556fc8508bf64d7d2 data/minecraft/tags/block/mineable/pickaxe.json
 f17f4e3438a15d47121acdbc9bee51b2aaaf59bf data/minecraft/tags/block/needs_diamond_tool.json
 8296e1d38f743d2d79b0ebb037c3c58ee16973e5 data/minecraft/tags/block/needs_iron_tool.json
-570f4725d01e948e6ab3408c837b902821159848 data/minecraft/tags/block/needs_stone_tool.json
+83bb0a69c27ffa1304f5aecf5ec3037da5eed412 data/minecraft/tags/block/needs_stone_tool.json
 a10373fcf0776554a36e4efb5387e15ba8dcda99 data/minecraft/tags/block/walls.json

@@ -3,7 +3,9 @@ package com.sofodev.armorplus.registry.entity.arrow.impl;
 import com.sofodev.armorplus.registry.entity.arrow.APArrowEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.jspecify.annotations.Nullable;
 
 import static com.sofodev.armorplus.registry.ModEntities.GUARDIAN_ARROW;
 import static com.sofodev.armorplus.registry.entity.arrow.APArrowProperty.GUARDIAN_ARROW_PROP;
@@ -22,8 +24,8 @@ public class GuardianArrowEntity extends APArrowEntity {
         super(GUARDIAN_ARROW.get(), x, y, z, world, GUARDIAN_ARROW_PROP);
     }
 
-    public GuardianArrowEntity(LivingEntity shooter, Level world) {
-        super(GUARDIAN_ARROW.get(), shooter, world, GUARDIAN_ARROW_PROP);
+    public GuardianArrowEntity(LivingEntity shooter, Level world, ItemStack ammo, @Nullable ItemStack weapon) {
+        super(GUARDIAN_ARROW.get(), shooter, world, ammo, weapon, GUARDIAN_ARROW_PROP);
     }
 
 }

@@ -22,8 +22,13 @@ public final class BuffNames {
 
     /** @return false for abilities, level I and effects whose level makes no difference ("singleLevelEffects") */
     public static boolean showsLevel(BuffInstance buff) {
-        if (!buff.getBuff().isEffect() || buff.getAmplifier() < 1) return false;
-        String id = BuffParser.idOf(buff.getBuff());
+        return buff.getAmplifier() >= 1 && hasLevels(buff.getBuff());
+    }
+
+    /** @return false for abilities and effects whose level makes no difference ("singleLevelEffects") */
+    public static boolean hasLevels(IBuff buff) {
+        if (!buff.isEffect()) return buff.isLeveled();
+        String id = BuffParser.idOf(buff);
         for (String single : ArmorPlusConfig.singleLevelEffects.get()) {
             if (BuffParser.idOf(single).equals(id)) return false;
         }

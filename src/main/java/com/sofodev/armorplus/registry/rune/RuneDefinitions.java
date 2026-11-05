@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.rune;
 
+import com.sofodev.armorplus.api.RuneData;
+import com.sofodev.armorplus.api.RuneKind;
 import com.sofodev.armorplus.ArmorPlus;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
@@ -34,6 +36,7 @@ public final class RuneDefinitions {
     private static volatile HolderLookup.@Nullable Provider source;
     private static volatile List<RuneDefinition> all = List.of();
     private static volatile Map<Key, RuneDefinition> byRune = Map.of();
+    private static volatile Map<Identifier, List<RuneDefinition>> byLootTable = Map.of();
 
     /** Runes of the same buff but another kind or level (e.g. Haste II and Haste III tool runes) keep their own rules. */
     private record Key(RuneKind kind, String buffId, int level) {
@@ -60,9 +63,11 @@ public final class RuneDefinitions {
         if (registries == source) return;
         List<RuneDefinition> result = new ArrayList<>();
         Map<Key, RuneDefinition> index = new HashMap<>();
+        Map<Identifier, List<RuneDefinition>> lootIndex = new HashMap<>();
         registries.lookup(REGISTRY).ifPresent(lookup -> lookup.listElements().forEach(holder -> {
             RuneDefinition definition = holder.value();
             result.add(definition);
+            definition.loot().forEach(source -> lootIndex.computeIfAbsent(source.table(), table -> new ArrayList<>()).add(definition));
             RuneDefinition previous = index.putIfAbsent(Key.of(definition.toRuneData()), definition);
             if (previous != null) {
                 ArmorPlus.LOGGER.warn("Datapack rune {} has the same kind, effect and level as another rune, its costs and extraction rules are ignored", holder.key().identifier());
@@ -70,6 +75,7 @@ public final class RuneDefinitions {
         }));
         all = List.copyOf(result);
         byRune = Map.copyOf(index);
+        byLootTable = Map.copyOf(lootIndex);
         source = registries;
         Runes.clearCaches();
         ArmorPlus.LOGGER.info("Loaded {} datapack runes", result.size());
@@ -78,6 +84,11 @@ public final class RuneDefinitions {
     /** @return every loaded datapack rune */
     public static List<RuneDefinition> all() {
         return all;
+    }
+
+    /** @return the datapack runes that can be found in the loot table on their own, a lookup as this is checked on every loot roll */
+    public static List<RuneDefinition> inLootTable(Identifier table) {
+        return byLootTable.getOrDefault(table, List.of());
     }
 
     /**

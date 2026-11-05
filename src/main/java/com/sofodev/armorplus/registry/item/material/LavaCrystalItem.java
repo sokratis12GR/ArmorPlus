@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.registry.item.material;
 
 import com.sofodev.armorplus.registry.item.APItem;
+import com.sofodev.armorplus.registry.RegistryContext;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
@@ -27,7 +28,7 @@ public class LavaCrystalItem extends APItem {
     private int[] burnTime = new int[]{20000, 22000};
 
     public LavaCrystalItem(boolean isInfused) {
-        super(com.sofodev.armorplus.registry.RegistryContext.itemProperties().fireResistant());
+        super(RegistryContext.itemProperties().fireResistant());
         this.isInfused = isInfused;
     }
 

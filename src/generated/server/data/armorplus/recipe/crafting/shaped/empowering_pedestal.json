@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "armorplus:runes",
+  "key": {
+    "A": "minecraft:amethyst_shard",
+    "O": "minecraft:obsidian",
+    "R": "armorplus:blank_rune"
+  },
+  "pattern": [
+    "ARA",
+    " O ",
+    "OOO"
+  ],
+  "result": {
+    "id": "armorplus:empowering_pedestal"
+  }
+}

@@ -19,7 +19,7 @@ public abstract class EffectApplyEvent extends Event implements ICancellableEven
         WORN,
         /** The tool held in the main hand, once a second: {@link #getEntity()} is the player. */
         HELD,
-        /** A melee hit: {@link #getEntity()} is the attacker (may be a mob), {@link #getTarget()} the entity hit. */
+        /** A melee or arrow hit: {@link #getEntity()} is the attacker or shooter (may be a mob), {@link #getTarget()} the entity hit. */
         HIT
     }
 
@@ -49,12 +49,12 @@ public abstract class EffectApplyEvent extends Event implements ICancellableEven
         return context;
     }
 
-    /** @return the held tool or weapon, empty for {@link Context#WORN} */
+    /** {@return the held tool or weapon or the bow or crossbow that fired the arrow, empty for {@link Context#WORN}} */
     public ItemStack getStack() {
         return stack;
     }
 
-    /** @return the entity hit, only for {@link Context#HIT} */
+    /** {@return the entity hit, only for {@link Context#HIT}} */
     public @Nullable LivingEntity getTarget() {
         return target;
     }

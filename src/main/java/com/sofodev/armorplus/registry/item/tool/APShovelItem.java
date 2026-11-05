@@ -18,7 +18,9 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.function.Consumer;
 
-import static com.sofodev.armorplus.utils.ToolTipUtils.*;
+import static com.sofodev.armorplus.utils.ToolTipUtils.addBuffInformation;
+import static com.sofodev.armorplus.utils.ToolTipUtils.isSneakDown;
+import static com.sofodev.armorplus.utils.ToolTipUtils.showSneakInfo;
 
 public class APShovelItem extends ShovelItem implements Tool {
 
@@ -37,7 +39,7 @@ public class APShovelItem extends ShovelItem implements Tool {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag flagIn) {
         if (isSneakDown()) {
-            addBuffInformation(mat, tooltip, "on_hit", false, mat.config().enableWeaponEffects().get());
+            addBuffInformation(stack, mat, tooltip, "on_hit", false, mat.config().enableWeaponEffects().get());
         } else if (!mat.getBuffInstances().get().isEmpty()) {
             showSneakInfo(tooltip, mat.getColor());
         }

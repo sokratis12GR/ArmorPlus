@@ -2,11 +2,15 @@ package com.sofodev.armorplus.registry.item.arrow;
 
 import com.sofodev.armorplus.config.AvailabilityConfig;
 import com.sofodev.armorplus.registry.entity.arrow.ArrowType;
+import com.sofodev.armorplus.registry.RegistryContext;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
 import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.ArrowItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
@@ -18,7 +22,7 @@ public class APArrowItem extends ArrowItem {
     private final ArrowType type;
 
     public APArrowItem(ArrowType type) {
-        super(com.sofodev.armorplus.registry.RegistryContext.itemProperties().rarity(Rarity.EPIC));
+        super(RegistryContext.itemProperties().rarity(Rarity.EPIC));
         this.type = type;
     }
 

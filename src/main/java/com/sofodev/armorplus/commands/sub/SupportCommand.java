@@ -9,7 +9,7 @@ import net.minecraft.network.chat.Style;
 import java.net.URI;
 
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
-import static net.minecraft.ChatFormatting.*;
+import static net.minecraft.ChatFormatting.AQUA;
 
 /**
  * @author Sokratis Fotkatzikis

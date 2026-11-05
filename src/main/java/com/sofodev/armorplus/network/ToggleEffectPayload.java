@@ -2,16 +2,22 @@ package com.sofodev.armorplus.network;
 
 import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.events.ModGlobalEvents;
+import com.sofodev.armorplus.events.RuneEvents;
 import com.sofodev.armorplus.registry.ModAttachments;
 import com.sofodev.armorplus.registry.item.armor.ArmorEffects;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
-import com.sofodev.armorplus.registry.item.extra.BuffParser;
+import com.sofodev.armorplus.registry.item.tool.RangedEffects;
+import com.sofodev.armorplus.registry.item.tool.ToolEffects;
+import com.sofodev.armorplus.registry.item.tool.WeaponEffects;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
+import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 import java.util.ArrayList;
@@ -21,17 +27,46 @@ import java.util.Optional;
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 
 /**
- * Sent by the Armor Effects screen: switches one of the player's effects off for one set (or for their runes), or back on.
+ * Sent by the effect screens: switches one of the player's effects off, or back on.
  *
- * @param key the toggle key, "set|effect", see {@link ArmorEffects.Entry#toggleKey()}
+ * @param scope the screen it's from, each one saves its own toggles
+ * @param key   the armor toggle key, "set|effect", see {@link ArmorEffects.Entry#toggleKey()}, or the effect id of a tool,
+ *              weapon or ranged effect, see {@link ToolEffects.Entry#id()} (those stay off for every item of that kind)
  */
-public record ToggleEffectPayload(String key) implements CustomPacketPayload {
+public record ToggleEffectPayload(Scope scope, String key) implements CustomPacketPayload {
+
+    public enum Scope {
+        ARMOR, TOOL, WEAPON, RANGED;
+
+        private static final StreamCodec<ByteBuf, Scope> STREAM_CODEC = ByteBufCodecs.VAR_INT.map(i -> values()[Math.floorMod(i, values().length)], Scope::ordinal);
+
+        private AttachmentType<List<String>> attachment() {
+            return switch (this) {
+                case ARMOR -> ModAttachments.DISABLED_EFFECTS.get();
+                case TOOL -> ModAttachments.DISABLED_TOOL_EFFECTS.get();
+                case WEAPON -> ModAttachments.DISABLED_WEAPON_EFFECTS.get();
+                case RANGED -> ModAttachments.DISABLED_RANGED_EFFECTS.get();
+            };
+        }
+
+        /** @return the effect with the key, if the player has it right now */
+        private Optional<BuffInstance> find(ServerPlayer player, String key) {
+            return switch (this) {
+                case ARMOR -> ArmorEffects.entries(player).stream().filter(e -> e.toggleKey().equals(key)).map(ArmorEffects.Entry::buff).findFirst();
+                case TOOL -> ToolEffects.entries(player).stream().filter(e -> e.id().equals(key)).map(ToolEffects.Entry::buff).findFirst();
+                case WEAPON -> WeaponEffects.entries(player).stream().filter(e -> e.id().equals(key)).map(WeaponEffects.Entry::buff).findFirst();
+                case RANGED -> RangedEffects.entries(player).stream().filter(e -> e.id().equals(key)).map(RangedEffects.Entry::buff).findFirst();
+            };
+        }
+    }
 
     public static final Type<ToggleEffectPayload> TYPE = new Type<>(Identifier.fromNamespaceAndPath(MODID, "toggle_effect"));
-    public static final StreamCodec<ByteBuf, ToggleEffectPayload> STREAM_CODEC = ByteBufCodecs.stringUtf8(256)
-            .map(ToggleEffectPayload::new, ToggleEffectPayload::key);
-    /** More than any set and its runes can have, keeps the saved list from growing without limit. */
-    private static final int MAX_DISABLED = 64;
+    public static final StreamCodec<ByteBuf, ToggleEffectPayload> STREAM_CODEC = StreamCodec.composite(
+            Scope.STREAM_CODEC, ToggleEffectPayload::scope,
+            ByteBufCodecs.stringUtf8(256), ToggleEffectPayload::key,
+            ToggleEffectPayload::new);
+    /** Far more than a player normally uses, keeps the saved lists from growing without limit. */
+    private static final int MAX_DISABLED = 256;
 
     @Override
     public Type<? extends CustomPacketPayload> type() {
@@ -42,34 +77,35 @@ public record ToggleEffectPayload(String key) implements CustomPacketPayload {
         context.enqueueWork(() -> {
             if (!(context.player() instanceof ServerPlayer player) || !ArmorPlusConfig.allowEffectToggles.get()) return;
 
-            List<String> disabled = new ArrayList<>(player.getData(ModAttachments.DISABLED_EFFECTS.get()));
+            Scope scope = payload.scope();
+            List<String> disabled = new ArrayList<>(player.getData(scope.attachment()));
             boolean turnOff = !disabled.contains(payload.key());
             // only effects the player actually has can be switched off, turning one back on always works
-            Optional<ArmorEffects.Entry> entry = ArmorEffects.entries(player).stream()
-                    .filter(e -> e.toggleKey().equals(payload.key())).findFirst();
-            if (turnOff && (entry.isEmpty() || disabled.size() >= MAX_DISABLED)) return;
+            Optional<BuffInstance> buff = scope.find(player, payload.key());
+            if (turnOff && buff.isEmpty()) return;
+            if (turnOff && disabled.size() >= MAX_DISABLED) {
+                player.sendOverlayMessage(Component.translatable("armorplus.effects.toggle_limit", MAX_DISABLED).withStyle(ChatFormatting.RED));
+                return;
+            }
 
             if (turnOff) disabled.add(payload.key());
             else disabled.remove(payload.key());
-            player.setData(ModAttachments.DISABLED_EFFECTS.get(), List.copyOf(disabled));
-            ArmorEffects.invalidate(player);
+            player.setData(scope.attachment(), List.copyOf(disabled));
 
-            // remove the effect unless another source (set or runes) still gives it
-            String id = entry.map(ArmorEffects.Entry::id).orElse(null);
-            boolean stillActive = id != null && ArmorEffects.active(player).stream()
-                    .anyMatch(buff -> BuffParser.idOf(buff.getBuff()).equals(id));
-            if (turnOff && !stillActive) removeAppliedEffect(player, entry.get().buff());
-            ModGlobalEvents.checkAndApplyBuffs(player);
+            // on-hit effects are applied to the target, there is nothing to change on the player
+            switch (scope) {
+                case ARMOR -> {
+                    ArmorEffects.invalidate(player);
+                    RuneEvents.syncEffects(player, turnOff ? List.of(buff.get()) : List.of());
+                    ModGlobalEvents.checkAndApplyBuffs(player);
+                }
+                case TOOL -> {
+                    ToolEffects.invalidate(player);
+                    RuneEvents.syncEffects(player, turnOff ? List.of(buff.get()) : List.of());
+                }
+                case WEAPON, RANGED -> {
+                }
+            }
         });
-    }
-
-    /** Removes the effect if it's one ArmorPlus applied (hidden, same level), so potions aren't touched. */
-    private static void removeAppliedEffect(ServerPlayer player, BuffInstance buff) {
-        if (!buff.getBuff().isEffect()) return;
-        var effect = buff.getBuff().getEffect();
-        var existing = effect == null ? null : player.getEffect(effect);
-        if (existing != null && !existing.isVisible() && existing.getAmplifier() == buff.getAmplifier()) {
-            player.removeEffect(effect);
-        }
     }
 }

@@ -4,19 +4,27 @@ import com.sofodev.armorplus.api.RuneEffectType;
 import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.registry.ModAttachments;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
+import com.sofodev.armorplus.registry.item.armor.ArmorEffects;
 import com.sofodev.armorplus.registry.item.extra.BuffParser;
 import com.sofodev.armorplus.registry.item.extra.DeBuff;
 import com.sofodev.armorplus.registry.item.extra.IBuff;
+import com.sofodev.armorplus.registry.item.extra.ToolBuff;
 import com.sofodev.armorplus.registry.rune.Runes;
 import net.minecraft.world.entity.player.Player;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.WeakHashMap;
 
 /**
  * The tool effects a player gets: the tool runes socketed into the tool held in the main hand (effects such as Haste and
- * {@link com.sofodev.armorplus.registry.item.extra.ToolBuff} abilities such as Auto-Smelt).
+ * {@link ToolBuff} abilities such as Auto-Smelt).
  * <p>
- * Separate from the armor effects ({@link com.sofodev.armorplus.registry.item.armor.ArmorEffects}): tool effects have their
+ * Separate from the armor effects ({@link ArmorEffects}): tool effects have their
  * own screen (Tool Effects key) and toggles, and never count as set effects. Switching items is an equipment change, so the
  * cache is rebuilt then ({@link #invalidate(Player)}).
  */

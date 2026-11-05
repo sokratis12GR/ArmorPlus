@@ -4,6 +4,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.ModConfigSpec.ConfigValue;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 import java.util.List;
@@ -30,7 +31,7 @@ public final class AvailabilityConfig {
 
     /**
      * Datagen (e.g. loot tables) runs block/item availability checks before the server config is loaded,
-     * so {@code ConfigValue#get()} throws IllegalStateException there; treat that as "not hidden".
+     * so {@link ConfigValue#get()} throws IllegalStateException there; treat that as "not hidden".
      */
     private static boolean hiddenContains(ModConfigSpec.ConfigValue<List<? extends String>> config, String key) {
         if (config == null) return false;

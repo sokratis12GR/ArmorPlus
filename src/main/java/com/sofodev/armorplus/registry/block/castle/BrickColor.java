@@ -5,7 +5,22 @@ import net.minecraft.world.level.material.MapColor;
 import java.io.Serializable;
 import java.util.Locale;
 
-import static net.minecraft.world.level.material.MapColor.*;
+import static net.minecraft.world.level.material.MapColor.TERRACOTTA_BLACK;
+import static net.minecraft.world.level.material.MapColor.TERRACOTTA_BLUE;
+import static net.minecraft.world.level.material.MapColor.TERRACOTTA_BROWN;
+import static net.minecraft.world.level.material.MapColor.TERRACOTTA_CYAN;
+import static net.minecraft.world.level.material.MapColor.TERRACOTTA_GRAY;
+import static net.minecraft.world.level.material.MapColor.TERRACOTTA_GREEN;
+import static net.minecraft.world.level.material.MapColor.TERRACOTTA_LIGHT_BLUE;
+import static net.minecraft.world.level.material.MapColor.TERRACOTTA_LIGHT_GRAY;
+import static net.minecraft.world.level.material.MapColor.TERRACOTTA_LIGHT_GREEN;
+import static net.minecraft.world.level.material.MapColor.TERRACOTTA_MAGENTA;
+import static net.minecraft.world.level.material.MapColor.TERRACOTTA_ORANGE;
+import static net.minecraft.world.level.material.MapColor.TERRACOTTA_PINK;
+import static net.minecraft.world.level.material.MapColor.TERRACOTTA_PURPLE;
+import static net.minecraft.world.level.material.MapColor.TERRACOTTA_RED;
+import static net.minecraft.world.level.material.MapColor.TERRACOTTA_WHITE;
+import static net.minecraft.world.level.material.MapColor.TERRACOTTA_YELLOW;
 
 public enum BrickColor implements Serializable {
     BLACK(TERRACOTTA_BLACK),

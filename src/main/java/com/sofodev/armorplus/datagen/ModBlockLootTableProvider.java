@@ -20,7 +20,12 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.Set;
 
-import static com.sofodev.armorplus.registry.ModBlocks.*;
+import static com.sofodev.armorplus.registry.ModBlocks.ORE_FROST_CRYSTAL;
+import static com.sofodev.armorplus.registry.ModBlocks.ORE_FROST_CRYSTAL_OBSIDIAN;
+import static com.sofodev.armorplus.registry.ModBlocks.ORE_FROST_CRYSTAL_STONE;
+import static com.sofodev.armorplus.registry.ModBlocks.ORE_LAVA_CRYSTAL;
+import static com.sofodev.armorplus.registry.ModBlocks.ORE_LAVA_CRYSTAL_OBSIDIAN;
+import static com.sofodev.armorplus.registry.ModBlocks.ORE_LAVA_CRYSTAL_STONE;
 
 public class ModBlockLootTableProvider extends BlockLootSubProvider {
 

@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.registry;
 
 import com.mojang.serialization.Codec;
+import com.sofodev.armorplus.registry.item.tool.ArrowRunes;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -40,5 +41,19 @@ public class ModAttachments {
                     .serialize(Codec.STRING.listOf().fieldOf("disabled"))
                     .copyOnDeath()
                     .sync(ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()))
+                    .build());
+
+    /** Ids of the ranged rune effects a player switched off in the Ranged Effects screen, kept apart like the tool effects. */
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<List<String>>> DISABLED_RANGED_EFFECTS = ATTACHMENT_TYPES.register("disabled_ranged_effects",
+            () -> AttachmentType.<List<String>>builder(() -> List.of())
+                    .serialize(Codec.STRING.listOf().fieldOf("disabled"))
+                    .copyOnDeath()
+                    .sync(ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()))
+                    .build());
+
+    /** The ranged runes an arrow was fired with. Saved with the arrow, the server is the only side using them. */
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<ArrowRunes>> ARROW_RUNES = ATTACHMENT_TYPES.register("arrow_runes",
+            () -> AttachmentType.builder(() -> ArrowRunes.EMPTY)
+                    .serialize(ArrowRunes.MAP_CODEC)
                     .build());
 }

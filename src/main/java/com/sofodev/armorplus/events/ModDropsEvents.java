@@ -9,7 +9,10 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
-import net.minecraft.world.entity.monster.*;
+import net.minecraft.world.entity.monster.Blaze;
+import net.minecraft.world.entity.monster.ElderGuardian;
+import net.minecraft.world.entity.monster.EnderMan;
+import net.minecraft.world.entity.monster.Guardian;
 import net.minecraft.world.entity.monster.skeleton.WitherSkeleton;
 import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.server.level.ServerLevel;
@@ -23,7 +26,6 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.minecraft.core.registries.BuiltInRegistries;
 
-import java.util.Map;
 import java.util.function.Supplier;
 
 import com.sofodev.armorplus.config.ArmorPlusConfig;
@@ -54,24 +56,18 @@ public class ModDropsEvents {
             }
         }
 
-        // Map the mob class to the configuration
-        Map<Class<? extends LivingEntity>, MobDropConfig> dropMap = Map.of(
-                WitherBoss.class, MobDropConfig.of(config.witherBossDrops, "wither_bone", "soul_wither_boss"),
-                EnderDragon.class, MobDropConfig.of(config.enderDragonDrops, "ender_dragon_scale", "soul_ender_dragon"),
-                ElderGuardian.class, MobDropConfig.of(config.elderGuardianDrops, "guardian_scale", "soul_elder_guardian"),
-                WitherSkeleton.class, MobDropConfig.of(config.witherSkeletonDrops, "wither_bone", "soul_wither_skeleton"),
-                Guardian.class, MobDropConfig.of(config.guardianDrops, "guardian_scale", "soul_guardian"),
-                EnderMan.class, MobDropConfig.of(config.endermanDrops, null, "soul_enderman"),
-                Blaze.class, MobDropConfig.of(config.blazeDrops, null, "soul_blaze"),
-                Warden.class, MobDropConfig.of(config.wardenDrops, "warden_heart", null)
-        );
-
-
-        MobDropConfig cfg = dropMap.entrySet().stream()
-                .filter(entry -> entry.getKey().isInstance(entity))
-                .map(Map.Entry::getValue)
-                .findFirst()
-                .orElse(null);
+        // Map the mob class to the configuration (subclasses first: an Elder Guardian is also a Guardian)
+        MobDropConfig cfg = switch (entity) {
+            case WitherBoss _ -> MobDropConfig.of(config.witherBossDrops, "wither_bone", "soul_wither_boss");
+            case EnderDragon _ -> MobDropConfig.of(config.enderDragonDrops, "ender_dragon_scale", "soul_ender_dragon");
+            case ElderGuardian _ -> MobDropConfig.of(config.elderGuardianDrops, "guardian_scale", "soul_elder_guardian");
+            case WitherSkeleton _ -> MobDropConfig.of(config.witherSkeletonDrops, "wither_bone", "soul_wither_skeleton");
+            case Guardian _ -> MobDropConfig.of(config.guardianDrops, "guardian_scale", "soul_guardian");
+            case EnderMan _ -> MobDropConfig.of(config.endermanDrops, null, "soul_enderman");
+            case Blaze _ -> MobDropConfig.of(config.blazeDrops, null, "soul_blaze");
+            case Warden _ -> MobDropConfig.of(config.wardenDrops, "warden_heart", null);
+            default -> null;
+        };
 
         if (cfg == null) return;
 

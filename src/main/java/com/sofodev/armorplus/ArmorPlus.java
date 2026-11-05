@@ -70,12 +70,12 @@ public class ArmorPlus {
         );
 
         ArmorPlus.config = ConfigHelper.buildAndRegister(
-                container, ModConfig.Type.COMMON, ArmorPlusConfig::create).values();
+                container, ModConfig.Type.COMMON, ArmorPlusConfig.COMMON_FILE, ArmorPlusConfig::create).values();
         // One file per topic, so each stays short (see ArmorPlusConfig)
         ConfigHelper.buildAndRegister(container, ModConfig.Type.COMMON, ArmorPlusConfig.EFFECTS_FILE, ArmorPlusConfig::createEffects);
         ConfigHelper.buildAndRegister(container, ModConfig.Type.COMMON, ArmorPlusConfig.DROPS_FILE, ArmorPlusConfig::createDrops);
         ConfigHelper.buildAndRegister(container, ModConfig.Type.COMMON, ArmorPlusConfig.RUNES_FILE, ArmorPlusConfig::createRunes);
-        ConfigHelper.buildAndRegister(container, ModConfig.Type.CLIENT, ArmorPlusConfig::createClient);
+        ConfigHelper.buildAndRegister(container, ModConfig.Type.CLIENT, ArmorPlusConfig.CLIENT_FILE, ArmorPlusConfig::createClient);
         // Equipment stats are baked into the items, so they load (STARTUP) before anything registers
         ArmorPlusStatsConfig.register(container);
         //Order of registration per https://gist.github.com/pupnewfster/ea38cf3744f23d6b65d67e6f279d5942

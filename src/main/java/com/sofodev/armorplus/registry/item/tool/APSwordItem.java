@@ -2,6 +2,7 @@ package com.sofodev.armorplus.registry.item.tool;
 
 import com.sofodev.armorplus.config.AvailabilityConfig;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.IAPTool;
+import com.sofodev.armorplus.registry.RegistryContext;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.Tool;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,21 +15,23 @@ import net.minecraft.world.item.component.TooltipDisplay;
 import java.util.function.Consumer;
 
 import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolType.SWORD;
-import static com.sofodev.armorplus.utils.ToolTipUtils.*;
+import static com.sofodev.armorplus.utils.ToolTipUtils.addBuffInformation;
+import static com.sofodev.armorplus.utils.ToolTipUtils.isSneakDown;
+import static com.sofodev.armorplus.utils.ToolTipUtils.showSneakInfo;
 
 public class APSwordItem extends Item implements Tool {
 
     private final IAPTool mat;
 
     public APSwordItem(IAPTool mat) {
-        super(com.sofodev.armorplus.registry.RegistryContext.itemProperties().sword(mat.get(), (float) mat.get().attackDamageBonus() + SWORD.getDmg(), SWORD.getAttackSpeed()));
+        super(RegistryContext.itemProperties().sword(mat.get(), (float) mat.get().attackDamageBonus() + SWORD.getDmg(), SWORD.getAttackSpeed()));
         this.mat = mat;
     }
 
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext ctx, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag flagIn) {
         if (isSneakDown()) {
-            addBuffInformation(mat, tooltip, "on_hit", false, mat.config().enableWeaponEffects().get());
+            addBuffInformation(stack, mat, tooltip, "on_hit", false, mat.config().enableWeaponEffects().get());
         } else if (!mat.getBuffInstances().get().isEmpty()) {
             showSneakInfo(tooltip, mat.getColor());
         }

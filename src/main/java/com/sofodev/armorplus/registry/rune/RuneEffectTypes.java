@@ -5,8 +5,11 @@ import com.sofodev.armorplus.registry.item.extra.Buff;
 import com.sofodev.armorplus.registry.item.extra.BuffParser;
 import com.sofodev.armorplus.registry.item.extra.DeBuff;
 import com.sofodev.armorplus.registry.item.extra.IBuff;
+import com.sofodev.armorplus.registry.item.extra.RangedBuff;
 import com.sofodev.armorplus.registry.item.extra.ToolBuff;
 import net.minecraft.core.Registry;
+import net.minecraft.locale.Language;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.neoforged.bus.api.IEventBus;
@@ -22,7 +25,7 @@ import static com.sofodev.armorplus.ArmorPlus.MODID;
 /**
  * The {@code armorplus:rune_effect_type} registry of abilities ({@link RuneEffectType}).
  * <p>
- * The ArmorPlus abilities ({@link Buff}, {@link DeBuff} and {@link ToolBuff} constants that aren't mob effects) are
+ * The ArmorPlus abilities ({@link Buff}, {@link DeBuff}, {@link ToolBuff} and {@link RangedBuff} constants that aren't mob effects) are
  * registered as {@link Builtin} wrappers; {@link BuffParser} resolves those to the enum constants themselves, so the rest of
  * the mod keeps comparing against the constants.
  */
@@ -41,12 +44,19 @@ public final class RuneEffectTypes {
         public String name() {
             return buff.name();
         }
+
+        @Override
+        public @Nullable Component getDescription() {
+            String key = "armorplus.buff." + buff.name().toLowerCase(Locale.ENGLISH) + ".description";
+            return Language.getInstance().has(key) ? Component.translatable(key) : null;
+        }
     }
 
     static {
         register(Buff.values(), EnumSet.of(BuffParser.Use.ARMOR));
-        register(DeBuff.values(), EnumSet.of(BuffParser.Use.WEAPON, BuffParser.Use.TOOL));
+        register(DeBuff.values(), EnumSet.of(BuffParser.Use.WEAPON, BuffParser.Use.TOOL, BuffParser.Use.RANGED));
         register(ToolBuff.values(), EnumSet.of(BuffParser.Use.TOOL));
+        register(RangedBuff.values(), EnumSet.of(BuffParser.Use.RANGED));
     }
 
     private RuneEffectTypes() {

@@ -1,23 +1,31 @@
 package com.sofodev.armorplus.api;
 
 import com.sofodev.armorplus.registry.item.armor.ArmorEffects;
+import com.sofodev.armorplus.api.event.RuneRemoveEvent;
+import com.sofodev.armorplus.api.event.RuneSocketEvent;
+import com.sofodev.armorplus.api.event.RuneUpgradeEvent;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import com.sofodev.armorplus.registry.item.extra.IBuff;
+import com.sofodev.armorplus.registry.item.tool.RangedEffects;
 import com.sofodev.armorplus.registry.item.tool.ToolEffects;
-import com.sofodev.armorplus.registry.rune.RuneData;
+import com.sofodev.armorplus.registry.item.tool.WeaponEffects;
 import com.sofodev.armorplus.registry.rune.RuneItem;
-import com.sofodev.armorplus.registry.rune.RuneKind;
+import com.sofodev.armorplus.registry.rune.RuneRitual;
 import com.sofodev.armorplus.registry.rune.Runes;
+import net.minecraft.core.BlockPos;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import org.jspecify.annotations.Nullable;
 
 import java.util.List;
 
 /**
  * Entry point for other mods: rune stacks, sockets and the effects a player has. Custom abilities are added with
- * {@link RuneEffectType}, and the events in {@code com.sofodev.armorplus.api.event} change or cancel socketing, extraction
- * and applying effects.
+ * {@link RuneEffectType}, and the events in {@link com.sofodev.armorplus.api.event} change or cancel socketing, extraction,
+ * removal, upgrading and applying effects.
  * <p>
  * Armor and tool effects are separate, so a player's armor effects never include the held tool's effects or vice versa.
  */
@@ -28,43 +36,50 @@ public final class ArmorPlusAPI {
 
     /* ---------------------------------------- Rune stacks ---------------------------------------- */
 
-    /** @param entry a buff entry, e.g. {@code "minecraft:haste|2"} */
+    /**
+     * {@return a new rune item}
+     *
+     * @param kind  the equipment the rune fits
+     * @param entry a buff entry, e.g. {@code "minecraft:haste|2"}
+     */
     public static ItemStack createRune(RuneKind kind, String entry) {
         return RuneItem.create(kind, entry);
     }
 
-    /** @return the rune held by a rune item, or null if the stack has none */
+    /** {@return the rune held by a rune item, or null if the stack has none} */
     public static @Nullable RuneData getRune(ItemStack stack) {
         return Runes.runeData(stack);
     }
 
-    /** @return the rune's buff, or null if the rune is inactive (runes or the buff disabled, or the buff doesn't exist) */
+    /** {@return the rune's buff, or null if the rune is inactive (runes or the buff disabled, or the buff doesn't exist)} */
     public static @Nullable BuffInstance resolve(RuneData rune) {
         return Runes.resolve(rune);
     }
 
-    /** @return every rune that can currently be extracted or found in the world, once per buff and kind */
+    /** {@return every rune that can currently be extracted or found in the world, once per buff and kind, at the highest level it's available at} */
     public static List<RuneData> getAllRunes() {
         return Runes.allObtainableRunes();
     }
 
     /* ---------------------------------------- Sockets ---------------------------------------- */
 
+    /** {@return the runes socketed in the equipment} */
     public static List<RuneData> getSockets(ItemStack gear) {
         return Runes.sockets(gear);
     }
 
-    /** @return the number of sockets, 0 for items that can't hold runes or haven't rolled their sockets yet */
+    /** {@return the number of sockets, 0 for items that can't hold runes or haven't rolled their sockets yet} */
     public static int getSocketCapacity(ItemStack gear) {
         return Runes.socketCapacity(gear);
     }
 
-    public static Runes.SocketResult canSocket(ItemStack gear, RuneData rune) {
+    /** {@return {@link SocketResult#OK} if the rune fits the equipment, otherwise the first reason it doesn't} */
+    public static SocketResult canSocket(ItemStack gear, RuneData rune) {
         return Runes.canSocket(gear, rune);
     }
 
     /**
-     * Doesn't check the socketing rules or fire {@link com.sofodev.armorplus.api.event.RuneSocketEvent}, so check
+     * Doesn't check the socketing rules or fire {@link RuneSocketEvent}, so check
      * {@link #canSocket(ItemStack, RuneData)} first.
      *
      * @return a copy of the gear (count 1) with the rune socketed
@@ -73,25 +88,150 @@ public final class ArmorPlusAPI {
         return Runes.withRune(gear, rune);
     }
 
+    /**
+     * Doesn't fire {@link RuneRemoveEvent} or give the rune back.
+     *
+     * @return a copy of the gear (count 1) without that one rune
+     */
+    public static ItemStack withoutRune(ItemStack gear, RuneData rune) {
+        return Runes.withoutRune(gear, rune);
+    }
+
+    /* ---------------------------------------- Upgrading ---------------------------------------- */
+
+    /** {@return true if two of this rune can be combined in the ritual: it's active, its level matters and it's below the maximum} */
+    public static boolean canUpgrade(RuneData rune) {
+        return Runes.canUpgrade(rune);
+    }
+
+    /**
+     * {@return the highest level runes and equipment effects of the buff can be upgraded to}
+     *
+     * @param buffId the rune's {@link RuneData#buffId()}
+     */
+    public static int getMaxRuneLevel(String buffId) {
+        return Runes.maxLevel(buffId);
+    }
+
+    /** {@return true if the buff was extracted from this item in a Rune Altar, so it no longer has it} */
+    public static boolean isExtracted(ItemStack gear, String buffId) {
+        return Runes.isExtracted(gear, buffId);
+    }
+
+    /**
+     * Doesn't check the upgrading rules or fire {@link RuneUpgradeEvent}, so check
+     * {@link #canUpgrade(RuneData)} first.
+     *
+     * @return the rune one level higher
+     */
+    public static RuneData getUpgraded(RuneData rune) {
+        return Runes.upgraded(rune);
+    }
+
+    /** {@return true if the rune can raise the equipment's own effect by a level in the ritual} */
+    public static boolean canUpgradeNative(ItemStack gear, RuneData rune) {
+        return Runes.canUpgradeNative(gear, rune);
+    }
+
+    /**
+     * {@return the level of the material's effect on this item, including upgrades; 0 if it doesn't have it}
+     *
+     * @param gear   the equipment
+     * @param buffId the {@link RuneData#buffId()} of the effect
+     */
+    public static int getNativeLevel(ItemStack gear, String buffId) {
+        return Runes.nativeLevel(gear, buffId);
+    }
+
+    /** {@return the experience level cost to upgrade the rune, before {@link RuneUpgradeEvent}} */
+    public static int getUpgradeCost(RuneData rune) {
+        return Runes.upgradeCost(rune);
+    }
+
+    /** {@return the item and count the ritual uses up from the pedestals to raise the rune a level, before the events; EMPTY for none} */
+    public static ItemStack getUpgradeCatalyst(RuneData rune) {
+        return Runes.upgradeCatalyst(rune);
+    }
+
+    /** {@return the item and count the ritual uses up from the pedestals to upgrade an effect to that level with the rune, before the events; EMPTY for none} */
+    public static ItemStack getUpgradeCatalyst(RuneData rune, int level) {
+        return Runes.upgradeCatalyst(rune, level);
+    }
+
+    /** {@return the item and count the ritual uses up from the pedestals to socket the rune, before the events; EMPTY for none} */
+    public static ItemStack getSocketCatalyst(RuneData rune) {
+        return Runes.socketCatalyst(rune);
+    }
+
+    /* ---------------------------------------- Ritual ---------------------------------------- */
+
+    /**
+     * {@return the blocks that count as pedestals of the circle, the tag {@code armorplus:ritual_pedestals}} Only Empowering
+     * Pedestals can hold items, other blocks in the tag just complete the circle.
+     */
+    public static TagKey<Block> getRitualPedestalTag() {
+        return RuneRitual.PEDESTALS;
+    }
+
+    /**
+     * {@return true if the Rune Altar's circle is complete, which unlocks socketing and upgrading}
+     *
+     * @param level the altar's level
+     * @param altar the altar's position
+     */
+    public static boolean isRitualActive(Level level, BlockPos altar) {
+        return RuneRitual.isActive(level, altar);
+    }
+
+    /** {@return where the pedestals of the altar's circle go, whether they are there or not} */
+    public static List<BlockPos> getRitualPedestalPositions(BlockPos altar) {
+        return RuneRitual.pedestalPositions(altar);
+    }
+
+    /** {@return what's on each of {@link #getRitualPedestalPositions(BlockPos)}, EMPTY where there's nothing (don't modify)} */
+    public static List<ItemStack> getRitualPedestalItems(Level level, BlockPos altar) {
+        return RuneRitual.pedestalItems(level, altar);
+    }
+
     /* ---------------------------------------- Player effects (server side) ---------------------------------------- */
 
-    /** @return true if the player's worn sets or armor runes give the buff and it isn't switched off */
+    /** {@return true if the player's worn sets or armor runes give the buff and it isn't switched off} */
     public static boolean hasArmorEffect(Player player, IBuff buff) {
         return ArmorEffects.has(player, buff);
     }
 
-    /** @return true if the runes of the tool in the main hand give the buff and it isn't switched off */
+    /** {@return true if the runes of the tool in the main hand give the buff and it isn't switched off} */
     public static boolean hasToolEffect(Player player, IBuff buff) {
         return ToolEffects.has(player, buff);
     }
 
-    /** @return the player's active armor effects, one per effect at the highest level of all sources */
+    /** {@return true if the item in the main hand gives the buff on hit and it isn't switched off} */
+    public static boolean hasWeaponEffect(Player player, IBuff buff) {
+        return getWeaponEffects(player).stream().anyMatch(effect -> effect.getBuff() == buff);
+    }
+
+    /** {@return true if the held bow or crossbow gives the buff to its arrows and it isn't switched off} */
+    public static boolean hasRangedEffect(Player player, IBuff buff) {
+        return getRangedEffects(player).stream().anyMatch(effect -> effect.getBuff() == buff);
+    }
+
+    /** {@return the player's active armor effects, one per effect at the highest level of all sources} */
     public static List<BuffInstance> getArmorEffects(Player player) {
         return ArmorEffects.active(player);
     }
 
-    /** @return the active effects of the runes of the tool in the main hand */
+    /** {@return the active effects of the runes of the tool in the main hand} */
     public static List<BuffInstance> getToolEffects(Player player) {
         return ToolEffects.active(player);
+    }
+
+    /** {@return the on-hit effects of the item in the main hand that aren't switched off: its material's effects and weapon runes} */
+    public static List<BuffInstance> getWeaponEffects(Player player) {
+        return WeaponEffects.active(player);
+    }
+
+    /** {@return the ranged effects of the bow or crossbow in the main hand, otherwise the off hand (its material's and its runes') that aren't switched off} */
+    public static List<BuffInstance> getRangedEffects(Player player) {
+        return RangedEffects.entries(player).stream().filter(entry -> !entry.disabled()).map(RangedEffects.Entry::buff).toList();
     }
 }

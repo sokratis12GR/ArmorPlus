@@ -38,6 +38,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
@@ -83,7 +84,7 @@ public final class RegistryPickerScreen {
         }
     }
 
-    private static Category category(String key, java.util.function.Predicate<Candidate> test) {
+    private static Category category(String key, Predicate<Candidate> test) {
         return new Category(Component.translatable("armorplus.configuration.picker.category." + key), test);
     }
 

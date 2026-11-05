@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.registry.block.castle;
 
 import com.sofodev.armorplus.config.AvailabilityConfig;
+import com.sofodev.armorplus.registry.RegistryContext;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.level.BlockGetter;
@@ -25,7 +26,7 @@ public class StoneBrickTowerBlock extends Block {
     protected static final VoxelShape VOXEL = Shapes.join(BASE, CORNERS, OR);
 
     public StoneBrickTowerBlock(Block block) {
-        super(com.sofodev.armorplus.registry.RegistryContext.blockProperties(ofFullCopy(block).requiresCorrectToolForDrops()));
+        super(RegistryContext.blockProperties(ofFullCopy(block).requiresCorrectToolForDrops()));
     }
 
     @Override

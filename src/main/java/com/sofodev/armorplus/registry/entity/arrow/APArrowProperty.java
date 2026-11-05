@@ -4,8 +4,28 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.core.particles.PowerParticleOption;
 
 import static com.sofodev.armorplus.registry.item.extra.EffectData.create;
-import static net.minecraft.core.particles.ParticleTypes.*;
-import static net.minecraft.world.effect.MobEffects.*;
+import static net.minecraft.core.particles.ParticleTypes.CLOUD;
+import static net.minecraft.core.particles.ParticleTypes.CRIT;
+import static net.minecraft.core.particles.ParticleTypes.DRAGON_BREATH;
+import static net.minecraft.core.particles.ParticleTypes.DRIPPING_HONEY;
+import static net.minecraft.core.particles.ParticleTypes.DRIPPING_WATER;
+import static net.minecraft.core.particles.ParticleTypes.END_ROD;
+import static net.minecraft.core.particles.ParticleTypes.FALLING_WATER;
+import static net.minecraft.core.particles.ParticleTypes.FLAME;
+import static net.minecraft.core.particles.ParticleTypes.GLOW;
+import static net.minecraft.core.particles.ParticleTypes.HAPPY_VILLAGER;
+import static net.minecraft.core.particles.ParticleTypes.POOF;
+import static net.minecraft.core.particles.ParticleTypes.SMOKE;
+import static net.minecraft.core.particles.ParticleTypes.SONIC_BOOM;
+import static net.minecraft.core.particles.ParticleTypes.WITCH;
+import static net.minecraft.world.effect.MobEffects.BLINDNESS;
+import static net.minecraft.world.effect.MobEffects.DARKNESS;
+import static net.minecraft.world.effect.MobEffects.GLOWING;
+import static net.minecraft.world.effect.MobEffects.MINING_FATIGUE;
+import static net.minecraft.world.effect.MobEffects.NAUSEA;
+import static net.minecraft.world.effect.MobEffects.SLOWNESS;
+import static net.minecraft.world.effect.MobEffects.WEAKNESS;
+import static net.minecraft.world.effect.MobEffects.WITHER;
 
 public class APArrowProperty {
 

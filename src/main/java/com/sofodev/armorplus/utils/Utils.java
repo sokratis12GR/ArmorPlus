@@ -33,7 +33,10 @@ import static java.lang.String.format;
 import static java.util.Arrays.stream;
 import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.toList;
-import static net.minecraft.world.entity.EquipmentSlot.*;
+import static net.minecraft.world.entity.EquipmentSlot.CHEST;
+import static net.minecraft.world.entity.EquipmentSlot.FEET;
+import static net.minecraft.world.entity.EquipmentSlot.HEAD;
+import static net.minecraft.world.entity.EquipmentSlot.LEGS;
 
 /**
  * @author Sokratis Fotkatzikis

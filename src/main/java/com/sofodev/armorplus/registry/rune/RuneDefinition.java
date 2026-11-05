@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.rune;
 
+import com.sofodev.armorplus.api.RuneData;
+import com.sofodev.armorplus.api.RuneKind;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -22,10 +24,10 @@ import java.util.Optional;
  * The definition is turned into a regular {@link RuneData} entry ("id|level|seconds@slots", see {@link BuffParser}), so
  * runes keep working when the datapack changes.
  *
- * @param kind       armor, weapon or tool
+ * @param kind       armor, weapon, tool or ranged
  * @param effect     a mob effect id, or an ability id (e.g. "armorplus:auto_smelt")
- * @param level      the effect level, none for abilities
- * @param seconds    the duration of on-hit effects (weapon and tool debuffs)
+ * @param level      the effect level, none for abilities without levels
+ * @param seconds    the duration of on-hit effects (weapon, ranged and tool debuffs)
  * @param slots      the armor pieces an armor rune fits into ("head", "chest", "legs", "feet"), empty for the effect's "effectSlots" default
  * @param socketCost experience levels to socket it (the config "runeOverrides" still wins)
  * @param extraction extraction rules of the buff (the config "runeOverrides" still wins)

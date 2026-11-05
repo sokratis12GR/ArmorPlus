@@ -1,5 +1,6 @@
 package com.sofodev.armorplus.registry.rune;
 
+import com.sofodev.armorplus.api.RuneData;
 import com.mojang.serialization.Codec;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;

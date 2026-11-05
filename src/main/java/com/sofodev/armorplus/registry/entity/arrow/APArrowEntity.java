@@ -6,10 +6,11 @@ import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.server.level.ServerEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Objects;
 
@@ -30,20 +31,20 @@ public abstract class APArrowEntity extends AbstractArrow {
     }
 
     public APArrowEntity(EntityType<? extends APArrowEntity> type, double x, double y, double z, Level world, ArrowProperty property) {
-        super(type, x, y, z, world, property.getPickupItem(), property.getPickupItem());
+        super(type, x, y, z, world, property.getPickupItem(), null);
         this.type = type;
         this.setProp(property);
         this.setPos(x, y, z);
     }
 
-    public APArrowEntity(EntityType<? extends APArrowEntity> type, LivingEntity shooter, Level world, ArrowProperty property) {
-        super(type, shooter, world, property.getPickupItem(), property.getPickupItem());
+    /**
+     * @param ammo   the stack the arrow was made from, an Infinity or creative one can't be picked up
+     * @param weapon the bow or crossbow that fired it, whose enchantments apply to the arrow
+     */
+    public APArrowEntity(EntityType<? extends APArrowEntity> type, LivingEntity shooter, Level world, ItemStack ammo, @Nullable ItemStack weapon, ArrowProperty property) {
+        super(type, shooter, world, ammo.copyWithCount(1), weapon);
         this.type = type;
         this.setProp(property);
-        this.setOwner(shooter);
-        if (shooter instanceof Player) {
-            this.pickup = AbstractArrow.Pickup.ALLOWED;
-        }
     }
 
 
@@ -54,12 +55,8 @@ public abstract class APArrowEntity extends AbstractArrow {
 
     public APArrowEntity setProp(ArrowProperty prop) {
         this.prop = prop;
+        if (prop != null) this.setBaseDamage(prop.getDmg());
         return this;
-    }
-
-    @Override
-    public void setBaseDamage(double damageIn) {
-        super.setBaseDamage(this.prop == null ? damageIn : this.prop.getDmg());
     }
 
     @Override
@@ -84,7 +81,7 @@ public abstract class APArrowEntity extends AbstractArrow {
 
     @Override
     protected ItemStack getDefaultPickupItem() {
-        return prop == null ? new ItemStack(net.minecraft.world.item.Items.ARROW) : prop.getPickupItem();
+        return prop == null ? new ItemStack(Items.ARROW) : prop.getPickupItem();
     }
 
     @Override

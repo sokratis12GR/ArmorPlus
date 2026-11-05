@@ -38,7 +38,7 @@ side = "BOTH"
 [[dependencies.${ mod_id }]]
 modId = "thedragonlib"
 mandatory = true
-versionRange = "[1.3.0,)"
+versionRange = "[1.4.1,)"
 ordering = "BEFORE"
 side = "BOTH"
 # Features are specific properties of the game environment, that you may want to declare you require. This example declares

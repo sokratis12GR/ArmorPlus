@@ -4,7 +4,6 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantedItemInUse;
 import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect;
@@ -21,30 +20,14 @@ public record LifeStealEnchantmentEffect() implements EnchantmentEntityEffect {
             enchantmentLevel = Levels.limit();
         }
         Levels lvl = Levels.values()[enchantmentLevel];
-        float damageDealt;
         if (enchantedItemInUse.owner() == null) {
             return;
         }
         LivingEntity user = enchantedItemInUse.owner();
         ItemStack mainHand = enchantedItemInUse.owner().getMainHandItem();
-        Item handItem = mainHand.getItem();
         if (mainHand.isEmpty()) return;
-        user.heal(lvl.healingFactor); // TODO 26.1: derive weapon damage from components
+        user.heal(lvl.healingFactor);
     }
-
-    /**
-     * Julian's function for softCap
-     */
-    private float softCap(float value, float max, float scale) {
-        if (value <= max) {
-            return value;
-        }
-        float space = max * scale;
-        float offset = value - max;
-        return max + space * offset / (space + offset);
-    }
-
-
 
     @Override
     public MapCodec<? extends EnchantmentEntityEffect> codec() {

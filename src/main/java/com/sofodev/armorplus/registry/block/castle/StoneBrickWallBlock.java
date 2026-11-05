@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.registry.block.castle;
 
 import com.sofodev.armorplus.config.AvailabilityConfig;
+import com.sofodev.armorplus.registry.RegistryContext;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.WallBlock;
@@ -17,7 +18,7 @@ public class StoneBrickWallBlock extends WallBlock {
     public static final BooleanProperty UP = BlockStateProperties.UP;
 
     public StoneBrickWallBlock(Block block) {
-        super(com.sofodev.armorplus.registry.RegistryContext.blockProperties(ofFullCopy(block).requiresCorrectToolForDrops()));
+        super(RegistryContext.blockProperties(ofFullCopy(block).requiresCorrectToolForDrops()));
     }
 
     @Override

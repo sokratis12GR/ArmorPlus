@@ -26,7 +26,7 @@ import static com.sofodev.armorplus.ArmorPlus.MODID;
  *     <li>{@code "minecraft:regeneration|2|200"} - Regeneration II lasting 200 seconds</li>
  *     <li>{@code "armorplus:flight"} - an ArmorPlus ability (flight, wither_immunity, sculk_immunity, ignite, ...)</li>
  * </ul>
- * The level starts at 1 (level 1 = amplifier 0). Levels are ignored by abilities.
+ * The level starts at 1 (level 1 = amplifier 0). Levels are ignored by abilities, unless they're {@linkplain IBuff#isLeveled() leveled}.
  * <p>
  * Armor entries can end with a {@link SetRequirement}, the pieces of the set the effect needs:
  * {@code "minecraft:night_vision|1@head"}, {@code "minecraft:conduit_power|2@legs,feet"},
@@ -104,7 +104,9 @@ public final class BuffParser {
         /** On-hit effects ({@value #DEFAULT_WEAPON_SECONDS} seconds unless given) and {@link DeBuff} abilities */
         WEAPON,
         /** Effects while the tool is held, {@link ToolBuff} abilities and on-hit {@link DeBuff}s (like weapons) */
-        TOOL
+        TOOL,
+        /** {@link RangedBuff} abilities and on-hit effects of the arrows a bow or crossbow fires (like weapons) */
+        RANGED
     }
 
     /** Builds a single armor buff from an entry, e.g. {@code armor("minecraft:haste|2")}. */
@@ -120,6 +122,11 @@ public final class BuffParser {
     /** Builds a single tool (while held) buff from an entry, e.g. {@code tool("armorplus:auto_smelt")}. */
     public static BuffInstance tool(String entry) {
         return parse(entry, Use.TOOL);
+    }
+
+    /** Builds a single ranged buff from an entry, e.g. {@code ranged("armorplus:piercing|2")}. */
+    public static BuffInstance ranged(String entry) {
+        return parse(entry, Use.RANGED);
     }
 
     /** @return the armor buffs of the entries, without the invalid and switched off ("!") ones */
@@ -164,15 +171,15 @@ public final class BuffParser {
         IBuff buff = resolve(id, use);
         if (buff == null) return null;
         BuffInstance instance;
-        if (!buff.isEffect()) instance = new BuffInstance(buff);
+        if (!buff.isEffect()) instance = buff.isLeveled() ? new BuffInstance(buff).setAmplifier(amplifier) : new BuffInstance(buff);
         else if (seconds != null) instance = new BuffInstance(buff, amplifier, seconds);
-        else instance = use == Use.WEAPON || buff instanceof DeBuff ? new BuffInstance(buff, amplifier, DEFAULT_WEAPON_SECONDS) : new BuffInstance(buff, amplifier);
+        else instance = use == Use.WEAPON || use == Use.RANGED || buff instanceof DeBuff ? new BuffInstance(buff, amplifier, DEFAULT_WEAPON_SECONDS) : new BuffInstance(buff, amplifier);
         return instance.setRequirement(use == Use.ARMOR ? requirementOf(entry) : null);
     }
 
     /**
      * ArmorPlus abilities live in the "armorplus" namespace and only resolve for their use (armor {@link Buff}, weapon
-     * {@link DeBuff}, tool {@link ToolBuff} or {@link DeBuff}); effects that ArmorPlus already knows keep using their enum
+     * {@link DeBuff}, tool {@link ToolBuff} or {@link DeBuff}, ranged {@link RangedBuff} or {@link DeBuff}); effects that ArmorPlus already knows keep using their enum
      * constant (and translations), every other effect id becomes a generic {@link EffectBuff}. Tools read the effects known
      * as {@link DeBuff}s (wither, poison, ...) as on-hit effects, like weapons. Ids of the {@link RuneEffectTypes} registry
      * come first; the built-in wrappers resolve to their enum constant.
@@ -194,12 +201,16 @@ public final class BuffParser {
                     IBuff toolBuff = find(ToolBuff.class, constant);
                     yield toolBuff != null ? toolBuff : find(DeBuff.class, constant);
                 }
+                case RANGED -> {
+                    IBuff rangedBuff = find(RangedBuff.class, constant);
+                    yield rangedBuff != null ? rangedBuff : find(DeBuff.class, constant);
+                }
             };
             return ability != null && !ability.isEffect() ? ability : null;
         }
         IBuff known = switch (use) {
             case ARMOR -> find(Buff.class, constant);
-            case WEAPON -> find(DeBuff.class, constant);
+            case WEAPON, RANGED -> find(DeBuff.class, constant);
             case TOOL -> {
                 IBuff deBuff = find(DeBuff.class, constant);
                 yield deBuff != null ? deBuff : find(Buff.class, constant);

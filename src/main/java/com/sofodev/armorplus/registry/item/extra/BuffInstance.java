@@ -11,7 +11,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 
 import java.util.Locale;
@@ -23,7 +22,6 @@ import static net.minecraft.ChatFormatting.DARK_AQUA;
 
 public class BuffInstance {
 
-    private final boolean instant;
     private final MobEffectInstance effect;
     private final int durationTicks;
     private IBuff buff;
@@ -33,28 +31,23 @@ public class BuffInstance {
     private @Nullable SetRequirement requirement;
 
     public BuffInstance(boolean enabled, IBuff buff, int amplifier) {
-        this(enabled ? buff : NONE, amplifier, 20, true);
+        this(enabled ? buff : NONE, amplifier, 20);
     }
 
     public BuffInstance(IBuff buff, int amplifier) {
-        this(buff, amplifier, 20, true);
+        this(buff, amplifier, 20);
     }
 
     public BuffInstance(boolean enabled, IBuff buff, int amplifier, int duration) {
-        this(enabled ? buff : NONE, amplifier, duration, false);
-    }
-
-    public BuffInstance(IBuff buff, int amplifier, int duration) {
-        this(buff, amplifier, duration, false);
+        this(enabled ? buff : NONE, amplifier, duration);
     }
 
     /**
      * Creates a new Buff Instance, with the specified amplifier (starting with 0, which will be set to 1) and duration (in seconds)...
      */
-    public BuffInstance(IBuff buff, int amplifier, int duration, boolean instant) {
+    public BuffInstance(IBuff buff, int amplifier, int duration) {
         this.buff = buff;
         this.amplifier = amplifier;
-        this.instant = instant;
         this.durationTicks = convertToSeconds(duration);
         if (buff.isEffect() && buff.getEffect() != null) {
             this.effect = new MobEffectInstance(buff.getEffect(), durationTicks, amplifier, false, false);
@@ -70,7 +63,6 @@ public class BuffInstance {
     public BuffInstance(boolean enabled, IBuff buff) {
         this.buff = enabled ? buff : NONE;
         this.amplifier = -1;
-        this.instant = true;
         this.durationTicks = 20;
         this.effect = new MobEffectInstance(ModPotions.EMPTY);
         this.enabled = true;
@@ -79,14 +71,23 @@ public class BuffInstance {
     public BuffInstance(IBuff buff) {
         this.buff = buff;
         this.amplifier = -1;
-        this.instant = true;
         this.durationTicks = 20;
         this.effect = new MobEffectInstance(ModPotions.EMPTY);
         this.enabled = true;
     }
 
-    public static BuffInstance build(IBuff buff, int amplifier, int duration, boolean instant) {
-        return new BuffInstance(buff, amplifier, duration, instant);
+    private BuffInstance(BuffInstance other, int amplifier) {
+        this.buff = other.buff;
+        this.amplifier = amplifier;
+        this.durationTicks = other.durationTicks;
+        this.effect = other.effect == null ? null : new MobEffectInstance(other.effect.getEffect(), other.durationTicks, amplifier, false, false);
+        this.enabled = other.enabled;
+        this.requirement = other.requirement;
+    }
+
+    /** @return a copy of this buff at the level (1 is the lowest) */
+    public BuffInstance atLevel(int level) {
+        return new BuffInstance(this, level - 1);
     }
 
     public static BuffInstance build(IBuff buff, int amplifier, int duration) {
@@ -106,7 +107,8 @@ public class BuffInstance {
      * <p>
      * Applies Buff's effects.
      * <p>
-     * If the buff is an effect it will be either applied instantly (even if you already have the effect))
+     * If the buff is an effect it is applied even if the player already has the effect, which refreshes its duration
+     * and upgrades a weaker level. The caller decides when that's needed, see RuneEvents.
      */
     @SuppressWarnings("removal")
     public void onInventoryTick(ItemStack stack, Level world, Player player) {
@@ -115,9 +117,7 @@ public class BuffInstance {
         if (buff.isEffect()) {
             var holder = buff.getEffect();
             if (holder == null) return;
-            if (instant || !player.hasEffect(holder)) {
-                player.addEffect(new MobEffectInstance(holder, durationTicks, amplifier, false, false));
-            }
+            player.addEffect(new MobEffectInstance(holder, durationTicks, amplifier, false, false));
         }
     }
 
@@ -144,7 +144,7 @@ public class BuffInstance {
     }
 
     /**
-     * Returns a potion effect, might be {@link Potions#} if the buff provided is not an effect.
+     * Returns a potion effect, might be null or empty if the buff provided is not an effect.
      */
     public MobEffectInstance getEffect() {
         var holder = buff.getEffect();
@@ -201,6 +201,6 @@ public class BuffInstance {
 
     @Override
     public String toString() {
-        return "BuffInstance{buff=%s, amplifier=%d, instant=%s, potion=%s, enabled=%s}".formatted(buff, amplifier, instant, effect, enabled);
+        return "BuffInstance{buff=%s, amplifier=%d, potion=%s, enabled=%s}".formatted(buff, amplifier, effect, enabled);
     }
 }

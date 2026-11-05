@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.utils;
 
 import com.sofodev.armorplus.ArmorPlus;
+import com.sofodev.armorplus.client.ArmorPlusKeys;
 import com.sofodev.armorplus.client.BuffGridTooltip;
 import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.registry.item.extra.Buff;
@@ -8,17 +9,23 @@ import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import com.sofodev.armorplus.registry.item.extra.BuffNames;
 import com.sofodev.armorplus.registry.item.extra.BuffParser;
 import com.sofodev.armorplus.registry.item.extra.DeBuff;
+import com.sofodev.armorplus.registry.item.extra.RangedBuff;
 import com.sofodev.armorplus.registry.item.tool.WeaponEffects;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.IAPTool;
-import com.sofodev.armorplus.registry.rune.RuneKind;
+import com.sofodev.armorplus.registry.rune.RuneEffectTypes;
+import com.sofodev.armorplus.registry.rune.Runes;
+import com.sofodev.armorplus.api.RuneEffectType;
+import com.sofodev.armorplus.api.RuneKind;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import org.jspecify.annotations.Nullable;
 import com.mojang.blaze3d.platform.InputConstants;
 import org.lwjgl.glfw.GLFW;
@@ -28,13 +35,21 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static com.sofodev.thedragonlib.util.RomanNumeralUtil.generate;
-import static net.minecraft.ChatFormatting.*;
+import static net.minecraft.ChatFormatting.DARK_AQUA;
+import static net.minecraft.ChatFormatting.DARK_GRAY;
+import static net.minecraft.ChatFormatting.DARK_GREEN;
+import static net.minecraft.ChatFormatting.DARK_PURPLE;
+import static net.minecraft.ChatFormatting.GRAY;
+import static net.minecraft.ChatFormatting.RED;
+import static net.minecraft.ChatFormatting.STRIKETHROUGH;
+import static net.minecraft.ChatFormatting.YELLOW;
 
 public class ToolTipUtils {
 
@@ -77,12 +92,16 @@ public class ToolTipUtils {
         showInfo(tooltip, Minecraft.getInstance().options.keyShift, formatting);
     }
 
-    public static void addBuffInformation(IAPTool tool, Consumer<Component> tooltip, String condition, boolean applyToSelf, boolean enabled) {
-        if (!tool.getBuffInstances().get().isEmpty()) {
+    public static void addBuffInformation(ItemStack stack, IAPTool tool, Consumer<Component> tooltip, String condition, boolean applyToSelf, boolean enabled) {
+        List<BuffInstance> buffs = Runes.nativeBuffs(stack, tool.getBuffInstances().get());
+        List<BuffInstance> extracted = Runes.extractedBuffs(stack, tool.getBuffInstances().get());
+        if (!buffs.isEmpty() || !extracted.isEmpty()) {
             tooltip.accept(effectsHeader(condition, enabled));
             Player player = clientPlayer();
-            addBuffLines(tooltip, tool.getBuffInstances().get(), ToolTipUtils::durationPrefix,
+            addBuffLines(tooltip, buffs, ToolTipUtils::durationPrefix,
                     buff -> enabled && (player == null || !WeaponEffects.isDisabled(player, BuffParser.idOf(buff.getBuff()))));
+            addExtractedLines(tooltip, extracted);
+            addDetailsHint(tooltip, buffs, tool.getColor());
         }
     }
 
@@ -113,9 +132,23 @@ public class ToolTipUtils {
         return translate(GRAY, weaker ? "tooltip.armorplus.instant_cooldown.weaker" : "tooltip.armorplus.instant_cooldown", seconds);
     }
 
-    /** @return the suffix of a rune's buff line: weapon runes fire on hit, so only armor and tool runes have a cooldown */
+    /** @return the suffix of a rune's buff line: weapon and ranged runes fire on hit, so only armor and tool runes have a cooldown */
     public static Function<BuffInstance, Component> runeSuffix(RuneKind kind) {
-        return buff -> kind == RuneKind.WEAPON ? null : instantCooldown(buff, kind == RuneKind.TOOL);
+        return buff -> switch (kind) {
+            case WEAPON -> null;
+            case RANGED -> rangedCost(buff);
+            case ARMOR, TOOL -> instantCooldown(buff, kind == RuneKind.TOOL);
+        };
+    }
+
+    /** @return what firing the ability costs from the config, e.g. "(30s cd, -10 durability)" for Ender Shot, null for anything else */
+    public static @Nullable Component rangedCost(BuffInstance buff) {
+        if (buff.getBuff() != RangedBuff.ENDER_SHOT) return null;
+        int cooldown = ArmorPlusConfig.enderShotCooldown.get();
+        int durability = ArmorPlusConfig.enderShotDurability.get();
+        if (cooldown > 0 && durability > 0) return translate(GRAY, "tooltip.armorplus.ender_shot_cost", cooldown, durability);
+        if (cooldown > 0) return translate(GRAY, "tooltip.armorplus.instant_cooldown", cooldown);
+        return durability > 0 ? translate(GRAY, "tooltip.armorplus.ender_shot_cost.durability", durability) : null;
     }
 
     /**
@@ -168,10 +201,64 @@ public class ToolTipUtils {
             Component end = suffix.apply(buff);
             if (end != null) line.append(" ").append(end);
             tooltip.accept(line.withStyle(style -> style.withColor(enabled ? DARK_AQUA : GRAY).withInsertion(BuffGridTooltip.BUFF_LINE)));
+            Component description = isDetailsDown() ? buffDescription(buff) : null;
+            if (description != null) {
+                tooltip.accept(Component.literal(INDENT + "  - ").append(description).withStyle(DESCRIPTION.withInsertion(BuffGridTooltip.BUFF_DESCRIPTION)));
+            }
         }
     }
 
-    private static final Style LORE = Style.EMPTY.withItalic(true).withColor(TextColor.fromRgb(0x670067));
+    /** Adds a dark gray, struck through line per effect that was extracted from the item, which it no longer has. */
+    public static void addExtractedLines(Consumer<Component> tooltip, List<BuffInstance> extracted) {
+        for (BuffInstance buff : extracted) {
+            if (buff.getBuff() == Buff.NONE) continue;
+            tooltip.accept(Component.literal(INDENT).append(extractedName(buff)).withStyle(style -> style.withColor(DARK_GRAY).withInsertion(BuffGridTooltip.BUFF_LINE)));
+        }
+    }
+
+    /** @return the short name of the effect, dark gray and struck through */
+    public static MutableComponent extractedName(BuffInstance buff) {
+        return buffName(buff, true).withStyle(DARK_GRAY, STRIKETHROUGH);
+    }
+
+    /** Soft blue, to stand apart from the gray hints and the effect names. */
+    private static final Style DESCRIPTION = Style.EMPTY.withItalic(true).withColor(TextColor.fromRgb(0x8FB8DE));
+
+    /** The translation key of the {@link #addDetailsHint} line. */
+    public static final String DETAILS_HINT = "tooltip.armorplus.details_hint";
+
+    /** @return true while the Effect Details key is held in a GUI tooltip; only keyboard keys can be read there */
+    public static boolean isDetailsDown() {
+        InputConstants.Key key = ArmorPlusKeys.EFFECT_DETAILS.getKey();
+        return key.getType() == InputConstants.Type.KEYSYM && key.getValue() >= 0 && InputConstants.isKeyDown(Minecraft.getInstance().getWindow(), key.getValue());
+    }
+
+    /** @return what the ability does ({@link RuneEffectType#getDescription()}), null for mob effects and abilities without a description */
+    public static @Nullable Component buffDescription(BuffInstance buff) {
+        if (buff.getBuff().isEffect()) return null;
+        Identifier id = Identifier.tryParse(BuffParser.idOf(buff.getBuff()));
+        RuneEffectType type = id == null ? null : RuneEffectTypes.get(id);
+        return type == null ? null : type.getDescription();
+    }
+
+    /**
+     * Adds "Hold Left Alt for details" if any of the buffs has a description that isn't showing yet.
+     *
+     * @param formatting the color of the key's name, like in {@link #showInfo}
+     */
+    public static void addDetailsHint(Consumer<Component> tooltip, List<BuffInstance> buffs, ChatFormatting formatting) {
+        if (isDetailsDown() || buffs.stream().allMatch(buff -> buffDescription(buff) == null)) return;
+        tooltip.accept(translate(GRAY, DETAILS_HINT, ArmorPlusKeys.EFFECT_DETAILS.getTranslatedKeyMessage().copy().withStyle(formatting)));
+    }
+
+    /** @return the tooltip of a buff's button in the effects screens: its full name, and its description if it has one */
+    public static MutableComponent buffTooltip(BuffInstance buff) {
+        MutableComponent tooltip = Component.empty().append(buffName(buff, false));
+        Component description = buffDescription(buff);
+        return description == null ? tooltip : tooltip.append("\n").append(description.copy().withStyle(DESCRIPTION));
+    }
+
+    private static final Style LORE =Style.EMPTY.withItalic(true).withColor(TextColor.fromRgb(0x670067));
 
     /**
      * Adds an item's lang-driven description: an always-visible flavor line ({@code tooltip.armorplus.<id>.flavor}),
@@ -246,7 +333,7 @@ public class ToolTipUtils {
 
     private static String percent(double chance) {
         double pct = chance * 100;
-        return (pct == Math.rint(pct) ? String.valueOf((int) pct) : String.format(java.util.Locale.ROOT, "%.1f", pct)) + "%";
+        return (pct == Math.rint(pct) ? String.valueOf((int) pct) : String.format(Locale.ROOT, "%.1f", pct)) + "%";
     }
 
     /**

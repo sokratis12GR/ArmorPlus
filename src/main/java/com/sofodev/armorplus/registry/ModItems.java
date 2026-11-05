@@ -17,17 +17,23 @@ import com.sofodev.armorplus.registry.item.material.LavaCrystalItem;
 import com.sofodev.armorplus.registry.item.material.MaterialItem;
 import com.sofodev.armorplus.registry.item.special.SoulItem;
 import com.sofodev.armorplus.registry.item.special.ThankYouItem;
-import com.sofodev.armorplus.registry.item.tool.*;
+import com.sofodev.armorplus.registry.item.tool.APBattleAxeItem;
+import com.sofodev.armorplus.registry.item.tool.APBowItem;
+import com.sofodev.armorplus.registry.item.tool.APMaceItem;
+import com.sofodev.armorplus.registry.item.tool.APPickaxeItem;
+import com.sofodev.armorplus.registry.item.tool.APShovelItem;
+import com.sofodev.armorplus.registry.item.tool.APSwordItem;
 import com.sofodev.armorplus.registry.item.tool.properties.mace.APMaceMaterial;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial;
 import com.sofodev.armorplus.registry.rune.RuneItem;
-import com.sofodev.armorplus.registry.rune.RuneKind;
+import com.sofodev.armorplus.api.RuneKind;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ArrowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceKey;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.Arrays;
@@ -36,9 +42,19 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static com.sofodev.armorplus.ArmorPlus.*;
+import static com.sofodev.armorplus.ArmorPlus.AP_MACE_MAT_LENGTH;
+import static com.sofodev.armorplus.ArmorPlus.AP_TOOL_MATERIAL_LENGTH;
+import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.registry.item.armor.APArmorMaterial.SLAYER;
-import static net.minecraft.ChatFormatting.*;
+import static net.minecraft.ChatFormatting.AQUA;
+import static net.minecraft.ChatFormatting.BLUE;
+import static net.minecraft.ChatFormatting.DARK_AQUA;
+import static net.minecraft.ChatFormatting.DARK_PURPLE;
+import static net.minecraft.ChatFormatting.GOLD;
+import static net.minecraft.ChatFormatting.GRAY;
+import static net.minecraft.ChatFormatting.LIGHT_PURPLE;
+import static net.minecraft.ChatFormatting.RED;
+import static net.minecraft.ChatFormatting.WHITE;
 
 public class ModItems {
 
@@ -154,7 +170,12 @@ public class ModItems {
     public static final DeferredHolder<Item, RuneItem> ARMOR_RUNE = register("armor_rune", () -> new RuneItem(RuneKind.ARMOR));
     public static final DeferredHolder<Item, RuneItem> WEAPON_RUNE = register("weapon_rune", () -> new RuneItem(RuneKind.WEAPON));
     public static final DeferredHolder<Item, RuneItem> TOOL_RUNE = register("tool_rune", () -> new RuneItem(RuneKind.TOOL));
+    public static final DeferredHolder<Item, RuneItem> RANGED_RUNE = register("ranged_rune", () -> new RuneItem(RuneKind.RANGED));
     public static final DeferredHolder<Item, Item> SOCKET_PUNCH = register("socket_punch", () -> new MaterialItem(false, LIGHT_PURPLE, RegistryContext.itemProperties()));
+    public static final DeferredHolder<Item, Item> EMBER_SIGIL = register("ember_sigil", () -> new MaterialItem(false, GOLD, RegistryContext.itemProperties()));
+    public static final DeferredHolder<Item, Item> RIME_SIGIL = register("rime_sigil", () -> new MaterialItem(false, AQUA, RegistryContext.itemProperties()));
+    public static final DeferredHolder<Item, Item> EQUINOX_SIGIL = register("equinox_sigil", () -> new MaterialItem(false, LIGHT_PURPLE, RegistryContext.itemProperties()));
+    public static final DeferredHolder<Item, Item> ASTRAL_SIGIL = register("astral_sigil", () -> new MaterialItem(false, DARK_PURPLE, RegistryContext.itemProperties()));
     //public static final DeferredHolder<Item, Item> TROPHY = ITEMS.register("trophy", () -> new TrophyItem(ModBlocks.TROPHY));
 
     static {
@@ -163,7 +184,7 @@ public class ModItems {
     }
 
     public static <ITEM extends Item> DeferredHolder<Item, ITEM> register(String name, DeferredRegister<Item> items, Supplier<ITEM> itemSupplier) {
-        return items.register(name, id -> RegistryContext.withItemKey(net.minecraft.resources.ResourceKey.create(Registries.ITEM, id), itemSupplier));
+        return items.register(name, id -> RegistryContext.withItemKey(ResourceKey.create(Registries.ITEM, id), itemSupplier));
     }
 
     public static <ITEM extends Item> DeferredHolder<Item, ITEM> register(String name, Supplier<ITEM> itemSupplier) {

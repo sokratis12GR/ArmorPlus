@@ -12,14 +12,13 @@ import com.sofodev.armorplus.registry.item.tool.ToolEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LightBlock;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.VanillaGameEvent;
@@ -28,8 +27,10 @@ import net.neoforged.neoforge.event.entity.living.LivingChangeTargetEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -52,13 +53,12 @@ import static com.sofodev.armorplus.utils.Utils.getAPItem;
 public class ModGlobalEvents {
 
     public static final Random RAND = new Random();
-    public static int waterTicks = 0;
-    public static int thunderingTicks = 0;
     private static final String ARMORPLUS_FLIGHT_TAG = "ArmorPlusFlight";
     private static final String ARMORPLUS_PREV_MAYFLY = "ArmorPlusPrevMayfly";
     /** Fallback interval of the flight check, equipment changes apply it right away (see onEquipmentChange). */
     private static final int FLIGHT_INTERVAL_TICKS = 20;
     private static final int ILLUMINATION_INTERVAL_TICKS = 20;
+    private static final int STALE_LIGHT_INTERVAL_TICKS = 100;
     /** Wardens are also stopped right away by the target change and damage events, this only calms down angry ones. */
     private static final int WARDEN_PACIFY_INTERVAL_TICKS = 20;
     private static final double WARDEN_PACIFY_RADIUS = 32.0;
@@ -120,12 +120,7 @@ public class ModGlobalEvents {
 
     private static void clearIllumination(UUID playerId) {
         LitSpot spot = ILLUMINATED_SPOTS.remove(playerId);
-        if (spot == null) return;
-
-        // Only clear if it's still our light block - a player may have replaced it with their own block already.
-        if (spot.level().isLoaded(spot.pos()) && spot.level().getBlockState(spot.pos()).is(Blocks.LIGHT)) {
-            spot.level().setBlockAndUpdate(spot.pos(), Blocks.AIR.defaultBlockState());
-        }
+        if (spot != null) IlluminationData.of(spot.level()).clear(spot.level(), spot.pos());
     }
 
     private static void checkAndApplyIllumination(Player player, ServerLevel level) {
@@ -143,9 +138,9 @@ public class ModGlobalEvents {
 
         clearIllumination(playerId);
 
-        if (!level.getBlockState(desired).isAir()) return;
+        if (!IlluminationData.canLight(level.getBlockState(desired))) return;
 
-        level.setBlockAndUpdate(desired, Blocks.LIGHT.defaultBlockState().setValue(LightBlock.LEVEL, 15));
+        IlluminationData.of(level).place(level, desired);
         ILLUMINATED_SPOTS.put(playerId, new LitSpot(level, desired));
     }
 
@@ -188,20 +183,24 @@ public class ModGlobalEvents {
         if (world instanceof ServerLevel level && player.tickCount % WARDEN_PACIFY_INTERVAL_TICKS == 0) {
             clearPacifiedWardenTargets(player, level);
         }
+    }
 
-        if (!world.isThundering()) return;
-        thunderingTicks++;
-        if ((thunderingTicks + 1) % 20 != 0 || RAND.nextInt(100) + 1 != 100) return;
-
-        // TODO 26.1: restore conductive vanilla-armor lightning behavior using equipment components.
-
+    /** Removes the light blocks left behind by a crash or in chunks that were unloaded when they were no longer needed. */
+    @SubscribeEvent
+    public static void onLevelTick(LevelTickEvent.Post e) {
+        if (e.getLevel() instanceof ServerLevel level && level.getGameTime() % STALE_LIGHT_INTERVAL_TICKS == 0) {
+            IlluminationData.of(level).clearStale(level, pos -> ILLUMINATED_SPOTS.containsValue(new LitSpot(level, pos)));
+        }
     }
 
     @SubscribeEvent
     public static void onEquipmentChange(LivingEquipmentChangeEvent e) {
         if (e.getEntity() instanceof Player player && !player.level().isClientSide()) {
+            List<BuffInstance> previous = new ArrayList<>(ArmorEffects.active(player));
+            previous.addAll(ToolEffects.held(player));
             ArmorEffects.invalidate(player);
             ToolEffects.invalidate(player);
+            RuneEvents.syncEffects(player, previous);
             checkAndApplyBuffs(player);
         }
     }
@@ -243,7 +242,7 @@ public class ModGlobalEvents {
         }
         if (event.getEntity() instanceof Player player
                 && !player.level().isClientSide()
-                && event.getSource().is(net.minecraft.world.damagesource.DamageTypes.FREEZE)
+                && event.getSource().is(DamageTypes.FREEZE)
                 && isFullArmorWithBuff(player, POWDERED_SNOW_IMMUNITY)) {
             player.setTicksFrozen(0);
             event.setCanceled(true);

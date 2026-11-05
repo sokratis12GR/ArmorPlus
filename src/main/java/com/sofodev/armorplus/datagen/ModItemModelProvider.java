@@ -3,6 +3,7 @@ package com.sofodev.armorplus.datagen;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.sofodev.armorplus.registry.ModBlocks;
+import com.sofodev.armorplus.registry.item.armor.APArmorItem;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
@@ -12,11 +13,113 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.nio.file.Path;
 import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
-import static com.sofodev.armorplus.registry.ModItems.*;
+import static com.sofodev.armorplus.registry.ModItems.ARDITE_INGOT;
+import static com.sofodev.armorplus.registry.ModItems.ARMOR_RUNE;
+import static com.sofodev.armorplus.registry.ModItems.BATTLE_AXES;
+import static com.sofodev.armorplus.registry.ModItems.BLANK_RUNE;
+import static com.sofodev.armorplus.registry.ModItems.ASTRAL_SIGIL;
+import static com.sofodev.armorplus.registry.ModItems.EMBER_SIGIL;
+import static com.sofodev.armorplus.registry.ModItems.EQUINOX_SIGIL;
+import static com.sofodev.armorplus.registry.ModItems.RIME_SIGIL;
+import static com.sofodev.armorplus.registry.ModItems.BLAZE_SOUL;
+import static com.sofodev.armorplus.registry.ModItems.BOOTS;
+import static com.sofodev.armorplus.registry.ModItems.BOWS;
+import static com.sofodev.armorplus.registry.ModItems.CHAINMAIL;
+import static com.sofodev.armorplus.registry.ModItems.CHESTPLATES;
+import static com.sofodev.armorplus.registry.ModItems.COBALT_INGOT;
+import static com.sofodev.armorplus.registry.ModItems.ELDER_GUARDIAN_SOUL;
+import static com.sofodev.armorplus.registry.ModItems.ENDERMAN_SOUL;
+import static com.sofodev.armorplus.registry.ModItems.ENDER_DRAGON_BASES;
+import static com.sofodev.armorplus.registry.ModItems.ENDER_DRAGON_BATTLE_AXE_BASE;
+import static com.sofodev.armorplus.registry.ModItems.ENDER_DRAGON_BOW_BASE;
+import static com.sofodev.armorplus.registry.ModItems.ENDER_DRAGON_PICKAXE_BASE;
+import static com.sofodev.armorplus.registry.ModItems.ENDER_DRAGON_SCALE;
+import static com.sofodev.armorplus.registry.ModItems.ENDER_DRAGON_SHOVEL_BASE;
+import static com.sofodev.armorplus.registry.ModItems.ENDER_DRAGON_SOUL;
+import static com.sofodev.armorplus.registry.ModItems.ENDER_DRAGON_SWORD_BASE;
+import static com.sofodev.armorplus.registry.ModItems.ENHANCED_CHAINMAIL;
+import static com.sofodev.armorplus.registry.ModItems.ENHANCED_COPPER;
+import static com.sofodev.armorplus.registry.ModItems.ENHANCED_DIAMOND;
+import static com.sofodev.armorplus.registry.ModItems.ENHANCED_GOLD;
+import static com.sofodev.armorplus.registry.ModItems.ENHANCED_IRON;
+import static com.sofodev.armorplus.registry.ModItems.ENHANCED_NETHERITE;
+import static com.sofodev.armorplus.registry.ModItems.FROST_CRYSTAL;
+import static com.sofodev.armorplus.registry.ModItems.FROST_SHARD;
+import static com.sofodev.armorplus.registry.ModItems.GUARDIAN_BASES;
+import static com.sofodev.armorplus.registry.ModItems.GUARDIAN_BATTLE_AXE_BASE;
+import static com.sofodev.armorplus.registry.ModItems.GUARDIAN_BOW_BASE;
+import static com.sofodev.armorplus.registry.ModItems.GUARDIAN_PICKAXE_BASE;
+import static com.sofodev.armorplus.registry.ModItems.GUARDIAN_SCALE;
+import static com.sofodev.armorplus.registry.ModItems.GUARDIAN_SHOVEL_BASE;
+import static com.sofodev.armorplus.registry.ModItems.GUARDIAN_SOUL;
+import static com.sofodev.armorplus.registry.ModItems.GUARDIAN_SWORD_BASE;
+import static com.sofodev.armorplus.registry.ModItems.HELMETS;
+import static com.sofodev.armorplus.registry.ModItems.INFUSED_FROST_CRYSTAL;
+import static com.sofodev.armorplus.registry.ModItems.INFUSED_FROST_LAVA_CRYSTAL;
+import static com.sofodev.armorplus.registry.ModItems.INFUSED_LAVA_CRYSTAL;
+import static com.sofodev.armorplus.registry.ModItems.ITEM_AMETHYST_ARROW;
+import static com.sofodev.armorplus.registry.ModItems.ITEM_COAL_ARROW;
+import static com.sofodev.armorplus.registry.ModItems.ITEM_EMERALD_ARROW;
+import static com.sofodev.armorplus.registry.ModItems.ITEM_ENDER_DRAGON_ARROW;
+import static com.sofodev.armorplus.registry.ModItems.ITEM_GLOWSTONE_ARROW;
+import static com.sofodev.armorplus.registry.ModItems.ITEM_GUARDIAN_ARROW;
+import static com.sofodev.armorplus.registry.ModItems.ITEM_HONEY_ARROW;
+import static com.sofodev.armorplus.registry.ModItems.ITEM_INFUSED_LAVA_ARROW;
+import static com.sofodev.armorplus.registry.ModItems.ITEM_LAPIS_ARROW;
+import static com.sofodev.armorplus.registry.ModItems.ITEM_OBSIDIAN_ARROW;
+import static com.sofodev.armorplus.registry.ModItems.ITEM_QUARTZ_ARROW;
+import static com.sofodev.armorplus.registry.ModItems.ITEM_REDSTONE_ARROW;
+import static com.sofodev.armorplus.registry.ModItems.ITEM_SUPER_STAR_ARROW;
+import static com.sofodev.armorplus.registry.ModItems.ITEM_WARDEN_ARROW;
+import static com.sofodev.armorplus.registry.ModItems.KNIGHT_SLIME_CRYSTAL;
+import static com.sofodev.armorplus.registry.ModItems.LAVA_CRYSTAL;
+import static com.sofodev.armorplus.registry.ModItems.LAVA_SHARD;
+import static com.sofodev.armorplus.registry.ModItems.LEGGINGS;
+import static com.sofodev.armorplus.registry.ModItems.MACES;
+import static com.sofodev.armorplus.registry.ModItems.MANYULLYN_INGOT;
+import static com.sofodev.armorplus.registry.ModItems.OBSIDIAN_STICK;
+import static com.sofodev.armorplus.registry.ModItems.PICKAXES;
+import static com.sofodev.armorplus.registry.ModItems.PIG_IRON_INGOT;
+import static com.sofodev.armorplus.registry.ModItems.RANGED_RUNE;
+import static com.sofodev.armorplus.registry.ModItems.SHOVELS;
+import static com.sofodev.armorplus.registry.ModItems.SLAYER_BASES;
+import static com.sofodev.armorplus.registry.ModItems.SLAYER_BATTLE_AXE_BASE;
+import static com.sofodev.armorplus.registry.ModItems.SLAYER_BOW_BASE;
+import static com.sofodev.armorplus.registry.ModItems.SLAYER_PICKAXE_BASE;
+import static com.sofodev.armorplus.registry.ModItems.SLAYER_SHOVEL_BASE;
+import static com.sofodev.armorplus.registry.ModItems.SLAYER_SOUL;
+import static com.sofodev.armorplus.registry.ModItems.SLAYER_SWORD_BASE;
+import static com.sofodev.armorplus.registry.ModItems.SOCKET_PUNCH;
+import static com.sofodev.armorplus.registry.ModItems.SUPER_STAR_BASES;
+import static com.sofodev.armorplus.registry.ModItems.SUPER_STAR_BATTLE_AXE_BASE;
+import static com.sofodev.armorplus.registry.ModItems.SUPER_STAR_BOW_BASE;
+import static com.sofodev.armorplus.registry.ModItems.SUPER_STAR_PICKAXE_BASE;
+import static com.sofodev.armorplus.registry.ModItems.SUPER_STAR_SHOVEL_BASE;
+import static com.sofodev.armorplus.registry.ModItems.SUPER_STAR_SWORD_BASE;
+import static com.sofodev.armorplus.registry.ModItems.SWORDS;
+import static com.sofodev.armorplus.registry.ModItems.THANK_YOU;
+import static com.sofodev.armorplus.registry.ModItems.THE_ULTIMATE_MATERIAL;
+import static com.sofodev.armorplus.registry.ModItems.TOOL_RUNE;
+import static com.sofodev.armorplus.registry.ModItems.WARDEN_BASES;
+import static com.sofodev.armorplus.registry.ModItems.WARDEN_BATTLE_AXE_BASE;
+import static com.sofodev.armorplus.registry.ModItems.WARDEN_BOW_BASE;
+import static com.sofodev.armorplus.registry.ModItems.WARDEN_HEART;
+import static com.sofodev.armorplus.registry.ModItems.WARDEN_PICKAXE_BASE;
+import static com.sofodev.armorplus.registry.ModItems.WARDEN_SHOVEL_BASE;
+import static com.sofodev.armorplus.registry.ModItems.WARDEN_SWORD_BASE;
+import static com.sofodev.armorplus.registry.ModItems.WEAPON_RUNE;
+import static com.sofodev.armorplus.registry.ModItems.WITHER_BONE;
+import static com.sofodev.armorplus.registry.ModItems.WITHER_BOSS_SOUL;
+import static com.sofodev.armorplus.registry.ModItems.WITHER_SKELETON_SOUL;
+import static com.sofodev.armorplus.registry.ModItems.WOODEN_ROD;
 
 
 public final class ModItemModelProvider implements DataProvider {
@@ -33,7 +136,7 @@ public final class ModItemModelProvider implements DataProvider {
 
     @Override
     public CompletableFuture<?> run(CachedOutput cache) {
-        java.util.List<CompletableFuture<?>> writes = new java.util.ArrayList<>();
+        List<CompletableFuture<?>> writes = new ArrayList<>();
 
         Set<DeferredHolder<Item, ? extends Item>> flatItems = new LinkedHashSet<>();
 
@@ -42,7 +145,7 @@ public final class ModItemModelProvider implements DataProvider {
             writes.add(DataProvider.saveStable(cache, socketOverlayModel(state), modelsRoot.resolve("socket_overlay_" + state + ".json")));
         }
 
-        add(flatItems, BLANK_RUNE, ARMOR_RUNE, WEAPON_RUNE, TOOL_RUNE, SOCKET_PUNCH);
+        add(flatItems, BLANK_RUNE, ARMOR_RUNE, WEAPON_RUNE, TOOL_RUNE, RANGED_RUNE, SOCKET_PUNCH, EMBER_SIGIL, RIME_SIGIL, EQUINOX_SIGIL, ASTRAL_SIGIL);
 
         writes.add(DataProvider.saveStable(cache, handheldSword(), modelsRoot.resolve("handheld_sword.json")));
 
@@ -74,7 +177,7 @@ public final class ModItemModelProvider implements DataProvider {
 
         add(flatItems, ITEM_COAL_ARROW, ITEM_LAPIS_ARROW, ITEM_REDSTONE_ARROW, ITEM_EMERALD_ARROW, ITEM_OBSIDIAN_ARROW, ITEM_INFUSED_LAVA_ARROW, ITEM_GUARDIAN_ARROW, ITEM_SUPER_STAR_ARROW, ITEM_ENDER_DRAGON_ARROW, ITEM_WARDEN_ARROW, ITEM_AMETHYST_ARROW, ITEM_QUARTZ_ARROW, ITEM_GLOWSTONE_ARROW, ITEM_HONEY_ARROW);
 
-        java.util.Collections.addAll(flatItems, PICKAXES);
+        Collections.addAll(flatItems, PICKAXES);
 
         flatItems.addAll(GUARDIAN_BASES);
 
@@ -106,7 +209,7 @@ public final class ModItemModelProvider implements DataProvider {
             writes.addAll(writeGeckoLibMace(cache, mace));
         }
 
-        for (DeferredHolder<Item, ? extends com.sofodev.armorplus.registry.item.armor.APArmorItem> armor : allArmor()) {
+        for (DeferredHolder<Item, ? extends APArmorItem> armor : allArmor()) {
             writes.addAll(writeTrimmedArmor(cache, armor));
         }
 
@@ -127,11 +230,11 @@ public final class ModItemModelProvider implements DataProvider {
     private static final String[] SOCKET_STATES = {"empty", "partial", "full"};
 
     /** Paths of the equipment that can hold runes, their client items get the socket overlay. */
-    private final Set<String> socketable = new java.util.HashSet<>();
+    private final Set<String> socketable = new HashSet<>();
 
     private void collectSocketable() {
         for (DeferredHolder<Item, ? extends Item> armor : allArmor()) socketable.add(armor.getId().getPath());
-        for (DeferredHolder<Item, Item>[] tools : java.util.List.of(SWORDS, BATTLE_AXES, PICKAXES, SHOVELS, MACES)) {
+        for (DeferredHolder<Item, Item>[] tools : List.of(SWORDS, BATTLE_AXES, PICKAXES, SHOVELS, MACES, BOWS)) {
             for (DeferredHolder<Item, Item> tool : tools) socketable.add(tool.getId().getPath());
         }
     }
@@ -220,8 +323,8 @@ public final class ModItemModelProvider implements DataProvider {
         return select;
     }
 
-    private Set<DeferredHolder<Item, ? extends com.sofodev.armorplus.registry.item.armor.APArmorItem>> allArmor() {
-        Set<DeferredHolder<Item, ? extends com.sofodev.armorplus.registry.item.armor.APArmorItem>> result = new LinkedHashSet<>();
+    private Set<DeferredHolder<Item, ? extends APArmorItem>> allArmor() {
+        Set<DeferredHolder<Item, ? extends APArmorItem>> result = new LinkedHashSet<>();
 
         result.addAll(HELMETS);
 
@@ -262,12 +365,12 @@ public final class ModItemModelProvider implements DataProvider {
         return MODID + ":item/" + item.getId().getPath();
     }
 
-    private java.util.List<CompletableFuture<?>> writeTrimmedArmor(CachedOutput cache, DeferredHolder<Item, ? extends Item> armor) {
+    private List<CompletableFuture<?>> writeTrimmedArmor(CachedOutput cache, DeferredHolder<Item, ? extends Item> armor) {
         String path = armor.getId().getPath();
 
         String slot = path.substring(path.lastIndexOf('_') + 1);
 
-        java.util.List<CompletableFuture<?>> writes = new java.util.ArrayList<>();
+        List<CompletableFuture<?>> writes = new ArrayList<>();
 
         String baseTexture = armorBaseTexture(path);
 
@@ -330,10 +433,10 @@ public final class ModItemModelProvider implements DataProvider {
         return MODID + ":item/" + path;
     }
 
-    private java.util.List<CompletableFuture<?>> writeBow(CachedOutput cache, DeferredHolder<Item, Item> bow) {
+    private List<CompletableFuture<?>> writeBow(CachedOutput cache, DeferredHolder<Item, Item> bow) {
         String path = bow.getId().getPath();
 
-        java.util.List<CompletableFuture<?>> writes = new java.util.ArrayList<>();
+        List<CompletableFuture<?>> writes = new ArrayList<>();
 
         JsonObject base = texturedModel("minecraft:item/bow", MODID + ":item/" + path);
 
@@ -377,7 +480,7 @@ public final class ModItemModelProvider implements DataProvider {
 
         JsonObject clientItem = new JsonObject();
 
-        clientItem.add("model", condition);
+        clientItem.add("model", withSocketOverlay(path, condition));
 
         writes.add(DataProvider.saveStable(cache, clientItem, itemsRoot.resolve(path + ".json")));
 
@@ -418,7 +521,7 @@ public final class ModItemModelProvider implements DataProvider {
         return entry;
     }
 
-    private java.util.List<CompletableFuture<?>> writeTexturedItem(CachedOutput cache, DeferredHolder<Item, ? extends Item> item, String parent, String texture) {
+    private List<CompletableFuture<?>> writeTexturedItem(CachedOutput cache, DeferredHolder<Item, ? extends Item> item, String parent, String texture) {
         String path = item.getId().getPath();
 
         JsonObject textures = new JsonObject();
@@ -434,11 +537,11 @@ public final class ModItemModelProvider implements DataProvider {
         return writeModelAndClientItem(cache, path, model);
     }
 
-    private java.util.List<CompletableFuture<?>> writeTexturedItem(CachedOutput cache, DeferredHolder<Item, ? extends Item> item, String parent) {
+    private List<CompletableFuture<?>> writeTexturedItem(CachedOutput cache, DeferredHolder<Item, ? extends Item> item, String parent) {
         return writeTexturedItem(cache, item, parent, MODID + ":item/" + item.getId().getPath());
     }
 
-    private java.util.List<CompletableFuture<?>> writeParentOnlyItem(CachedOutput cache, DeferredHolder<Item, ? extends Item> item, String parent) {
+    private List<CompletableFuture<?>> writeParentOnlyItem(CachedOutput cache, DeferredHolder<Item, ? extends Item> item, String parent) {
         String path = item.getId().getPath();
 
         JsonObject model = new JsonObject();
@@ -448,7 +551,7 @@ public final class ModItemModelProvider implements DataProvider {
         return writeModelAndClientItem(cache, path, model);
     }
 
-    private java.util.List<CompletableFuture<?>> writeGeckoLibMace(CachedOutput cache, DeferredHolder<Item, Item> mace) {
+    private List<CompletableFuture<?>> writeGeckoLibMace(CachedOutput cache, DeferredHolder<Item, Item> mace) {
         String path = mace.getId().getPath();
 
         JsonObject specialRenderer = new JsonObject();
@@ -465,7 +568,7 @@ public final class ModItemModelProvider implements DataProvider {
         JsonObject baseModel = texturedModel("minecraft:item/handheld", MODID + ":item/" + path);
         baseModel.add("display", maceDisplayTransforms());
 
-        return java.util.List.of(DataProvider.saveStable(cache, baseModel, modelsRoot.resolve(path + ".json")), DataProvider.saveStable(cache, clientItem, itemsRoot.resolve(path + ".json")));
+        return List.of(DataProvider.saveStable(cache, baseModel, modelsRoot.resolve(path + ".json")), DataProvider.saveStable(cache, clientItem, itemsRoot.resolve(path + ".json")));
     }
 
     private JsonObject maceDisplayTransforms() {
@@ -496,7 +599,7 @@ public final class ModItemModelProvider implements DataProvider {
         return display;
     }
 
-    private java.util.List<CompletableFuture<?>> writeBlockItem(CachedOutput cache, DeferredHolder<Block, ? extends Block> block) {
+    private List<CompletableFuture<?>> writeBlockItem(CachedOutput cache, DeferredHolder<Block, ? extends Block> block) {
         String path = block.getId().getPath();
 
         JsonObject model = new JsonObject();
@@ -506,7 +609,7 @@ public final class ModItemModelProvider implements DataProvider {
         return writeModelAndClientItem(cache, path, model);
     }
 
-    private java.util.List<CompletableFuture<?>> writeModelAndClientItem(CachedOutput cache, String path, JsonObject model) {
+    private List<CompletableFuture<?>> writeModelAndClientItem(CachedOutput cache, String path, JsonObject model) {
         JsonObject modelRef = new JsonObject();
 
         modelRef.addProperty("type", "minecraft:model");
@@ -517,7 +620,7 @@ public final class ModItemModelProvider implements DataProvider {
 
         clientItem.add("model", withSocketOverlay(path, modelRef));
 
-        return java.util.List.of(DataProvider.saveStable(cache, model, modelsRoot.resolve(path + ".json")), DataProvider.saveStable(cache, clientItem, itemsRoot.resolve(path + ".json")));
+        return List.of(DataProvider.saveStable(cache, model, modelsRoot.resolve(path + ".json")), DataProvider.saveStable(cache, clientItem, itemsRoot.resolve(path + ".json")));
     }
 
     private JsonObject handheldSword() {
@@ -598,7 +701,7 @@ public final class ModItemModelProvider implements DataProvider {
 
     @SafeVarargs
     private static void add(Set<DeferredHolder<Item, ? extends Item>> target, DeferredHolder<Item, ? extends Item>... values) {
-        java.util.Collections.addAll(target, values);
+        Collections.addAll(target, values);
     }
 
     @Override

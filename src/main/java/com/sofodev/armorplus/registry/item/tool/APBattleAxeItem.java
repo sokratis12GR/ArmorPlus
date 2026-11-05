@@ -2,6 +2,7 @@ package com.sofodev.armorplus.registry.item.tool;
 
 import com.sofodev.armorplus.config.AvailabilityConfig;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolType;
+import com.sofodev.armorplus.registry.RegistryContext;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.IAPTool;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.Tool;
 import net.minecraft.network.chat.Component;
@@ -17,14 +18,16 @@ import java.util.function.Consumer;
 import net.minecraft.world.item.component.TooltipDisplay;
 
 import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolType.BATTLE_AXE;
-import static com.sofodev.armorplus.utils.ToolTipUtils.*;
+import static com.sofodev.armorplus.utils.ToolTipUtils.addBuffInformation;
+import static com.sofodev.armorplus.utils.ToolTipUtils.isSneakDown;
+import static com.sofodev.armorplus.utils.ToolTipUtils.showSneakInfo;
 
 public class APBattleAxeItem extends AxeItem implements Tool {
 
     private final IAPTool mat;
 
     public APBattleAxeItem(IAPTool mat) {
-        super(mat.get(), (float) mat.get().attackDamageBonus() + BATTLE_AXE.getDmg(), BATTLE_AXE.getAttackSpeed(), com.sofodev.armorplus.registry.RegistryContext.itemProperties());
+        super(mat.get(), (float) mat.get().attackDamageBonus() + BATTLE_AXE.getDmg(), BATTLE_AXE.getAttackSpeed(), RegistryContext.itemProperties());
         this.mat = mat;
     }
 
@@ -39,7 +42,7 @@ public class APBattleAxeItem extends AxeItem implements Tool {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag flagIn) {
         if (isSneakDown()) {
-            addBuffInformation(mat, tooltip, "on_hit", false, mat.config().enableWeaponEffects().get());
+            addBuffInformation(stack, mat, tooltip, "on_hit", false, mat.config().enableWeaponEffects().get());
         } else if (!mat.getBuffInstances().get().isEmpty()) {
             showSneakInfo(tooltip, mat.getColor());
         }

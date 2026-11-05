@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
@@ -51,7 +52,7 @@ public class ModOreFeatures {
      */
     private static void registerOre(BootstrapContext<ConfiguredFeature<?, ?>> context,
                                     ResourceKey<ConfiguredFeature<?, ?>> key,
-                                    net.minecraft.world.level.block.state.BlockState state,
+                                    BlockState state,
                                     TagMatchTest ruleTest,
                                     int size,
                                     float discardChance) {

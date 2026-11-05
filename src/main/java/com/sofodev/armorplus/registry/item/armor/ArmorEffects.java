@@ -9,6 +9,7 @@ import com.sofodev.armorplus.registry.item.extra.BuffNames;
 import com.sofodev.armorplus.registry.item.extra.BuffParser;
 import com.sofodev.armorplus.registry.item.extra.DeBuff;
 import com.sofodev.armorplus.registry.item.extra.IBuff;
+import com.sofodev.armorplus.registry.item.tool.ToolEffects;
 import com.sofodev.armorplus.registry.rune.Runes;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -16,16 +17,25 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import org.jspecify.annotations.Nullable;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.WeakHashMap;
 
 /**
  * The armor effects a player gets, from the worn ArmorPlus sets and the socketed armor runes. Tool runes are separate, see
- * {@link com.sofodev.armorplus.registry.item.tool.ToolEffects}.
+ * {@link ToolEffects}.
  * <ul>
  *     <li>A set effect needs the pieces of its material given by its {@link SetRequirement}: the "@..." part of its entry
  *     (e.g. "@head" or "@2"), otherwise the effect's "effectSlots" default, otherwise "defaultSetPieces" (4 = full set).
  *     Pieces of different materials each count for their own material.</li>
  *     <li>Players can switch effects off per set (and for their runes) in the Armor Effects screen ("allowEffectToggles").</li>
+ *     <li>An effect upgraded on the pieces counts at the lowest level of the pieces it needs.</li>
  *     <li>When several sources give the same effect, the highest level counts.</li>
  * </ul>
  * The active effects are cached per player and only rebuilt when the equipment, the toggles or the config change.
@@ -127,7 +137,7 @@ public final class ArmorEffects {
                 if (buff.getBuff() == Buff.NONE || buff.getBuff() instanceof DeBuff || !buff.isEnabled()) continue;
                 String id = BuffParser.idOf(buff.getBuff());
                 SetRequirement requirement = requirement(buff);
-                add(entries, new Entry(buff, id, cfg.name(), requirement.required(), requirement.worn(bySlot, mat),
+                add(entries, new Entry(setBuff(player, mat, buff, requirement, id), id, cfg.name(), requirement.required(), requirement.worn(wornMaterials(player, id), mat),
                         requirement.slots(), isDisabled(player, toggleKey(cfg.name(), id))));
             }
         }
@@ -135,6 +145,16 @@ public final class ArmorEffects {
             String id = BuffParser.idOf(buff.getBuff());
             add(entries, new Entry(buff, id, RUNE_SOURCE, 1, 1, Set.of(), isDisabled(player, toggleKey(RUNE_SOURCE, id))));
         }        return List.copyOf(entries.values());
+    }
+
+    /** @return the buff at the lowest level of the pieces that count for it, so upgrading it takes all of them */
+    private static BuffInstance setBuff(Player player, IAPArmor mat, BuffInstance buff, SetRequirement requirement, String id) {
+        int level = Integer.MAX_VALUE;
+        for (Map.Entry<EquipmentSlot, IAPArmor> piece : wornMaterials(player, id).entrySet()) {
+            if (piece.getValue() != mat || !(requirement.slots().isEmpty() || requirement.slots().contains(piece.getKey()))) continue;
+            level = Math.min(level, Runes.nativeLevel(player.getItemBySlot(piece.getKey()), id));
+        }
+        return level == Integer.MAX_VALUE || level <= buff.getAmplifier() + 1 ? buff : buff.atLevel(level);
     }
 
     /** One entry per source and effect: the higher level wins. */
@@ -148,6 +168,13 @@ public final class ArmorEffects {
         for (EquipmentSlot slot : Runes.ARMOR_SLOTS) {
             if (player.getItemBySlot(slot).getItem() instanceof APArmorItem armor) bySlot.put(slot, armor.getMat());
         }
+        return bySlot;
+    }
+
+    /** @return like {@link #wornMaterials(Player)}, without the pieces the buff was extracted from: they no longer count for it */
+    public static Map<EquipmentSlot, IAPArmor> wornMaterials(Player player, String buffId) {
+        Map<EquipmentSlot, IAPArmor> bySlot = wornMaterials(player);
+        bySlot.keySet().removeIf(slot -> Runes.isExtracted(player.getItemBySlot(slot), buffId));
         return bySlot;
     }
 
@@ -168,7 +195,7 @@ public final class ArmorEffects {
      */
     public static Component progress(@Nullable Player player, IAPArmor mat, BuffInstance buff) {
         SetRequirement requirement = requirement(buff);
-        int worn = player == null ? 0 : requirement.worn(wornMaterials(player), mat);
+        int worn = player == null ? 0 : requirement.worn(wornMaterials(player, BuffParser.idOf(buff.getBuff())), mat);
         boolean met = worn >= requirement.required();
         return Component.literal("[" + worn + "/" + requirement.required() + "]").withStyle(met ? ChatFormatting.GREEN : ChatFormatting.GRAY);
     }

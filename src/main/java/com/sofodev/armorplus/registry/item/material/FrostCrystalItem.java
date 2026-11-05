@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.registry.item.material;
 
 import com.sofodev.armorplus.registry.item.APItem;
+import com.sofodev.armorplus.registry.RegistryContext;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -20,7 +21,7 @@ public class FrostCrystalItem extends APItem {
     private final boolean isInfused;
 
     public FrostCrystalItem(boolean isInfused) {
-        super(com.sofodev.armorplus.registry.RegistryContext.itemProperties().fireResistant());
+        super(RegistryContext.itemProperties().fireResistant());
         this.isInfused = isInfused;
     }
 

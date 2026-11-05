@@ -15,7 +15,17 @@ import net.minecraft.world.level.block.Block;
 
 import java.util.Locale;
 
-import static net.minecraft.world.item.Items.*;
+import static net.minecraft.world.item.Items.AMETHYST_SHARD;
+import static net.minecraft.world.item.Items.COAL;
+import static net.minecraft.world.item.Items.EMERALD;
+import static net.minecraft.world.item.Items.FEATHER;
+import static net.minecraft.world.item.Items.GLOWSTONE_DUST;
+import static net.minecraft.world.item.Items.HONEYCOMB;
+import static net.minecraft.world.item.Items.LAPIS_LAZULI;
+import static net.minecraft.world.item.Items.OBSIDIAN;
+import static net.minecraft.world.item.Items.QUARTZ;
+import static net.minecraft.world.item.Items.REDSTONE;
+import static net.minecraft.world.item.Items.SLIME_BALL;
 
 public enum APToolProperties {
     COAL_PROP(BlockTags.INCORRECT_FOR_GOLD_TOOL, 60, 2.0f, 0f, 10, COAL),

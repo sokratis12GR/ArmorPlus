@@ -13,16 +13,16 @@
 
 ArmorPlus is a Minecraft Java Edition mod for **Forge** and **NeoForge**, created and maintained by **[sokratis12GR](https://sokratis.space)**.
 
-It expands the game with a multi-tiered arsenal of armor sets, weapons and tools, each with its own abilities and progression path — from early-game upgrades like Coal Armor all the way to legendary gear like Ender Dragon and Slayer Armor. Custom world generation gives you new things to find along the way.
+It expands the game with a multi-tiered arsenal of armor sets, weapons and tools, each with its own abilities and progression path, from early-game upgrades like Coal Armor all the way to legendary gear like Ender Dragon and Slayer Armor. Custom world generation gives you new things to find along the way.
 
 ### Features
 
 - **20+ unique armor sets**, each with full-set bonus effects
-- **Tiered progression** — Tier 1, Tier 2 and Legendary armor
-- **Enhanced vanilla armor** — upgraded Chainmail, Golden, Iron, Diamond and Netherite
+- **Tiered progression:** Tier 1, Tier 2 and Legendary armor
+- **Enhanced vanilla armor:** upgraded Chainmail, Golden, Iron, Diamond and Netherite
 - **Custom weapons and tools**
 - **Custom world generation**
-- **Tinkers' Construct integration** — Ardite, Cobalt, Knight Slime, Pig Iron and Manyullyn armor
+- **Tinkers' Construct integration:** Ardite, Cobalt, Knight Slime, Pig Iron and Manyullyn armor
 
 ## Download
 
@@ -44,7 +44,7 @@ Join the **[ArmorPlus Discord](https://discord.gg/JCWbJvA)** for support, sugges
 
 ## Translations
 
-Thanks to everyone who has helped translate the mod — credits are listed **[here](./src/main/resources/assets/armorplus/lang/credits.md)**.
+Thanks to everyone who has helped translate the mod. Credits are listed **[here](./src/main/resources/assets/armorplus/lang/credits.md)**.
 
 ## Repository
 

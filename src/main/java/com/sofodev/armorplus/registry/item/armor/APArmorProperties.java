@@ -24,8 +24,39 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Locale;
 
-import static net.minecraft.sounds.SoundEvents.*;
-import static net.minecraft.world.item.Items.*;
+import static net.minecraft.sounds.SoundEvents.ARMOR_EQUIP_CHAIN;
+import static net.minecraft.sounds.SoundEvents.ARMOR_EQUIP_COPPER;
+import static net.minecraft.sounds.SoundEvents.ARMOR_EQUIP_DIAMOND;
+import static net.minecraft.sounds.SoundEvents.ARMOR_EQUIP_GOLD;
+import static net.minecraft.sounds.SoundEvents.ARMOR_EQUIP_IRON;
+import static net.minecraft.sounds.SoundEvents.ARMOR_EQUIP_LEATHER;
+import static net.minecraft.sounds.SoundEvents.ARMOR_EQUIP_NETHERITE;
+import static net.minecraft.world.item.Items.AIR;
+import static net.minecraft.world.item.Items.AMETHYST_BLOCK;
+import static net.minecraft.world.item.Items.AMETHYST_SHARD;
+import static net.minecraft.world.item.Items.COAL;
+import static net.minecraft.world.item.Items.COAL_BLOCK;
+import static net.minecraft.world.item.Items.COPPER_INGOT;
+import static net.minecraft.world.item.Items.DIAMOND;
+import static net.minecraft.world.item.Items.EMERALD;
+import static net.minecraft.world.item.Items.EMERALD_BLOCK;
+import static net.minecraft.world.item.Items.FEATHER;
+import static net.minecraft.world.item.Items.GLOWSTONE;
+import static net.minecraft.world.item.Items.GLOWSTONE_DUST;
+import static net.minecraft.world.item.Items.GOLD_INGOT;
+import static net.minecraft.world.item.Items.HONEYCOMB;
+import static net.minecraft.world.item.Items.HONEYCOMB_BLOCK;
+import static net.minecraft.world.item.Items.IRON_INGOT;
+import static net.minecraft.world.item.Items.LAPIS_BLOCK;
+import static net.minecraft.world.item.Items.LAPIS_LAZULI;
+import static net.minecraft.world.item.Items.NETHERITE_INGOT;
+import static net.minecraft.world.item.Items.OBSIDIAN;
+import static net.minecraft.world.item.Items.QUARTZ;
+import static net.minecraft.world.item.Items.QUARTZ_BLOCK;
+import static net.minecraft.world.item.Items.REDSTONE;
+import static net.minecraft.world.item.Items.REDSTONE_BLOCK;
+import static net.minecraft.world.item.Items.SLIME_BALL;
+import static net.minecraft.world.item.Items.SLIME_BLOCK;
 
 public enum APArmorProperties {
     COAL_PROP(2, new int[]{1, 1, 2, 1}, 8, ARMOR_EQUIP_LEATHER, COAL, COAL_BLOCK),

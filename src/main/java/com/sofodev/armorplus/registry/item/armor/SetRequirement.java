@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.registry.item.armor;
 
 import net.minecraft.world.entity.EquipmentSlot;
+import com.sofodev.armorplus.registry.item.extra.BuffParser;
 import org.jspecify.annotations.Nullable;
 
 import java.util.Collections;
@@ -14,7 +15,7 @@ import java.util.Set;
  * of worn pieces of the set in any slots.
  * <p>
  * In config entries it's the optional {@code "@..."} suffix of a buff entry (see
- * {@link com.sofodev.armorplus.registry.item.extra.BuffParser}):
+ * {@link BuffParser}):
  * <ul>
  *     <li>{@code "minecraft:night_vision|1@head"} - the helmet of the set</li>
  *     <li>{@code "minecraft:conduit_power|2@legs,feet"} - the leggings and the boots of the set</li>

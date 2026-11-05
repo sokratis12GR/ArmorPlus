@@ -1,6 +1,6 @@
 package com.sofodev.armorplus.api.event;
 
-import com.sofodev.armorplus.registry.rune.RuneData;
+import com.sofodev.armorplus.api.RuneData;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.Event;
@@ -34,12 +34,12 @@ public class RuneExtractEvent extends Event implements ICancellableEvent {
         return player;
     }
 
-    /** @return the equipment the rune is extracted from (don't modify) */
+    /** {@return the equipment the rune is extracted from (don't modify)} */
     public ItemStack getGear() {
         return gear;
     }
 
-    /** @return the rune the option makes (already at its reduced level) */
+    /** {@return the rune the option makes (already at its reduced level)} */
     public RuneData getRune() {
         return rune;
     }

@@ -39,7 +39,9 @@ import java.util.stream.IntStream;
 
 import static com.sofodev.armorplus.registry.item.tool.properties.mace.DestructionShape.PLUS;
 import static com.sofodev.armorplus.registry.item.tool.properties.mace.DestructionShape.SQUARE;
-import static com.sofodev.armorplus.utils.ToolTipUtils.*;
+import static com.sofodev.armorplus.utils.ToolTipUtils.addBuffInformation;
+import static com.sofodev.armorplus.utils.ToolTipUtils.isSneakDown;
+import static com.sofodev.armorplus.utils.ToolTipUtils.showSneakInfo;
 import static net.minecraft.tags.BlockTags.WITHER_IMMUNE;
 
 public class APMaceItem extends Item implements GeoItem {
@@ -76,7 +78,7 @@ public class APMaceItem extends Item implements GeoItem {
         if (mat instanceof APMaceMaterial maceMaterial) {
             APToolMaterial toolMaterial = maceMaterial.getToolMaterial();
             if (isSneakDown()) {
-                addBuffInformation(toolMaterial, tooltip, "on_hit", false, toolMaterial.config().enableWeaponEffects().get());
+                addBuffInformation(stack, toolMaterial, tooltip, "on_hit", false, toolMaterial.config().enableWeaponEffects().get());
             } else if (!toolMaterial.getBuffInstances().get().isEmpty()) {
                 showSneakInfo(tooltip, mat.getColor());
             }
@@ -92,7 +94,7 @@ public class APMaceItem extends Item implements GeoItem {
 
 
     @Override
-    public int getUseDuration(ItemStack stack, net.minecraft.world.entity.LivingEntity entity) {
+    public int getUseDuration(ItemStack stack, LivingEntity entity) {
         return 72000;
     }
 
@@ -108,7 +110,7 @@ public class APMaceItem extends Item implements GeoItem {
     }
 
     @Override
-    public boolean releaseUsing(ItemStack stack, Level level, net.minecraft.world.entity.LivingEntity living, int timeLeft) {
+    public boolean releaseUsing(ItemStack stack, Level level, LivingEntity living, int timeLeft) {
         if (!(living instanceof Player player) || !(level instanceof ServerLevel serverLevel))
             return false;
         int chargedTicks = getUseDuration(stack, living) - timeLeft;

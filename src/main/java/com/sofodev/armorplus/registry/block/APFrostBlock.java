@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.registry.block;
 
 import com.sofodev.armorplus.config.AvailabilityConfig;
+import com.sofodev.armorplus.registry.RegistryContext;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.level.block.Block;
 
@@ -10,7 +11,7 @@ import static net.minecraft.world.level.material.MapColor.COLOR_LIGHT_BLUE;
 public class APFrostBlock extends Block {
 
     public APFrostBlock() {
-        super(com.sofodev.armorplus.registry.RegistryContext.blockProperties(Properties.ofFullCopy(STONE)
+        super(RegistryContext.blockProperties(Properties.ofFullCopy(STONE)
                 .mapColor(COLOR_LIGHT_BLUE)
                 .strength(5.0f, 1000.0f)
                 .lightLevel((light) -> 8)
@@ -18,7 +19,7 @@ public class APFrostBlock extends Block {
     }
 
     public APFrostBlock(Properties props) {
-        super(com.sofodev.armorplus.registry.RegistryContext.blockProperties(props.lightLevel((light) -> 8)));
+        super(RegistryContext.blockProperties(props.lightLevel((light) -> 8)));
     }
 
     @Override

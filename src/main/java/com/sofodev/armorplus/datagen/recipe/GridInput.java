@@ -93,7 +93,7 @@ public class GridInput {
     /**
      * Creates a grid for a 3x3 square, filled by the same ingredient.
      *
-     * @see #buildSmallSquare(char);
+     * @see #buildSmallSquare(char)
      */
     public static GridInput buildBigSquare(char filler) {
         String big = replace("XXX", filler);

@@ -1,20 +1,22 @@
 package com.sofodev.armorplus.commands.sub;
 
+import com.sofodev.armorplus.api.SocketResult;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.sofodev.armorplus.api.event.RuneRemoveEvent;
 import com.sofodev.armorplus.api.event.RuneSocketEvent;
 import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.registry.ModDataComponents;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import com.sofodev.armorplus.registry.item.extra.BuffNames;
 import com.sofodev.armorplus.registry.item.tool.ToolEffects;
-import com.sofodev.armorplus.registry.rune.RuneData;
+import com.sofodev.armorplus.api.RuneData;
 import com.sofodev.armorplus.registry.rune.RuneItem;
-import com.sofodev.armorplus.registry.rune.RuneKind;
+import com.sofodev.armorplus.api.RuneKind;
 import com.sofodev.armorplus.registry.rune.Runes;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -37,11 +39,15 @@ import java.util.Locale;
 import java.util.Set;
 
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
-import static net.minecraft.ChatFormatting.*;
+import static net.minecraft.ChatFormatting.DARK_GRAY;
+import static net.minecraft.ChatFormatting.GOLD;
+import static net.minecraft.ChatFormatting.GRAY;
+import static net.minecraft.ChatFormatting.GREEN;
+import static net.minecraft.ChatFormatting.RED;
 
 /**
  * "/armorplus rune": anyone can look up runes, changing them needs gamemaster permissions. The commands follow the same
- * rules as the Anvil ({@link Runes#canSocket(ItemStack, RuneData)}, {@link RuneSocketEvent}), they only don't cost experience.
+ * rules as the ritual ({@link Runes#canSocket(ItemStack, RuneData)}, {@link RuneSocketEvent}, {@link RuneRemoveEvent}), they only don't cost experience.
  */
 public class RuneCommand {
 
@@ -119,10 +125,12 @@ public class RuneCommand {
         }
         for (String entry : Runes.extractableEntries(gear)) {
             RuneData extracted = new RuneData(Runes.extractionKind(gear), Runes.extractedEntry(entry));
+            if (Runes.isExtracted(gear, extracted.buffId())) continue;
             ItemStack catalyst = Runes.extractionCatalyst(extracted);
+            int cost = Runes.extractionCost(extracted) + Runes.extractionUpgradeCost(gear, extracted.buffId());
             send(source, catalyst.isEmpty()
-                    ? translate(GRAY, "commands.armorplus.rune.info.extract", name(extracted), Runes.extractionCost(extracted))
-                    : translate(GRAY, "commands.armorplus.rune.info.extract_catalyst", name(extracted), Runes.extractionCost(extracted), catalyst.getCount(), catalyst.getHoverName()));
+                    ? translate(GRAY, "commands.armorplus.rune.info.extract", name(extracted), cost)
+                    : translate(GRAY, "commands.armorplus.rune.info.extract_catalyst", name(extracted), cost, catalyst.getCount(), catalyst.getHoverName()));
         }
         return Command.SINGLE_SUCCESS;
     }
@@ -153,9 +161,9 @@ public class RuneCommand {
         RuneData rune = createRune(source, kind, effect, level);
         if (rune == null) return 0;
         ItemStack gear = player.getMainHandItem();
-        Runes.SocketResult result = Runes.canSocket(gear, rune);
-        if (result != Runes.SocketResult.OK) return fail(source, "commands.armorplus.rune.socket." + result.name().toLowerCase(Locale.ENGLISH));
-        if (NeoForge.EVENT_BUS.post(new RuneSocketEvent(player, gear, rune, Runes.socketCost(rune))).isCanceled()) {
+        SocketResult result = Runes.canSocket(gear, rune);
+        if (result != SocketResult.OK) return fail(source, "commands.armorplus.rune.socket." + result.name().toLowerCase(Locale.ENGLISH));
+        if (NeoForge.EVENT_BUS.post(new RuneSocketEvent(player, gear, rune, Runes.socketCost(rune), Runes.socketCatalyst(rune))).isCanceled()) {
             return fail(source, "commands.armorplus.rune.socket.canceled");
         }
         replaceHeld(player, Runes.withRune(gear, rune));
@@ -167,11 +175,20 @@ public class RuneCommand {
         ServerPlayer player = source.getPlayerOrException();
         ItemStack gear = player.getMainHandItem();
         String id = effect == null ? null : effect.toString();
-        long removed = Runes.sockets(gear).stream().filter(rune -> id == null || rune.buffId().equals(id)).count();
-        if (removed == 0) return fail(source, "commands.armorplus.rune.unsocket.nothing");
-        replaceHeld(player, Runes.withoutRunes(gear, id));
+        List<RuneData> matching = Runes.sockets(gear).stream().filter(rune -> id == null || rune.buffId().equals(id)).toList();
+        if (matching.isEmpty()) return fail(source, "commands.armorplus.rune.unsocket.nothing");
+        ItemStack result = gear;
+        int count = 0;
+        for (RuneData rune : matching) {
+            if (NeoForge.EVENT_BUS.post(new RuneRemoveEvent(player, gear, rune, Runes.removalCost())).isCanceled()) continue;
+            result = Runes.withoutRune(result, rune);
+            count++;
+        }
+        if (count == 0) return fail(source, "commands.armorplus.rune.unsocket.canceled");
+        int removed = count;
+        replaceHeld(player, result);
         source.sendSuccess(() -> translate(GREEN, "commands.armorplus.rune.unsocket.success", removed, player.getMainHandItem().getHoverName()), true);
-        return (int) removed;
+        return removed;
     }
 
     private static int sockets(CommandSourceStack source, int count) throws CommandSyntaxException {
@@ -204,7 +221,7 @@ public class RuneCommand {
             fail(source, "commands.armorplus.rune.unknown", effect.toString(), kind.getSerializedName());
             return null;
         }
-        if (!buff.getBuff().isEffect()) rune = new RuneData(kind, effect.toString());
+        if (!buff.getBuff().isEffect() && !buff.getBuff().isLeveled()) rune = new RuneData(kind, effect.toString());
         if (Runes.resolve(rune) == null) {
             fail(source, "commands.armorplus.rune.effect_disabled", effect.toString());
             return null;

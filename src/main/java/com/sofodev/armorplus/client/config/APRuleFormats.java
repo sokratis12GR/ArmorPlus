@@ -3,6 +3,7 @@ package com.sofodev.armorplus.client.config;
 import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.registry.item.armor.SetRequirement;
 import com.sofodev.armorplus.registry.item.extra.BuffParser;
+import com.sofodev.armorplus.registry.rune.RitualCatalysts;
 import com.sofodev.armorplus.registry.rune.RuneOverrides;
 import com.sofodev.thedragonlib.client.config.RuleFormat;
 import com.sofodev.thedragonlib.client.config.RuleListContext;
@@ -12,6 +13,7 @@ import net.minecraft.network.chat.Component;
 import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -26,8 +28,10 @@ final class APRuleFormats {
     static final RuleFormat ARMOR_BUFF = new BuffFormat(true);
     /** {@code "[!]id|level|seconds"} */
     static final RuleFormat WEAPON_BUFF = new BuffFormat(false);
-    /** {@code "id|socket=N|extract=N|catalyst=item*count|extractable=false|disabled=true"} */
+    /** {@code "id|socket=N|extract=N|catalyst=item*count|extractable=false|disabled=true|max=N|upgrade_catalyst=item*count|socket_catalyst=item*count|upgrade_catalyst@level=item*count"} */
     static final RuleFormat RUNE_OVERRIDE = new RuneOverrideFormat();
+    /** {@code "step|item|count"} */
+    static final RuleFormat RITUAL_CATALYST = new RitualCatalystFormat();
     /** {@code "kind|id|level|seconds"} */
     static final RuleFormat WORLD_RUNE = new WorldRuneFormat();
     /** {@code "id|slots"}, {@code "id|slots:count"} or {@code "id|count"} */
@@ -132,8 +136,40 @@ final class APRuleFormats {
         }
     }
 
-    /** Fields: buff, socket, extract, catalyst, count, extractable, disabled. */
+    /** Fields in the order of the editor, which differs from the line's: see the constants. Level catalysts are listed as "level=item*count,...". */
     private static final class RuneOverrideFormat implements RuleFormat {
+        private static final int BUFF = 0;
+        private static final int SOCKET = 1;
+        private static final int EXTRACT = 2;
+        private static final int MAX = 3;
+        private static final int ENABLED = 4;
+        private static final int EXTRACTABLE = 5;
+        private static final int SOCKET_CATALYST = 6;
+        private static final int SOCKET_COUNT = 7;
+        private static final int CATALYST = 8;
+        private static final int COUNT = 9;
+        private static final int UPGRADE_CATALYST = 10;
+        private static final int UPGRADE_COUNT = 11;
+        private static final int LEVEL_CATALYSTS = 12;
+
+        /** @return the catalyst and how many, leaving out the count of 1 */
+        private static String shown(String[] values, RuleType type, int catalyst, int count, RuleListContext ctx) {
+            String name = ctx.suggestions().displayName(type.fields().get(catalyst), values[catalyst]);
+            return values[count].isEmpty() || values[count].equals("1") ? name : name + " x" + values[count];
+        }
+
+        private static void appendCatalyst(StringBuilder entry, String key, String catalyst, String count) {
+            if (catalyst.isEmpty()) return;
+            entry.append('|').append(key).append('=').append(catalyst);
+            if (!count.isEmpty() && !count.equals("1")) entry.append('*').append(count);
+        }
+
+        private static void splitCatalyst(String[] values, String value, int catalyst, int count) {
+            String[] item = value.split("\\*", -1);
+            values[catalyst] = part(item, 0);
+            values[count] = part(item, 1);
+        }
+
         @Override
         public boolean matches(String line, RuleType type) {
             // A line with only the buff is reported as having no rules instead.
@@ -142,23 +178,31 @@ final class APRuleFormats {
 
         @Override
         public String[] split(String line, RuleType type) {
-            String[] values = {"", "", "", "", "", "true", "false"};
+            String[] values = new String[type.fields().size()];
+            Arrays.fill(values, "");
+            values[ENABLED] = "true";
+            values[EXTRACTABLE] = "true";
             String[] parts = line.split("\\|", -1);
-            values[0] = part(parts, 0);
+            values[BUFF] = part(parts, 0);
             for (int i = 1; i < parts.length; i++) {
                 String[] pair = parts[i].split("=", 2);
                 if (pair.length != 2) continue;
+                String key = pair[0].trim();
                 String value = pair[1].trim();
-                switch (pair[0].trim()) {
-                    case "socket" -> values[1] = value;
-                    case "extract" -> values[2] = value;
-                    case "catalyst" -> {
-                        String[] item = value.split("\\*", -1);
-                        values[3] = part(item, 0);
-                        values[4] = part(item, 1);
-                    }
-                    case "extractable" -> values[5] = value;
-                    case "disabled" -> values[6] = value;
+                if (key.startsWith(RuneOverrides.LEVEL_CATALYST_KEY)) {
+                    String levelCatalyst = key.substring(RuneOverrides.LEVEL_CATALYST_KEY.length()) + "=" + value;
+                    values[LEVEL_CATALYSTS] = values[LEVEL_CATALYSTS].isEmpty() ? levelCatalyst : values[LEVEL_CATALYSTS] + "," + levelCatalyst;
+                    continue;
+                }
+                switch (key) {
+                    case "socket" -> values[SOCKET] = value;
+                    case "extract" -> values[EXTRACT] = value;
+                    case "catalyst" -> splitCatalyst(values, value, CATALYST, COUNT);
+                    case "extractable" -> values[EXTRACTABLE] = value;
+                    case "disabled" -> values[ENABLED] = String.valueOf(!value.equals("true"));
+                    case "max" -> values[MAX] = value;
+                    case "upgrade_catalyst" -> splitCatalyst(values, value, UPGRADE_CATALYST, UPGRADE_COUNT);
+                    case "socket_catalyst" -> splitCatalyst(values, value, SOCKET_CATALYST, SOCKET_COUNT);
                     default -> {
                     }
                 }
@@ -168,37 +212,76 @@ final class APRuleFormats {
 
         @Override
         public String join(String[] values, RuleType type) {
-            StringBuilder entry = new StringBuilder(values[0]);
-            if (!values[1].isEmpty()) entry.append("|socket=").append(values[1]);
-            if (!values[2].isEmpty()) entry.append("|extract=").append(values[2]);
-            if (!values[3].isEmpty()) {
-                entry.append("|catalyst=").append(values[3]);
-                if (!values[4].isEmpty() && !values[4].equals("1")) entry.append('*').append(values[4]);
+            StringBuilder entry = new StringBuilder(values[BUFF]);
+            if (!values[SOCKET].isEmpty()) entry.append("|socket=").append(values[SOCKET]);
+            if (!values[EXTRACT].isEmpty()) entry.append("|extract=").append(values[EXTRACT]);
+            appendCatalyst(entry, "catalyst", values[CATALYST], values[COUNT]);
+            if (values[EXTRACTABLE].equals("false")) entry.append("|extractable=false");
+            if (values[ENABLED].equals("false")) entry.append("|disabled=true");
+            if (!values[MAX].isEmpty()) entry.append("|max=").append(values[MAX]);
+            appendCatalyst(entry, "upgrade_catalyst", values[UPGRADE_CATALYST], values[UPGRADE_COUNT]);
+            appendCatalyst(entry, "socket_catalyst", values[SOCKET_CATALYST], values[SOCKET_COUNT]);
+            if (!values[LEVEL_CATALYSTS].isEmpty()) {
+                for (String levelCatalyst : values[LEVEL_CATALYSTS].split(",", -1)) entry.append('|').append(RuneOverrides.LEVEL_CATALYST_KEY).append(levelCatalyst.trim());
             }
-            if (values[5].equals("false")) entry.append("|extractable=false");
-            if (values[6].equals("true")) entry.append("|disabled=true");
             return entry.toString();
         }
 
         @Override
         public @Nullable String validate(String[] values, RuleType type, RuleListContext ctx) {
-            if (values[3].isEmpty() && !values[4].isEmpty()) return ctx.uiKey("error.countWithoutCatalyst");
+            if ((values[CATALYST].isEmpty() && !values[COUNT].isEmpty()) || (values[UPGRADE_CATALYST].isEmpty() && !values[UPGRADE_COUNT].isEmpty())
+                    || (values[SOCKET_CATALYST].isEmpty() && !values[SOCKET_COUNT].isEmpty())) return ctx.uiKey("error.countWithoutCatalyst");
             return RuneOverrides.isValid(join(values, type)) ? null : ctx.uiKey("error.noRules");
         }
 
         @Override
         public Component describe(String[] values, RuleType type, RuleListContext ctx) {
             List<String> parts = new ArrayList<>();
-            parts.add(ctx.suggestions().displayName(type.fields().get(0), values[0]));
-            if (!values[1].isEmpty()) parts.add(Component.translatable(ctx.uiKey("describe.socket"), values[1]).getString());
-            if (!values[2].isEmpty()) parts.add(Component.translatable(ctx.uiKey("describe.extract"), values[2]).getString());
-            if (!values[3].isEmpty()) {
-                String catalyst = ctx.suggestions().displayName(type.fields().get(3), values[3]);
-                parts.add(values[4].isEmpty() || values[4].equals("1") ? catalyst : catalyst + " x" + values[4]);
-            }
-            if (values[5].equals("false")) parts.add(Component.translatable(ctx.uiKey("describe.notExtractable")).getString());
-            if (values[6].equals("true")) parts.add(Component.translatable(ctx.uiKey("describe.disabled")).getString());
+            parts.add(ctx.suggestions().displayName(type.fields().get(BUFF), values[BUFF]));
+            if (!values[SOCKET].isEmpty()) parts.add(Component.translatable(ctx.uiKey("describe.socket"), values[SOCKET]).getString());
+            if (!values[EXTRACT].isEmpty()) parts.add(Component.translatable(ctx.uiKey("describe.extract"), values[EXTRACT]).getString());
+            if (!values[CATALYST].isEmpty()) parts.add(Component.translatable(ctx.uiKey("describe.extractCatalyst"), shown(values, type, CATALYST, COUNT, ctx)).getString());
+            if (values[EXTRACTABLE].equals("false")) parts.add(Component.translatable(ctx.uiKey("describe.notExtractable")).getString());
+            if (values[ENABLED].equals("false")) parts.add(Component.translatable(ctx.uiKey("describe.disabled")).getString());
+            if (!values[MAX].isEmpty()) parts.add(Component.translatable(ctx.uiKey("describe.max"), values[MAX]).getString());
+            if (!values[UPGRADE_CATALYST].isEmpty()) parts.add(Component.translatable(ctx.uiKey("describe.upgradeCatalyst"), shown(values, type, UPGRADE_CATALYST, UPGRADE_COUNT, ctx)).getString());
+            if (!values[SOCKET_CATALYST].isEmpty()) parts.add(Component.translatable(ctx.uiKey("describe.socketCatalyst"), shown(values, type, SOCKET_CATALYST, SOCKET_COUNT, ctx)).getString());
+            if (!values[LEVEL_CATALYSTS].isEmpty()) parts.add(Component.translatable(ctx.uiKey("describe.levelCatalysts"), values[LEVEL_CATALYSTS]).getString());
             return Component.literal(String.join(SEPARATOR, parts));
+        }
+    }
+
+    /** Fields: step, item, count. */
+    private static final class RitualCatalystFormat implements RuleFormat {
+        @Override
+        public boolean matches(String line, RuleType type) {
+            return RitualCatalysts.isValid(line);
+        }
+
+        @Override
+        public String[] split(String line, RuleType type) {
+            String[] parts = line.split("\\|", -1);
+            return new String[] {part(parts, 0), part(parts, 1), part(parts, 2)};
+        }
+
+        @Override
+        public String join(String[] values, RuleType type) {
+            String entry = values[0] + '|' + values[1];
+            return values[2].isEmpty() || values[2].equals("1") ? entry : entry + '|' + values[2];
+        }
+
+        @Override
+        public @Nullable String validate(String[] values, RuleType type, RuleListContext ctx) {
+            return RitualCatalysts.isValid(join(values, type)) ? null : ctx.uiKey("error.invalidEntry");
+        }
+
+        @Override
+        public Component describe(String[] values, RuleType type, RuleListContext ctx) {
+            String item = ctx.suggestions().displayName(type.fields().get(1), values[1]);
+            String shown = values[2].isEmpty() || values[2].equals("1") ? item : item + " x" + values[2];
+            return values[0].equals(RitualCatalysts.SOCKET)
+                    ? Component.translatable(ctx.uiKey("describe.ritualCatalystSocket"), shown)
+                    : Component.translatable(ctx.uiKey("describe.ritualCatalystLevel"), values[0], shown);
         }
     }
 

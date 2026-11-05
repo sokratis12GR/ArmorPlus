@@ -1,4 +1,4 @@
-// 26.1.2	2026-11-03T12:43:16.2782228	ArmorPlus Recipes
+// 26.1.2	2026-11-05T14:13:11.7776627	ArmorPlus Recipes
 d60dfffa714d77419ac6faabe1911b6b49a26c60 data/armorplus/advancement/recipes/building_blocks/crafting/shaped/corner/black_castle_block_corner.json
 912759c1f1f6ec6ead5ce60706b97dfb9633e856 data/armorplus/advancement/recipes/building_blocks/crafting/shaped/corner/black_stone_brick_corner.json
 54c0e31e303faecd08410390dfb9aaae8d88b4d4 data/armorplus/advancement/recipes/building_blocks/crafting/shaped/corner/blue_castle_block_corner.json
@@ -589,7 +589,9 @@ c86bad4a937792cf61e4fa54038ae52ff1b1618a data/armorplus/advancement/recipes/misc
 c2d1be58063e001ad518e9495061bd1f59978906 data/armorplus/advancement/recipes/misc/crafting/shaped/bricks/yellow_castle_block.json
 d2e39b8e2a5a8f57abdb494f98f23d5848229e6f data/armorplus/advancement/recipes/misc/crafting/shaped/bricks/yellow_stone_brick.json
 3b0936422bff7aeb0822687756106c0f0cd4a5fd data/armorplus/advancement/recipes/misc/crafting/shaped/coal/coal_arrow.json
+145e3dba48855da74adb1beba6617b19c2f92ff8 data/armorplus/advancement/recipes/misc/crafting/shaped/ember_sigil.json
 9dc3ff502d1f691ece32b7ef8ca92da1d33efa23 data/armorplus/advancement/recipes/misc/crafting/shaped/emerald/emerald_arrow.json
+0fd62967e0e9d3997bf306935d578e71ecadb12c data/armorplus/advancement/recipes/misc/crafting/shaped/empowering_pedestal.json
 d7b39ec5bb1a91caab49631215ebf86d60492d93 data/armorplus/advancement/recipes/misc/crafting/shaped/ender_dragon/ender_dragon_arrow.json
 bfadc2ab5efa0a57dbbf8ed3ba04fdcd3c41e580 data/armorplus/advancement/recipes/misc/crafting/shaped/enhanced/enhanced_chainmail.json
 72ed02b7d35879d4f1e8b0478d6e08dcd632031e data/armorplus/advancement/recipes/misc/crafting/shaped/enhanced/enhanced_copper.json
@@ -606,6 +608,7 @@ e15b8ee84a3ee4abe3b5788021c989708496196b data/armorplus/advancement/recipes/misc
 c3953b5d14b46d62cdde679f278f2f429d1781f1 data/armorplus/advancement/recipes/misc/crafting/shaped/obsidian_stick.json
 483db3b9f31d33b64ecb02adea29b23dba595785 data/armorplus/advancement/recipes/misc/crafting/shaped/quartz/quartz_arrow.json
 fda32ef7e553ae544d72498dab81fc6d2e11e377 data/armorplus/advancement/recipes/misc/crafting/shaped/redstone/redstone_arrow.json
+a0cf9631e8ce6cb099b6b9d9d774f3c9e0d8359f data/armorplus/advancement/recipes/misc/crafting/shaped/rime_sigil.json
 d29b6c1a6929f509468b3239be097be70026a8be data/armorplus/advancement/recipes/misc/crafting/shaped/rune_altar.json
 60575dbaf9a47e1a5599ef158c9d5e75eaf73cbc data/armorplus/advancement/recipes/misc/crafting/shaped/socket_punch.json
 61084a98dd83aaf39dee8bd0f61c20406bc4d2c4 data/armorplus/advancement/recipes/misc/crafting/shaped/soul/soul_elder_guardian.json
@@ -614,7 +617,9 @@ c007b6b36a9793ba315908487cb7b1b363892a57 data/armorplus/advancement/recipes/misc
 17ec828aaa8945d8d0b7ba5df89824f88f39df5c data/armorplus/advancement/recipes/misc/crafting/shaped/super_star/super_star_arrow.json
 220ca0a1523edba520d17e1704872d9a43e51de3 data/armorplus/advancement/recipes/misc/crafting/shaped/warden/warden_arrow.json
 d97e513bb6189b4f6a1f13bd32e5356b167483eb data/armorplus/advancement/recipes/misc/crafting/shapeless/alloy/manyullyn_ingot.json
+d11e058558f6c504745a18a08a17b50ddfed3a09 data/armorplus/advancement/recipes/misc/crafting/shapeless/astral_sigil.json
 25f1e0df9ffd5161cc887e97451290abadb07668 data/armorplus/advancement/recipes/misc/crafting/shapeless/chainmail.json
+841dabfa0697a60a03b635579f8573f2a1729672 data/armorplus/advancement/recipes/misc/crafting/shapeless/equinox_sigil.json
 cf59ba8451fe9d834a7f84c46ad5426b8d54e86f data/armorplus/advancement/recipes/misc/crafting/shapeless/soul_slayer.json
 ca20ab943b8c403b62fe15d2cd0fd6e6fa2eba18 data/armorplus/advancement/recipes/misc/crafting/shapeless/the_ultimate_material.json
 c691d35b8872c76add15c06d274ece1261d63324 data/armorplus/advancement/recipes/misc/crafting/shapeless/wooden_rod.json
@@ -875,6 +880,7 @@ c809b839c475261f18aa6f2a923ba59540e01dca data/armorplus/recipe/crafting/shaped/d
 5195ba7cddcc5d43e8548f4eef6bf8945e53e662 data/armorplus/recipe/crafting/shaped/diamond/diamond_pickaxe.json
 faa69a85a34ed5f5695969ea862df60ad26f9e69 data/armorplus/recipe/crafting/shaped/diamond/diamond_shovel.json
 7114624b44c12c6d642320e4784cb9fa485ae805 data/armorplus/recipe/crafting/shaped/diamond/diamond_sword.json
+e302740f752e1d0016381b461bcd998178ae9988 data/armorplus/recipe/crafting/shaped/ember_sigil.json
 30382649e3a3f0734a1fde07abcb6c6decfd9efc data/armorplus/recipe/crafting/shaped/emerald/emerald_arrow.json
 b83ed04d370b1a6fa09e6375ff210aaf051c2423 data/armorplus/recipe/crafting/shaped/emerald/emerald_battle_axe.json
 c7a99d65ec6f303e69c3bab836c8e85b9111e573 data/armorplus/recipe/crafting/shaped/emerald/emerald_boots.json
@@ -890,6 +896,7 @@ c97f16cfbc2ed02abe8dcbc9a9ebc3e3cdc7587a data/armorplus/recipe/crafting/shaped/e
 ba9d9f8cd62d09276ba65ce934a6ead2122cf773 data/armorplus/recipe/crafting/shaped/emerald/emerald_pickaxe.json
 b68da48e369d2fda2bdb7fadc93c80141d96cc92 data/armorplus/recipe/crafting/shaped/emerald/emerald_shovel.json
 d5a4e93f39578e73ee5f11ca7dd43eef6c97ff9b data/armorplus/recipe/crafting/shaped/emerald/emerald_sword.json
+c2eb7c49868f05d63ebed5d061171039fdcfdf71 data/armorplus/recipe/crafting/shaped/empowering_pedestal.json
 e86f87ec00734f3a1533a364892086e37fd6dcee data/armorplus/recipe/crafting/shaped/ender_dragon/ender_dragon_arrow.json
 790fdb9e650a38f4724dab2882a1f609128759cd data/armorplus/recipe/crafting/shaped/ender_dragon/ender_dragon_battle_axe_base.json
 19c48bef3d669add3a8b396cd401dd020f76cd21 data/armorplus/recipe/crafting/shaped/ender_dragon/ender_dragon_boots_base.json
@@ -1156,6 +1163,7 @@ c454d80a3bdd7e7ccd3cc788ad0cc055bf8f0c51 data/armorplus/recipe/crafting/shaped/r
 a0d1e40dd05231318b1f95370425ccde1e6af223 data/armorplus/recipe/crafting/shaped/redstone/redstone_pickaxe.json
 3d1a02dca84af1bf2e7a5fb893f20ab1d8087154 data/armorplus/recipe/crafting/shaped/redstone/redstone_shovel.json
 fcb613b3d1d7b8c7c650e7269dee85a673e52ada data/armorplus/recipe/crafting/shaped/redstone/redstone_sword.json
+95509adacc0d67f77fe6900bbb9c6aa53ab03f34 data/armorplus/recipe/crafting/shaped/rime_sigil.json
 8e3536318fb504be4c19d2bdcd566f1e13a867aa data/armorplus/recipe/crafting/shaped/rune_altar.json
 ea46d1e37b445640cc460565813f60905b0421c2 data/armorplus/recipe/crafting/shaped/slab/black_castle_block_slab.json
 aac16fbd099df06adcd744c5d1c0c35b81e50c77 data/armorplus/recipe/crafting/shaped/slab/black_stone_brick_slab.json
@@ -1359,7 +1367,9 @@ bb505c540212ed05cd9df2097bf138a855da1db9 data/armorplus/recipe/crafting/shaped/w
 d98c537500e90beb9d9fd7d8f12f6bad0ea8b6b8 data/armorplus/recipe/crafting/shaped/warden/warden_shovel_base.json
 3b5a60b4b5433ba00d5a6db84a884920405e0446 data/armorplus/recipe/crafting/shaped/warden/warden_sword_base.json
 f1ccff2ba3a35fae6b11fdc2bf8ab2e5ca48b0be data/armorplus/recipe/crafting/shapeless/alloy/manyullyn_ingot.json
+2a579d3e9748291365235c02f4a8c55497395001 data/armorplus/recipe/crafting/shapeless/astral_sigil.json
 529628f2d19a243485f2bada28679059909b1d1d data/armorplus/recipe/crafting/shapeless/chainmail.json
+a281ddea39a0b026ab339112a9a9c742c3d02e01 data/armorplus/recipe/crafting/shapeless/equinox_sigil.json
 7b738f1d75f4f90220903a303fda43ca1bdadda3 data/armorplus/recipe/crafting/shapeless/soul_slayer.json
 1b839775d6f516c55dc9222e06b06d5c013db701 data/armorplus/recipe/crafting/shapeless/storage/block_infused_lava_crystal_to_item.json
 519150a405b13db32fe4ecee5475c446c75cbbc8 data/armorplus/recipe/crafting/shapeless/storage/block_lava_crystal_to_item.json

@@ -8,13 +8,16 @@ import com.sofodev.armorplus.registry.item.extra.Buff;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import com.sofodev.armorplus.registry.item.extra.BuffParser;
 import com.sofodev.armorplus.registry.item.extra.DeBuff;
+import com.sofodev.armorplus.registry.rune.Runes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.flag.FeatureFlagSet;
 
@@ -23,8 +26,14 @@ import java.util.function.Consumer;
 import net.minecraft.world.item.component.TooltipDisplay;
 
 import static com.sofodev.armorplus.utils.ItemArmorUtility.areExactMatch;
-import static com.sofodev.armorplus.utils.ToolTipUtils.*;
-import static net.minecraft.ChatFormatting.*;
+import static com.sofodev.armorplus.utils.ToolTipUtils.addBuffLines;
+import static com.sofodev.armorplus.utils.ToolTipUtils.addExtractedLines;
+import static com.sofodev.armorplus.utils.ToolTipUtils.addDetailsHint;
+import static com.sofodev.armorplus.utils.ToolTipUtils.clientPlayer;
+import static com.sofodev.armorplus.utils.ToolTipUtils.effectsHeader;
+import static com.sofodev.armorplus.utils.ToolTipUtils.instantCooldown;
+import static com.sofodev.armorplus.utils.ToolTipUtils.isSneakDown;
+import static com.sofodev.armorplus.utils.ToolTipUtils.showSneakInfo;
 
 public class APArmorItem extends Item {
 
@@ -48,8 +57,9 @@ public class APArmorItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext level, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag flag) {
         // effects bound to another armor piece ("effectSlots") are listed on that piece only
-        List<BuffInstance> buffs = mat.getBuffInstances().get().stream().filter(buff -> ArmorEffects.shownOn(buff, slot)).toList();
-        if (!buffs.isEmpty()) {
+        List<BuffInstance> buffs = Runes.nativeBuffs(stack, mat.getBuffInstances().get()).stream().filter(buff -> ArmorEffects.shownOn(buff, slot)).toList();
+        List<BuffInstance> extracted = Runes.extractedBuffs(stack, mat.getBuffInstances().get()).stream().filter(buff -> ArmorEffects.shownOn(buff, slot)).toList();
+        if (!buffs.isEmpty() || !extracted.isEmpty()) {
             if (isSneakDown()) {
                 boolean enabled = mat.config().enableArmorEffects().get();
                 tooltip.accept(effectsHeader("set_effects", enabled));
@@ -61,6 +71,8 @@ public class APArmorItem extends Item {
                 addBuffLines(tooltip, buffs, buff -> ArmorEffects.progress(player, mat, buff),
                         buff -> enabled && (player == null || !ArmorEffects.isDisabled(player, ArmorEffects.toggleKey(source, BuffParser.idOf(buff.getBuff())))),
                         buff -> instantCooldown(buff, false));
+                addExtractedLines(tooltip, extracted);
+                addDetailsHint(tooltip, buffs, mat.getFormatting());
             } else {
                 showSneakInfo(tooltip, mat.getFormatting());
             }

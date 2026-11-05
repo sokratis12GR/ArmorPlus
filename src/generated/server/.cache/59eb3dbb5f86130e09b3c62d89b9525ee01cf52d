@@ -1,4 +1,4 @@
-// 26.1.2	2026-11-03T12:25:29.407462	Loot Tables
+// 26.1.2	2026-11-05T13:32:42.3355716	Loot Tables
 b7ffcf477d805401fb6824c288cf992e9a29ffde data/armorplus/loot_table/blocks/black_castle_block.json
 cab3499cada0c0de6dc59e6d6565312c732387ec data/armorplus/loot_table/blocks/black_castle_block_corner.json
 95a2e7a968a01fd7f517cb01052a0bbbe97f9d77 data/armorplus/loot_table/blocks/black_castle_block_slab.json
@@ -54,6 +54,7 @@ aca3b53422c2a34e64bdd7144bb5927424587208 data/armorplus/loot_table/blocks/cyan_c
 00948d24b63c31b357247ced9cb4b342380ada28 data/armorplus/loot_table/blocks/cyan_stone_brick_stairs.json
 25d49bc3ddd6924e4b8d4a636c3edbf9027e24cd data/armorplus/loot_table/blocks/cyan_stone_brick_tower.json
 900dd01d6acc536a0e23ee6596624b5cf7f8516b data/armorplus/loot_table/blocks/cyan_stone_brick_wall.json
+32cfec124090794bfb5c0a58b92e9cb9940e1092 data/armorplus/loot_table/blocks/empowering_pedestal.json
 60e5f9a11567024fe63ad170ee7e7d661912a750 data/armorplus/loot_table/blocks/gray_castle_block.json
 13b9267ee2ea41d4aa565b097dd4ed1801ea540e data/armorplus/loot_table/blocks/gray_castle_block_corner.json
 0da3c3f0b1c6c92c86bcaa9113cf606c4205af21 data/armorplus/loot_table/blocks/gray_castle_block_slab.json

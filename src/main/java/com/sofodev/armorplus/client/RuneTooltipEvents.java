@@ -4,10 +4,11 @@ import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.registry.item.armor.ArmorEffects;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import com.sofodev.armorplus.registry.item.extra.BuffParser;
+import com.sofodev.armorplus.registry.item.tool.RangedEffects;
 import com.sofodev.armorplus.registry.item.tool.ToolEffects;
 import com.sofodev.armorplus.registry.item.tool.WeaponEffects;
-import com.sofodev.armorplus.registry.rune.RuneData;
-import com.sofodev.armorplus.registry.rune.RuneKind;
+import com.sofodev.armorplus.api.RuneData;
+import com.sofodev.armorplus.api.RuneKind;
 import com.sofodev.armorplus.registry.rune.Runes;
 import com.sofodev.armorplus.utils.ToolTipUtils;
 import net.minecraft.client.Minecraft;
@@ -23,8 +24,15 @@ import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.sofodev.armorplus.utils.ToolTipUtils.*;
-import static net.minecraft.ChatFormatting.*;
+import static com.sofodev.armorplus.utils.ToolTipUtils.DETAILS_HINT;
+import static com.sofodev.armorplus.utils.ToolTipUtils.addBuffLines;
+import static com.sofodev.armorplus.utils.ToolTipUtils.addDetailsHint;
+import static com.sofodev.armorplus.utils.ToolTipUtils.isSneakDown;
+import static com.sofodev.armorplus.utils.ToolTipUtils.runeSuffix;
+import static com.sofodev.armorplus.utils.ToolTipUtils.showInfo;
+import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
+import static net.minecraft.ChatFormatting.DARK_GRAY;
+import static net.minecraft.ChatFormatting.LIGHT_PURPLE;
 
 /**
  * Lists the socketed runes on any equipment that can hold runes (ArmorPlus, vanilla and other mods).
@@ -58,11 +66,13 @@ public final class RuneTooltipEvents {
             lines.add(translate(LIGHT_PURPLE, "tooltip.armorplus.rune.sockets", runes.size(), max));
             if (isSneakDown()) {
                 Player player = Minecraft.getInstance().player;
+                List<BuffInstance> buffs = new ArrayList<>();
                 for (RuneData rune : runes) {
                     BuffInstance buff = Runes.resolve(rune);
                     if (buff != null) {
-                        addBuffLines(lines::add, List.of(buff), rune.kind() == RuneKind.WEAPON ? ToolTipUtils::durationPrefix : b -> null,
+                        addBuffLines(lines::add, List.of(buff), rune.kind() == RuneKind.WEAPON || rune.kind() == RuneKind.RANGED ? ToolTipUtils::durationPrefix : b -> null,
                                 b -> player == null || !isRuneDisabled(player, rune.kind(), BuffParser.idOf(b.getBuff())), runeSuffix(rune.kind()));
+                        buffs.add(buff);
                     } else {
                         lines.add(translate(DARK_GRAY, "tooltip.armorplus.rune.socket_inactive", rune.buffId()));
                     }
@@ -70,6 +80,8 @@ public final class RuneTooltipEvents {
                 for (int i = runes.size(); i < max; i++) {
                     lines.add(translate(DARK_GRAY, "tooltip.armorplus.rune.socket_empty"));
                 }
+                // the equipment's own effects may have added it already
+                if (tooltip.stream().noneMatch(line -> hasKey(line, DETAILS_HINT))) addDetailsHint(lines::add, buffs, LIGHT_PURPLE);
             } else if (findLast(tooltip, true) < 0) {
                 // equipment without ArmorPlus buffs has no "Press Shift" hint yet
                 showInfo(lines::add, Minecraft.getInstance().options.keyShift, LIGHT_PURPLE);
@@ -86,6 +98,7 @@ public final class RuneTooltipEvents {
         return switch (kind) {
             case WEAPON -> WeaponEffects.isDisabled(player, id);
             case TOOL -> ToolEffects.isDisabled(player, id);
+            case RANGED -> RangedEffects.isDisabled(player, id);
             case ARMOR -> ArmorEffects.isDisabled(player, ArmorEffects.toggleKey(ArmorEffects.RUNE_SOURCE, id));
         };
     }
@@ -97,10 +110,15 @@ public final class RuneTooltipEvents {
     private static int findLast(List<Component> tooltip, boolean hintOnly) {
         for (int i = tooltip.size() - 1; i >= 0; i--) {
             Component line = tooltip.get(i);
-            boolean hint = line.getContents() instanceof TranslatableContents contents && contents.getKey().equals(SHIFT_HINT);
-            boolean buff = BuffGridTooltip.BUFF_LINE.equals(line.getStyle().getInsertion());
+            boolean hint = hasKey(line, SHIFT_HINT);
+            String insertion = line.getStyle().getInsertion();
+            boolean buff = BuffGridTooltip.BUFF_LINE.equals(insertion) || BuffGridTooltip.BUFF_DESCRIPTION.equals(insertion);
             if (hint || (!hintOnly && buff)) return i;
         }
         return -1;
+    }
+
+    private static boolean hasKey(Component line, String key) {
+        return line.getContents() instanceof TranslatableContents contents && contents.getKey().equals(key);
     }
 }

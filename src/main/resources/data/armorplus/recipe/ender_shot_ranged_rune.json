@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "armorplus:runes",
+  "ingredients": [
+    "armorplus:blank_rune",
+    "minecraft:ender_eye",
+    "minecraft:shulker_shell"
+  ],
+  "result": {
+    "id": "armorplus:ranged_rune",
+    "count": 1,
+    "components": {
+      "armorplus:rune": {
+        "kind": "ranged",
+        "buff": "armorplus:ender_shot"
+      }
+    }
+  }
+}

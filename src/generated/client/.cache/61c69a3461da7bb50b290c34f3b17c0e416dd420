@@ -1,4 +1,4 @@
-// 26.1.2	2026-11-03T12:25:29.2720749	ArmorPlus Block Models and Blockstates
+// 26.1.2	2026-11-05T13:32:10.5513526	ArmorPlus Block Models and Blockstates
 1eac57b2ef15633093cd45137b755e9254e0c7a8 assets/armorplus/blockstates/black_castle_block.json
 44e50c96d74e6ab84a1285d14718b8e668c660a9 assets/armorplus/blockstates/black_castle_block_corner.json
 2209b7cbce739badd486f32b9bb0adad86cfc8c0 assets/armorplus/blockstates/black_castle_block_slab.json
@@ -54,6 +54,7 @@ cb1991a80f839bbef4a28c30fba151b9c9d1cd17 assets/armorplus/blockstates/cyan_castl
 0f262d2dba9359a45e2169162b6cd17e1484cd5b assets/armorplus/blockstates/cyan_stone_brick_stairs.json
 2ca993dd2394251ed48ba90a050a6dda11c6a1f0 assets/armorplus/blockstates/cyan_stone_brick_tower.json
 32b4338ad9cf5a6c99356bc0d8562bda8bb2454f assets/armorplus/blockstates/cyan_stone_brick_wall.json
+9264b05beece2d13fcea2aa4552d6690e6fe3b5b assets/armorplus/blockstates/empowering_pedestal.json
 4b60961f3c47a41849ca8eaf00b7f7b9de3e0178 assets/armorplus/blockstates/gray_castle_block.json
 774862b1c969766fa8099f8ab1399d2a1ac50419 assets/armorplus/blockstates/gray_castle_block_corner.json
 e97c6f96cc03096198e9188ffc5593b1cc3d1e37 assets/armorplus/blockstates/gray_castle_block_slab.json

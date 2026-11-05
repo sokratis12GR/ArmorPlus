@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.registry.item.special;
 
 import com.sofodev.armorplus.config.AvailabilityConfig;
+import com.sofodev.armorplus.registry.RegistryContext;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
@@ -23,13 +24,13 @@ public class SoulItem extends Item {
     private final String entity;
 
     public SoulItem(String entity) {
-        super(com.sofodev.armorplus.registry.RegistryContext.itemProperties().rarity(Rarity.EPIC).fireResistant().stacksTo(16));
+        super(RegistryContext.itemProperties().rarity(Rarity.EPIC).fireResistant().stacksTo(16));
         this.entity = entity;
         this.isBoss = true;
     }
 
     public SoulItem(boolean isBoss, String entity) {
-        super(com.sofodev.armorplus.registry.RegistryContext.itemProperties().rarity(Rarity.RARE).fireResistant().stacksTo(32));
+        super(RegistryContext.itemProperties().rarity(Rarity.RARE).fireResistant().stacksTo(32));
         this.entity = entity;
         this.isBoss = isBoss;
     }

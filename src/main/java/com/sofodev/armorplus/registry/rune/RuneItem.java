@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.rune;
 
+import com.sofodev.armorplus.api.RuneData;
+import com.sofodev.armorplus.api.RuneKind;
 import com.sofodev.armorplus.config.AvailabilityConfig;
 import com.sofodev.armorplus.registry.ModDataComponents;
 import com.sofodev.armorplus.registry.ModItems;
@@ -24,11 +26,15 @@ import static com.sofodev.armorplus.utils.ToolTipUtils.addBuffLines;
 import static com.sofodev.armorplus.utils.ToolTipUtils.isSneakDown;
 import static com.sofodev.armorplus.utils.ToolTipUtils.showSneakInfo;
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
-import static net.minecraft.ChatFormatting.*;
+import static net.minecraft.ChatFormatting.DARK_GRAY;
+import static net.minecraft.ChatFormatting.GOLD;
+import static net.minecraft.ChatFormatting.GRAY;
+import static net.minecraft.ChatFormatting.GREEN;
+import static net.minecraft.ChatFormatting.LIGHT_PURPLE;
 
 /**
- * An armor, weapon or tool rune holding one buff (see {@link RuneData}), extracted in the Rune Altar or found in the world,
- * and socketed into equipment in an Anvil.
+ * An armor, weapon, tool or ranged rune holding one buff (see {@link RuneData}), extracted in the Rune Altar or found in the world,
+ * and socketed into equipment in the ritual of a Rune Altar.
  */
 public class RuneItem extends Item {
 
@@ -48,6 +54,7 @@ public class RuneItem extends Item {
             case ARMOR -> ModItems.ARMOR_RUNE.get();
             case WEAPON -> ModItems.WEAPON_RUNE.get();
             case TOOL -> ModItems.TOOL_RUNE.get();
+            case RANGED -> ModItems.RANGED_RUNE.get();
         });
         stack.set(ModDataComponents.RUNE.get(), new RuneData(kind, entry));
         return stack;
@@ -82,11 +89,13 @@ public class RuneItem extends Item {
                 if (isSneakDown()) {
                     tooltip.accept(translate(GREEN, switch (kind) {
                         case ARMOR -> "tooltip.armorplus.provides";
-                        case WEAPON -> "tooltip.armorplus.applies";
+                        case WEAPON, RANGED -> "tooltip.armorplus.applies";
                         case TOOL -> "tooltip.armorplus.while_held";
                     }));
-                    addBuffLines(tooltip, List.of(buff), kind == RuneKind.WEAPON ? ToolTipUtils::durationPrefix : b -> null, b -> true, ToolTipUtils.runeSuffix(kind));
+                    addBuffLines(tooltip, List.of(buff), kind == RuneKind.WEAPON || kind == RuneKind.RANGED ? ToolTipUtils::durationPrefix : b -> null, b -> true, ToolTipUtils.runeSuffix(kind));
+                    ToolTipUtils.addDetailsHint(tooltip, List.of(buff), GOLD);
                     tooltip.accept(translate(GRAY, "tooltip.armorplus.rune.socket_hint"));
+                    if (Runes.canUpgrade(rune)) tooltip.accept(translate(GRAY, "tooltip.armorplus.rune.upgrade_hint"));
                 } else {
                     showSneakInfo(tooltip, GOLD);
                 }

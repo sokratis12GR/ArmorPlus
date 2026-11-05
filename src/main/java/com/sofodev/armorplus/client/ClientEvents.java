@@ -2,7 +2,10 @@ package com.sofodev.armorplus.client;
 
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.client.renderer.APArrowRenderer;
+import com.sofodev.armorplus.client.renderer.EmpoweringPedestalRenderer;
+import com.sofodev.armorplus.registry.ModBlocks;
 import com.sofodev.armorplus.registry.ModEntities;
+import com.sofodev.armorplus.registry.ModItems;
 import com.sofodev.armorplus.registry.ModMenus;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
@@ -36,11 +39,17 @@ public final class ClientEvents {
         event.registerEntityRenderer(ModEntities.SUPER_STAR_ARROW.get(), context -> new APArrowRenderer(context, texture("super_star_arrow")));
         event.registerEntityRenderer(ModEntities.ENDER_DRAGON_ARROW.get(), context -> new APArrowRenderer(context, texture("ender_dragon_arrow")));
         event.registerEntityRenderer(ModEntities.WARDEN_ARROW.get(), context -> new APArrowRenderer(context, texture("warden_arrow")));
+        event.registerEntityRenderer(ModEntities.AMETHYST_ARROW.get(), context -> new APArrowRenderer(context, texture("amethyst_arrow")));
+        event.registerEntityRenderer(ModEntities.QUARTZ_ARROW.get(), context -> new APArrowRenderer(context, texture("quartz_arrow")));
+        event.registerEntityRenderer(ModEntities.GLOWSTONE_ARROW.get(), context -> new APArrowRenderer(context, texture("glowstone_arrow")));
+        event.registerEntityRenderer(ModEntities.HONEY_ARROW.get(), context -> new APArrowRenderer(context, texture("honey_arrow")));
+        event.registerBlockEntityRenderer(ModBlocks.EMPOWERING_PEDESTAL_ENTITY.get(), EmpoweringPedestalRenderer::new);
     }
 
     @SubscribeEvent
     public static void registerMenuScreens(RegisterMenuScreensEvent event) {
         event.register(ModMenus.RUNE_ALTAR.get(), RuneAltarScreen::new);
+        event.register(ModMenus.RITUAL_ALTAR.get(), RitualScreen::new);
     }
 
     @SubscribeEvent
@@ -56,6 +65,10 @@ public final class ClientEvents {
                 event.register(item, SocketOverlayDecorator.INSTANCE);
             }
         }
+        event.register(ModItems.ARMOR_RUNE.get(), RuneMarkerDecorator.INSTANCE);
+        event.register(ModItems.WEAPON_RUNE.get(), RuneMarkerDecorator.INSTANCE);
+        event.register(ModItems.TOOL_RUNE.get(), RuneMarkerDecorator.INSTANCE);
+        event.register(ModItems.RANGED_RUNE.get(), RuneMarkerDecorator.INSTANCE);
     }
 
     @SubscribeEvent

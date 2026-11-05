@@ -17,13 +17,13 @@ import java.util.Map;
  * Equipment stats (durability, defense, enchantability, ...).
  * <p>
  * These are baked into the items while they register, which happens before the COMMON config is loaded, so they live in
- * their own STARTUP config ("armorplus-stats.toml"). Changes require a restart and the client and server should use the
+ * their own STARTUP config ("armorplus/stats.toml"). Changes require a restart and the client and server should use the
  * same file, otherwise tooltips and durability bars will show the client's values.
  * The defaults are the values hardcoded in {@link APArmorProperties} and {@link APToolProperties}.
  */
 public final class ArmorPlusStatsConfig {
 
-    public static final String FILE_NAME = "armorplus-stats.toml";
+    public static final String FILE_NAME = "armorplus/stats.toml";
 
     private static final Map<APArmorProperties, ArmorStatsConfig> ARMOR = new EnumMap<>(APArmorProperties.class);
     private static final Map<APToolProperties, ToolStatsConfig> TOOLS = new EnumMap<>(APToolProperties.class);

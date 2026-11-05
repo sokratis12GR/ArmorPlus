@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.registry.block.castle;
 
 import com.sofodev.armorplus.config.AvailabilityConfig;
+import com.sofodev.armorplus.registry.RegistryContext;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -59,7 +60,7 @@ public class StoneBrickStairsBlock extends Block implements SimpleWaterloggedBlo
     private final Supplier<BlockState> stateSupplier;
 
     public StoneBrickStairsBlock(Supplier<BlockState> state, Block block) {
-        super(com.sofodev.armorplus.registry.RegistryContext.blockProperties(ofFullCopy(block).requiresCorrectToolForDrops()));
+        super(RegistryContext.blockProperties(ofFullCopy(block).requiresCorrectToolForDrops()));
         registerDefaultState(stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(HALF, Half.BOTTOM).setValue(SHAPE, StairsShape.STRAIGHT).setValue(WATERLOGGED, false));
         modelBlock = Blocks.AIR;
         modelState = Blocks.AIR.defaultBlockState();

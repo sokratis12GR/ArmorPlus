@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.datagen;
 
 import net.minecraft.core.HolderLookup;
+import com.sofodev.armorplus.utils.Utils;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
@@ -16,10 +17,51 @@ import java.util.Arrays;
 import java.util.Set;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
-import static com.sofodev.armorplus.registry.ModItems.*;
+import static com.sofodev.armorplus.registry.ModItems.ELDER_GUARDIAN_SOUL;
+import static com.sofodev.armorplus.registry.ModItems.ENDER_DRAGON_BASES;
+import static com.sofodev.armorplus.registry.ModItems.ENDER_DRAGON_BATTLE_AXE_BASE;
+import static com.sofodev.armorplus.registry.ModItems.ENDER_DRAGON_BOW_BASE;
+import static com.sofodev.armorplus.registry.ModItems.ENDER_DRAGON_PICKAXE_BASE;
+import static com.sofodev.armorplus.registry.ModItems.ENDER_DRAGON_SHOVEL_BASE;
+import static com.sofodev.armorplus.registry.ModItems.ENDER_DRAGON_SOUL;
+import static com.sofodev.armorplus.registry.ModItems.ENDER_DRAGON_SWORD_BASE;
+import static com.sofodev.armorplus.registry.ModItems.ENHANCED_NETHERITE;
+import static com.sofodev.armorplus.registry.ModItems.GUARDIAN_BASES;
+import static com.sofodev.armorplus.registry.ModItems.GUARDIAN_BATTLE_AXE_BASE;
+import static com.sofodev.armorplus.registry.ModItems.GUARDIAN_BOW_BASE;
+import static com.sofodev.armorplus.registry.ModItems.GUARDIAN_PICKAXE_BASE;
+import static com.sofodev.armorplus.registry.ModItems.GUARDIAN_SHOVEL_BASE;
+import static com.sofodev.armorplus.registry.ModItems.GUARDIAN_SWORD_BASE;
+import static com.sofodev.armorplus.registry.ModItems.INFUSED_FROST_CRYSTAL;
+import static com.sofodev.armorplus.registry.ModItems.INFUSED_FROST_LAVA_CRYSTAL;
+import static com.sofodev.armorplus.registry.ModItems.INFUSED_LAVA_CRYSTAL;
+import static com.sofodev.armorplus.registry.ModItems.SLAYER_BASES;
+import static com.sofodev.armorplus.registry.ModItems.SLAYER_BATTLE_AXE_BASE;
+import static com.sofodev.armorplus.registry.ModItems.SLAYER_BOW_BASE;
+import static com.sofodev.armorplus.registry.ModItems.SLAYER_PICKAXE_BASE;
+import static com.sofodev.armorplus.registry.ModItems.SLAYER_SHOVEL_BASE;
+import static com.sofodev.armorplus.registry.ModItems.SLAYER_SOUL;
+import static com.sofodev.armorplus.registry.ModItems.SLAYER_SWORD_BASE;
+import static com.sofodev.armorplus.registry.ModItems.SUPER_STAR_BASES;
+import static com.sofodev.armorplus.registry.ModItems.SUPER_STAR_BATTLE_AXE_BASE;
+import static com.sofodev.armorplus.registry.ModItems.SUPER_STAR_BOW_BASE;
+import static com.sofodev.armorplus.registry.ModItems.SUPER_STAR_PICKAXE_BASE;
+import static com.sofodev.armorplus.registry.ModItems.SUPER_STAR_SHOVEL_BASE;
+import static com.sofodev.armorplus.registry.ModItems.SUPER_STAR_SWORD_BASE;
+import static com.sofodev.armorplus.registry.ModItems.WARDEN_BASES;
+import static com.sofodev.armorplus.registry.ModItems.WARDEN_BATTLE_AXE_BASE;
+import static com.sofodev.armorplus.registry.ModItems.WARDEN_BOW_BASE;
+import static com.sofodev.armorplus.registry.ModItems.WARDEN_HEART;
+import static com.sofodev.armorplus.registry.ModItems.WARDEN_PICKAXE_BASE;
+import static com.sofodev.armorplus.registry.ModItems.WARDEN_SHOVEL_BASE;
+import static com.sofodev.armorplus.registry.ModItems.WARDEN_SWORD_BASE;
+import static com.sofodev.armorplus.registry.ModItems.WITHER_BOSS_SOUL;
 import static com.sofodev.armorplus.utils.DataUtils.getPath;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
-import static net.minecraft.world.item.Items.*;
+import static net.minecraft.world.item.Items.NETHERITE_BOOTS;
+import static net.minecraft.world.item.Items.NETHERITE_CHESTPLATE;
+import static net.minecraft.world.item.Items.NETHERITE_HELMET;
+import static net.minecraft.world.item.Items.NETHERITE_LEGGINGS;
 
 public class SmithingRecipeMaker extends RecipeProvider {
     private static final Logger LOGGER = LogManager.getLogger(MODID);
@@ -67,7 +109,7 @@ public class SmithingRecipeMaker extends RecipeProvider {
                         category,
                         result.asItem()
                 ).unlocks("has_req", has(addition))
-                .save(consumer, com.sofodev.armorplus.utils.Utils.setLocation("smithing/" + path));
+                .save(consumer, Utils.setLocation("smithing/" + path));
     }
 
     @Override

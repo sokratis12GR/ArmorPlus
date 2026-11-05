@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.registry.item.special;
 
 import com.sofodev.armorplus.registry.item.APItem;
+import com.sofodev.armorplus.registry.RegistryContext;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -15,13 +16,16 @@ import java.util.function.Consumer;
 import net.minecraft.world.item.component.TooltipDisplay;
 
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
-import static net.minecraft.ChatFormatting.*;
+import static net.minecraft.ChatFormatting.BLUE;
+import static net.minecraft.ChatFormatting.GOLD;
+import static net.minecraft.ChatFormatting.GREEN;
+import static net.minecraft.ChatFormatting.RED;
 import static net.minecraft.world.Containers.dropItemStack;
 
 public class ThankYouItem extends APItem {
 
     public ThankYouItem() {
-        super(com.sofodev.armorplus.registry.RegistryContext.itemProperties().fireResistant().stacksTo(1));
+        super(RegistryContext.itemProperties().fireResistant().stacksTo(1));
     }
 
 

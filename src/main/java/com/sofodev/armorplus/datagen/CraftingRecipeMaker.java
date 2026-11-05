@@ -7,7 +7,11 @@ import com.sofodev.armorplus.datagen.recipe.Result;
 import com.sofodev.armorplus.utils.Utils;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.recipes.*;
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ArrowItem;
 import net.minecraft.world.item.Item;
@@ -323,7 +327,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
     //#########################\\
 
     /**
-     * <h3>Creates a recipe with the specified settings:</h3>
+     * Creates a recipe with the specified settings:
      * <p>
      * {@link Result} <b>Result</b> contains information such as:
      * <ul>
@@ -343,7 +347,7 @@ public class CraftingRecipeMaker extends RecipeProvider {
      * <p>
      * The <b>minimum</b> number of chars is <b>1</b> and the <b>maximum</b> is <b>9</b>.
      * </p>
-     * <p> <b>Example:</b> <blockquote>GridInput.build(" X ", " X ", " S ", 'X', 'S');</blockquote></p>
+     * <b>Example:</b> <blockquote>GridInput.build(" X ", " X ", " S ", 'X', 'S');</blockquote>
      * <p> This will create a grid with the given layout and will assign chars 'X', and 'S'.</p>
      * <b> The order is very important!</b>
      *

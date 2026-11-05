@@ -81,6 +81,7 @@ public final class ModBlockModelProvider implements DataProvider {
         soulBox(writes, cache);
 
         cubeBottomTop(writes, cache, "rune_altar");
+        simpleBlockstate(writes, cache, "empowering_pedestal", MODID + ":block/empowering_pedestal");
     }
 
     private void cubeBottomTop(List<CompletableFuture<?>> writes, CachedOutput cache, String name) {

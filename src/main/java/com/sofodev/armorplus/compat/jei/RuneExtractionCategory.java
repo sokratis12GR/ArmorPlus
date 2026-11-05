@@ -9,6 +9,7 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.category.AbstractRecipeCategory;
 import mezz.jei.api.recipe.types.IRecipeType;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 
@@ -22,6 +23,10 @@ public class RuneExtractionCategory extends AbstractRecipeCategory<RuneExtractio
 
     public static final IRecipeType<RuneExtractionRecipe> TYPE = IRecipeType.create(MODID, "rune_extraction", RuneExtractionRecipe.class);
 
+    static final String GEAR_SLOT = "gear";
+    static final String BLANK_RUNE_SLOT = "blank_rune";
+    static final String CATALYST_SLOT = "catalyst";
+
     private static final int WIDTH = 130;
     private static final int HEIGHT = 54;
     private static final int COST_COLOR = 0xFF80FF20;
@@ -32,10 +37,13 @@ public class RuneExtractionCategory extends AbstractRecipeCategory<RuneExtractio
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, RuneExtractionRecipe recipe, IFocusGroup focuses) {
-        builder.addInputSlot(1, 1).setStandardSlotBackground().addItemStacks(recipe.gear());
-        builder.addInputSlot(1, 19).setStandardSlotBackground().add(ModItems.BLANK_RUNE.get());
-        IRecipeSlotBuilder catalyst = builder.addInputSlot(1, 37).setStandardSlotBackground();
-        if (!recipe.catalyst().isEmpty()) catalyst.add(recipe.catalyst());
+        builder.addInputSlot(1, 1).setSlotName(GEAR_SLOT).setStandardSlotBackground().addItemStacks(recipe.gear());
+        builder.addInputSlot(1, 19).setSlotName(BLANK_RUNE_SLOT).setStandardSlotBackground().add(ModItems.BLANK_RUNE.get());
+        IRecipeSlotBuilder catalyst = builder.addInputSlot(1, 37).setSlotName(CATALYST_SLOT).setStandardSlotBackground();
+        if (!recipe.catalyst().isEmpty()) {
+            catalyst.add(recipe.catalyst()).addRichTooltipCallback((view, tooltip) ->
+                    tooltip.add(Component.translatable("jei.armorplus.extraction_catalyst.tooltip").withStyle(ChatFormatting.GRAY)));
+        }
         builder.addOutputSlot(64, 19).setOutputSlotBackground().add(recipe.rune());
     }
 

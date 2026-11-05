@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.registry.item.material;
 
 import com.sofodev.armorplus.registry.item.APItem;
+import com.sofodev.armorplus.registry.RegistryContext;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -17,7 +18,7 @@ import static com.sofodev.armorplus.utils.ToolTipUtils.addItemLore;
 public class FrostLavaCrystalItem extends APItem {
 
     public FrostLavaCrystalItem() {
-        super(com.sofodev.armorplus.registry.RegistryContext.itemProperties().fireResistant());
+        super(RegistryContext.itemProperties().fireResistant());
     }
 
     @Override

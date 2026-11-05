@@ -1,6 +1,10 @@
 package com.sofodev.armorplus.datagen;
 
-import net.minecraft.advancements.*;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementHolder;
+import net.minecraft.advancements.AdvancementRequirements;
+import net.minecraft.advancements.AdvancementRewards;
+import net.minecraft.advancements.AdvancementType;
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.advancements.AdvancementSubProvider;
@@ -9,6 +13,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.ItemLike;
 
 import java.util.function.Consumer;
+import java.util.Arrays;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
@@ -600,8 +605,8 @@ public class ModAdvancementProvider implements AdvancementSubProvider {
                 .rewards(AdvancementRewards.Builder.experience(experience).build());
 
         builder.requirements(requireAll
-                ? AdvancementRequirements.allOf(java.util.Arrays.asList(criterionItems))
-                : AdvancementRequirements.anyOf(java.util.Arrays.asList(criterionItems)));
+                ? AdvancementRequirements.allOf(Arrays.asList(criterionItems))
+                : AdvancementRequirements.anyOf(Arrays.asList(criterionItems)));
 
         for (String item : criterionItems) {
             builder.addCriterion(

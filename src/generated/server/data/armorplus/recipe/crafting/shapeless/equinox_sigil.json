@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "armorplus:runes",
+  "ingredients": [
+    "armorplus:ember_sigil",
+    "armorplus:rime_sigil",
+    "armorplus:infused_frost_lava_crystal"
+  ],
+  "result": {
+    "id": "armorplus:equinox_sigil"
+  }
+}

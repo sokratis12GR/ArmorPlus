@@ -1,36 +1,40 @@
 package com.sofodev.armorplus.client;
 
 import com.mojang.blaze3d.platform.cursor.CursorTypes;
+import com.sofodev.armorplus.registry.ModItems;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
+import com.sofodev.armorplus.registry.item.extra.BuffNames;
 import com.sofodev.armorplus.registry.rune.RuneAltarMenu;
-import com.sofodev.armorplus.registry.rune.RuneData;
+import com.sofodev.armorplus.registry.rune.RuneRitual;
 import com.sofodev.armorplus.registry.rune.Runes;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
-import net.minecraft.locale.Language;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.FormattedText;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import static com.sofodev.armorplus.ArmorPlus.MODID;
-import com.sofodev.armorplus.registry.item.extra.BuffNames;
 
 /**
- * Rune Altar screen: a scrollable list of the equipment's extractable buffs with their catalyst and experience level cost.
+ * Rune Altar screen: a scrollable list of the equipment's extractable buffs and socketed runes with their catalyst and
+ * experience level cost.
  * <p>
  * Layout (see textures/gui/container/rune_altar.png): equipment, Blank Rune and catalyst slots on the left, the buff list
  * in the middle, the result and its cost on the right.
@@ -51,18 +55,37 @@ public class RuneAltarScreen extends AbstractContainerScreen<RuneAltarMenu> {
     private static final int SCROLLER_HEIGHT = 15;
     private static final int RESULT_CENTER_X = 169;
     private static final int INVENTORY_LABEL_X = 16;
+    private static final int TITLE_X = 8;
+    private static final int LABEL_COLOR = 0xFFE6D2E2;
     private static final int COST_Y = 69;
     private static final int TEXT_COLOR = 0xFFFFFFFF;
-    private static final int HINT_COLOR = 0xFF9A8AB0;
+    private static final int HINT_COLOR = 0xFFC8B0C8;
     private static final int COST_COLOR = 0xFF80FF20;
     private static final int TOO_EXPENSIVE_COLOR = 0xFFFF6060;
     private static final int MISSING_CATALYST_COLOR = 0xA02E2440;
-    private static final String ELLIPSIS = "...";
+    private static final int BLOCKED_ROW_COLOR = 0xFF2A2A2A;
+    private static final int BLOCKED_TEXT_COLOR = 0xFF707070;
+    private static final int PREVIEW_X = 161;
+    private static final int PREVIEW_Y = 14;
+    private static final int PREVIEW_TEXT_Y = 33;
+    private static final int PREVIEW_TEXT_WIDTH = 28;
+    private static final int ARROW_X = 150;
+    private static final int ARROW_Y = 48;
+    private static final int ARROW_WIDTH = 6;
+    private static final int ARROW_HEIGHT = 8;
+    private static final float LIT_ARROW_U = 200.0F;
+    private static final int RITUAL_LINK_COLOR = 0xFF36243C;
+    private static final int RITUAL_LINK_HOVERED_COLOR = 0xFF7C3A70;
+    private static final int RITUAL_RIGHT = 186;
+    private static final int RITUAL_Y = 3;
+    private static final int RITUAL_HEIGHT = 10;
 
     private float scrollOffs;
     private boolean scrolling;
     private int startIndex;
-    private List<String> shownOptions = List.of();
+    private List<RuneAltarMenu.Option> shownOptions = List.of();
+    private final ItemStack gearGhost = new ItemStack(Items.DIAMOND_CHESTPLATE);
+    private final ItemStack blankRuneGhost = new ItemStack(ModItems.BLANK_RUNE.get());
 
     public RuneAltarScreen(RuneAltarMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title, IMAGE_WIDTH, IMAGE_HEIGHT);
@@ -74,6 +97,12 @@ public class RuneAltarScreen extends AbstractContainerScreen<RuneAltarMenu> {
     public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
         super.extractBackground(graphics, mouseX, mouseY, a);
         graphics.blit(RenderPipelines.GUI_TEXTURED, BG_LOCATION, this.leftPos, this.topPos, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
+        if (this.menu.getSlot(RuneAltarMenu.RESULT_SLOT).hasItem()) {
+            graphics.blit(RenderPipelines.GUI_TEXTURED, BG_LOCATION, this.leftPos + ARROW_X, this.topPos + ARROW_Y, LIT_ARROW_U, 0.0F, ARROW_WIDTH, ARROW_HEIGHT, 256, 256);
+        }
+        extractInputGhost(graphics, RuneAltarMenu.GEAR_SLOT, this.gearGhost);
+        extractInputGhost(graphics, RuneAltarMenu.BLANK_RUNE_SLOT, this.blankRuneGhost);
+        extractInputGhost(graphics, RuneAltarMenu.CATALYST_SLOT, this.menu.getCatalyst(previewOption(mouseX, mouseY)));
 
         int scrollerX = this.leftPos + SCROLLER_X;
         int scrollerY = this.topPos + LIST_Y + (int) ((LIST_HEIGHT - SCROLLER_HEIGHT) * this.scrollOffs);
@@ -82,19 +111,20 @@ public class RuneAltarScreen extends AbstractContainerScreen<RuneAltarMenu> {
         int x = this.leftPos + LIST_X;
         if (!this.menu.hasGear()) {
             Component hint = Component.translatable("container.armorplus.rune_altar.place_gear");
-            graphics.textWithWordWrap(this.font, hint, x + 4, this.topPos + LIST_Y + 4, LIST_WIDTH - 8, HINT_COLOR, false);
+            AltarGui.paragraph(graphics, this.font, hint, x + 4, this.topPos + LIST_Y + 4, LIST_WIDTH - 8, LIST_HEIGHT - 8, HINT_COLOR);
             return;
         }
 
         for (int index = this.startIndex; index < this.startIndex + ROWS && index < optionCount(); index++) {
             int y = this.topPos + LIST_Y + (index - this.startIndex) * ROW_HEIGHT;
+            boolean blocked = this.menu.getBlockReason(index) != null;
             boolean hovered = isOver(mouseX, mouseY, x, y);
-            int background = index == this.menu.getSelectedIndex() ? 0xFF6A3D9A : hovered ? 0xFF4A3A63 : 0xFF2E2440;
+            int background = blocked ? BLOCKED_ROW_COLOR : index == this.menu.getSelectedIndex() ? 0xFF6A3D9A : hovered ? 0xFF4A3A63 : 0xFF2E2440;
             graphics.fill(x, y, x + LIST_WIDTH, y + ROW_HEIGHT - 1, background);
 
             int cost = this.menu.getCost(index);
-            String costText = String.valueOf(cost);
-            int costWidth = this.font.width(costText);
+            Component costText = Component.literal(String.valueOf(cost));
+            int costWidth = AltarGui.width(this.font, costText);
             int costX = x + LIST_WIDTH - costWidth - 3;
             int nameWidth = LIST_WIDTH - costWidth - 10;
             ItemStack catalyst = this.menu.getCatalyst(index);
@@ -102,30 +132,50 @@ public class RuneAltarScreen extends AbstractContainerScreen<RuneAltarMenu> {
                 nameWidth -= 18;
                 extractCatalyst(graphics, catalyst, this.menu.hasCatalyst(index), costX - 18, y);
             }
-            graphics.text(this.font, Language.getInstance().getVisualOrder(fit(optionName(index), nameWidth)), x + 3, y + 5, TEXT_COLOR);
-            graphics.text(this.font, costText, costX, y + 5, canAfford(cost) ? COST_COLOR : TOO_EXPENSIVE_COLOR);
-            if (hovered) graphics.requestCursor(CursorTypes.POINTING_HAND);
+            Component name = this.menu.isExtracted(index) ? optionName(index).copy().withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.STRIKETHROUGH)
+                    : blocked ? optionName(index).copy().withStyle(ChatFormatting.DARK_GRAY) : optionName(index);
+            AltarGui.line(graphics, this.font, name, x + 3, y + 5, nameWidth, TEXT_COLOR, true);
+            AltarGui.text(graphics, this.font, costText, costX, y + 5, blocked ? BLOCKED_TEXT_COLOR : canAfford(cost) ? COST_COLOR : TOO_EXPENSIVE_COLOR, true);
+            if (hovered && !blocked) graphics.requestCursor(CursorTypes.POINTING_HAND);
         }
+    }
+
+    private void extractInputGhost(GuiGraphicsExtractor graphics, int slotIndex, ItemStack ghost) {
+        Slot slot = this.menu.getSlot(slotIndex);
+        if (!slot.hasItem() && !ghost.isEmpty()) AltarGui.ghostItem(graphics, ghost, this.leftPos + slot.x, this.topPos + slot.y);
     }
 
     @Override
     protected void extractLabels(GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
-        super.extractLabels(graphics, mouseX, mouseY);
+        AltarGui.line(graphics, this.font, this.title, TITLE_X, this.titleLabelY, RITUAL_RIGHT - AltarGui.width(this.font, ritualLinkText()) - 4 - TITLE_X - 2, LABEL_COLOR, false);
+        AltarGui.text(graphics, this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, LABEL_COLOR, false);
+        extractRitualLink(graphics, mouseX, mouseY);
+        extractPreview(graphics, previewOption(mouseX, mouseY));
         if (!this.menu.getSlot(RuneAltarMenu.RESULT_SLOT).hasItem()) return;
 
         int cost = this.menu.getCost();
-        String text = String.valueOf(cost);
-        graphics.text(this.font, text, RESULT_CENTER_X - this.font.width(text) / 2, COST_Y, canAfford(cost) ? COST_COLOR : TOO_EXPENSIVE_COLOR);
+        AltarGui.centered(graphics, this.font, Component.literal(String.valueOf(cost)), RESULT_CENTER_X, COST_Y, canAfford(cost) ? COST_COLOR : TOO_EXPENSIVE_COLOR, true);
     }
 
     @Override
     protected void extractTooltip(GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
         super.extractTooltip(graphics, mouseX, mouseY);
+        extractPreviewTooltip(graphics, mouseX, mouseY);
+        if (isOverRitualLink(mouseX, mouseY)) {
+            graphics.setTooltipForNextFrame(this.font, ritualTooltip(), Optional.empty(), mouseX, mouseY);
+            return;
+        }
         int index = hoveredOption(mouseX, mouseY);
         if (index < 0) return;
 
         List<Component> lines = new ArrayList<>();
         lines.add(optionName(index));
+        Component blockReason = this.menu.getBlockReason(index);
+        if (blockReason != null) {
+            lines.add(blockReason.copy().withStyle(ChatFormatting.RED));
+            graphics.setTooltipForNextFrame(this.font, lines, Optional.empty(), mouseX, mouseY);
+            return;
+        }
         int cost = this.menu.getCost(index);
         lines.add(Component.translatable("container.armorplus.rune_altar.cost_levels", cost)
                 .withStyle(canAfford(cost) ? ChatFormatting.GREEN : ChatFormatting.RED));
@@ -134,7 +184,15 @@ public class RuneAltarScreen extends AbstractContainerScreen<RuneAltarMenu> {
             lines.add(Component.translatable("container.armorplus.rune_altar.needs_catalyst", catalyst.getCount(), catalyst.getHoverName())
                     .withStyle(this.menu.hasCatalyst(index) ? ChatFormatting.GREEN : ChatFormatting.RED));
         }
-        if (!this.menu.hasBlankRune()) {
+        int durability = this.menu.getDurabilityCost(index);
+        if (this.menu.destroysGear(index)) {
+            lines.add(Component.translatable("container.armorplus.rune_altar.destroys_gear").withStyle(ChatFormatting.RED));
+        } else if (durability > 0) {
+            lines.add(Component.translatable("container.armorplus.rune_altar.durability_cost", durability, durabilityPercent(durability)).withStyle(ChatFormatting.GOLD));
+        }
+        if (this.menu.getOptions().get(index).socketed()) {
+            lines.add(Component.translatable("container.armorplus.rune_altar.remove_rune").withStyle(ChatFormatting.GRAY));
+        } else if (!this.menu.hasBlankRune()) {
             lines.add(Component.translatable("container.armorplus.rune_altar.needs_blank_rune").withStyle(ChatFormatting.GRAY));
         }
         graphics.setTooltipForNextFrame(this.font, lines, Optional.empty(), mouseX, mouseY);
@@ -142,6 +200,15 @@ public class RuneAltarScreen extends AbstractContainerScreen<RuneAltarMenu> {
 
     @Override
     public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
+        if (isOverRitualLink(event.x(), event.y()) && (ritualReady() || this.menu.getAltarPos() != null)) {
+            Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_STONECUTTER_SELECT_RECIPE, 1.0F));
+            if (ritualReady()) {
+                this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, RuneAltarMenu.RITUAL_BUTTON);
+            } else {
+                toggleGhostCircle(this.menu.getAltarPos());
+            }
+            return true;
+        }
         int index = hoveredOption(event.x(), event.y());
         if (index >= 0 && this.menu.clickMenuButton(this.minecraft.player, index)) {
             Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_STONECUTTER_SELECT_RECIPE, 1.0F));
@@ -185,6 +252,92 @@ public class RuneAltarScreen extends AbstractContainerScreen<RuneAltarMenu> {
         return true;
     }
 
+    private boolean ritualReady() {
+        return this.menu.getPedestalCount() == RuneRitual.PEDESTAL_COUNT;
+    }
+
+    /** Showing it closes the screen, it's the world behind it that has something to see now. */
+    private void toggleGhostCircle(BlockPos altar) {
+        if (RitualCircleGhost.toggle(this.minecraft.level, altar)) {
+            this.minecraft.player.sendOverlayMessage(Component.translatable("container.armorplus.rune_altar.circle.shown"));
+            this.onClose();
+        }
+    }
+
+    private boolean ghostCircleShown() {
+        return this.menu.getAltarPos() != null && RitualCircleGhost.isShowing(this.menu.getAltarPos());
+    }
+
+    private Component ritualLinkText() {
+        if (ritualReady()) return Component.translatable("container.armorplus.rune_altar.ritual");
+        return Component.translatable("container.armorplus.rune_altar.circle." + (ghostCircleShown() ? "hide" : "show"), this.menu.getPedestalCount(), RuneRitual.PEDESTAL_COUNT);
+    }
+
+    private List<Component> ritualTooltip() {
+        if (ritualReady()) return List.of(Component.translatable("container.armorplus.rune_altar.ritual.tooltip"));
+        return List.of(Component.translatable("container.armorplus.rune_altar.circle.tooltip", RuneRitual.PEDESTAL_COUNT, RuneRitual.PEDESTAL_DISTANCE),
+                Component.translatable("container.armorplus.rune_altar.circle.ghost_tooltip").withStyle(ChatFormatting.GRAY));
+    }
+
+    private boolean isOverRitualLink(double mouseX, double mouseY) {
+        int right = this.leftPos + RITUAL_RIGHT;
+        int top = this.topPos + RITUAL_Y;
+        return mouseX >= right - AltarGui.width(this.font, ritualLinkText()) - 4 && mouseX < right && mouseY >= top && mouseY < top + RITUAL_HEIGHT;
+    }
+
+    /** The way to the other form of the altar, or how far the circle is. */
+    private void extractRitualLink(GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
+        Component text = ritualLinkText();
+        int left = RITUAL_RIGHT - AltarGui.width(this.font, text) - 4;
+        boolean hovered = isOverRitualLink(mouseX, mouseY);
+        graphics.fill(left, RITUAL_Y, RITUAL_RIGHT, RITUAL_Y + RITUAL_HEIGHT, hovered ? RITUAL_LINK_HOVERED_COLOR : RITUAL_LINK_COLOR);
+        if (hovered) graphics.requestCursor(CursorTypes.POINTING_HAND);
+        AltarGui.text(graphics, this.font, text, left + 2, RITUAL_Y + 1, ritualReady() ? TEXT_COLOR : HINT_COLOR, false);
+    }
+
+    /** @return the row being hovered, otherwise the selected one */
+    private int previewOption(int mouseX, int mouseY) {
+        int hovered = hoveredOption(mouseX, mouseY);
+        return hovered >= 0 ? hovered : this.menu.getSelectedIndex();
+    }
+
+    /** Draws what the option leaves of the equipment, dimmed; it's only a picture, not a slot. */
+    private void extractPreview(GuiGraphicsExtractor graphics, int index) {
+        if (this.menu.destroysGear(index)) {
+            AltarGui.small(graphics, this.font, Component.translatable("container.armorplus.rune_altar.destroyed"), RESULT_CENTER_X, PREVIEW_TEXT_Y, PREVIEW_TEXT_WIDTH, TOO_EXPENSIVE_COLOR);
+            return;
+        }
+        ItemStack preview = this.menu.getPreview(index);
+        if (preview.isEmpty()) return;
+        AltarGui.previewItem(graphics, this.font, preview, PREVIEW_X, PREVIEW_Y);
+        int durability = this.menu.getDurabilityCost(index);
+        if (durability > 0) {
+            AltarGui.small(graphics, this.font, Component.literal("-" + durabilityPercent(durability) + "%"), RESULT_CENTER_X, PREVIEW_TEXT_Y, PREVIEW_TEXT_WIDTH, TOO_EXPENSIVE_COLOR);
+        }
+    }
+
+    private void extractPreviewTooltip(GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
+        int x = this.leftPos + PREVIEW_X;
+        int y = this.topPos + PREVIEW_Y;
+        if (mouseX < x || mouseX >= x + 16 || mouseY < y || mouseY >= y + 16) return;
+        ItemStack preview = this.menu.getPreview(this.menu.getSelectedIndex());
+        if (preview.isEmpty()) return;
+        int index = this.menu.getSelectedIndex();
+        List<Component> lines = new ArrayList<>();
+        lines.add(Component.translatable("container.armorplus.rune_altar.preview").withStyle(ChatFormatting.GOLD));
+        lines.add(Component.translatable("container.armorplus.rune_altar.preview_removes", optionName(index).copy().withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.STRIKETHROUGH)).withStyle(ChatFormatting.GRAY));
+        if (preview.isDamageableItem()) {
+            lines.add(Component.translatable("container.armorplus.rune_altar.preview_durability", preview.getMaxDamage() - preview.getDamageValue(), preview.getMaxDamage()).withStyle(ChatFormatting.GRAY));
+        }
+        lines.addAll(Screen.getTooltipFromItem(this.minecraft, preview));
+        graphics.setTooltipForNextFrame(this.font, lines, preview.getTooltipImage(), preview, mouseX, mouseY);
+    }
+
+    private int durabilityPercent(int durability) {
+        int max = this.menu.getSlot(RuneAltarMenu.GEAR_SLOT).getItem().getMaxDamage();
+        return max == 0 ? 0 : Math.round(100.0F * durability / max);
+    }
+
     /** Draws the catalyst beside the cost with its count, greyed out if the catalyst slot doesn't hold enough of it. */
     private void extractCatalyst(GuiGraphicsExtractor graphics, ItemStack catalyst, boolean present, int x, int y) {
         graphics.item(catalyst, x, y);
@@ -195,18 +348,12 @@ public class RuneAltarScreen extends AbstractContainerScreen<RuneAltarMenu> {
         }
     }
 
-    /** @return the text cut to the width, with "..." if it doesn't fit (the full name is in the tooltip) */
-    private FormattedText fit(Component text, int width) {
-        if (this.font.width(text) <= width) return text;
-        FormattedText cut = this.font.substrByWidth(text, width - this.font.width(ELLIPSIS));
-        return FormattedText.composite(cut, FormattedText.of(ELLIPSIS));
-    }
-
     private Component optionName(int index) {
-        String entry = Runes.extractedEntry(this.menu.getOptions().get(index));
-        BuffInstance buff = Runes.parse(new RuneData(Runes.extractionKind(this.menu.getSlot(RuneAltarMenu.GEAR_SLOT).getItem()), entry));
-        if (buff == null) return Component.literal(entry);
-        MutableComponent name = buff.getTranslatedName().withStyle(ChatFormatting.WHITE);
+        RuneAltarMenu.Option option = this.menu.getOptions().get(index);
+        ChatFormatting color = option.socketed() ? ChatFormatting.LIGHT_PURPLE : ChatFormatting.WHITE;
+        BuffInstance buff = Runes.parse(option.rune());
+        if (buff == null) return Component.literal(option.rune().entry()).withStyle(color);
+        MutableComponent name = buff.getTranslatedName().withStyle(color);
         return name.append(BuffNames.levelSuffix(buff));
     }
 

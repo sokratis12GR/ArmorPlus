@@ -7,6 +7,7 @@ import com.sofodev.armorplus.registry.item.armor.ArmorEffects;
 import com.sofodev.armorplus.registry.item.extra.Buff;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import com.sofodev.armorplus.registry.item.extra.BuffNames;
+import com.sofodev.armorplus.registry.item.tool.RangedEffects;
 import com.sofodev.armorplus.registry.item.tool.ToolEffects;
 import com.sofodev.armorplus.registry.item.tool.WeaponEffects;
 import net.minecraft.commands.CommandSourceStack;
@@ -18,10 +19,12 @@ import net.minecraft.server.level.ServerPlayer;
 import java.util.List;
 
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
-import static net.minecraft.ChatFormatting.*;
+import static net.minecraft.ChatFormatting.GOLD;
+import static net.minecraft.ChatFormatting.GRAY;
+import static net.minecraft.ChatFormatting.GREEN;
 
 /**
- * "/armorplus effects": the armor, tool and weapon effects of a player and the ones switched off in the effect screens.
+ * "/armorplus effects": the armor, tool, weapon and ranged effects of a player and the ones switched off in the effect screens.
  * Anyone can use it on themselves, other players need gamemaster permissions.
  */
 public class EffectsCommand {
@@ -55,6 +58,10 @@ public class EffectsCommand {
             send(source, line(entry.buff(), translate("commands.armorplus.effects.source.weapon"), entry.disabled()));
             shown++;
         }
+        for (RangedEffects.Entry entry : RangedEffects.entries(player)) {
+            send(source, line(entry.buff(), translate("commands.armorplus.effects.source.ranged"), entry.disabled()));
+            shown++;
+        }
         if (shown == 0) send(source, translate(GRAY, "commands.armorplus.effects.none"));
         return shown;
     }
@@ -69,10 +76,12 @@ public class EffectsCommand {
     private static int reset(CommandSourceStack source, ServerPlayer player) {
         int count = player.getData(ModAttachments.DISABLED_EFFECTS.get()).size()
                 + player.getData(ModAttachments.DISABLED_TOOL_EFFECTS.get()).size()
-                + player.getData(ModAttachments.DISABLED_WEAPON_EFFECTS.get()).size();
+                + player.getData(ModAttachments.DISABLED_WEAPON_EFFECTS.get()).size()
+                + player.getData(ModAttachments.DISABLED_RANGED_EFFECTS.get()).size();
         player.setData(ModAttachments.DISABLED_EFFECTS.get(), List.of());
         player.setData(ModAttachments.DISABLED_TOOL_EFFECTS.get(), List.of());
         player.setData(ModAttachments.DISABLED_WEAPON_EFFECTS.get(), List.of());
+        player.setData(ModAttachments.DISABLED_RANGED_EFFECTS.get(), List.of());
         ArmorEffects.invalidate(player);
         ToolEffects.invalidate(player);
         ModGlobalEvents.checkAndApplyBuffs(player);

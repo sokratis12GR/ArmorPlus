@@ -6,8 +6,16 @@ import com.sofodev.armorplus.registry.block.APBlock;
 import com.sofodev.armorplus.registry.block.APBlockItem;
 import com.sofodev.armorplus.registry.block.APFrostBlock;
 import com.sofodev.armorplus.registry.block.APLavaBlock;
-import com.sofodev.armorplus.registry.block.castle.*;
+import com.sofodev.armorplus.registry.block.castle.CastleBlock;
+import com.sofodev.armorplus.registry.block.castle.StoneBrickBlock;
+import com.sofodev.armorplus.registry.block.castle.StoneBrickCornerBlock;
+import com.sofodev.armorplus.registry.block.castle.StoneBrickSlabBlock;
+import com.sofodev.armorplus.registry.block.castle.StoneBrickStairsBlock;
+import com.sofodev.armorplus.registry.block.castle.StoneBrickTowerBlock;
+import com.sofodev.armorplus.registry.block.castle.StoneBrickWallBlock;
 import com.sofodev.armorplus.registry.block.ore.CrystalOreBlock;
+import com.sofodev.armorplus.registry.block.special.EmpoweringPedestalBlock;
+import com.sofodev.armorplus.registry.block.special.EmpoweringPedestalBlockEntity;
 import com.sofodev.armorplus.registry.block.special.RuneAltarBlock;
 import com.sofodev.armorplus.registry.block.special.SoulBox;
 import net.minecraft.world.item.Item;
@@ -19,6 +27,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceKey;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.function.Function;
@@ -29,7 +38,9 @@ import static com.sofodev.armorplus.ArmorPlus.AP_STONE_BRICKS_LENGTH;
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 import static com.sofodev.armorplus.registry.ModItems.ITEMS;
 import static com.sofodev.armorplus.registry.block.castle.BrickColor.values;
-import static com.sofodev.armorplus.registry.block.ore.Variant.*;
+import static com.sofodev.armorplus.registry.block.ore.Variant.OBSIDIAN;
+import static com.sofodev.armorplus.registry.block.ore.Variant.ORIGINAL;
+import static com.sofodev.armorplus.registry.block.ore.Variant.STONE;
 import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.ofFullCopy;
 
 public class ModBlocks {
@@ -68,6 +79,9 @@ public class ModBlocks {
     public static final DeferredHolder<Block, Block> PETRIFIED_SOULS = registerBlockWithItem("petrified_souls", () -> new APBlock(ofFullCopy(Blocks.TERRACOTTA)));
     public static final DeferredHolder<Block, Block> SOUL_BOX = registerBlockWithItem("soul_box", SoulBox::new);
     public static final DeferredHolder<Block, Block> RUNE_ALTAR = registerBlockWithItem("rune_altar", RuneAltarBlock::new);
+    public static final DeferredHolder<Block, Block> EMPOWERING_PEDESTAL = registerBlockWithItem("empowering_pedestal", EmpoweringPedestalBlock::new);
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<EmpoweringPedestalBlockEntity>> EMPOWERING_PEDESTAL_ENTITY = TILE_ENTITIES.register("empowering_pedestal",
+            () -> new BlockEntityType<>(EmpoweringPedestalBlockEntity::new, EMPOWERING_PEDESTAL.get()));
     //    public static final DeferredHolder<?, BlockEntityType<TrophyTile>> TROPHY_TYPE = TILE_ENTITIES.register("trophy", () -> build(BlockEntityType.Builder.of(TrophyTile::new, TROPHY.get())));
 
     static {
@@ -75,8 +89,8 @@ public class ModBlocks {
     }
 
     public static <BLOCK extends Block> DeferredHolder<Block, BLOCK> registerBlockWithItem(String name, DeferredRegister<Block> blocks, DeferredRegister<Item> items, Supplier<BLOCK> blockSupplier, Function<BLOCK, Item> itemFactory) {
-        DeferredHolder<Block, BLOCK> block = blocks.register(name, id -> RegistryContext.withBlockKey(net.minecraft.resources.ResourceKey.create(Registries.BLOCK, id), blockSupplier));
-        items.register(name, id -> RegistryContext.withItemKey(net.minecraft.resources.ResourceKey.create(Registries.ITEM, id), () -> itemFactory.apply(block.get())));
+        DeferredHolder<Block, BLOCK> block = blocks.register(name, id -> RegistryContext.withBlockKey(ResourceKey.create(Registries.BLOCK, id), blockSupplier));
+        items.register(name, id -> RegistryContext.withItemKey(ResourceKey.create(Registries.ITEM, id), () -> itemFactory.apply(block.get())));
         return block;
     }
 

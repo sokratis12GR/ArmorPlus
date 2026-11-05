@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.registry.item;
 
 import net.minecraft.network.chat.Component;
+import com.sofodev.armorplus.registry.RegistryContext;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -16,7 +17,7 @@ import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
 public class APItemBase extends APItem {
 
     public APItemBase() {
-        super(com.sofodev.armorplus.registry.RegistryContext.itemProperties().rarity(Rarity.UNCOMMON).stacksTo(8));
+        super(RegistryContext.itemProperties().rarity(Rarity.UNCOMMON).stacksTo(8));
     }
 
     @Override

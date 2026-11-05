@@ -1,8 +1,11 @@
 package com.sofodev.armorplus.registry.item.armor;
 
 import net.minecraft.world.item.equipment.ArmorType;
+import net.minecraft.ChatFormatting;
 
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
+import com.sofodev.armorplus.registry.RegistryContext;
+import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.registry.item.extra.BuffParser;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.Item;
@@ -11,16 +14,60 @@ import net.minecraft.world.item.Rarity;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.function.Supplier;
 
 import static com.sofodev.armorplus.ArmorPlus.config;
-import static com.sofodev.armorplus.config.ArmorPlusConfig.*;
-import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.*;
-import static net.minecraft.ChatFormatting.*;
+import static com.sofodev.armorplus.config.ArmorPlusConfig.MaterialConfig;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.AMETHYST_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.ARDITE_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.CHICKEN_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.COAL_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.COBALT_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.EMERALD_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.ENDER_DRAGON_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.ENHANCED_CHAINMAIL_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.ENHANCED_COPPER_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.ENHANCED_DIAMOND_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.ENHANCED_GOLD_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.ENHANCED_IRON_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.ENHANCED_NETHERITE_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.FROST_LAVA_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.FROST_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.GLOWSTONE_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.GUARDIAN_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.HONEY_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.INFUSED_LAVA_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.KNIGHT_SLIME_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.LAPIS_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.MANYULLYN_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.MAX_DAMAGE_ARRAY;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.OBSIDIAN_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.PIG_IRON_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.QUARTZ_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.REDSTONE_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.SLAYER_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.SLIME_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.SUPER_STAR_PROP;
+import static com.sofodev.armorplus.registry.item.armor.APArmorProperties.WARDEN_PROP;
+import static net.minecraft.ChatFormatting.BLUE;
+import static net.minecraft.ChatFormatting.DARK_AQUA;
+import static net.minecraft.ChatFormatting.DARK_BLUE;
+import static net.minecraft.ChatFormatting.DARK_GRAY;
+import static net.minecraft.ChatFormatting.DARK_GREEN;
+import static net.minecraft.ChatFormatting.DARK_PURPLE;
+import static net.minecraft.ChatFormatting.DARK_RED;
+import static net.minecraft.ChatFormatting.GOLD;
+import static net.minecraft.ChatFormatting.GRAY;
+import static net.minecraft.ChatFormatting.GREEN;
+import static net.minecraft.ChatFormatting.LIGHT_PURPLE;
+import static net.minecraft.ChatFormatting.RED;
+import static net.minecraft.ChatFormatting.WHITE;
+import static net.minecraft.ChatFormatting.YELLOW;
 
 /**
  * Armor buffs are read from each material's config ("armorBuffs", formatted as "id|level", see {@link BuffParser}).
- * The defaults live in {@link com.sofodev.armorplus.config.ArmorPlusConfig}.
+ * The defaults live in {@link ArmorPlusConfig}.
  */
 public enum APArmorMaterial implements IAPArmor {
     /*ToolMaterial 1*/
@@ -71,16 +118,16 @@ public enum APArmorMaterial implements IAPArmor {
     private final boolean isImmuneToFire;
     private final Supplier<MaterialConfig> materialConfig;
     private final Supplier<List<BuffInstance>> buffs;
-    private final net.minecraft.ChatFormatting formatting;
+    private final ChatFormatting formatting;
     /** Built on first use (item registration), once the stats config has loaded. */
     private ArmorMaterial armor;
 
 
-    APArmorMaterial(APArmorProperties armor, net.minecraft.ChatFormatting formatting, Supplier<MaterialConfig> materialConfig) {
+    APArmorMaterial(APArmorProperties armor, ChatFormatting formatting, Supplier<MaterialConfig> materialConfig) {
         this(armor, false, formatting, materialConfig);
     }
 
-    APArmorMaterial(APArmorProperties armor, boolean isImmuneToFire, net.minecraft.ChatFormatting formatting, Supplier<MaterialConfig> materialConfig) {
+    APArmorMaterial(APArmorProperties armor, boolean isImmuneToFire, ChatFormatting formatting, Supplier<MaterialConfig> materialConfig) {
         this.properties = armor;
         this.isImmuneToFire = isImmuneToFire;
         this.materialConfig = materialConfig;
@@ -102,7 +149,7 @@ public enum APArmorMaterial implements IAPArmor {
      * Builds buffs in code using the same format as the config files, e.g. {@code withBuffs("minecraft:haste|1", "armorplus:flight")}.
      */
     public static List<BuffInstance> withBuffs(String... entries) {
-        return Arrays.stream(entries).map(BuffParser::armor).filter(java.util.Objects::nonNull).toList();
+        return Arrays.stream(entries).map(BuffParser::armor).filter(Objects::nonNull).toList();
     }
 
     @Override
@@ -118,7 +165,7 @@ public enum APArmorMaterial implements IAPArmor {
 
     @Override
     public Item.Properties getProperties() {
-        return com.sofodev.armorplus.registry.RegistryContext.itemProperties().rarity(Rarity.EPIC);
+        return RegistryContext.itemProperties().rarity(Rarity.EPIC);
     }
 
     @Override
@@ -127,7 +174,7 @@ public enum APArmorMaterial implements IAPArmor {
     }
 
     @Override
-    public net.minecraft.ChatFormatting getFormatting() {
+    public ChatFormatting getFormatting() {
         return this.formatting;
     }
 

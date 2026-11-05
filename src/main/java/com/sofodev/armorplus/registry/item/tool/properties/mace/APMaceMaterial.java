@@ -6,10 +6,41 @@ import net.minecraft.world.item.ToolMaterial;
 
 import java.util.Locale;
 
-import static com.sofodev.armorplus.registry.item.tool.properties.mace.APMaceType.*;
+import static com.sofodev.armorplus.registry.item.tool.properties.mace.APMaceType.HEAVY;
+import static com.sofodev.armorplus.registry.item.tool.properties.mace.APMaceType.LIGHT;
+import static com.sofodev.armorplus.registry.item.tool.properties.mace.APMaceType.NORMAL;
 import static com.sofodev.armorplus.registry.item.tool.properties.mace.DestructionShape.PLUS;
 import static com.sofodev.armorplus.registry.item.tool.properties.mace.DestructionShape.SQUARE;
-import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.*;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.AMETHYST_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.ARDITE_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.CHAINMAIL_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.CHICKEN_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.COAL_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.COBALT_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.COPPER_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.DIAMOND_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.EMERALD_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.ENDER_DRAGON_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.FROST_LAVA_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.FROST_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.GLOWSTONE_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.GOLDEN_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.GUARDIAN_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.HONEY_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.INFUSED_LAVA_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.IRON_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.KNIGHT_SLIME_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.LAPIS_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.MANYULLYN_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.NETHERITE_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.OBSIDIAN_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.PIG_IRON_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.QUARTZ_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.REDSTONE_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.SLAYER_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.SLIME_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.SUPER_STAR_MAT;
+import static com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial.WARDEN_MAT;
 
 
 public enum APMaceMaterial implements IAPMace {

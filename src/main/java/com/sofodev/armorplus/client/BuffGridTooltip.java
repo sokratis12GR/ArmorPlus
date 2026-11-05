@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.client;
 
 import com.mojang.datafixers.util.Either;
+import com.sofodev.armorplus.utils.ToolTipUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -14,13 +15,15 @@ import java.util.List;
 
 /**
  * Lays out a long list of buff lines as a pixel-aligned grid (filled column by column), so armor/weapon tooltips with
- * many effects stay short. Buff lines are marked by {@link #BUFF_LINE} (see {@code ToolTipUtils#addBuffLines}) and
+ * many effects stay short. Buff lines are marked by {@link #BUFF_LINE} (see {@link ToolTipUtils#addBuffLines}) and
  * collapsed into a grid while the tooltip is gathered; anything else is left untouched.
  */
 public final class BuffGridTooltip implements TooltipComponent, ClientTooltipComponent {
 
     /** Style insertion marking a tooltip line as a buff line. Insertions only do anything in chat, so it's invisible here. */
     public static final String BUFF_LINE = "armorplus:buff_line";
+    /** Style insertion marking the description below a buff line. A tooltip showing descriptions isn't laid out as a grid, so they stay below their buff. */
+    public static final String BUFF_DESCRIPTION = "armorplus:buff_description";
     /** Above this many buffs the list is split into 2 columns. */
     private static final int TWO_COLUMNS_ABOVE = 5;
     /** Above this many buffs the list is split into 3 columns. */
@@ -51,6 +54,7 @@ public final class BuffGridTooltip implements TooltipComponent, ClientTooltipCom
      * screen (the tooltip is drawn beside the cursor).
      */
     public static void collapse(List<Either<FormattedText, TooltipComponent>> elements, int screenWidth) {
+        if (elements.stream().anyMatch(BuffGridTooltip::isDescription)) return;
         int maxWidth = screenWidth / 2 - 24;
         Font font = Minecraft.getInstance().font;
         for (int start = 0; start < elements.size(); start++) {
@@ -84,7 +88,15 @@ public final class BuffGridTooltip implements TooltipComponent, ClientTooltipCom
     }
 
     private static boolean isBuffLine(Either<FormattedText, TooltipComponent> element) {
-        return element.left().map(text -> text instanceof Component c && BUFF_LINE.equals(c.getStyle().getInsertion())).orElse(false);
+        return hasInsertion(element, BUFF_LINE);
+    }
+
+    private static boolean isDescription(Either<FormattedText, TooltipComponent> element) {
+        return hasInsertion(element, BUFF_DESCRIPTION);
+    }
+
+    private static boolean hasInsertion(Either<FormattedText, TooltipComponent> element, String insertion) {
+        return element.left().map(text -> text instanceof Component c && insertion.equals(c.getStyle().getInsertion())).orElse(false);
     }
 
     private int width() {

@@ -18,8 +18,43 @@ import java.util.stream.IntStream;
 
 import static com.sofodev.armorplus.ArmorPlus.AP_STONE_BRICKS_LENGTH;
 import static com.sofodev.armorplus.ArmorPlus.MODID;
-import static com.sofodev.armorplus.registry.ModBlocks.*;
-import static com.sofodev.armorplus.registry.ModItems.*;
+import static com.sofodev.armorplus.registry.ModBlocks.CASTLE_BLOCKS;
+import static com.sofodev.armorplus.registry.ModBlocks.CASTLE_BLOCK_CORNERS;
+import static com.sofodev.armorplus.registry.ModBlocks.CASTLE_BLOCK_SLABS;
+import static com.sofodev.armorplus.registry.ModBlocks.CASTLE_BLOCK_STAIRS;
+import static com.sofodev.armorplus.registry.ModBlocks.CASTLE_BLOCK_TOWERS;
+import static com.sofodev.armorplus.registry.ModBlocks.CASTLE_BLOCK_WALLS;
+import static com.sofodev.armorplus.registry.ModBlocks.COMPRESSED_INFUSED_LAVA_CRYSTAL;
+import static com.sofodev.armorplus.registry.ModBlocks.COMPRESSED_LAVA_CRYSTAL;
+import static com.sofodev.armorplus.registry.ModBlocks.COMPRESSED_OBSIDIAN;
+import static com.sofodev.armorplus.registry.ModBlocks.LAVA_INFUSED_OBSIDIAN;
+import static com.sofodev.armorplus.registry.ModBlocks.ORE_FROST_CRYSTAL;
+import static com.sofodev.armorplus.registry.ModBlocks.ORE_FROST_CRYSTAL_OBSIDIAN;
+import static com.sofodev.armorplus.registry.ModBlocks.ORE_FROST_CRYSTAL_STONE;
+import static com.sofodev.armorplus.registry.ModBlocks.ORE_LAVA_CRYSTAL;
+import static com.sofodev.armorplus.registry.ModBlocks.ORE_LAVA_CRYSTAL_OBSIDIAN;
+import static com.sofodev.armorplus.registry.ModBlocks.ORE_LAVA_CRYSTAL_STONE;
+import static com.sofodev.armorplus.registry.ModBlocks.PETRIFIED_SOULS;
+import static com.sofodev.armorplus.registry.ModBlocks.EMPOWERING_PEDESTAL;
+import static com.sofodev.armorplus.registry.ModBlocks.RUNE_ALTAR;
+import static com.sofodev.armorplus.registry.ModBlocks.SNOW_BRICK;
+import static com.sofodev.armorplus.registry.ModBlocks.SNOW_BRICK_SLAB;
+import static com.sofodev.armorplus.registry.ModBlocks.SNOW_BRICK_STAIRS;
+import static com.sofodev.armorplus.registry.ModBlocks.SOUL_BOX;
+import static com.sofodev.armorplus.registry.ModBlocks.STONE_BRICKS;
+import static com.sofodev.armorplus.registry.ModBlocks.STONE_BRICK_CORNERS;
+import static com.sofodev.armorplus.registry.ModBlocks.STONE_BRICK_SLABS;
+import static com.sofodev.armorplus.registry.ModBlocks.STONE_BRICK_STAIRS;
+import static com.sofodev.armorplus.registry.ModBlocks.STONE_BRICK_TOWERS;
+import static com.sofodev.armorplus.registry.ModBlocks.STONE_BRICK_WALLS;
+import static com.sofodev.armorplus.registry.ModItems.ENHANCED_CHAINMAIL;
+import static com.sofodev.armorplus.registry.ModItems.ENHANCED_COPPER;
+import static com.sofodev.armorplus.registry.ModItems.ENHANCED_DIAMOND;
+import static com.sofodev.armorplus.registry.ModItems.ENHANCED_GOLD;
+import static com.sofodev.armorplus.registry.ModItems.ENHANCED_IRON;
+import static com.sofodev.armorplus.registry.ModItems.ENHANCED_NETHERITE;
+import static com.sofodev.armorplus.registry.ModItems.FROST_SHARD;
+import static com.sofodev.armorplus.registry.ModItems.LAVA_SHARD;
 import static com.sofodev.armorplus.registry.block.castle.BrickColor.values;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
 import static com.sofodev.armorplus.utils.Utils.getAPItemStack;
@@ -128,8 +163,13 @@ public class ModCreativeTabs {
             .withSearchBar()
             .displayItems((parameters, output) -> {
                 output.accept(RUNE_ALTAR.get());
+                output.accept(EMPOWERING_PEDESTAL.get());
                 output.accept(ModItems.BLANK_RUNE.get());
                 output.accept(ModItems.SOCKET_PUNCH.get());
+                output.accept(ModItems.EMBER_SIGIL.get());
+                output.accept(ModItems.RIME_SIGIL.get());
+                output.accept(ModItems.EQUINOX_SIGIL.get());
+                output.accept(ModItems.ASTRAL_SIGIL.get());
                 // the tab can be built before the synced datapack runes were loaded
                 RuneDefinitions.update(parameters.holders());
                 Runes.creativeRunes().forEach(rune -> output.accept(RuneItem.create(rune.kind(), rune.entry())));
@@ -161,6 +201,7 @@ public class ModCreativeTabs {
                 output.accept(PETRIFIED_SOULS.get());
                 output.accept(SOUL_BOX.get());
                 output.accept(RUNE_ALTAR.get());
+                output.accept(EMPOWERING_PEDESTAL.get());
 
                 IntStream.range(0, AP_STONE_BRICKS_LENGTH).forEach(index -> {
                     String color = values()[index].getName();
