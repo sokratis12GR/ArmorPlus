@@ -158,6 +158,11 @@ public final class ArmorPlusAPI {
         return Runes.upgradeCatalyst(rune, level);
     }
 
+    /** {@return the item and count the ritual uses up from the pedestals on top of the upgrade catalyst for the rune's type, before the events; EMPTY for none} */
+    public static ItemStack getUpgradeTypeCatalyst(RuneData rune) {
+        return Runes.upgradeTypeCatalyst(rune);
+    }
+
     /** {@return the item and count the ritual uses up from the pedestals to socket the rune, before the events; EMPTY for none} */
     public static ItemStack getSocketCatalyst(RuneData rune) {
         return Runes.socketCatalyst(rune);

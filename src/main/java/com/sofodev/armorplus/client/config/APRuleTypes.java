@@ -53,7 +53,7 @@ final class APRuleTypes {
                     RuleType.picker("catalyst", Kind.ITEM, false).asOptional(), catalystCount("count", 64),
                     RuleType.picker("upgradeCatalyst", Kind.ITEM, false).asOptional(), catalystCount("upgradeCatalystCount", RuneOverrides.MAX_PEDESTAL_CATALYSTS),
                     RuleType.custom("levelCatalysts", APRuleSuggestions.LEVEL_CATALYSTS).asOptional()), APRuleFormats.RUNE_OVERRIDE), null),
-            "ritualCatalysts", new Editor(new RuleType("ritualCatalysts", List.of(RuleType.choice("step", "socket", "2", "3", "4", "5", "6", "7", "8", "9", "10"),
+            "ritualCatalysts", new Editor(new RuleType("ritualCatalysts", List.of(RuleType.choice("step", "socket", "2", "3", "4", "5", "6", "7", "8", "9", "10", "armor", "weapon", "tool", "bow", "effect", "instant", "modded"),
                     RuleType.picker("ritualCatalyst", Kind.ITEM, false), catalystCount("ritualCatalystCount", RuneOverrides.MAX_PEDESTAL_CATALYSTS)), APRuleFormats.RITUAL_CATALYST), null),
             "worldRunes", new Editor(new RuleType("worldRunes", List.of(RuleType.choice("kind", "armor", "weapon", "tool", "ranged"),
                     RuleType.custom("effect", APRuleSuggestions.EFFECT_BY_KIND), LEVEL, SECONDS), APRuleFormats.WORLD_RUNE), null),

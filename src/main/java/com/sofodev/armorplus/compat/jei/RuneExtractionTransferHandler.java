@@ -77,7 +77,7 @@ final class RuneExtractionTransferHandler implements IRecipeTransferHandler<Rune
         }
 
         if (!missing.isEmpty()) return this.helper.createUserErrorForMissingSlots(Component.translatable("jei.armorplus.transfer.missing"), missing);
-        if (doTransfer) ClientPacketDistributor.sendToServer(new FillAltarPayload(menu.containerId, 0, gear, blankRune, catalyst, rune.buffId()));
+        if (doTransfer) ClientPacketDistributor.sendToServer(new FillAltarPayload(menu.containerId, 0, gear, blankRune, catalyst, ItemStack.EMPTY, rune.buffId()));
         return null;
     }
 

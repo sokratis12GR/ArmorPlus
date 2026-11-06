@@ -16,14 +16,6 @@ public class WardenArrowEntity extends APArrowEntity {
         super(type, world, WARDEN_ARROW_PROP);
     }
 
-    public WardenArrowEntity(Level world) {
-        super(WARDEN_ARROW.get(), world, WARDEN_ARROW_PROP);
-    }
-
-    public WardenArrowEntity(double x, double y, double z, Level world) {
-        super(WARDEN_ARROW.get(), x, y, z, world, WARDEN_ARROW_PROP);
-    }
-
     public WardenArrowEntity(LivingEntity shooter, Level world, ItemStack ammo, @Nullable ItemStack weapon) {
         super(WARDEN_ARROW.get(), shooter, world, ammo, weapon, WARDEN_ARROW_PROP);
     }

@@ -5,7 +5,8 @@
   "ingredients": [
     "armorplus:blank_rune",
     "minecraft:ender_eye",
-    "minecraft:shulker_shell"
+    "minecraft:shulker_shell",
+    "minecraft:nether_star"
   ],
   "result": {
     "id": "armorplus:ranged_rune",

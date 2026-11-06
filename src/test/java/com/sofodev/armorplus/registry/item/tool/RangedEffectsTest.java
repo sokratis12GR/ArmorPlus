@@ -3,17 +3,16 @@ package com.sofodev.armorplus.registry.item.tool;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class RangedEffectsTest {
 
     private static final double DELTA = 1.0E-9;
 
     @Test
-    void volleySpreadNarrowsWithLevel() {
-        assertEquals(10.0F, RangedEffects.volleySpread(1));
-        assertEquals(5.0F, RangedEffects.volleySpread(2));
-        assertTrue(RangedEffects.volleySpread(5) < RangedEffects.volleySpread(4));
+    void volleyAddsArrowsPerLevelUpToTheCap() {
+        assertEquals(1, RangedEffects.volleyArrowsPerSide(1));
+        assertEquals(3, RangedEffects.volleyArrowsPerSide(3));
+        assertEquals(3, RangedEffects.volleyArrowsPerSide(5));
     }
 
     @Test
@@ -27,6 +26,12 @@ class RangedEffectsTest {
         assertEquals(1.2, RangedEffects.longShotMultiplier(1, 18.0), DELTA);
         assertEquals(1.25, RangedEffects.longShotMultiplier(1, 500.0), DELTA);
         assertEquals(1.5, RangedEffects.longShotMultiplier(2, 500.0), DELTA);
+    }
+
+    @Test
+    void longShotRisesFasterAtHigherLevels() {
+        assertEquals(1.4, RangedEffects.longShotMultiplier(5, 18.0), DELTA);
+        assertEquals(2.25, RangedEffects.longShotMultiplier(5, 39.25), DELTA);
     }
 
     @Test

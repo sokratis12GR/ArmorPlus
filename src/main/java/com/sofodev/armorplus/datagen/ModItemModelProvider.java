@@ -26,6 +26,13 @@ import static com.sofodev.armorplus.registry.ModItems.ARMOR_RUNE;
 import static com.sofodev.armorplus.registry.ModItems.BATTLE_AXES;
 import static com.sofodev.armorplus.registry.ModItems.BLANK_RUNE;
 import static com.sofodev.armorplus.registry.ModItems.ASTRAL_SIGIL;
+import static com.sofodev.armorplus.registry.ModItems.ARMOR_SIGIL;
+import static com.sofodev.armorplus.registry.ModItems.WEAPON_SIGIL;
+import static com.sofodev.armorplus.registry.ModItems.TOOL_SIGIL;
+import static com.sofodev.armorplus.registry.ModItems.BOW_SIGIL;
+import static com.sofodev.armorplus.registry.ModItems.EFFECT_SIGIL;
+import static com.sofodev.armorplus.registry.ModItems.INSTANT_SIGIL;
+import static com.sofodev.armorplus.registry.ModItems.MODDED_SIGIL;
 import static com.sofodev.armorplus.registry.ModItems.EMBER_SIGIL;
 import static com.sofodev.armorplus.registry.ModItems.EQUINOX_SIGIL;
 import static com.sofodev.armorplus.registry.ModItems.RIME_SIGIL;
@@ -145,7 +152,7 @@ public final class ModItemModelProvider implements DataProvider {
             writes.add(DataProvider.saveStable(cache, socketOverlayModel(state), modelsRoot.resolve("socket_overlay_" + state + ".json")));
         }
 
-        add(flatItems, BLANK_RUNE, ARMOR_RUNE, WEAPON_RUNE, TOOL_RUNE, RANGED_RUNE, SOCKET_PUNCH, EMBER_SIGIL, RIME_SIGIL, EQUINOX_SIGIL, ASTRAL_SIGIL);
+        add(flatItems, BLANK_RUNE, ARMOR_RUNE, WEAPON_RUNE, TOOL_RUNE, RANGED_RUNE, SOCKET_PUNCH, EMBER_SIGIL, RIME_SIGIL, EQUINOX_SIGIL, ASTRAL_SIGIL, ARMOR_SIGIL, WEAPON_SIGIL, TOOL_SIGIL, BOW_SIGIL, EFFECT_SIGIL, INSTANT_SIGIL, MODDED_SIGIL);
 
         writes.add(DataProvider.saveStable(cache, handheldSword(), modelsRoot.resolve("handheld_sword.json")));
 

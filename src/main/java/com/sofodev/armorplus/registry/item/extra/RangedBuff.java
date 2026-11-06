@@ -18,7 +18,6 @@ public enum RangedBuff implements IBuff {
     MARKED(true),
     QUICK_DRAW(true),
     AMMO_SAVER(true),
-    RETRIEVAL(false),
     SEEKER(false),
     ENDER_SHOT(false);
 

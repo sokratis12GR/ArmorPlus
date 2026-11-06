@@ -16,14 +16,6 @@ public class RedstoneArrowEntity extends APArrowEntity {
         super(type, world, REDSTONE_ARROW_PROP);
     }
 
-    public RedstoneArrowEntity(Level world) {
-        super(REDSTONE_ARROW.get(), world, REDSTONE_ARROW_PROP);
-    }
-
-    public RedstoneArrowEntity(double x, double y, double z, Level world) {
-        super(REDSTONE_ARROW.get(), x, y, z, world, REDSTONE_ARROW_PROP);
-    }
-
     public RedstoneArrowEntity(LivingEntity shooter, Level world, ItemStack ammo, @Nullable ItemStack weapon) {
         super(REDSTONE_ARROW.get(), shooter, world, ammo, weapon, REDSTONE_ARROW_PROP);
     }

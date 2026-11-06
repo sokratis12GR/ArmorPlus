@@ -65,27 +65,35 @@ final class RitualTransferHandler implements IRecipeTransferHandler<RitualMenu, 
         ItemStack second = onPedestal ? ItemStack.EMPTY : pool.take(stack -> rune != null && rune.equals(Runes.runeData(stack)), 1);
         if (second.isEmpty() && !onPedestal) slots.findSlotByName(RitualCategory.SECONDARY_SLOT).ifPresent(missing::add);
 
-        ItemStack catalyst = ItemStack.EMPTY;
         int emptyPedestals = 0;
-        int neededCatalysts = recipe.catalyst().getCount();
         for (ItemStack stack : pedestals) {
             if (stack.isEmpty()) emptyPedestals++;
-            else if (stack.is(recipe.catalyst().getItem())) neededCatalysts -= stack.getCount();
         }
-        if (!recipe.catalyst().isEmpty() && neededCatalysts > 0) {
-            catalyst = pool.take(stack -> stack.is(recipe.catalyst().getItem()), neededCatalysts);
-            if (catalyst.isEmpty()) {
-                for (int pedestal = 0; pedestal < recipe.catalyst().getCount(); pedestal++) {
-                    slots.findSlotByName(RitualCategory.catalystSlot(pedestal)).ifPresent(missing::add);
-                }
-            }
-        }
+        ItemStack catalyst = takeCatalyst(pool, recipe.catalyst(), pedestals, 0, slots, missing);
+        ItemStack typeCatalyst = takeCatalyst(pool, recipe.typeCatalyst(), pedestals, recipe.catalyst().getCount(), slots, missing);
 
         if (!missing.isEmpty()) return this.helper.createUserErrorForMissingSlots(Component.translatable("jei.armorplus.transfer.missing"), missing);
-        if (catalyst.getCount() > emptyPedestals) return this.helper.createUserErrorWithTooltip(Component.translatable("jei.armorplus.transfer.no_room"));
+        if (catalyst.getCount() + typeCatalyst.getCount() > emptyPedestals) return this.helper.createUserErrorWithTooltip(Component.translatable("jei.armorplus.transfer.no_room"));
 
-        if (doTransfer) ClientPacketDistributor.sendToServer(new FillAltarPayload(menu.containerId, recipe.tab().ordinal(), first, second, catalyst, ""));
+        if (doTransfer) ClientPacketDistributor.sendToServer(new FillAltarPayload(menu.containerId, recipe.tab().ordinal(), first, second, catalyst, typeCatalyst, ""));
         return null;
+    }
+
+    /** @return what's still needed of the catalyst from the inventory, EMPTY if none is. If it's not there, its slots from the first one on count as missing */
+    private static ItemStack takeCatalyst(TransferPool pool, ItemStack catalyst, List<ItemStack> pedestals, int firstSlot, IRecipeSlotsView slots, List<IRecipeSlotView> missing) {
+        if (catalyst.isEmpty()) return ItemStack.EMPTY;
+        int needed = catalyst.getCount();
+        for (ItemStack stack : pedestals) {
+            if (stack.is(catalyst.getItem())) needed -= stack.getCount();
+        }
+        if (needed <= 0) return ItemStack.EMPTY;
+        ItemStack taken = pool.take(stack -> stack.is(catalyst.getItem()), needed);
+        if (taken.isEmpty()) {
+            for (int pedestal = firstSlot; pedestal < firstSlot + catalyst.getCount(); pedestal++) {
+                slots.findSlotByName(RitualCategory.catalystSlot(pedestal)).ifPresent(missing::add);
+            }
+        }
+        return taken;
     }
 
     /** The recipe lists fresh equipment, the player's own has to allow it too: free sockets, or the effect not yet at its limit. */

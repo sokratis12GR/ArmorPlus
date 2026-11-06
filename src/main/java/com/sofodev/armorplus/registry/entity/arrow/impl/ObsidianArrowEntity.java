@@ -17,14 +17,6 @@ public class ObsidianArrowEntity extends APArrowEntity {
         super(type, world, OBSIDIAN_ARROW_PROP);
     }
 
-    public ObsidianArrowEntity(Level world) {
-        super(OBSIDIAN_ARROW.get(), world, OBSIDIAN_ARROW_PROP);
-    }
-
-    public ObsidianArrowEntity(double x, double y, double z, Level world) {
-        super(OBSIDIAN_ARROW.get(), x, y, z, world, OBSIDIAN_ARROW_PROP);
-    }
-
     public ObsidianArrowEntity(LivingEntity shooter, Level world, ItemStack ammo, @Nullable ItemStack weapon) {
         super(OBSIDIAN_ARROW.get(), shooter, world, ammo, weapon, OBSIDIAN_ARROW_PROP);
     }

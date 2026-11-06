@@ -11,7 +11,7 @@ import org.jspecify.annotations.Nullable;
 /**
  * Fired on {@link NeoForge#EVENT_BUS} when a rune that can raise one of the equipment's own effects is in the ritual of a Rune
  * Altar with it, on both sides and whenever the screen needs the result, so it can fire often. Canceling it gives no result;
- * {@link #setCost(int)} changes the experience level cost and {@link #setCatalyst(ItemStack)} the item used up from the pedestals.
+ * {@link #setCost(int)} changes the experience level cost and {@link #setCatalyst(ItemStack)} and {@link #setTypeCatalyst(ItemStack)} the items used up from the pedestals.
  */
 public class NativeEffectUpgradeEvent extends Event implements ICancellableEvent {
 
@@ -21,14 +21,16 @@ public class NativeEffectUpgradeEvent extends Event implements ICancellableEvent
     private final int level;
     private int cost;
     private ItemStack catalyst;
+    private ItemStack typeCatalyst;
 
-    public NativeEffectUpgradeEvent(@Nullable Player player, ItemStack gear, RuneData rune, int level, int cost, ItemStack catalyst) {
+    public NativeEffectUpgradeEvent(@Nullable Player player, ItemStack gear, RuneData rune, int level, int cost, ItemStack catalyst, ItemStack typeCatalyst) {
         this.player = player;
         this.gear = gear;
         this.rune = rune;
         this.level = level;
         this.cost = cost;
         this.catalyst = catalyst;
+        this.typeCatalyst = typeCatalyst;
     }
 
     public @Nullable Player getPlayer() {
@@ -65,5 +67,14 @@ public class NativeEffectUpgradeEvent extends Event implements ICancellableEvent
 
     public void setCatalyst(ItemStack catalyst) {
         this.catalyst = catalyst.copy();
+    }
+
+    /** {@return the item and count for the rune's type used up from the pedestals on top of the catalyst, EMPTY for none} */
+    public ItemStack getTypeCatalyst() {
+        return typeCatalyst;
+    }
+
+    public void setTypeCatalyst(ItemStack typeCatalyst) {
+        this.typeCatalyst = typeCatalyst.copy();
     }
 }

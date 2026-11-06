@@ -30,13 +30,6 @@ public abstract class APArrowEntity extends AbstractArrow {
         this.setProp(property);
     }
 
-    public APArrowEntity(EntityType<? extends APArrowEntity> type, double x, double y, double z, Level world, ArrowProperty property) {
-        super(type, x, y, z, world, property.getPickupItem(), null);
-        this.type = type;
-        this.setProp(property);
-        this.setPos(x, y, z);
-    }
-
     /**
      * @param ammo   the stack the arrow was made from, an Infinity or creative one can't be picked up
      * @param weapon the bow or crossbow that fired it, whose enchantments apply to the arrow
@@ -67,11 +60,6 @@ public abstract class APArrowEntity extends AbstractArrow {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), getProp());
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
     }
 
     @Override

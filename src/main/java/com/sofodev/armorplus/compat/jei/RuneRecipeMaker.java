@@ -8,6 +8,7 @@ import com.sofodev.armorplus.registry.ModItems;
 import com.sofodev.armorplus.api.RuneData;
 import com.sofodev.armorplus.registry.rune.RuneItem;
 import com.sofodev.armorplus.api.RuneKind;
+import com.sofodev.armorplus.registry.rune.RitualCatalysts;
 import com.sofodev.armorplus.registry.rune.RitualMenu;
 import com.sofodev.armorplus.registry.rune.RuneLootModifier;
 import com.sofodev.armorplus.registry.rune.Runes;
@@ -74,13 +75,13 @@ final class RuneRecipeMaker {
                 outputs.add(Runes.withRune(stack, rune));
             }
             if (!inputs.isEmpty()) {
-                recipes.add(new RitualRecipe(id("socketing", rune), RitualMenu.Tab.SOCKET, inputs, RuneItem.create(rune.kind(), rune.entry()), Runes.socketCatalyst(rune), outputs, Runes.socketCost(rune)));
+                recipes.add(new RitualRecipe(id("socketing", rune), RitualMenu.Tab.SOCKET, inputs, RuneItem.create(rune.kind(), rune.entry()), Runes.socketCatalyst(rune), ItemStack.EMPTY, outputs, Runes.socketCost(rune)));
             }
             // runes of the same buff share the higher steps, which only get one recipe
             for (RuneData step = rune; Runes.canUpgrade(step) && upgrades.add(step); step = Runes.upgraded(step)) {
                 ItemStack stack = RuneItem.create(step.kind(), step.entry());
                 RuneData upgraded = Runes.upgraded(step);
-                recipes.add(new RitualRecipe(id("upgrading", step), RitualMenu.Tab.UPGRADE_RUNE, List.of(stack), stack, Runes.upgradeCatalyst(step),
+                recipes.add(new RitualRecipe(id("upgrading", step), RitualMenu.Tab.UPGRADE_RUNE, List.of(stack), stack, Runes.upgradeCatalyst(step), RitualCatalysts.onTop(Runes.upgradeCatalyst(step), Runes.upgradeTypeCatalyst(step)),
                         List.of(RuneItem.create(upgraded.kind(), upgraded.entry())), Runes.upgradeCost(step)));
             }
             for (RuneData step = rune; ; step = Runes.upgraded(step)) {
@@ -120,7 +121,7 @@ final class RuneRecipeMaker {
             outputs.add(Runes.withUpgradedNative(stack, rune.buffId()));
         }
         if (!inputs.isEmpty()) {
-            recipes.add(new RitualRecipe(id("native_upgrading", rune), RitualMenu.Tab.UPGRADE_EFFECT, inputs, RuneItem.create(rune.kind(), rune.entry()), Runes.upgradeCatalyst(rune),
+            recipes.add(new RitualRecipe(id("native_upgrading", rune), RitualMenu.Tab.UPGRADE_EFFECT, inputs, RuneItem.create(rune.kind(), rune.entry()), Runes.upgradeCatalyst(rune), RitualCatalysts.onTop(Runes.upgradeCatalyst(rune), Runes.upgradeTypeCatalyst(rune)),
                     outputs, Runes.nativeUpgradeCost(inputs.getFirst(), rune.buffId())));
         }
     }

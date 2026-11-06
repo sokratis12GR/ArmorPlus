@@ -328,7 +328,7 @@ public class ArmorPlusConfig {
         guardianMaterial = MaterialConfig.create("guardian", builder,
                 List.of("minecraft:night_vision|1", "minecraft:conduit_power|2", "minecraft:dolphins_grace|3",
                         "armorplus:fire_extinguish", "armorplus:mining_fatigue_immunity"),
-                List.of("minecraft:weakness|2|4", "minecraft:nausea|2|20"),
+                List.of("minecraft:weakness|2|4"),
                 List.of("armorplus:piercing"));
         superStarMaterial = MaterialConfig.create("super_star", builder,
                 List.of("minecraft:regeneration|1|200", "minecraft:fire_resistance|1", "minecraft:absorption|1|200",
@@ -343,7 +343,7 @@ public class ArmorPlusConfig {
         wardenMaterial = MaterialConfig.create("warden", builder,
                 List.of("minecraft:night_vision|1", "minecraft:slow_falling|1", "armorplus:sculk_immunity",
                         "armorplus:warden_pacify", "armorplus:darkness_immunity"),
-                List.of("minecraft:darkness|1|20", "minecraft:nausea|2|20"),
+                List.of("minecraft:darkness|1|20"),
                 List.of("armorplus:seeker"));
         slayerMaterial = MaterialConfig.create("slayer", builder,
                 List.of("minecraft:night_vision|1", "minecraft:water_breathing|1", "minecraft:jump_boost|2",
@@ -353,7 +353,7 @@ public class ArmorPlusConfig {
                         "armorplus:sculk_immunity", "armorplus:warden_pacify", "armorplus:darkness_immunity",
                         "armorplus:mining_fatigue_immunity"),
                 List.of("minecraft:wither|4|4", "minecraft:slowness|2|20", "minecraft:glowing|1|20",
-                        "minecraft:weakness|2|4", "minecraft:nausea|2|20", "minecraft:darkness|1|20"),
+                        "minecraft:weakness|2|4"),
                 List.of("armorplus:volley|1", "armorplus:seeker", "armorplus:ender_shot", "armorplus:piercing"));
         arditeMaterial = MaterialConfig.create("ardite", builder,
                 List.of("minecraft:fire_resistance|1"),
@@ -448,17 +448,30 @@ public class ArmorPlusConfig {
                                 "armorplus:natural_immunity|socket=10|extract=15|socket_catalyst=armorplus:rime_sigil",
                                 "armorplus:wither_immunity|catalyst=minecraft:nether_star|socket_catalyst=armorplus:equinox_sigil",
                                 "armorplus:ender_shot|catalyst=minecraft:nether_star|socket_catalyst=armorplus:equinox_sigil",
+                                "armorplus:seeker|socket_catalyst=armorplus:equinox_sigil",
+                                "armorplus:volley|max=3",
+                                "armorplus:quick_draw|max=4",
+                                "armorplus:ammo_saver|max=4",
                                 "minecraft:conduit_power|catalyst=minecraft:nether_star|socket_catalyst=armorplus:equinox_sigil"),
                         () -> "modid:effect|socket=10", RuneOverrides::isValid);
 
         ritualCatalysts = builder.comment("What the ritual of a Rune Altar uses up from its pedestals, formatted as \"step|item\" or \"step|item|count\" (count 1 - 4, each pedestal holds one item)",
-                        "The step is \"socket\" for socketing or the level an upgrade reaches, which also counts for all higher levels until the next entry. Without an entry the step needs no catalyst")
+                        "The step is \"socket\" for socketing or the level an upgrade reaches, which also counts for all higher levels until the next entry. Without an entry the step needs no catalyst",
+                        "The step can also be a rune type, for what every upgrade of that type uses on top, e.g. \"bow\". The types are modded (buffs of other mods), instant and effect (mob effects), and armor, weapon, tool and bow (abilities of that gear)")
                 .defineListAllowEmpty("ritualCatalysts", List.of(
                                 "socket|armorplus:lava_crystal",
                                 "2|armorplus:ember_sigil",
                                 "3|armorplus:rime_sigil",
                                 "4|armorplus:equinox_sigil",
-                                "5|armorplus:astral_sigil"),
+                                "5|armorplus:astral_sigil",
+                                "armor|armorplus:armor_sigil",
+                                "weapon|armorplus:weapon_sigil",
+                                "tool|armorplus:tool_sigil",
+                                "bow|armorplus:bow_sigil",
+                                "effect|armorplus:effect_sigil",
+                                "instant|armorplus:instant_sigil",
+                                "modded|armorplus:modded_sigil"),
+
                         () -> "2|armorplus:ember_sigil", RitualCatalysts::isValid);
 
         builder.comment("Socketing runes in the ritual of a Rune Altar, removing them in a Grindstone").push("sockets");

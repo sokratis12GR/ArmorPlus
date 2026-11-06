@@ -279,9 +279,10 @@ final class APRuleFormats {
         public Component describe(String[] values, RuleType type, RuleListContext ctx) {
             String item = ctx.suggestions().displayName(type.fields().get(1), values[1]);
             String shown = values[2].isEmpty() || values[2].equals("1") ? item : item + " x" + values[2];
-            return values[0].equals(RitualCatalysts.SOCKET)
-                    ? Component.translatable(ctx.uiKey("describe.ritualCatalystSocket"), shown)
-                    : Component.translatable(ctx.uiKey("describe.ritualCatalystLevel"), values[0], shown);
+            if (values[0].equals(RitualCatalysts.SOCKET)) return Component.translatable(ctx.uiKey("describe.ritualCatalystSocket"), shown);
+            return Character.isDigit(values[0].charAt(0))
+                    ? Component.translatable(ctx.uiKey("describe.ritualCatalystLevel"), values[0], shown)
+                    : Component.translatable(ctx.uiKey("describe.ritualCatalystType"), values[0], shown);
         }
     }
 

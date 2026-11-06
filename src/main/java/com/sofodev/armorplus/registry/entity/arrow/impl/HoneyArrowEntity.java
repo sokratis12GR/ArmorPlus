@@ -16,14 +16,6 @@ public class HoneyArrowEntity extends APArrowEntity {
         super(type, world, HONEY_ARROW_PROP);
     }
 
-    public HoneyArrowEntity(Level world) {
-        super(HONEY_ARROW.get(), world, HONEY_ARROW_PROP);
-    }
-
-    public HoneyArrowEntity(double x, double y, double z, Level world) {
-        super(HONEY_ARROW.get(), x, y, z, world, HONEY_ARROW_PROP);
-    }
-
     public HoneyArrowEntity(LivingEntity shooter, Level world, ItemStack ammo, @Nullable ItemStack weapon) {
         super(HONEY_ARROW.get(), shooter, world, ammo, weapon, HONEY_ARROW_PROP);
     }

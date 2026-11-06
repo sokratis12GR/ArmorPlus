@@ -16,14 +16,6 @@ public class LapisArrowEntity extends APArrowEntity {
         super(type, world, LAPIS_ARROW_PROP);
     }
 
-    public LapisArrowEntity(Level world) {
-        super(LAPIS_ARROW.get(), world, LAPIS_ARROW_PROP);
-    }
-
-    public LapisArrowEntity(double x, double y, double z, Level world) {
-        super(LAPIS_ARROW.get(), x, y, z, world, LAPIS_ARROW_PROP);
-    }
-
     public LapisArrowEntity(LivingEntity shooter, Level world, ItemStack ammo, @Nullable ItemStack weapon) {
         super(LAPIS_ARROW.get(), shooter, world, ammo, weapon, LAPIS_ARROW_PROP);
     }

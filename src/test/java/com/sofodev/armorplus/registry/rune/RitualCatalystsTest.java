@@ -13,6 +13,24 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class RitualCatalystsTest {
 
+    @Test
+    void typeEntriesStayOutOfLevelsAndSocketing() {
+        List<RitualCatalysts.Entry> entries = List.of(RitualCatalysts.parse("bow|minecraft:stone"), RitualCatalysts.parse("2|minecraft:coal"), RitualCatalysts.parse("socket|minecraft:diamond"));
+
+        assertEquals("stone", RitualCatalysts.typeEntry(entries, RitualCatalysts.Type.BOW).item().getPath());
+        assertNull(RitualCatalysts.typeEntry(entries, RitualCatalysts.Type.TOOL));
+        assertNull(RitualCatalysts.typeEntry(entries, null));
+        assertEquals("coal", RitualCatalysts.levelEntry(entries, 3).item().getPath());
+        assertEquals("diamond", RitualCatalysts.socketEntry(entries).item().getPath());
+    }
+
+    @Test
+    void rejectsUnknownTypesAndTypesInOverrides() {
+        assertFalse(RitualCatalysts.isValid("shield|minecraft:stone"));
+        assertFalse(RitualCatalysts.isValid("bow:2|minecraft:stone"));
+        assertFalse(RuneOverrides.isValidLevelCatalysts("bow=minecraft:stone"));
+    }
+
     private static final List<RitualCatalysts.Entry> TIERS = List.of(
             RitualCatalysts.parse("3|minecraft:diamond"), RitualCatalysts.parse("5|minecraft:emerald|2"), RitualCatalysts.parse("socket|minecraft:coal"));
 

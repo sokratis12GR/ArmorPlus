@@ -176,6 +176,13 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> RIME_SIGIL = register("rime_sigil", () -> new MaterialItem(false, AQUA, RegistryContext.itemProperties()));
     public static final DeferredHolder<Item, Item> EQUINOX_SIGIL = register("equinox_sigil", () -> new MaterialItem(false, LIGHT_PURPLE, RegistryContext.itemProperties()));
     public static final DeferredHolder<Item, Item> ASTRAL_SIGIL = register("astral_sigil", () -> new MaterialItem(false, DARK_PURPLE, RegistryContext.itemProperties()));
+    public static final DeferredHolder<Item, Item> ARMOR_SIGIL = register("armor_sigil", () -> new MaterialItem(false, BLUE, RegistryContext.itemProperties()));
+    public static final DeferredHolder<Item, Item> WEAPON_SIGIL = register("weapon_sigil", () -> new MaterialItem(false, RED, RegistryContext.itemProperties()));
+    public static final DeferredHolder<Item, Item> TOOL_SIGIL = register("tool_sigil", () -> new MaterialItem(false, GRAY, RegistryContext.itemProperties()));
+    public static final DeferredHolder<Item, Item> BOW_SIGIL = register("bow_sigil", () -> new MaterialItem(false, DARK_AQUA, RegistryContext.itemProperties()));
+    public static final DeferredHolder<Item, Item> EFFECT_SIGIL = register("effect_sigil", () -> new MaterialItem(false, LIGHT_PURPLE, RegistryContext.itemProperties()));
+    public static final DeferredHolder<Item, Item> INSTANT_SIGIL = register("instant_sigil", () -> new MaterialItem(false, AQUA, RegistryContext.itemProperties()));
+    public static final DeferredHolder<Item, Item> MODDED_SIGIL = register("modded_sigil", () -> new MaterialItem(false, WHITE, RegistryContext.itemProperties()));
     //public static final DeferredHolder<Item, Item> TROPHY = ITEMS.register("trophy", () -> new TrophyItem(ModBlocks.TROPHY));
 
     static {

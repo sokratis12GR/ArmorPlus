@@ -72,7 +72,6 @@ import java.util.function.Predicate;
 @EventBusSubscriber(modid = ArmorPlus.MODID)
 public final class RangedRuneEvents {
 
-    private static final int VOLLEY_EXTRA_ARROWS_PER_SIDE = 1;
     private static final int MAX_PIERCE_LEVEL = 127;
     private static final double RICOCHET_RANGE = 8.0;
     private static final double SEEKER_RANGE = 16.0;
@@ -91,7 +90,8 @@ public final class RangedRuneEvents {
     /** Multishot fires its arrows together, only the first is an Ender Shot and the others shouldn't complain about the cooldown. */
     private static final long ENDER_SHOT_SAME_VOLLEY_TICKS = 20;
 
-    private record Mark(UUID owner, int level, long expiresAt) {
+    /** @param spent an arrow used it in this hit, which shouldn't mark the target again */
+    private record Mark(UUID owner, int level, long expiresAt, boolean spent) {
     }
 
     private record EnderShot(long firedAt, long readyAt) {
@@ -161,8 +161,9 @@ public final class RangedRuneEvents {
         ArrowRunes extraData = data.without(RangedBuff.VOLLEY).without(RangedBuff.ENDER_SHOT);
         Vec3 motion = arrow.getDeltaMovement();
         float speed = (float) motion.length();
-        float spread = (float) Math.toRadians(RangedEffects.volleySpread(level));
-        for (int side = -VOLLEY_EXTRA_ARROWS_PER_SIDE; side <= VOLLEY_EXTRA_ARROWS_PER_SIDE; side++) {
+        float spread = (float) Math.toRadians(RangedEffects.VOLLEY_SPREAD_DEGREES);
+        int perSide = RangedEffects.volleyArrowsPerSide(level);
+        for (int side = -perSide; side <= perSide; side++) {
             if (side == 0) continue;
             AbstractArrow extra = extraArrow(arrow, shooter, weapon);
             extra.setBaseDamage(arrow.baseDamage);
@@ -280,16 +281,35 @@ public final class RangedRuneEvents {
         Mark mark = MARKS.get(target);
         Entity owner = arrow.getOwner();
         if (mark == null || owner == null || !mark.owner().equals(owner.getUUID())) return 1.0;
+        if (mark.spent()) return 1.0;
+        if (target.level().getGameTime() >= mark.expiresAt()) {
+            MARKS.remove(target);
+            return 1.0;
+        }
+        MARKS.put(target, new Mark(mark.owner(), mark.level(), mark.expiresAt(), true));
+        // the glow of a mark has no particles, unlike Glowing from other sources
+        MobEffectInstance glow = target.getEffect(MobEffects.GLOWING);
+        if (glow != null && !glow.isVisible()) target.removeEffect(MobEffects.GLOWING);
+        return RangedEffects.markedMultiplier(mark.level());
+    }
+
+    /** @return true if this hit used up the target's mark, which is then gone */
+    private static boolean clearSpentMark(LivingEntity target, AbstractArrow arrow) {
+        if (MARKS.isEmpty()) return false;
+        Mark mark = MARKS.get(target);
+        Entity owner = arrow.getOwner();
+        if (mark == null || !mark.spent() || owner == null || !mark.owner().equals(owner.getUUID())) return false;
         MARKS.remove(target);
-        return target.level().getGameTime() < mark.expiresAt() ? RangedEffects.markedMultiplier(mark.level()) : 1.0;
+        return target.level().getGameTime() < mark.expiresAt();
     }
 
     @SubscribeEvent
     public static void onHit(LivingDamageEvent.Post event) {
         if (!(event.getSource().getDirectEntity() instanceof AbstractArrow arrow) || arrow.level().isClientSide()) return;
+        LivingEntity target = event.getEntity();
+        boolean markUsed = clearSpentMark(target, arrow);
         ArrowRunes data = runesOf(arrow);
         if (data == null || !(arrow.getOwner() instanceof LivingEntity shooter)) return;
-        LivingEntity target = event.getEntity();
 
         ItemStack weapon = arrow.getWeaponItem() != null ? arrow.getWeaponItem() : ItemStack.EMPTY;
         for (RuneData rune : data.runes()) {
@@ -299,11 +319,11 @@ public final class RangedRuneEvents {
         }
 
         int marked = data.level(RangedBuff.MARKED);
-        if (marked > 0) {
+        if (marked > 0 && !markUsed) {
             target.addEffect(new MobEffectInstance(MobEffects.GLOWING, MARK_TICKS, 0, false, false), shooter);
-            MARKS.put(target, new Mark(shooter.getUUID(), marked, target.level().getGameTime() + MARK_TICKS));
+            MARKS.put(target, new Mark(shooter.getUUID(), marked, target.level().getGameTime() + MARK_TICKS, false));
         }
-        if (data.level(RangedBuff.RETRIEVAL) > 0 && shooter instanceof Player player && arrow.pickup == AbstractArrow.Pickup.ALLOWED) {
+        if (data.level(RangedBuff.AMMO_SAVER) > 0 && shooter instanceof Player player && arrow.pickup == AbstractArrow.Pickup.ALLOWED) {
             player.getInventory().placeItemBackInInventory(arrow.getPickupItemStackOrigin().copyWithCount(1));
             arrow.pickup = AbstractArrow.Pickup.DISALLOWED;
         }

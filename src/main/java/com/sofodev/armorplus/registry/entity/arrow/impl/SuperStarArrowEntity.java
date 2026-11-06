@@ -17,14 +17,6 @@ public class SuperStarArrowEntity extends APArrowEntity {
         super(type, world, SUPER_STAR_ARROW_PROP);
     }
 
-    public SuperStarArrowEntity(Level world) {
-        super(SUPER_STAR_ARROW.get(), world, SUPER_STAR_ARROW_PROP);
-    }
-
-    public SuperStarArrowEntity(double x, double y, double z, Level world) {
-        super(SUPER_STAR_ARROW.get(), x, y, z, world, SUPER_STAR_ARROW_PROP);
-    }
-
     public SuperStarArrowEntity(LivingEntity shooter, Level world, ItemStack ammo, @Nullable ItemStack weapon) {
         super(SUPER_STAR_ARROW.get(), shooter, world, ammo, weapon, SUPER_STAR_ARROW_PROP);
     }

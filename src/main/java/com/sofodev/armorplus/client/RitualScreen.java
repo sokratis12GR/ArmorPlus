@@ -138,10 +138,8 @@ public class RitualScreen extends AbstractContainerScreen<RitualMenu> {
     /** What each pedestal holds with a glow around it. Empty ones show the catalyst that's still missing. */
     private void extractPedestals(GuiGraphicsExtractor graphics, int page, RitualMenu.Plan plan) {
         List<ItemStack> pedestals = this.menu.getPedestalItems();
-        int missing = plan.catalyst().getCount();
-        for (ItemStack stack : pedestals) {
-            if (stack.is(plan.catalyst().getItem())) missing -= stack.getCount();
-        }
+        int missing = missing(plan.catalyst(), pedestals);
+        int missingType = missing(plan.typeCatalyst(), pedestals);
         int glow = AltarGui.withAlpha(ACCENT_COLORS[page], 120 + (int) (AltarGui.pulse() * 110));
         for (int index = 0; index < pedestals.size() && index < PEDESTAL_SQUARES.length; index++) {
             ItemStack stack = pedestals.get(index);
@@ -151,11 +149,23 @@ public class RitualScreen extends AbstractContainerScreen<RitualMenu> {
                 AltarGui.outline(graphics, left, top, SQUARE_SIZE, SQUARE_SIZE, glow);
                 graphics.item(stack, left + 1, top + 1);
                 graphics.itemDecorations(this.font, stack, left + 1, top + 1);
-            } else if (missing > 0 && !plan.catalyst().isEmpty()) {
+            } else if (missing > 0) {
                 missing--;
                 AltarGui.ghostItem(graphics, plan.catalyst(), left + 1, top + 1);
+            } else if (missingType > 0) {
+                missingType--;
+                AltarGui.ghostItem(graphics, plan.typeCatalyst(), left + 1, top + 1);
             }
         }
+    }
+
+    private static int missing(ItemStack catalyst, List<ItemStack> pedestals) {
+        if (catalyst.isEmpty()) return 0;
+        int missing = catalyst.getCount();
+        for (ItemStack stack : pedestals) {
+            if (stack.is(catalyst.getItem())) missing -= stack.getCount();
+        }
+        return missing;
     }
 
     private void extractInputGhost(GuiGraphicsExtractor graphics, int slotIndex, ItemStack ghost) {
@@ -181,7 +191,11 @@ public class RitualScreen extends AbstractContainerScreen<RitualMenu> {
     private Component status(RitualMenu.Plan plan, boolean affordable) {
         if (plan.problem() != null) return plan.problem();
         if (!affordable) return Component.translatable("container.armorplus.ritual_altar.too_expensive", plan.cost());
-        if (!plan.catalyst().isEmpty()) return Component.translatable("container.armorplus.ritual_altar.uses_catalyst", plan.catalyst().getCount(), plan.catalyst().getHoverName());
+        if (!plan.catalyst().isEmpty() && !plan.typeCatalyst().isEmpty()) {
+            return Component.translatable("container.armorplus.ritual_altar.uses_catalysts", plan.catalyst().getCount(), plan.catalyst().getHoverName(), plan.typeCatalyst().getCount(), plan.typeCatalyst().getHoverName());
+        }
+        ItemStack catalyst = plan.catalyst().isEmpty() ? plan.typeCatalyst() : plan.catalyst();
+        if (!catalyst.isEmpty()) return Component.translatable("container.armorplus.ritual_altar.uses_catalyst", catalyst.getCount(), catalyst.getHoverName());
         return Component.translatable("container.armorplus.ritual_altar.ready");
     }
 

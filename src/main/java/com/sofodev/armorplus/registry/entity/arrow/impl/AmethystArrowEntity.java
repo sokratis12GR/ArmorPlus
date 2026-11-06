@@ -16,14 +16,6 @@ public class AmethystArrowEntity extends APArrowEntity {
         super(type, world, AMETHYST_ARROW_PROP);
     }
 
-    public AmethystArrowEntity(Level world) {
-        super(AMETHYST_ARROW.get(), world, AMETHYST_ARROW_PROP);
-    }
-
-    public AmethystArrowEntity(double x, double y, double z, Level world) {
-        super(AMETHYST_ARROW.get(), x, y, z, world, AMETHYST_ARROW_PROP);
-    }
-
     public AmethystArrowEntity(LivingEntity shooter, Level world, ItemStack ammo, @Nullable ItemStack weapon) {
         super(AMETHYST_ARROW.get(), shooter, world, ammo, weapon, AMETHYST_ARROW_PROP);
     }

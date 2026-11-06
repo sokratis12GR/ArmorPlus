@@ -16,14 +16,6 @@ public class CoalArrowEntity extends APArrowEntity {
         super(type, world, COAL_ARROW_PROP);
     }
 
-    public CoalArrowEntity(Level world) {
-        super(COAL_ARROW.get(), world, COAL_ARROW_PROP);
-    }
-
-    public CoalArrowEntity(double x, double y, double z, Level world) {
-        super(COAL_ARROW.get(), x, y, z, world, COAL_ARROW_PROP);
-    }
-
     public CoalArrowEntity(LivingEntity shooter, Level world, ItemStack ammo, @Nullable ItemStack weapon) {
         super(COAL_ARROW.get(), shooter, world, ammo, weapon, COAL_ARROW_PROP);
     }

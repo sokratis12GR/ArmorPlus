@@ -44,13 +44,14 @@ The Rune Altar turns the effects of ArmorPlus equipment into runes and takes sin
 Socketing and upgrading happen in a ritual around the Rune Altar, which needs a complete circle of pedestals and a catalyst for each recipe.
 
 - **The ritual:** place 4 Empowering Pedestals 2 blocks away from a Rune Altar, one on each side, to unlock its ritual screen, the only place to socket and upgrade runes. Pedestals hold one item each: socketing and upgrades use their catalyst from them, upgrades can also use the second rune, and extraction its Blank Rune and catalyst.
-- **Catalysts:** socketing takes a Lava Crystal and each level of upgrading takes a new material, placed on the pedestals:
+- **Catalysts:** socketing takes a Lava Crystal and each level of upgrading takes a new material, plus 1 sigil of the rune's type, placed on the pedestals:
   - **Ember Sigil** (level II): 2 per craft, from amethyst shards and an Infused Lava Crystal.
   - **Rime Sigil** (level III): 2 per craft, from amethyst shards and an Infused Frost Crystal.
   - **Equinox Sigil** (level IV): an Ember Sigil, a Rime Sigil and an Infused Frost Lava Crystal.
   - **Astral Sigil** (level V and up): 2 Equinox Sigils, an Ender Dragon Scale, a Guardian Scale and a Wither Bone.
-- **Each recipe can have its own catalyst:** the strongest runes cost a higher sigil to socket: Astral for Flight, Equinox for Warden Pacification, Wither Immunity, Ender Shot and Conduit Power, and Rime for Natural Immunity.
-  - Change or remove the general ones with the `ritualCatalysts` config.
+  - **Rune type sigils** (1 on top at every level): 2 per craft, from an Ember Sigil, a Rime Sigil and one item of the type. Each rune uses one: the **Modded Sigil** (Ender Pearl) for buffs of other mods, the **Instant Sigil** (Glistering Melon Slice) for instant effects, the **Effect Sigil** (Fermented Spider Eye) for other effects, and the **Armor** (Iron Chestplate), **Weapon** (Iron Sword), **Tool** (Iron Pickaxe) and **Bow Sigils** (Bow) for abilities.
+- **Each recipe can have its own catalyst:** the strongest runes cost a higher sigil to socket: Astral for Flight, Equinox for Warden Pacification, Wither Immunity, Ender Shot, Seeker and Conduit Power, and Rime for Natural Immunity.
+  - Change or remove the general ones with the `ritualCatalysts` config, where a rune type sets what its upgrades use on top, e.g. `bow|armorplus:bow_sigil`.
   - Set them per buff in `runeOverrides` with `socket_catalyst=`, `upgrade_catalyst=` and `upgrade_catalyst@level=` (from that level of upgrading on), e.g. `upgrade_catalyst@5=armorplus:astral_sigil*2`.
 - **Circle preview:** with an incomplete circle, Show Circle on the Rune Altar draws see-through pedestals where the missing ones go, red if something is in the way. It's only drawn on your screen: no blocks are placed, and it's gone when you complete the circle, walk away, log out or restart.
 - **Altar screens:** a new carved look with its own colours and carvings for each page, text that shrinks to fit its space, and pictures of what belongs in empty slots.
@@ -93,20 +94,20 @@ Runes for bows and crossbows, and the effects ArmorPlus bows now have of their o
 
 - **Ranged Runes:** bows and crossbows, including vanilla and other mods' ones, get their own sockets and accept ranged runes. The runes are stored on each arrow when it's fired, so switching weapons mid-flight changes nothing, and they stack with the arrow's own effect.
   - **Piercing:** arrows pass through one more mob per level.
-  - **Volley:** fires 2 extra arrows that can't be picked up; the spread narrows with each level.
+  - **Volley:** fires 1 extra arrow per side per level, up to level III (6 extra arrows), that can't be picked up.
   - **Ricochet:** arrows bounce to a nearby hostile mob at half damage, one more bounce per level.
-  - **Long Shot:** more damage the farther the target, with a higher limit per level.
-  - **Marked:** the target glows and takes more damage from your next arrow, more per level.
-  - **Quick Draw:** draws or loads faster, more per level.
-  - **Ammo Saver:** 20% chance per level not to use an arrow (up to 80%).
-  - **Retrieval:** arrows that hit a mob return to your inventory.
+  - **Long Shot:** more damage the farther the target, rising faster and with a higher limit per level.
+  - **Marked:** the target glows and takes more damage from your next arrow, more per level. That hit uses up the mark, and the arrow after it can mark again.
+  - **Quick Draw:** draws or loads faster, more per level, up to level IV.
+  - **Ammo Saver:** arrows that hit a mob return to your inventory, and a 20% chance per level not to use an arrow when firing (up to 80% at level IV).
   - **Seeker:** arrows lock onto hostile mobs ahead of them and curve to hit them. Rare: crafted from a Blank Rune, Spyglass and Echo Shard, or found in Ancient Cities.
-  - **Ender Shot:** teleports you to where the arrow lands, with a 30 second cooldown and 10 durability per shot (`enderShotCooldown`, `enderShotDurability`). Rare: crafted from a Blank Rune, Eye of Ender and Shulker Shell, or found in End Cities.
+  - **Ender Shot:** teleports you to where the arrow lands, with a 30 second cooldown and 10 durability per shot (`enderShotCooldown`, `enderShotDurability`). Rare: crafted from a Blank Rune, Eye of Ender, Shulker Shell and Nether Star, or found in End Cities.
   - Ranged runes can also carry on-hit effects like weapon runes (`minecraft:poison`, `minecraft:slowness`, `minecraft:wither`, ...), applied to the mobs the arrows hit. Levels work with rune upgrading.
 - **ArmorPlus bows have material effects:** a bow's arrows now apply the `weaponBuffs` of its material, shown in its tooltip and the Ranged Effects screen, and they can be extracted as ranged runes in the Rune Altar. They need `enableRunes`, and `enableWeaponEffects` switches them off together with the material's weapons.
-- **Some bows have special abilities:** a new `bowBuffs` list per material holds what only its bows get. Guardian, Warden and Ender Dragon bows have Seeker, the Super Star bow Volley and Piercing, and the Slayer bow Volley, Piercing and Seeker. The Ender Dragon and Slayer bows also list Ender Shot, switched off by default. They can be extracted like other bow effects; Ender Shot needs a Nether Star (`runeOverrides`).
+- **Some bows have special abilities:** a new `bowBuffs` list per material holds what only its bows get. The Guardian bow has Piercing, the Super Star bow Volley, the Ender Dragon bow Ender Shot, the Warden bow Seeker, and the Slayer bow all four. They can be extracted like other bow effects; Ender Shot needs a Nether Star (`runeOverrides`).
 - **ArmorPlus arrows work with bow enchantments:** Power, Punch, Flame, Piercing and other effects of the bow or crossbow now apply to them, and arrows fired with Infinity or in creative can no longer be picked up.
 - **ArmorPlus bows now add their damage bonus:** the bonus used to replace the arrow's base damage. It's now added on top, and ArmorPlus arrows deal their own damage from any bow.
+- **Clearer arrow and weapon effects:** Redstone arrows now apply Mining Fatigue and Emerald arrows Slowness, matching their bows. Infused Lava arrows set targets on fire for 5 seconds instead of a fraction of a second, and their tooltip shows their real damage. Guardian, Warden and Slayer weapons and bows no longer apply Nausea, and Slayer no longer applies Darkness.
 
 #### Finding & Adding Runes
 Where runes come from besides your own equipment, and how datapacks add more.
@@ -234,6 +235,6 @@ Change costs and catalysts or stop things from happening. All are cancelable and
   - `RuneSocketEvent`: change the ritual's cost.
   - `RuneExtractEvent`: change the Rune Altar cost and catalyst.
   - `RuneRemoveEvent`: change the cost of taking a single rune out in the Rune Altar.
-  - `RuneUpgradeEvent`: change the ritual's cost and catalyst of upgrading a rune.
-  - `NativeEffectUpgradeEvent`: change the ritual's cost and catalyst of upgrading an equipment effect.
+  - `RuneUpgradeEvent`: change the ritual's cost and catalysts of upgrading a rune.
+  - `NativeEffectUpgradeEvent`: change the ritual's cost and catalysts of upgrading an equipment effect.
   - `RuneApplyEvent` (socketed runes) and `SetEffectApplyEvent` (set and weapon material effects): fired when the equipment's effect applies while worn, held or on hit.

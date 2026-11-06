@@ -22,10 +22,12 @@ import java.util.List;
  */
 public final class RangedEffects {
 
-    /** Volley: the spread between the arrows at level I, divided by the level. */
-    private static final float VOLLEY_SPREAD_DEGREES = 10.0F;
+    /** Volley: the angle between its arrows, wide enough for them not to all hit the same mob. */
+    public static final float VOLLEY_SPREAD_DEGREES = 10.0F;
+    private static final int VOLLEY_MAX_ARROWS_PER_SIDE = 3;
     private static final double LONG_SHOT_START_DISTANCE = 8.0;
-    private static final double LONG_SHOT_BONUS_PER_BLOCK = 0.02;
+    private static final double LONG_SHOT_BASE_BONUS_PER_BLOCK = 0.015;
+    private static final double LONG_SHOT_BONUS_PER_BLOCK_PER_LEVEL = 0.005;
     private static final double LONG_SHOT_BONUS_LIMIT_PER_LEVEL = 0.25;
     private static final double MARKED_BONUS_PER_LEVEL = 0.2;
     private static final double AMMO_SAVER_CHANCE_PER_LEVEL = 0.2;
@@ -80,14 +82,15 @@ public final class RangedEffects {
         return Math.max(1, buff.getAmplifier() + 1);
     }
 
-    /** @return the angle between the Volley arrows in degrees, narrower at higher levels */
-    public static float volleySpread(int level) {
-        return VOLLEY_SPREAD_DEGREES / Math.max(1, level);
+    /** @return the extra Volley arrows on each side of the fired one */
+    public static int volleyArrowsPerSide(int level) {
+        return Math.clamp(level, 1, VOLLEY_MAX_ARROWS_PER_SIDE);
     }
 
-    /** @return the Long Shot damage multiplier: rises with the distance past 8 blocks, up to a limit that rises per level */
+    /** @return the Long Shot damage multiplier: rises with the distance past 8 blocks, faster and up to a higher limit per level */
     public static double longShotMultiplier(int level, double distance) {
-        double bonus = Math.max(0.0, distance - LONG_SHOT_START_DISTANCE) * LONG_SHOT_BONUS_PER_BLOCK;
+        double perBlock = LONG_SHOT_BASE_BONUS_PER_BLOCK + LONG_SHOT_BONUS_PER_BLOCK_PER_LEVEL * level;
+        double bonus = Math.max(0.0, distance - LONG_SHOT_START_DISTANCE) * perBlock;
         return 1.0 + Math.min(LONG_SHOT_BONUS_LIMIT_PER_LEVEL * level, bonus);
     }
 

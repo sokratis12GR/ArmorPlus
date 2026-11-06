@@ -19,6 +19,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.List;
+
 import static com.sofodev.armorplus.ArmorPlus.MODID;
 
 /**
@@ -86,12 +88,12 @@ public class RitualCategory extends AbstractRecipeCategory<RitualRecipe> {
         IRecipeSlotBuilder primary = builder.addInputSlot(PRIMARY_X, INPUT_Y).setSlotName(PRIMARY_SLOT).setStandardSlotBackground().addItemStacks(recipe.primary());
         builder.addInputSlot(SECONDARY_X, INPUT_Y).setSlotName(SECONDARY_SLOT).setStandardSlotBackground().add(recipe.secondary());
         builder.addSlot(RecipeIngredientRole.RENDER_ONLY, ALTAR_X, ALTAR_Y).setStandardSlotBackground().add(new ItemStack(ModBlocks.RUNE_ALTAR.get()));
-        int catalysts = recipe.catalyst().isEmpty() ? 0 : recipe.catalyst().getCount();
+        List<ItemStack> catalysts = recipe.pedestalCatalysts();
         for (int pedestal = 0; pedestal < RuneRitual.PEDESTAL_COUNT; pedestal++) {
             int x = PEDESTALS[pedestal][0];
             int y = PEDESTALS[pedestal][1];
-            if (pedestal < catalysts) {
-                builder.addInputSlot(x, y).setSlotName(catalystSlot(pedestal)).setStandardSlotBackground().add(recipe.catalyst().copyWithCount(1))
+            if (pedestal < catalysts.size()) {
+                builder.addInputSlot(x, y).setSlotName(catalystSlot(pedestal)).setStandardSlotBackground().add(catalysts.get(pedestal))
                         .addRichTooltipCallback((view, tooltip) -> tooltip.add(Component.translatable("jei.armorplus.ritual_catalyst.tooltip").withStyle(ChatFormatting.GRAY)));
             } else {
                 builder.addSlot(RecipeIngredientRole.RENDER_ONLY, x, y).setStandardSlotBackground().add(new ItemStack(ModBlocks.EMPOWERING_PEDESTAL.get())).setOverlay(EMPTY_PEDESTAL_OVERLAY, 0, 0);

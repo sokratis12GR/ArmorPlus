@@ -29,15 +29,18 @@ import static net.minecraft.world.effect.MobEffects.WITHER;
 
 public class APArrowProperty {
 
+    /** How long Infused Lava arrows set their target on fire, 5 seconds. */
+    private static final int INFUSED_LAVA_FIRE_TICKS = 100;
+
     public static final ArrowProperty COAL_ARROW_PROP = ArrowProperty.create("coal", 3.0, CLOUD, create(BLINDNESS));
     public static final ArrowProperty LAPIS_ARROW_PROP = ArrowProperty.create("lapis", 3.5, DRIPPING_WATER, create(NAUSEA));
-    public static final ArrowProperty REDSTONE_ARROW_PROP = ArrowProperty.create("redstone", 3.5, POOF, create(SLOWNESS));
-    public static final ArrowProperty EMERALD_ARROW_PROP = ArrowProperty.create("emerald", 5.0, HAPPY_VILLAGER, create(MINING_FATIGUE));
+    public static final ArrowProperty REDSTONE_ARROW_PROP = ArrowProperty.create("redstone", 3.5, POOF, create(MINING_FATIGUE));
+    public static final ArrowProperty EMERALD_ARROW_PROP = ArrowProperty.create("emerald", 5.0, HAPPY_VILLAGER, create(SLOWNESS));
     public static final ArrowProperty OBSIDIAN_ARROW_PROP = ArrowProperty.create("obsidian", 6.0, SMOKE, create(WEAKNESS, 1));
     public static final ArrowProperty INFUSED_LAVA_ARROW_PROP = new ArrowProperty("infused_lava", 7.0, FLAME) {
         @Override
         public IArrow hit(LivingEntity living) {
-            living.setRemainingFireTicks(6);
+            living.setRemainingFireTicks(Math.max(living.getRemainingFireTicks(), INFUSED_LAVA_FIRE_TICKS));
             return this;
         }
     };

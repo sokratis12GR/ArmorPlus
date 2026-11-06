@@ -16,14 +16,6 @@ public class GuardianArrowEntity extends APArrowEntity {
         super(type, world, GUARDIAN_ARROW_PROP);
     }
 
-    public GuardianArrowEntity(Level world) {
-        super(GUARDIAN_ARROW.get(), world, GUARDIAN_ARROW_PROP);
-    }
-
-    public GuardianArrowEntity(double x, double y, double z, Level world) {
-        super(GUARDIAN_ARROW.get(), x, y, z, world, GUARDIAN_ARROW_PROP);
-    }
-
     public GuardianArrowEntity(LivingEntity shooter, Level world, ItemStack ammo, @Nullable ItemStack weapon) {
         super(GUARDIAN_ARROW.get(), shooter, world, ammo, weapon, GUARDIAN_ARROW_PROP);
     }

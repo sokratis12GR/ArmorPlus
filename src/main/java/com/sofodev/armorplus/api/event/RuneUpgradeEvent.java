@@ -10,7 +10,7 @@ import org.jspecify.annotations.Nullable;
 /**
  * Fired on {@code NeoForge.EVENT_BUS} when two identical runes that can be upgraded are in the ritual of a Rune Altar, on both
  * sides and whenever the screen needs the result, so it can fire often. Canceling it gives no result;
- * {@link #setCost(int)} changes the experience level cost and {@link #setCatalyst(ItemStack)} the item used up from the pedestals.
+ * {@link #setCost(int)} changes the experience level cost and {@link #setCatalyst(ItemStack)} and {@link #setTypeCatalyst(ItemStack)} the items used up from the pedestals.
  */
 public class RuneUpgradeEvent extends Event implements ICancellableEvent {
 
@@ -19,13 +19,15 @@ public class RuneUpgradeEvent extends Event implements ICancellableEvent {
     private final RuneData result;
     private int cost;
     private ItemStack catalyst;
+    private ItemStack typeCatalyst;
 
-    public RuneUpgradeEvent(@Nullable Player player, RuneData rune, RuneData result, int cost, ItemStack catalyst) {
+    public RuneUpgradeEvent(@Nullable Player player, RuneData rune, RuneData result, int cost, ItemStack catalyst, ItemStack typeCatalyst) {
         this.player = player;
         this.rune = rune;
         this.result = result;
         this.cost = cost;
         this.catalyst = catalyst;
+        this.typeCatalyst = typeCatalyst;
     }
 
     public @Nullable Player getPlayer() {
@@ -57,5 +59,14 @@ public class RuneUpgradeEvent extends Event implements ICancellableEvent {
 
     public void setCatalyst(ItemStack catalyst) {
         this.catalyst = catalyst.copy();
+    }
+
+    /** {@return the item and count for the rune's type used up from the pedestals on top of the catalyst, EMPTY for none} */
+    public ItemStack getTypeCatalyst() {
+        return typeCatalyst;
+    }
+
+    public void setTypeCatalyst(ItemStack typeCatalyst) {
+        this.typeCatalyst = typeCatalyst.copy();
     }
 }

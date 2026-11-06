@@ -16,14 +16,6 @@ public class EnderDragonArrowEntity extends APArrowEntity {
         super(type, world, ENDER_DRAGON_ARROW_PROP);
     }
 
-    public EnderDragonArrowEntity(Level world) {
-        super(ENDER_DRAGON_ARROW.get(), world, ENDER_DRAGON_ARROW_PROP);
-    }
-
-    public EnderDragonArrowEntity(double x, double y, double z, Level world) {
-        super(ENDER_DRAGON_ARROW.get(), x, y, z, world, ENDER_DRAGON_ARROW_PROP);
-    }
-
     public EnderDragonArrowEntity(LivingEntity shooter, Level world, ItemStack ammo, @Nullable ItemStack weapon) {
         super(ENDER_DRAGON_ARROW.get(), shooter, world, ammo, weapon, ENDER_DRAGON_ARROW_PROP);
     }

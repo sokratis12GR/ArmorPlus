@@ -16,14 +16,6 @@ public class EmeraldArrowEntity extends APArrowEntity {
         super(type, world, EMERALD_ARROW_PROP);
     }
 
-    public EmeraldArrowEntity(Level world) {
-        super(EMERALD_ARROW.get(), world, EMERALD_ARROW_PROP);
-    }
-
-    public EmeraldArrowEntity(double x, double y, double z, Level world) {
-        super(EMERALD_ARROW.get(), x, y, z, world, EMERALD_ARROW_PROP);
-    }
-
     public EmeraldArrowEntity(LivingEntity shooter, Level world, ItemStack ammo, @Nullable ItemStack weapon) {
         super(EMERALD_ARROW.get(), shooter, world, ammo, weapon, EMERALD_ARROW_PROP);
     }

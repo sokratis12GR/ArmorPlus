@@ -16,14 +16,6 @@ public class InfusedLavaArrowEntity extends APArrowEntity {
         super(type, world, INFUSED_LAVA_ARROW_PROP);
     }
 
-    public InfusedLavaArrowEntity(Level world) {
-        super(INFUSED_LAVA_ARROW.get(), world, INFUSED_LAVA_ARROW_PROP);
-    }
-
-    public InfusedLavaArrowEntity(double x, double y, double z, Level world) {
-        super(INFUSED_LAVA_ARROW.get(), x, y, z, world, INFUSED_LAVA_ARROW_PROP);
-    }
-
     public InfusedLavaArrowEntity(LivingEntity shooter, Level world, ItemStack ammo, @Nullable ItemStack weapon) {
         super(INFUSED_LAVA_ARROW.get(), shooter, world, ammo, weapon, INFUSED_LAVA_ARROW_PROP);
     }

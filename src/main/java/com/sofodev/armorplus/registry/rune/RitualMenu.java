@@ -58,16 +58,17 @@ public class RitualMenu extends AbstractContainerMenu {
      * @param cost     the experience levels it takes
      * @param material the rune it uses up besides the first slot, or null
      * @param catalyst the catalyst it uses up from the pedestals, or EMPTY
+     * @param typeCatalyst the catalyst of the rune's type it uses up on top, or EMPTY
      * @param problem  why it can't be done, or null
      */
-    public record Plan(ItemStack result, int cost, @Nullable RuneData material, ItemStack catalyst, @Nullable Component problem) {
+    public record Plan(ItemStack result, int cost, @Nullable RuneData material, ItemStack catalyst, ItemStack typeCatalyst, @Nullable Component problem) {
 
         private static Plan blocked(String key) {
             return blocked(Component.translatable("container.armorplus.ritual_altar." + key));
         }
 
         private static Plan blocked(Component problem) {
-            return new Plan(ItemStack.EMPTY, 0, null, ItemStack.EMPTY, problem);
+            return new Plan(ItemStack.EMPTY, 0, null, ItemStack.EMPTY, ItemStack.EMPTY, problem);
         }
     }
 
@@ -178,7 +179,7 @@ public class RitualMenu extends AbstractContainerMenu {
         if (fit != SocketResult.OK) return Plan.blocked(Component.translatable("commands.armorplus.rune.socket." + fit.name().toLowerCase(Locale.ENGLISH)));
         RuneSocketEvent event = NeoForge.EVENT_BUS.post(new RuneSocketEvent(this.player, gear, rune, Runes.socketCost(rune), Runes.socketCatalyst(rune)));
         if (event.isCanceled()) return Plan.blocked("canceled");
-        return withCatalyst(Runes.withRune(gear, rune), event.getCost(), rune, event.getCatalyst());
+        return withCatalyst(Runes.withRune(gear, rune), event.getCost(), rune, event.getCatalyst(), ItemStack.EMPTY);
     }
 
     private Plan upgradeRunePlan() {
@@ -189,9 +190,9 @@ public class RitualMenu extends AbstractContainerMenu {
         if (second != null && !second.equals(rune)) return Plan.blocked("runes_differ");
         if (second == null && pedestalCount(stack -> rune.equals(Runes.runeData(stack))) == 0) return Plan.blocked("needs_second_rune");
         RuneData upgraded = Runes.upgraded(rune);
-        RuneUpgradeEvent event = NeoForge.EVENT_BUS.post(new RuneUpgradeEvent(this.player, rune, upgraded, Runes.upgradeCost(rune), Runes.upgradeCatalyst(rune)));
+        RuneUpgradeEvent event = NeoForge.EVENT_BUS.post(new RuneUpgradeEvent(this.player, rune, upgraded, Runes.upgradeCost(rune), Runes.upgradeCatalyst(rune), Runes.upgradeTypeCatalyst(rune)));
         if (event.isCanceled()) return Plan.blocked("canceled");
-        return withCatalyst(RuneItem.create(upgraded.kind(), upgraded.entry()), event.getCost(), rune, event.getCatalyst());
+        return withCatalyst(RuneItem.create(upgraded.kind(), upgraded.entry()), event.getCost(), rune, event.getCatalyst(), event.getTypeCatalyst());
     }
 
     private Plan upgradeEffectPlan() {
@@ -208,19 +209,22 @@ public class RitualMenu extends AbstractContainerMenu {
         if (!Runes.canUpgradeNative(gear, rune)) return Plan.blocked("rune_not_own_effect");
         String id = rune.buffId();
         int level = Runes.nativeLevel(gear, id) + 1;
-        NativeEffectUpgradeEvent event = NeoForge.EVENT_BUS.post(new NativeEffectUpgradeEvent(this.player, gear, rune, level, Runes.nativeUpgradeCost(gear, id), Runes.upgradeCatalyst(rune, level)));
+        NativeEffectUpgradeEvent event = NeoForge.EVENT_BUS.post(new NativeEffectUpgradeEvent(this.player, gear, rune, level, Runes.nativeUpgradeCost(gear, id), Runes.upgradeCatalyst(rune, level), Runes.upgradeTypeCatalyst(rune)));
         if (event.isCanceled()) return Plan.blocked("canceled");
-        return withCatalyst(Runes.withUpgradedNative(gear, id), event.getCost(), rune, event.getCatalyst());
+        return withCatalyst(Runes.withUpgradedNative(gear, id), event.getCost(), rune, event.getCatalyst(), event.getTypeCatalyst());
     }
 
-    /** @return the plan, unless the pedestals don't hold enough of the catalyst. Each holds one item, which limits what events can ask for */
-    private Plan withCatalyst(ItemStack result, int cost, RuneData material, ItemStack wanted) {
+    /** @return the plan, unless the pedestals don't hold enough of the catalysts. Each holds one item, which limits what events can ask for */
+    private Plan withCatalyst(ItemStack result, int cost, RuneData material, ItemStack wanted, ItemStack wantedType) {
         ItemStack catalyst = wanted.copyWithCount(Math.min(wanted.getCount(), RuneRitual.PEDESTAL_COUNT));
-        if (!catalyst.isEmpty() && pedestalCount(stack -> stack.is(catalyst.getItem())) < catalyst.getCount()) {
-            return new Plan(ItemStack.EMPTY, cost, material, catalyst,
-                    Component.translatable("container.armorplus.ritual_altar.needs_catalyst", catalyst.getCount(), catalyst.getHoverName()));
+        ItemStack typeCatalyst = RitualCatalysts.onTop(catalyst, wantedType);
+        for (ItemStack needed : List.of(catalyst, typeCatalyst)) {
+            if (!needed.isEmpty() && pedestalCount(stack -> stack.is(needed.getItem())) < needed.getCount()) {
+                return new Plan(ItemStack.EMPTY, cost, material, catalyst, typeCatalyst,
+                        Component.translatable("container.armorplus.ritual_altar.needs_catalyst", needed.getCount(), needed.getHoverName()));
+            }
         }
-        return new Plan(result, cost, material, catalyst, null);
+        return new Plan(result, cost, material, catalyst, typeCatalyst, null);
     }
 
     private int pedestalCount(Predicate<ItemStack> matches) {
@@ -235,11 +239,16 @@ public class RitualMenu extends AbstractContainerMenu {
      * Switches to the tab and fills the inputs from the player's inventory, for JEI's transfer button. What the inputs held goes
      * back first, if it fits. Catalysts only go on empty pedestals, nothing is taken off one.
      */
-    public void fillFromInventory(int tabIndex, ItemStack first, ItemStack second, ItemStack catalyst) {
+    public void fillFromInventory(int tabIndex, ItemStack first, ItemStack second, ItemStack catalyst, ItemStack typeCatalyst) {
         if (tabIndex < 0 || tabIndex >= EXTRACT_BUTTON || this.altar == null || !returnToInventory(this.primarySlot) || !returnToInventory(this.secondarySlot)) return;
         clickMenuButton(this.player, tabIndex);
         fill(this.primarySlot, first);
         fill(this.secondarySlot, second);
+        placeOnPedestals(catalyst);
+        placeOnPedestals(typeCatalyst);
+    }
+
+    private void placeOnPedestals(ItemStack catalyst) {
         for (int placed = 0; placed < catalyst.getCount() && RuneRitual.emptyPedestals(this.level, this.altar) > 0; placed++) {
             ItemStack taken = RuneRitual.takeFromSlots(this, INV_SLOT_START, USE_ROW_SLOT_END, catalyst, 1);
             if (taken.isEmpty()) return;
@@ -266,6 +275,7 @@ public class RitualMenu extends AbstractContainerMenu {
         if (!player.hasInfiniteMaterials()) player.giveExperienceLevels(-plan.cost());
         useMaterial(plan.material());
         if (!plan.catalyst().isEmpty()) consumeFromPedestals(stack -> stack.is(plan.catalyst().getItem()), plan.catalyst().getCount());
+        if (!plan.typeCatalyst().isEmpty()) consumeFromPedestals(stack -> stack.is(plan.typeCatalyst().getItem()), plan.typeCatalyst().getCount());
         this.primarySlot.set(ItemStack.EMPTY);
         this.access.execute((level, pos) -> {
             long gameTime = level.getGameTime();

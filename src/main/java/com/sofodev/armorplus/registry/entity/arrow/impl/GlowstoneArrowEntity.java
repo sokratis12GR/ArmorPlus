@@ -16,14 +16,6 @@ public class GlowstoneArrowEntity extends APArrowEntity {
         super(type, world, GLOWSTONE_ARROW_PROP);
     }
 
-    public GlowstoneArrowEntity(Level world) {
-        super(GLOWSTONE_ARROW.get(), world, GLOWSTONE_ARROW_PROP);
-    }
-
-    public GlowstoneArrowEntity(double x, double y, double z, Level world) {
-        super(GLOWSTONE_ARROW.get(), x, y, z, world, GLOWSTONE_ARROW_PROP);
-    }
-
     public GlowstoneArrowEntity(LivingEntity shooter, Level world, ItemStack ammo, @Nullable ItemStack weapon) {
         super(GLOWSTONE_ARROW.get(), shooter, world, ammo, weapon, GLOWSTONE_ARROW_PROP);
     }

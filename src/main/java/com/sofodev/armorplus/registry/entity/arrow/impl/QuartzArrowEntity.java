@@ -16,14 +16,6 @@ public class QuartzArrowEntity extends APArrowEntity {
         super(type, world, QUARTZ_ARROW_PROP);
     }
 
-    public QuartzArrowEntity(Level world) {
-        super(QUARTZ_ARROW.get(), world, QUARTZ_ARROW_PROP);
-    }
-
-    public QuartzArrowEntity(double x, double y, double z, Level world) {
-        super(QUARTZ_ARROW.get(), x, y, z, world, QUARTZ_ARROW_PROP);
-    }
-
     public QuartzArrowEntity(LivingEntity shooter, Level world, ItemStack ammo, @Nullable ItemStack weapon) {
         super(QUARTZ_ARROW.get(), shooter, world, ammo, weapon, QUARTZ_ARROW_PROP);
     }

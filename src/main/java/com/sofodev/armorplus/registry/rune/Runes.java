@@ -1,5 +1,6 @@
 package com.sofodev.armorplus.registry.rune;
 
+import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.api.RuneData;
 import com.sofodev.armorplus.api.RuneKind;
 import com.sofodev.armorplus.api.SocketResult;
@@ -722,6 +723,28 @@ public final class Runes {
         RitualCatalysts.Entry atLevel = RitualCatalysts.levelEntry(rules.levelCatalysts(), level);
         if (atLevel != null) return atLevel.stack();
         return rules.upgradeCatalyst() != null ? rules.upgradeCatalystStack() : RitualCatalysts.forLevel(level);
+    }
+
+    /** @return the item (and count) every upgrade with this rune also consumes from the pedestals, or EMPTY ("ritualCatalysts" of its type) */
+    public static ItemStack upgradeTypeCatalyst(RuneData rune) {
+        return RitualCatalysts.forType(catalystType(rune));
+    }
+
+    /** @return the type of the rune for its catalysts, or null if its buff doesn't exist */
+    private static RitualCatalysts.@Nullable Type catalystType(RuneData rune) {
+        BuffInstance buff = resolve(rune);
+        if (buff == null) return null;
+        String namespace = rune.buffId().split(":", 2)[0];
+        if (!namespace.equals("minecraft") && !namespace.equals(ArmorPlus.MODID)) return RitualCatalysts.Type.MODDED;
+        if (buff.getBuff().isEffect() && buff.getBuff().getEffect() != null) {
+            return buff.getBuff().getEffect().value().isInstantenous() ? RitualCatalysts.Type.INSTANT : RitualCatalysts.Type.EFFECT;
+        }
+        return switch (rune.kind()) {
+            case ARMOR -> RitualCatalysts.Type.ARMOR;
+            case WEAPON -> RitualCatalysts.Type.WEAPON;
+            case TOOL -> RitualCatalysts.Type.TOOL;
+            case RANGED -> RitualCatalysts.Type.BOW;
+        };
     }
 
     /** @return the item (and count) the ritual consumes from the pedestals to socket this rune, or EMPTY ("runeOverrides" socket_catalyst=..., else "ritualCatalysts") */

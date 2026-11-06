@@ -170,6 +170,13 @@ public class ModCreativeTabs {
                 output.accept(ModItems.RIME_SIGIL.get());
                 output.accept(ModItems.EQUINOX_SIGIL.get());
                 output.accept(ModItems.ASTRAL_SIGIL.get());
+                output.accept(ModItems.ARMOR_SIGIL.get());
+                output.accept(ModItems.WEAPON_SIGIL.get());
+                output.accept(ModItems.TOOL_SIGIL.get());
+                output.accept(ModItems.BOW_SIGIL.get());
+                output.accept(ModItems.EFFECT_SIGIL.get());
+                output.accept(ModItems.INSTANT_SIGIL.get());
+                output.accept(ModItems.MODDED_SIGIL.get());
                 // the tab can be built before the synced datapack runes were loaded
                 RuneDefinitions.update(parameters.holders());
                 Runes.creativeRunes().forEach(rune -> output.accept(RuneItem.create(rune.kind(), rune.entry())));
