@@ -19,6 +19,16 @@ PREFIX = {"enhanced_chainmail": "chainmail", "enhanced_golden": "golden", "enhan
 # enhanced material items (enhanced_gold, ...) -> the set they belong to
 ENHANCED_ITEM = {"chainmail": "enhanced_chainmail", "gold": "enhanced_golden", "copper": "enhanced_copper",
                  "iron": "enhanced_iron", "diamond": "enhanced_diamond", "netherite": "enhanced_netherite"}
+# (creative tab, tier) -> config sections, in the same order as ModCreativeTabs
+GROUPS = {("core", "basic"): ["coal", "glowstone", "honey", "chicken", "slime", "redstone", "lapis"],
+          ("core", "intermediate"): ["amethyst", "quartz", "emerald", "obsidian"],
+          ("core", "advanced"): ["frost", "infused_lava", "frost_lava"],
+          ("core", "legendary"): ["guardian", "super_star", "ender_dragon", "warden", "slayer"],
+          ("extra", "enhanced_vanilla"): ["enhanced_chainmail", "enhanced_copper", "enhanced_iron", "enhanced_golden",
+                                          "enhanced_diamond", "enhanced_netherite"],
+          ("extra", "tconstruct"): ["ardite", "cobalt", "knight_slime", "pig_iron", "manyullyn"],
+          # the enhanced config section is in no creative tab
+          (None, None): ["enhanced"]}
 
 
 def parse_effect(entry):
@@ -96,11 +106,17 @@ def main():
                 return prefixes[p], "material"
         return None, "misc"
 
+    grouped = {name for names in GROUPS.values() for name in names}
+    if grouped != set(effects):
+        raise SystemExit(f"GROUPS is out of sync with the config: {sorted(grouped ^ set(effects))}")
     result = {}
-    for name, e in effects.items():
-        result[name] = {"armor": {"fullSetEffects": e["armor"], "pieces": {}},
-                        "weapons": {"onHitEffects": e["weapon"], "items": {}},
-                        "materialRecipes": {}}
+    for (tab, tier), names in GROUPS.items():
+        for name in names:
+            e = effects[name]
+            result[name] = {"tab": tab, "tier": tier,
+                            "armor": {"fullSetEffects": e["armor"], "pieces": {}},
+                            "weapons": {"onHitEffects": e["weapon"], "items": {}},
+                            "materialRecipes": {}}
     misc = {}
     count = 0
     for path in sorted(DATA.glob("*/recipe/**/*.json")):

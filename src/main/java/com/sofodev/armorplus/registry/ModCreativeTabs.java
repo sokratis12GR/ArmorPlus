@@ -64,12 +64,20 @@ public class ModCreativeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
     private static final String[] CORE_MATERIALS = {
-            "coal", "redstone", "amethyst", "quartz", "glowstone", "honey", "lapis", "emerald",
-            "obsidian", "infused_lava", "warden", "guardian", "super_star", "ender_dragon", "slayer"
+            //basic
+            "coal", "glowstone", "honey", "chicken", "slime", "redstone", "lapis",
+            //intermediate
+            "amethyst", "quartz", "emerald", "obsidian",
+            //advanced
+            "frost", "infused_lava", "frost_lava",
+            //legendary
+            "guardian", "super_star", "ender_dragon", "warden", "slayer"
     };
     private static final String[] EXTRA_MATERIALS = {
-            "chainmail", "copper", "iron", "golden", "diamond", "netherite", "chicken", "slime",
-            "frost", "frost_lava", "ardite", "cobalt", "knight_slime", "pig_iron", "manyullyn"
+            //enhanced vanilla
+            "chainmail", "copper", "iron", "golden", "diamond", "netherite",
+            //tconstruct
+            "ardite", "cobalt", "knight_slime", "pig_iron", "manyullyn"
     };
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> AP_CORE_GROUP = register("core", () -> CreativeModeTab.builder()
