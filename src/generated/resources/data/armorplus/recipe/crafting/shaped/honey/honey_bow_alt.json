@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:honey_bows",
+  "key": {
+    "M": {
+      "item": "minecraft:honeycomb_block"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    " MS",
+    "M S",
+    " MS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:honey_bow"
+  }
+}

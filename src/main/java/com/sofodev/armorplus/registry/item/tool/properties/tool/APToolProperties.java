@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.item.tool.properties.tool;
 
+import com.sofodev.armorplus.config.ArmorPlusStatsConfig;
+import com.sofodev.armorplus.config.ArmorPlusStatsConfig.ToolStats;
 import com.sofodev.armorplus.registry.item.armor.APRepair;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
@@ -7,6 +9,8 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+
+import java.util.Locale;
 
 import static com.sofodev.armorplus.utils.Utils.getRepairStacks;
 import static net.minecraft.world.item.Items.*;
@@ -22,6 +26,26 @@ public enum APToolProperties implements Tier {
     SUPER_STAR_PROP(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 6000, 14.0f, 5f, 70, "wither_bone"),
     ENDER_DRAGON_PROP(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 6000, 14.0f, 5f, 70, "ender_dragon_scale"),
     SLAYER_PROP(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 9001, 20.0f, 7.0f, 100, "the_ultimate_material"),
+    WARDEN_PROP(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 6000, 14.0f, 5f, 70, "warden_heart"),
+    AMETHYST_PROP(BlockTags.INCORRECT_FOR_IRON_TOOL, 250, 6.0f, 1f, 60, AMETHYST_SHARD),
+    QUARTZ_PROP(BlockTags.INCORRECT_FOR_IRON_TOOL, 250, 6.0f, 1f, 60, QUARTZ),
+    GLOWSTONE_PROP(BlockTags.INCORRECT_FOR_GOLD_TOOL, 60, 2.0f, 0f, 10, GLOWSTONE_DUST),
+    HONEY_PROP(BlockTags.INCORRECT_FOR_GOLD_TOOL, 60, 2.0f, 0f, 10, HONEYCOMB),
+    CHICKEN_PROP(BlockTags.INCORRECT_FOR_GOLD_TOOL, 60, 2.0f, 0f, 10, FEATHER),
+    SLIME_PROP(BlockTags.INCORRECT_FOR_GOLD_TOOL, 100, 3.0f, 0.5f, 15, SLIME_BALL),
+    ARDITE_PROP(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1800, 9.0f, 3.5f, 40, "ardite_ingot"),
+    COBALT_PROP(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1500, 8.0f, 3f, 40, "cobalt_ingot"),
+    KNIGHT_SLIME_PROP(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 1000, 7.0f, 2.5f, 30, "knight_slime_crystal"),
+    PIG_IRON_PROP(BlockTags.INCORRECT_FOR_IRON_TOOL, 800, 6.0f, 2f, 20, "pig_iron_ingot"),
+    MANYULLYN_PROP(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 4000, 12.0f, 4.5f, 60, "manyullyn_ingot"),
+    FROST_PROP(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 2500, 9.0f, 3f, 50, "infused_frost_crystal"),
+    FROST_LAVA_PROP(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 4500, 12.0f, 5f, 60, "infused_frost_lava_crystal"),
+    CHAINMAIL_PROP(BlockTags.INCORRECT_FOR_IRON_TOOL, 400, 6.0f, 1.5f, 15, "enhanced_chainmail"),
+    GOLDEN_PROP(BlockTags.INCORRECT_FOR_GOLD_TOOL, 200, 10.0f, 1f, 40, "enhanced_gold"),
+    COPPER_PROP(BlockTags.INCORRECT_FOR_IRON_TOOL, 350, 6.0f, 1.5f, 20, "enhanced_copper"),
+    IRON_PROP(BlockTags.INCORRECT_FOR_IRON_TOOL, 500, 7.0f, 2f, 20, "enhanced_iron"),
+    DIAMOND_PROP(BlockTags.INCORRECT_FOR_DIAMOND_TOOL, 2000, 9.0f, 3.5f, 15, "enhanced_diamond"),
+    NETHERITE_PROP(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 3500, 10.0f, 4.5f, 25, "enhanced_netherite"),
     ;
 
     private final int maxUses;
@@ -55,17 +79,17 @@ public enum APToolProperties implements Tier {
 
     @Override
     public int getUses() {
-        return this.maxUses;
+        return ArmorPlusStatsConfig.tool(this).durability();
     }
 
     @Override
     public float getSpeed() {
-        return this.efficiency;
+        return ArmorPlusStatsConfig.tool(this).miningSpeed();
     }
 
     @Override
     public float getAttackDamageBonus() {
-        return this.attackDamage;
+        return ArmorPlusStatsConfig.tool(this).attackDamage();
     }
 
     @Override
@@ -75,7 +99,7 @@ public enum APToolProperties implements Tier {
 
     @Override
     public int getEnchantmentValue() {
-        return this.enchantability;
+        return ArmorPlusStatsConfig.tool(this).enchantability();
     }
 
     @Override
@@ -83,6 +107,19 @@ public enum APToolProperties implements Tier {
         return Ingredient.of(getRepairStacks(repair).stream());
     }
 
+    /** The hardcoded stats, used as the config defaults. */
+    public ToolStats defaultStats() {
+        return new ToolStats(maxUses, efficiency, attackDamage, enchantability);
+    }
+
+    /** Section name in the stats config, matching the names of the main config (e.g. "enhanced_golden"). */
+    public String configName() {
+        String name = name().toLowerCase(Locale.ENGLISH).replace("_prop", "");
+        return switch (this) {
+            case CHAINMAIL_PROP, GOLDEN_PROP, COPPER_PROP, IRON_PROP, DIAMOND_PROP, NETHERITE_PROP -> "enhanced_" + name;
+            default -> name;
+        };
+    }
 
     @Override
     public String toString() {

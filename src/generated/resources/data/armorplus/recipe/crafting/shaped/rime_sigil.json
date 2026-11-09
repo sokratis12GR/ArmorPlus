@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "armorplus:runes",
+  "key": {
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "C": {
+      "item": "armorplus:infused_frost_crystal"
+    }
+  },
+  "pattern": [
+    "A A",
+    " C ",
+    "A A"
+  ],
+  "result": {
+    "count": 2,
+    "id": "armorplus:rime_sigil"
+  }
+}

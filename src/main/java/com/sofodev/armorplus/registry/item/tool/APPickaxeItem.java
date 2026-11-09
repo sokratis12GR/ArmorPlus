@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.item.tool;
 
+import net.minecraft.world.flag.FeatureFlagSet;
+import com.sofodev.armorplus.config.AvailabilityConfig;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.IAPTool;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.Tool;
 import net.minecraft.core.BlockPos;
@@ -34,7 +36,7 @@ public class APPickaxeItem extends PickaxeItem implements Tool {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> tooltip, TooltipFlag flagIn) {
         if (isSneakDown()) {
-            addBuffInformation(mat, tooltip, "on_hit", false, mat.config().enableWeaponEffects().get());
+            addBuffInformation(stack, mat, tooltip, "on_hit", false, mat.config().enableWeaponEffects().get());
         } else if (!mat.getBuffInstances().get().isEmpty()) {
             showSneakInfo(tooltip, mat.getColor());
         }
@@ -52,7 +54,7 @@ public class APPickaxeItem extends PickaxeItem implements Tool {
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (!target.level().isClientSide && mat.config().enableWeaponEffects().get()) {
-            mat.getBuffInstances().get().forEach(instance -> instance.hitEntity(stack, target, attacker));
+            WeaponEffects.hit(stack, mat, target, attacker);
         }
         return super.hurtEnemy(stack, target, attacker);
     }
@@ -60,5 +62,10 @@ public class APPickaxeItem extends PickaxeItem implements Tool {
     @Override
     public IAPTool getMat() {
         return this.mat;
+    }
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.itemEnabled(this);
     }
 }

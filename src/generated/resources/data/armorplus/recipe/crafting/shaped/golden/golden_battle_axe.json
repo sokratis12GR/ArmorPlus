@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:golden_battle_axes",
+  "key": {
+    "M": {
+      "item": "armorplus:enhanced_gold"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "M M",
+    "MSM",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:golden_battle_axe"
+  }
+}

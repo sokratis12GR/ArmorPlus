@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.block;
 
+import net.minecraft.world.flag.FeatureFlagSet;
+import com.sofodev.armorplus.config.AvailabilityConfig;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
@@ -16,4 +18,8 @@ public class APLavaBlock extends Block {
         super(props.lightLevel((light) -> 8));
     }
 
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.blockEnabled(this);
+    }
 }

@@ -2,7 +2,10 @@ package com.sofodev.armorplus.registry;
 
 import com.mojang.serialization.MapCodec;
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.registry.enchantment.*;
+import com.sofodev.armorplus.registry.enchantment.FuriousEnchantmentEffect;
+import com.sofodev.armorplus.registry.enchantment.LifeStealEnchantmentEffect;
+import com.sofodev.armorplus.registry.enchantment.SoulHardenEnchantmentEffect;
+import com.sofodev.armorplus.registry.enchantment.SoulStealerEnchantmentEffect;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect;
 import net.neoforged.bus.api.IEventBus;
@@ -21,8 +24,6 @@ public class ModEnchantmentEffects {
             ENTITY_ENCHANTMENT_EFFECTS.register("furious", () -> FuriousEnchantmentEffect.CODEC);
     public static final Supplier<MapCodec<? extends EnchantmentEntityEffect>> LIFE_STEAL =
             ENTITY_ENCHANTMENT_EFFECTS.register("life_steal", () -> LifeStealEnchantmentEffect.CODEC);
-    public static final Supplier<MapCodec<? extends EnchantmentEntityEffect>> UNKNOWN =
-            ENTITY_ENCHANTMENT_EFFECTS.register("unknown", () -> UnknownEnchantmentEffect.CODEC);
     public static final Supplier<MapCodec<? extends EnchantmentEntityEffect>> SOUL_HARDEN =
             ENTITY_ENCHANTMENT_EFFECTS.register("soul_harden", () -> SoulHardenEnchantmentEffect.CODEC);
 

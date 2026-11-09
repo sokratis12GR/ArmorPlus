@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "armorplus:ap_tc_mats",
+  "ingredients": [
+    {
+      "item": "armorplus:ardite_ingot"
+    },
+    {
+      "item": "armorplus:ardite_ingot"
+    },
+    {
+      "item": "armorplus:ardite_ingot"
+    },
+    {
+      "item": "armorplus:ardite_ingot"
+    },
+    {
+      "item": "armorplus:cobalt_ingot"
+    },
+    {
+      "item": "armorplus:cobalt_ingot"
+    },
+    {
+      "item": "armorplus:cobalt_ingot"
+    },
+    {
+      "item": "armorplus:cobalt_ingot"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:manyullyn_ingot"
+  }
+}

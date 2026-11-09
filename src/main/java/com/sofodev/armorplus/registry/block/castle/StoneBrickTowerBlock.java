@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.block.castle;
 
+import net.minecraft.world.flag.FeatureFlagSet;
+import com.sofodev.armorplus.config.AvailabilityConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
@@ -44,4 +46,8 @@ public class StoneBrickTowerBlock extends Block {
         return VOXEL;
     }
 
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.blockEnabled(this);
+    }
 }

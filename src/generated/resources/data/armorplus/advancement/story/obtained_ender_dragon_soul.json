@@ -10,16 +10,6 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
-    },
-    "armorplus:soul_enderman": {
-      "conditions": {
-        "items": [
-          {
-            "items": "armorplus:soul_enderman"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "display": {
@@ -37,8 +27,7 @@
   },
   "requirements": [
     [
-      "armorplus:soul_ender_dragon",
-      "armorplus:soul_enderman"
+      "armorplus:soul_ender_dragon"
     ]
   ],
   "rewards": {

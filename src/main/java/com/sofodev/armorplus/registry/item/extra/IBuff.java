@@ -41,4 +41,11 @@ public interface IBuff {
         return true;
     }
 
+    /**
+     * @return true if the level of this ability makes a difference, so its entries keep their "|level" (e.g. ranged abilities)
+     */
+    default boolean isLeveled() {
+        return false;
+    }
+
 }

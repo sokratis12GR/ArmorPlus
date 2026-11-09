@@ -103,7 +103,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         if (path.contains("enhanced")) {
             String enhanced = path.replace("enhanced_", "");
             if (!path.contains("chainmail")) {
-                if (path.contains("iron") || path.contains("gold") || path.contains("netherite")) {
+                if (path.contains("iron") || path.contains("gold") || path.contains("copper") || path.contains("netherite")) {
                     enhanced = enhanced + "_ingot";
                 }
                 textureID = ResourceLocation.withDefaultNamespace(enhanced);

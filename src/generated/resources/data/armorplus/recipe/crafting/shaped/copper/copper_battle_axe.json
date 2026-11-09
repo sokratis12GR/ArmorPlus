@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:copper_battle_axes",
+  "key": {
+    "M": {
+      "item": "armorplus:enhanced_copper"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "M M",
+    "MSM",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:copper_battle_axe"
+  }
+}

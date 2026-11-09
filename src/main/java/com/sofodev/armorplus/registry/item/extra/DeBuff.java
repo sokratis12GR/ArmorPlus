@@ -23,6 +23,7 @@ public enum DeBuff implements IBuff {
     HUNGER,
     GLOWING,
     LEVITATION,
+    DARKNESS,
     /*Mechanical*/
     IGNITE(false) {
         @Override

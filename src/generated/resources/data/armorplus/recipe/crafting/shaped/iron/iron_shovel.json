@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:iron_shovels",
+  "key": {
+    "M": {
+      "item": "armorplus:enhanced_iron"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " M ",
+    " S ",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:iron_shovel"
+  }
+}

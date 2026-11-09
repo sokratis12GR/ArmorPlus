@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:cobalt_swords",
+  "key": {
+    "M": {
+      "item": "armorplus:cobalt_ingot"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "M  ",
+    "M  ",
+    "S  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:cobalt_sword"
+  }
+}

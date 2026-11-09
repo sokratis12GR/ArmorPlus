@@ -1,7 +1,6 @@
 package com.sofodev.armorplus.registry.item.tool.properties.tool;
 
 import com.sofodev.armorplus.config.ArmorPlusConfig;
-import com.sofodev.armorplus.config.ArmorPlusConfig.AdvancedMaterialConfig;
 import com.sofodev.armorplus.config.ArmorPlusConfig.MaterialConfig;
 import com.sofodev.armorplus.registry.item.APRarity;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
@@ -30,32 +29,32 @@ import static net.minecraft.world.item.Items.SOUL_SAND;
 import static net.minecraft.world.level.block.Blocks.*;
 
 public enum APToolMaterial implements IAPTool {
-    COAL_MAT(COAL, COAL_PROP, () -> withBuffs(new BuffInstance(BLINDNESS, 0, 10))) {
+    COAL_MAT(COAL, COAL_PROP) {
         @Override
         public MaterialConfig config() {
             return config.coalMaterial;
         }
-    }, REDSTONE_MAT(REDSTONE, REDSTONE_PROP, () -> withBuffs(new BuffInstance(MINING_FATIGUE, 1, 10))) {
+    }, REDSTONE_MAT(REDSTONE, REDSTONE_PROP) {
         @Override
         public MaterialConfig config() {
             return config.redstoneMaterial;
         }
-    }, LAPIS_MAT(LAPIS, LAPIS_PROP, () -> withBuffs(new BuffInstance(NAUSEA, 0, 10))) {
+    }, LAPIS_MAT(LAPIS, LAPIS_PROP) {
         @Override
         public MaterialConfig config() {
             return config.lapisMaterial;
         }
-    }, EMERALD_MAT(EMERALD, EMERALD_PROP, () -> withBuffs(new BuffInstance(SLOWNESS, 0, 20))) {
+    }, EMERALD_MAT(EMERALD, EMERALD_PROP) {
         @Override
         public MaterialConfig config() {
             return config.emeraldMaterial;
         }
-    }, OBSIDIAN_MAT(OBSIDIAN, OBSIDIAN_PROP, () -> withBuffs(new BuffInstance(WEAKNESS, 2, 20))) {
+    }, OBSIDIAN_MAT(OBSIDIAN, OBSIDIAN_PROP) {
         @Override
         public MaterialConfig config() {
             return config.obsidianMaterial;
         }
-    }, INFUSED_LAVA_MAT(INFUSED_LAVA, INFUSED_LAVA_PROP, () -> withBuffs(new BuffInstance(IGNITE))) {
+    }, INFUSED_LAVA_MAT(INFUSED_LAVA, INFUSED_LAVA_PROP) {
         @Override
         public void onBlockMined(ItemStack stack, Level world, BlockState state, BlockPos pos, LivingEntity player) {
             if (player instanceof Player) {
@@ -72,17 +71,17 @@ public enum APToolMaterial implements IAPTool {
         public MaterialConfig config() {
             return config.infusedLavaMaterial;
         }
-    }, GUARDIAN_MAT(GUARDIAN, GUARDIAN_PROP, () -> withBuffs(new BuffInstance(WEAKNESS, 1, 4), new BuffInstance(NAUSEA, 1, 20))) {
+    }, GUARDIAN_MAT(GUARDIAN, GUARDIAN_PROP) {
         @Override
         public void onBlockMined(ItemStack stack, Level world, BlockState state, BlockPos pos, LivingEntity player) {
             //TODO: WIP (new guardian pickaxe effect)
         }
 
         @Override
-        public AdvancedMaterialConfig config() {
+        public MaterialConfig config() {
             return config.guardianMaterial;
         }
-    }, SUPER_STAR_MAT(SUPER_STAR, SUPER_STAR_PROP, () -> withBuffs(new BuffInstance(WITHER, 1, 4), new BuffInstance(GLOWING, 0, 20))) {
+    }, SUPER_STAR_MAT(SUPER_STAR, SUPER_STAR_PROP) {
         @Override
         public void onBlockMined(ItemStack stack, Level world, BlockState state, BlockPos pos, LivingEntity player) {
             if (state == STONE.defaultBlockState() && random.nextInt(3) == 1) {
@@ -94,10 +93,10 @@ public enum APToolMaterial implements IAPTool {
         }
 
         @Override
-        public AdvancedMaterialConfig config() {
+        public MaterialConfig config() {
             return config.superStarMaterial;
         }
-    }, ENDER_DRAGON_MAT(ENDER_DRAGON, ENDER_DRAGON_PROP, () -> withBuffs(new BuffInstance(WITHER, 3, 4), new BuffInstance(SLOWNESS, 1, 20))) {
+    }, ENDER_DRAGON_MAT(ENDER_DRAGON, ENDER_DRAGON_PROP) {
         @Override
         public void onBlockMined(ItemStack stack, Level world, BlockState state, BlockPos pos, LivingEntity player) {
             if (state == END_STONE.defaultBlockState() && random.nextInt(3) == 1) {
@@ -106,10 +105,10 @@ public enum APToolMaterial implements IAPTool {
         }
 
         @Override
-        public AdvancedMaterialConfig config() {
+        public MaterialConfig config() {
             return config.enderDragonMaterial;
         }
-    }, SLAYER_MAT(SLAYER, SLAYER_PROP, () -> withBuffs(new BuffInstance(WITHER, 3, 4), new BuffInstance(SLOWNESS, 1, 20), new BuffInstance(GLOWING, 0, 20), new BuffInstance(WEAKNESS, 1, 4), new BuffInstance(NAUSEA, 1, 20))) {
+    }, SLAYER_MAT(SLAYER, SLAYER_PROP) {
         @Override
         public void onBlockMined(ItemStack stack, Level world, BlockState state, BlockPos pos, LivingEntity player) {
             if (state == END_STONE.defaultBlockState() && random.nextInt(3) == 1) {
@@ -127,6 +126,113 @@ public enum APToolMaterial implements IAPTool {
         public ArmorPlusConfig.IMaterialConfig config() {
             return config.slayerMaterial;
         }
+    }, WARDEN_MAT(WARDEN, WARDEN_PROP) {
+        @Override
+        public void onBlockMined(ItemStack stack, Level world, BlockState state, BlockPos pos, LivingEntity player) {
+            if (state == SCULK.defaultBlockState() && random.nextInt(3) == 1) {
+                player.spawnAtLocation(new ItemStack(Items.ECHO_SHARD, 1), 0);
+            }
+        }
+
+        @Override
+        public MaterialConfig config() {
+            return config.wardenMaterial;
+        }
+    }, AMETHYST_MAT(AMETHYST, AMETHYST_PROP) {
+        @Override
+        public MaterialConfig config() {
+            return config.amethystMaterial;
+        }
+    }, QUARTZ_MAT(QUARTZ, QUARTZ_PROP) {
+        @Override
+        public MaterialConfig config() {
+            return config.quartzMaterial;
+        }
+    }, GLOWSTONE_MAT(APRarity.GLOWSTONE, GLOWSTONE_PROP) {
+        @Override
+        public MaterialConfig config() {
+            return config.glowstoneMaterial;
+        }
+    }, HONEY_MAT(HONEY, HONEY_PROP) {
+        @Override
+        public MaterialConfig config() {
+            return config.honeyMaterial;
+        }
+    }, CHICKEN_MAT(CHICKEN, CHICKEN_PROP) {
+        @Override
+        public MaterialConfig config() {
+            return config.chickenMaterial;
+        }
+    }, SLIME_MAT(SLIME, SLIME_PROP) {
+        @Override
+        public MaterialConfig config() {
+            return config.slimeMaterial;
+        }
+    }, ARDITE_MAT(ARDITE, ARDITE_PROP) {
+        @Override
+        public MaterialConfig config() {
+            return config.arditeMaterial;
+        }
+    }, COBALT_MAT(COBALT, COBALT_PROP) {
+        @Override
+        public MaterialConfig config() {
+            return config.cobaltMaterial;
+        }
+    }, KNIGHT_SLIME_MAT(KNIGHT_SLIME, KNIGHT_SLIME_PROP) {
+        @Override
+        public MaterialConfig config() {
+            return config.knightSlimeMaterial;
+        }
+    }, PIG_IRON_MAT(PIG_IRON, PIG_IRON_PROP) {
+        @Override
+        public MaterialConfig config() {
+            return config.pigIronMaterial;
+        }
+    }, MANYULLYN_MAT(MANYULLYN, MANYULLYN_PROP) {
+        @Override
+        public MaterialConfig config() {
+            return config.manyullynMaterial;
+        }
+    }, FROST_MAT(FROST, FROST_PROP) {
+        @Override
+        public MaterialConfig config() {
+            return config.frostMaterial;
+        }
+    }, FROST_LAVA_MAT(FROST_LAVA, FROST_LAVA_PROP) {
+        @Override
+        public MaterialConfig config() {
+            return config.frostLavaMaterial;
+        }
+    }, CHAINMAIL_MAT(CHAINMAIL, CHAINMAIL_PROP) {
+        @Override
+        public MaterialConfig config() {
+            return config.enhancedChainmailMaterial;
+        }
+    }, GOLDEN_MAT(GOLDEN, GOLDEN_PROP) {
+        @Override
+        public MaterialConfig config() {
+            return config.enhancedGoldenMaterial;
+        }
+    }, COPPER_MAT(COPPER, COPPER_PROP) {
+        @Override
+        public MaterialConfig config() {
+            return config.enhancedCopperMaterial;
+        }
+    }, IRON_MAT(IRON, IRON_PROP) {
+        @Override
+        public MaterialConfig config() {
+            return config.enhancedIronMaterial;
+        }
+    }, DIAMOND_MAT(DIAMOND, DIAMOND_PROP) {
+        @Override
+        public MaterialConfig config() {
+            return config.enhancedDiamondMaterial;
+        }
+    }, NETHERITE_MAT(NETHERITE, NETHERITE_PROP) {
+        @Override
+        public MaterialConfig config() {
+            return config.enhancedNetheriteMaterial;
+        }
     };
 
     public final Random random = new Random();
@@ -135,23 +241,15 @@ public enum APToolMaterial implements IAPTool {
     private final ChatFormatting rarity;
     private final double bowDamageBonus;
 
-    APToolMaterial(APRarity rarity, Tier properties, Supplier<List<BuffInstance>> buffs) {
-        this(rarity.getColor(), properties, properties.getAttackDamageBonus(), buffs);
-    }
-
     APToolMaterial(APRarity rarity, Tier properties) {
-        this(rarity.getColor(), properties, properties.getAttackDamageBonus(), Collections::emptyList);
+        this(rarity.getColor(), properties, properties.getAttackDamageBonus());
     }
 
-    APToolMaterial(ChatFormatting rarity, Tier properties, double bowDamageBonus, Supplier<List<BuffInstance>> buffs) {
+    APToolMaterial(ChatFormatting rarity, Tier properties, double bowDamageBonus) {
         this.rarity = rarity;
         this.properties = properties;
         this.bowDamageBonus = bowDamageBonus;
-        this.buffs = buffs;
-    }
-
-    private static List<BuffInstance> withBuffs(BuffInstance... buffs) {
-        return Arrays.asList(buffs);
+        this.buffs = () -> config() instanceof MaterialConfig cfg ? cfg.weaponBuffInstances() : List.of();
     }
 
     @Override

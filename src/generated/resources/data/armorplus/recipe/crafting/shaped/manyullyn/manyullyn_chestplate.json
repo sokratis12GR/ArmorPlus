@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:manyullyn",
+  "key": {
+    "S": {
+      "item": "armorplus:manyullyn_ingot"
+    }
+  },
+  "pattern": [
+    "S S",
+    "SSS",
+    "SSS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:manyullyn_chestplate"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:knight_slime",
+  "key": {
+    "S": {
+      "item": "armorplus:knight_slime_crystal"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "S S",
+    "S S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:knight_slime_leggings"
+  }
+}

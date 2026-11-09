@@ -21,8 +21,6 @@
   "enchantment.armorplus.furious.desc": "Когато бъдете ударен, вие побеснявате, това ви дава сила и скорост в зависимост от нивото.",
   "enchantment.armorplus.soul_stealer": "Крадец на Душите",
   "enchantment.armorplus.soul_stealer.desc": "Краде душата на врага",
-  "enchantment.armorplus.unknown": "Неизвестен",
-  "enchantment.armorplus.unknown.desc": "Осигурява различен ефект в зависимост от типа на предмета, върху който се прилага",
   "enchantment.armorplus.soul_harden": "Soul Harden",
   "enchantment.armorplus.soul_harden.desc": "Makes your armor 'Unbreakable', but will break after 2 deaths while equipped.",
   "_comment": "ITEMS",

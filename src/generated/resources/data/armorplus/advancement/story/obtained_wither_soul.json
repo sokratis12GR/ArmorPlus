@@ -10,16 +10,6 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
-    },
-    "armorplus:soul_wither_skeleton": {
-      "conditions": {
-        "items": [
-          {
-            "items": "armorplus:soul_wither_skeleton"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "display": {
@@ -37,8 +27,7 @@
   },
   "requirements": [
     [
-      "armorplus:soul_wither_boss",
-      "armorplus:soul_wither_skeleton"
+      "armorplus:soul_wither_boss"
     ]
   ],
   "rewards": {

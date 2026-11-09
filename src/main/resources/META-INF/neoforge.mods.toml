@@ -3,6 +3,9 @@ loaderVersion = "${loader_version_range}"
 license = "${mod_license}"
 issueTrackerURL = "https://github.com/sokratis12GR/ArmorPlus/issues"
 
+[[accessTransformers]]
+file = "META-INF/armorplus_at.cfg"
+
 [[mods]]
 modId = "${mod_id}"
 version = "${mod_version}"
@@ -31,7 +34,7 @@ side = "BOTH"
 [[dependencies.${ mod_id }]]
 modId = "thedragonlib"
 type = "required"
-versionRange = "[1.0.0,)"
+versionRange = "[1.2.1,)"
 ordering = "AFTER"
 side = "BOTH"
 

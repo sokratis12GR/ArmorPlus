@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.item.special;
 
+import net.minecraft.world.flag.FeatureFlagSet;
+import com.sofodev.armorplus.config.AvailabilityConfig;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -13,6 +15,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 
 import java.util.List;
 
+import static com.sofodev.armorplus.utils.ToolTipUtils.addItemLore;
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
 import static net.minecraft.ChatFormatting.DARK_PURPLE;
 
@@ -50,6 +53,7 @@ public class SoulItem extends Item {
                 }
             }
         }
+        addItemLore(tooltip, this);
         super.appendHoverText(stack, ctx, tooltip, flagIn);
     }
 
@@ -57,5 +61,10 @@ public class SoulItem extends Item {
     @Override
     public boolean isFoil(ItemStack stack) {
         return isBoss;
+    }
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.itemEnabled(this);
     }
 }

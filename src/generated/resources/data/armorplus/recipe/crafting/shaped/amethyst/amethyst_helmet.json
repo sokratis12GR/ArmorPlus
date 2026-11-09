@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:amethyst",
+  "key": {
+    "S": {
+      "item": "minecraft:amethyst_block"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "S S",
+    "   "
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:amethyst_helmet"
+  }
+}

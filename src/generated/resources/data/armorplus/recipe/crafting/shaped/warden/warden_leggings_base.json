@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:warden",
+  "key": {
+    "C": {
+      "item": "minecraft:sculk_catalyst"
+    },
+    "S": {
+      "item": "minecraft:echo_shard"
+    }
+  },
+  "pattern": [
+    "SCS",
+    "S S",
+    "S S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:warden_leggings_base"
+  }
+}

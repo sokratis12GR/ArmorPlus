@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:manyullyn_shovels",
+  "key": {
+    "M": {
+      "item": "armorplus:manyullyn_ingot"
+    },
+    "S": {
+      "item": "armorplus:obsidian_stick"
+    }
+  },
+  "pattern": [
+    " M ",
+    " S ",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:manyullyn_shovel"
+  }
+}

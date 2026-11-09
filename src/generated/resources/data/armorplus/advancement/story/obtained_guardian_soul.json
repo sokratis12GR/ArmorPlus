@@ -10,16 +10,6 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
-    },
-    "armorplus:soul_guardian": {
-      "conditions": {
-        "items": [
-          {
-            "items": "armorplus:soul_guardian"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "display": {
@@ -37,7 +27,6 @@
   },
   "requirements": [
     [
-      "armorplus:soul_guardian",
       "armorplus:soul_elder_guardian"
     ]
   ],

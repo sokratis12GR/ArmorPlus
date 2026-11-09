@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:copper_bows",
+  "key": {
+    "M": {
+      "item": "armorplus:enhanced_copper"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    "SM ",
+    "S M",
+    "SM "
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:copper_bow"
+  }
+}

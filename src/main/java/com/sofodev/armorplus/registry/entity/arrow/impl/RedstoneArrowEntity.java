@@ -3,7 +3,9 @@ package com.sofodev.armorplus.registry.entity.arrow.impl;
 import com.sofodev.armorplus.registry.entity.arrow.APArrowEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
 import static com.sofodev.armorplus.registry.ModEntities.REDSTONE_ARROW;
 import static com.sofodev.armorplus.registry.entity.arrow.APArrowProperty.REDSTONE_ARROW_PROP;
@@ -11,20 +13,11 @@ import static com.sofodev.armorplus.registry.entity.arrow.APArrowProperty.REDSTO
 public class RedstoneArrowEntity extends APArrowEntity {
 
     public RedstoneArrowEntity(EntityType<? extends APArrowEntity> type, Level world) {
-        super(type, world);
+        super(type, world, REDSTONE_ARROW_PROP);
     }
 
-    public RedstoneArrowEntity(Level world) {
-        super(REDSTONE_ARROW.get(), world, REDSTONE_ARROW_PROP);
+    public RedstoneArrowEntity(LivingEntity shooter, Level world, ItemStack ammo, @Nullable ItemStack weapon) {
+        super(REDSTONE_ARROW.get(), shooter, world, ammo, weapon, REDSTONE_ARROW_PROP);
     }
-
-    public RedstoneArrowEntity(double x, double y, double z, Level world) {
-        super(REDSTONE_ARROW.get(), x, y, z, world, REDSTONE_ARROW_PROP);
-    }
-
-    public RedstoneArrowEntity(LivingEntity shooter, Level world) {
-        super(REDSTONE_ARROW.get(), shooter, world, REDSTONE_ARROW_PROP);
-    }
-
 
 }

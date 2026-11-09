@@ -93,6 +93,136 @@ public class ModAdvancementProvider implements AdvancementProvider.AdvancementGe
         );
         saver.accept(lapisWeaponry);
 
+        // ── Amethyst Armor & Weaponry ──
+        AdvancementHolder amethystArmor = createAdvancement(
+                "amethyst_armor",
+                root,
+                getAPItem("amethyst_chestplate"),
+                null,
+                AdvancementType.TASK,
+                true,
+                true,
+                AND,
+                "armorplus:amethyst_helmet", "armorplus:amethyst_chestplate",
+                "armorplus:amethyst_leggings", "armorplus:amethyst_boots"
+        );
+        saver.accept(amethystArmor);
+
+        AdvancementHolder amethystWeaponry = createAdvancement(
+                "amethyst_weaponry",
+                amethystArmor,
+                getAPItem("amethyst_sword"),
+                null,
+                AdvancementType.TASK,
+                true,
+                true,
+                AND,
+                "armorplus:amethyst_sword", "armorplus:amethyst_battle_axe", "armorplus:amethyst_mace"
+        );
+        saver.accept(amethystWeaponry);
+
+        // ── Quartz Armor & Weaponry ──
+        AdvancementHolder quartzArmor = createAdvancement(
+                "quartz_armor",
+                root,
+                getAPItem("quartz_chestplate"),
+                null,
+                AdvancementType.TASK,
+                true,
+                true,
+                AND,
+                "armorplus:quartz_helmet", "armorplus:quartz_chestplate",
+                "armorplus:quartz_leggings", "armorplus:quartz_boots"
+        );
+        saver.accept(quartzArmor);
+
+        AdvancementHolder quartzWeaponry = createAdvancement(
+                "quartz_weaponry",
+                quartzArmor,
+                getAPItem("quartz_sword"),
+                null,
+                AdvancementType.TASK,
+                true,
+                true,
+                AND,
+                "armorplus:quartz_sword", "armorplus:quartz_battle_axe", "armorplus:quartz_mace"
+        );
+        saver.accept(quartzWeaponry);
+
+        // ── Glowstone Armor & Weaponry ──
+        AdvancementHolder glowstoneArmor = createAdvancement(
+                "glowstone_armor",
+                root,
+                getAPItem("glowstone_chestplate"),
+                null,
+                AdvancementType.TASK,
+                true,
+                true,
+                AND,
+                "armorplus:glowstone_helmet", "armorplus:glowstone_chestplate",
+                "armorplus:glowstone_leggings", "armorplus:glowstone_boots"
+        );
+        saver.accept(glowstoneArmor);
+
+        AdvancementHolder glowstoneWeaponry = createAdvancement(
+                "glowstone_weaponry",
+                glowstoneArmor,
+                getAPItem("glowstone_sword"),
+                null,
+                AdvancementType.TASK,
+                true,
+                true,
+                AND,
+                "armorplus:glowstone_sword", "armorplus:glowstone_battle_axe", "armorplus:glowstone_mace"
+        );
+        saver.accept(glowstoneWeaponry);
+
+        // ── Parity sets (Chicken, Slime, Tinkers', Frost and Enhanced vanilla) ──
+        for (String set : new String[]{"chicken", "slime", "ardite", "cobalt", "knight_slime", "pig_iron", "manyullyn", "frost", "frost_lava", "chainmail", "golden", "copper", "iron", "diamond", "netherite"}) {
+            // Copper armor isn't registered on 1.21.1, so copper weaponry hangs off the root.
+            AdvancementHolder setArmor = root;
+            if (!set.equals("copper")) {
+                setArmor = createAdvancement(
+                        set + "_armor", root, getAPItem(set + "_chestplate"), null,
+                        AdvancementType.TASK, true, true, AND,
+                        "armorplus:" + set + "_helmet", "armorplus:" + set + "_chestplate",
+                        "armorplus:" + set + "_leggings", "armorplus:" + set + "_boots");
+                saver.accept(setArmor);
+            }
+            saver.accept(createAdvancement(
+                    set + "_weaponry", setArmor, getAPItem(set + "_sword"), null,
+                    AdvancementType.TASK, true, true, AND,
+                    "armorplus:" + set + "_sword", "armorplus:" + set + "_battle_axe", "armorplus:" + set + "_mace"));
+        }
+
+        // ── Honey Armor & Weaponry ──
+        AdvancementHolder honeyArmor = createAdvancement(
+                "honey_armor",
+                root,
+                getAPItem("honey_chestplate"),
+                null,
+                AdvancementType.TASK,
+                true,
+                true,
+                AND,
+                "armorplus:honey_helmet", "armorplus:honey_chestplate",
+                "armorplus:honey_leggings", "armorplus:honey_boots"
+        );
+        saver.accept(honeyArmor);
+
+        AdvancementHolder honeyWeaponry = createAdvancement(
+                "honey_weaponry",
+                honeyArmor,
+                getAPItem("honey_sword"),
+                null,
+                AdvancementType.TASK,
+                true,
+                true,
+                AND,
+                "armorplus:honey_sword", "armorplus:honey_battle_axe", "armorplus:honey_mace"
+        );
+        saver.accept(honeyWeaponry);
+
         // ── Redstone Armor & Weaponry ──
         AdvancementHolder redstoneArmor = createAdvancement(
                 "redstone_armor",
@@ -249,7 +379,7 @@ public class ModAdvancementProvider implements AdvancementProvider.AdvancementGe
                 true,
                 true,
                 OR,
-                "armorplus:soul_guardian", "armorplus:soul_elder_guardian"
+                "armorplus:soul_elder_guardian"
         );
         saver.accept(guardianSoulObtained);
 
@@ -262,7 +392,7 @@ public class ModAdvancementProvider implements AdvancementProvider.AdvancementGe
                 true,
                 true,
                 OR,
-                "armorplus:soul_wither_boss", "armorplus:soul_wither_skeleton"
+                "armorplus:soul_wither_boss"
         );
         saver.accept(witherSoulObtained);
 
@@ -276,7 +406,7 @@ public class ModAdvancementProvider implements AdvancementProvider.AdvancementGe
                 true,
                 true,
                 OR,
-                "armorplus:soul_ender_dragon", "armorplus:soul_enderman"
+                "armorplus:soul_ender_dragon"
         );
         saver.accept(dragonSoulObtained);
 
@@ -365,6 +495,22 @@ public class ModAdvancementProvider implements AdvancementProvider.AdvancementGe
                 "armorplus:ender_dragon_sword", "armorplus:ender_dragon_battle_axe", "armorplus:ender_dragon_mace"
         );
         saver.accept(enderWeaponry);
+
+        // ── Warden Armor ──
+        AdvancementHolder wardenArmor = createAdvancement(
+                "warden_armor",
+                dragonSoulObtained,
+                getAPItem("warden_chestplate"),
+                null,
+                AdvancementType.CHALLENGE,
+                true,
+                true,
+                AND,
+                "armorplus:warden_helmet", "armorplus:warden_chestplate",
+                "armorplus:warden_leggings", "armorplus:warden_boots"
+        );
+        saver.accept(wardenArmor);
+
 
         // ── Slayer Armor ──
         AdvancementHolder slayerSoulCrafted = createAdvancement(

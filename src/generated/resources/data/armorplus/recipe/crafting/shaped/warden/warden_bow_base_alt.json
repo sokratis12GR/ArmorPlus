@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:warden_bows",
+  "key": {
+    "C": {
+      "item": "minecraft:sculk_catalyst"
+    },
+    "M": {
+      "item": "minecraft:echo_shard"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    " MS",
+    "C S",
+    " MS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:warden_bow_base"
+  }
+}

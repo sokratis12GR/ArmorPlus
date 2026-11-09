@@ -15,6 +15,9 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import com.sofodev.armorplus.registry.block.special.EmpoweringPedestalBlock;
+import com.sofodev.armorplus.registry.block.special.EmpoweringPedestalBlockEntity;
+import com.sofodev.armorplus.registry.block.special.RuneAltarBlock;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
@@ -63,6 +66,10 @@ public class ModBlocks {
             .defaultBlockState(), SNOW_BRICK.get()));
     public static final DeferredHolder<Block, Block> SNOW_BRICK_SLAB = registerBlockWithItem("snow_brick_slab", () -> new StoneBrickSlabBlock(SNOW_BRICK.get()));
     public static final DeferredHolder<Block, Block> PETRIFIED_SOULS = registerBlockWithItem("petrified_souls", () -> new APBlock(ofFullCopy(Blocks.TERRACOTTA)));
+    public static final DeferredHolder<Block, Block> RUNE_ALTAR = registerBlockWithItem("rune_altar", RuneAltarBlock::new);
+    public static final DeferredHolder<Block, Block> EMPOWERING_PEDESTAL = registerBlockWithItem("empowering_pedestal", EmpoweringPedestalBlock::new);
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<EmpoweringPedestalBlockEntity>> EMPOWERING_PEDESTAL_ENTITY = TILE_ENTITIES.register("empowering_pedestal",
+            () -> build(BlockEntityType.Builder.of(EmpoweringPedestalBlockEntity::new, EMPOWERING_PEDESTAL.get())));
     public static final DeferredHolder<Block, Block> SOUL_BOX = registerBlockWithItem("soul_box", SoulBox::new);
     //    public static final DeferredHolder<Block, BlockEntityType<TrophyTile>> TROPHY_TYPE = TILE_ENTITIES.register("trophy", () -> build(BlockEntityType.Builder.of(TrophyTile::new, TROPHY.get())));
 

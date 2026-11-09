@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:knight_slime_battle_axes",
+  "key": {
+    "M": {
+      "item": "armorplus:knight_slime_crystal"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "M M",
+    "MSM",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:knight_slime_battle_axe"
+  }
+}

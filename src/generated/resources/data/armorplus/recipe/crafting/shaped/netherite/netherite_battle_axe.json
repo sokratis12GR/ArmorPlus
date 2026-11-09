@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:netherite_battle_axes",
+  "key": {
+    "M": {
+      "item": "armorplus:enhanced_netherite"
+    },
+    "S": {
+      "item": "armorplus:obsidian_stick"
+    }
+  },
+  "pattern": [
+    "M M",
+    "MSM",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:netherite_battle_axe"
+  }
+}

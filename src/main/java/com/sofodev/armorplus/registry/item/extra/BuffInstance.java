@@ -10,6 +10,10 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
+import com.sofodev.armorplus.registry.item.armor.SetRequirement;
+import net.minecraft.core.Holder;
+import net.minecraft.world.effect.MobEffect;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Locale;
 
@@ -22,9 +26,12 @@ public class BuffInstance {
 
     private final boolean instant;
     private final MobEffectInstance effect;
+    private final int durationTicks;
     private IBuff buff;
     private int amplifier;
     private boolean enabled;
+    /** The pieces of the set the effect needs ("@..." in the entry), null for the default, see {@link SetRequirement} */
+    private @Nullable SetRequirement requirement;
 
     public BuffInstance(boolean enabled, IBuff buff, int amplifier) {
         this(enabled ? buff : NONE, amplifier, 20, true);
@@ -49,8 +56,9 @@ public class BuffInstance {
         this.buff = buff;
         this.amplifier = amplifier;
         this.instant = instant;
+        this.durationTicks = convertToSeconds(duration);
         if (buff.isEffect() && buff.getEffect() != null) {
-            this.effect = new MobEffectInstance(buff.getEffect(), convertToSeconds(duration), amplifier, false, false);
+            this.effect = new MobEffectInstance(buff.getEffect(), durationTicks, amplifier, false, false);
         } else {
             this.effect = null;
         }
@@ -64,6 +72,7 @@ public class BuffInstance {
         this.buff = enabled ? buff : NONE;
         this.amplifier = -1;
         this.instant = true;
+        this.durationTicks = convertToSeconds(20);
         this.effect = new MobEffectInstance(ModPotions.EMPTY.getDelegate());
         this.enabled = true;
     }
@@ -72,8 +81,24 @@ public class BuffInstance {
         this.buff = buff;
         this.amplifier = -1;
         this.instant = true;
+        this.durationTicks = convertToSeconds(20);
         this.effect = new MobEffectInstance(ModPotions.EMPTY.getDelegate());
         this.enabled = true;
+    }
+
+    private BuffInstance(BuffInstance other, int amplifier) {
+        this.buff = other.buff;
+        this.amplifier = amplifier;
+        this.instant = other.instant;
+        this.durationTicks = other.durationTicks;
+        this.effect = other.effect == null ? null : new MobEffectInstance(other.effect.getEffect(), other.durationTicks, amplifier, false, false);
+        this.enabled = other.enabled;
+        this.requirement = other.requirement;
+    }
+
+    /** @return a copy of this buff at the level (1 is the lowest) */
+    public BuffInstance atLevel(int level) {
+        return new BuffInstance(this, level - 1);
     }
 
     public static BuffInstance build(IBuff buff, int amplifier, int duration, boolean instant) {
@@ -97,35 +122,65 @@ public class BuffInstance {
      * <p>
      * Applies Buff's effects.
      * <p>
-     * If the buff is an effect it will be either applied instantly (even if you already have the effect))
+     * If the buff is an effect it is applied even if the player already has the effect, which refreshes its duration
+     * and upgrades a weaker level. The caller decides when that's needed, see ModGlobalEvents.
      */
     @SuppressWarnings("removal")
     public void onInventoryTick(ItemStack stack, Level world, Player player) {
         buff.onInventoryTick(stack, world, player);
 
         if (buff.isEffect()) {
-            MobEffectInstance currentEffect = effect;
-            if (currentEffect == null) return;
-            if (instant || !player.hasEffect(currentEffect.getEffect())) {
-                player.addEffect(currentEffect);
-            }
+            Holder<MobEffect> holder = buff.getEffect();
+            if (holder == null) return;
+            player.addEffect(new MobEffectInstance(holder, durationTicks, amplifier, false, false));
         }
     }
 
     public void hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         buff.hitEntity(stack, target, attacker);
         if (buff.isEffect()) {
-            MobEffectInstance currentEffect = effect;
-            if (currentEffect == null) return;
-            target.addEffect(currentEffect);
+            Holder<MobEffect> holder = buff.getEffect();
+            if (holder == null) return;
+            if (holder.value().isInstantenous()) {
+                applyInstantOnHit(holder.value(), target, attacker);
+            } else {
+                target.addEffect(new MobEffectInstance(holder, durationTicks, amplifier, false, false));
+            }
         }
+    }
+
+    /** Applies the effect once per hit. The hit's own invulnerability frames would block its damage, so they are lifted for it. */
+    private void applyInstantOnHit(MobEffect effect, LivingEntity target, LivingEntity attacker) {
+        if (target.level().isClientSide()) return;
+        int invulnerableTime = target.invulnerableTime;
+        target.invulnerableTime = 0;
+        effect.applyInstantenousEffect(attacker, attacker, target, amplifier, 1.0);
+        target.invulnerableTime = Math.max(target.invulnerableTime, invulnerableTime);
     }
 
     /**
      * Returns a potion effect, might be {@link Potions#} if the buff provided is not an effect.
      */
     public MobEffectInstance getEffect() {
+        if (effect == null && buff instanceof EffectBuff) {
+            Holder<MobEffect> holder = buff.getEffect();
+            return holder != null ? new MobEffectInstance(holder, durationTicks, amplifier, false, false) : null;
+        }
         return effect;
+    }
+
+    /** @return the effect duration in ticks (on-hit effects of weapons use it as is) */
+    public int getDurationTicks() {
+        return durationTicks;
+    }
+
+    public @Nullable SetRequirement getRequirement() {
+        return this.requirement;
+    }
+
+    public BuffInstance setRequirement(@Nullable SetRequirement requirement) {
+        this.requirement = requirement;
+        return this;
     }
 
     public IBuff getBuff() {
@@ -156,6 +211,7 @@ public class BuffInstance {
     }
 
     public MutableComponent getTranslatedName() {
+        if (this.buff instanceof EffectBuff effectBuff) return effectBuff.getDisplayName().withStyle(DARK_AQUA);
         String name = this.buff.name().toLowerCase(Locale.ENGLISH);
         return this.buff.isEffect() ? translate(DARK_AQUA, "armorplus.effect." + name) : translate(DARK_AQUA, "armorplus.buff." + name);
     }

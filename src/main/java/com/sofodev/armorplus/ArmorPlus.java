@@ -1,11 +1,28 @@
 package com.sofodev.armorplus;
 
+import com.sofodev.armorplus.client.config.APConfigSectionScreen;
+import com.sofodev.thedragonlib.client.config.ConfigScreenHelper;
+import net.neoforged.fml.loading.FMLEnvironment;
+import com.sofodev.armorplus.client.RuneMarkerDecorator;
+import com.sofodev.armorplus.client.SocketOverlayDecorator;
+import com.sofodev.armorplus.registry.ModItems;
+import net.minecraft.core.registries.BuiltInRegistries;
+import com.sofodev.armorplus.client.RitualScreen;
+import com.sofodev.armorplus.client.RuneAltarScreen;
+import com.sofodev.armorplus.client.renderer.EmpoweringPedestalRenderer;
+import com.sofodev.armorplus.registry.ModBlocks;
 import com.sofodev.armorplus.config.ArmorPlusConfig;
-import com.sofodev.armorplus.config.ConfigHelper;
+import com.sofodev.armorplus.config.ArmorPlusStatsConfig;
+import com.sofodev.armorplus.registry.ModAttachments;
+import com.sofodev.armorplus.registry.ModDataComponents;
 import com.sofodev.armorplus.registry.ModEnchantmentEffects;
+import com.sofodev.armorplus.registry.ModLootModifiers;
+import com.sofodev.armorplus.registry.ModMenus;
+import com.sofodev.armorplus.registry.rune.RuneEffectTypes;
 import com.sofodev.armorplus.registry.block.castle.BrickColor;
 import com.sofodev.armorplus.registry.entity.arrow.APArrowEntity;
 import com.sofodev.armorplus.registry.entity.arrow.APArrowRenderer;
+import com.sofodev.armorplus.registry.item.armor.ArmorEffects;
 import com.sofodev.armorplus.registry.item.tool.properties.mace.APMaceMaterial;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolProperties;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -20,9 +37,14 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
+import com.sofodev.armorplus.registry.item.tool.ToolEffects;
+import com.sofodev.thedragonlib.config.ConfigHelper;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterItemDecorationsEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -61,11 +83,19 @@ public class ArmorPlus {
     public ArmorPlus(IEventBus modEventBus, ModContainer modContainer) {
         instance = this;
 
-        ArmorPlus.config = ConfigHelper.register(
-                modContainer,
-                ModConfig.Type.COMMON,
-                ArmorPlusConfig::create
-        );
+        ArmorPlus.config = ConfigHelper.buildAndRegister(
+                modContainer, ModConfig.Type.COMMON, ArmorPlusConfig.COMMON_FILE, ArmorPlusConfig::create).values();
+        // One file per topic, so each stays short (see ArmorPlusConfig)
+        ConfigHelper.buildAndRegister(modContainer, ModConfig.Type.COMMON, ArmorPlusConfig.EFFECTS_FILE, ArmorPlusConfig::createEffects);
+        ConfigHelper.buildAndRegister(modContainer, ModConfig.Type.COMMON, ArmorPlusConfig.DROPS_FILE, ArmorPlusConfig::createDrops);
+        ConfigHelper.buildAndRegister(modContainer, ModConfig.Type.COMMON, ArmorPlusConfig.RUNES_FILE, ArmorPlusConfig::createRunes);
+        ConfigHelper.buildAndRegister(modContainer, ModConfig.Type.CLIENT, ArmorPlusConfig.CLIENT_FILE, ArmorPlusConfig::createClient);
+        // Equipment stats are baked into the items, so they must be loaded before the items register
+        ArmorPlusStatsConfig.register(modContainer);
+
+        if (FMLEnvironment.dist.isClient()) {
+            ConfigScreenHelper.registerSectionScreen(modContainer, APConfigSectionScreen::new);
+        }
 
         MATERIALS.register(modEventBus);
         BLOCKS.register(modEventBus);
@@ -74,11 +104,24 @@ public class ArmorPlus {
         CREATIVE_MODE_TABS.register(modEventBus);
         TILE_ENTITIES.register(modEventBus);
         EFFECTS.register(modEventBus);
+        ModAttachments.ATTACHMENT_TYPES.register(modEventBus);
+        ModDataComponents.DATA_COMPONENTS.register(modEventBus);
+        ModMenus.MENUS.register(modEventBus);
+        ModLootModifiers.LOOT_MODIFIERS.register(modEventBus);
+        RuneEffectTypes.register(modEventBus);
 
         ModEnchantmentEffects.register(modEventBus);
 
         PROFESSIONS.register(modEventBus);
         POI_TYPES.register(modEventBus);
+
+        // parsed buff lists are cached per player, see ArmorEffects
+        modEventBus.addListener(ModConfigEvent.Reloading.class, e -> {
+            if (e.getConfig().getModId().equals(MODID)) {
+                ArmorEffects.clearCaches();
+                ToolEffects.clearCaches();
+            }
+        });
     }
 
     public static ArmorPlus getInstance() {
@@ -108,6 +151,30 @@ public class ArmorPlus {
             registerRenderingHandler(event, GUARDIAN_ARROW.get(), "guardian");
             registerRenderingHandler(event, SUPER_STAR_ARROW.get(), "super_star");
             registerRenderingHandler(event, ENDER_DRAGON_ARROW.get(), "ender_dragon");
+            registerRenderingHandler(event, WARDEN_ARROW.get(), "warden");
+            registerRenderingHandler(event, AMETHYST_ARROW.get(), "amethyst");
+            registerRenderingHandler(event, QUARTZ_ARROW.get(), "quartz");
+            registerRenderingHandler(event, GLOWSTONE_ARROW.get(), "glowstone");
+            registerRenderingHandler(event, HONEY_ARROW.get(), "honey");
+            event.registerBlockEntityRenderer(ModBlocks.EMPOWERING_PEDESTAL_ENTITY.get(), EmpoweringPedestalRenderer::new);
+        }
+
+        @SubscribeEvent
+        public static void registerMenuScreens(RegisterMenuScreensEvent event) {
+            event.register(ModMenus.RUNE_ALTAR.get(), RuneAltarScreen::new);
+            event.register(ModMenus.RITUAL_ALTAR.get(), RitualScreen::new);
+        }
+
+        /** No socket symbol in the item models on 1.21.1, the decorator draws it on all equipment, ArmorPlus's included. */
+        @SubscribeEvent
+        public static void registerItemDecorations(RegisterItemDecorationsEvent event) {
+            for (Item item : BuiltInRegistries.ITEM) {
+                event.register(item, SocketOverlayDecorator.INSTANCE);
+            }
+            event.register(ModItems.ARMOR_RUNE.get(), RuneMarkerDecorator.INSTANCE);
+            event.register(ModItems.WEAPON_RUNE.get(), RuneMarkerDecorator.INSTANCE);
+            event.register(ModItems.TOOL_RUNE.get(), RuneMarkerDecorator.INSTANCE);
+            event.register(ModItems.RANGED_RUNE.get(), RuneMarkerDecorator.INSTANCE);
         }
 
         private static void registerRenderingHandler(

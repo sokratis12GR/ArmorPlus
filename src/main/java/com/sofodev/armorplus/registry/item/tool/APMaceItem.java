@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.item.tool;
 
+import net.minecraft.world.flag.FeatureFlagSet;
+import com.sofodev.armorplus.config.AvailabilityConfig;
 import com.sofodev.armorplus.registry.item.tool.properties.mace.APMaceMaterial;
 import com.sofodev.armorplus.registry.item.tool.properties.mace.IAPMace;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial;
@@ -81,7 +83,7 @@ public class APMaceItem extends SwordItem implements GeoItem {
             APToolMaterial toolMaterial = maceMaterial.getToolMaterial();
 
             if (toolMaterial.config().enableWeaponEffects().get()) {
-                toolMaterial.getBuffInstances().get().forEach(instance -> instance.hitEntity(stack, target, attacker));
+                WeaponEffects.hit(stack, toolMaterial, target, attacker);
             }
         }
 
@@ -95,7 +97,7 @@ public class APMaceItem extends SwordItem implements GeoItem {
             APToolMaterial toolMaterial = maceMaterial.getToolMaterial();
 
             if (isSneakDown()) {
-                addBuffInformation(toolMaterial, tooltip, "on_hit", false, toolMaterial.config().enableWeaponEffects().get());
+                addBuffInformation(stack, toolMaterial, tooltip, "on_hit", false, toolMaterial.config().enableWeaponEffects().get());
             } else if (!toolMaterial.getBuffInstances().get().isEmpty()) {
                 showSneakInfo(tooltip, mat.getColor());
             }
@@ -371,5 +373,10 @@ public class APMaceItem extends SwordItem implements GeoItem {
     @Override
     public double getTick(Object o) {
         return 0;
+    }
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.itemEnabled(this);
     }
 }

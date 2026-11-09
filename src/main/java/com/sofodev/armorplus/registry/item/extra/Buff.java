@@ -71,7 +71,34 @@ public enum Buff implements IBuff {
                 player.clearFire();
             }
         }
-    };
+    },
+    ILLUMINATE(true),
+    DARKNESS_IMMUNITY(true) {
+        @Override
+        public void onInventoryTick(ItemStack stack, Level world, Player player) {
+            if (!world.isClientSide) {
+                player.removeEffect(MobEffects.DARKNESS);
+            }
+        }
+    },
+    MINING_FATIGUE_IMMUNITY(true) {
+        @Override
+        public void onInventoryTick(ItemStack stack, Level world, Player player) {
+            if (!world.isClientSide) {
+                player.removeEffect(MobEffects.DIG_SLOWDOWN);
+            }
+        }
+    },
+    POWDERED_SNOW_IMMUNITY(true) {
+        @Override
+        public void onInventoryTick(ItemStack stack, Level world, Player player) {
+            if (!world.isClientSide && player.getTicksFrozen() > 0) {
+                player.setTicksFrozen(0);
+            }
+        }
+    },
+    SCULK_IMMUNITY(true),
+    WARDEN_PACIFY(true);
 
 
     private final boolean isEffect;

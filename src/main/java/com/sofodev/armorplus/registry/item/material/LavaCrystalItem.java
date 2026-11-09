@@ -2,8 +2,6 @@ package com.sofodev.armorplus.registry.item.material;
 
 import com.sofodev.armorplus.registry.item.APItem;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TextColor;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
@@ -12,7 +10,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 
 import java.util.List;
 
-import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
+import static com.sofodev.armorplus.utils.ToolTipUtils.addItemLore;
 import static com.sofodev.armorplus.utils.Utils.getAPItem;
 
 /**
@@ -31,10 +29,7 @@ public class LavaCrystalItem extends APItem {
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> tooltip, TooltipFlag flagIn) {
-        if (!isInfused) {
-            tooltip.add(translate("tooltip.armorplus.lava_crystal.how_to_infuse").setStyle(Style.EMPTY.withItalic(true).withColor(TextColor.parseColor("#670067").getOrThrow())));
-        } else
-            tooltip.add(translate("tooltip.armorplus.lava_crystal.lore").setStyle(Style.EMPTY.withItalic(true).withColor(TextColor.parseColor("#670067").getOrThrow())));
+        addItemLore(tooltip, this);
         super.appendHoverText(stack, ctx, tooltip, flagIn);
     }
 

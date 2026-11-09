@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "armorplus:runes",
+  "ingredients": [
+    {
+      "item": "armorplus:equinox_sigil"
+    },
+    {
+      "item": "armorplus:equinox_sigil"
+    },
+    {
+      "item": "armorplus:ender_dragon_scale"
+    },
+    {
+      "item": "armorplus:guardian_scale"
+    },
+    {
+      "item": "armorplus:wither_bone"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:astral_sigil"
+  }
+}

@@ -79,6 +79,22 @@ public final class ModBlockModelProvider implements DataProvider {
         simpleCube(writes, cache, "petrified_souls");
 
         soulBox(writes, cache);
+
+        runeAltar(writes, cache);
+        // The pedestal's model is hand-made (src/main/resources), only its blockstate is generated
+        simpleBlockstate(writes, cache, "empowering_pedestal", MODID + ":block/empowering_pedestal");
+    }
+
+    private void runeAltar(List<CompletableFuture<?>> writes, CachedOutput cache) {
+        JsonObject model = new JsonObject();
+        model.addProperty("parent", "minecraft:block/cube_bottom_top");
+        JsonObject textures = new JsonObject();
+        textures.addProperty("bottom", MODID + ":block/rune_altar_bottom");
+        textures.addProperty("side", MODID + ":block/rune_altar_side");
+        textures.addProperty("top", MODID + ":block/rune_altar_top");
+        model.add("textures", textures);
+        saveModel(writes, cache, "rune_altar", model);
+        simpleBlockstate(writes, cache, "rune_altar", MODID + ":block/rune_altar");
     }
 
     private void generateSnowBrick(List<CompletableFuture<?>> writes, CachedOutput cache) {

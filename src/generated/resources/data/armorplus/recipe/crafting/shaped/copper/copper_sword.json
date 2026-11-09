@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:copper_swords",
+  "key": {
+    "M": {
+      "item": "armorplus:enhanced_copper"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "M  ",
+    "M  ",
+    "S  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:copper_sword"
+  }
+}

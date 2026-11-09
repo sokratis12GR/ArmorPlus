@@ -34,20 +34,22 @@ public class ModItemTagProvider extends ItemTagsProvider {
         TagKey<Item> ARMORPLUS_SWORDS = modTag("swords");
         TagKey<Item> ARMORPLUS_BATTLE_AXES = modTag("battle_axes");
         TagKey<Item> ARMORPLUS_PICKAXES = modTag("pickaxes");
+        TagKey<Item> ARMORPLUS_SHOVELS = modTag("shovels");
         TagKey<Item> ARMORPLUS_BOWS = modTag("bows");
         TagKey<Item> ARMORPLUS_MACES = modTag("maces");
 
         addAllItems(ARMORPLUS_SWORDS, ModItems.SWORDS);
         addAllItems(ARMORPLUS_BATTLE_AXES, ModItems.BATTLE_AXES);
         addAllItems(ARMORPLUS_PICKAXES, ModItems.PICKAXES);
+        addAllItems(ARMORPLUS_SHOVELS, ModItems.SHOVELS);
         addAllItems(ARMORPLUS_BOWS, ModItems.BOWS);
         addAllItems(ARMORPLUS_MACES, ModItems.MACES);
 
         mirrorMinecraftTag("enchantable/weapon", ARMORPLUS_SWORDS, ARMORPLUS_BATTLE_AXES, ARMORPLUS_MACES);
         mirrorMinecraftTag("enchantable/sword", ARMORPLUS_SWORDS);
         mirrorMinecraftTag("enchantable/bow", ARMORPLUS_BOWS);
-        mirrorMinecraftTag("enchantable/mining", ARMORPLUS_PICKAXES, ARMORPLUS_BATTLE_AXES);
-        mirrorMinecraftTag("enchantable/mining_loot", ARMORPLUS_PICKAXES, ARMORPLUS_BATTLE_AXES);
+        mirrorMinecraftTag("enchantable/mining", ARMORPLUS_PICKAXES, ARMORPLUS_SHOVELS, ARMORPLUS_BATTLE_AXES);
+        mirrorMinecraftTag("enchantable/mining_loot", ARMORPLUS_PICKAXES, ARMORPLUS_SHOVELS, ARMORPLUS_BATTLE_AXES);
         mirrorMinecraftTag("enchantable/sharp_weapon", ARMORPLUS_SWORDS, ARMORPLUS_BATTLE_AXES);
 
 
@@ -93,6 +95,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 ARMORPLUS_SWORDS,
                 ARMORPLUS_BATTLE_AXES,
                 ARMORPLUS_PICKAXES,
+                ARMORPLUS_SHOVELS,
                 ARMORPLUS_BOWS,
                 ARMORPLUS_MACES);
 
@@ -121,7 +124,12 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 ModItems.ITEM_INFUSED_LAVA_ARROW,
                 ModItems.ITEM_GUARDIAN_ARROW,
                 ModItems.ITEM_SUPER_STAR_ARROW,
-                ModItems.ITEM_ENDER_DRAGON_ARROW
+                ModItems.ITEM_ENDER_DRAGON_ARROW,
+                ModItems.ITEM_WARDEN_ARROW,
+                ModItems.ITEM_AMETHYST_ARROW,
+                ModItems.ITEM_QUARTZ_ARROW,
+                ModItems.ITEM_GLOWSTONE_ARROW,
+                ModItems.ITEM_HONEY_ARROW
         );
         mirrorMinecraftTag("arrows", ARMORPLUS_ARROWS);
 

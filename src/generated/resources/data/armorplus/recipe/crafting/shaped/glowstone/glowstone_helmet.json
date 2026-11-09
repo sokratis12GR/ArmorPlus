@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:glowstone",
+  "key": {
+    "S": {
+      "item": "minecraft:glowstone"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "S S",
+    "   "
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:glowstone_helmet"
+  }
+}

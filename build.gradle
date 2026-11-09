@@ -3,6 +3,7 @@ plugins {
     id 'maven-publish'
     id 'net.neoforged.moddev' version '2.0.146'
     id 'net.darkhax.curseforgegradle' version '1.1.26'
+    id 'com.modrinth.minotaur' version '2.10.0'
     id 'idea'
 }
 
@@ -15,8 +16,12 @@ base {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(project.java_version as int)
     }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = project.java_version as int
 }
 
 tasks.named('jar', Jar).configure {
@@ -28,6 +33,8 @@ sourceSets.main.resources {
 }
 
 repositories {
+    mavenCentral()
+
     maven {
         url = 'https://www.cursemaven.com'
         content {
@@ -76,6 +83,11 @@ neoForge {
             sourceSet(sourceSets.main)
         }
     }
+
+    unitTest {
+        enable()
+        testedMod = mods."${mod_id}"
+    }
 }
 
 configurations {
@@ -83,11 +95,19 @@ configurations {
 }
 
 dependencies {
-    implementation "curse.maven:thedragonlib-248055:5505781"
+    implementation "curse.maven:thedragonlib-248055:9533057"
+    implementation "curse.maven:jei-238222:9393327"
 
     implementation 'software.bernie.geckolib:geckolib-neoforge-1.21.1:4.8.2'
 
     compileOnly "curse.maven:jei-238222:8857687"
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.13.4'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test', Test).configure {
+    useJUnitPlatform()
 }
 
 tasks.named('processResources', ProcessResources).configure {
@@ -109,7 +129,7 @@ tasks.named('processResources', ProcessResources).configure {
 
     filesMatching(['META-INF/neoforge.mods.toml',
                    'pack.mcmeta']) {
-        expand replaceProperties + [project: project]
+        expand replaceProperties
     }
 }
 
@@ -179,4 +199,38 @@ tasks.register('publishCurseForge',
         mainFile.addRequirement('geckolib')
         mainFile.addRequirement('thedragonlib')
     }
+}
+
+modrinth {
+    token = providers.gradleProperty('modrinth_api_token')
+            .orElse(providers.environmentVariable('MODRINTH_TOKEN'))
+            .orNull
+
+    projectId = providers.gradleProperty('modrinth_project_id').orNull
+
+    versionNumber = "${minecraft_version}-${mod_version}"
+    versionName = "${mod_name} ${mod_version} for NeoForge ${minecraft_version}"
+    versionType = 'release'
+
+    uploadFile = tasks.named('jar').get()
+
+    gameVersions = [minecraft_version.toString()]
+    loaders = ['neoforge']
+
+    def changelogFile = file('src/main/resources/changelog.md')
+    changelog = changelogFile.exists() ? changelogFile.getText('UTF-8') : "${mod_name} ${mod_version} for NeoForge ${minecraft_version}"
+}
+
+tasks.register('publishModrinth') {
+    group = 'publishing'
+    description = "Publishes ${mod_name} ${mod_version} for NeoForge to Modrinth"
+
+    dependsOn tasks.named('modrinth')
+}
+
+tasks.register('publishAll') {
+    group = 'publishing'
+    description = "Publishes ${mod_name} ${mod_version} for NeoForge to CurseForge and Modrinth"
+
+    dependsOn 'publishCurseForge', 'publishModrinth'
 }

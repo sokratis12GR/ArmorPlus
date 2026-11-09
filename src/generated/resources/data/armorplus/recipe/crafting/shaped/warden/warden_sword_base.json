@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:warden_swords",
+  "key": {
+    "C": {
+      "item": "minecraft:sculk_catalyst"
+    },
+    "M": {
+      "item": "minecraft:echo_shard"
+    },
+    "S": {
+      "item": "armorplus:obsidian_stick"
+    }
+  },
+  "pattern": [
+    "M  ",
+    "C  ",
+    "S  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:warden_sword_base"
+  }
+}

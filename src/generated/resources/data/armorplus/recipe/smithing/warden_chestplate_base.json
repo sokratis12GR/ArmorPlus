@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "armorplus:warden_heart"
+  },
+  "base": {
+    "item": "armorplus:warden_chestplate_base"
+  },
+  "result": {
+    "count": 1,
+    "id": "armorplus:warden_chestplate"
+  },
+  "template": {
+    "item": "armorplus:infused_lava_crystal"
+  }
+}

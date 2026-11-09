@@ -3,7 +3,9 @@ package com.sofodev.armorplus.registry.entity.arrow.impl;
 import com.sofodev.armorplus.registry.entity.arrow.APArrowEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
 import static com.sofodev.armorplus.registry.ModEntities.COAL_ARROW;
 import static com.sofodev.armorplus.registry.entity.arrow.APArrowProperty.COAL_ARROW_PROP;
@@ -11,19 +13,11 @@ import static com.sofodev.armorplus.registry.entity.arrow.APArrowProperty.COAL_A
 public class CoalArrowEntity extends APArrowEntity {
 
     public CoalArrowEntity(EntityType<? extends APArrowEntity> type, Level world) {
-        super(type, world);
+        super(type, world, COAL_ARROW_PROP);
     }
 
-    public CoalArrowEntity(Level world) {
-        super(COAL_ARROW.get(), world, COAL_ARROW_PROP);
-    }
-
-    public CoalArrowEntity(double x, double y, double z, Level world) {
-        super(COAL_ARROW.get(), x, y, z, world, COAL_ARROW_PROP);
-    }
-
-    public CoalArrowEntity(LivingEntity shooter, Level world) {
-        super(COAL_ARROW.get(), shooter, world, COAL_ARROW_PROP);
+    public CoalArrowEntity(LivingEntity shooter, Level world, ItemStack ammo, @Nullable ItemStack weapon) {
+        super(COAL_ARROW.get(), shooter, world, ammo, weapon, COAL_ARROW_PROP);
     }
 
 }

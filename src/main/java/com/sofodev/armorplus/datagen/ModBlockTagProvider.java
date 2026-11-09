@@ -59,6 +59,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(modTag("ores"))
                 .addTag(modTag("ores/lava_crystal"))
                 .addTag(modTag("ores/frost_crystal"));
+        tag(modTag("ritual_pedestals")).add(ModBlocks.EMPOWERING_PEDESTAL.get());
 
         TagKey<Block> MC_ORES = TagKey.create(Registries.BLOCK, ResourceLocation.withDefaultNamespace("ores"));
         tag(MC_ORES).addTag(modTag("ores"));

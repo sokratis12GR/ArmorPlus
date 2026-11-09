@@ -2,7 +2,13 @@ package com.sofodev.armorplus.registry.item.material;
 
 import com.sofodev.armorplus.registry.item.APItem;
 import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+
+import java.util.List;
+
+import static com.sofodev.armorplus.utils.ToolTipUtils.addItemLore;
 
 public class MaterialItem extends APItem {
 
@@ -24,5 +30,11 @@ public class MaterialItem extends APItem {
     @Override
     public boolean isFoil(ItemStack stack) {
         return hasGlint;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext ctx, List<Component> tooltip, TooltipFlag flag) {
+        addItemLore(tooltip, this);
+        super.appendHoverText(stack, ctx, tooltip, flag);
     }
 }

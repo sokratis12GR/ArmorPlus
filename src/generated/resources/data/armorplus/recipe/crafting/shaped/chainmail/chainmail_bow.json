@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "armorplus:chainmail_bows",
+  "key": {
+    "M": {
+      "item": "armorplus:enhanced_chainmail"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    "SM ",
+    "S M",
+    "SM "
+  ],
+  "result": {
+    "count": 1,
+    "id": "armorplus:chainmail_bow"
+  }
+}

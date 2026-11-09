@@ -3,24 +3,52 @@ package com.sofodev.armorplus.registry.entity.arrow;
 import net.minecraft.world.entity.LivingEntity;
 
 import static com.sofodev.armorplus.registry.item.extra.EffectData.create;
-import static net.minecraft.core.particles.ParticleTypes.*;
-import static net.minecraft.world.effect.MobEffects.*;
+import static net.minecraft.core.particles.ParticleTypes.CLOUD;
+import static net.minecraft.core.particles.ParticleTypes.CRIT;
+import static net.minecraft.core.particles.ParticleTypes.DRAGON_BREATH;
+import static net.minecraft.core.particles.ParticleTypes.DRIPPING_HONEY;
+import static net.minecraft.core.particles.ParticleTypes.DRIPPING_WATER;
+import static net.minecraft.core.particles.ParticleTypes.END_ROD;
+import static net.minecraft.core.particles.ParticleTypes.FALLING_WATER;
+import static net.minecraft.core.particles.ParticleTypes.FLAME;
+import static net.minecraft.core.particles.ParticleTypes.GLOW;
+import static net.minecraft.core.particles.ParticleTypes.HAPPY_VILLAGER;
+import static net.minecraft.core.particles.ParticleTypes.POOF;
+import static net.minecraft.core.particles.ParticleTypes.SMOKE;
+import static net.minecraft.core.particles.ParticleTypes.SONIC_BOOM;
+import static net.minecraft.core.particles.ParticleTypes.WITCH;
+import static net.minecraft.world.effect.MobEffects.BLINDNESS;
+import static net.minecraft.world.effect.MobEffects.CONFUSION;
+import static net.minecraft.world.effect.MobEffects.DARKNESS;
+import static net.minecraft.world.effect.MobEffects.DIG_SLOWDOWN;
+import static net.minecraft.world.effect.MobEffects.GLOWING;
+import static net.minecraft.world.effect.MobEffects.MOVEMENT_SLOWDOWN;
+import static net.minecraft.world.effect.MobEffects.WEAKNESS;
+import static net.minecraft.world.effect.MobEffects.WITHER;
 
 public class APArrowProperty {
 
+    /** How long Infused Lava arrows set their target on fire, 5 seconds. */
+    private static final int INFUSED_LAVA_FIRE_TICKS = 100;
+
     public static final ArrowProperty COAL_ARROW_PROP = ArrowProperty.create("coal", 3.0, CLOUD, create(BLINDNESS));
     public static final ArrowProperty LAPIS_ARROW_PROP = ArrowProperty.create("lapis", 3.5, DRIPPING_WATER, create(CONFUSION));
-    public static final ArrowProperty REDSTONE_ARROW_PROP = ArrowProperty.create("redstone", 3.5, POOF, create(MOVEMENT_SLOWDOWN));
-    public static final ArrowProperty EMERALD_ARROW_PROP = ArrowProperty.create("emerald", 5.0, HAPPY_VILLAGER, create(DIG_SLOWDOWN));
+    public static final ArrowProperty REDSTONE_ARROW_PROP = ArrowProperty.create("redstone", 3.5, POOF, create(DIG_SLOWDOWN));
+    public static final ArrowProperty EMERALD_ARROW_PROP = ArrowProperty.create("emerald", 5.0, HAPPY_VILLAGER, create(MOVEMENT_SLOWDOWN));
     public static final ArrowProperty OBSIDIAN_ARROW_PROP = ArrowProperty.create("obsidian", 6.0, SMOKE, create(WEAKNESS, 1));
     public static final ArrowProperty INFUSED_LAVA_ARROW_PROP = new ArrowProperty("infused_lava", 7.0, FLAME) {
         @Override
         public IArrow hit(LivingEntity living) {
-            living.setRemainingFireTicks(6);
+            living.setRemainingFireTicks(Math.max(living.getRemainingFireTicks(), INFUSED_LAVA_FIRE_TICKS));
             return this;
         }
     };
     public static final ArrowProperty GUARDIAN_ARROW_PROP = ArrowProperty.create("guardian", 10.5, FALLING_WATER, create(CONFUSION, 2));
     public static final ArrowProperty SUPER_STAR_ARROW_PROP = ArrowProperty.create("super_star", 10.5, CRIT, create(WITHER, 2));
     public static final ArrowProperty ENDER_DRAGON_ARROW_PROP = ArrowProperty.create("ender_dragon", 10.5, DRAGON_BREATH, create(WITHER, 4));
+    public static final ArrowProperty WARDEN_ARROW_PROP = ArrowProperty.create("warden", 10.5, SONIC_BOOM, create(DARKNESS, 1));
+    public static final ArrowProperty AMETHYST_ARROW_PROP = ArrowProperty.create("amethyst", 3.5, WITCH, create(GLOWING));
+    public static final ArrowProperty QUARTZ_ARROW_PROP = ArrowProperty.create("quartz", 3.5, END_ROD, create(BLINDNESS));
+    public static final ArrowProperty GLOWSTONE_ARROW_PROP = ArrowProperty.create("glowstone", 3.0, GLOW, create(CONFUSION));
+    public static final ArrowProperty HONEY_ARROW_PROP = ArrowProperty.create("honey", 3.0, DRIPPING_HONEY, create(MOVEMENT_SLOWDOWN));
 }

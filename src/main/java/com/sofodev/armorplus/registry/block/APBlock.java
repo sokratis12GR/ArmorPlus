@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.block;
 
+import net.minecraft.world.flag.FeatureFlagSet;
+import com.sofodev.armorplus.config.AvailabilityConfig;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
@@ -24,5 +26,10 @@ public class APBlock extends Block {
 
     public APBlock(Properties props) {
         super(props.requiresCorrectToolForDrops());
+    }
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.blockEnabled(this);
     }
 }

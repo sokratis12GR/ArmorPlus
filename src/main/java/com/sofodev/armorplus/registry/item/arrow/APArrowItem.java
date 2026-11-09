@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.item.arrow;
 
+import net.minecraft.world.flag.FeatureFlagSet;
+import com.sofodev.armorplus.config.AvailabilityConfig;
 import com.sofodev.armorplus.registry.entity.arrow.ArrowType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
@@ -49,4 +51,9 @@ public class APArrowItem extends ArrowItem {
 //        int enchant = getItemEnchantmentLevel(INFINITY_ARROWS, bow);
 //        return enchant > 0;
 //    }
+
+    @Override
+    public boolean isEnabled(FeatureFlagSet ignoredFeatureFlags) {
+        return AvailabilityConfig.itemEnabled(this);
+    }
 }
