@@ -221,6 +221,10 @@ modrinth {
     changelog = changelogFile.exists() ? changelogFile.getText('UTF-8') : "${mod_name} ${mod_version} for NeoForge ${minecraft_version}"
 }
 
+tasks.named('modrinth') {
+    notCompatibleWithConfigurationCache('Minotaur 2.x accesses Task.project at execution time')
+}
+
 tasks.register('publishModrinth') {
     group = 'publishing'
     description = "Publishes ${mod_name} ${mod_version} for NeoForge to Modrinth"
