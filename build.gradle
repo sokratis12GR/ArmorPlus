@@ -1,7 +1,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.146'
+    id 'net.neoforged.moddev' version '2.0.147'
     id 'net.darkhax.curseforgegradle' version '1.1.26'
     id 'com.modrinth.minotaur' version '2.10.0'
     id 'idea'
@@ -151,6 +151,47 @@ publishing {
     }
 }
 
+def releaseName = "${mod_name} ${mod_version} for NeoForge ${minecraft_version}"
+
+def changelogFile = file('src/main/resources/changelog.md')
+def changelogText = changelogFile.exists()
+        ? changelogFile.getText('UTF-8')
+        : releaseName
+
+modrinth {
+    token = providers.gradleProperty('modrinth_api_token')
+            .orElse(providers.environmentVariable('MODRINTH_TOKEN'))
+            .orNull
+
+    projectId = providers.gradleProperty('modrinth_project_id').orNull
+
+    versionNumber = "${minecraft_version}-${mod_version}"
+    versionName = releaseName
+    versionType = 'release'
+
+    uploadFile = tasks.named('jar').get()
+
+    gameVersions = [minecraft_version.toString()]
+    loaders = ['neoforge']
+
+    changelog = changelogText
+
+    dependencies {
+        required.project 'thedragonlib'
+    }
+}
+
+tasks.named('modrinth') {
+    notCompatibleWithConfigurationCache('Minotaur 2.x accesses Task.project at execution time')
+}
+
+tasks.register('publishModrinth') {
+    group = 'publishing'
+    description = "Publishes ${mod_name} ${mod_version} for NeoForge to Modrinth"
+
+    dependsOn tasks.named('modrinth')
+}
+
 tasks.register('publishCurseForge',
         net.darkhax.curseforgegradle.TaskPublishCurseForge) {
     group = 'publishing'
@@ -177,59 +218,21 @@ tasks.register('publishCurseForge',
     }
 
     if (projectId) {
-        def mainFile = upload(projectId,
-                tasks.named('jar').get())
+        def mainFile = upload(projectId, tasks.named('jar').get())
 
-        mainFile.displayName = "${mod_name} ${mod_version} for NeoForge ${minecraft_version}"
-
+        mainFile.displayName = releaseName
         mainFile.releaseType = 'release'
 
-        def changelogFile = file('src/main/resources/changelog.md')
-
         mainFile.changelogType = 'markdown'
-
-        mainFile.changelog = changelogFile.exists() ? changelogFile.getText('UTF-8') : "${mod_name} ${mod_version} for NeoForge ${minecraft_version}"
+        mainFile.changelog = changelogText
 
         mainFile.addGameVersion(minecraft_version.toString())
-
         mainFile.addModLoader('NeoForge')
-
         mainFile.addEnvironment('Client', 'Server')
 
         mainFile.addRequirement('geckolib')
         mainFile.addRequirement('thedragonlib')
     }
-}
-
-modrinth {
-    token = providers.gradleProperty('modrinth_api_token')
-            .orElse(providers.environmentVariable('MODRINTH_TOKEN'))
-            .orNull
-
-    projectId = providers.gradleProperty('modrinth_project_id').orNull
-
-    versionNumber = "${minecraft_version}-${mod_version}"
-    versionName = "${mod_name} ${mod_version} for NeoForge ${minecraft_version}"
-    versionType = 'release'
-
-    uploadFile = tasks.named('jar').get()
-
-    gameVersions = [minecraft_version.toString()]
-    loaders = ['neoforge']
-
-    def changelogFile = file('src/main/resources/changelog.md')
-    changelog = changelogFile.exists() ? changelogFile.getText('UTF-8') : "${mod_name} ${mod_version} for NeoForge ${minecraft_version}"
-}
-
-tasks.named('modrinth') {
-    notCompatibleWithConfigurationCache('Minotaur 2.x accesses Task.project at execution time')
-}
-
-tasks.register('publishModrinth') {
-    group = 'publishing'
-    description = "Publishes ${mod_name} ${mod_version} for NeoForge to Modrinth"
-
-    dependsOn tasks.named('modrinth')
 }
 
 tasks.register('publishAll') {
