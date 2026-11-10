@@ -281,8 +281,6 @@
   "enchantment.armorplus.furious.desc": "When hit you get furious, giving you strength and speed boost based on level.",
   "enchantment.armorplus.soul_stealer": "Soul Stealer",
   "enchantment.armorplus.soul_stealer.desc": "Steals foe's soul",
-  "enchantment.armorplus.unknown": "Unknown",
-  "enchantment.armorplus.unknown.desc": "Provides a different effect based on the type of item its applied on",
   "enchantment.armorplus.soul_harden": "Soul Harden",
   "enchantment.armorplus.soul_harden.desc": "Makes your armor 'Unbreakable', but will break after 2 deaths while equipped.",
   "_comment": "ITEMS",

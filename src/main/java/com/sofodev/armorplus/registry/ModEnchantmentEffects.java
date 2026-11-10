@@ -5,7 +5,6 @@ import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.registry.enchantment.FuriousEnchantmentEffect;
 import com.sofodev.armorplus.registry.enchantment.LifeStealEnchantmentEffect;
 import com.sofodev.armorplus.registry.enchantment.SoulStealerEnchantmentEffect;
-import com.sofodev.armorplus.registry.enchantment.UnknownEnchantmentEffect;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -23,7 +22,4 @@ public class ModEnchantmentEffects {
             ENTITY_ENCHANTMENT_EFFECTS.register("furious", () -> FuriousEnchantmentEffect.CODEC);
     public static final Supplier<MapCodec<? extends EnchantmentEntityEffect>> LIFE_STEAL =
             ENTITY_ENCHANTMENT_EFFECTS.register("life_steal", () -> LifeStealEnchantmentEffect.CODEC);
-    public static final Supplier<MapCodec<? extends EnchantmentEntityEffect>> UNKNOWN =
-            ENTITY_ENCHANTMENT_EFFECTS.register("unknown", () -> UnknownEnchantmentEffect.CODEC);
-
 }

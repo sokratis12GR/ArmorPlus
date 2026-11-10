@@ -23,8 +23,6 @@ public class ModEnchantments {
             setRL("life_steal"));
     public static final ResourceKey<Enchantment> SOUL_STEALER = ResourceKey.create(Registries.ENCHANTMENT,
             setRL("soul_stealer"));
-    public static final ResourceKey<Enchantment> UNKNOWN = ResourceKey.create(Registries.ENCHANTMENT,
-            setRL("unknown"));
     public static final ResourceKey<Enchantment> SOUL_HARDEN = ResourceKey.create(Registries.ENCHANTMENT,
             setRL("soul_harden"));
 
