@@ -17,6 +17,7 @@ public final class ModNetwork {
     public static void register(RegisterPayloadHandlersEvent event) {
         event.registrar(PROTOCOL_VERSION)
                 .playToServer(ToggleEffectPayload.TYPE, ToggleEffectPayload.STREAM_CODEC, ToggleEffectPayload::handle)
+                .playToServer(FillAltarPayload.TYPE, FillAltarPayload.STREAM_CODEC, FillAltarPayload::handle)
                 .playToClient(SyncDisabledEffectsPayload.TYPE, SyncDisabledEffectsPayload.STREAM_CODEC, SyncDisabledEffectsPayload::handle);
     }
 }
