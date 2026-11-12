@@ -88,10 +88,10 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     private void generateBowModel(String name) {
-        ItemModelBuilder bow = withExistingParent(name, mcLoc("item/generated")).texture("layer0", modLoc("item/" + name));
+        ItemModelBuilder bow = withExistingParent(name, mcLoc("item/bow")).texture("layer0", modLoc("item/" + name));
         for (int i = 0; i < 3; i++) {
             String variant = name + "_pulling_" + i;
-            getBuilder(variant).parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0", modLoc("item/" + variant));
+            getBuilder(variant).parent(new ModelFile.UncheckedModelFile("item/bow")).texture("layer0", modLoc("item/" + variant));
             bow.override().predicate(mcLoc("pulling"), 1.0F).predicate(mcLoc("pull"), i == 0 ? 0.0F : (i == 1 ? 0.65F : 0.9F)).model(new ModelFile.UncheckedModelFile(modLoc("item/" + variant))).end();
         }
     }

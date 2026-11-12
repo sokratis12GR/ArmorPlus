@@ -1,3 +1,7 @@
+# 1.21.1 - 23.0.1
+
+- Fix bows not having a 3rd person animation.
+
 # 1.21.1 - 23.0.0
 
 The rune update: pull the power out of your equipment, socket it into anything you wear or wield, and strengthen it in a ritual. It also brings new materials and gear, effect switches, per-piece armor effects, new commands, a reorganized config and an API for other mods.

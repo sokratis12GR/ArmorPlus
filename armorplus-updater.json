@@ -1,13 +1,14 @@
 {
   "homepage": "https://www.curseforge.com/minecraft/mc-mods/armorplus",
   "promos": {
-    "1.21.1-latest": "23.0.0",
-    "1.21.1-recommended": "23.0.0"
+    "1.21.1-latest": "23.0.1",
+    "1.21.1-recommended": "23.0.1"
   },
   "1.21.1": {
     "21.0.0": "Ported to 1.21 (NeoForge)",
     "1.21.1-21.0.1-neo": "Ported to 1.21 (Forge) with various improvements, recommended to switch",
     "21.1.0": "- Fixed Maces not having textures\n- Added damage bonuses to arrows fired by armorplus bows.\n- Removed \"Water Weakness\" from Infused Lava Armor.\n- Made all tooltips with buffs be collapsed by default, then expanded with \"Shift\" key.\n- Added 8 more colored bricks or castle blocks.\n- Made smithing recipes require infused lava crystals.\n- Added proper world generation for neoforge\n- Maces now have on-hit effects like the other weapons from their type.",
-    "23.0.0": "- Requires TheDragonLib 1.2.1+. Config is split into config/armorplus/ and old settings are not carried over.\n- New rune system: extract effects into runes at the Rune Altar, then socket and upgrade them in a pedestal ritual. Works on any armor, weapon, tool or bow, including vanilla and other mods' gear.\n- New sigil catalysts, Blank Runes, Socket Punch, random sockets and an AP Runes creative tab.\n- Ranged runes: Piercing, Volley, Ricochet, Long Shot, Marked, Quick Draw, Ammo Saver, Seeker, Ender Shot.\n- Tool runes, including the new Auto-Smelt.\n- Runes can be found in world loot and added through datapacks.\n- New materials: Amethyst, Glowstone, Honey, Quartz and Warden. Also shovels for every material, and many new tool sets and maces.\n- Most armor effects now work per piece instead of needing the full set. They can be switched on/off in the effect screens (G/H/J/K).\n- Instant effects now have a cooldown instead of firing every tick.\n- ArmorPlus bows get material effects and special abilities, and work with bow enchantments.\n- New /armorplus (/ap) commands: help, status, effects, rune.\n- New config editors and stats.toml.\n- Developer API with events.\n- Fixed Elder Guardian drops, Soul Stealer requirement and soul advancements. Lower per-tick overhead."
+    "23.0.0": "- Requires TheDragonLib 1.2.1+. Config is split into config/armorplus/ and old settings are not carried over.\n- New rune system: extract effects into runes at the Rune Altar, then socket and upgrade them in a pedestal ritual. Works on any armor, weapon, tool or bow, including vanilla and other mods' gear.\n- New sigil catalysts, Blank Runes, Socket Punch, random sockets and an AP Runes creative tab.\n- Ranged runes: Piercing, Volley, Ricochet, Long Shot, Marked, Quick Draw, Ammo Saver, Seeker, Ender Shot.\n- Tool runes, including the new Auto-Smelt.\n- Runes can be found in world loot and added through datapacks.\n- New materials: Amethyst, Glowstone, Honey, Quartz and Warden. Also shovels for every material, and many new tool sets and maces.\n- Most armor effects now work per piece instead of needing the full set. They can be switched on/off in the effect screens (G/H/J/K).\n- Instant effects now have a cooldown instead of firing every tick.\n- ArmorPlus bows get material effects and special abilities, and work with bow enchantments.\n- New /armorplus (/ap) commands: help, status, effects, rune.\n- New config editors and stats.toml.\n- Developer API with events.\n- Fixed Elder Guardian drops, Soul Stealer requirement and soul advancements. Lower per-tick overhead.",
+    "23.0.1": "- Fix bows not having a 3rd person animation."
   }
 }

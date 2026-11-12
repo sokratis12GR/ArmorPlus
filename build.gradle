@@ -95,7 +95,8 @@ configurations {
 }
 
 dependencies {
-    implementation "curse.maven:thedragonlib-248055:9533057"
+//    implementation files("../TheDragonLib/build/libs/thedragonlib-1.21.1-1.3.0-neo.jar")
+    implementation "curse.maven:thedragonlib-248055:9568258"
     implementation "curse.maven:jei-238222:9393327"
 
     implementation 'software.bernie.geckolib:geckolib-neoforge-1.21.1:4.8.2'

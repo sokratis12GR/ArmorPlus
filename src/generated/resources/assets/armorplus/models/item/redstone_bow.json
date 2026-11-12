@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "minecraft:item/bow",
   "overrides": [
     {
       "model": "armorplus:item/redstone_bow_pulling_0",
