@@ -31,6 +31,14 @@ public interface IAPTool {
     Supplier<List<BuffInstance>> getBuffInstances();
 
     /**
+     * @return the material's own effects while a tool of it is held in the main hand, e.g. Infused Lava's Auto-Smelt. They
+     * are part of the tool effects (Tool Effects screen) and follow the material's "enableWeaponEffects" option
+     */
+    default List<BuffInstance> getHeldBuffs() {
+        return List.of();
+    }
+
+    /**
      * @return The name of the tool
      */
     String getName();

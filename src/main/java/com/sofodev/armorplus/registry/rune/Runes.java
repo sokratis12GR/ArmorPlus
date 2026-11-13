@@ -34,6 +34,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -474,13 +475,13 @@ public final class Runes {
 
     /**
      * Worn armor runes per player, rebuilt only when the player's equipment changes or the config reloads
-     * ({@link #invalidate(Player)}, {@link #clearCaches()}). Weak keys, so a respawned player (a new entity) starts fresh.
+     * ({@link #invalidate(LivingEntity)}, {@link #clearCaches()}). Weak keys, so a respawned player (a new entity) starts fresh.
      */
-    private static final Map<Player, Collection<BuffInstance>> WORN_RUNES = Collections.synchronizedMap(new WeakHashMap<>());
+    private static final Map<LivingEntity, Collection<BuffInstance>> WORN_RUNES = Collections.synchronizedMap(new WeakHashMap<>());
     /** Tool runes of the tool in the main hand, cached like {@link #WORN_RUNES} (switching items is an equipment change). */
-    private static final Map<Player, Collection<BuffInstance>> HELD_TOOL_RUNES = Collections.synchronizedMap(new WeakHashMap<>());
+    private static final Map<LivingEntity, Collection<BuffInstance>> HELD_TOOL_RUNES = Collections.synchronizedMap(new WeakHashMap<>());
 
-    public static void invalidate(Player player) {
+    public static void invalidate(LivingEntity player) {
         WORN_RUNES.remove(player);
         HELD_TOOL_RUNES.remove(player);
     }
@@ -491,12 +492,12 @@ public final class Runes {
     }
 
     /** The active armor runes of the worn armor, one per buff (the highest level wins). Cached, see {@link #WORN_RUNES}. */
-    public static Collection<BuffInstance> wornArmorRunes(Player player) {
+    public static Collection<BuffInstance> wornArmorRunes(LivingEntity player) {
         if (!enabled()) return List.of();
         return WORN_RUNES.computeIfAbsent(player, Runes::collectWornArmorRunes);
     }
 
-    private static Collection<BuffInstance> collectWornArmorRunes(Player player) {
+    private static Collection<BuffInstance> collectWornArmorRunes(LivingEntity player) {
         Map<String, BuffInstance> best = new LinkedHashMap<>();
         for (EquipmentSlot slot : ARMOR_SLOTS) {
             ItemStack stack = player.getItemBySlot(slot);

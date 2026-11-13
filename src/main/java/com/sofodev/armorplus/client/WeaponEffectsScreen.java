@@ -1,13 +1,7 @@
 package com.sofodev.armorplus.client;
 
 import com.sofodev.armorplus.network.ToggleEffectPayload;
-import com.sofodev.armorplus.registry.ModAttachments;
-import com.sofodev.armorplus.registry.item.tool.WeaponEffects;
-import com.sofodev.armorplus.registry.item.tool.WeaponEffects.Entry;
-import com.sofodev.armorplus.utils.ToolTipUtils;
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,26 +13,19 @@ import java.util.List;
  */
 public class WeaponEffectsScreen extends EffectsScreen {
 
-    private static final String MATERIAL = "material";
-
     public WeaponEffectsScreen() {
         super(Tab.WEAPON);
     }
 
     @Override
     protected List<Effect> effects() {
-        Component weapon = this.minecraft.player.getMainHandItem().getHoverName().copy().withStyle(ChatFormatting.GOLD);
-        return WeaponEffects.entries(this.minecraft.player).stream().map(entry -> new Effect(entry.rune() ? RUNES : MATERIAL, entry.rune() ? runesTitle() : weapon,
-                onOffLabel(entry.buff(), entry.disabled()), ToolTipUtils.buffTooltip(entry.buff()), true,
-                () -> ClientPacketDistributor.sendToServer(new ToggleEffectPayload(ToggleEffectPayload.Scope.WEAPON, entry.id())))).toList();
+        return onOffEffects(this.minecraft.player.getMainHandItem().getHoverName().copy().withStyle(ChatFormatting.GOLD));
     }
 
     @Override
     protected List<String> state() {
-        List<String> disabled = this.minecraft.player.getData(ModAttachments.DISABLED_WEAPON_EFFECTS.get());
-        List<String> state = new ArrayList<>();
+        List<String> state = new ArrayList<>(super.state());
         state.add(this.minecraft.player.getMainHandItem().getHoverName().getString());
-        for (Entry e : WeaponEffects.entries(this.minecraft.player)) state.add(e.id() + "|" + disabled.contains(e.id()) + "|" + e.buff().getAmplifier() + "|" + e.rune());
         return state;
     }
 }

@@ -1,12 +1,11 @@
 package com.sofodev.armorplus.client;
 
 import com.sofodev.armorplus.ArmorPlus;
-import com.sofodev.armorplus.registry.item.armor.ArmorEffects;
+import com.sofodev.armorplus.api.EffectEntry;
+import com.sofodev.armorplus.api.EffectScope;
+import com.sofodev.armorplus.api.EffectScopes;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import com.sofodev.armorplus.registry.item.extra.BuffParser;
-import com.sofodev.armorplus.registry.item.tool.RangedEffects;
-import com.sofodev.armorplus.registry.item.tool.ToolEffects;
-import com.sofodev.armorplus.registry.item.tool.WeaponEffects;
 import com.sofodev.armorplus.api.RuneData;
 import com.sofodev.armorplus.api.RuneKind;
 import com.sofodev.armorplus.registry.rune.Runes;
@@ -95,12 +94,13 @@ public final class RuneTooltipEvents {
 
     /** @return true if the player switched this socketed rune's effect off, in the screen matching its kind */
     private static boolean isRuneDisabled(Player player, RuneKind kind, String id) {
-        return switch (kind) {
-            case WEAPON -> WeaponEffects.isDisabled(player, id);
-            case TOOL -> ToolEffects.isDisabled(player, id);
-            case RANGED -> RangedEffects.isDisabled(player, id);
-            case ARMOR -> ArmorEffects.isDisabled(player, ArmorEffects.toggleKey(ArmorEffects.RUNE_SOURCE, id));
+        EffectScope scope = switch (kind) {
+            case WEAPON -> EffectScopes.WEAPON;
+            case TOOL -> EffectScopes.TOOL;
+            case RANGED -> EffectScopes.RANGED;
+            case ARMOR -> EffectScopes.ARMOR;
         };
+        return scope.isDisabled(player, scope.toggleKey(EffectEntry.RUNE, id));
     }
 
     /**

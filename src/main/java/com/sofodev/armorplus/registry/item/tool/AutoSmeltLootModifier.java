@@ -2,10 +2,9 @@ package com.sofodev.armorplus.registry.item.tool;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.sofodev.armorplus.api.EffectScopes;
 import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.registry.item.extra.ToolBuff;
-import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolMaterial;
-import com.sofodev.armorplus.registry.item.tool.properties.tool.Tool;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
@@ -28,7 +27,8 @@ import org.jspecify.annotations.Nullable;
 import java.util.List;
 
 /**
- * Smelts the drops of blocks mined with Infused Lava tools and Auto-Smelt tool runes. As a loot modifier the block breaks
+ * Smelts the drops of blocks mined while the player has the Auto-Smelt tool effect (armorplus:auto_smelt): Infused Lava
+ * tools and Auto-Smelt tool runes, unless switched off in the Tool Effects screen. As a loot modifier the block breaks
  * normally, so Fortune, block experience, stats, hunger and other mods' protections all keep working.
  * <p>
  * A block in the COMMON config's "block|result" smelting recipes always drops the result instead, whatever its own loot
@@ -50,7 +50,7 @@ public class AutoSmeltLootModifier extends LootModifier {
         BlockState state = context.getOptionalParameter(LootContextParams.BLOCK_STATE);
         if (state == null || !(context.getOptionalParameter(LootContextParams.THIS_ENTITY) instanceof Player player)
                 || !(context.getOptionalParameter(LootContextParams.TOOL) instanceof ItemStack tool)) return generatedLoot;
-        if (!hasAutoSmelt(player, tool) || !tool.isCorrectToolForDrops(state)) return generatedLoot;
+        if (!EffectScopes.TOOL.has(player, ToolBuff.AUTO_SMELT) || !tool.isCorrectToolForDrops(state)) return generatedLoot;
 
         // Silk Touch should preserve the original block instead of smelting it.
         if (enchantmentLevel(tool, Enchantments.SILK_TOUCH) > 0) return generatedLoot;
@@ -90,16 +90,6 @@ public class AutoSmeltLootModifier extends LootModifier {
                 .filter(result -> !result.isEmpty())
                 .map(result -> result.copyWithCount(result.getCount() * stack.getCount()))
                 .orElse(stack);
-    }
-
-    /**
-     * @return true for Infused Lava tools (with their effects enabled), and for any tool with an Auto-Smelt tool rune
-     * (armorplus:auto_smelt) that the player hasn't switched off
-     */
-    private static boolean hasAutoSmelt(Player player, ItemStack tool) {
-        if (tool.getItem() instanceof Tool apTool && apTool.getMat() == APToolMaterial.INFUSED_LAVA_MAT
-                && apTool.getMat().config().enableWeaponEffects().get()) return true;
-        return ToolEffects.has(player, ToolBuff.AUTO_SMELT);
     }
 
     private static @Nullable Item configuredResult(Identifier blockId) {

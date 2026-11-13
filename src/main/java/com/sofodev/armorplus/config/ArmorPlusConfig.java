@@ -114,6 +114,12 @@ public class ArmorPlusConfig {
     public static ConfigValue<List<? extends Integer>> toolSocketWeights;
     public static ConfigValue<Integer> maxRangedSockets;
     public static ConfigValue<List<? extends Integer>> rangedSocketWeights;
+    public static BooleanValue mobsUseRuneEffects;
+    public static ConfigValue<Double> mobRangedEffectiveness;
+    public static BooleanValue mobFlight;
+    public static ConfigValue<Double> mobFlightSpeed;
+    public static ConfigValue<List<? extends String>> mobEffectBlacklist;
+    public static ConfigValue<List<? extends String>> mobFlightBlacklist;
     public static ConfigValue<Integer> enderShotCooldown;
     public static ConfigValue<Integer> enderShotDurability;
     public static ConfigValue<Integer> extractionBaseCost;
@@ -257,6 +263,20 @@ public class ArmorPlusConfig {
                 .defineInRange("instantEffectCooldown", 5, 0, 3600);
         heldInstantEffectStrength = builder.comment("Strength of instant effects from held tools, compared to worn armor (0.5 = half). Instant Health heals this fraction of the normal amount, effects without a strength like Saturation aren't affected")
                 .defineInRange("heldInstantEffectStrength", 0.5, 0.0, 1.0);
+        builder.comment("Mobs wearing or holding ArmorPlus gear and runes").push("mobs");
+        mobsUseRuneEffects = builder.comment("Mobs get the set and rune effects of the armor they wear (checked once a second, only for mobs that wear such armor)")
+                .define("mobsUseRuneEffects", true);
+        mobRangedEffectiveness = builder.comment("Strength of ranged runes fired by mobs, compared to players (0.5 = half): Seeker range and turning, Ricochet range, Marked and Long Shot bonus damage")
+                .defineInRange("mobRangedEffectiveness", 0.5, 0.0, 1.0);
+        mobFlight = builder.comment("Mobs with the Flight effect fly after targets they can't reach on foot, and glide down instead of taking fall damage")
+                .define("mobFlight", true);
+        mobFlightSpeed = builder.comment("Flying speed of mobs with Flight, in blocks per tick")
+                .defineInRange("mobFlightSpeed", 0.3, 0.05, 2.0);
+        mobEffectBlacklist = builder.comment("Mobs that never get armor effects, e.g. \"minecraft:zombie\"")
+                .defineListAllowEmpty("mobEffectBlacklist", List.of(), () -> "", entry -> entry instanceof String);
+        mobFlightBlacklist = builder.comment("Mobs that never fly with Flight, e.g. \"minecraft:creeper\"")
+                .defineListAllowEmpty("mobFlightBlacklist", List.of(), () -> "", entry -> entry instanceof String);
+        builder.pop();
         effectSlots = builder.comment("The default pieces an effect needs, for every set, formatted as \"id|pieces\": comma separated slots head, chest, legs and feet (all of them needed, e.g. \"minecraft:night_vision|head\" or \"minecraft:conduit_power|legs,feet\"; \":count\" needs only that many of them, e.g. \"minecraft:speed|chest,legs,feet:2\") or a piece count (any of that many pieces, e.g. \"minecraft:speed|2\"). "
                         + "Set effects with slots are only listed on those pieces and runes of the effect only fit into them; a piece count without slots only applies to sets, runes of the effect fit into any piece. "
                         + "A set can use other pieces for an effect by ending its entry with them, e.g. \"minecraft:night_vision|1@chest\" or \"minecraft:night_vision|1@4\"")

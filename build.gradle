@@ -88,7 +88,8 @@ configurations {
 dependencies {
 
 //    implementation files("../TheDragonLib/build/libs/thedragonlib-26.1.2-1.4.0-neo.jar")
-     implementation "curse.maven:thedragonlib-248055:9455147"
+    implementation "curse.maven:thedragonlib-248055:9581448"
+    implementation "curse.maven:mob-settings-247819:9590437"
 
     compileOnly "curse.maven:jei-238222:9384706"
     localRuntime "curse.maven:jei-238222:9384706"

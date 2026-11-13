@@ -40,7 +40,7 @@ public class APShovelItem extends ShovelItem implements Tool {
     public void appendHoverText(ItemStack stack, TooltipContext ctx, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag flagIn) {
         if (isSneakDown()) {
             addBuffInformation(stack, mat, tooltip, "on_hit", false, mat.config().enableWeaponEffects().get());
-        } else if (!mat.getBuffInstances().get().isEmpty()) {
+        } else if (!mat.getBuffInstances().get().isEmpty() || !mat.getHeldBuffs().isEmpty()) {
             showSneakInfo(tooltip, mat.getColor());
         }
         super.appendHoverText(stack, ctx, display, tooltip, flagIn);

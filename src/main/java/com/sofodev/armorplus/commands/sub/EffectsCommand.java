@@ -1,21 +1,22 @@
 package com.sofodev.armorplus.commands.sub;
 
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.sofodev.armorplus.api.EffectEntry;
+import com.sofodev.armorplus.api.EffectScope;
+import com.sofodev.armorplus.api.EffectScopes;
+import com.sofodev.armorplus.commands.CommandPages;
 import com.sofodev.armorplus.events.ModGlobalEvents;
-import com.sofodev.armorplus.registry.ModAttachments;
-import com.sofodev.armorplus.registry.item.armor.ArmorEffects;
 import com.sofodev.armorplus.registry.item.extra.Buff;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import com.sofodev.armorplus.registry.item.extra.BuffNames;
-import com.sofodev.armorplus.registry.item.tool.RangedEffects;
-import com.sofodev.armorplus.registry.item.tool.ToolEffects;
-import com.sofodev.armorplus.registry.item.tool.WeaponEffects;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
@@ -31,39 +32,34 @@ public class EffectsCommand {
 
     public static LiteralArgumentBuilder<CommandSourceStack> node() {
         return Commands.literal("effects")
-                .executes(ctx -> list(ctx.getSource(), ctx.getSource().getPlayerOrException()))
+                .executes(ctx -> list(ctx.getSource(), ctx.getSource().getPlayerOrException(), 1))
+                .then(Commands.literal("page").then(Commands.argument("page", IntegerArgumentType.integer(1))
+                        .executes(ctx -> list(ctx.getSource(), ctx.getSource().getPlayerOrException(), IntegerArgumentType.getInteger(ctx, "page")))))
                 .then(Commands.argument("player", EntityArgument.player()).requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
-                        .executes(ctx -> list(ctx.getSource(), EntityArgument.getPlayer(ctx, "player"))))
+                        .executes(ctx -> list(ctx.getSource(), EntityArgument.getPlayer(ctx, "player"), 1))
+                        .then(Commands.argument("page", IntegerArgumentType.integer(1))
+                                .executes(ctx -> list(ctx.getSource(), EntityArgument.getPlayer(ctx, "player"), IntegerArgumentType.getInteger(ctx, "page")))))
                 .then(Commands.literal("reset")
                         .executes(ctx -> reset(ctx.getSource(), ctx.getSource().getPlayerOrException()))
                         .then(Commands.argument("player", EntityArgument.player()).requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
                                 .executes(ctx -> reset(ctx.getSource(), EntityArgument.getPlayer(ctx, "player")))));
     }
 
-    private static int list(CommandSourceStack source, ServerPlayer player) {
+    private static int list(CommandSourceStack source, ServerPlayer player, int page) {
         send(source, translate(GOLD, "commands.armorplus.effects.header", player.getDisplayName()));
-        int shown = 0;
-        for (ArmorEffects.Entry entry : ArmorEffects.entries(player)) {
-            // effects that still need more pieces aren't active or switched off yet
-            if (!entry.available()) continue;
-            send(source, line(entry.buff(), Component.literal(entry.source()), entry.disabled()));
-            shown++;
+        List<Component> lines = new ArrayList<>();
+        for (EffectScope scope : EffectScopes.all()) {
+            for (EffectEntry entry : scope.entries(player)) {
+                // effects that still need more pieces aren't active or switched off yet
+                if (!entry.available() || entry.buff().getBuff() == Buff.NONE) continue;
+                lines.add(line(entry.buff(), scope.sourceName(entry), entry.disabled()));
+            }
         }
-        for (ToolEffects.Entry entry : ToolEffects.entries(player)) {
-            send(source, line(entry.buff(), translate("commands.armorplus.effects.source.tool"), entry.disabled()));
-            shown++;
-        }
-        for (WeaponEffects.Entry entry : WeaponEffects.entries(player)) {
-            if (entry.buff().getBuff() == Buff.NONE) continue;
-            send(source, line(entry.buff(), translate("commands.armorplus.effects.source.weapon"), entry.disabled()));
-            shown++;
-        }
-        for (RangedEffects.Entry entry : RangedEffects.entries(player)) {
-            send(source, line(entry.buff(), translate("commands.armorplus.effects.source.ranged"), entry.disabled()));
-            shown++;
-        }
-        if (shown == 0) send(source, translate(GRAY, "commands.armorplus.effects.none"));
-        return shown;
+        if (lines.isEmpty()) send(source, translate(GRAY, "commands.armorplus.effects.none"));
+        // the page buttons show the same player's effects: "effects page <n>" for your own, "effects <player> <n>" for others
+        String command = source.getEntity() == player ? "/armorplus effects page" : "/armorplus effects " + player.getScoreboardName();
+        CommandPages.send(source, lines, page, command);
+        return lines.size();
     }
 
     private static Component line(BuffInstance buff, Component effectSource, boolean disabled) {
@@ -74,16 +70,11 @@ public class EffectsCommand {
     }
 
     private static int reset(CommandSourceStack source, ServerPlayer player) {
-        int count = player.getData(ModAttachments.DISABLED_EFFECTS.get()).size()
-                + player.getData(ModAttachments.DISABLED_TOOL_EFFECTS.get()).size()
-                + player.getData(ModAttachments.DISABLED_WEAPON_EFFECTS.get()).size()
-                + player.getData(ModAttachments.DISABLED_RANGED_EFFECTS.get()).size();
-        player.setData(ModAttachments.DISABLED_EFFECTS.get(), List.of());
-        player.setData(ModAttachments.DISABLED_TOOL_EFFECTS.get(), List.of());
-        player.setData(ModAttachments.DISABLED_WEAPON_EFFECTS.get(), List.of());
-        player.setData(ModAttachments.DISABLED_RANGED_EFFECTS.get(), List.of());
-        ArmorEffects.invalidate(player);
-        ToolEffects.invalidate(player);
+        int count = EffectScopes.all().stream().mapToInt(scope -> player.getData(scope.disabledEffects()).size()).sum();
+        for (EffectScope scope : EffectScopes.all()) {
+            player.setData(scope.disabledEffects(), List.of());
+            scope.invalidate(player);
+        }
         ModGlobalEvents.checkAndApplyBuffs(player);
         source.sendSuccess(() -> translate(GREEN, "commands.armorplus.effects.reset.success", count, player.getDisplayName()), source.getEntity() != player);
         return count;

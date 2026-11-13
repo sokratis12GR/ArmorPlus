@@ -1,14 +1,14 @@
 package com.sofodev.armorplus.registry.item.tool;
 
+import com.sofodev.armorplus.api.EffectEntry;
+import com.sofodev.armorplus.api.EffectScope;
+import com.sofodev.armorplus.api.EffectScopes;
 import com.sofodev.armorplus.api.RuneData;
 import com.sofodev.armorplus.api.RuneKind;
-import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.registry.ModAttachments;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
-import com.sofodev.armorplus.registry.item.extra.BuffParser;
 import com.sofodev.armorplus.registry.rune.Runes;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
@@ -35,17 +35,32 @@ public final class RangedEffects {
     /** Quick Draw above this level would finish a shot in a handful of ticks. */
     private static final int QUICK_DRAW_MAX_LEVEL = 4;
 
+    /**
+     * The ranged scope, use {@link EffectScopes#RANGED}. Sources are {@link EffectEntry#MATERIAL} and {@link EffectEntry#RUNE},
+     * toggle keys the effect id. Not cached: the held item's runes and levels change without an event.
+     */
+    public static final EffectScope SCOPE = new Scope();
+
     private RangedEffects() {
     }
 
-    /**
-     * One ranged rune effect of the held bow or crossbow.
-     *
-     * @param id       the buff id, also the key saved when the player switches it off, e.g. "armorplus:piercing"
-     * @param disabled switched off by the player
-     * @param rune     from a socketed rune, not the material
-     */
-    public record Entry(BuffInstance buff, String id, boolean disabled, boolean rune) {
+    private static final class Scope extends EffectScope {
+
+        private Scope() {
+            super("ranged", ModAttachments.DISABLED_RANGED_EFFECTS, false);
+        }
+
+        /** The material effects and the socketed runes of the held bow or crossbow. */
+        @Override
+        protected List<EffectEntry> collect(LivingEntity entity) {
+            List<EffectEntry> entries = new ArrayList<>();
+            ItemStack weapon = heldWeapon(entity);
+            List<RuneData> sockets = Runes.sockets(weapon);
+            for (RuneData rune : Runes.rangedEffects(weapon)) {
+                entries.add(entry(entity, Runes.resolve(rune), sockets.contains(rune) ? EffectEntry.RUNE : EffectEntry.MATERIAL));
+            }
+            return entries;
+        }
     }
 
     /** @return the bow or crossbow in the main hand, else the off hand, else EMPTY */
@@ -54,27 +69,9 @@ public final class RangedEffects {
         return Runes.gearKind(entity.getOffhandItem()) == RuneKind.RANGED ? entity.getOffhandItem() : ItemStack.EMPTY;
     }
 
-    /** @return every ranged effect of the held bow or crossbow (its material's and its runes') with its status */
-    public static List<Entry> entries(Player player) {
-        List<Entry> entries = new ArrayList<>();
-        ItemStack weapon = heldWeapon(player);
-        for (RuneData rune : Runes.rangedEffects(weapon)) {
-            BuffInstance buff = Runes.resolve(rune);
-            String id = BuffParser.idOf(buff.getBuff());
-            entries.add(new Entry(buff, id, isDisabled(player, id), Runes.sockets(weapon).contains(rune)));
-        }
-        return List.copyOf(entries);
-    }
-
-    public static boolean isDisabled(Player player, String id) {
-        return ArmorPlusConfig.allowEffectToggles.get() && player.getData(ModAttachments.DISABLED_RANGED_EFFECTS.get()).contains(id);
-    }
-
     /** @return the material effects and runes of the weapon that the shooter hasn't switched off */
     public static List<RuneData> activeRunes(ItemStack weapon, LivingEntity shooter) {
-        List<RuneData> runes = Runes.rangedEffects(weapon);
-        if (!(shooter instanceof Player player)) return runes;
-        return runes.stream().filter(rune -> !isDisabled(player, rune.buffId())).toList();
+        return Runes.rangedEffects(weapon).stream().filter(rune -> !SCOPE.isDisabled(shooter, rune.buffId())).toList();
     }
 
     /** @return the level of the rune's buff, 1 for abilities without levels */

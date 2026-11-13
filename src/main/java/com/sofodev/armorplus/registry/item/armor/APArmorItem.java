@@ -2,6 +2,7 @@ package com.sofodev.armorplus.registry.item.armor;
 
 import net.minecraft.world.item.equipment.ArmorType;
 
+import com.sofodev.armorplus.api.EffectScopes;
 import com.sofodev.armorplus.config.ArmorPlusConfig.MaterialConfig;
 import com.sofodev.armorplus.config.AvailabilityConfig;
 import com.sofodev.armorplus.registry.item.extra.Buff;
@@ -69,7 +70,7 @@ public class APArmorItem extends Item {
                 Player player = clientPlayer();
                 String source = mat.config() instanceof MaterialConfig cfg ? cfg.name() : "";
                 addBuffLines(tooltip, buffs, buff -> ArmorEffects.progress(player, mat, buff),
-                        buff -> enabled && (player == null || !ArmorEffects.isDisabled(player, ArmorEffects.toggleKey(source, BuffParser.idOf(buff.getBuff())))),
+                        buff -> enabled && (player == null || !EffectScopes.ARMOR.isDisabled(player, source, BuffParser.idOf(buff.getBuff()))),
                         buff -> instantCooldown(buff, false));
                 addExtractedLines(tooltip, extracted);
                 addDetailsHint(tooltip, buffs, mat.getFormatting());

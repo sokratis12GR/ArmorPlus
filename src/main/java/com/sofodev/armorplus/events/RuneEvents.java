@@ -1,6 +1,8 @@
 package com.sofodev.armorplus.events;
 
 import com.sofodev.armorplus.ArmorPlus;
+import com.sofodev.armorplus.api.EffectEntry;
+import com.sofodev.armorplus.api.EffectScopes;
 import com.sofodev.armorplus.api.RuneEffectType;
 import com.sofodev.armorplus.api.event.EffectApplyEvent;
 import com.sofodev.armorplus.api.event.RuneApplyEvent;
@@ -77,8 +79,7 @@ public class RuneEvents {
     @SubscribeEvent
     public static void onConfigReload(ModConfigEvent.Reloading event) {
         if (event.getConfig().getModId().equals(ArmorPlus.MODID)) {
-            ArmorEffects.clearCaches();
-            ToolEffects.clearCaches();
+            EffectScopes.clearAllCaches();
         }
     }
 
@@ -155,9 +156,9 @@ public class RuneEvents {
 
     /** @param missingOnly only apply the regular mob effects that need it, so the once a second hooks and instant effects keep their timing */
     private static void applyEffects(Player player, ServerLevel level, boolean missingOnly) {
-        for (ArmorEffects.Entry entry : ArmorEffects.activeEntries(player)) {
+        for (EffectEntry entry : EffectScopes.ARMOR.activeEntries(player)) {
             if (missingOnly && !isMissing(player, entry.buff())) continue;
-            EffectApplyEvent applyEvent = ArmorEffects.RUNE_SOURCE.equals(entry.source())
+            EffectApplyEvent applyEvent = entry.fromRune()
                     ? new RuneApplyEvent(player, entry.buff(), EffectApplyEvent.Context.WORN, ItemStack.EMPTY, null)
                     : new SetEffectApplyEvent(player, entry.buff(), EffectApplyEvent.Context.WORN, ItemStack.EMPTY, null, entry.source());
             if (!NeoForge.EVENT_BUS.post(applyEvent).isCanceled()) apply(player, level, entry.buff(), false);
@@ -189,7 +190,7 @@ public class RuneEvents {
         Holder<MobEffect> effect = buff.isEffect() ? buff.getEffect() : null;
         MobEffectInstance existing = effect == null ? null : player.getEffect(effect);
         if (existing == null || existing.isVisible() || existing.getAmplifier() != instance.getAmplifier()) return;
-        if (gives(ArmorEffects.active(player), effect, instance.getAmplifier()) || gives(ToolEffects.held(player), effect, instance.getAmplifier())) return;
+        if (gives(EffectScopes.ARMOR.active(player), effect, instance.getAmplifier()) || gives(ToolEffects.held(player), effect, instance.getAmplifier())) return;
         player.removeEffect(effect);
     }
 
@@ -308,7 +309,7 @@ public class RuneEvents {
     @SubscribeEvent
     public static void onDamageTaken(LivingDamageEvent.Pre event) {
         if (!(event.getEntity() instanceof Player player) || player.level().isClientSide()) return;
-        for (BuffInstance instance : ArmorEffects.active(player)) {
+        for (BuffInstance instance : EffectScopes.ARMOR.active(player)) {
             if (instance.getBuff() instanceof RuneEffectType type) type.onDamageTaken(player, event);
         }
     }

@@ -34,20 +34,17 @@ public final class ArmorPlusKeys {
     @SubscribeEvent
     public static void register(RegisterKeyMappingsEvent event) {
         event.registerCategory(CATEGORY);
-        event.register(ARMOR_EFFECTS);
-        event.register(TOOL_EFFECTS);
-        event.register(WEAPON_EFFECTS);
-        event.register(RANGED_EFFECTS);
+        // the key of every effects menu tab, see EffectsScreen.Tab#register
+        for (EffectsScreen.Tab tab : EffectsScreen.Tab.all()) event.register(tab.key());
         event.register(EFFECT_DETAILS);
     }
 
     @SubscribeEvent
     public static void onClientTick(ClientTickEvent.Post event) {
         Minecraft minecraft = Minecraft.getInstance();
-        while (ARMOR_EFFECTS.consumeClick()) open(minecraft, EffectsScreen.Tab.ARMOR);
-        while (TOOL_EFFECTS.consumeClick()) open(minecraft, EffectsScreen.Tab.TOOL);
-        while (WEAPON_EFFECTS.consumeClick()) open(minecraft, EffectsScreen.Tab.WEAPON);
-        while (RANGED_EFFECTS.consumeClick()) open(minecraft, EffectsScreen.Tab.RANGED);
+        for (EffectsScreen.Tab tab : EffectsScreen.Tab.all()) {
+            while (tab.key().consumeClick()) open(minecraft, tab);
+        }
     }
 
     /** Opens the tab's menu, or tells the player on the action bar why it has nothing to show, so the key doesn't seem broken. */

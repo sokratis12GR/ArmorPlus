@@ -1,25 +1,23 @@
 package com.sofodev.armorplus.api;
 
-import com.sofodev.armorplus.registry.item.armor.ArmorEffects;
 import com.sofodev.armorplus.api.event.RuneRemoveEvent;
 import com.sofodev.armorplus.api.event.RuneSocketEvent;
 import com.sofodev.armorplus.api.event.RuneUpgradeEvent;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import com.sofodev.armorplus.registry.item.extra.IBuff;
-import com.sofodev.armorplus.registry.item.tool.RangedEffects;
-import com.sofodev.armorplus.registry.item.tool.ToolEffects;
-import com.sofodev.armorplus.registry.item.tool.WeaponEffects;
 import com.sofodev.armorplus.registry.rune.RuneItem;
 import com.sofodev.armorplus.registry.rune.RuneRitual;
 import com.sofodev.armorplus.registry.rune.Runes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import org.jspecify.annotations.Nullable;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -198,45 +196,65 @@ public final class ArmorPlusAPI {
         return RuneRitual.pedestalItems(level, altar);
     }
 
-    /* ---------------------------------------- Player effects (server side) ---------------------------------------- */
+    /* ---------------------------------------- Entity effects (server side) ---------------------------------------- */
+
+    /** {@return every effect scope: armor, tool, weapon, ranged and any registered with {@link EffectScopes#register}} */
+    public static Collection<EffectScope> getEffectScopes() {
+        return EffectScopes.all();
+    }
+
+    /** {@return true if the entity gets the buff in the scope right now (players: and didn't switch it off)} */
+    public static boolean hasEffect(EffectScope scope, LivingEntity entity, IBuff buff) {
+        return scope.has(entity, buff);
+    }
+
+    /** {@return the entity's active effects in the scope} */
+    public static List<BuffInstance> getEffects(EffectScope scope, LivingEntity entity) {
+        return scope.active(entity);
+    }
+
+    /** {@return every effect of the entity in the scope with its source and status, including the ones switched off or needing more pieces} */
+    public static List<EffectEntry> getEffectEntries(EffectScope scope, LivingEntity entity) {
+        return scope.entries(entity);
+    }
 
     /** {@return true if the player's worn sets or armor runes give the buff and it isn't switched off} */
     public static boolean hasArmorEffect(Player player, IBuff buff) {
-        return ArmorEffects.has(player, buff);
+        return hasEffect(EffectScopes.ARMOR, player, buff);
     }
 
     /** {@return true if the runes of the tool in the main hand give the buff and it isn't switched off} */
     public static boolean hasToolEffect(Player player, IBuff buff) {
-        return ToolEffects.has(player, buff);
+        return hasEffect(EffectScopes.TOOL, player, buff);
     }
 
     /** {@return true if the item in the main hand gives the buff on hit and it isn't switched off} */
     public static boolean hasWeaponEffect(Player player, IBuff buff) {
-        return getWeaponEffects(player).stream().anyMatch(effect -> effect.getBuff() == buff);
+        return hasEffect(EffectScopes.WEAPON, player, buff);
     }
 
     /** {@return true if the held bow or crossbow gives the buff to its arrows and it isn't switched off} */
     public static boolean hasRangedEffect(Player player, IBuff buff) {
-        return getRangedEffects(player).stream().anyMatch(effect -> effect.getBuff() == buff);
+        return hasEffect(EffectScopes.RANGED, player, buff);
     }
 
     /** {@return the player's active armor effects, one per effect at the highest level of all sources} */
     public static List<BuffInstance> getArmorEffects(Player player) {
-        return ArmorEffects.active(player);
+        return getEffects(EffectScopes.ARMOR, player);
     }
 
     /** {@return the active effects of the runes of the tool in the main hand} */
     public static List<BuffInstance> getToolEffects(Player player) {
-        return ToolEffects.active(player);
+        return getEffects(EffectScopes.TOOL, player);
     }
 
     /** {@return the on-hit effects of the item in the main hand that aren't switched off: its material's effects and weapon runes} */
     public static List<BuffInstance> getWeaponEffects(Player player) {
-        return WeaponEffects.active(player);
+        return getEffects(EffectScopes.WEAPON, player);
     }
 
     /** {@return the ranged effects of the bow or crossbow in the main hand, otherwise the off hand (its material's and its runes') that aren't switched off} */
     public static List<BuffInstance> getRangedEffects(Player player) {
-        return RangedEffects.entries(player).stream().filter(entry -> !entry.disabled()).map(RangedEffects.Entry::buff).toList();
+        return getEffects(EffectScopes.RANGED, player);
     }
 }

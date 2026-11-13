@@ -17,6 +17,7 @@ import com.sofodev.armorplus.registry.item.tool.APBowItem;
 import com.sofodev.armorplus.registry.item.tool.ArrowRunes;
 import com.sofodev.armorplus.registry.item.tool.RangedEffects;
 import com.sofodev.armorplus.registry.rune.Runes;
+import com.sofodev.armorplus.utils.Hostility;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -30,7 +31,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
 import net.minecraft.world.item.ArrowItem;
@@ -272,6 +272,7 @@ public final class RangedRuneEvents {
             int level = data.level(RangedBuff.LONG_SHOT);
             if (level > 0) multiplier *= RangedEffects.longShotMultiplier(level, data.origin().distanceTo(target.position()));
         }
+        if (arrow.getOwner() instanceof LivingEntity shooter) multiplier = Hostility.scaleBonus(multiplier, shooter);
         if (multiplier != 1.0) event.setNewDamage((float) (event.getNewDamage() * multiplier));
     }
 
@@ -343,10 +344,11 @@ public final class RangedRuneEvents {
         return new RuneApplyEvent(shooter, buff, EffectApplyEvent.Context.HIT, weapon, target);
     }
 
-    /** Sends a weaker arrow to the nearest other hostile mob. Only that arrow bounces on, so piercing arrows don't multiply. */
+    /** Sends a weaker arrow to the nearest other enemy of the shooter. Only that arrow bounces on, so piercing arrows don't multiply. */
     private static void ricochet(AbstractArrow arrow, ArrowRunes data, LivingEntity from, LivingEntity shooter) {
         arrow.setData(ModAttachments.ARROW_RUNES.get(), data.withBounces(0));
-        LivingEntity next = nearestTarget(arrow, shooter, from.getBoundingBox().inflate(RICOCHET_RANGE), from.position(),
+        double range = RICOCHET_RANGE * Hostility.rangedEffectiveness(shooter);
+        LivingEntity next = nearestTarget(arrow, shooter, from.getBoundingBox().inflate(range), from.position(),
                 candidate -> candidate != from, from::hasLineOfSight);
         if (next == null) return;
 
@@ -372,11 +374,10 @@ public final class RangedRuneEvents {
     /**
      * @param check a cheap check of each mob
      * @param sight the line of sight check, a raycast, so it only runs from the nearest mob up until one passes
-     * @return the nearest hostile mob around the point that isn't the shooter or on their team, and passes the checks
+     * @return the nearest enemy of the shooter around the point (see {@link Hostility#isTarget}) that passes the checks
      */
     private static @Nullable LivingEntity nearestTarget(AbstractArrow arrow, LivingEntity shooter, AABB area, Vec3 point, Predicate<LivingEntity> check, Predicate<LivingEntity> sight) {
-        return arrow.level().getEntitiesOfClass(LivingEntity.class, area, candidate -> candidate instanceof Enemy && candidate.isAlive()
-                        && candidate != shooter && !candidate.isAlliedTo(shooter) && check.test(candidate)).stream()
+        return arrow.level().getEntitiesOfClass(LivingEntity.class, area, candidate -> Hostility.isTarget(shooter, candidate) && check.test(candidate)).stream()
                 .sorted(Comparator.comparingDouble(candidate -> candidate.distanceToSqr(point)))
                 .filter(sight)
                 .findFirst()
@@ -440,7 +441,8 @@ public final class RangedRuneEvents {
 
         Vec3 toTarget = target.getBoundingBox().getCenter().subtract(arrow.position()).normalize();
         Vec3 lifted = motion.add(0.0, arrow.getGravity() * SEEKER_GRAVITY_OFFSET, 0.0);
-        arrow.setDeltaMovement(lifted.normalize().lerp(toTarget, SEEKER_TURN).normalize().scale(lifted.length()));
+        double turn = SEEKER_TURN * Hostility.rangedEffectiveness(shooter);
+        arrow.setDeltaMovement(lifted.normalize().lerp(toTarget, turn).normalize().scale(lifted.length()));
         arrow.needsSync = true;
     }
 
@@ -460,7 +462,7 @@ public final class RangedRuneEvents {
         }
         if (!check) return null;
 
-        AABB area = arrow.getBoundingBox().inflate(SEEKER_RANGE);
+        AABB area = arrow.getBoundingBox().inflate(SEEKER_RANGE * Hostility.rangedEffectiveness(shooter));
         Predicate<LivingEntity> ahead = candidate -> candidate.getBoundingBox().getCenter().subtract(position).normalize().dot(direction) > SEEKER_CONE;
         Predicate<LivingEntity> inSight = candidate -> candidate.hasLineOfSight(arrow);
         // the shooter's other arrows would only bounce off a mob they just hit, so share them out if there are more targets

@@ -1,6 +1,7 @@
 package com.sofodev.armorplus.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.sofodev.armorplus.commands.sub.DiscordCommand;
 import com.sofodev.armorplus.commands.sub.EffectsCommand;
 import com.sofodev.armorplus.commands.sub.HelpCommand;
@@ -27,7 +28,9 @@ public class ArmorPlusCommand {
                 .then(Commands.literal("nodecraft").executes(ctx -> nodecraft(ctx.getSource())))
                 .then(Commands.literal("wiki").executes(ctx -> wiki(ctx.getSource())))
                 .then(Commands.literal("support").executes(ctx -> support(ctx.getSource())))
-                .then(Commands.literal("help").executes(ctx -> help(ctx.getSource())))
+                .then(Commands.literal("help").executes(ctx -> help(ctx.getSource()))
+                        .then(Commands.argument("page", IntegerArgumentType.integer(1))
+                                .executes(ctx -> HelpCommand.execute(ctx.getSource(), IntegerArgumentType.getInteger(ctx, "page")))))
                 .then(Commands.literal("status").executes(ctx -> status(ctx.getSource())))
                 .then(EffectsCommand.node())
                 .then(RuneCommand.node())

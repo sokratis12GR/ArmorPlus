@@ -1,5 +1,6 @@
 package com.sofodev.armorplus.commands.sub;
 
+import com.sofodev.armorplus.api.EffectScopes;
 import com.sofodev.armorplus.api.SocketResult;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
@@ -9,11 +10,11 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
 import com.sofodev.armorplus.api.event.RuneRemoveEvent;
 import com.sofodev.armorplus.api.event.RuneSocketEvent;
+import com.sofodev.armorplus.commands.CommandPages;
 import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.registry.ModDataComponents;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import com.sofodev.armorplus.registry.item.extra.BuffNames;
-import com.sofodev.armorplus.registry.item.tool.ToolEffects;
 import com.sofodev.armorplus.api.RuneData;
 import com.sofodev.armorplus.registry.rune.RuneItem;
 import com.sofodev.armorplus.api.RuneKind;
@@ -58,11 +59,15 @@ public class RuneCommand {
     };
 
     public static LiteralArgumentBuilder<CommandSourceStack> node() {
-        LiteralArgumentBuilder<CommandSourceStack> list = Commands.literal("list").executes(ctx -> list(ctx.getSource(), null));
+        LiteralArgumentBuilder<CommandSourceStack> list = Commands.literal("list").executes(ctx -> list(ctx.getSource(), null, 1))
+                .then(Commands.argument("page", IntegerArgumentType.integer(1))
+                        .executes(ctx -> list(ctx.getSource(), null, IntegerArgumentType.getInteger(ctx, "page"))));
         LiteralArgumentBuilder<CommandSourceStack> socket = Commands.literal("socket").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS));
         ArgumentBuilder<CommandSourceStack, ?> give = Commands.argument("players", EntityArgument.players());
         for (RuneKind kind : RuneKind.values()) {
-            list.then(Commands.literal(kind.getSerializedName()).executes(ctx -> list(ctx.getSource(), kind)));
+            list.then(Commands.literal(kind.getSerializedName()).executes(ctx -> list(ctx.getSource(), kind, 1))
+                    .then(Commands.argument("page", IntegerArgumentType.integer(1))
+                            .executes(ctx -> list(ctx.getSource(), kind, IntegerArgumentType.getInteger(ctx, "page")))));
             give.then(Commands.literal(kind.getSerializedName()).then(Commands.argument("effect", IdentifierArgument.id())
                     .suggests(obtainable(kind))
                     .executes(ctx -> give(ctx.getSource(), EntityArgument.getPlayers(ctx, "players"), kind, IdentifierArgument.getId(ctx, "effect"), 1))
@@ -135,14 +140,14 @@ public class RuneCommand {
         return Command.SINGLE_SUCCESS;
     }
 
-    private static int list(CommandSourceStack source, @Nullable RuneKind kind) {
+    private static int list(CommandSourceStack source, @Nullable RuneKind kind, int page) {
         if (!Runes.enabled()) return fail(source, "commands.armorplus.rune.disabled");
         List<RuneData> runes = Runes.creativeRunes().stream().filter(rune -> kind == null || rune.kind() == kind).toList();
         if (runes.isEmpty()) return fail(source, "commands.armorplus.rune.list.empty");
         send(source, translate(GOLD, "commands.armorplus.rune.list.header", runes.size()));
-        for (RuneData rune : runes) {
-            send(source, translate(GRAY, "commands.armorplus.rune.list.entry", rune.kind().getSerializedName(), name(rune), rune.buffId()));
-        }
+        List<Component> lines = runes.stream().<Component>map(rune ->
+                translate(GRAY, "commands.armorplus.rune.list.entry", rune.kind().getSerializedName(), name(rune), rune.buffId())).toList();
+        CommandPages.send(source, lines, page, "/armorplus rune list" + (kind == null ? "" : " " + kind.getSerializedName()));
         return runes.size();
     }
 
@@ -231,7 +236,7 @@ public class RuneCommand {
 
     private static void replaceHeld(ServerPlayer player, ItemStack stack) {
         player.setItemInHand(InteractionHand.MAIN_HAND, stack);
-        ToolEffects.invalidate(player);
+        EffectScopes.TOOL.invalidate(player);
     }
 
     private static Component name(RuneData rune) {

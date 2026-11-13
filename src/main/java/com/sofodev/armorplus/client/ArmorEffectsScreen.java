@@ -1,15 +1,12 @@
 package com.sofodev.armorplus.client;
 
+import com.sofodev.armorplus.api.EffectEntry;
 import com.sofodev.armorplus.network.ToggleEffectPayload;
-import com.sofodev.armorplus.registry.ModAttachments;
-import com.sofodev.armorplus.registry.item.armor.ArmorEffects;
-import com.sofodev.armorplus.registry.item.armor.ArmorEffects.Entry;
 import com.sofodev.armorplus.registry.item.extra.BuffNames;
 import com.sofodev.armorplus.utils.ToolTipUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 
 import java.util.List;
 
@@ -25,38 +22,20 @@ public class ArmorEffectsScreen extends EffectsScreen {
     }
 
     @Override
-    protected void reload() {
-        // the client keeps its own cache of the worn runes, which isn't invalidated by server events
-        ArmorEffects.invalidate(this.minecraft.player);
-    }
-
-    @Override
     protected List<Effect> effects() {
-        return ArmorEffects.entries(this.minecraft.player).stream().map(entry -> new Effect(section(entry), sourceName(entry.source()), label(entry), tooltip(entry), entry.available(),
-                () -> ClientPacketDistributor.sendToServer(new ToggleEffectPayload(ToggleEffectPayload.Scope.ARMOR, entry.toggleKey())))).toList();
-    }
-
-    private static String section(Entry entry) {
-        return entry.source().equals(ArmorEffects.RUNE_SOURCE) ? RUNES : entry.source();
-    }
-
-    @Override
-    protected List<String> state() {
-        List<String> disabled = this.minecraft.player.getData(ModAttachments.DISABLED_EFFECTS.get());
-        return ArmorEffects.entries(this.minecraft.player).stream()
-                .map(e -> e.toggleKey() + "|" + e.worn() + "|" + disabled.contains(e.toggleKey()) + "|" + e.buff().getAmplifier())
-                .toList();
+        return entries().stream().map(entry -> new Effect(entry.fromRune() ? RUNES : entry.source(), sourceName(entry), label(entry), tooltip(entry), entry.available(),
+                toggle(entry))).toList();
     }
 
     /** @return "Coal Set", "Enhanced Iron Set", ... or "Runes" */
-    private static Component sourceName(String source) {
-        if (source.equals(ArmorEffects.RUNE_SOURCE)) return runesTitle();
-        return Component.translatable("screen.armorplus.armor_effects.set", Component.translatable("armorplus.configuration." + source)).withStyle(ChatFormatting.GOLD);
+    private static Component sourceName(EffectEntry entry) {
+        if (entry.fromRune()) return runesTitle();
+        return Component.translatable("screen.armorplus.armor_effects.set", Component.translatable("armorplus.configuration." + entry.source())).withStyle(ChatFormatting.GOLD);
     }
 
-    private static Component label(Entry entry) {
+    private static Component label(EffectEntry entry) {
         MutableComponent label = Component.empty();
-        if (entry.source().equals(ArmorEffects.RUNE_SOURCE)) {
+        if (entry.fromRune()) {
             label.append(ToolTipUtils.buffName(entry.buff(), true));
         } else {
             label.append(Component.literal("[" + Math.min(entry.worn(), entry.required()) + "/" + entry.required() + "] ")
@@ -69,9 +48,9 @@ public class ArmorEffectsScreen extends EffectsScreen {
                 : Component.translatable("options.on").withStyle(ChatFormatting.GREEN));
     }
 
-    private static Component tooltip(Entry entry) {
+    private static Component tooltip(EffectEntry entry) {
         MutableComponent tooltip = ToolTipUtils.buffTooltip(entry.buff()).append("\n");
-        if (entry.source().equals(ArmorEffects.RUNE_SOURCE)) {
+        if (entry.fromRune()) {
             tooltip.append(Component.translatable("screen.armorplus.armor_effects.from_rune"));
         } else if (entry.slots().isEmpty()) {
             tooltip.append(Component.translatable("screen.armorplus.armor_effects.from_set", entry.worn(), entry.required()));
@@ -92,7 +71,7 @@ public class ArmorEffectsScreen extends EffectsScreen {
     }
 
     /** @return true if the effect only needs some of its pieces, e.g. "@chest,legs,feet:2" */
-    private static boolean needsSomeSlots(Entry entry) {
+    private static boolean needsSomeSlots(EffectEntry entry) {
         return entry.required() < entry.slots().size();
     }
 }

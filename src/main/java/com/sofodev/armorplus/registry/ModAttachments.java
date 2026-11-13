@@ -20,40 +20,32 @@ public class ModAttachments {
      * Ids of the set/rune effects a player switched off in the Armor Effects screen. Saved with the player, kept on death
      * and synced to the player's own client for the screen.
      */
-    public static final DeferredHolder<AttachmentType<?>, AttachmentType<List<String>>> DISABLED_EFFECTS = ATTACHMENT_TYPES.register("disabled_effects",
-            () -> AttachmentType.<List<String>>builder(() -> List.of())
-                    .serialize(Codec.STRING.listOf().fieldOf("disabled"))
-                    .copyOnDeath()
-                    .sync(ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()))
-                    .build());
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<List<String>>> DISABLED_EFFECTS = disabledEffects("disabled_effects");
 
     /** Ids of the tool rune effects a player switched off in the Tool Effects screen, kept apart from the armor effects. */
-    public static final DeferredHolder<AttachmentType<?>, AttachmentType<List<String>>> DISABLED_TOOL_EFFECTS = ATTACHMENT_TYPES.register("disabled_tool_effects",
-            () -> AttachmentType.<List<String>>builder(() -> List.of())
-                    .serialize(Codec.STRING.listOf().fieldOf("disabled"))
-                    .copyOnDeath()
-                    .sync(ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()))
-                    .build());
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<List<String>>> DISABLED_TOOL_EFFECTS = disabledEffects("disabled_tool_effects");
 
     /** Ids of the weapon (on-hit) effects a player switched off in the Weapon Effects screen, kept apart like the tool effects. */
-    public static final DeferredHolder<AttachmentType<?>, AttachmentType<List<String>>> DISABLED_WEAPON_EFFECTS = ATTACHMENT_TYPES.register("disabled_weapon_effects",
-            () -> AttachmentType.<List<String>>builder(() -> List.of())
-                    .serialize(Codec.STRING.listOf().fieldOf("disabled"))
-                    .copyOnDeath()
-                    .sync(ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()))
-                    .build());
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<List<String>>> DISABLED_WEAPON_EFFECTS = disabledEffects("disabled_weapon_effects");
 
     /** Ids of the ranged rune effects a player switched off in the Ranged Effects screen, kept apart like the tool effects. */
-    public static final DeferredHolder<AttachmentType<?>, AttachmentType<List<String>>> DISABLED_RANGED_EFFECTS = ATTACHMENT_TYPES.register("disabled_ranged_effects",
-            () -> AttachmentType.<List<String>>builder(() -> List.of())
-                    .serialize(Codec.STRING.listOf().fieldOf("disabled"))
-                    .copyOnDeath()
-                    .sync(ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()))
-                    .build());
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<List<String>>> DISABLED_RANGED_EFFECTS = disabledEffects("disabled_ranged_effects");
 
     /** The ranged runes an arrow was fired with. Saved with the arrow, the server is the only side using them. */
     public static final DeferredHolder<AttachmentType<?>, AttachmentType<ArrowRunes>> ARROW_RUNES = ATTACHMENT_TYPES.register("arrow_runes",
             () -> AttachmentType.builder(() -> ArrowRunes.EMPTY)
                     .serialize(ArrowRunes.MAP_CODEC)
                     .build());
+
+    /**
+     * @return the toggle keys an effect scope's player switched off: saved with the player, kept on death and synced to the
+     * player's own client for the screen
+     */
+    public static DeferredHolder<AttachmentType<?>, AttachmentType<List<String>>> disabledEffects(String name) {
+        return ATTACHMENT_TYPES.register(name, () -> AttachmentType.<List<String>>builder(() -> List.of())
+                .serialize(Codec.STRING.listOf().fieldOf("disabled"))
+                .copyOnDeath()
+                .sync(ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()))
+                .build());
+    }
 }

@@ -1,9 +1,12 @@
 package com.sofodev.armorplus.commands.sub;
 
 import com.mojang.brigadier.Command;
+import com.sofodev.armorplus.commands.CommandPages;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
+import net.minecraft.network.chat.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.sofodev.armorplus.utils.ToolTipUtils.translate;
@@ -11,7 +14,7 @@ import static net.minecraft.ChatFormatting.GOLD;
 import static net.minecraft.ChatFormatting.GRAY;
 
 /**
- * "/armorplus help": the commands the source is allowed to use, from their "usage" and "help" translations.
+ * "/armorplus help [page]": the commands the source is allowed to use, from their "usage" and "help" translations.
  */
 public class HelpCommand {
 
@@ -20,14 +23,19 @@ public class HelpCommand {
     private static final List<String> GAMEMASTER_COMMANDS = List.of("rune.give", "rune.socket", "rune.unsocket", "rune.sockets");
 
     public static int execute(CommandSourceStack source) {
-        COMMANDS.forEach(command -> send(source, command));
-        if (Commands.LEVEL_GAMEMASTERS.check(source.permissions())) GAMEMASTER_COMMANDS.forEach(command -> send(source, command));
+        return execute(source, 1);
+    }
+
+    public static int execute(CommandSourceStack source, int page) {
+        List<String> commands = new ArrayList<>(COMMANDS);
+        if (Commands.LEVEL_GAMEMASTERS.check(source.permissions())) commands.addAll(GAMEMASTER_COMMANDS);
+        CommandPages.send(source, commands.stream().map(HelpCommand::line).toList(), page, "/armorplus help");
         return Command.SINGLE_SUCCESS;
     }
 
-    private static void send(CommandSourceStack source, String command) {
-        source.sendSuccess(() -> translate(GRAY, "commands.armorplus.format.help",
+    private static Component line(String command) {
+        return translate(GRAY, "commands.armorplus.format.help",
                 translate(GOLD, "commands.armorplus." + command + ".usage"),
-                translate("commands.armorplus." + command + ".help")), false);
+                translate("commands.armorplus." + command + ".help"));
     }
 }

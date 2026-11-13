@@ -1,31 +1,34 @@
 package com.sofodev.armorplus.registry.item.armor;
 
+import com.sofodev.armorplus.api.EffectEntry;
+import com.sofodev.armorplus.api.EffectScope;
+import com.sofodev.armorplus.api.EffectScopes;
 import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.config.ArmorPlusConfig.MaterialConfig;
+import com.sofodev.armorplus.events.ModGlobalEvents;
+import com.sofodev.armorplus.events.RuneEvents;
 import com.sofodev.armorplus.registry.ModAttachments;
 import com.sofodev.armorplus.registry.item.extra.Buff;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import com.sofodev.armorplus.registry.item.extra.BuffNames;
 import com.sofodev.armorplus.registry.item.extra.BuffParser;
 import com.sofodev.armorplus.registry.item.extra.DeBuff;
-import com.sofodev.armorplus.registry.item.extra.IBuff;
 import com.sofodev.armorplus.registry.item.tool.ToolEffects;
 import com.sofodev.armorplus.registry.rune.Runes;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import org.jspecify.annotations.Nullable;
 
-import java.util.Collections;
 import java.util.EnumMap;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.WeakHashMap;
+import java.util.Optional;
 
 /**
  * The armor effects a player gets, from the worn ArmorPlus sets and the socketed armor runes. Tool runes are separate, see
@@ -43,112 +46,86 @@ import java.util.WeakHashMap;
 public final class ArmorEffects {
 
     public static final int SET_SIZE = 4;
-    /** Toggle source of socketed runes; sets use their config name, e.g. "coal" or "enhanced_iron". */
-    public static final String RUNE_SOURCE = "rune";
 
-    /** Weak keys, so a respawned player (a new entity) starts fresh. */
-    private static final Map<Player, List<Entry>> ACTIVE = Collections.synchronizedMap(new WeakHashMap<>());
-    private static final Map<Player, Set<IBuff>> ACTIVE_BUFFS = Collections.synchronizedMap(new WeakHashMap<>());
+    /**
+     * The armor scope, use {@link EffectScopes#ARMOR}. Sources are the set's config name, e.g. "coal" or "enhanced_iron", or
+     * {@link EffectEntry#RUNE}; toggle keys are "source|effect", e.g. "coal|minecraft:night_vision". The active effects are one
+     * per effect, the highest level of all sources (cached).
+     */
+    public static final EffectScope SCOPE = new Scope();
 
     private ArmorEffects() {
     }
 
-    /**
-     * One effect of one source (a worn set, or the socketed runes).
-     *
-     * @param source   the set's config name or {@link #RUNE_SOURCE}
-     * @param required worn pieces the effect needs, {@code worn} how many count (slot bound effects: of their pieces, runes: 1 of 1)
-     * @param slots    the pieces that count for a slot bound effect ({@code required} of them are needed), empty if all pieces do
-     * @param disabled switched off by the player for this source
-     */
-    public record Entry(BuffInstance buff, String id, String source, int required, int worn, Set<EquipmentSlot> slots,
-                        boolean disabled) {
+    private static final class Scope extends EffectScope {
 
-        public boolean available() {
-            return worn >= required;
+        private Scope() {
+            super("armor", ModAttachments.DISABLED_EFFECTS, true);
         }
 
-        public boolean active() {
-            return available() && !disabled;
+        /** @return e.g. "coal|minecraft:night_vision": each set (and the runes) is switched off on its own */
+        @Override
+        public String toggleKey(String source, String id) {
+            return source + "|" + id;
         }
 
-        /** @return the key saved when the player switches this effect off, e.g. "coal|minecraft:night_vision" */
-        public String toggleKey() {
-            return ArmorEffects.toggleKey(source, id);
-        }
-    }
-
-    public static String toggleKey(String source, String id) {
-        return source + "|" + id;
-    }
-
-    public static void invalidate(Player player) {
-        ACTIVE.remove(player);
-        ACTIVE_BUFFS.remove(player);
-        Runes.invalidate(player);
-    }
-
-    public static void clearCaches() {
-        ACTIVE.clear();
-        ACTIVE_BUFFS.clear();
-        Runes.clearCaches();
-    }
-
-    /** @return the effects the player gets right now, one per effect, the highest level of all sources (cached) */
-    public static List<BuffInstance> active(Player player) {
-        return activeEntries(player).stream().map(Entry::buff).toList();
-    }
-
-    /** @return like {@link #active(Player)}, with the source each effect comes from (cached) */
-    public static List<Entry> activeEntries(Player player) {
-        return ACTIVE.computeIfAbsent(player, p -> {
-            Map<String, Entry> best = new LinkedHashMap<>();
-            for (Entry entry : entries(p)) {
-                if (entry.active()) best.merge(entry.id(), entry, (a, b) -> b.buff().getAmplifier() > a.buff().getAmplifier() ? b : a);
+        /** Sets in slot order, then runes; one entry per source and effect, the higher level wins. */
+        @Override
+        protected List<EffectEntry> collect(LivingEntity player) {
+            Map<String, EffectEntry> entries = new LinkedHashMap<>();
+            for (IAPArmor mat : new LinkedHashSet<>(wornMaterials(player).values())) {
+                if (!(mat.config() instanceof MaterialConfig cfg) || !cfg.enableArmorEffects().get()) continue;
+                for (BuffInstance buff : mat.getBuffInstances().get()) {
+                    if (buff.getBuff() == Buff.NONE || buff.getBuff() instanceof DeBuff || !buff.isEnabled()) continue;
+                    String id = BuffParser.idOf(buff.getBuff());
+                    String key = toggleKey(cfg.name(), id);
+                    SetRequirement requirement = requirement(buff);
+                    add(entries, new EffectEntry(setBuff(player, mat, buff, requirement, id), id, cfg.name(), key, requirement.required(),
+                            requirement.worn(wornMaterials(player, id), mat), requirement.slots(), isDisabled(player, key)));
+                }
             }
-            return List.copyOf(best.values());
-        });
-    }
-
-    /** @return true if the player gets the buff (ability) right now (cached) */
-    public static boolean has(Player player, IBuff buff) {
-        return ACTIVE_BUFFS.computeIfAbsent(player, p -> {
-            Set<IBuff> buffs = new HashSet<>();
-            active(p).forEach(instance -> buffs.add(instance.getBuff()));
-            return Set.copyOf(buffs);
-        }).contains(buff);
-    }
-
-    public static boolean isDisabled(Player player, String toggleKey) {
-        return ArmorPlusConfig.allowEffectToggles.get() && player.getData(ModAttachments.DISABLED_EFFECTS.get()).contains(toggleKey);
-    }
-
-    /**
-     * @return every effect of the worn sets (including the ones that need more pieces) and of the socketed runes, with its
-     * status, grouped by source (sets in slot order, then runes)
-     */
-    public static List<Entry> entries(Player player) {
-        Map<EquipmentSlot, IAPArmor> bySlot = wornMaterials(player);
-
-        Map<String, Entry> entries = new LinkedHashMap<>();
-        for (IAPArmor mat : new LinkedHashSet<>(bySlot.values())) {
-            if (!(mat.config() instanceof MaterialConfig cfg) || !cfg.enableArmorEffects().get()) continue;
-            for (BuffInstance buff : mat.getBuffInstances().get()) {
-                if (buff.getBuff() == Buff.NONE || buff.getBuff() instanceof DeBuff || !buff.isEnabled()) continue;
-                String id = BuffParser.idOf(buff.getBuff());
-                SetRequirement requirement = requirement(buff);
-                add(entries, new Entry(setBuff(player, mat, buff, requirement, id), id, cfg.name(), requirement.required(), requirement.worn(wornMaterials(player, id), mat),
-                        requirement.slots(), isDisabled(player, toggleKey(cfg.name(), id))));
-            }
+            for (BuffInstance buff : Runes.wornArmorRunes(player)) add(entries, entry(player, buff, EffectEntry.RUNE));
+            return List.copyOf(entries.values());
         }
-        for (BuffInstance buff : Runes.wornArmorRunes(player)) {
-            String id = BuffParser.idOf(buff.getBuff());
-            add(entries, new Entry(buff, id, RUNE_SOURCE, 1, 1, Set.of(), isDisabled(player, toggleKey(RUNE_SOURCE, id))));
-        }        return List.copyOf(entries.values());
+
+        /** @return the set's config name, e.g. "coal", or "rune" */
+        @Override
+        public Component sourceName(EffectEntry entry) {
+            return Component.literal(entry.source());
+        }
+
+        /** When several sources give the same effect, the highest level counts. */
+        @Override
+        protected List<EffectEntry> combine(List<EffectEntry> active) {
+            return highestPerEffect(active);
+        }
+
+        @Override
+        protected void onToggled(ServerPlayer player, Optional<BuffInstance> effect) {
+            RuneEvents.syncEffects(player, effect.map(List::of).orElse(List.of()));
+            ModGlobalEvents.checkAndApplyBuffs(player);
+        }
+
+        @Override
+        public void invalidate(LivingEntity entity) {
+            super.invalidate(entity);
+            Runes.invalidate(entity);
+        }
+
+        @Override
+        public void clearCaches() {
+            super.clearCaches();
+            Runes.clearCaches();
+        }
+
+        private static void add(Map<String, EffectEntry> entries, EffectEntry entry) {
+            entries.merge(entry.toggleKey(), entry, EffectScope::higher);
+        }
     }
+
 
     /** @return the buff at the lowest level of the pieces that count for it, so upgrading it takes all of them */
-    private static BuffInstance setBuff(Player player, IAPArmor mat, BuffInstance buff, SetRequirement requirement, String id) {
+    private static BuffInstance setBuff(LivingEntity player, IAPArmor mat, BuffInstance buff, SetRequirement requirement, String id) {
         int level = Integer.MAX_VALUE;
         for (Map.Entry<EquipmentSlot, IAPArmor> piece : wornMaterials(player, id).entrySet()) {
             if (piece.getValue() != mat || !(requirement.slots().isEmpty() || requirement.slots().contains(piece.getKey()))) continue;
@@ -157,13 +134,8 @@ public final class ArmorEffects {
         return level == Integer.MAX_VALUE || level <= buff.getAmplifier() + 1 ? buff : buff.atLevel(level);
     }
 
-    /** One entry per source and effect: the higher level wins. */
-    private static void add(Map<String, Entry> entries, Entry entry) {
-        entries.merge(entry.toggleKey(), entry, (a, b) -> b.buff().getAmplifier() > a.buff().getAmplifier() ? b : a);
-    }
-
     /** @return the ArmorPlus material worn in each armor slot (slots without ArmorPlus armor are missing) */
-    public static Map<EquipmentSlot, IAPArmor> wornMaterials(Player player) {
+    public static Map<EquipmentSlot, IAPArmor> wornMaterials(LivingEntity player) {
         Map<EquipmentSlot, IAPArmor> bySlot = new EnumMap<>(EquipmentSlot.class);
         for (EquipmentSlot slot : Runes.ARMOR_SLOTS) {
             if (player.getItemBySlot(slot).getItem() instanceof APArmorItem armor) bySlot.put(slot, armor.getMat());
@@ -171,8 +143,8 @@ public final class ArmorEffects {
         return bySlot;
     }
 
-    /** @return like {@link #wornMaterials(Player)}, without the pieces the buff was extracted from: they no longer count for it */
-    public static Map<EquipmentSlot, IAPArmor> wornMaterials(Player player, String buffId) {
+    /** @return like {@link #wornMaterials(LivingEntity)}, without the pieces the buff was extracted from: they no longer count for it */
+    public static Map<EquipmentSlot, IAPArmor> wornMaterials(LivingEntity player, String buffId) {
         Map<EquipmentSlot, IAPArmor> bySlot = wornMaterials(player);
         bySlot.keySet().removeIf(slot -> Runes.isExtracted(player.getItemBySlot(slot), buffId));
         return bySlot;

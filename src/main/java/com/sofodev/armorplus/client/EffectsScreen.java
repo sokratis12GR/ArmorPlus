@@ -1,11 +1,11 @@
 package com.sofodev.armorplus.client;
 
+import com.sofodev.armorplus.api.EffectEntry;
+import com.sofodev.armorplus.api.EffectScope;
+import com.sofodev.armorplus.api.EffectScopes;
 import com.sofodev.armorplus.config.ArmorPlusConfig;
-import com.sofodev.armorplus.registry.item.armor.ArmorEffects;
+import com.sofodev.armorplus.network.ToggleEffectPayload;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
-import com.sofodev.armorplus.registry.item.tool.RangedEffects;
-import com.sofodev.armorplus.registry.item.tool.ToolEffects;
-import com.sofodev.armorplus.registry.item.tool.WeaponEffects;
 import com.sofodev.armorplus.utils.ToolTipUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.KeyMapping;
@@ -18,12 +18,12 @@ import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 /**
@@ -39,56 +39,66 @@ public abstract class EffectsScreen extends Screen {
     protected static final int GAP = 4;
     protected static final int TOP = 44;
 
-    /** Four tabs as wide as the two columns of effects. */
-    private static final int TAB_WIDTH = 72;
+    /** The tabs share the width of the two columns of effects. */
+    private static final int TABS_WIDTH = COLUMNS * BUTTON_WIDTH + (COLUMNS - 1) * GAP;
     private static final int TAB_HEIGHT = 18;
     private static final int TAB_GAP = 5;
     private static final int TAB_TOP = 2;
     private static final int TAB_INDICATOR_HEIGHT = 2;
     private static final int TAB_INDICATOR_COLOR = 0xFFFFAA00;
 
-    public enum Tab {
-        ARMOR("armor_effects", ArmorPlusKeys.ARMOR_EFFECTS, ArmorEffectsScreen::new, player -> {
-            // the client keeps its own cache of the worn runes, which isn't invalidated by server events
-            ArmorEffects.invalidate(player);
-            return !ArmorEffects.entries(player).isEmpty();
-        }),
-        TOOL("tool_effects", ArmorPlusKeys.TOOL_EFFECTS, ToolEffectsScreen::new, player -> {
-            // the client keeps its own cache of the held tool's runes, which isn't invalidated by server events
-            ToolEffects.invalidate(player);
-            return !ToolEffects.entries(player).isEmpty();
-        }),
-        WEAPON("weapon_effects", ArmorPlusKeys.WEAPON_EFFECTS, WeaponEffectsScreen::new, player -> !WeaponEffects.entries(player).isEmpty()),
-        RANGED("ranged_effects", ArmorPlusKeys.RANGED_EFFECTS, RangedEffectsScreen::new, player -> !RangedEffects.entries(player).isEmpty());
+    /**
+     * A tab of the effects menus: the scope it lists, the key that opens it and its screen. Its texts use the translation
+     * keys "screen.armorplus.&lt;scope&gt;_effects" (title), ".tab", ".none" and ".hint".
+     * <p>
+     * A new scope only needs an {@link EffectsScreen} subclass and a {@link #register registered} tab, its key is
+     * registered and handled by {@link ArmorPlusKeys}. Register it before the key mappings are (during mod construction).
+     */
+    public record Tab(EffectScope scope, KeyMapping key, Supplier<EffectsScreen> screen) {
 
-        private final String translationKey;
-        private final KeyMapping key;
-        private final Supplier<EffectsScreen> screen;
-        private final Predicate<Player> hasEffects;
+        private static final List<Tab> TABS = new ArrayList<>();
 
-        Tab(String name, KeyMapping key, Supplier<EffectsScreen> screen, Predicate<Player> hasEffects) {
-            this.translationKey = "screen.armorplus." + name;
-            this.key = key;
-            this.screen = screen;
-            this.hasEffects = hasEffects;
+        public static final Tab ARMOR = register(new Tab(EffectScopes.ARMOR, ArmorPlusKeys.ARMOR_EFFECTS, ArmorEffectsScreen::new));
+        public static final Tab TOOL = register(new Tab(EffectScopes.TOOL, ArmorPlusKeys.TOOL_EFFECTS, ToolEffectsScreen::new));
+        public static final Tab WEAPON = register(new Tab(EffectScopes.WEAPON, ArmorPlusKeys.WEAPON_EFFECTS, WeaponEffectsScreen::new));
+        public static final Tab RANGED = register(new Tab(EffectScopes.RANGED, ArmorPlusKeys.RANGED_EFFECTS, RangedEffectsScreen::new));
+
+        /** Adds a tab after the others. */
+        public static synchronized Tab register(Tab tab) {
+            if (TABS.stream().anyMatch(other -> other.scope() == tab.scope())) {
+                throw new IllegalArgumentException("A tab for the effect scope '" + tab.scope().name() + "' is already registered");
+            }
+            TABS.add(tab);
+            return tab;
+        }
+
+        /** @return the registered tabs, in order */
+        public static synchronized List<Tab> all() {
+            return List.copyOf(TABS);
+        }
+
+        private String translationKey() {
+            return "screen.armorplus." + this.scope.name() + "_effects";
         }
 
         /** @return true if the player has anything to show in this tab's menu */
         public boolean hasEffects(Player player) {
-            return this.hasEffects.test(player);
+            // the client keeps its own cache of the worn and held runes, which isn't invalidated by server events
+            this.scope.invalidate(player);
+            return !this.scope.entries(player).isEmpty();
         }
 
         public EffectsScreen createScreen() {
-            return this.screen.get();
+            return this.screen().get();
         }
 
         /** @return why this tab's menu has nothing to show, e.g. "Your held tool has no tool runes" */
         public Component noneMessage() {
-            return Component.translatable(this.translationKey + ".none");
+            return Component.translatable(translationKey() + ".none");
         }
 
         private MutableComponent label() {
-            return Component.translatable(this.translationKey + ".tab");
+            return Component.translatable(translationKey() + ".tab");
         }
     }
 
@@ -115,22 +125,53 @@ public abstract class EffectsScreen extends Screen {
     private int page;
 
     protected EffectsScreen(Tab tab) {
-        super(Component.translatable(tab.translationKey));
+        super(Component.translatable(tab.translationKey()));
         this.tab = tab;
+    }
+
+    /** @return the scope of the effects this screen lists */
+    protected final EffectScope scope() {
+        return this.tab.scope();
+    }
+
+    /** @return the player's entries of this screen's scope */
+    protected final List<EffectEntry> entries() {
+        return scope().entries(this.minecraft.player);
+    }
+
+    /** @return the action of a button: switches the entry's effect on/off on the server */
+    protected final Runnable toggle(EffectEntry entry) {
+        return () -> ClientPacketDistributor.sendToServer(new ToggleEffectPayload(scope(), entry.toggleKey()));
     }
 
     /** @return the effects to list, by section */
     protected abstract List<Effect> effects();
 
-    /** @return what the list depends on, the buttons are rebuilt when it changes */
-    protected abstract List<String> state();
+    /**
+     * @return what the list depends on, the buttons are rebuilt when it changes; by default the toggle key, level, source,
+     * worn pieces and on/off of each entry
+     */
+    protected List<String> state() {
+        List<String> disabled = this.minecraft.player.getData(scope().disabledEffects());
+        return entries().stream().map(e -> e.toggleKey() + "|" + e.source() + "|" + e.worn() + "|" + disabled.contains(e.toggleKey()) + "|" + e.buff().getAmplifier()).toList();
+    }
 
     /** Clears what the client caches of the effects. */
     protected void reload() {
+        scope().invalidate(this.minecraft.player);
     }
 
     protected static Component runesTitle() {
         return Component.translatable("screen.armorplus.armor_effects.runes").withStyle(ChatFormatting.GOLD);
+    }
+
+    /**
+     * @param materialTitle the title of the page of the held item's own material effects
+     * @return one on/off button per entry: the runes on their own pages, the material effects on the other
+     */
+    protected final List<Effect> onOffEffects(Component materialTitle) {
+        return entries().stream().map(entry -> new Effect(entry.fromRune() ? RUNES : entry.source(), entry.fromRune() ? runesTitle() : materialTitle,
+                onOffLabel(entry.buff(), entry.disabled()), ToolTipUtils.buffTooltip(entry.buff()), true, toggle(entry))).toList();
     }
 
     /** @return e.g. "Haste II: On" */
@@ -142,11 +183,11 @@ public abstract class EffectsScreen extends Screen {
 
     @Override
     protected void init() {
-        for (Tab other : Tab.values()) {
+        for (Tab other : Tab.all()) {
             boolean current = other == this.tab;
             boolean available = current || other.hasEffects(this.minecraft.player);
             Button.Builder builder = Button.builder(current ? other.label().withStyle(ChatFormatting.GOLD) : other.label(), b -> swapTo(other))
-                    .bounds(tabX(other), TAB_TOP, TAB_WIDTH, TAB_HEIGHT);
+                    .bounds(tabX(other), TAB_TOP, tabWidth(), TAB_HEIGHT);
             if (!available) builder.tooltip(Tooltip.create(other.noneMessage()));
             this.addRenderableWidget(builder.build()).active = available && !current;
         }
@@ -208,9 +249,16 @@ public abstract class EffectsScreen extends Screen {
         if (!state().equals(this.shownState)) this.rebuildWidgets();
     }
 
+    /** @return the width of each tab: 72 for four tabs */
+    private static int tabWidth() {
+        int count = Tab.all().size();
+        return (TABS_WIDTH - (count - 1) * TAB_GAP) / count;
+    }
+
     private int tabX(Tab tab) {
-        int left = this.width / 2 - (Tab.values().length * TAB_WIDTH + (Tab.values().length - 1) * TAB_GAP) / 2;
-        return left + tab.ordinal() * (TAB_WIDTH + TAB_GAP);
+        List<Tab> tabs = Tab.all();
+        int left = this.width / 2 - (tabs.size() * tabWidth() + (tabs.size() - 1) * TAB_GAP) / 2;
+        return left + tabs.indexOf(tab) * (tabWidth() + TAB_GAP);
     }
 
     @Override
@@ -219,7 +267,7 @@ public abstract class EffectsScreen extends Screen {
         // marks the current tab, a disabled button alone looks the same as a tab without anything to show
         int x = tabX(this.tab);
         int y = TAB_TOP + TAB_HEIGHT;
-        graphics.fill(x, y, x + TAB_WIDTH, y + TAB_INDICATOR_HEIGHT, TAB_INDICATOR_COLOR);
+        graphics.fill(x, y, x + tabWidth(), y + TAB_INDICATOR_HEIGHT, TAB_INDICATOR_COLOR);
 
         if (!this.pages.isEmpty()) {
             MutableComponent pageTitle = this.pages.get(this.page).title().copy();
@@ -230,7 +278,7 @@ public abstract class EffectsScreen extends Screen {
                 ? Component.translatable("screen.armorplus.armor_effects.disabled")
                 : this.pages.isEmpty()
                 ? this.tab.noneMessage()
-                : Component.translatable(this.tab.translationKey + ".hint");
+                : Component.translatable(this.tab.translationKey() + ".hint");
         graphics.centeredText(this.font, subtitle, this.width / 2, 33, 0xFFA0A0A0);
     }
 
@@ -240,8 +288,8 @@ public abstract class EffectsScreen extends Screen {
 
     @Override
     public boolean keyPressed(KeyEvent event) {
-        for (Tab other : Tab.values()) {
-            if (other.key.matches(event)) {
+        for (Tab other : Tab.all()) {
+            if (other.key().matches(event)) {
                 if (other != this.tab && other.hasEffects(this.minecraft.player)) swapTo(other);
                 return true;
             }
