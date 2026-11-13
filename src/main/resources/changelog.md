@@ -19,6 +19,7 @@ Mobs can now use ArmorPlus armor and runes, Infused Lava's Auto-Smelt is a prope
 - **Pages:** `/armorplus effects`, `/armorplus rune list` and `/armorplus help` show 8 lines at a time, with clickable `[◀ Prev]` and `[Next ▶]` buttons.
   - `/armorplus effects page <page>` for your own effects, `/armorplus effects <player> [page]` for another player's (needs OP).
   - `/armorplus rune list [armor|weapon|tool|ranged] [page]` and `/armorplus help [page]`.
+- A bare `/armorplus` or `/ap` now shows the help page.
 
 ### Fixes
 - Removed a leftover Infused Lava smelting check that never did anything. Auto-smelting itself is unchanged.

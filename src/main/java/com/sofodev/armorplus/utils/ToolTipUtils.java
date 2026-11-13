@@ -3,6 +3,7 @@ package com.sofodev.armorplus.utils;
 import com.sofodev.armorplus.ArmorPlus;
 import com.sofodev.armorplus.client.ArmorPlusKeys;
 import com.sofodev.armorplus.client.BuffGridTooltip;
+import com.sofodev.armorplus.client.ClientPlayerAccess;
 import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.registry.item.extra.Buff;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
@@ -87,7 +88,7 @@ public class ToolTipUtils {
 
     /** @return the local player whose equipment tooltips compare against, or null (e.g. on the title screen) */
     public static @Nullable Player clientPlayer() {
-        return Minecraft.getInstance().player;
+        return ClientPlayerAccess.player();
     }
 
     /** Adds the standard ArmorPlus "Press Shift for more info" line. */

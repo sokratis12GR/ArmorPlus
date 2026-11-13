@@ -139,7 +139,7 @@
   "commands.armorplus.page.previous": "[◀ Prev]",
   "commands.armorplus.page.next": "[Next ▶]",
   "_comment": "- Help",
-  "commands.armorplus.help.usage": "/armorplus help [page]",
+  "commands.armorplus.help.usage": "/armorplus [help [page]]",
   "commands.armorplus.help.help": "Displays the help information for the \"/armorplus\" command.",
   "_comment": "- Info",
   "commands.armorplus.info.usage": "/armorplus info",

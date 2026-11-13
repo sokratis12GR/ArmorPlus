@@ -23,6 +23,7 @@ public class ArmorPlusCommand {
 
     private static void register(CommandDispatcher<CommandSourceStack> dispatcher, String name) {
         dispatcher.register(Commands.literal(name)
+                .executes(ctx -> help(ctx.getSource()))
                 .then(Commands.literal("discord").executes(ctx -> discord(ctx.getSource())))
                 .then(Commands.literal("info").executes(ctx -> info(ctx.getSource())))
                 .then(Commands.literal("nodecraft").executes(ctx -> nodecraft(ctx.getSource())))
