@@ -182,6 +182,13 @@ modrinth {
     }
 }
 
+// Minotaur 2.x breaks under the configuration cache, so fail before anything uploads
+def modrinthTasks = ['publishAll', 'publishModrinth', 'modrinth']
+if (gradle.startParameter.configurationCacheRequested
+        && gradle.startParameter.taskNames.any { it in modrinthTasks }) {
+    throw new GradleException('Publishing to Modrinth needs --no-configuration-cache, e.g. ./gradlew publishAll --no-configuration-cache')
+}
+
 tasks.named('modrinth') {
     notCompatibleWithConfigurationCache('Minotaur 2.x accesses Task.project at execution time')
 }
