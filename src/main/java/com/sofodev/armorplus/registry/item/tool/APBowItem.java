@@ -1,5 +1,7 @@
 package com.sofodev.armorplus.registry.item.tool;
 
+import com.sofodev.armorplus.api.EffectEntry;
+import com.sofodev.armorplus.api.EffectScopes;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import com.sofodev.armorplus.registry.item.extra.BuffParser;
 import com.sofodev.armorplus.registry.rune.Runes;
@@ -51,7 +53,7 @@ public class APBowItem extends BowItem {
                 tooltip.add(ToolTipUtils.effectsHeader("on_hit", enabled));
                 Player player = ToolTipUtils.clientPlayer();
                 ToolTipUtils.addBuffLines(tooltip, effects, ToolTipUtils::durationPrefix,
-                        buff -> enabled && (player == null || !RangedEffects.isDisabled(player, BuffParser.idOf(buff.getBuff()))),
+                        buff -> enabled && (player == null || !EffectScopes.RANGED.isDisabled(player, EffectEntry.MATERIAL, BuffParser.idOf(buff.getBuff()))),
                         ToolTipUtils::rangedCost);
                 ToolTipUtils.addExtractedLines(tooltip, extracted);
                 ToolTipUtils.addDetailsHint(tooltip, effects, tool.getColor());

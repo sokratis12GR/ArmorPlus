@@ -32,17 +32,15 @@ public final class ArmorPlusKeys {
 
     @SubscribeEvent
     public static void register(RegisterKeyMappingsEvent event) {
-        event.register(ARMOR_EFFECTS);
-        event.register(TOOL_EFFECTS);
-        event.register(WEAPON_EFFECTS);
-        event.register(RANGED_EFFECTS);
+        // the key of every effects menu tab, see EffectsScreen.Tab#register
+        for (EffectsScreen.Tab tab : EffectsScreen.Tab.all()) event.register(tab.key());
         event.register(EFFECT_DETAILS);
     }
 
     @SubscribeEvent
     public static void onClientTick(ClientTickEvent.Post event) {
         Minecraft minecraft = Minecraft.getInstance();
-        for (EffectsScreen.Tab tab : EffectsScreen.Tab.values()) {
+        for (EffectsScreen.Tab tab : EffectsScreen.Tab.all()) {
             boolean pressed = false;
             while (tab.key().consumeClick()) pressed = true;
             if (!pressed || minecraft.player == null || minecraft.screen != null) continue;

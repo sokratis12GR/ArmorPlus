@@ -38,6 +38,14 @@ public class ModAttachments {
                     .serialize(ArrowRunes.MAP_CODEC.codec())
                     .build());
 
+    /**
+     * @return the toggle keys an effect scope's player switched off: saved with the player and kept on death (sent to the
+     * player's own client with SyncDisabledEffectsPayload)
+     */
+    public static DeferredHolder<AttachmentType<?>, AttachmentType<List<String>>> disabledEffects(String name) {
+        return ATTACHMENT_TYPES.register(name, disabledList());
+    }
+
     private static Supplier<AttachmentType<List<String>>> disabledList() {
         return () -> AttachmentType.<List<String>>builder(() -> List.of())
                 .serialize(Codec.STRING.listOf())

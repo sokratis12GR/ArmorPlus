@@ -1,5 +1,6 @@
 package com.sofodev.armorplus;
 
+import com.sofodev.armorplus.api.EffectScopes;
 import com.sofodev.armorplus.client.config.APConfigSectionScreen;
 import com.sofodev.thedragonlib.client.config.ConfigScreenHelper;
 import net.neoforged.fml.loading.FMLEnvironment;
@@ -22,7 +23,6 @@ import com.sofodev.armorplus.registry.rune.RuneEffectTypes;
 import com.sofodev.armorplus.registry.block.castle.BrickColor;
 import com.sofodev.armorplus.registry.entity.arrow.APArrowEntity;
 import com.sofodev.armorplus.registry.entity.arrow.APArrowRenderer;
-import com.sofodev.armorplus.registry.item.armor.ArmorEffects;
 import com.sofodev.armorplus.registry.item.tool.properties.mace.APMaceMaterial;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.APToolProperties;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -37,7 +37,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
-import com.sofodev.armorplus.registry.item.tool.ToolEffects;
 import com.sofodev.thedragonlib.config.ConfigHelper;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.config.ModConfigEvent;
@@ -115,12 +114,9 @@ public class ArmorPlus {
         PROFESSIONS.register(modEventBus);
         POI_TYPES.register(modEventBus);
 
-        // parsed buff lists are cached per player, see ArmorEffects
+        // the active effects are cached per entity, see EffectScope
         modEventBus.addListener(ModConfigEvent.Reloading.class, e -> {
-            if (e.getConfig().getModId().equals(MODID)) {
-                ArmorEffects.clearCaches();
-                ToolEffects.clearCaches();
-            }
+            if (e.getConfig().getModId().equals(MODID)) EffectScopes.clearAllCaches();
         });
     }
 

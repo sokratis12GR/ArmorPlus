@@ -4,11 +4,10 @@ import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.config.ArmorPlusConfig.MaterialConfig;
 import com.sofodev.armorplus.registry.item.APRarity;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
-import com.sofodev.armorplus.utils.Utils;
+import com.sofodev.armorplus.registry.item.extra.BuffParser;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
@@ -18,7 +17,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.util.*;
 import java.util.function.Supplier;
 
-import static com.sofodev.armorplus.ArmorPlus.SMELTING_MAP;
 import static com.sofodev.armorplus.ArmorPlus.config;
 import static com.sofodev.armorplus.registry.item.APRarity.*;
 import static com.sofodev.armorplus.registry.item.APRarity.OBSIDIAN;
@@ -55,16 +53,10 @@ public enum APToolMaterial implements IAPTool {
             return config.obsidianMaterial;
         }
     }, INFUSED_LAVA_MAT(INFUSED_LAVA, INFUSED_LAVA_PROP) {
+        /** Smelting itself is done by the AutoSmeltLootModifier. Parsed on use, not while the enum is loaded. */
         @Override
-        public void onBlockMined(ItemStack stack, Level world, BlockState state, BlockPos pos, LivingEntity player) {
-            if (player instanceof Player) {
-                SMELTING_MAP.forEach((block, item) -> {
-                    if (block == state.getBlock()) {
-                        world.destroyBlock(pos, false, player);
-                        Utils.spawnAtLocation((Player) player, new ItemStack(item), pos);
-                    }
-                });
-            }
+        public List<BuffInstance> getHeldBuffs() {
+            return List.of(BuffParser.tool("armorplus:auto_smelt"));
         }
 
         @Override

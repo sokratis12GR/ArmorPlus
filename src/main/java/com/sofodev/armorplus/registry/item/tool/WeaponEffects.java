@@ -1,10 +1,12 @@
 package com.sofodev.armorplus.registry.item.tool;
 
+import com.sofodev.armorplus.api.EffectEntry;
+import com.sofodev.armorplus.api.EffectScope;
+import com.sofodev.armorplus.api.EffectScopes;
 import com.sofodev.armorplus.api.RuneEffectType;
 import com.sofodev.armorplus.api.event.EffectApplyEvent;
 import com.sofodev.armorplus.api.event.RuneApplyEvent;
 import com.sofodev.armorplus.api.event.SetEffectApplyEvent;
-import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.config.ArmorPlusConfig.MaterialConfig;
 import com.sofodev.armorplus.registry.ModAttachments;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
@@ -12,7 +14,6 @@ import com.sofodev.armorplus.registry.item.extra.BuffParser;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.IAPTool;
 import com.sofodev.armorplus.registry.rune.Runes;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.common.NeoForge;
 
@@ -28,44 +29,35 @@ import java.util.List;
  */
 public final class WeaponEffects {
 
+    /**
+     * The weapon scope, use {@link EffectScopes#WEAPON}. Sources are {@link EffectEntry#MATERIAL} (first) and {@link EffectEntry#RUNE},
+     * toggle keys the effect id. Not cached: the held item's runes and levels change without an event.
+     */
+    public static final EffectScope SCOPE = new Scope();
+
     private WeaponEffects() {
     }
 
-    /**
-     * One on-hit effect of the held weapon.
-     *
-     * @param id       the buff id, also the key saved when the player switches it off, e.g. "minecraft:wither"
-     * @param disabled switched off by the player
-     * @param rune     from a socketed rune, not the material
-     */
-    public record Entry(BuffInstance buff, String id, boolean disabled, boolean rune) {
-    }
+    private static final class Scope extends EffectScope {
 
-    /** @return every on-hit effect of the held weapon (material effects first, then runes) with its status */
-    public static List<Entry> entries(Player player) {
-        ItemStack weapon = player.getMainHandItem();
-        List<Entry> entries = new ArrayList<>();
-        IAPTool mat = Runes.toolMaterial(weapon.getItem());
-        if (mat != null && mat.config().enableWeaponEffects().get()) {
-            for (BuffInstance buff : Runes.nativeBuffs(weapon, mat.getBuffInstances().get())) entries.add(entry(player, buff, false));
+        private Scope() {
+            super("weapon", ModAttachments.DISABLED_WEAPON_EFFECTS, false);
         }
-        for (BuffInstance buff : Runes.weaponRunes(weapon)) entries.add(entry(player, buff, true));
-        return List.copyOf(entries);
+
+        /** Material effects first, then runes. */
+        @Override
+        protected List<EffectEntry> collect(LivingEntity entity) {
+            ItemStack weapon = entity.getMainHandItem();
+            List<EffectEntry> entries = new ArrayList<>();
+            IAPTool mat = Runes.toolMaterial(weapon.getItem());
+            if (mat != null && mat.config().enableWeaponEffects().get()) {
+                for (BuffInstance buff : Runes.nativeBuffs(weapon, mat.getBuffInstances().get())) entries.add(entry(entity, buff, EffectEntry.MATERIAL));
+            }
+            for (BuffInstance buff : Runes.weaponRunes(weapon)) entries.add(entry(entity, buff, EffectEntry.RUNE));
+            return entries;
+        }
     }
 
-    /** @return the on-hit effects of the held weapon that aren't switched off */
-    public static List<BuffInstance> active(Player player) {
-        return entries(player).stream().filter(entry -> !entry.disabled()).map(Entry::buff).toList();
-    }
-
-    private static Entry entry(Player player, BuffInstance buff, boolean rune) {
-        String id = BuffParser.idOf(buff.getBuff());
-        return new Entry(buff, id, isDisabled(player, id), rune);
-    }
-
-    public static boolean isDisabled(Player player, String id) {
-        return ArmorPlusConfig.allowEffectToggles.get() && player.getData(ModAttachments.DISABLED_WEAPON_EFFECTS.get()).contains(id);
-    }
 
     /** Applies the material's own on-hit effects to the target (fires {@link SetEffectApplyEvent}). */
     public static void hit(ItemStack stack, IAPTool mat, LivingEntity target, LivingEntity attacker) {
@@ -100,6 +92,6 @@ public final class WeaponEffects {
 
     /** @return true if a player attacker switched the effect off */
     private static boolean isSkipped(BuffInstance buff, LivingEntity attacker) {
-        return attacker instanceof Player player && isDisabled(player, BuffParser.idOf(buff.getBuff()));
+        return SCOPE.isDisabled(attacker, BuffParser.idOf(buff.getBuff()));
     }
 }

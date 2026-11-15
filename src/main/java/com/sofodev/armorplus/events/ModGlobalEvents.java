@@ -2,9 +2,9 @@ package com.sofodev.armorplus.events;
 
 
 import com.sofodev.armorplus.ArmorPlus;
+import com.sofodev.armorplus.api.EffectScopes;
 import com.sofodev.armorplus.config.ArmorPlusConfig;
 import com.sofodev.armorplus.network.SyncDisabledEffectsPayload;
-import com.sofodev.armorplus.registry.item.armor.ArmorEffects;
 import com.sofodev.armorplus.registry.item.tool.ToolEffects;
 import com.sofodev.armorplus.registry.item.extra.BuffInstance;
 import com.sofodev.armorplus.registry.item.extra.IBuff;
@@ -72,7 +72,7 @@ public class ModGlobalEvents {
     private static final Map<UUID, LitSpot> ILLUMINATED_SPOTS = new ConcurrentHashMap<>();
 
     private static boolean isFullArmorWithBuff(Player player, IBuff buff) {
-        return ArmorEffects.has(player, buff);
+        return EffectScopes.ARMOR.has(player, buff);
     }
 
     private static void grantFlight(Player player) {
@@ -207,10 +207,9 @@ public class ModGlobalEvents {
     @SubscribeEvent
     public static void onEquipmentChange(LivingEquipmentChangeEvent e) {
         if (e.getEntity() instanceof Player player && !player.level().isClientSide()) {
-            List<BuffInstance> previous = new ArrayList<>(ArmorEffects.active(player));
+            List<BuffInstance> previous = new ArrayList<>(EffectScopes.ARMOR.active(player));
             previous.addAll(ToolEffects.held(player));
-            ArmorEffects.invalidate(player);
-            ToolEffects.invalidate(player);
+            EffectScopes.invalidateAll(player);
             RuneEvents.syncEffects(player, previous);
             checkAndApplyBuffs(player);
         }
@@ -243,8 +242,7 @@ public class ModGlobalEvents {
     @SubscribeEvent
     public static void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent e) {
         clearIllumination(e.getEntity().getUUID());
-        ArmorEffects.invalidate(e.getEntity());
-        ToolEffects.invalidate(e.getEntity());
+        EffectScopes.invalidateAll(e.getEntity());
     }
 
     @SubscribeEvent

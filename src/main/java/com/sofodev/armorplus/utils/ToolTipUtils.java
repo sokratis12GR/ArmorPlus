@@ -12,8 +12,11 @@ import com.sofodev.armorplus.registry.item.extra.BuffNames;
 import com.sofodev.armorplus.registry.item.extra.BuffParser;
 import com.sofodev.armorplus.registry.item.extra.DeBuff;
 import com.sofodev.armorplus.registry.item.extra.RangedBuff;
-import com.sofodev.armorplus.registry.item.tool.WeaponEffects;
+import com.sofodev.armorplus.api.EffectEntry;
+import com.sofodev.armorplus.api.EffectScopes;
+import com.sofodev.armorplus.client.ClientPlayerAccess;
 import com.sofodev.armorplus.registry.item.tool.properties.tool.IAPTool;
+import com.sofodev.armorplus.registry.item.tool.properties.tool.Tool;
 import com.sofodev.armorplus.registry.rune.Runes;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.KeyMapping;
@@ -33,6 +36,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.function.Function;
@@ -83,7 +87,7 @@ public class ToolTipUtils {
 
     /** @return the local player whose equipment tooltips compare against, or null (e.g. on the title screen) */
     public static @Nullable Player clientPlayer() {
-        return Minecraft.getInstance().player;
+        return ClientPlayerAccess.player();
     }
 
     /**
@@ -98,14 +102,25 @@ public class ToolTipUtils {
         // at this item's levels (upgraded in the ritual), extracted effects listed struck through
         List<BuffInstance> buffs = Runes.nativeBuffs(stack, tool.getBuffInstances().get());
         List<BuffInstance> extracted = Runes.extractedBuffs(stack, tool.getBuffInstances().get());
+        // the material's own effects while held, e.g. Infused Lava's Auto-Smelt, switched on/off in the Tool Effects screen
+        // (only tools count as held tools, see ToolEffects)
+        List<BuffInstance> held = stack.getItem() instanceof Tool ? tool.getHeldBuffs() : List.of();
+        Player player = clientPlayer();
         if (!buffs.isEmpty() || !extracted.isEmpty()) {
             tooltip.add(effectsHeader(condition, enabled));
-            Player player = clientPlayer();
             addBuffLines(tooltip, buffs, ToolTipUtils::durationPrefix,
-                    buff -> enabled && (player == null || !WeaponEffects.isDisabled(player, BuffParser.idOf(buff.getBuff()))));
+                    buff -> enabled && (player == null || !EffectScopes.WEAPON.isDisabled(player, EffectEntry.MATERIAL, BuffParser.idOf(buff.getBuff()))));
             addExtractedLines(tooltip, extracted);
-            addDetailsHint(tooltip, buffs, tool.getColor());
         }
+        if (!held.isEmpty()) {
+            tooltip.add(effectsHeader("while_held", enabled));
+            addBuffLines(tooltip, held, ToolTipUtils::durationPrefix,
+                    buff -> enabled && (player == null || !EffectScopes.TOOL.isDisabled(player, EffectEntry.MATERIAL, BuffParser.idOf(buff.getBuff()))));
+        }
+        // one hint below both lists
+        List<BuffInstance> described = new ArrayList<>(buffs);
+        described.addAll(held);
+        addDetailsHint(tooltip, described, tool.getColor());
     }
 
     /** @return the single header line above a buff list, e.g. "Set Effects:" or "On Hit: (Disabled)" */
